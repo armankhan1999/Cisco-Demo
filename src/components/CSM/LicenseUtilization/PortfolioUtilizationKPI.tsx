@@ -142,7 +142,7 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
         </div>
         
         {/* Subtitle/Description */}
-        <div className="text-xs text-gray-600 mb-3">
+        <div className="text-xs text-gray-600 mb-3 flex-grow">
           Target: ≥ {kpi.target}%
         </div>
         

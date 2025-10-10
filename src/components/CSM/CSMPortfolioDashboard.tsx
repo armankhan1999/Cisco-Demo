@@ -383,7 +383,7 @@ export function CSMPortfolioDashboard() {
         {/* Row 2: Churn Rate, Portfolio Utilization, Feature Adoption, Engagement Score */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} />
-          <PortfolioUtilizationKPI drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} />
+          <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} />
           <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} />
           <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} />
         </div>
@@ -394,35 +394,44 @@ export function CSMPortfolioDashboard() {
           <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} />
           
           {/* Summary Cards */}
-          <div className="col-span-2 bg-white rounded-xl shadow-lg border border-gray-200 p-6">
-            <div className="flex items-center mb-4">
-              <div className="text-2xl mr-3">📋</div>
-              <h3 className="text-lg font-bold text-gray-900">Portfolio Summary</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {healthDistribution.reduce((sum, h) => sum + h.accounts, 0)}
-                </div>
-                <div className="text-xs text-gray-600 font-medium">Active Accounts</div>
+          <div className="col-span-2 bg-white rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300">
+            <div className="relative h-full flex flex-col">
+              {/* Header with icon */}
+              <div className="flex items-start justify-between mb-3">
+                <div className="text-3xl opacity-90">📋</div>
               </div>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-gray-900 mb-1">
-                  ${(healthDistribution.reduce((sum, h) => sum + h.arr, 0) / 1000000).toFixed(1)}M
-                </div>
-                <div className="text-xs text-gray-600 font-medium">Portfolio ARR</div>
+              
+              {/* Title */}
+              <div className="text-sm font-semibold text-gray-700 mb-1 leading-tight">
+                Portfolio Summary
               </div>
-              <div className="bg-green-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-green-700 mb-1">
-                  {healthDistribution.slice(0, 2).reduce((sum, h) => sum + h.accounts, 0)}
+              
+              {/* Content Grid */}
+              <div className="grid grid-cols-2 gap-3 flex-grow mb-3">
+                <div className="bg-gray-50 rounded-lg p-2.5">
+                  <div className="text-xl font-bold text-gray-900 mb-0.5">
+                    {healthDistribution.reduce((sum, h) => sum + h.accounts, 0)}
+                  </div>
+                  <div className="text-xs text-gray-600 font-medium">Active Accounts</div>
                 </div>
-                <div className="text-xs text-green-600 font-medium">Healthy Accounts</div>
-              </div>
-              <div className="bg-red-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-red-700 mb-1">
-                  {healthDistribution.slice(3, 5).reduce((sum, h) => sum + h.accounts, 0)}
+                <div className="bg-gray-50 rounded-lg p-2.5">
+                  <div className="text-xl font-bold text-gray-900 mb-0.5">
+                    ${(healthDistribution.reduce((sum, h) => sum + h.arr, 0) / 1000000).toFixed(1)}M
+                  </div>
+                  <div className="text-xs text-gray-600 font-medium">Portfolio ARR</div>
                 </div>
-                <div className="text-xs text-red-600 font-medium">At-Risk Accounts</div>
+                <div className="bg-green-50 rounded-lg p-2.5">
+                  <div className="text-xl font-bold text-green-700 mb-0.5">
+                    {healthDistribution.slice(0, 2).reduce((sum, h) => sum + h.accounts, 0)}
+                  </div>
+                  <div className="text-xs text-green-600 font-medium">Healthy Accounts</div>
+                </div>
+                <div className="bg-red-50 rounded-lg p-2.5">
+                  <div className="text-xl font-bold text-red-700 mb-0.5">
+                    {healthDistribution.slice(3, 5).reduce((sum, h) => sum + h.accounts, 0)}
+                  </div>
+                  <div className="text-xs text-red-600 font-medium">At-Risk Accounts</div>
+                </div>
               </div>
             </div>
           </div>
