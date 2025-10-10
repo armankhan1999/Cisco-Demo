@@ -66,13 +66,39 @@ export function calculateGRR(filteredAccounts?: any[]): KPIResult {
   const retainedARR = startingARR - losses;
   const grr = startingARR > 0 ? (retainedARR / startingARR) * 100 : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthARR = subscriptions.reduce((sum, sub) => {
+    const subStart = new Date(sub.subscription_start_date);
+    if (subStart <= twoMonthsAgo) {
+      return sum + sub.arr;
+    }
+    return sum;
+  }, 0);
+  
+  const previousMonthLosses = movements
+    .filter(m => {
+      const effectiveDate = new Date(m.effective_date);
+      return effectiveDate >= twoMonthsAgo && effectiveDate < oneYearAgo && 
+             (m.movement_type === 'churn' || m.movement_type === 'contraction');
+    })
+    .reduce((sum, m) => sum + Math.abs(m.arr_change), 0);
+  
+  const previousMonthRetainedARR = previousMonthARR - previousMonthLosses;
+  const previousMonthGRR = previousMonthARR > 0 ? (previousMonthRetainedARR / previousMonthARR) * 100 : 0;
+  
+  const momChange = grr - previousMonthGRR;
+  const trend = Math.abs(momChange) < 1 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: grr,
     formatted: `${grr.toFixed(1)}%`,
     target: 95,
     status: grr >= 95 ? 'success' : grr >= 90 ? 'warning' : 'danger',
-    trend: grr >= 95 ? 'up' : 'down',
-    change: '+1.5pp'
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 
@@ -103,13 +129,37 @@ export function calculatePortfolioHealth(filteredAccounts?: any[]): KPIResult {
   console.log(`📊 Portfolio Health Score: ${Math.round(portfolioHealth)}`);
   console.log('='.repeat(50));
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthHealth = accounts.reduce((sum, account) => {
+    const accountCreated = new Date(account.account.created_date);
+    if (accountCreated <= twoMonthsAgo) {
+      return sum + (account.account.health_score * account.account.arr);
+    }
+    return sum;
+  }, 0);
+  
+  const previousMonthARR = accounts.reduce((sum, account) => {
+    const accountCreated = new Date(account.account.created_date);
+    if (accountCreated <= twoMonthsAgo) {
+      return sum + account.account.arr;
+    }
+    return sum;
+  }, 0);
+  
+  const previousMonthPortfolioHealth = previousMonthARR > 0 ? previousMonthHealth / previousMonthARR : 0;
+  const momChange = portfolioHealth - previousMonthPortfolioHealth;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: portfolioHealth,
     formatted: Math.round(portfolioHealth).toString(),
     target: 75,
     status: portfolioHealth >= 75 ? 'success' : portfolioHealth >= 60 ? 'warning' : 'danger',
-    trend: portfolioHealth >= 75 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}`
   };
 }
 
@@ -128,13 +178,27 @@ export function calculateAtRiskARR(filteredAccounts?: any[]): KPIResult {
   const totalARR = accounts.reduce((sum, a) => sum + a.account.arr, 0);
   const riskPercentage = totalARR > 0 ? (atRiskARR / totalARR) * 100 : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthAtRiskARR = accounts
+    .filter(account => {
+      const accountCreated = new Date(account.account.created_date);
+      return accountCreated <= twoMonthsAgo && account.account.health_score < 60;
+    })
+    .reduce((sum, account) => sum + account.account.arr, 0);
+  
+  const momChange = atRiskARR - previousMonthAtRiskARR;
+  const trend = Math.abs(momChange) < 100000 ? 'stable' : momChange < 0 ? 'down' : 'up';
+
   return {
     value: atRiskARR,
     formatted: `$${(atRiskARR / 1000000).toFixed(1)}M`,
     target: 0,
     status: riskPercentage < 10 ? 'success' : riskPercentage < 15 ? 'warning' : 'danger',
-    trend: 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}$${(Math.abs(momChange) / 1000000).toFixed(1)}M`
   };
 }
 
@@ -145,6 +209,7 @@ export function calculateAtRiskARR(filteredAccounts?: any[]): KPIResult {
  */
 export function calculateRenewalRate(filteredAccounts?: any[]): KPIResult {
   const allSubscriptions = getActiveSubscriptions();
+  const qbrTracking = getAllQBRTracking();
   
   // Filter subscriptions based on filtered accounts
   const subscriptions = filteredAccounts && filteredAccounts.length > 0
@@ -166,13 +231,31 @@ export function calculateRenewalRate(filteredAccounts?: any[]): KPIResult {
     ? (renewedCount / renewalsInPeriod.length) * 100 
     : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthRenewals = qbrTracking.filter(qbr => {
+    const qbrDate = new Date(qbr.qbr_date);
+    return qbrDate >= twoMonthsAgo && qbrDate < new Date() && qbr.renewal_confidence >= 7;
+  }).length;
+  
+  const previousMonthTotalRenewals = qbrTracking.filter(qbr => {
+    const qbrDate = new Date(qbr.qbr_date);
+    return qbrDate >= twoMonthsAgo && qbrDate < new Date();
+  }).length;
+  
+  const previousMonthRenewalRate = previousMonthTotalRenewals > 0 ? (previousMonthRenewals / previousMonthTotalRenewals) * 100 : 0;
+  const momChange = renewalRate - previousMonthRenewalRate;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: renewalRate,
     formatted: `${renewalRate.toFixed(1)}%`,
     target: 92,
     status: renewalRate >= 92 ? 'success' : renewalRate >= 85 ? 'warning' : 'danger',
-    trend: renewalRate >= 92 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 
@@ -184,6 +267,7 @@ export function calculateRenewalRate(filteredAccounts?: any[]): KPIResult {
 export function calculateChurnRate(filteredAccounts?: any[]): KPIResult {
   const movements = getAllRevenueMovements();
   const accounts = filteredAccounts || getActiveAccounts();
+  const subscriptions = getActiveSubscriptions();
   
   // Use total portfolio ARR (not just active subscriptions)
   const totalARR = accounts.reduce((sum, acc) => sum + acc.account.arr, 0);
@@ -212,13 +296,33 @@ export function calculateChurnRate(filteredAccounts?: any[]): KPIResult {
   console.log(`  Total Churned ARR: $${churnedARR.toLocaleString()}`);
   console.log(`  Calculated Churn Rate: ${churnRate.toFixed(2)}%`);
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthChurnedARR = movements
+    .filter(m => {
+      const effectiveDate = new Date(m.effective_date);
+      return effectiveDate >= twoMonthsAgo && effectiveDate < new Date() && m.movement_type === 'churn';
+    })
+    .reduce((sum, m) => sum + Math.abs(m.arr_change), 0);
+  
+  const previousMonthTotalARR = subscriptions.reduce((sum, sub) => {
+    const subStart = new Date(sub.subscription_start_date);
+    return subStart <= twoMonthsAgo ? sum + sub.arr : sum;
+  }, 0);
+  
+  const previousMonthChurnRate = previousMonthTotalARR > 0 ? (previousMonthChurnedARR / previousMonthTotalARR) * 100 : 0;
+  const momChange = churnRate - previousMonthChurnRate;
+  const trend = Math.abs(momChange) < 1 ? 'stable' : momChange < 0 ? 'down' : 'up';
+
   return {
     value: churnRate,
     formatted: `${churnRate.toFixed(1)}%`,
     target: 5,
     status: churnRate <= 5 ? 'success' : churnRate <= 8 ? 'warning' : 'danger',
-    trend: churnRate <= 5 ? 'down' : 'up',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 
@@ -239,13 +343,33 @@ export function calculateAvgUtilization(filteredAccounts?: any[]): KPIResult {
     ? licenses.reduce((sum, l) => sum + l.utilization, 0) / licenses.length
     : 0;
   
+  // Calculate real month-over-month change using utilization history
+  const { loadUtilizationHistory } = require('../data/csmDataLoader');
+  const utilizationHistory = loadUtilizationHistory();
+  
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  const twoMonthsAgoStr = twoMonthsAgo.toISOString().split('T')[0];
+  
+  const previousMonthUtilization = utilizationHistory
+    .filter(util => util.snapshot_date === twoMonthsAgoStr)
+    .reduce((sum, util) => sum + util.utilization_percentage, 0);
+  
+  const previousMonthCount = utilizationHistory
+    .filter(util => util.snapshot_date === twoMonthsAgoStr)
+    .length;
+  
+  const previousMonthAvgUtilization = previousMonthCount > 0 ? previousMonthUtilization / previousMonthCount : 0;
+  const momChange = avgUtilization - previousMonthAvgUtilization;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: avgUtilization,
     formatted: `${Math.round(avgUtilization)}%`,
     target: 75,
     status: avgUtilization >= 75 ? 'success' : avgUtilization >= 60 ? 'warning' : 'danger',
-    trend: avgUtilization >= 75 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 
@@ -276,13 +400,35 @@ export function calculateFeatureAdoption(filteredAccounts?: any[]): KPIResult {
     ? (customersWithAdvancedFeatures.size / accounts.length) * 100
     : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthMatureLicenses = licenses.filter(license => {
+    const licenseCreated = new Date(license.license_start_date);
+    return licenseCreated <= twoMonthsAgo && 
+           (license.adoption_stage === 'Mature' || license.adoption_stage === 'Advanced');
+  }).length;
+  
+  const previousMonthTotalLicenses = licenses.filter(license => {
+    const licenseCreated = new Date(license.license_start_date);
+    return licenseCreated <= twoMonthsAgo;
+  }).length;
+  
+  const previousMonthAdoptionRate = previousMonthTotalLicenses > 0 
+    ? (previousMonthMatureLicenses / previousMonthTotalLicenses) * 100 
+    : 0;
+  
+  const momChange = adoptionRate - previousMonthAdoptionRate;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: adoptionRate,
     formatted: `${Math.round(adoptionRate)}%`,
     target: 60,
     status: adoptionRate >= 60 ? 'success' : adoptionRate >= 50 ? 'warning' : 'danger',
-    trend: adoptionRate >= 60 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 
@@ -324,13 +470,33 @@ export function calculateEngagementScore(filteredAccounts?: any[]): KPIResult {
   
   const avgEngagement = accountCount > 0 ? totalScore / accountCount : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthEngagement = accounts
+    .filter(account => {
+      const accountCreated = new Date(account.account.created_date);
+      return accountCreated <= twoMonthsAgo;
+    })
+    .reduce((sum, account) => sum + account.account.engagement_score, 0);
+  
+  const previousMonthCount = accounts.filter(account => {
+    const accountCreated = new Date(account.account.created_date);
+    return accountCreated <= twoMonthsAgo;
+  }).length;
+  
+  const previousMonthAvgEngagement = previousMonthCount > 0 ? previousMonthEngagement / previousMonthCount : 0;
+  const momChange = avgEngagement - previousMonthAvgEngagement;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: avgEngagement,
     formatted: Math.round(avgEngagement).toString(),
     target: 70,
     status: avgEngagement >= 70 ? 'success' : avgEngagement >= 60 ? 'warning' : 'danger',
-    trend: avgEngagement >= 70 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}`
   };
 }
 
@@ -419,13 +585,33 @@ export function calculateTimeToValue(filteredAccounts?: any[]): KPIResult {
   console.log(`Calculation Method: ACCOUNT-WISE (first value event per account)`);
   console.log('='.repeat(50));
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthTTV = accounts
+    .filter(account => {
+      const accountCreated = new Date(account.account.created_date);
+      return accountCreated <= twoMonthsAgo && account.account.time_to_value > 0;
+    })
+    .reduce((sum, account) => sum + account.account.time_to_value, 0);
+  
+  const previousMonthCount = accounts.filter(account => {
+    const accountCreated = new Date(account.account.created_date);
+    return accountCreated <= twoMonthsAgo && account.account.time_to_value > 0;
+  }).length;
+  
+  const previousMonthAvgTTV = previousMonthCount > 0 ? previousMonthTTV / previousMonthCount : 0;
+  const momChange = avgTTV - previousMonthAvgTTV;
+  const trend = Math.abs(momChange) < 5 ? 'stable' : momChange < 0 ? 'down' : 'up';
+
   return {
     value: avgTTV,
     formatted: accountCount > 0 ? `${Math.round(avgTTV)} days` : 'N/A',
     target: 60,
     status: avgTTV > 0 && avgTTV <= 60 ? 'success' : avgTTV <= 90 ? 'warning' : 'danger',
-    trend: avgTTV > 0 && avgTTV <= 60 ? 'down' : 'up',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(0)} days`
   };
 }
 
@@ -459,13 +645,37 @@ export function calculateQBRCompletion(filteredAccounts?: any[]): KPIResult {
     ? (accountsWithRecentQBR / accounts.length) * 100
     : 0;
   
+  // Calculate real month-over-month change
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  
+  const previousMonthAccountsWithQBR = accounts.filter(account => {
+    const accountQBRs = qbrTracking.filter(q => q.account_id === account.account.id);
+    return accountQBRs.some(qbr => {
+      const qbrDate = new Date(qbr.qbr_date);
+      return qbrDate >= twoMonthsAgo && qbrDate < new Date();
+    });
+  }).length;
+  
+  const previousMonthTotalAccounts = accounts.filter(account => {
+    const accountCreated = new Date(account.account.created_date);
+    return accountCreated <= twoMonthsAgo;
+  }).length;
+  
+  const previousMonthCompletionRate = previousMonthTotalAccounts > 0 
+    ? (previousMonthAccountsWithQBR / previousMonthTotalAccounts) * 100 
+    : 0;
+  
+  const momChange = completionRate - previousMonthCompletionRate;
+  const trend = Math.abs(momChange) < 2 ? 'stable' : momChange > 0 ? 'up' : 'down';
+
   return {
     value: completionRate,
     formatted: `${Math.round(completionRate)}%`,
     target: 85,
     status: completionRate >= 85 ? 'success' : completionRate >= 75 ? 'warning' : 'danger',
-    trend: completionRate >= 85 ? 'up' : 'stable',
-    change: ''
+    trend,
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
   };
 }
 

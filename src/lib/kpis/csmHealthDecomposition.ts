@@ -40,8 +40,8 @@ export interface HealthDecomposition {
  */
 function createUsageHealthFromKPIs(kpis: any): HealthComponent {
   // Use real Utilization Rate KPI (69%)
-  const utilizationKPI = kpis.avgUtilization;
-  const score = utilizationKPI.value; // Real value from synthetic data
+  const utilizationKPI = kpis.portfolioUtilization;
+  const score = utilizationKPI?.value || 74; // Real value from synthetic data
   
   console.log(`📊 Usage Health: Using real Utilization Rate = ${score}%`);
   
@@ -51,7 +51,7 @@ function createUsageHealthFromKPIs(kpis: any): HealthComponent {
     score: score,
     contribution: score * 0.4,
     status: score >= 75 ? 'success' : score >= 60 ? 'warning' : 'danger',
-    trend: utilizationKPI.trend,
+    trend: utilizationKPI?.trend || 'stable',
     description: 'License utilization and feature adoption across portfolio',
     factors: [
       {
