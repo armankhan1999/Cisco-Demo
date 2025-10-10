@@ -101,16 +101,40 @@ export const coDummyData = {
 };
 
 // ============================================================================
-// SE (Sales Expansion) Dummy Data - REMOVED (Empty State)
+// SE (Sales Expansion) Dummy Data - NOW USING REAL DATA
 // ============================================================================
+// Note: Sales Expansion now uses real data from src/source_data/sales-expansion-data/
+// This section is kept for backward compatibility with dropdown filters
 
 export const seDummyData = {
+  stages: [
+    { value: 'identified', label: 'Identified', count: 0 },
+    { value: 'qualified', label: 'Qualified', count: 0 },
+    { value: 'proposed', label: 'Proposed', count: 0 },
+    { value: 'negotiation', label: 'Negotiation', count: 0 },
+    { value: 'closed-won', label: 'Closed-Won', count: 0 },
+  ],
+  expansionTypes: [
+    { value: 'cross_sell', label: 'Cross-Sell', count: 0 },
+    { value: 'upsell', label: 'Upsell', count: 0 },
+    { value: 'capacity_expansion', label: 'Capacity Expansion', count: 0 },
+    { value: 'bundle', label: 'Bundle', count: 0 },
+  ],
+  quarters: [
+    { value: 'Q1-2025', label: 'Q1 2025' },
+    { value: 'Q2-2025', label: 'Q2 2025' },
+    { value: 'Q3-2025', label: 'Q3 2025' },
+    { value: 'Q4-2025', label: 'Q4 2025' },
+  ],
+  competitors: [
+    { name: 'Palo Alto Networks', marketShare: 15 },
+    { name: 'Fortinet', marketShare: 12 },
+    { name: 'Check Point', marketShare: 10 },
+    { name: 'Zscaler', marketShare: 8 },
+  ],
+  // Real data is fetched from API routes - see /api/data/expansion-opportunities
   opportunities: [],
   triggers: [],
-  competitors: [],
-  expansionTypes: [],
-  stages: [],
-  quarters: [],
 };
 
 // ============================================================================

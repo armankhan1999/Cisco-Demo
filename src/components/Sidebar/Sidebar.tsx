@@ -7,10 +7,13 @@ import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData
 interface SidebarProps {
   currentPersona: Persona;
   onPersonaChange: (persona: Persona) => void;
+  currentLevel?: number;
+  onLevelChange?: (level: number) => void;
 }
 
-export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
+export default function Sidebar({ currentPersona, onPersonaChange, currentLevel = 1, onLevelChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
   const personas: Persona[] = ['CSM', 'CO', 'SE'];
 
@@ -67,37 +70,79 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
 
       {/* Persona Panels */}
       <div className="flex-1 overflow-y-auto py-6">
-        <div className="space-y-1 px-3">
+        <div className="space-y-2 px-3">
           {personas.map((persona) => {
             const isActive = currentPersona === persona;
+            const isExpanded = expandedPersona === persona;
 
             return (
-              <button
-                key={persona}
-                onClick={() => onPersonaChange(persona)}
-                className={`
-                  w-full flex items-center gap-4 px-4 py-3.5 rounded-lg transition-all duration-200
-                  ${isActive 
-                    ? 'bg-white/10 border-l-4 border-[#049FD9]' 
-                    : 'border-l-4 border-transparent hover:bg-white/5'
-                  }
-                `}
-              >
-                <div className={`flex-shrink-0 transition-all duration-200 ${isActive ? 'text-[#049FD9]' : 'text-white/60'}`}>
-                  {getPersonaIcon(persona)}
-                </div>
+              <div key={persona} className="space-y-1">
+                <button
+                  onClick={() => {
+                    onPersonaChange(persona);
+                    setExpandedPersona(isExpanded ? null : persona);
+                  }}
+                  className={`
+                    w-full flex items-center gap-4 px-4 py-3.5 rounded-lg transition-all duration-200
+                    ${isActive 
+                      ? 'bg-white/10 border-l-4 border-[#049FD9]' 
+                      : 'border-l-4 border-transparent hover:bg-white/5'
+                    }
+                  `}
+                >
+                  <div className={`flex-shrink-0 transition-all duration-200 ${isActive ? 'text-[#049FD9]' : 'text-white/60'}`}>
+                    {getPersonaIcon(persona)}
+                  </div>
 
-                {!isCollapsed && (
-                  <div className="flex-1 text-left">
-                    <h3 className={`text-sm font-semibold transition-all duration-200 ${isActive ? 'text-white' : 'text-white/80'}`}>
-                      {persona}
-                    </h3>
-                    <p className={`text-xs mt-0.5 transition-all duration-200 ${isActive ? 'text-white/80' : 'text-white/50'}`}>
-                      {getPersonaName(persona)}
-                    </p>
+                  {!isCollapsed && (
+                    <>
+                      <div className="flex-1 text-left">
+                        <h3 className={`text-sm font-semibold transition-all duration-200 ${isActive ? 'text-white' : 'text-white/80'}`}>
+                          {persona}
+                        </h3>
+                        <p className={`text-xs mt-0.5 transition-all duration-200 ${isActive ? 'text-white/80' : 'text-white/50'}`}>
+                          {getPersonaName(persona)}
+                        </p>
+                      </div>
+                      <svg 
+                        className={`w-4 h-4 text-white/60 transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+
+                {/* Level Navigation */}
+                {!isCollapsed && isActive && isExpanded && (
+                  <div className="ml-6 space-y-1 py-2">
+                    {[1, 2, 3].map((level) => (
+                      <button
+                        key={level}
+                        onClick={() => onLevelChange?.(level)}
+                        className={`
+                          w-full flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition-all duration-200
+                          ${currentLevel === level 
+                            ? 'bg-[#049FD9]/20 text-[#049FD9] font-semibold' 
+                            : 'text-white/70 hover:bg-white/5 hover:text-white'
+                          }
+                        `}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        <span>Level {level}</span>
+                        {level === 1 && <span className="text-xs opacity-70">- Overview</span>}
+                        {level === 2 && <span className="text-xs opacity-70">- Analytics</span>}
+                        {level === 3 && <span className="text-xs opacity-70">- Details</span>}
+                      </button>
+                    ))}
                   </div>
                 )}
-              </button>
+              </div>
             );
           })}
         </div>

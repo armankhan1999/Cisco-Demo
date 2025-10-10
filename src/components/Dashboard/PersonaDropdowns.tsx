@@ -142,23 +142,14 @@ export default function PersonaDropdowns({ persona }: PersonaDropdownsProps) {
 
   return (
     <div>
-      {persona !== 'SE' ? (
-        <>
-          <h3 className="text-sm font-semibold mb-4" style={{ color: colors.text.secondary }}>
-            Filter & View Options
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {persona === 'CSM' && renderCSMDropdowns()}
-            {persona === 'CO' && renderCODropdowns()}
-          </div>
-        </>
-      ) : (
-        <div className="text-center py-4">
-          <p className="text-sm" style={{ color: colors.text.muted }}>
-            No filters available - Sales Expansion data pending configuration
-          </p>
-        </div>
-      )}
+      <h3 className="text-sm font-semibold mb-4" style={{ color: colors.text.secondary }}>
+        Filter & View Options
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {persona === 'CSM' && renderCSMDropdowns()}
+        {persona === 'CO' && renderCODropdowns()}
+        {persona === 'SE' && renderSEDropdowns()}
+      </div>
     </div>
   );
 }
