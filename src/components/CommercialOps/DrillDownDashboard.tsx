@@ -24,7 +24,7 @@ import DSOAgingAnalysis from './DSOAgingAnalysis';
 import RevenueVarianceAnalysis from './RevenueVarianceAnalysis';
 import Level2TacticalAnalysis from './Level2TacticalAnalysis';
 import Level3OperationalActions from './Level3OperationalActions';
-import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Clock, DollarSign, FileText, Target, BarChart3, PieChart, Activity, Home, ChevronRight } from 'lucide-react';
+import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Clock, DollarSign, FileText, Target, BarChart3, PieChart, Activity, ChevronRight } from 'lucide-react';
 
 export default function DrillDownDashboard() {
   const [kpis, setKPIs] = useState<CommercialOpsKPIs | null>(null);
@@ -88,8 +88,7 @@ export default function DrillDownDashboard() {
           onClick={handleResetToLevel1}
           className="flex items-center gap-1 hover:text-blue-600 transition-colors"
         >
-          <Home className="h-4 w-4" />
-          <span>Commercial Operations</span>
+          {/* <span>Dashboard</span> */}
         </button>
         {allLevels.slice(1).map((level, index) => (
           <div key={index} className="flex items-center gap-2">
@@ -169,7 +168,7 @@ export default function DrillDownDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="px-8 py-6">
+        <div className="px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
               <div className="mb-2">
@@ -179,7 +178,7 @@ export default function DrillDownDashboard() {
                 <div className="p-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg">
                   <BarChart3 className="h-8 w-8 text-white" />
                 </div>
-                Commercial Operations Command Center
+                Commercial Operations
               </h1>
               <p className="text-gray-600 mt-2 text-lg">
                 Strategic oversight of quote-to-cash process efficiency, pricing accuracy, and revenue realization
