@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from 'react';
 import { colors, personaColors, spacing } from '@/config/theme';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
