@@ -1,0 +1,3162 @@
+[
+  {
+    "qbr_id": "QBR_CUST_000001_Q3_2025",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-07-30",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1352,
+      "threats_blocked_prev_period": 1208,
+      "threats_trend_pct": 17,
+      "estimated_cost_avoided": 336199,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.141,
+      "narrative": "Blocked 1,352 threats (\u219114% vs prev period), preventing estimated $401K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.7,
+        "Duo": 0.39
+      },
+      "threat_categories": {
+        "malware": 473,
+        "phishing": 338,
+        "ransomware": 108,
+        "other": 432
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 360,
+      "baseline_users": 306,
+      "user_growth_pct": 19.3,
+      "adoption_improvement_pp": 13,
+      "time_saved_hours": 3600,
+      "time_saved_per_user_hours": 5.2,
+      "narrative": "Enabled 360 active users with adoption improved from 61% \u2192 83%, saving 3,240 hours",
+      "roi_per_user_annual": 2083
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.2,
+      "downtime_minutes_avoided": 60,
+      "estimated_downtime_cost_avoided": 46772,
+      "narrative": "Maintained 99.7% uptime, avoiding 180 minutes of downtime ($38K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 11,
+      "features_adopted_count": 8,
+      "power_users_count": 38,
+      "narrative": "Daily active users grew +19%, 12 features in use, 24 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 17,
+      "avg_resolution_hours": 11.4,
+      "resolution_time_improvement_pct": 30,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 0,
+      "narrative": "Resolved 23 tickets in 4.9h avg (-17% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 79% - consider expanding capacity",
+        "estimated_arr": 89359,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $330K in measurable value this quarter.",
+    "total_value_documented": 386991,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000001_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-01",
+    "version": "1.0",
+    "last_updated": "2025-07-30"
+  },
+  {
+    "qbr_id": "QBR_CUST_000002_Q1_2026",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-29",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1091,
+      "threats_blocked_prev_period": 891,
+      "threats_trend_pct": 14,
+      "estimated_cost_avoided": 466861,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.09,
+      "narrative": "Blocked 1,091 threats (\u219113% vs prev period), preventing estimated $356K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.56,
+        "Duo": 0.43
+      },
+      "threat_categories": {
+        "malware": 381,
+        "phishing": 272,
+        "ransomware": 87,
+        "other": 349
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 274,
+      "baseline_users": 232,
+      "user_growth_pct": 19.0,
+      "adoption_improvement_pp": 23,
+      "time_saved_hours": 2466,
+      "time_saved_per_user_hours": 5.9,
+      "narrative": "Enabled 274 active users with adoption improved from 63% \u2192 75%, saving 1,096 hours",
+      "roi_per_user_annual": 2234
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 65,
+      "estimated_downtime_cost_avoided": 70119,
+      "narrative": "Maintained 99.8% uptime, avoiding 128 minutes of downtime ($56K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 11,
+      "features_adopted_count": 7,
+      "power_users_count": 50,
+      "narrative": "Daily active users grew +26%, 12 features in use, 78 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 18,
+      "avg_resolution_hours": 5.5,
+      "resolution_time_improvement_pct": 28,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 1,
+      "narrative": "Resolved 12 tickets in 7.8h avg (-23% faster) with 4.4/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 78% - consider expanding capacity",
+        "estimated_arr": 192424,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $382K in measurable value this quarter.",
+    "total_value_documented": 472912,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000002_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-08",
+    "version": "1.0",
+    "last_updated": "2025-07-29"
+  },
+  {
+    "qbr_id": "QBR_CUST_000003_Q4_2025",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-17",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1320,
+      "threats_blocked_prev_period": 1074,
+      "threats_trend_pct": 15,
+      "estimated_cost_avoided": 232329,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.082,
+      "narrative": "Blocked 1,320 threats (\u219129% vs prev period), preventing estimated $306K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.66,
+        "Duo": 0.55
+      },
+      "threat_categories": {
+        "malware": 461,
+        "phishing": 330,
+        "ransomware": 105,
+        "other": 422
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 466,
+      "baseline_users": 396,
+      "user_growth_pct": 10.0,
+      "adoption_improvement_pp": 24,
+      "time_saved_hours": 3262,
+      "time_saved_per_user_hours": 4.3,
+      "narrative": "Enabled 466 active users with adoption improved from 66% \u2192 90%, saving 4,194 hours",
+      "roi_per_user_annual": 2452
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 133,
+      "estimated_downtime_cost_avoided": 48712,
+      "narrative": "Maintained 99.9% uptime, avoiding 184 minutes of downtime ($27K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 10,
+      "features_adopted_count": 8,
+      "power_users_count": 65,
+      "narrative": "Daily active users grew +15%, 9 features in use, 55 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 10,
+      "avg_resolution_hours": 8.4,
+      "resolution_time_improvement_pct": 12,
+      "satisfaction_score": 4.4,
+      "p1_incidents": 0,
+      "narrative": "Resolved 24 tickets in 11.6h avg (-30% faster) with 4.8/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 146698,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $661K in measurable value this quarter.",
+    "total_value_documented": 443353,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000003_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-09",
+    "version": "1.0",
+    "last_updated": "2025-07-17"
+  },
+  {
+    "qbr_id": "QBR_CUST_000004_Q4_2025",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-08",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 1435,
+      "threats_blocked_prev_period": 1142,
+      "threats_trend_pct": 34,
+      "estimated_cost_avoided": 414246,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.101,
+      "narrative": "Blocked 1,435 threats (\u219133% vs prev period), preventing estimated $169K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.66,
+        "Duo": 0.38
+      },
+      "threat_categories": {
+        "malware": 502,
+        "phishing": 358,
+        "ransomware": 114,
+        "other": 459
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 332,
+      "baseline_users": 282,
+      "user_growth_pct": 21.9,
+      "adoption_improvement_pp": 23,
+      "time_saved_hours": 1992,
+      "time_saved_per_user_hours": 9.6,
+      "narrative": "Enabled 332 active users with adoption improved from 63% \u2192 75%, saving 1,992 hours",
+      "roi_per_user_annual": 2743
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 185,
+      "estimated_downtime_cost_avoided": 76705,
+      "narrative": "Maintained 99.6% uptime, avoiding 197 minutes of downtime ($50K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 21,
+      "features_adopted_count": 10,
+      "power_users_count": 55,
+      "narrative": "Daily active users grew +27%, 11 features in use, 49 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 20,
+      "avg_resolution_hours": 11.0,
+      "resolution_time_improvement_pct": 17,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 0,
+      "narrative": "Resolved 23 tickets in 4.3h avg (-25% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 87% - consider expanding capacity",
+        "estimated_arr": 166991,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $705K in measurable value this quarter.",
+    "total_value_documented": 730308,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000004_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-30",
+    "version": "1.0",
+    "last_updated": "2025-09-08"
+  },
+  {
+    "qbr_id": "QBR_CUST_000005_Q4_2025",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-10-05",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 758,
+      "threats_blocked_prev_period": 695,
+      "threats_trend_pct": 32,
+      "estimated_cost_avoided": 330847,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.06,
+      "narrative": "Blocked 758 threats (\u219134% vs prev period), preventing estimated $333K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.4,
+        "Duo": 0.34
+      },
+      "threat_categories": {
+        "malware": 265,
+        "phishing": 189,
+        "ransomware": 60,
+        "other": 242
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 307,
+      "baseline_users": 260,
+      "user_growth_pct": 23.1,
+      "adoption_improvement_pp": 14,
+      "time_saved_hours": 1228,
+      "time_saved_per_user_hours": 6.8,
+      "narrative": "Enabled 307 active users with adoption improved from 63% \u2192 85%, saving 2,456 hours",
+      "roi_per_user_annual": 2709
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.7,
+      "baseline_uptime": 99.0,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 196,
+      "estimated_downtime_cost_avoided": 44904,
+      "narrative": "Maintained 99.9% uptime, avoiding 184 minutes of downtime ($75K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 27,
+      "features_adopted_count": 5,
+      "power_users_count": 59,
+      "narrative": "Daily active users grew +12%, 8 features in use, 60 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 19,
+      "avg_resolution_hours": 12.0,
+      "resolution_time_improvement_pct": 12,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 0,
+      "narrative": "Resolved 30 tickets in 9.6h avg (-13% faster) with 4.5/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 198413,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $314K in measurable value this quarter.",
+    "total_value_documented": 324112,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000005_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-10-06",
+    "version": "1.0",
+    "last_updated": "2025-10-05"
+  },
+  {
+    "qbr_id": "QBR_CUST_000001_Q4_2025",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-25",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1267,
+      "threats_blocked_prev_period": 964,
+      "threats_trend_pct": 18,
+      "estimated_cost_avoided": 396709,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.118,
+      "narrative": "Blocked 1,267 threats (\u219110% vs prev period), preventing estimated $187K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.45,
+        "Duo": 0.48
+      },
+      "threat_categories": {
+        "malware": 443,
+        "phishing": 316,
+        "ransomware": 101,
+        "other": 405
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 270,
+      "baseline_users": 229,
+      "user_growth_pct": 15.7,
+      "adoption_improvement_pp": 17,
+      "time_saved_hours": 1890,
+      "time_saved_per_user_hours": 9.5,
+      "narrative": "Enabled 270 active users with adoption improved from 59% \u2192 82%, saving 1,890 hours",
+      "roi_per_user_annual": 2653
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.2,
+      "downtime_minutes_avoided": 179,
+      "estimated_downtime_cost_avoided": 79061,
+      "narrative": "Maintained 99.6% uptime, avoiding 199 minutes of downtime ($30K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 12,
+      "features_adopted_count": 12,
+      "power_users_count": 80,
+      "narrative": "Daily active users grew +21%, 9 features in use, 60 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 23,
+      "avg_resolution_hours": 9.5,
+      "resolution_time_improvement_pct": 24,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 0,
+      "narrative": "Resolved 22 tickets in 10.8h avg (-13% faster) with 4.4/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 86% - consider expanding capacity",
+        "estimated_arr": 155341,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $451K in measurable value this quarter.",
+    "total_value_documented": 666623,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000001_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-08-25"
+  },
+  {
+    "qbr_id": "QBR_CUST_000002_Q1_2026",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-20",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1062,
+      "threats_blocked_prev_period": 985,
+      "threats_trend_pct": 28,
+      "estimated_cost_avoided": 360428,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.133,
+      "narrative": "Blocked 1,062 threats (\u219133% vs prev period), preventing estimated $246K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.63,
+        "Duo": 0.37
+      },
+      "threat_categories": {
+        "malware": 371,
+        "phishing": 265,
+        "ransomware": 84,
+        "other": 339
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 54,
+      "baseline_users": 45,
+      "user_growth_pct": 22.0,
+      "adoption_improvement_pp": 17,
+      "time_saved_hours": 486,
+      "time_saved_per_user_hours": 5.1,
+      "narrative": "Enabled 54 active users with adoption improved from 63% \u2192 79%, saving 486 hours",
+      "roi_per_user_annual": 2099
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 172,
+      "estimated_downtime_cost_avoided": 22186,
+      "narrative": "Maintained 99.7% uptime, avoiding 93 minutes of downtime ($25K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 19,
+      "features_adopted_count": 10,
+      "power_users_count": 67,
+      "narrative": "Daily active users grew +23%, 7 features in use, 32 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 14,
+      "avg_resolution_hours": 10.3,
+      "resolution_time_improvement_pct": 21,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 1,
+      "narrative": "Resolved 15 tickets in 6.1h avg (-25% faster) with 4.9/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 85% - consider expanding capacity",
+        "estimated_arr": 185412,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $358K in measurable value this quarter.",
+    "total_value_documented": 545540,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000002_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-30",
+    "version": "1.0",
+    "last_updated": "2025-08-20"
+  },
+  {
+    "qbr_id": "QBR_CUST_000003_Q3_2025",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-07-15",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1983,
+      "threats_blocked_prev_period": 1867,
+      "threats_trend_pct": 30,
+      "estimated_cost_avoided": 392192,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.087,
+      "narrative": "Blocked 1,983 threats (\u219130% vs prev period), preventing estimated $302K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.4,
+        "Duo": 0.46
+      },
+      "threat_categories": {
+        "malware": 694,
+        "phishing": 495,
+        "ransomware": 158,
+        "other": 634
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 395,
+      "baseline_users": 335,
+      "user_growth_pct": 16.8,
+      "adoption_improvement_pp": 18,
+      "time_saved_hours": 3160,
+      "time_saved_per_user_hours": 6.3,
+      "narrative": "Enabled 395 active users with adoption improved from 66% \u2192 78%, saving 3,555 hours",
+      "roi_per_user_annual": 2239
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.7,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 143,
+      "estimated_downtime_cost_avoided": 79982,
+      "narrative": "Maintained 99.7% uptime, avoiding 76 minutes of downtime ($60K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 24,
+      "features_adopted_count": 9,
+      "power_users_count": 61,
+      "narrative": "Daily active users grew +23%, 6 features in use, 28 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 11,
+      "avg_resolution_hours": 11.6,
+      "resolution_time_improvement_pct": 19,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 0,
+      "narrative": "Resolved 13 tickets in 5.9h avg (-27% faster) with 4.3/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 86% - consider expanding capacity",
+        "estimated_arr": 167881,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $786K in measurable value this quarter.",
+    "total_value_documented": 689619,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000003_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-05",
+    "version": "1.0",
+    "last_updated": "2025-07-15"
+  },
+  {
+    "qbr_id": "QBR_CUST_000004_Q4_2025",
+    "account_id": "CUST_000004",
+    "account_name": "Global Medical Network",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-26",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1988,
+      "threats_blocked_prev_period": 1717,
+      "threats_trend_pct": 31,
+      "estimated_cost_avoided": 356558,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.112,
+      "narrative": "Blocked 1,988 threats (\u219135% vs prev period), preventing estimated $243K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.41,
+        "Duo": 0.41
+      },
+      "threat_categories": {
+        "malware": 695,
+        "phishing": 497,
+        "ransomware": 159,
+        "other": 636
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 129,
+      "baseline_users": 109,
+      "user_growth_pct": 16.7,
+      "adoption_improvement_pp": 17,
+      "time_saved_hours": 1290,
+      "time_saved_per_user_hours": 6.2,
+      "narrative": "Enabled 129 active users with adoption improved from 66% \u2192 86%, saving 516 hours",
+      "roi_per_user_annual": 2407
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.5,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 176,
+      "estimated_downtime_cost_avoided": 26007,
+      "narrative": "Maintained 99.8% uptime, avoiding 65 minutes of downtime ($23K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 20,
+      "features_adopted_count": 8,
+      "power_users_count": 28,
+      "narrative": "Daily active users grew +28%, 8 features in use, 24 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 27,
+      "avg_resolution_hours": 5.7,
+      "resolution_time_improvement_pct": 16,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 0,
+      "narrative": "Resolved 20 tickets in 10.2h avg (-29% faster) with 4.2/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 79% - consider expanding capacity",
+        "estimated_arr": 150807,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $428K in measurable value this quarter.",
+    "total_value_documented": 718651,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000004_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-07-26"
+  },
+  {
+    "qbr_id": "QBR_CUST_000005_Q1_2026",
+    "account_id": "CUST_000005",
+    "account_name": "White, Boehm and Hilpert",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-10-06",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 769,
+      "threats_blocked_prev_period": 690,
+      "threats_trend_pct": 12,
+      "estimated_cost_avoided": 408728,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.082,
+      "narrative": "Blocked 769 threats (\u219110% vs prev period), preventing estimated $235K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.42,
+        "Duo": 0.52
+      },
+      "threat_categories": {
+        "malware": 269,
+        "phishing": 192,
+        "ransomware": 61,
+        "other": 246
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 57,
+      "baseline_users": 48,
+      "user_growth_pct": 17.9,
+      "adoption_improvement_pp": 12,
+      "time_saved_hours": 399,
+      "time_saved_per_user_hours": 6.7,
+      "narrative": "Enabled 57 active users with adoption improved from 66% \u2192 78%, saving 399 hours",
+      "roi_per_user_annual": 2515
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 193,
+      "estimated_downtime_cost_avoided": 39767,
+      "narrative": "Maintained 99.7% uptime, avoiding 67 minutes of downtime ($23K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 25,
+      "features_adopted_count": 11,
+      "power_users_count": 47,
+      "narrative": "Daily active users grew +13%, 12 features in use, 65 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 24,
+      "avg_resolution_hours": 4.6,
+      "resolution_time_improvement_pct": 12,
+      "satisfaction_score": 4.4,
+      "p1_incidents": 0,
+      "narrative": "Resolved 12 tickets in 5.0h avg (-29% faster) with 4.6/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 85% - consider expanding capacity",
+        "estimated_arr": 129925,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $605K in measurable value this quarter.",
+    "total_value_documented": 578164,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000005_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "qbr_id": "QBR_CUST_000006_Q1_2026",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-24",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1381,
+      "threats_blocked_prev_period": 1261,
+      "threats_trend_pct": 25,
+      "estimated_cost_avoided": 389058,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.122,
+      "narrative": "Blocked 1,381 threats (\u219111% vs prev period), preventing estimated $320K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.54,
+        "Duo": 0.37
+      },
+      "threat_categories": {
+        "malware": 483,
+        "phishing": 345,
+        "ransomware": 110,
+        "other": 441
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 100,
+      "baseline_users": 85,
+      "user_growth_pct": 15.1,
+      "adoption_improvement_pp": 24,
+      "time_saved_hours": 700,
+      "time_saved_per_user_hours": 6.5,
+      "narrative": "Enabled 100 active users with adoption improved from 58% \u2192 85%, saving 700 hours",
+      "roi_per_user_annual": 2320
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.2,
+      "downtime_minutes_avoided": 181,
+      "estimated_downtime_cost_avoided": 24399,
+      "narrative": "Maintained 99.5% uptime, avoiding 81 minutes of downtime ($25K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 23,
+      "features_adopted_count": 6,
+      "power_users_count": 67,
+      "narrative": "Daily active users grew +21%, 7 features in use, 55 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 11,
+      "avg_resolution_hours": 8.7,
+      "resolution_time_improvement_pct": 27,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 2,
+      "narrative": "Resolved 13 tickets in 7.3h avg (-23% faster) with 4.8/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 76% - consider expanding capacity",
+        "estimated_arr": 117700,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $607K in measurable value this quarter.",
+    "total_value_documented": 463813,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000006_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-03",
+    "version": "1.0",
+    "last_updated": "2025-07-24"
+  },
+  {
+    "qbr_id": "QBR_CUST_000007_Q1_2026",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-12",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 816,
+      "threats_blocked_prev_period": 616,
+      "threats_trend_pct": 8,
+      "estimated_cost_avoided": 283560,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.135,
+      "narrative": "Blocked 816 threats (\u219116% vs prev period), preventing estimated $158K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.63,
+        "Duo": 0.47
+      },
+      "threat_categories": {
+        "malware": 285,
+        "phishing": 204,
+        "ransomware": 65,
+        "other": 261
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 386,
+      "baseline_users": 328,
+      "user_growth_pct": 22.1,
+      "adoption_improvement_pp": 10,
+      "time_saved_hours": 3088,
+      "time_saved_per_user_hours": 9.6,
+      "narrative": "Enabled 386 active users with adoption improved from 63% \u2192 75%, saving 1,930 hours",
+      "roi_per_user_annual": 2279
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 61,
+      "estimated_downtime_cost_avoided": 31888,
+      "narrative": "Maintained 99.8% uptime, avoiding 162 minutes of downtime ($24K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 14,
+      "features_adopted_count": 5,
+      "power_users_count": 25,
+      "narrative": "Daily active users grew +26%, 8 features in use, 44 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 23,
+      "avg_resolution_hours": 7.6,
+      "resolution_time_improvement_pct": 15,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 2,
+      "narrative": "Resolved 20 tickets in 10.2h avg (-28% faster) with 4.6/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 79% - consider expanding capacity",
+        "estimated_arr": 100632,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $686K in measurable value this quarter.",
+    "total_value_documented": 623925,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000007_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-09-12"
+  },
+  {
+    "qbr_id": "QBR_CUST_000008_Q3_2025",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-09-05",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1407,
+      "threats_blocked_prev_period": 1155,
+      "threats_trend_pct": 19,
+      "estimated_cost_avoided": 317151,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.077,
+      "narrative": "Blocked 1,407 threats (\u219129% vs prev period), preventing estimated $362K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.43,
+        "Duo": 0.43
+      },
+      "threat_categories": {
+        "malware": 492,
+        "phishing": 351,
+        "ransomware": 112,
+        "other": 450
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 388,
+      "baseline_users": 329,
+      "user_growth_pct": 14.2,
+      "adoption_improvement_pp": 25,
+      "time_saved_hours": 3104,
+      "time_saved_per_user_hours": 8.0,
+      "narrative": "Enabled 388 active users with adoption improved from 56% \u2192 82%, saving 2,716 hours",
+      "roi_per_user_annual": 2613
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.5,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 95,
+      "estimated_downtime_cost_avoided": 70080,
+      "narrative": "Maintained 99.6% uptime, avoiding 143 minutes of downtime ($27K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 10,
+      "features_adopted_count": 12,
+      "power_users_count": 67,
+      "narrative": "Daily active users grew +23%, 7 features in use, 28 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 22,
+      "avg_resolution_hours": 8.3,
+      "resolution_time_improvement_pct": 17,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 2,
+      "narrative": "Resolved 21 tickets in 4.6h avg (-11% faster) with 4.5/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 77% - consider expanding capacity",
+        "estimated_arr": 192998,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $460K in measurable value this quarter.",
+    "total_value_documented": 601863,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000008_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-14",
+    "version": "1.0",
+    "last_updated": "2025-09-05"
+  },
+  {
+    "qbr_id": "QBR_CUST_000009_Q1_2026",
+    "account_id": "CUST_000009",
+    "account_name": "Quality Corporation",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-20",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 1355,
+      "threats_blocked_prev_period": 1085,
+      "threats_trend_pct": 35,
+      "estimated_cost_avoided": 270272,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.067,
+      "narrative": "Blocked 1,355 threats (\u219135% vs prev period), preventing estimated $416K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.54,
+        "Duo": 0.51
+      },
+      "threat_categories": {
+        "malware": 474,
+        "phishing": 338,
+        "ransomware": 108,
+        "other": 433
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 198,
+      "baseline_users": 168,
+      "user_growth_pct": 15.4,
+      "adoption_improvement_pp": 23,
+      "time_saved_hours": 1980,
+      "time_saved_per_user_hours": 4.6,
+      "narrative": "Enabled 198 active users with adoption improved from 68% \u2192 87%, saving 1,584 hours",
+      "roi_per_user_annual": 2080
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.7,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 145,
+      "estimated_downtime_cost_avoided": 71060,
+      "narrative": "Maintained 99.6% uptime, avoiding 190 minutes of downtime ($60K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 13,
+      "features_adopted_count": 8,
+      "power_users_count": 77,
+      "narrative": "Daily active users grew +21%, 10 features in use, 66 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 30,
+      "avg_resolution_hours": 10.5,
+      "resolution_time_improvement_pct": 17,
+      "satisfaction_score": 4.3,
+      "p1_incidents": 1,
+      "narrative": "Resolved 16 tickets in 5.4h avg (-14% faster) with 4.7/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 77% - consider expanding capacity",
+        "estimated_arr": 103218,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $787K in measurable value this quarter.",
+    "total_value_documented": 705194,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000009_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-10",
+    "version": "1.0",
+    "last_updated": "2025-07-20"
+  },
+  {
+    "qbr_id": "QBR_CUST_000010_Q1_2026",
+    "account_id": "CUST_000010",
+    "account_name": "Block - Toy",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-27",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1419,
+      "threats_blocked_prev_period": 1299,
+      "threats_trend_pct": 25,
+      "estimated_cost_avoided": 265747,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.065,
+      "narrative": "Blocked 1,419 threats (\u21917% vs prev period), preventing estimated $340K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.53,
+        "Duo": 0.39
+      },
+      "threat_categories": {
+        "malware": 496,
+        "phishing": 354,
+        "ransomware": 113,
+        "other": 454
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 398,
+      "baseline_users": 338,
+      "user_growth_pct": 14.1,
+      "adoption_improvement_pp": 11,
+      "time_saved_hours": 2388,
+      "time_saved_per_user_hours": 7.0,
+      "narrative": "Enabled 398 active users with adoption improved from 64% \u2192 89%, saving 2,786 hours",
+      "roi_per_user_annual": 2038
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.5,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.2,
+      "downtime_minutes_avoided": 83,
+      "estimated_downtime_cost_avoided": 60305,
+      "narrative": "Maintained 99.7% uptime, avoiding 158 minutes of downtime ($49K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 28,
+      "features_adopted_count": 5,
+      "power_users_count": 48,
+      "narrative": "Daily active users grew +28%, 8 features in use, 40 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 29,
+      "avg_resolution_hours": 7.8,
+      "resolution_time_improvement_pct": 14,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 13 tickets in 10.5h avg (-20% faster) with 4.9/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 91% - consider expanding capacity",
+        "estimated_arr": 164689,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $388K in measurable value this quarter.",
+    "total_value_documented": 320521,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000010_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-07-27"
+  },
+  {
+    "qbr_id": "QBR_CUST_000011_Q4_2025",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-14",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1573,
+      "threats_blocked_prev_period": 1244,
+      "threats_trend_pct": 34,
+      "estimated_cost_avoided": 248317,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.089,
+      "narrative": "Blocked 1,573 threats (\u219129% vs prev period), preventing estimated $273K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.6,
+        "Duo": 0.32
+      },
+      "threat_categories": {
+        "malware": 550,
+        "phishing": 393,
+        "ransomware": 125,
+        "other": 503
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 317,
+      "baseline_users": 269,
+      "user_growth_pct": 19.5,
+      "adoption_improvement_pp": 20,
+      "time_saved_hours": 1268,
+      "time_saved_per_user_hours": 6.0,
+      "narrative": "Enabled 317 active users with adoption improved from 67% \u2192 84%, saving 1,902 hours",
+      "roi_per_user_annual": 2741
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.5,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 98,
+      "estimated_downtime_cost_avoided": 41847,
+      "narrative": "Maintained 99.5% uptime, avoiding 96 minutes of downtime ($78K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 21,
+      "features_adopted_count": 9,
+      "power_users_count": 61,
+      "narrative": "Daily active users grew +22%, 7 features in use, 58 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 12,
+      "avg_resolution_hours": 6.5,
+      "resolution_time_improvement_pct": 22,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 1,
+      "narrative": "Resolved 14 tickets in 9.4h avg (-26% faster) with 4.3/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 88% - consider expanding capacity",
+        "estimated_arr": 146648,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $485K in measurable value this quarter.",
+    "total_value_documented": 309558,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000011_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-28",
+    "version": "1.0",
+    "last_updated": "2025-08-14"
+  },
+  {
+    "qbr_id": "QBR_CUST_000012_Q3_2025",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-08-27",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1495,
+      "threats_blocked_prev_period": 1420,
+      "threats_trend_pct": 9,
+      "estimated_cost_avoided": 140456,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.08,
+      "narrative": "Blocked 1,495 threats (\u219130% vs prev period), preventing estimated $151K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.55,
+        "Duo": 0.46
+      },
+      "threat_categories": {
+        "malware": 523,
+        "phishing": 373,
+        "ransomware": 119,
+        "other": 478
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 148,
+      "baseline_users": 125,
+      "user_growth_pct": 21.1,
+      "adoption_improvement_pp": 11,
+      "time_saved_hours": 1332,
+      "time_saved_per_user_hours": 6.0,
+      "narrative": "Enabled 148 active users with adoption improved from 59% \u2192 87%, saving 740 hours",
+      "roi_per_user_annual": 2166
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 102,
+      "estimated_downtime_cost_avoided": 67263,
+      "narrative": "Maintained 99.7% uptime, avoiding 165 minutes of downtime ($43K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 17,
+      "features_adopted_count": 12,
+      "power_users_count": 59,
+      "narrative": "Daily active users grew +19%, 12 features in use, 34 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 27,
+      "avg_resolution_hours": 5.9,
+      "resolution_time_improvement_pct": 25,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 0,
+      "narrative": "Resolved 21 tickets in 9.4h avg (-28% faster) with 4.9/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 181990,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $495K in measurable value this quarter.",
+    "total_value_documented": 563667,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000012_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-29",
+    "version": "1.0",
+    "last_updated": "2025-08-27"
+  },
+  {
+    "qbr_id": "QBR_CUST_000013_Q3_2025",
+    "account_id": "CUST_000013",
+    "account_name": "Clinical Associates",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-07-24",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 783,
+      "threats_blocked_prev_period": 558,
+      "threats_trend_pct": 20,
+      "estimated_cost_avoided": 294622,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.105,
+      "narrative": "Blocked 783 threats (\u21918% vs prev period), preventing estimated $464K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.65,
+        "Duo": 0.56
+      },
+      "threat_categories": {
+        "malware": 274,
+        "phishing": 195,
+        "ransomware": 62,
+        "other": 250
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 496,
+      "baseline_users": 421,
+      "user_growth_pct": 14.3,
+      "adoption_improvement_pp": 15,
+      "time_saved_hours": 2976,
+      "time_saved_per_user_hours": 6.7,
+      "narrative": "Enabled 496 active users with adoption improved from 59% \u2192 88%, saving 1,984 hours",
+      "roi_per_user_annual": 2969
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 66,
+      "estimated_downtime_cost_avoided": 47190,
+      "narrative": "Maintained 99.5% uptime, avoiding 188 minutes of downtime ($43K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 17,
+      "features_adopted_count": 11,
+      "power_users_count": 25,
+      "narrative": "Daily active users grew +21%, 8 features in use, 21 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 20,
+      "avg_resolution_hours": 11.4,
+      "resolution_time_improvement_pct": 30,
+      "satisfaction_score": 4.4,
+      "p1_incidents": 0,
+      "narrative": "Resolved 14 tickets in 4.3h avg (-25% faster) with 4.7/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 90% - consider expanding capacity",
+        "estimated_arr": 138799,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $615K in measurable value this quarter.",
+    "total_value_documented": 302753,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000013_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-10-08",
+    "version": "1.0",
+    "last_updated": "2025-07-24"
+  },
+  {
+    "qbr_id": "QBR_CUST_000014_Q4_2025",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-12",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 806,
+      "threats_blocked_prev_period": 586,
+      "threats_trend_pct": 14,
+      "estimated_cost_avoided": 224591,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.08,
+      "narrative": "Blocked 806 threats (\u21916% vs prev period), preventing estimated $222K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.53,
+        "Duo": 0.54
+      },
+      "threat_categories": {
+        "malware": 282,
+        "phishing": 201,
+        "ransomware": 64,
+        "other": 257
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 330,
+      "baseline_users": 280,
+      "user_growth_pct": 16.9,
+      "adoption_improvement_pp": 13,
+      "time_saved_hours": 3300,
+      "time_saved_per_user_hours": 9.4,
+      "narrative": "Enabled 330 active users with adoption improved from 55% \u2192 82%, saving 2,970 hours",
+      "roi_per_user_annual": 2147
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.0,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 166,
+      "estimated_downtime_cost_avoided": 32275,
+      "narrative": "Maintained 99.8% uptime, avoiding 81 minutes of downtime ($53K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 21,
+      "features_adopted_count": 6,
+      "power_users_count": 53,
+      "narrative": "Daily active users grew +27%, 5 features in use, 44 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 25,
+      "avg_resolution_hours": 4.3,
+      "resolution_time_improvement_pct": 22,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 10 tickets in 6.9h avg (-12% faster) with 4.4/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 78% - consider expanding capacity",
+        "estimated_arr": 181122,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $597K in measurable value this quarter.",
+    "total_value_documented": 685449,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000014_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-10-01",
+    "version": "1.0",
+    "last_updated": "2025-09-12"
+  },
+  {
+    "qbr_id": "QBR_CUST_000015_Q3_2025",
+    "account_id": "CUST_000015",
+    "account_name": "Investment Management",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-08-25",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1618,
+      "threats_blocked_prev_period": 1468,
+      "threats_trend_pct": 26,
+      "estimated_cost_avoided": 343596,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.148,
+      "narrative": "Blocked 1,618 threats (\u219120% vs prev period), preventing estimated $423K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.45,
+        "Duo": 0.34
+      },
+      "threat_categories": {
+        "malware": 566,
+        "phishing": 404,
+        "ransomware": 129,
+        "other": 517
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 223,
+      "baseline_users": 189,
+      "user_growth_pct": 20.7,
+      "adoption_improvement_pp": 24,
+      "time_saved_hours": 892,
+      "time_saved_per_user_hours": 5.8,
+      "narrative": "Enabled 223 active users with adoption improved from 56% \u2192 81%, saving 892 hours",
+      "roi_per_user_annual": 2323
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 199,
+      "estimated_downtime_cost_avoided": 51024,
+      "narrative": "Maintained 99.6% uptime, avoiding 108 minutes of downtime ($38K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 21,
+      "features_adopted_count": 5,
+      "power_users_count": 75,
+      "narrative": "Daily active users grew +30%, 10 features in use, 37 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 13,
+      "avg_resolution_hours": 10.4,
+      "resolution_time_improvement_pct": 23,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 2,
+      "narrative": "Resolved 24 tickets in 11.2h avg (-22% faster) with 4.4/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 90% - consider expanding capacity",
+        "estimated_arr": 170710,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $554K in measurable value this quarter.",
+    "total_value_documented": 492595,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000015_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-06",
+    "version": "1.0",
+    "last_updated": "2025-08-25"
+  },
+  {
+    "qbr_id": "QBR_CUST_000016_Q4_2025",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-29",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1989,
+      "threats_blocked_prev_period": 1606,
+      "threats_trend_pct": 31,
+      "estimated_cost_avoided": 194611,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.105,
+      "narrative": "Blocked 1,989 threats (\u219115% vs prev period), preventing estimated $152K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.42,
+        "Duo": 0.5
+      },
+      "threat_categories": {
+        "malware": 696,
+        "phishing": 497,
+        "ransomware": 159,
+        "other": 636
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 267,
+      "baseline_users": 226,
+      "user_growth_pct": 14.6,
+      "adoption_improvement_pp": 23,
+      "time_saved_hours": 1335,
+      "time_saved_per_user_hours": 8.1,
+      "narrative": "Enabled 267 active users with adoption improved from 66% \u2192 89%, saving 1,068 hours",
+      "roi_per_user_annual": 2744
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 130,
+      "estimated_downtime_cost_avoided": 61908,
+      "narrative": "Maintained 99.9% uptime, avoiding 74 minutes of downtime ($24K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 30,
+      "features_adopted_count": 11,
+      "power_users_count": 43,
+      "narrative": "Daily active users grew +26%, 7 features in use, 80 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 10,
+      "avg_resolution_hours": 5.1,
+      "resolution_time_improvement_pct": 29,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 1,
+      "narrative": "Resolved 11 tickets in 5.0h avg (-17% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 86% - consider expanding capacity",
+        "estimated_arr": 130181,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $786K in measurable value this quarter.",
+    "total_value_documented": 597399,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000016_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "qbr_id": "QBR_CUST_000017_Q3_2025",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-07-15",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 1421,
+      "threats_blocked_prev_period": 1152,
+      "threats_trend_pct": 7,
+      "estimated_cost_avoided": 400900,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.064,
+      "narrative": "Blocked 1,421 threats (\u219116% vs prev period), preventing estimated $303K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.49,
+        "Duo": 0.38
+      },
+      "threat_categories": {
+        "malware": 497,
+        "phishing": 355,
+        "ransomware": 113,
+        "other": 454
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 239,
+      "baseline_users": 203,
+      "user_growth_pct": 24.4,
+      "adoption_improvement_pp": 10,
+      "time_saved_hours": 2151,
+      "time_saved_per_user_hours": 5.1,
+      "narrative": "Enabled 239 active users with adoption improved from 67% \u2192 78%, saving 1,434 hours",
+      "roi_per_user_annual": 2793
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 133,
+      "estimated_downtime_cost_avoided": 65480,
+      "narrative": "Maintained 99.9% uptime, avoiding 185 minutes of downtime ($32K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 13,
+      "features_adopted_count": 7,
+      "power_users_count": 74,
+      "narrative": "Daily active users grew +12%, 12 features in use, 31 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 24,
+      "avg_resolution_hours": 12.0,
+      "resolution_time_improvement_pct": 20,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 2,
+      "narrative": "Resolved 12 tickets in 8.4h avg (-19% faster) with 4.8/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 80% - consider expanding capacity",
+        "estimated_arr": 184031,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $485K in measurable value this quarter.",
+    "total_value_documented": 566734,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000017_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-07-15"
+  },
+  {
+    "qbr_id": "QBR_CUST_000018_Q3_2025",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-09-22",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 984,
+      "threats_blocked_prev_period": 695,
+      "threats_trend_pct": 22,
+      "estimated_cost_avoided": 400038,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.087,
+      "narrative": "Blocked 984 threats (\u219130% vs prev period), preventing estimated $382K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.44,
+        "Duo": 0.57
+      },
+      "threat_categories": {
+        "malware": 344,
+        "phishing": 246,
+        "ransomware": 78,
+        "other": 314
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 454,
+      "baseline_users": 385,
+      "user_growth_pct": 11.0,
+      "adoption_improvement_pp": 22,
+      "time_saved_hours": 4086,
+      "time_saved_per_user_hours": 8.3,
+      "narrative": "Enabled 454 active users with adoption improved from 68% \u2192 88%, saving 4,540 hours",
+      "roi_per_user_annual": 2588
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.5,
+      "baseline_uptime": 99.5,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 175,
+      "estimated_downtime_cost_avoided": 50528,
+      "narrative": "Maintained 99.8% uptime, avoiding 148 minutes of downtime ($28K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 27,
+      "features_adopted_count": 7,
+      "power_users_count": 69,
+      "narrative": "Daily active users grew +14%, 11 features in use, 52 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 11,
+      "avg_resolution_hours": 10.7,
+      "resolution_time_improvement_pct": 26,
+      "satisfaction_score": 4.3,
+      "p1_incidents": 0,
+      "narrative": "Resolved 15 tickets in 6.6h avg (-17% faster) with 4.4/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 190878,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $340K in measurable value this quarter.",
+    "total_value_documented": 431389,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000018_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-09-22"
+  },
+  {
+    "qbr_id": "QBR_CUST_000019_Q1_2026",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-04",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 756,
+      "threats_blocked_prev_period": 645,
+      "threats_trend_pct": 7,
+      "estimated_cost_avoided": 363493,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.114,
+      "narrative": "Blocked 756 threats (\u219123% vs prev period), preventing estimated $397K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.45,
+        "Duo": 0.5
+      },
+      "threat_categories": {
+        "malware": 264,
+        "phishing": 189,
+        "ransomware": 60,
+        "other": 241
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 370,
+      "baseline_users": 314,
+      "user_growth_pct": 20.8,
+      "adoption_improvement_pp": 20,
+      "time_saved_hours": 3700,
+      "time_saved_per_user_hours": 9.5,
+      "narrative": "Enabled 370 active users with adoption improved from 56% \u2192 75%, saving 1,480 hours",
+      "roi_per_user_annual": 2046
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 113,
+      "estimated_downtime_cost_avoided": 70263,
+      "narrative": "Maintained 99.7% uptime, avoiding 67 minutes of downtime ($51K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 30,
+      "features_adopted_count": 9,
+      "power_users_count": 61,
+      "narrative": "Daily active users grew +19%, 12 features in use, 35 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 22,
+      "avg_resolution_hours": 6.4,
+      "resolution_time_improvement_pct": 12,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 0,
+      "narrative": "Resolved 24 tickets in 7.3h avg (-24% faster) with 4.3/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 79% - consider expanding capacity",
+        "estimated_arr": 120970,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $741K in measurable value this quarter.",
+    "total_value_documented": 676629,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000019_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-17",
+    "version": "1.0",
+    "last_updated": "2025-09-04"
+  },
+  {
+    "qbr_id": "QBR_CUST_000020_Q4_2025",
+    "account_id": "CUST_000020",
+    "account_name": "Credit Advisors",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-23",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1258,
+      "threats_blocked_prev_period": 980,
+      "threats_trend_pct": 19,
+      "estimated_cost_avoided": 164236,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.077,
+      "narrative": "Blocked 1,258 threats (\u219112% vs prev period), preventing estimated $172K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.43,
+        "Duo": 0.39
+      },
+      "threat_categories": {
+        "malware": 440,
+        "phishing": 314,
+        "ransomware": 100,
+        "other": 402
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 313,
+      "baseline_users": 266,
+      "user_growth_pct": 15.8,
+      "adoption_improvement_pp": 23,
+      "time_saved_hours": 1565,
+      "time_saved_per_user_hours": 9.8,
+      "narrative": "Enabled 313 active users with adoption improved from 60% \u2192 85%, saving 2,504 hours",
+      "roi_per_user_annual": 2738
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 191,
+      "estimated_downtime_cost_avoided": 50593,
+      "narrative": "Maintained 99.7% uptime, avoiding 138 minutes of downtime ($51K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 10,
+      "features_adopted_count": 6,
+      "power_users_count": 80,
+      "narrative": "Daily active users grew +22%, 12 features in use, 35 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 16,
+      "avg_resolution_hours": 8.7,
+      "resolution_time_improvement_pct": 11,
+      "satisfaction_score": 4.2,
+      "p1_incidents": 1,
+      "narrative": "Resolved 29 tickets in 11.1h avg (-30% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 92% - consider expanding capacity",
+        "estimated_arr": 81071,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $733K in measurable value this quarter.",
+    "total_value_documented": 356359,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000020_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-23",
+    "version": "1.0",
+    "last_updated": "2025-09-23"
+  },
+  {
+    "qbr_id": "QBR_CUST_000021_Q1_2026",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-24",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1325,
+      "threats_blocked_prev_period": 1060,
+      "threats_trend_pct": 23,
+      "estimated_cost_avoided": 394553,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.069,
+      "narrative": "Blocked 1,325 threats (\u219122% vs prev period), preventing estimated $247K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.42,
+        "Duo": 0.45
+      },
+      "threat_categories": {
+        "malware": 463,
+        "phishing": 331,
+        "ransomware": 106,
+        "other": 424
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 237,
+      "baseline_users": 201,
+      "user_growth_pct": 21.5,
+      "adoption_improvement_pp": 18,
+      "time_saved_hours": 2370,
+      "time_saved_per_user_hours": 9.9,
+      "narrative": "Enabled 237 active users with adoption improved from 58% \u2192 79%, saving 948 hours",
+      "roi_per_user_annual": 2403
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.5,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 153,
+      "estimated_downtime_cost_avoided": 69477,
+      "narrative": "Maintained 99.6% uptime, avoiding 190 minutes of downtime ($45K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 26,
+      "features_adopted_count": 5,
+      "power_users_count": 22,
+      "narrative": "Daily active users grew +11%, 7 features in use, 65 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 20,
+      "avg_resolution_hours": 10.4,
+      "resolution_time_improvement_pct": 26,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 2,
+      "narrative": "Resolved 26 tickets in 5.1h avg (-29% faster) with 4.4/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 157820,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $472K in measurable value this quarter.",
+    "total_value_documented": 565979,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000021_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-05",
+    "version": "1.0",
+    "last_updated": "2025-08-24"
+  },
+  {
+    "qbr_id": "QBR_CUST_000022_Q4_2025",
+    "account_id": "CUST_000022",
+    "account_name": "Kris - Dibbert",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-11",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1652,
+      "threats_blocked_prev_period": 1493,
+      "threats_trend_pct": 16,
+      "estimated_cost_avoided": 273664,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.117,
+      "narrative": "Blocked 1,652 threats (\u219118% vs prev period), preventing estimated $398K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.49,
+        "Duo": 0.57
+      },
+      "threat_categories": {
+        "malware": 578,
+        "phishing": 413,
+        "ransomware": 132,
+        "other": 528
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 203,
+      "baseline_users": 172,
+      "user_growth_pct": 23.1,
+      "adoption_improvement_pp": 10,
+      "time_saved_hours": 1624,
+      "time_saved_per_user_hours": 6.8,
+      "narrative": "Enabled 203 active users with adoption improved from 62% \u2192 76%, saving 1,624 hours",
+      "roi_per_user_annual": 2491
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 157,
+      "estimated_downtime_cost_avoided": 29684,
+      "narrative": "Maintained 99.8% uptime, avoiding 122 minutes of downtime ($22K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 28,
+      "features_adopted_count": 6,
+      "power_users_count": 32,
+      "narrative": "Daily active users grew +10%, 12 features in use, 40 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 23,
+      "avg_resolution_hours": 5.2,
+      "resolution_time_improvement_pct": 16,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 2,
+      "narrative": "Resolved 25 tickets in 11.0h avg (-11% faster) with 4.7/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 81% - consider expanding capacity",
+        "estimated_arr": 153516,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $466K in measurable value this quarter.",
+    "total_value_documented": 647197,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000022_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-15",
+    "version": "1.0",
+    "last_updated": "2025-07-11"
+  },
+  {
+    "qbr_id": "QBR_CUST_000023_Q4_2025",
+    "account_id": "CUST_000023",
+    "account_name": "Smith LLC",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-17",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1441,
+      "threats_blocked_prev_period": 1205,
+      "threats_trend_pct": 26,
+      "estimated_cost_avoided": 477972,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.118,
+      "narrative": "Blocked 1,441 threats (\u219130% vs prev period), preventing estimated $454K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.48,
+        "Duo": 0.45
+      },
+      "threat_categories": {
+        "malware": 504,
+        "phishing": 360,
+        "ransomware": 115,
+        "other": 461
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 322,
+      "baseline_users": 273,
+      "user_growth_pct": 24.4,
+      "adoption_improvement_pp": 18,
+      "time_saved_hours": 2576,
+      "time_saved_per_user_hours": 5.8,
+      "narrative": "Enabled 322 active users with adoption improved from 64% \u2192 84%, saving 2,898 hours",
+      "roi_per_user_annual": 2212
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 130,
+      "estimated_downtime_cost_avoided": 38860,
+      "narrative": "Maintained 99.5% uptime, avoiding 199 minutes of downtime ($44K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 22,
+      "features_adopted_count": 10,
+      "power_users_count": 69,
+      "narrative": "Daily active users grew +14%, 9 features in use, 22 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 19,
+      "avg_resolution_hours": 11.6,
+      "resolution_time_improvement_pct": 12,
+      "satisfaction_score": 4.4,
+      "p1_incidents": 1,
+      "narrative": "Resolved 30 tickets in 6.1h avg (-25% faster) with 4.3/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 83% - consider expanding capacity",
+        "estimated_arr": 153664,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $656K in measurable value this quarter.",
+    "total_value_documented": 442407,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000023_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-09-17"
+  },
+  {
+    "qbr_id": "QBR_CUST_000024_Q1_2026",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-26",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 990,
+      "threats_blocked_prev_period": 858,
+      "threats_trend_pct": 21,
+      "estimated_cost_avoided": 218316,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.114,
+      "narrative": "Blocked 990 threats (\u21916% vs prev period), preventing estimated $151K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.52,
+        "Duo": 0.52
+      },
+      "threat_categories": {
+        "malware": 346,
+        "phishing": 247,
+        "ransomware": 79,
+        "other": 316
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 174,
+      "baseline_users": 147,
+      "user_growth_pct": 11.5,
+      "adoption_improvement_pp": 14,
+      "time_saved_hours": 696,
+      "time_saved_per_user_hours": 9.8,
+      "narrative": "Enabled 174 active users with adoption improved from 60% \u2192 88%, saving 1,566 hours",
+      "roi_per_user_annual": 2957
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 133,
+      "estimated_downtime_cost_avoided": 41048,
+      "narrative": "Maintained 99.6% uptime, avoiding 75 minutes of downtime ($78K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 12,
+      "features_adopted_count": 8,
+      "power_users_count": 54,
+      "narrative": "Daily active users grew +11%, 7 features in use, 46 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 15,
+      "avg_resolution_hours": 11.5,
+      "resolution_time_improvement_pct": 11,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 25 tickets in 5.5h avg (-19% faster) with 4.8/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 84% - consider expanding capacity",
+        "estimated_arr": 154443,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $608K in measurable value this quarter.",
+    "total_value_documented": 356256,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000024_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-18",
+    "version": "1.0",
+    "last_updated": "2025-07-26"
+  },
+  {
+    "qbr_id": "QBR_CUST_000025_Q4_2025",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-12",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1813,
+      "threats_blocked_prev_period": 1672,
+      "threats_trend_pct": 9,
+      "estimated_cost_avoided": 364352,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.097,
+      "narrative": "Blocked 1,813 threats (\u219111% vs prev period), preventing estimated $157K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.5,
+        "Duo": 0.52
+      },
+      "threat_categories": {
+        "malware": 634,
+        "phishing": 453,
+        "ransomware": 145,
+        "other": 580
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 328,
+      "baseline_users": 278,
+      "user_growth_pct": 19.7,
+      "adoption_improvement_pp": 15,
+      "time_saved_hours": 1312,
+      "time_saved_per_user_hours": 8.4,
+      "narrative": "Enabled 328 active users with adoption improved from 64% \u2192 81%, saving 1,640 hours",
+      "roi_per_user_annual": 2625
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 191,
+      "estimated_downtime_cost_avoided": 41491,
+      "narrative": "Maintained 99.5% uptime, avoiding 84 minutes of downtime ($31K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 14,
+      "features_adopted_count": 12,
+      "power_users_count": 40,
+      "narrative": "Daily active users grew +17%, 5 features in use, 36 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 22,
+      "avg_resolution_hours": 5.9,
+      "resolution_time_improvement_pct": 18,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 28 tickets in 9.8h avg (-10% faster) with 4.4/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 82% - consider expanding capacity",
+        "estimated_arr": 88142,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $641K in measurable value this quarter.",
+    "total_value_documented": 361983,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000025_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-29",
+    "version": "1.0",
+    "last_updated": "2025-08-12"
+  },
+  {
+    "qbr_id": "QBR_CUST_000026_Q4_2025",
+    "account_id": "CUST_000026",
+    "account_name": "Credit Group",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-14",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1529,
+      "threats_blocked_prev_period": 1334,
+      "threats_trend_pct": 25,
+      "estimated_cost_avoided": 254684,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.087,
+      "narrative": "Blocked 1,529 threats (\u219112% vs prev period), preventing estimated $212K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.69,
+        "Duo": 0.44
+      },
+      "threat_categories": {
+        "malware": 535,
+        "phishing": 382,
+        "ransomware": 122,
+        "other": 489
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 410,
+      "baseline_users": 348,
+      "user_growth_pct": 16.8,
+      "adoption_improvement_pp": 21,
+      "time_saved_hours": 2870,
+      "time_saved_per_user_hours": 8.2,
+      "narrative": "Enabled 410 active users with adoption improved from 70% \u2192 81%, saving 4,100 hours",
+      "roi_per_user_annual": 2253
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 194,
+      "estimated_downtime_cost_avoided": 49278,
+      "narrative": "Maintained 99.7% uptime, avoiding 152 minutes of downtime ($24K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 28,
+      "features_adopted_count": 6,
+      "power_users_count": 23,
+      "narrative": "Daily active users grew +27%, 8 features in use, 56 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 27,
+      "avg_resolution_hours": 5.2,
+      "resolution_time_improvement_pct": 20,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 1,
+      "narrative": "Resolved 13 tickets in 9.4h avg (-28% faster) with 4.5/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 89% - consider expanding capacity",
+        "estimated_arr": 185996,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $328K in measurable value this quarter.",
+    "total_value_documented": 537729,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000026_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-07-14"
+  },
+  {
+    "qbr_id": "QBR_CUST_000027_Q4_2025",
+    "account_id": "CUST_000027",
+    "account_name": "Gutmann, King and Gorczany",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-12",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 1654,
+      "threats_blocked_prev_period": 1435,
+      "threats_trend_pct": 14,
+      "estimated_cost_avoided": 479207,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.052,
+      "narrative": "Blocked 1,654 threats (\u219113% vs prev period), preventing estimated $101K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.62,
+        "Duo": 0.47
+      },
+      "threat_categories": {
+        "malware": 578,
+        "phishing": 413,
+        "ransomware": 132,
+        "other": 529
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 79,
+      "baseline_users": 67,
+      "user_growth_pct": 10.7,
+      "adoption_improvement_pp": 21,
+      "time_saved_hours": 711,
+      "time_saved_per_user_hours": 4.4,
+      "narrative": "Enabled 79 active users with adoption improved from 56% \u2192 77%, saving 553 hours",
+      "roi_per_user_annual": 2032
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.2,
+      "downtime_minutes_avoided": 167,
+      "estimated_downtime_cost_avoided": 44540,
+      "narrative": "Maintained 99.9% uptime, avoiding 157 minutes of downtime ($48K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 22,
+      "features_adopted_count": 11,
+      "power_users_count": 25,
+      "narrative": "Daily active users grew +27%, 7 features in use, 61 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 21,
+      "avg_resolution_hours": 4.9,
+      "resolution_time_improvement_pct": 27,
+      "satisfaction_score": 4.5,
+      "p1_incidents": 0,
+      "narrative": "Resolved 17 tickets in 10.7h avg (-10% faster) with 4.9/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 92% - consider expanding capacity",
+        "estimated_arr": 135591,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $572K in measurable value this quarter.",
+    "total_value_documented": 498850,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000027_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-24",
+    "version": "1.0",
+    "last_updated": "2025-08-12"
+  },
+  {
+    "qbr_id": "QBR_CUST_000028_Q4_2025",
+    "account_id": "CUST_000028",
+    "account_name": "Medical Alliance",
+    "time_period": "Q4 2025",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-26",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 817,
+      "threats_blocked_prev_period": 763,
+      "threats_trend_pct": 28,
+      "estimated_cost_avoided": 159163,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.053,
+      "narrative": "Blocked 817 threats (\u219126% vs prev period), preventing estimated $314K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.58,
+        "Duo": 0.58
+      },
+      "threat_categories": {
+        "malware": 285,
+        "phishing": 204,
+        "ransomware": 65,
+        "other": 261
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 191,
+      "baseline_users": 162,
+      "user_growth_pct": 23.3,
+      "adoption_improvement_pp": 17,
+      "time_saved_hours": 955,
+      "time_saved_per_user_hours": 4.4,
+      "narrative": "Enabled 191 active users with adoption improved from 56% \u2192 89%, saving 1,528 hours",
+      "roi_per_user_annual": 2688
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.8,
+      "baseline_uptime": 99.0,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 162,
+      "estimated_downtime_cost_avoided": 48767,
+      "narrative": "Maintained 99.6% uptime, avoiding 115 minutes of downtime ($68K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 11,
+      "features_adopted_count": 7,
+      "power_users_count": 52,
+      "narrative": "Daily active users grew +19%, 8 features in use, 72 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 28,
+      "avg_resolution_hours": 6.6,
+      "resolution_time_improvement_pct": 29,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 1,
+      "narrative": "Resolved 17 tickets in 6.4h avg (-14% faster) with 4.9/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 82% - consider expanding capacity",
+        "estimated_arr": 134206,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $453K in measurable value this quarter.",
+    "total_value_documented": 444259,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000028_Q4_2025.pdf",
+    "deck_generated": true,
+    "presented_date": null,
+    "version": "1.0",
+    "last_updated": "2025-08-26"
+  },
+  {
+    "qbr_id": "QBR_CUST_000029_Q1_2026",
+    "account_id": "CUST_000029",
+    "account_name": "Medical Systems",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-17",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1782,
+      "threats_blocked_prev_period": 1495,
+      "threats_trend_pct": 6,
+      "estimated_cost_avoided": 280572,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.144,
+      "narrative": "Blocked 1,782 threats (\u219126% vs prev period), preventing estimated $295K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.64,
+        "Duo": 0.4
+      },
+      "threat_categories": {
+        "malware": 623,
+        "phishing": 445,
+        "ransomware": 142,
+        "other": 570
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 397,
+      "baseline_users": 337,
+      "user_growth_pct": 16.2,
+      "adoption_improvement_pp": 14,
+      "time_saved_hours": 2382,
+      "time_saved_per_user_hours": 6.3,
+      "narrative": "Enabled 397 active users with adoption improved from 70% \u2192 82%, saving 3,970 hours",
+      "roi_per_user_annual": 2230
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.4,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 74,
+      "estimated_downtime_cost_avoided": 56856,
+      "narrative": "Maintained 99.7% uptime, avoiding 166 minutes of downtime ($55K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 26,
+      "features_adopted_count": 7,
+      "power_users_count": 44,
+      "narrative": "Daily active users grew +17%, 9 features in use, 33 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 20,
+      "avg_resolution_hours": 9.2,
+      "resolution_time_improvement_pct": 24,
+      "satisfaction_score": 4.8,
+      "p1_incidents": 0,
+      "narrative": "Resolved 27 tickets in 9.8h avg (-16% faster) with 4.2/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 76% - consider expanding capacity",
+        "estimated_arr": 194507,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $337K in measurable value this quarter.",
+    "total_value_documented": 398651,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000029_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-02",
+    "version": "1.0",
+    "last_updated": "2025-09-17"
+  },
+  {
+    "qbr_id": "QBR_CUST_000030_Q1_2026",
+    "account_id": "CUST_000030",
+    "account_name": "Bashirian Inc",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-07-16",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "security_value": {
+      "threats_blocked": 1644,
+      "threats_blocked_prev_period": 1236,
+      "threats_trend_pct": 34,
+      "estimated_cost_avoided": 274569,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.08,
+      "narrative": "Blocked 1,644 threats (\u219134% vs prev period), preventing estimated $107K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.46,
+        "Duo": 0.36
+      },
+      "threat_categories": {
+        "malware": 575,
+        "phishing": 411,
+        "ransomware": 131,
+        "other": 526
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 161,
+      "baseline_users": 136,
+      "user_growth_pct": 21.1,
+      "adoption_improvement_pp": 25,
+      "time_saved_hours": 805,
+      "time_saved_per_user_hours": 8.2,
+      "narrative": "Enabled 161 active users with adoption improved from 61% \u2192 87%, saving 805 hours",
+      "roi_per_user_annual": 2565
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.1,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 151,
+      "estimated_downtime_cost_avoided": 40212,
+      "narrative": "Maintained 99.6% uptime, avoiding 191 minutes of downtime ($76K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 25,
+      "features_adopted_count": 12,
+      "power_users_count": 26,
+      "narrative": "Daily active users grew +25%, 10 features in use, 78 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 16,
+      "avg_resolution_hours": 7.0,
+      "resolution_time_improvement_pct": 23,
+      "satisfaction_score": 4.2,
+      "p1_incidents": 0,
+      "narrative": "Resolved 14 tickets in 4.1h avg (-27% faster) with 4.9/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 88% - consider expanding capacity",
+        "estimated_arr": 118691,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $378K in measurable value this quarter.",
+    "total_value_documented": 402860,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000030_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-15",
+    "version": "1.0",
+    "last_updated": "2025-07-16"
+  },
+  {
+    "qbr_id": "QBR_CUST_000031_Q1_2026",
+    "account_id": "CUST_000031",
+    "account_name": "Credit Partners",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-08",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1522,
+      "threats_blocked_prev_period": 1163,
+      "threats_trend_pct": 31,
+      "estimated_cost_avoided": 356178,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.147,
+      "narrative": "Blocked 1,522 threats (\u219125% vs prev period), preventing estimated $478K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.55,
+        "Duo": 0.35
+      },
+      "threat_categories": {
+        "malware": 532,
+        "phishing": 380,
+        "ransomware": 121,
+        "other": 487
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 331,
+      "baseline_users": 281,
+      "user_growth_pct": 21.9,
+      "adoption_improvement_pp": 15,
+      "time_saved_hours": 1655,
+      "time_saved_per_user_hours": 8.3,
+      "narrative": "Enabled 331 active users with adoption improved from 70% \u2192 80%, saving 2,648 hours",
+      "roi_per_user_annual": 2657
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 79,
+      "estimated_downtime_cost_avoided": 73608,
+      "narrative": "Maintained 99.8% uptime, avoiding 61 minutes of downtime ($46K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 14,
+      "features_adopted_count": 8,
+      "power_users_count": 24,
+      "narrative": "Daily active users grew +14%, 5 features in use, 33 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 26,
+      "avg_resolution_hours": 7.6,
+      "resolution_time_improvement_pct": 11,
+      "satisfaction_score": 4.6,
+      "p1_incidents": 2,
+      "narrative": "Resolved 29 tickets in 11.3h avg (-25% faster) with 4.2/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 92% - consider expanding capacity",
+        "estimated_arr": 133914,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $306K in measurable value this quarter.",
+    "total_value_documented": 308769,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000031_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-22",
+    "version": "1.0",
+    "last_updated": "2025-09-08"
+  },
+  {
+    "qbr_id": "QBR_CUST_000032_Q1_2026",
+    "account_id": "CUST_000032",
+    "account_name": "Wealth Group",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-09-03",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 535,
+      "threats_blocked_prev_period": 482,
+      "threats_trend_pct": 34,
+      "estimated_cost_avoided": 193987,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.061,
+      "narrative": "Blocked 535 threats (\u21918% vs prev period), preventing estimated $368K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.44,
+        "Duo": 0.36
+      },
+      "threat_categories": {
+        "malware": 187,
+        "phishing": 133,
+        "ransomware": 42,
+        "other": 171
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 307,
+      "baseline_users": 260,
+      "user_growth_pct": 17.9,
+      "adoption_improvement_pp": 21,
+      "time_saved_hours": 1842,
+      "time_saved_per_user_hours": 8.8,
+      "narrative": "Enabled 307 active users with adoption improved from 57% \u2192 86%, saving 2,149 hours",
+      "roi_per_user_annual": 2470
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.7,
+      "baseline_uptime": 99.5,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 80,
+      "estimated_downtime_cost_avoided": 62843,
+      "narrative": "Maintained 99.9% uptime, avoiding 68 minutes of downtime ($25K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 22,
+      "features_adopted_count": 11,
+      "power_users_count": 44,
+      "narrative": "Daily active users grew +27%, 12 features in use, 23 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 30,
+      "avg_resolution_hours": 4.1,
+      "resolution_time_improvement_pct": 15,
+      "satisfaction_score": 4.3,
+      "p1_incidents": 1,
+      "narrative": "Resolved 30 tickets in 10.3h avg (-28% faster) with 4.9/5 satisfaction. 0 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 91% - consider expanding capacity",
+        "estimated_arr": 85577,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $417K in measurable value this quarter.",
+    "total_value_documented": 410843,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000032_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-08-26",
+    "version": "1.0",
+    "last_updated": "2025-09-03"
+  },
+  {
+    "qbr_id": "QBR_CUST_000033_Q1_2026",
+    "account_id": "CUST_000033",
+    "account_name": "Hansen LLC",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-10",
+    "generation_method": "Auto",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 1055,
+      "threats_blocked_prev_period": 919,
+      "threats_trend_pct": 13,
+      "estimated_cost_avoided": 384704,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.106,
+      "narrative": "Blocked 1,055 threats (\u21916% vs prev period), preventing estimated $191K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.68,
+        "Duo": 0.39
+      },
+      "threat_categories": {
+        "malware": 369,
+        "phishing": 263,
+        "ransomware": 84,
+        "other": 337
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 73,
+      "baseline_users": 62,
+      "user_growth_pct": 24.4,
+      "adoption_improvement_pp": 14,
+      "time_saved_hours": 730,
+      "time_saved_per_user_hours": 8.9,
+      "narrative": "Enabled 73 active users with adoption improved from 67% \u2192 77%, saving 438 hours",
+      "roi_per_user_annual": 2166
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.7,
+      "baseline_uptime": 99.3,
+      "reliability_improvement_pp": 0.5,
+      "downtime_minutes_avoided": 198,
+      "estimated_downtime_cost_avoided": 41740,
+      "narrative": "Maintained 99.7% uptime, avoiding 95 minutes of downtime ($70K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 12,
+      "features_adopted_count": 10,
+      "power_users_count": 23,
+      "narrative": "Daily active users grew +13%, 11 features in use, 34 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 12,
+      "avg_resolution_hours": 6.7,
+      "resolution_time_improvement_pct": 29,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 20 tickets in 4.2h avg (-18% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 90% - consider expanding capacity",
+        "estimated_arr": 109902,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $482K in measurable value this quarter.",
+    "total_value_documented": 589951,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000033_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-12",
+    "version": "1.0",
+    "last_updated": "2025-08-10"
+  },
+  {
+    "qbr_id": "QBR_CUST_000034_Q3_2025",
+    "account_id": "CUST_000034",
+    "account_name": "Cloud Solutions",
+    "time_period": "Q3 2025",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "generation_date": "2025-07-14",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "security_value": {
+      "threats_blocked": 1699,
+      "threats_blocked_prev_period": 1225,
+      "threats_trend_pct": 24,
+      "estimated_cost_avoided": 254863,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.13,
+      "narrative": "Blocked 1,699 threats (\u219127% vs prev period), preventing estimated $137K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.42,
+        "Duo": 0.35
+      },
+      "threat_categories": {
+        "malware": 594,
+        "phishing": 424,
+        "ransomware": 135,
+        "other": 543
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 388,
+      "baseline_users": 329,
+      "user_growth_pct": 20.7,
+      "adoption_improvement_pp": 14,
+      "time_saved_hours": 3492,
+      "time_saved_per_user_hours": 6.3,
+      "narrative": "Enabled 388 active users with adoption improved from 66% \u2192 78%, saving 1,552 hours",
+      "roi_per_user_annual": 2005
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.9,
+      "baseline_uptime": 99.2,
+      "reliability_improvement_pp": 0.4,
+      "downtime_minutes_avoided": 86,
+      "estimated_downtime_cost_avoided": 28683,
+      "narrative": "Maintained 99.5% uptime, avoiding 170 minutes of downtime ($48K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 27,
+      "features_adopted_count": 11,
+      "power_users_count": 26,
+      "narrative": "Daily active users grew +10%, 6 features in use, 42 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 27,
+      "avg_resolution_hours": 4.7,
+      "resolution_time_improvement_pct": 29,
+      "satisfaction_score": 4.7,
+      "p1_incidents": 1,
+      "narrative": "Resolved 10 tickets in 6.3h avg (-22% faster) with 4.7/5 satisfaction. 2 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 92% - consider expanding capacity",
+        "estimated_arr": 198647,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $800K in measurable value this quarter.",
+    "total_value_documented": 427266,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000034_Q3_2025.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-09-29",
+    "version": "1.0",
+    "last_updated": "2025-07-14"
+  },
+  {
+    "qbr_id": "QBR_CUST_000035_Q1_2026",
+    "account_id": "CUST_000035",
+    "account_name": "Bruen - Adams",
+    "time_period": "Q1 2026",
+    "period_start": "2025-10-01",
+    "period_end": "2025-12-31",
+    "generation_date": "2025-08-22",
+    "generation_method": "Manual",
+    "generated_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "security_value": {
+      "threats_blocked": 847,
+      "threats_blocked_prev_period": 656,
+      "threats_trend_pct": 20,
+      "estimated_cost_avoided": 176511,
+      "cost_per_breach_assumption": 4200000,
+      "breach_probability_prevented": 0.056,
+      "narrative": "Blocked 847 threats (\u219118% vs prev period), preventing estimated $241K in breach costs",
+      "product_contribution": {
+        "Umbrella": 0.53,
+        "Duo": 0.45
+      },
+      "threat_categories": {
+        "malware": 296,
+        "phishing": 211,
+        "ransomware": 67,
+        "other": 271
+      }
+    },
+    "productivity_value": {
+      "users_enabled": 121,
+      "baseline_users": 102,
+      "user_growth_pct": 11.2,
+      "adoption_improvement_pp": 18,
+      "time_saved_hours": 605,
+      "time_saved_per_user_hours": 8.3,
+      "narrative": "Enabled 121 active users with adoption improved from 70% \u2192 81%, saving 847 hours",
+      "roi_per_user_annual": 2109
+    },
+    "uptime_value": {
+      "uptime_percentage": 99.6,
+      "baseline_uptime": 99.0,
+      "reliability_improvement_pp": 0.3,
+      "downtime_minutes_avoided": 157,
+      "estimated_downtime_cost_avoided": 72695,
+      "narrative": "Maintained 99.8% uptime, avoiding 172 minutes of downtime ($41K cost avoidance)"
+    },
+    "usage_trends": {
+      "dau_growth_pct": 23,
+      "features_adopted_count": 7,
+      "power_users_count": 39,
+      "narrative": "Daily active users grew +20%, 8 features in use, 50 power users identified"
+    },
+    "support_experience": {
+      "tickets_resolved": 20,
+      "avg_resolution_hours": 5.4,
+      "resolution_time_improvement_pct": 22,
+      "satisfaction_score": 4.9,
+      "p1_incidents": 1,
+      "narrative": "Resolved 30 tickets in 7.9h avg (-28% faster) with 4.7/5 satisfaction. 1 P1 incidents."
+    },
+    "recommendations": [
+      {
+        "type": "Expansion",
+        "priority": "High",
+        "recommendation": "Utilization at 87% - consider expanding capacity",
+        "estimated_arr": 116739,
+        "rationale": "Current utilization indicates capacity constraint"
+      }
+    ],
+    "executive_summary": "Your deployment delivered $718K in measurable value this quarter.",
+    "total_value_documented": 712020,
+    "deck_url": "https://storage.cisco.com/qbr/CUST_000035_Q1_2026.pdf",
+    "deck_generated": true,
+    "presented_date": "2025-10-02",
+    "version": "1.0",
+    "last_updated": "2025-08-22"
+  }
+]

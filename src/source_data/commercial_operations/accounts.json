@@ -1,0 +1,3536 @@
+[
+  {
+    "account": {
+      "id": "CUST_000001",
+      "name": "TechCorp Industries",
+      "tier": "Enterprise",
+      "industry": "Technology",
+      "arr": 1522871,
+      "csm_id": "CSM_001",
+      "story_type": "expansion_success",
+      "is_hero_account": true,
+      "created_date": "2023-09-14T16:02:56.918Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Washington",
+        "timezone": "EST"
+      },
+      "hero_features": [
+        "complete_12_month_history",
+        "multiple_expansions",
+        "executive_engagement"
+      ],
+      "mrr": 126905.92,
+      "starting_arr": 1309450.83,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 62,
+      "health_score": 31,
+      "last_invoice_date": "2025-08-26T00:00:00",
+      "last_payment_date": "2025-09-19T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 10,
+        "date": "2024-10-01T18:30:00.000Z",
+        "health_score": 94,
+        "usage_percentage": 92,
+        "engagement_events": [
+          {
+            "type": "meeting",
+            "date": "2025-09-08T23:31:22.312Z",
+            "outcome": "positive",
+            "notes": "Excellent feedback on product performance"
+          },
+          {
+            "type": "call",
+            "date": "2025-09-19T07:10:37.706Z",
+            "outcome": "positive",
+            "notes": "Positive response to expansion proposal"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 2
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Competitor evaluation mentioned",
+          "Multi-department interest",
+          "Budget discussions initiated"
+        ]
+      },
+      {
+        "month": 11,
+        "date": "2024-11-25T18:30:00.000Z",
+        "health_score": 96,
+        "usage_percentage": 95,
+        "engagement_events": [
+          {
+            "type": "training",
+            "date": "2025-09-24T23:48:32.096Z",
+            "outcome": "action_required",
+            "notes": "Excellent feedback on product performance"
+          },
+          {
+            "type": "qbr",
+            "date": "2025-09-25T13:38:56.779Z",
+            "outcome": "neutral",
+            "notes": "Excellent feedback on product performance"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 0
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Competitor evaluation mentioned",
+          "Budget discussions initiated",
+          "High utilization rate (>90%)"
+        ]
+      },
+      {
+        "month": 12,
+        "date": "2024-12-21T18:30:00.000Z",
+        "health_score": 98,
+        "usage_percentage": 98,
+        "engagement_events": [
+          {
+            "type": "qbr",
+            "date": "2025-09-02T18:12:55.842Z",
+            "outcome": "action_required",
+            "notes": "Action items identified for next quarter"
+          },
+          {
+            "type": "support",
+            "date": "2025-09-11T08:50:34.273Z",
+            "outcome": "neutral",
+            "notes": "Action items identified for next quarter"
+          }
+        ],
+        "business_events": [
+          "Expansion contract signed",
+          "Success story documented"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 3
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 10
+        },
+        "expansion_signals": [
+          "Executive sponsor engaged",
+          "High utilization rate (>90%)",
+          "Budget discussions initiated"
+        ]
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000002",
+      "name": "MedSecure Systems",
+      "tier": "Strategic",
+      "industry": "Healthcare",
+      "arr": 3627162,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": true,
+      "created_date": "2023-08-06T10:46:59.157Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Temecula",
+        "timezone": "PST"
+      },
+      "hero_features": [
+        "compliance_journey",
+        "rapid_adoption",
+        "champion_story"
+      ],
+      "mrr": 302263.5,
+      "starting_arr": 2997264.77,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 7,
+      "health_score": 93,
+      "last_invoice_date": "2025-07-30T00:00:00",
+      "last_payment_date": "2025-08-30T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 10,
+        "date": "2024-10-18T18:30:00.000Z",
+        "health_score": 92,
+        "usage_percentage": 91,
+        "engagement_events": [
+          {
+            "type": "training",
+            "date": "2025-09-28T11:00:24.114Z",
+            "outcome": "neutral",
+            "notes": "Excellent feedback on product performance"
+          },
+          {
+            "type": "training",
+            "date": "2025-09-03T05:10:31.422Z",
+            "outcome": "action_required",
+            "notes": "Strong champion advocacy demonstrated"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 3
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Executive sponsor engaged",
+          "Competitor evaluation mentioned",
+          "Budget discussions initiated"
+        ]
+      },
+      {
+        "month": 11,
+        "date": "2024-11-09T18:30:00.000Z",
+        "health_score": 94,
+        "usage_percentage": 93,
+        "engagement_events": [
+          {
+            "type": "meeting",
+            "date": "2025-09-17T02:17:09.930Z",
+            "outcome": "neutral",
+            "notes": "Positive response to expansion proposal"
+          },
+          {
+            "type": "qbr",
+            "date": "2025-09-11T07:06:53.045Z",
+            "outcome": "neutral",
+            "notes": "Excellent feedback on product performance"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 1
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Multi-department interest",
+          "Executive sponsor engaged",
+          "Budget discussions initiated"
+        ]
+      },
+      {
+        "month": 12,
+        "date": "2024-12-03T18:30:00.000Z",
+        "health_score": 95,
+        "usage_percentage": 95,
+        "engagement_events": [
+          {
+            "type": "qbr",
+            "date": "2025-09-08T12:15:16.353Z",
+            "outcome": "positive",
+            "notes": "Discussed upcoming feature requirements"
+          },
+          {
+            "type": "meeting",
+            "date": "2025-09-08T21:27:49.666Z",
+            "outcome": "positive",
+            "notes": "Executive sponsor highly engaged"
+          }
+        ],
+        "business_events": [
+          "Comprehensive security achieved",
+          "Audit passed"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 1
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Executive sponsor engaged",
+          "Budget discussions initiated",
+          "Competitor evaluation mentioned"
+        ]
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000003",
+      "name": "Global Financial Partners",
+      "tier": "Enterprise",
+      "industry": "Financial Services",
+      "arr": 804011,
+      "csm_id": "CSM_001",
+      "story_type": "digital_transformation",
+      "is_hero_account": true,
+      "created_date": "2023-09-03T03:42:27.235Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Hacienda Heights",
+        "timezone": "PST"
+      },
+      "hero_features": [
+        "multi_site_deployment",
+        "user_growth",
+        "roi_demonstration"
+      ],
+      "mrr": 67000.92,
+      "starting_arr": 618660.6,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 43,
+      "health_score": 51,
+      "last_invoice_date": "2025-09-07T00:00:00",
+      "last_payment_date": "2025-10-11T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 10,
+        "date": "2024-10-20T18:30:00.000Z",
+        "health_score": 91,
+        "usage_percentage": 90,
+        "engagement_events": [
+          {
+            "type": "support",
+            "date": "2025-09-04T09:14:29.036Z",
+            "outcome": "action_required",
+            "notes": "Action items identified for next quarter"
+          },
+          {
+            "type": "training",
+            "date": "2025-09-30T23:06:28.598Z",
+            "outcome": "positive",
+            "notes": "Strong champion advocacy demonstrated"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 2,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 1
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Advanced feature requests",
+          "Budget discussions initiated",
+          "Executive sponsor engaged"
+        ]
+      },
+      {
+        "month": 11,
+        "date": "2024-11-12T18:30:00.000Z",
+        "health_score": 93,
+        "usage_percentage": 92,
+        "engagement_events": [
+          {
+            "type": "training",
+            "date": "2025-09-11T08:14:22.609Z",
+            "outcome": "positive",
+            "notes": "Positive response to expansion proposal"
+          },
+          {
+            "type": "training",
+            "date": "2025-09-15T06:04:08.624Z",
+            "outcome": "positive",
+            "notes": "Strong champion advocacy demonstrated"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 3
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 10
+        },
+        "expansion_signals": [
+          "Advanced feature requests",
+          "Competitor evaluation mentioned",
+          "Executive sponsor engaged"
+        ]
+      },
+      {
+        "month": 12,
+        "date": "2024-12-19T18:30:00.000Z",
+        "health_score": 95,
+        "usage_percentage": 94,
+        "engagement_events": [
+          {
+            "type": "email",
+            "date": "2025-09-25T05:53:33.977Z",
+            "outcome": "positive",
+            "notes": "Discussed upcoming feature requirements"
+          },
+          {
+            "type": "qbr",
+            "date": "2025-09-20T20:44:26.432Z",
+            "outcome": "action_required",
+            "notes": "Action items identified for next quarter"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 3
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Executive sponsor engaged",
+          "High utilization rate (>90%)",
+          "Budget discussions initiated"
+        ]
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000004",
+      "name": "Advanced Manufacturing Co",
+      "tier": "Commercial",
+      "industry": "Manufacturing",
+      "arr": 140615,
+      "csm_id": "CSM_003",
+      "story_type": "expansion_success",
+      "is_hero_account": true,
+      "created_date": "2023-06-18T09:48:28.690Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Peytonmouth",
+        "timezone": "JST"
+      },
+      "hero_features": [
+        "cost_optimization",
+        "efficiency_gains",
+        "expansion_ready"
+      ],
+      "mrr": 11717.92,
+      "starting_arr": 101200.62,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 2542.57,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 29,
+      "health_score": 92,
+      "last_invoice_date": "2025-09-10T00:00:00",
+      "last_payment_date": "2025-10-14T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 10,
+        "date": "2024-10-10T18:30:00.000Z",
+        "health_score": 94,
+        "usage_percentage": 92,
+        "engagement_events": [
+          {
+            "type": "support",
+            "date": "2025-09-17T04:43:36.101Z",
+            "outcome": "action_required",
+            "notes": "Executive sponsor highly engaged"
+          },
+          {
+            "type": "qbr",
+            "date": "2025-10-02T05:21:43.356Z",
+            "outcome": "neutral",
+            "notes": "Executive sponsor highly engaged"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 2
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Multi-department interest",
+          "High utilization rate (>90%)",
+          "Advanced feature requests"
+        ]
+      },
+      {
+        "month": 11,
+        "date": "2024-11-14T18:30:00.000Z",
+        "health_score": 96,
+        "usage_percentage": 95,
+        "engagement_events": [
+          {
+            "type": "meeting",
+            "date": "2025-09-17T16:31:01.489Z",
+            "outcome": "action_required",
+            "notes": "Discussed upcoming feature requirements"
+          },
+          {
+            "type": "qbr",
+            "date": "2025-09-22T19:19:28.620Z",
+            "outcome": "positive",
+            "notes": "Discussed upcoming feature requirements"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 2
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Multi-department interest",
+          "Budget discussions initiated",
+          "Competitor evaluation mentioned"
+        ]
+      },
+      {
+        "month": 12,
+        "date": "2024-11-30T18:30:00.000Z",
+        "health_score": 98,
+        "usage_percentage": 98,
+        "engagement_events": [
+          {
+            "type": "call",
+            "date": "2025-09-14T17:58:55.274Z",
+            "outcome": "positive",
+            "notes": "Positive response to expansion proposal"
+          },
+          {
+            "type": "email",
+            "date": "2025-09-28T11:42:47.963Z",
+            "outcome": "action_required",
+            "notes": "Executive sponsor highly engaged"
+          }
+        ],
+        "business_events": [
+          "Expansion contract signed",
+          "Success story documented"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 0
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 10
+        },
+        "expansion_signals": [
+          "Competitor evaluation mentioned",
+          "Multi-department interest",
+          "Advanced feature requests"
+        ]
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000005",
+      "name": "InnovateTech Solutions",
+      "tier": "Commercial",
+      "industry": "Technology",
+      "arr": 496079,
+      "csm_id": "CSM_001",
+      "story_type": "startup_scaling",
+      "is_hero_account": true,
+      "created_date": "2023-03-16T13:17:29.163Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "South",
+        "country": "France",
+        "city": "Odessaview",
+        "timezone": "PST"
+      },
+      "hero_features": [
+        "rapid_growth",
+        "scalability_story",
+        "young_company"
+      ],
+      "mrr": 41339.92,
+      "starting_arr": 381729.52,
+      "expansion_arr": 61001.07,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 60",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 23,
+      "health_score": 79,
+      "last_invoice_date": "2025-09-02T00:00:00",
+      "last_payment_date": "2025-10-11T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 10,
+        "date": "2024-10-22T18:30:00.000Z",
+        "health_score": 94,
+        "usage_percentage": 92,
+        "engagement_events": [
+          {
+            "type": "support",
+            "date": "2025-09-20T06:38:11.035Z",
+            "outcome": "positive",
+            "notes": "Action items identified for next quarter"
+          },
+          {
+            "type": "call",
+            "date": "2025-09-24T12:29:11.874Z",
+            "outcome": "positive",
+            "notes": "Excellent feedback on product performance"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 3
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Executive sponsor engaged",
+          "Budget discussions initiated",
+          "Advanced feature requests"
+        ]
+      },
+      {
+        "month": 11,
+        "date": "2024-11-12T18:30:00.000Z",
+        "health_score": 96,
+        "usage_percentage": 95,
+        "engagement_events": [
+          {
+            "type": "meeting",
+            "date": "2025-09-12T00:41:24.469Z",
+            "outcome": "neutral",
+            "notes": "Discussed upcoming feature requirements"
+          },
+          {
+            "type": "support",
+            "date": "2025-09-18T05:09:17.253Z",
+            "outcome": "action_required",
+            "notes": "Executive sponsor highly engaged"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 1,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 2
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 9
+        },
+        "expansion_signals": [
+          "Budget discussions initiated",
+          "High utilization rate (>90%)",
+          "Executive sponsor engaged"
+        ]
+      },
+      {
+        "month": 12,
+        "date": "2024-12-23T18:30:00.000Z",
+        "health_score": 98,
+        "usage_percentage": 98,
+        "engagement_events": [
+          {
+            "type": "email",
+            "date": "2025-09-29T09:34:38.469Z",
+            "outcome": "neutral",
+            "notes": "Executive sponsor highly engaged"
+          },
+          {
+            "type": "email",
+            "date": "2025-09-03T02:49:20.406Z",
+            "outcome": "positive",
+            "notes": "Excellent feedback on product performance"
+          }
+        ],
+        "business_events": [
+          "Regular business operations"
+        ],
+        "support_activity": {
+          "ticket_count": 0,
+          "severity_distribution": {
+            "p1": 0,
+            "p2": 0,
+            "p3": 2
+          },
+          "resolution_time_avg": 8,
+          "satisfaction_score": 8
+        },
+        "expansion_signals": [
+          "Competitor evaluation mentioned",
+          "Advanced feature requests",
+          "Executive sponsor engaged"
+        ]
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000001",
+      "name": "Global Premier Works",
+      "tier": "Strategic",
+      "industry": "Manufacturing",
+      "arr": 3386280,
+      "csm_id": "CSM_002",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-07-30T04:43:46.901Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Erdmanworth",
+        "timezone": "CET"
+      },
+      "mrr": 282190.0,
+      "starting_arr": 2691631.59,
+      "expansion_arr": 602757.68,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 64,
+      "health_score": 32,
+      "last_invoice_date": "2025-08-26T00:00:00",
+      "last_payment_date": "2025-09-25T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-07T00:17:40.052Z",
+        "event": "umbrella_addition",
+        "health_score": 72,
+        "usage_percentage": 65,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-07T06:27:12.208Z",
+        "event": "security_maturity",
+        "health_score": 87,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-07T20:01:41.203Z",
+        "event": "comprehensive_security",
+        "health_score": 89,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000002",
+      "name": "Global Capital Management",
+      "tier": "Strategic",
+      "industry": "Financial Services",
+      "arr": 3669528,
+      "csm_id": "CSM_001",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-05-20T06:47:06.976Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "Southeast",
+        "country": "India",
+        "city": "Luciousboro",
+        "timezone": "EST"
+      },
+      "mrr": 305794.0,
+      "starting_arr": 2763729.36,
+      "expansion_arr": 832750.32,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 20,
+      "health_score": 85,
+      "last_invoice_date": "2025-08-07T00:00:00",
+      "last_payment_date": "2025-08-31T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-10T07:17:58.364Z",
+        "event": "scaling_challenges",
+        "health_score": 77,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-25T18:54:49.632Z",
+        "event": "enterprise_features",
+        "health_score": 84,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-03T03:43:58.122Z",
+        "event": "mature_platform",
+        "health_score": 87,
+        "usage_percentage": 95,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000003",
+      "name": "Global Quality Industries",
+      "tier": "Strategic",
+      "industry": "Manufacturing",
+      "arr": 3222435,
+      "csm_id": "CSM_002",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-02-21T12:19:13.713Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "North",
+        "country": "United Kingdom",
+        "city": "Anabury",
+        "timezone": "EST"
+      },
+      "mrr": 268536.25,
+      "starting_arr": 3059158.87,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 27,
+      "health_score": 76,
+      "last_invoice_date": "2025-07-25T00:00:00",
+      "last_payment_date": "2025-09-06T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-15T15:50:17.708Z",
+        "event": "scaling_challenges",
+        "health_score": 75,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-14T10:00:37.037Z",
+        "event": "enterprise_features",
+        "health_score": 81,
+        "usage_percentage": 87,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-16T05:50:35.982Z",
+        "event": "mature_platform",
+        "health_score": 94,
+        "usage_percentage": 96,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000004",
+      "name": "Global Medical Network",
+      "tier": "Strategic",
+      "industry": "Healthcare",
+      "arr": 4199901,
+      "csm_id": "CSM_001",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-09-07T03:23:06.277Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Port Marlene",
+        "timezone": "JST"
+      },
+      "mrr": 349991.75,
+      "starting_arr": 3203909.3,
+      "expansion_arr": 1001618.31,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 43,
+      "health_score": 50,
+      "last_invoice_date": "2025-09-22T00:00:00",
+      "last_payment_date": "2025-10-18T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-16T11:56:04.026Z",
+        "event": "integration_planning",
+        "health_score": 71,
+        "usage_percentage": 80,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-23T01:17:30.685Z",
+        "event": "unified_deployment",
+        "health_score": 81,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-16T04:58:18.380Z",
+        "event": "integrated_operations",
+        "health_score": 83,
+        "usage_percentage": 81,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000005",
+      "name": "White, Boehm and Hilpert",
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "arr": 1833761,
+      "csm_id": "CSM_002",
+      "story_type": "compliance_driven",
+      "is_hero_account": false,
+      "created_date": "2023-02-02T22:37:58.792Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Lakeland",
+        "timezone": "PST"
+      },
+      "mrr": 152813.42,
+      "starting_arr": 1729185.32,
+      "expansion_arr": 277881.42,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 38,
+      "health_score": 68,
+      "last_invoice_date": "2025-07-17T00:00:00",
+      "last_payment_date": "2025-07-27T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-15T05:01:05.523Z",
+        "event": "policy_enforcement",
+        "health_score": 71,
+        "usage_percentage": 72,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-23T06:41:02.382Z",
+        "event": "audit_preparation",
+        "health_score": 80,
+        "usage_percentage": 84,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-05T13:37:30.595Z",
+        "event": "compliance_achievement",
+        "health_score": 85,
+        "usage_percentage": 84,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000006",
+      "name": "Harber LLC",
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "arr": 747423,
+      "csm_id": "CSM_001",
+      "story_type": "enterprise_modernization",
+      "is_hero_account": false,
+      "created_date": "2023-09-13T04:51:22.808Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Conroyview",
+        "timezone": "JST"
+      },
+      "mrr": 62285.25,
+      "starting_arr": 635112.34,
+      "expansion_arr": 54093.65,
+      "churn_arr": 0,
+      "contraction_arr": 30150.1,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 69,
+      "health_score": 46,
+      "last_invoice_date": "2025-07-16T00:00:00",
+      "last_payment_date": "2025-08-03T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-15T22:55:31.829Z",
+        "event": "hybrid_operations",
+        "health_score": 79,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-24T09:16:55.974Z",
+        "event": "modern_platform_adoption",
+        "health_score": 90,
+        "usage_percentage": 88,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-16T00:47:54.686Z",
+        "event": "full_modernization",
+        "health_score": 86,
+        "usage_percentage": 88,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000007",
+      "name": "Baumbach, Dietrich and Mueller",
+      "tier": "Enterprise",
+      "industry": "Education",
+      "arr": 1091244,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-08-09T02:33:33.301Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "North",
+        "country": "Japan",
+        "city": "Henrifield",
+        "timezone": "CET"
+      },
+      "mrr": 90937.0,
+      "starting_arr": 798897.4,
+      "expansion_arr": 174556.17,
+      "churn_arr": 0,
+      "contraction_arr": 23087.34,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 53,
+      "health_score": 57,
+      "last_invoice_date": "2025-08-06T00:00:00",
+      "last_payment_date": "2025-09-13T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-11T19:49:47.774Z",
+        "event": "umbrella_addition",
+        "health_score": 71,
+        "usage_percentage": 60,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-09T08:40:51.738Z",
+        "event": "security_maturity",
+        "health_score": 81,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-06T21:34:35.617Z",
+        "event": "comprehensive_security",
+        "health_score": 95,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000008",
+      "name": "Swaniawski Inc",
+      "tier": "Enterprise",
+      "industry": "Education",
+      "arr": 1456970,
+      "csm_id": "CSM_002",
+      "story_type": "cost_optimization",
+      "is_hero_account": false,
+      "created_date": "2023-12-30T10:59:37.236Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "South",
+        "country": "France",
+        "city": "Fort Arturostead",
+        "timezone": "EST"
+      },
+      "mrr": 121414.17,
+      "starting_arr": 1347556.68,
+      "expansion_arr": 145086.71,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 15,
+      "health_score": 72,
+      "last_invoice_date": "2025-09-18T00:00:00",
+      "last_payment_date": "2025-10-19T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-14T11:37:37.280Z",
+        "event": "efficiency_improvements",
+        "health_score": 78,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-17T19:11:48.615Z",
+        "event": "cost_savings_realized",
+        "health_score": 83,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-10T03:21:05.884Z",
+        "event": "optimized_operations",
+        "health_score": 85,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000009",
+      "name": "Quality Corporation",
+      "tier": "Enterprise",
+      "industry": "Manufacturing",
+      "arr": 1004742,
+      "csm_id": "CSM_003",
+      "story_type": "expansion_success",
+      "is_hero_account": false,
+      "created_date": "2023-10-24T14:38:38.031Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Boyleview",
+        "timezone": "EST"
+      },
+      "mrr": 83728.5,
+      "starting_arr": 721117.74,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 60",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 44,
+      "health_score": 71,
+      "last_invoice_date": "2025-08-29T00:00:00",
+      "last_payment_date": "2025-09-14T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-03T13:34:39.972Z",
+        "event": "adoption_acceleration",
+        "health_score": 89,
+        "usage_percentage": 83,
+        "context": "Advanced features activated, workflow integration",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-01T15:00:09.680Z",
+        "event": "expansion_signal",
+        "health_score": 95,
+        "usage_percentage": 93,
+        "context": "High utilization indicating expansion readiness",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-13T09:03:56.081Z",
+        "event": "expansion_closed",
+        "health_score": 99,
+        "usage_percentage": 101,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000010",
+      "name": "Block - Toy",
+      "tier": "Enterprise",
+      "industry": "Education",
+      "arr": 1797331,
+      "csm_id": "CSM_001",
+      "story_type": "digital_transformation",
+      "is_hero_account": false,
+      "created_date": "2023-09-29T04:41:35.654Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Maxwellstad",
+        "timezone": "JST"
+      },
+      "mrr": 149777.58,
+      "starting_arr": 1301685.89,
+      "expansion_arr": 242128.75,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Due on Receipt",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 40,
+      "health_score": 68,
+      "last_invoice_date": "2025-08-22T00:00:00",
+      "last_payment_date": "2025-09-13T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-21T15:50:48.071Z",
+        "event": "user_experience_focus",
+        "health_score": 81,
+        "usage_percentage": 79,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-06T13:02:37.747Z",
+        "event": "analytics_integration",
+        "health_score": 80,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-18T04:18:44.801Z",
+        "event": "full_digital_stack",
+        "health_score": 85,
+        "usage_percentage": 91,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000011",
+      "name": "Cyber Systems",
+      "tier": "Enterprise",
+      "industry": "Technology",
+      "arr": 1209071,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-10-31T04:33:07.719Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "South",
+        "country": "France",
+        "city": "Conroyhaven",
+        "timezone": "JST"
+      },
+      "mrr": 100755.92,
+      "starting_arr": 903843.72,
+      "expansion_arr": 162470.52,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "declining",
+      "payment_terms": "Net 30",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 25,
+      "health_score": 80,
+      "last_invoice_date": "2025-09-21T00:00:00",
+      "last_payment_date": "2025-10-06T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-03T06:00:28.358Z",
+        "event": "umbrella_addition",
+        "health_score": 70,
+        "usage_percentage": 70,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-04T09:48:01.890Z",
+        "event": "security_maturity",
+        "health_score": 80,
+        "usage_percentage": 93,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-06T04:32:08.395Z",
+        "event": "comprehensive_security",
+        "health_score": 88,
+        "usage_percentage": 94,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000012",
+      "name": "Medical Group",
+      "tier": "Enterprise",
+      "industry": "Healthcare",
+      "arr": 536311,
+      "csm_id": "CSM_002",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-07-16T17:32:36.774Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "North",
+        "country": "United Kingdom",
+        "city": "North Jordaneworth",
+        "timezone": "CET"
+      },
+      "mrr": 44692.58,
+      "starting_arr": 499622.9,
+      "expansion_arr": 44654.45,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 1,
+      "health_score": 100,
+      "last_invoice_date": "2025-07-26T00:00:00",
+      "last_payment_date": "2025-08-23T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-27T17:30:42.559Z",
+        "event": "integration_planning",
+        "health_score": 77,
+        "usage_percentage": 67,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-04T20:07:03.662Z",
+        "event": "unified_deployment",
+        "health_score": 82,
+        "usage_percentage": 78,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-18T21:31:29.824Z",
+        "event": "integrated_operations",
+        "health_score": 82,
+        "usage_percentage": 80,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000013",
+      "name": "Clinical Associates",
+      "tier": "Enterprise",
+      "industry": "Healthcare",
+      "arr": 1601116,
+      "csm_id": "CSM_002",
+      "story_type": "enterprise_modernization",
+      "is_hero_account": false,
+      "created_date": "2023-09-18T02:40:56.956Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "Southeast",
+        "country": "India",
+        "city": "Gulgowskibury",
+        "timezone": "PST"
+      },
+      "mrr": 133426.33,
+      "starting_arr": 1290102.21,
+      "expansion_arr": 398813.24,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "monthly",
+      "renewal_risk_score": 33,
+      "health_score": 77,
+      "last_invoice_date": "2025-09-15T00:00:00",
+      "last_payment_date": "2025-09-28T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-22T03:10:10.718Z",
+        "event": "hybrid_operations",
+        "health_score": 78,
+        "usage_percentage": 65,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-06T16:59:18.961Z",
+        "event": "modern_platform_adoption",
+        "health_score": 88,
+        "usage_percentage": 91,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-01T07:29:19.767Z",
+        "event": "full_modernization",
+        "health_score": 85,
+        "usage_percentage": 88,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000014",
+      "name": "Ondricka, Waters and Wilderman",
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "arr": 1211950,
+      "csm_id": "CSM_002",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-09-17T22:39:17.276Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "South",
+        "country": "France",
+        "city": "South Esperanza",
+        "timezone": "PST"
+      },
+      "mrr": 100995.83,
+      "starting_arr": 1025363.51,
+      "expansion_arr": 267288.27,
+      "churn_arr": 0,
+      "contraction_arr": 4854.55,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 47,
+      "health_score": 58,
+      "last_invoice_date": "2025-08-22T00:00:00",
+      "last_payment_date": "2025-09-03T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-12T17:55:24.011Z",
+        "event": "scaling_challenges",
+        "health_score": 78,
+        "usage_percentage": 72,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-10T13:39:17.120Z",
+        "event": "enterprise_features",
+        "health_score": 89,
+        "usage_percentage": 87,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-04T18:37:01.815Z",
+        "event": "mature_platform",
+        "health_score": 86,
+        "usage_percentage": 92,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000015",
+      "name": "Investment Management",
+      "tier": "Enterprise",
+      "industry": "Financial Services",
+      "arr": 811945,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-03-26T02:00:34.503Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "East",
+        "country": "United States",
+        "state": "New York",
+        "city": "Sydneeton",
+        "timezone": "EST"
+      },
+      "mrr": 67662.08,
+      "starting_arr": 694087.43,
+      "expansion_arr": 135379.21,
+      "churn_arr": 0,
+      "contraction_arr": 8292.36,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 22,
+      "health_score": 74,
+      "last_invoice_date": "2025-09-13T00:00:00",
+      "last_payment_date": "2025-09-23T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-25T03:58:28.248Z",
+        "event": "umbrella_addition",
+        "health_score": 71,
+        "usage_percentage": 74,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-04T16:06:26.722Z",
+        "event": "security_maturity",
+        "health_score": 84,
+        "usage_percentage": 80,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-14T00:32:53.025Z",
+        "event": "comprehensive_security",
+        "health_score": 90,
+        "usage_percentage": 95,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000016",
+      "name": "Capital Management",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 439445,
+      "csm_id": "CSM_001",
+      "story_type": "digital_transformation",
+      "is_hero_account": false,
+      "created_date": "2023-08-10T00:00:56.435Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Fort Lexi",
+        "timezone": "PST"
+      },
+      "mrr": 36620.42,
+      "starting_arr": 357959.32,
+      "expansion_arr": 109518.17,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 60",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 10,
+      "health_score": 85,
+      "last_invoice_date": "2025-07-15T00:00:00",
+      "last_payment_date": "2025-08-13T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-19T01:11:06.542Z",
+        "event": "user_experience_focus",
+        "health_score": 77,
+        "usage_percentage": 71,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-16T05:50:03.943Z",
+        "event": "analytics_integration",
+        "health_score": 83,
+        "usage_percentage": 86,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-02T00:07:28.865Z",
+        "event": "full_digital_stack",
+        "health_score": 90,
+        "usage_percentage": 98,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000017",
+      "name": "Bode - Mayer",
+      "tier": "Commercial",
+      "industry": "Retail",
+      "arr": 323711,
+      "csm_id": "CSM_003",
+      "story_type": "enterprise_modernization",
+      "is_hero_account": false,
+      "created_date": "2023-06-18T16:09:36.943Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "North Jarretttown",
+        "timezone": "PST"
+      },
+      "mrr": 26975.92,
+      "starting_arr": 276099.41,
+      "expansion_arr": 58525.42,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "monthly",
+      "renewal_risk_score": 53,
+      "health_score": 35,
+      "last_invoice_date": "2025-07-14T00:00:00",
+      "last_payment_date": "2025-08-02T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-01T04:28:06.073Z",
+        "event": "hybrid_operations",
+        "health_score": 80,
+        "usage_percentage": 72,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-14T00:55:49.075Z",
+        "event": "modern_platform_adoption",
+        "health_score": 89,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-01T02:52:21.531Z",
+        "event": "full_modernization",
+        "health_score": 87,
+        "usage_percentage": 93,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000018",
+      "name": "Smith, Ratke and Ankunding",
+      "tier": "Commercial",
+      "industry": "Government",
+      "arr": 407999,
+      "csm_id": "CSM_002",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-12-06T06:57:42.110Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "North Brittanystead",
+        "timezone": "PST"
+      },
+      "mrr": 33999.92,
+      "starting_arr": 313378.75,
+      "expansion_arr": 78956.96,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "monthly",
+      "renewal_risk_score": 6,
+      "health_score": 88,
+      "last_invoice_date": "2025-08-18T00:00:00",
+      "last_payment_date": "2025-08-30T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-04T02:37:03.442Z",
+        "event": "scaling_challenges",
+        "health_score": 83,
+        "usage_percentage": 86,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-03T01:34:43.297Z",
+        "event": "enterprise_features",
+        "health_score": 88,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-26T19:26:28.187Z",
+        "event": "mature_platform",
+        "health_score": 93,
+        "usage_percentage": 95,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000019",
+      "name": "Pagac - Muller",
+      "tier": "Commercial",
+      "industry": "Government",
+      "arr": 131258,
+      "csm_id": "CSM_002",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-05-03T22:23:48.298Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "North",
+        "country": "United Kingdom",
+        "city": "Emeliehaven",
+        "timezone": "JST"
+      },
+      "mrr": 10938.17,
+      "starting_arr": 91996.95,
+      "expansion_arr": 23288.15,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 72,
+      "health_score": 47,
+      "last_invoice_date": "2025-07-15T00:00:00",
+      "last_payment_date": "2025-07-27T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-16T12:26:16.069Z",
+        "event": "scaling_challenges",
+        "health_score": 84,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-05T05:53:45.905Z",
+        "event": "enterprise_features",
+        "health_score": 85,
+        "usage_percentage": 97,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-01T07:30:24.893Z",
+        "event": "mature_platform",
+        "health_score": 86,
+        "usage_percentage": 101,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000020",
+      "name": "Credit Advisors",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 137516,
+      "csm_id": "CSM_001",
+      "story_type": "cost_optimization",
+      "is_hero_account": false,
+      "created_date": "2023-10-30T03:08:43.158Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Hillardborough",
+        "timezone": "EST"
+      },
+      "mrr": 11459.67,
+      "starting_arr": 124953.74,
+      "expansion_arr": 10948.85,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 5,
+      "health_score": 88,
+      "last_invoice_date": "2025-09-09T00:00:00",
+      "last_payment_date": "2025-10-11T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-24T19:22:35.948Z",
+        "event": "efficiency_improvements",
+        "health_score": 82,
+        "usage_percentage": 74,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-19T10:38:44.582Z",
+        "event": "cost_savings_realized",
+        "health_score": 84,
+        "usage_percentage": 86,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-25T09:14:55.704Z",
+        "event": "optimized_operations",
+        "health_score": 86,
+        "usage_percentage": 88,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000021",
+      "name": "Data Innovations",
+      "tier": "Commercial",
+      "industry": "Technology",
+      "arr": 331717,
+      "csm_id": "CSM_001",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-03-06T21:58:51.798Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Minneapolis",
+        "timezone": "PST"
+      },
+      "mrr": 27643.08,
+      "starting_arr": 296896.35,
+      "expansion_arr": 43546.31,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "declining",
+      "payment_terms": "Net 60",
+      "billing_frequency": "monthly",
+      "renewal_risk_score": 24,
+      "health_score": 78,
+      "last_invoice_date": "2025-08-11T00:00:00",
+      "last_payment_date": "2025-09-16T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-01T12:45:31.817Z",
+        "event": "integration_planning",
+        "health_score": 71,
+        "usage_percentage": 72,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-05T20:19:46.565Z",
+        "event": "unified_deployment",
+        "health_score": 77,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-07T15:09:18.056Z",
+        "event": "integrated_operations",
+        "health_score": 86,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000022",
+      "name": "Kris - Dibbert",
+      "tier": "Commercial",
+      "industry": "Energy",
+      "arr": 215609,
+      "csm_id": "CSM_001",
+      "story_type": "expansion_success",
+      "is_hero_account": false,
+      "created_date": "2023-08-07T13:30:17.091Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "North",
+        "country": "Japan",
+        "city": "Josuetown",
+        "timezone": "EST"
+      },
+      "mrr": 17967.42,
+      "starting_arr": 194168.58,
+      "expansion_arr": 45741.42,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 60",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 61,
+      "health_score": 48,
+      "last_invoice_date": "2025-08-14T00:00:00",
+      "last_payment_date": "2025-09-07T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-24T13:44:41.548Z",
+        "event": "adoption_acceleration",
+        "health_score": 81,
+        "usage_percentage": 85,
+        "context": "Advanced features activated, workflow integration",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-20T00:44:20.673Z",
+        "event": "expansion_signal",
+        "health_score": 85,
+        "usage_percentage": 99,
+        "context": "High utilization indicating expansion readiness",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-23T18:46:01.501Z",
+        "event": "expansion_closed",
+        "health_score": 92,
+        "usage_percentage": 107,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000023",
+      "name": "Smith LLC",
+      "tier": "Commercial",
+      "industry": "Government",
+      "arr": 450570,
+      "csm_id": "CSM_002",
+      "story_type": "expansion_success",
+      "is_hero_account": false,
+      "created_date": "2023-07-09T16:43:01.382Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "South Leola",
+        "timezone": "JST"
+      },
+      "mrr": 37547.5,
+      "starting_arr": 340509.67,
+      "expansion_arr": 58435.86,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 32,
+      "health_score": 75,
+      "last_invoice_date": "2025-09-19T00:00:00",
+      "last_payment_date": "2025-10-06T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-03T07:33:34.624Z",
+        "event": "adoption_acceleration",
+        "health_score": 80,
+        "usage_percentage": 80,
+        "context": "Advanced features activated, workflow integration",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-21T15:32:24.207Z",
+        "event": "expansion_signal",
+        "health_score": 92,
+        "usage_percentage": 96,
+        "context": "High utilization indicating expansion readiness",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-25T00:27:52.379Z",
+        "event": "expansion_closed",
+        "health_score": 100,
+        "usage_percentage": 92,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000024",
+      "name": "Schultz - Collins",
+      "tier": "Commercial",
+      "industry": "Retail",
+      "arr": 464096,
+      "csm_id": "CSM_003",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-05-08T06:46:31.293Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "South",
+        "country": "Australia",
+        "city": "Adrienstad",
+        "timezone": "JST"
+      },
+      "mrr": 38674.67,
+      "starting_arr": 426624.7,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 887.75,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 51,
+      "health_score": 55,
+      "last_invoice_date": "2025-07-11T00:00:00",
+      "last_payment_date": "2025-08-02T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-08T09:55:14.727Z",
+        "event": "scaling_challenges",
+        "health_score": 85,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-18T01:40:10.197Z",
+        "event": "enterprise_features",
+        "health_score": 90,
+        "usage_percentage": 92,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-08T02:13:11.713Z",
+        "event": "mature_platform",
+        "health_score": 90,
+        "usage_percentage": 94,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000025",
+      "name": "Herzog, Bode and Frami",
+      "tier": "Commercial",
+      "industry": "Education",
+      "arr": 343375,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-05-04T13:08:30.920Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "North",
+        "country": "Japan",
+        "city": "Rauhaven",
+        "timezone": "CET"
+      },
+      "mrr": 28614.58,
+      "starting_arr": 262228.84,
+      "expansion_arr": 17284.9,
+      "churn_arr": 9244.55,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 68,
+      "health_score": 36,
+      "last_invoice_date": "2025-08-13T00:00:00",
+      "last_payment_date": "2025-08-30T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-23T16:26:31.407Z",
+        "event": "umbrella_addition",
+        "health_score": 73,
+        "usage_percentage": 70,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-15T11:48:51.972Z",
+        "event": "security_maturity",
+        "health_score": 85,
+        "usage_percentage": 82,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-11T20:25:59.827Z",
+        "event": "comprehensive_security",
+        "health_score": 85,
+        "usage_percentage": 100,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000026",
+      "name": "Credit Group",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 441614,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-10-14T05:11:33.335Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Lake Danatown",
+        "timezone": "PST"
+      },
+      "mrr": 36801.17,
+      "starting_arr": 388593.19,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 51,
+      "health_score": 65,
+      "last_invoice_date": "2025-08-31T00:00:00",
+      "last_payment_date": "2025-09-29T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-06T00:57:46.748Z",
+        "event": "umbrella_addition",
+        "health_score": 70,
+        "usage_percentage": 69,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-21T20:53:25.978Z",
+        "event": "security_maturity",
+        "health_score": 85,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-24T07:49:06.215Z",
+        "event": "comprehensive_security",
+        "health_score": 92,
+        "usage_percentage": 88,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000027",
+      "name": "Gutmann, King and Gorczany",
+      "tier": "Commercial",
+      "industry": "Education",
+      "arr": 474193,
+      "csm_id": "CSM_003",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-12-19T12:05:41.819Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Hauckstead",
+        "timezone": "EST"
+      },
+      "mrr": 39516.08,
+      "starting_arr": 380074.6,
+      "expansion_arr": 52528.72,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 26,
+      "health_score": 84,
+      "last_invoice_date": "2025-09-01T00:00:00",
+      "last_payment_date": "2025-09-16T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-17T17:59:43.704Z",
+        "event": "integration_planning",
+        "health_score": 78,
+        "usage_percentage": 72,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-24T20:04:04.101Z",
+        "event": "unified_deployment",
+        "health_score": 77,
+        "usage_percentage": 75,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-12T08:06:01.294Z",
+        "event": "integrated_operations",
+        "health_score": 87,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000028",
+      "name": "Medical Alliance",
+      "tier": "Commercial",
+      "industry": "Healthcare",
+      "arr": 181551,
+      "csm_id": "CSM_002",
+      "story_type": "expansion_success",
+      "is_hero_account": false,
+      "created_date": "2023-08-09T20:43:07.149Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "South",
+        "country": "Australia",
+        "city": "Port Marcusworth",
+        "timezone": "CET"
+      },
+      "mrr": 15129.25,
+      "starting_arr": 139966.13,
+      "expansion_arr": 31563.03,
+      "churn_arr": 0,
+      "contraction_arr": 2132.03,
+      "arr_trend": "growing",
+      "payment_terms": "Net 60",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 76,
+      "health_score": 40,
+      "last_invoice_date": "2025-09-13T00:00:00",
+      "last_payment_date": "2025-10-22T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-25T14:05:33.704Z",
+        "event": "adoption_acceleration",
+        "health_score": 84,
+        "usage_percentage": 89,
+        "context": "Advanced features activated, workflow integration",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-06T10:28:48.303Z",
+        "event": "expansion_signal",
+        "health_score": 90,
+        "usage_percentage": 94,
+        "context": "High utilization indicating expansion readiness",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-13T17:36:11.094Z",
+        "event": "expansion_closed",
+        "health_score": 94,
+        "usage_percentage": 99,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000029",
+      "name": "Medical Systems",
+      "tier": "Commercial",
+      "industry": "Healthcare",
+      "arr": 215678,
+      "csm_id": "CSM_002",
+      "story_type": "compliance_driven",
+      "is_hero_account": false,
+      "created_date": "2023-05-09T18:39:51.715Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "Herminahaven",
+        "timezone": "JST"
+      },
+      "mrr": 17973.17,
+      "starting_arr": 173321.05,
+      "expansion_arr": 19170.98,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 26,
+      "health_score": 75,
+      "last_invoice_date": "2025-07-30T00:00:00",
+      "last_payment_date": "2025-08-23T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-26T01:46:01.366Z",
+        "event": "policy_enforcement",
+        "health_score": 80,
+        "usage_percentage": 67,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-23T02:02:33.887Z",
+        "event": "audit_preparation",
+        "health_score": 82,
+        "usage_percentage": 92,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-01T21:31:09.016Z",
+        "event": "compliance_achievement",
+        "health_score": 86,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000030",
+      "name": "Bashirian Inc",
+      "tier": "Commercial",
+      "industry": "Government",
+      "arr": 88638,
+      "csm_id": "CSM_002",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-02-10T11:10:06.925Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "East",
+        "country": "United States",
+        "state": "New York",
+        "city": "Hutchinson",
+        "timezone": "JST"
+      },
+      "mrr": 7386.5,
+      "starting_arr": 65944.16,
+      "expansion_arr": 13614.05,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 36,
+      "health_score": 80,
+      "last_invoice_date": "2025-07-28T00:00:00",
+      "last_payment_date": "2025-09-08T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-14T17:49:07.213Z",
+        "event": "umbrella_addition",
+        "health_score": 79,
+        "usage_percentage": 75,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-05T13:08:10.859Z",
+        "event": "security_maturity",
+        "health_score": 87,
+        "usage_percentage": 80,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-12T16:09:46.062Z",
+        "event": "comprehensive_security",
+        "health_score": 93,
+        "usage_percentage": 87,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000031",
+      "name": "Credit Partners",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 202633,
+      "csm_id": "CSM_001",
+      "story_type": "expansion_success",
+      "is_hero_account": false,
+      "created_date": "2023-10-30T12:08:00.383Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Larsonchester",
+        "timezone": "EST"
+      },
+      "mrr": 16886.08,
+      "starting_arr": 163461.04,
+      "expansion_arr": 28203.01,
+      "churn_arr": 0,
+      "contraction_arr": 4559.95,
+      "arr_trend": "stable",
+      "payment_terms": "Net 60",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 19,
+      "health_score": 80,
+      "last_invoice_date": "2025-07-28T00:00:00",
+      "last_payment_date": "2025-08-11T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-26T08:46:39.076Z",
+        "event": "adoption_acceleration",
+        "health_score": 80,
+        "usage_percentage": 80,
+        "context": "Advanced features activated, workflow integration",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-12T20:06:10.244Z",
+        "event": "expansion_signal",
+        "health_score": 89,
+        "usage_percentage": 87,
+        "context": "High utilization indicating expansion readiness",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-02T06:52:30.845Z",
+        "event": "expansion_closed",
+        "health_score": 98,
+        "usage_percentage": 107,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000032",
+      "name": "Wealth Group",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 320768,
+      "csm_id": "CSM_001",
+      "story_type": "compliance_driven",
+      "is_hero_account": false,
+      "created_date": "2023-05-17T00:13:03.233Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Kesslerhaven",
+        "timezone": "CET"
+      },
+      "mrr": 26730.67,
+      "starting_arr": 281758.19,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 1292.34,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 54,
+      "health_score": 45,
+      "last_invoice_date": "2025-07-25T00:00:00",
+      "last_payment_date": "2025-08-30T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-25T16:07:18.311Z",
+        "event": "policy_enforcement",
+        "health_score": 80,
+        "usage_percentage": 70,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-12T09:17:21.030Z",
+        "event": "audit_preparation",
+        "health_score": 82,
+        "usage_percentage": 84,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-22T12:17:41.295Z",
+        "event": "compliance_achievement",
+        "health_score": 87,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000033",
+      "name": "Hansen LLC",
+      "tier": "Commercial",
+      "industry": "Energy",
+      "arr": 82833,
+      "csm_id": "CSM_003",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-09-21T04:41:20.811Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "East",
+        "country": "United States",
+        "state": "New York",
+        "city": "Burlington",
+        "timezone": "CET"
+      },
+      "mrr": 6902.75,
+      "starting_arr": 59272.51,
+      "expansion_arr": 10593.96,
+      "churn_arr": 0,
+      "contraction_arr": 80.89,
+      "arr_trend": "stable",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 4,
+      "health_score": 94,
+      "last_invoice_date": "2025-07-31T00:00:00",
+      "last_payment_date": "2025-09-13T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-05T23:25:47.839Z",
+        "event": "integration_planning",
+        "health_score": 73,
+        "usage_percentage": 73,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-21T06:26:37.585Z",
+        "event": "unified_deployment",
+        "health_score": 85,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-18T03:15:33.512Z",
+        "event": "integrated_operations",
+        "health_score": 80,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000034",
+      "name": "Cloud Solutions",
+      "tier": "Commercial",
+      "industry": "Technology",
+      "arr": 395737,
+      "csm_id": "CSM_001",
+      "story_type": "compliance_driven",
+      "is_hero_account": false,
+      "created_date": "2023-05-19T00:52:44.499Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "East",
+        "country": "United States",
+        "state": "New York",
+        "city": "Jessiecester",
+        "timezone": "PST"
+      },
+      "mrr": 32978.08,
+      "starting_arr": 350970.8,
+      "expansion_arr": 67532.72,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 23,
+      "health_score": 72,
+      "last_invoice_date": "2025-07-25T00:00:00",
+      "last_payment_date": "2025-08-12T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-14T07:24:35.463Z",
+        "event": "policy_enforcement",
+        "health_score": 77,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-16T15:51:27.268Z",
+        "event": "audit_preparation",
+        "health_score": 85,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-03T20:37:23.088Z",
+        "event": "compliance_achievement",
+        "health_score": 95,
+        "usage_percentage": 81,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000035",
+      "name": "Bruen - Adams",
+      "tier": "Commercial",
+      "industry": "Retail",
+      "arr": 152780,
+      "csm_id": "CSM_003",
+      "story_type": "cost_optimization",
+      "is_hero_account": false,
+      "created_date": "2023-06-30T04:33:49.612Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Fort Lauderdale",
+        "timezone": "PST"
+      },
+      "mrr": 12731.67,
+      "starting_arr": 144404.68,
+      "expansion_arr": 35351.12,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 53,
+      "health_score": 43,
+      "last_invoice_date": "2025-07-26T00:00:00",
+      "last_payment_date": "2025-08-25T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-21T00:53:29.193Z",
+        "event": "efficiency_improvements",
+        "health_score": 84,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-01T09:25:31.738Z",
+        "event": "cost_savings_realized",
+        "health_score": 85,
+        "usage_percentage": 93,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-04T10:54:00.600Z",
+        "event": "optimized_operations",
+        "health_score": 88,
+        "usage_percentage": 96,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000036",
+      "name": "Trust Holdings",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 51826,
+      "csm_id": "CSM_001",
+      "story_type": "digital_transformation",
+      "is_hero_account": false,
+      "created_date": "2023-10-20T08:07:58.034Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "South",
+        "country": "Australia",
+        "city": "West Frida",
+        "timezone": "JST"
+      },
+      "mrr": 4318.83,
+      "starting_arr": 40651.03,
+      "expansion_arr": 5475.49,
+      "churn_arr": 1092.4,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 2,
+      "health_score": 88,
+      "last_invoice_date": "2025-09-17T00:00:00",
+      "last_payment_date": "2025-09-28T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-10T09:46:49.491Z",
+        "event": "user_experience_focus",
+        "health_score": 85,
+        "usage_percentage": 80,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-26T10:03:56.456Z",
+        "event": "analytics_integration",
+        "health_score": 85,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-19T21:34:40.009Z",
+        "event": "full_digital_stack",
+        "health_score": 87,
+        "usage_percentage": 87,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000037",
+      "name": "Stokes and Sons",
+      "tier": "Commercial",
+      "industry": "Government",
+      "arr": 490470,
+      "csm_id": "CSM_002",
+      "story_type": "digital_transformation",
+      "is_hero_account": false,
+      "created_date": "2023-09-30T10:21:14.059Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Handfurt",
+        "timezone": "JST"
+      },
+      "mrr": 40872.5,
+      "starting_arr": 459768.02,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 59,
+      "health_score": 54,
+      "last_invoice_date": "2025-09-01T00:00:00",
+      "last_payment_date": "2025-09-18T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-24T06:57:12.826Z",
+        "event": "user_experience_focus",
+        "health_score": 81,
+        "usage_percentage": 73,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-18T13:47:32.950Z",
+        "event": "analytics_integration",
+        "health_score": 87,
+        "usage_percentage": 83,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-22T10:02:25.405Z",
+        "event": "full_digital_stack",
+        "health_score": 91,
+        "usage_percentage": 98,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000038",
+      "name": "Wealth Capital",
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "arr": 424729,
+      "csm_id": "CSM_001",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-03-01T16:46:46.514Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "South",
+        "country": "Australia",
+        "city": "West Ismaelhaven",
+        "timezone": "JST"
+      },
+      "mrr": 35394.08,
+      "starting_arr": 379897.99,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "declining",
+      "payment_terms": "Net 45",
+      "billing_frequency": "monthly",
+      "renewal_risk_score": 54,
+      "health_score": 53,
+      "last_invoice_date": "2025-07-09T00:00:00",
+      "last_payment_date": "2025-08-03T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-26T09:42:16.704Z",
+        "event": "umbrella_addition",
+        "health_score": 72,
+        "usage_percentage": 64,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-16T07:06:36.380Z",
+        "event": "security_maturity",
+        "health_score": 88,
+        "usage_percentage": 93,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-03T18:13:06.730Z",
+        "event": "comprehensive_security",
+        "health_score": 89,
+        "usage_percentage": 93,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000039",
+      "name": "Mohr and Sons",
+      "tier": "Commercial",
+      "industry": "Education",
+      "arr": 396896,
+      "csm_id": "CSM_002",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-07-15T20:36:38.605Z",
+      "geography": {
+        "theater": "APAC",
+        "region": "North",
+        "country": "Japan",
+        "city": "West Heber",
+        "timezone": "CET"
+      },
+      "mrr": 33074.67,
+      "starting_arr": 287938.26,
+      "expansion_arr": 87340.4,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "declining",
+      "payment_terms": "Net 45",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 39,
+      "health_score": 62,
+      "last_invoice_date": "2025-08-10T00:00:00",
+      "last_payment_date": "2025-08-20T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-11T19:17:54.359Z",
+        "event": "scaling_challenges",
+        "health_score": 85,
+        "usage_percentage": 81,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-27T07:51:00.400Z",
+        "event": "enterprise_features",
+        "health_score": 89,
+        "usage_percentage": 96,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-01T23:45:44.034Z",
+        "event": "mature_platform",
+        "health_score": 94,
+        "usage_percentage": 85,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000040",
+      "name": "Data Solutions",
+      "tier": "Commercial",
+      "industry": "Technology",
+      "arr": 119330,
+      "csm_id": "CSM_001",
+      "story_type": "enterprise_modernization",
+      "is_hero_account": false,
+      "created_date": "2023-10-24T11:52:37.998Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Sydnibury",
+        "timezone": "JST"
+      },
+      "mrr": 9944.17,
+      "starting_arr": 108875.96,
+      "expansion_arr": 8485.29,
+      "churn_arr": 3792.22,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 2,
+      "health_score": 100,
+      "last_invoice_date": "2025-07-16T00:00:00",
+      "last_payment_date": "2025-08-25T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-15T21:39:44.555Z",
+        "event": "hybrid_operations",
+        "health_score": 70,
+        "usage_percentage": 84,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-18T08:46:40.435Z",
+        "event": "modern_platform_adoption",
+        "health_score": 81,
+        "usage_percentage": 79,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-19T00:48:57.024Z",
+        "event": "full_modernization",
+        "health_score": 95,
+        "usage_percentage": 96,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000041",
+      "name": "Collier, Bayer and Ward",
+      "tier": "Commercial",
+      "industry": "Education",
+      "arr": 80903,
+      "csm_id": "CSM_001",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-11-06T15:10:49.305Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "Central",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Vonbury",
+        "timezone": "PST"
+      },
+      "mrr": 6741.92,
+      "starting_arr": 66034.52,
+      "expansion_arr": 13631.74,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "declining",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 22,
+      "health_score": 87,
+      "last_invoice_date": "2025-08-10T00:00:00",
+      "last_payment_date": "2025-08-21T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-21T11:34:00.598Z",
+        "event": "scaling_challenges",
+        "health_score": 83,
+        "usage_percentage": 82,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-18T01:47:10.258Z",
+        "event": "enterprise_features",
+        "health_score": 85,
+        "usage_percentage": 84,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-20T04:45:26.127Z",
+        "event": "mature_platform",
+        "health_score": 95,
+        "usage_percentage": 91,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000042",
+      "name": "Mitchell, Batz and Pouros",
+      "tier": "Commercial",
+      "industry": "Retail",
+      "arr": 420242,
+      "csm_id": "CSM_003",
+      "story_type": "startup_scaling",
+      "is_hero_account": false,
+      "created_date": "2023-09-06T00:47:36.416Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "Central",
+        "country": "Switzerland",
+        "city": "Bradenborough",
+        "timezone": "EST"
+      },
+      "mrr": 35020.17,
+      "starting_arr": 346101.49,
+      "expansion_arr": 0,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 13,
+      "health_score": 92,
+      "last_invoice_date": "2025-08-29T00:00:00",
+      "last_payment_date": "2025-09-13T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-20T01:08:53.848Z",
+        "event": "scaling_challenges",
+        "health_score": 79,
+        "usage_percentage": 82,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-11T23:49:11.949Z",
+        "event": "enterprise_features",
+        "health_score": 90,
+        "usage_percentage": 92,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-13T22:13:58.917Z",
+        "event": "mature_platform",
+        "health_score": 85,
+        "usage_percentage": 103,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000043",
+      "name": "Cronin and Sons",
+      "tier": "SMB",
+      "industry": "Energy",
+      "arr": 10017,
+      "csm_id": "CSM_003",
+      "story_type": "acquisition_integration",
+      "is_hero_account": false,
+      "created_date": "2023-11-18T07:39:07.991Z",
+      "geography": {
+        "theater": "AMER",
+        "region": "West",
+        "country": "United States",
+        "state": "California",
+        "city": "East Fausto",
+        "timezone": "PST"
+      },
+      "mrr": 834.75,
+      "starting_arr": 7616.32,
+      "expansion_arr": 1613.09,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 48,
+      "health_score": 48,
+      "last_invoice_date": "2025-07-10T00:00:00",
+      "last_payment_date": "2025-08-12T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-22T15:33:19.411Z",
+        "event": "integration_planning",
+        "health_score": 73,
+        "usage_percentage": 79,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-16T14:31:46.305Z",
+        "event": "unified_deployment",
+        "health_score": 84,
+        "usage_percentage": 76,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-17T09:09:20.712Z",
+        "event": "integrated_operations",
+        "health_score": 83,
+        "usage_percentage": 75,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000044",
+      "name": "Corwin LLC",
+      "tier": "SMB",
+      "industry": "Government",
+      "arr": 24362,
+      "csm_id": "CSM_002",
+      "story_type": "security_focused_growth",
+      "is_hero_account": false,
+      "created_date": "2023-03-29T14:43:58.567Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "North",
+        "country": "United Kingdom",
+        "city": "Ryanmouth",
+        "timezone": "EST"
+      },
+      "mrr": 2030.17,
+      "starting_arr": 19935.79,
+      "expansion_arr": 3291.32,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "stable",
+      "payment_terms": "Net 30",
+      "billing_frequency": "annual",
+      "renewal_risk_score": 56,
+      "health_score": 35,
+      "last_invoice_date": "2025-07-16T00:00:00",
+      "last_payment_date": "2025-08-06T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 4,
+        "date": "2024-04-04T18:36:20.478Z",
+        "event": "umbrella_addition",
+        "health_score": 79,
+        "usage_percentage": 64,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      },
+      {
+        "month": 8,
+        "date": "2024-08-03T14:56:31.827Z",
+        "event": "security_maturity",
+        "health_score": 83,
+        "usage_percentage": 89,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-09T23:28:18.947Z",
+        "event": "comprehensive_security",
+        "health_score": 90,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "High"
+      }
+    ]
+  },
+  {
+    "account": {
+      "id": "CUST_000045",
+      "name": "Goldner - Bartoletti",
+      "tier": "SMB",
+      "industry": "Government",
+      "arr": 22076,
+      "csm_id": "CSM_002",
+      "story_type": "enterprise_modernization",
+      "is_hero_account": false,
+      "created_date": "2023-02-09T01:44:36.689Z",
+      "geography": {
+        "theater": "EMEA",
+        "region": "North",
+        "country": "United Kingdom",
+        "city": "Lake Reynaville",
+        "timezone": "EST"
+      },
+      "mrr": 1839.67,
+      "starting_arr": 16510.31,
+      "expansion_arr": 2324.6,
+      "churn_arr": 0,
+      "contraction_arr": 0,
+      "arr_trend": "growing",
+      "payment_terms": "Due on Receipt",
+      "billing_frequency": "quarterly",
+      "renewal_risk_score": 47,
+      "health_score": 50,
+      "last_invoice_date": "2025-07-16T00:00:00",
+      "last_payment_date": "2025-08-03T00:00:00"
+    },
+    "timeline": [
+      {
+        "month": 6,
+        "date": "2024-06-21T13:13:03.710Z",
+        "event": "hybrid_operations",
+        "health_score": 71,
+        "usage_percentage": 76,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 9,
+        "date": "2024-09-09T14:40:40.007Z",
+        "event": "modern_platform_adoption",
+        "health_score": 84,
+        "usage_percentage": 90,
+        "context": "Business milestone event",
+        "engagement_level": "Low"
+      },
+      {
+        "month": 12,
+        "date": "2024-12-04T03:47:29.391Z",
+        "event": "full_modernization",
+        "health_score": 89,
+        "usage_percentage": 86,
+        "context": "Business milestone event",
+        "engagement_level": "Medium"
+      }
+    ]
+  }
+]

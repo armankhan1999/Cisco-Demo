@@ -1,0 +1,191 @@
+[
+  {
+    "pipeline_id": "PIPE_2025-Q3",
+    "quarter": "2025-Q3",
+    "total_expansion_opportunities": 44,
+    "total_pipeline_arr": 4926724,
+    "weighted_pipeline_arr": 3081939,
+    "opportunities_by_stage": {
+      "Negotiating": {
+        "count": 6,
+        "close_prob": 77,
+        "arr": 550680,
+        "avg_close_probability": 77
+      },
+      "Proposed": {
+        "count": 14,
+        "close_prob": 66,
+        "arr": 1914444,
+        "avg_close_probability": 66
+      },
+      "Engaged": {
+        "count": 14,
+        "close_prob": 43,
+        "arr": 1313662,
+        "avg_close_probability": 43
+      },
+      "Prospecting": {
+        "count": 13,
+        "close_prob": 24,
+        "arr": 1423903,
+        "avg_close_probability": 24
+      }
+    },
+    "expansion_by_type": {
+      "cross_sell": {
+        "count": 27,
+        "arr": 3202370,
+        "top_products": [
+          "ThousandEyes",
+          "Duo",
+          "Meraki"
+        ]
+      },
+      "upsell": {
+        "count": 16,
+        "arr": 1724353,
+        "avg_expansion_percent": 34
+      }
+    },
+    "velocity_metrics": {
+      "avg_days_in_stage": {
+        "Negotiating": 26,
+        "Proposed": 40,
+        "Engaged": 48,
+        "Prospecting": 67
+      },
+      "stage_conversion_rates": {
+        "Prospecting_to_Engaged": 61,
+        "Engaged_to_Proposed": 70,
+        "Proposed_to_Negotiating": 78,
+        "Negotiating_to_Closed": 83
+      }
+    }
+  },
+  {
+    "pipeline_id": "PIPE_2025-Q4",
+    "quarter": "2025-Q4",
+    "total_expansion_opportunities": 59,
+    "total_pipeline_arr": 8165954,
+    "weighted_pipeline_arr": 5092689,
+    "opportunities_by_stage": {
+      "Negotiating": {
+        "count": 10,
+        "close_prob": 83,
+        "arr": 1262490,
+        "avg_close_probability": 83
+      },
+      "Proposed": {
+        "count": 16,
+        "close_prob": 61,
+        "arr": 1866848,
+        "avg_close_probability": 61
+      },
+      "Engaged": {
+        "count": 16,
+        "close_prob": 43,
+        "arr": 1508624,
+        "avg_close_probability": 43
+      },
+      "Prospecting": {
+        "count": 13,
+        "close_prob": 29,
+        "arr": 1582490,
+        "avg_close_probability": 29
+      }
+    },
+    "expansion_by_type": {
+      "cross_sell": {
+        "count": 36,
+        "arr": 5307870,
+        "top_products": [
+          "Duo",
+          "ThousandEyes",
+          "Umbrella"
+        ]
+      },
+      "upsell": {
+        "count": 22,
+        "arr": 2858083,
+        "avg_expansion_percent": 37
+      }
+    },
+    "velocity_metrics": {
+      "avg_days_in_stage": {
+        "Negotiating": 20,
+        "Proposed": 38,
+        "Engaged": 43,
+        "Prospecting": 62
+      },
+      "stage_conversion_rates": {
+        "Prospecting_to_Engaged": 68,
+        "Engaged_to_Proposed": 80,
+        "Proposed_to_Negotiating": 77,
+        "Negotiating_to_Closed": 84
+      }
+    }
+  },
+  {
+    "pipeline_id": "PIPE_2026-Q1",
+    "quarter": "2026-Q1",
+    "total_expansion_opportunities": 58,
+    "total_pipeline_arr": 7346048,
+    "weighted_pipeline_arr": 4735249,
+    "opportunities_by_stage": {
+      "Negotiating": {
+        "count": 12,
+        "close_prob": 85,
+        "arr": 1502724,
+        "avg_close_probability": 85
+      },
+      "Proposed": {
+        "count": 18,
+        "close_prob": 63,
+        "arr": 2119878,
+        "avg_close_probability": 63
+      },
+      "Engaged": {
+        "count": 14,
+        "close_prob": 53,
+        "arr": 1769348,
+        "avg_close_probability": 53
+      },
+      "Prospecting": {
+        "count": 10,
+        "close_prob": 25,
+        "arr": 1196050,
+        "avg_close_probability": 25
+      }
+    },
+    "expansion_by_type": {
+      "cross_sell": {
+        "count": 35,
+        "arr": 4774931,
+        "top_products": [
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ]
+      },
+      "upsell": {
+        "count": 22,
+        "arr": 2571116,
+        "avg_expansion_percent": 39
+      }
+    },
+    "velocity_metrics": {
+      "avg_days_in_stage": {
+        "Negotiating": 30,
+        "Proposed": 35,
+        "Engaged": 40,
+        "Prospecting": 56
+      },
+      "stage_conversion_rates": {
+        "Prospecting_to_Engaged": 67,
+        "Engaged_to_Proposed": 74,
+        "Proposed_to_Negotiating": 84,
+        "Negotiating_to_Closed": 84
+      }
+    }
+  }
+]

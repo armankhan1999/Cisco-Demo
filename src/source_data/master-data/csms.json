@@ -1,0 +1,47 @@
+[
+  {
+    "csm_id": "CSM_001",
+    "name": "Sarah Johnson",
+    "expertise": [
+      "enterprise_accounts",
+      "digital_transformation"
+    ],
+    "portfolio_size": 28,
+    "specialization": [
+      "Technology",
+      "Financial Services"
+    ],
+    "hire_date": "2020-12-06T01:03:42.782Z",
+    "performance_score": 97
+  },
+  {
+    "csm_id": "CSM_002",
+    "name": "Michael Chen",
+    "expertise": [
+      "security_focused",
+      "compliance"
+    ],
+    "portfolio_size": 25,
+    "specialization": [
+      "Healthcare",
+      "Government"
+    ],
+    "hire_date": "2020-12-21T19:42:16.848Z",
+    "performance_score": 93
+  },
+  {
+    "csm_id": "CSM_003",
+    "name": "Emily Rodriguez",
+    "expertise": [
+      "expansion_growth",
+      "commercial_accounts"
+    ],
+    "portfolio_size": 30,
+    "specialization": [
+      "Manufacturing",
+      "Retail"
+    ],
+    "hire_date": "2021-05-03T12:26:40.600Z",
+    "performance_score": 88
+  }
+]

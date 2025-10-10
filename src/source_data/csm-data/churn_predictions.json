@@ -1,0 +1,1730 @@
+[
+  {
+    "prediction_id": "CHURN_PRED_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 78,
+    "churn_probability": 0.85,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-11-28",
+    "estimated_days_to_churn": 61,
+    "confidence_level": "LOW",
+    "confidence_score": 0.71,
+    "velocity_metrics": {
+      "health_velocity": -0.32,
+      "health_trend": "Improving",
+      "usage_velocity": -0.73,
+      "usage_trend": "Stable",
+      "engagement_velocity": 0.08,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -1.2 points/day",
+        "contribution_to_risk": 0.23,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 35% in last 30 days",
+        "contribution_to_risk": 0.2,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 61,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-05-14",
+    "days_to_renewal": 373,
+    "arr_at_risk": 3627162,
+    "model_inputs": {
+      "health_score_30d_avg": 47.2,
+      "health_velocity_30d": -0.0,
+      "utilization_rate_30d_avg": 59.0,
+      "support_tickets_30d": 8,
+      "executive_touches_90d": 4,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 79,
+    "churn_probability": 0.18,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2026-01-21",
+    "estimated_days_to_churn": 107,
+    "confidence_level": "LOW",
+    "confidence_score": 0.85,
+    "velocity_metrics": {
+      "health_velocity": 0.24,
+      "health_trend": "Declining",
+      "usage_velocity": -0.0,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.03,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.3 points/day",
+        "contribution_to_risk": 0.31,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 41% in last 30 days",
+        "contribution_to_risk": 0.34,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 107,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-12-03",
+    "days_to_renewal": 185,
+    "arr_at_risk": 496079,
+    "model_inputs": {
+      "health_score_30d_avg": 48.0,
+      "health_velocity_30d": -1.6,
+      "utilization_rate_30d_avg": 72.3,
+      "support_tickets_30d": 10,
+      "executive_touches_90d": 4,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 64,
+    "churn_probability": 0.46,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2026-01-16",
+    "estimated_days_to_churn": 115,
+    "confidence_level": "LOW",
+    "confidence_score": 0.85,
+    "velocity_metrics": {
+      "health_velocity": -1.0,
+      "health_trend": "Stable",
+      "usage_velocity": 0.3,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.43,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -2.3 points/day",
+        "contribution_to_risk": 0.39,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 42% in last 30 days",
+        "contribution_to_risk": 0.21,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 115,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-11-15",
+    "days_to_renewal": 285,
+    "arr_at_risk": 3386280,
+    "model_inputs": {
+      "health_score_30d_avg": 60.6,
+      "health_velocity_30d": -1.3,
+      "utilization_rate_30d_avg": 39.9,
+      "support_tickets_30d": 13,
+      "executive_touches_90d": 5,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 36,
+    "churn_probability": 0.36,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-10-31",
+    "estimated_days_to_churn": 44,
+    "confidence_level": "LOW",
+    "confidence_score": 0.73,
+    "velocity_metrics": {
+      "health_velocity": -0.1,
+      "health_trend": "Improving",
+      "usage_velocity": -0.68,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.11,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.6 points/day",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 60% in last 30 days",
+        "contribution_to_risk": 0.19,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 44,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-09-11",
+    "days_to_renewal": 401,
+    "arr_at_risk": 3669528,
+    "model_inputs": {
+      "health_score_30d_avg": 56.9,
+      "health_velocity_30d": -0.5,
+      "utilization_rate_30d_avg": 79.2,
+      "support_tickets_30d": 9,
+      "executive_touches_90d": 4,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 52,
+    "churn_probability": 0.64,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-10-18",
+    "estimated_days_to_churn": 67,
+    "confidence_level": "LOW",
+    "confidence_score": 0.73,
+    "velocity_metrics": {
+      "health_velocity": 0.12,
+      "health_trend": "Declining",
+      "usage_velocity": -0.52,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.18,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -0.8 points/day",
+        "contribution_to_risk": 0.31,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 58% in last 30 days",
+        "contribution_to_risk": 0.23,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 67,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-08-06",
+    "days_to_renewal": 238,
+    "arr_at_risk": 3222435,
+    "model_inputs": {
+      "health_score_30d_avg": 55.4,
+      "health_velocity_30d": -0.3,
+      "utilization_rate_30d_avg": 65.9,
+      "support_tickets_30d": 15,
+      "executive_touches_90d": 5,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000006_20251009",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 42,
+    "churn_probability": 0.62,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-09",
+    "estimated_days_to_churn": 95,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.73,
+    "velocity_metrics": {
+      "health_velocity": -1.38,
+      "health_trend": "Declining",
+      "usage_velocity": -0.34,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.08,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -1.7 points/day",
+        "contribution_to_risk": 0.3,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 55% in last 30 days",
+        "contribution_to_risk": 0.18,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 95,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-12-20",
+    "days_to_renewal": 275,
+    "arr_at_risk": 747423,
+    "model_inputs": {
+      "health_score_30d_avg": 54.4,
+      "health_velocity_30d": -1.1,
+      "utilization_rate_30d_avg": 37.7,
+      "support_tickets_30d": 7,
+      "executive_touches_90d": 0,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000007_20251009",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 67,
+    "churn_probability": 0.72,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2026-02-13",
+    "estimated_days_to_churn": 158,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.87,
+    "velocity_metrics": {
+      "health_velocity": -1.25,
+      "health_trend": "Stable",
+      "usage_velocity": -0.36,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.1,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -2.4 points/day",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 30% in last 30 days",
+        "contribution_to_risk": 0.31,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 158,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-10-25",
+    "days_to_renewal": 433,
+    "arr_at_risk": 1091244,
+    "model_inputs": {
+      "health_score_30d_avg": 61.5,
+      "health_velocity_30d": -1.8,
+      "utilization_rate_30d_avg": 40.7,
+      "support_tickets_30d": 14,
+      "executive_touches_90d": 4,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000008_20251009",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 69,
+    "churn_probability": 0.68,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-11-06",
+    "estimated_days_to_churn": 127,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.73,
+    "velocity_metrics": {
+      "health_velocity": -0.01,
+      "health_trend": "Declining",
+      "usage_velocity": -0.61,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.19,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -1.6 points/day",
+        "contribution_to_risk": 0.4,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 33% in last 30 days",
+        "contribution_to_risk": 0.31,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 127,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-09-27",
+    "days_to_renewal": 359,
+    "arr_at_risk": 1456970,
+    "model_inputs": {
+      "health_score_30d_avg": 70.8,
+      "health_velocity_30d": -0.8,
+      "utilization_rate_30d_avg": 56.4,
+      "support_tickets_30d": 11,
+      "executive_touches_90d": 1,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000011_20251009",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 69,
+    "churn_probability": 0.52,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-22",
+    "estimated_days_to_churn": 167,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.94,
+    "velocity_metrics": {
+      "health_velocity": -1.62,
+      "health_trend": "Improving",
+      "usage_velocity": -0.65,
+      "usage_trend": "Improving",
+      "engagement_velocity": 0.19,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -2.2 points/day",
+        "contribution_to_risk": 0.35,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 23% in last 30 days",
+        "contribution_to_risk": 0.35,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 167,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-02-16",
+    "days_to_renewal": 539,
+    "arr_at_risk": 1209071,
+    "model_inputs": {
+      "health_score_30d_avg": 71.0,
+      "health_velocity_30d": -1.5,
+      "utilization_rate_30d_avg": 70.6,
+      "support_tickets_30d": 15,
+      "executive_touches_90d": 1,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000012_20251009",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 52,
+    "churn_probability": 0.25,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2026-03-19",
+    "estimated_days_to_churn": 176,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.79,
+    "velocity_metrics": {
+      "health_velocity": -2.27,
+      "health_trend": "Declining",
+      "usage_velocity": -0.48,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.31,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -0.6 points/day",
+        "contribution_to_risk": 0.27,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 25% in last 30 days",
+        "contribution_to_risk": 0.3,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 176,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-08-31",
+    "days_to_renewal": 520,
+    "arr_at_risk": 536311,
+    "model_inputs": {
+      "health_score_30d_avg": 65.9,
+      "health_velocity_30d": -0.3,
+      "utilization_rate_30d_avg": 74.8,
+      "support_tickets_30d": 8,
+      "executive_touches_90d": 1,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000014_20251009",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 56,
+    "churn_probability": 0.38,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-12-19",
+    "estimated_days_to_churn": 87,
+    "confidence_level": "LOW",
+    "confidence_score": 0.73,
+    "velocity_metrics": {
+      "health_velocity": 0.06,
+      "health_trend": "Stable",
+      "usage_velocity": 0.16,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.47,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -2.5 points/day",
+        "contribution_to_risk": 0.39,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 48% in last 30 days",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 87,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-01-21",
+    "days_to_renewal": 532,
+    "arr_at_risk": 1211950,
+    "model_inputs": {
+      "health_score_30d_avg": 72.3,
+      "health_velocity_30d": -0.2,
+      "utilization_rate_30d_avg": 50.1,
+      "support_tickets_30d": 15,
+      "executive_touches_90d": 2,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000016_20251009",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 38,
+    "churn_probability": 0.41,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-04",
+    "estimated_days_to_churn": 57,
+    "confidence_level": "LOW",
+    "confidence_score": 0.78,
+    "velocity_metrics": {
+      "health_velocity": -0.4,
+      "health_trend": "Declining",
+      "usage_velocity": -0.44,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.01,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -1.5 points/day",
+        "contribution_to_risk": 0.23,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 53% in last 30 days",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 57,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-10-12",
+    "days_to_renewal": 536,
+    "arr_at_risk": 439445,
+    "model_inputs": {
+      "health_score_30d_avg": 55.3,
+      "health_velocity_30d": -1.8,
+      "utilization_rate_30d_avg": 78.0,
+      "support_tickets_30d": 13,
+      "executive_touches_90d": 1,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000017_20251009",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 41,
+    "churn_probability": 0.42,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-10-30",
+    "estimated_days_to_churn": 41,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.92,
+    "velocity_metrics": {
+      "health_velocity": -2.09,
+      "health_trend": "Declining",
+      "usage_velocity": -0.17,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.4,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -2.5 points/day",
+        "contribution_to_risk": 0.33,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 42% in last 30 days",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 41,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-10-28",
+    "days_to_renewal": 257,
+    "arr_at_risk": 323711,
+    "model_inputs": {
+      "health_score_30d_avg": 72.6,
+      "health_velocity_30d": -0.8,
+      "utilization_rate_30d_avg": 57.1,
+      "support_tickets_30d": 5,
+      "executive_touches_90d": 0,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000018_20251009",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 57,
+    "churn_probability": 0.24,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2025-12-03",
+    "estimated_days_to_churn": 113,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.9,
+    "velocity_metrics": {
+      "health_velocity": -1.76,
+      "health_trend": "Improving",
+      "usage_velocity": -0.89,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.08,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.9 points/day",
+        "contribution_to_risk": 0.39,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 39% in last 30 days",
+        "contribution_to_risk": 0.19,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 113,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-06-27",
+    "days_to_renewal": 276,
+    "arr_at_risk": 407999,
+    "model_inputs": {
+      "health_score_30d_avg": 67.4,
+      "health_velocity_30d": -1.4,
+      "utilization_rate_30d_avg": 37.7,
+      "support_tickets_30d": 14,
+      "executive_touches_90d": 1,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000019_20251009",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 73,
+    "churn_probability": 0.32,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2025-10-28",
+    "estimated_days_to_churn": 178,
+    "confidence_level": "LOW",
+    "confidence_score": 0.92,
+    "velocity_metrics": {
+      "health_velocity": -2.46,
+      "health_trend": "Stable",
+      "usage_velocity": 0.21,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.23,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -1.8 points/day",
+        "contribution_to_risk": 0.34,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 24% in last 30 days",
+        "contribution_to_risk": 0.15,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 178,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-10-13",
+    "days_to_renewal": 314,
+    "arr_at_risk": 131258,
+    "model_inputs": {
+      "health_score_30d_avg": 51.5,
+      "health_velocity_30d": -0.2,
+      "utilization_rate_30d_avg": 82.4,
+      "support_tickets_30d": 8,
+      "executive_touches_90d": 4,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000021_20251009",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 40,
+    "churn_probability": 0.44,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-12-30",
+    "estimated_days_to_churn": 117,
+    "confidence_level": "LOW",
+    "confidence_score": 0.83,
+    "velocity_metrics": {
+      "health_velocity": -2.04,
+      "health_trend": "Declining",
+      "usage_velocity": -0.6,
+      "usage_trend": "Improving",
+      "engagement_velocity": 0.14,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.8 points/day",
+        "contribution_to_risk": 0.32,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 39% in last 30 days",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 117,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-11-08",
+    "days_to_renewal": 305,
+    "arr_at_risk": 331717,
+    "model_inputs": {
+      "health_score_30d_avg": 47.6,
+      "health_velocity_30d": -1.1,
+      "utilization_rate_30d_avg": 57.7,
+      "support_tickets_30d": 11,
+      "executive_touches_90d": 0,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000024_20251009",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 79,
+    "churn_probability": 0.16,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2025-10-10",
+    "estimated_days_to_churn": 50,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.82,
+    "velocity_metrics": {
+      "health_velocity": -1.46,
+      "health_trend": "Improving",
+      "usage_velocity": 0.02,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.32,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -1.0 points/day",
+        "contribution_to_risk": 0.37,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 21% in last 30 days",
+        "contribution_to_risk": 0.22,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 50,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-02-26",
+    "days_to_renewal": 448,
+    "arr_at_risk": 464096,
+    "model_inputs": {
+      "health_score_30d_avg": 46.9,
+      "health_velocity_30d": -0.6,
+      "utilization_rate_30d_avg": 63.8,
+      "support_tickets_30d": 3,
+      "executive_touches_90d": 3,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000025_20251009",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 45,
+    "churn_probability": 0.19,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2026-01-12",
+    "estimated_days_to_churn": 160,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.76,
+    "velocity_metrics": {
+      "health_velocity": -2.19,
+      "health_trend": "Improving",
+      "usage_velocity": -0.12,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.34,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -2.4 points/day",
+        "contribution_to_risk": 0.37,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 22% in last 30 days",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 160,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-12-25",
+    "days_to_renewal": 271,
+    "arr_at_risk": 343375,
+    "model_inputs": {
+      "health_score_30d_avg": 72.9,
+      "health_velocity_30d": -0.3,
+      "utilization_rate_30d_avg": 62.6,
+      "support_tickets_30d": 13,
+      "executive_touches_90d": 5,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000026_20251009",
+    "account_id": "CUST_000026",
+    "account_name": "Credit Group",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 81,
+    "churn_probability": 0.38,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-19",
+    "estimated_days_to_churn": 121,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.91,
+    "velocity_metrics": {
+      "health_velocity": -0.79,
+      "health_trend": "Declining",
+      "usage_velocity": -0.35,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.37,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -0.6 points/day",
+        "contribution_to_risk": 0.21,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 38% in last 30 days",
+        "contribution_to_risk": 0.3,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 121,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-03-26",
+    "days_to_renewal": 224,
+    "arr_at_risk": 441614,
+    "model_inputs": {
+      "health_score_30d_avg": 61.6,
+      "health_velocity_30d": -2.0,
+      "utilization_rate_30d_avg": 45.0,
+      "support_tickets_30d": 11,
+      "executive_touches_90d": 2,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000028_20251009",
+    "account_id": "CUST_000028",
+    "account_name": "Medical Alliance",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 84,
+    "churn_probability": 0.56,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-29",
+    "estimated_days_to_churn": 141,
+    "confidence_level": "LOW",
+    "confidence_score": 0.93,
+    "velocity_metrics": {
+      "health_velocity": -0.22,
+      "health_trend": "Declining",
+      "usage_velocity": -0.8,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.48,
+      "engagement_trend": "Improving"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -1.2 points/day",
+        "contribution_to_risk": 0.34,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 41% in last 30 days",
+        "contribution_to_risk": 0.15,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 141,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-10-30",
+    "days_to_renewal": 337,
+    "arr_at_risk": 181551,
+    "model_inputs": {
+      "health_score_30d_avg": 48.1,
+      "health_velocity_30d": -0.9,
+      "utilization_rate_30d_avg": 46.9,
+      "support_tickets_30d": 9,
+      "executive_touches_90d": 0,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000030_20251009",
+    "account_id": "CUST_000030",
+    "account_name": "Bashirian Inc",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 61,
+    "churn_probability": 0.79,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2026-01-13",
+    "estimated_days_to_churn": 148,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.94,
+    "velocity_metrics": {
+      "health_velocity": -2.25,
+      "health_trend": "Declining",
+      "usage_velocity": -0.34,
+      "usage_trend": "Improving",
+      "engagement_velocity": 0.07,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.4 points/day",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 35% in last 30 days",
+        "contribution_to_risk": 0.21,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 148,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-04-29",
+    "days_to_renewal": 538,
+    "arr_at_risk": 88638,
+    "model_inputs": {
+      "health_score_30d_avg": 70.0,
+      "health_velocity_30d": -1.3,
+      "utilization_rate_30d_avg": 57.6,
+      "support_tickets_30d": 5,
+      "executive_touches_90d": 0,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000031_20251009",
+    "account_id": "CUST_000031",
+    "account_name": "Credit Partners",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 44,
+    "churn_probability": 0.69,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-10-16",
+    "estimated_days_to_churn": 42,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.81,
+    "velocity_metrics": {
+      "health_velocity": -1.56,
+      "health_trend": "Declining",
+      "usage_velocity": -0.3,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.18,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -0.8 points/day",
+        "contribution_to_risk": 0.22,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 58% in last 30 days",
+        "contribution_to_risk": 0.16,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 42,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-12-24",
+    "days_to_renewal": 226,
+    "arr_at_risk": 202633,
+    "model_inputs": {
+      "health_score_30d_avg": 66.3,
+      "health_velocity_30d": -0.1,
+      "utilization_rate_30d_avg": 54.8,
+      "support_tickets_30d": 2,
+      "executive_touches_90d": 5,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000032_20251009",
+    "account_id": "CUST_000032",
+    "account_name": "Wealth Group",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 60,
+    "churn_probability": 0.84,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-10-24",
+    "estimated_days_to_churn": 22,
+    "confidence_level": "LOW",
+    "confidence_score": 0.89,
+    "velocity_metrics": {
+      "health_velocity": -1.75,
+      "health_trend": "Stable",
+      "usage_velocity": -0.87,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.41,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -2.2 points/day",
+        "contribution_to_risk": 0.36,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 60% in last 30 days",
+        "contribution_to_risk": 0.34,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 22,
+    "intervention_urgency": "Immediate",
+    "recommended_action": "Immediate executive escalation",
+    "contract_end_date": "2026-03-08",
+    "days_to_renewal": 480,
+    "arr_at_risk": 320768,
+    "model_inputs": {
+      "health_score_30d_avg": 52.8,
+      "health_velocity_30d": -0.4,
+      "utilization_rate_30d_avg": 36.1,
+      "support_tickets_30d": 3,
+      "executive_touches_90d": 1,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000033_20251009",
+    "account_id": "CUST_000033",
+    "account_name": "Hansen LLC",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 42,
+    "churn_probability": 0.24,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2025-10-15",
+    "estimated_days_to_churn": 99,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.71,
+    "velocity_metrics": {
+      "health_velocity": 0.27,
+      "health_trend": "Stable",
+      "usage_velocity": 0.07,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.15,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.6 points/day",
+        "contribution_to_risk": 0.27,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 37% in last 30 days",
+        "contribution_to_risk": 0.21,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 99,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-10-27",
+    "days_to_renewal": 494,
+    "arr_at_risk": 82833,
+    "model_inputs": {
+      "health_score_30d_avg": 63.6,
+      "health_velocity_30d": -1.5,
+      "utilization_rate_30d_avg": 49.8,
+      "support_tickets_30d": 8,
+      "executive_touches_90d": 4,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000034_20251009",
+    "account_id": "CUST_000034",
+    "account_name": "Cloud Solutions",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 61,
+    "churn_probability": 0.35,
+    "churn_probability_tier": "Low",
+    "estimated_churn_date": "2025-10-22",
+    "estimated_days_to_churn": 50,
+    "confidence_level": "LOW",
+    "confidence_score": 0.92,
+    "velocity_metrics": {
+      "health_velocity": -0.92,
+      "health_trend": "Improving",
+      "usage_velocity": 0.29,
+      "usage_trend": "Improving",
+      "engagement_velocity": 0.06,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.8 points/day",
+        "contribution_to_risk": 0.31,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 42% in last 30 days",
+        "contribution_to_risk": 0.33,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 50,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-03-23",
+    "days_to_renewal": 378,
+    "arr_at_risk": 395737,
+    "model_inputs": {
+      "health_score_30d_avg": 53.1,
+      "health_velocity_30d": -1.9,
+      "utilization_rate_30d_avg": 64.9,
+      "support_tickets_30d": 2,
+      "executive_touches_90d": 2,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000036_20251009",
+    "account_id": "CUST_000036",
+    "account_name": "Trust Holdings",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 49,
+    "churn_probability": 0.4,
+    "churn_probability_tier": "Medium",
+    "estimated_churn_date": "2025-11-19",
+    "estimated_days_to_churn": 164,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.76,
+    "velocity_metrics": {
+      "health_velocity": -1.78,
+      "health_trend": "Improving",
+      "usage_velocity": 0.06,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.46,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -0.8 points/day",
+        "contribution_to_risk": 0.36,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 31% in last 30 days",
+        "contribution_to_risk": 0.19,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 164,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-03-21",
+    "days_to_renewal": 537,
+    "arr_at_risk": 51826,
+    "model_inputs": {
+      "health_score_30d_avg": 55.8,
+      "health_velocity_30d": -0.8,
+      "utilization_rate_30d_avg": 70.2,
+      "support_tickets_30d": 7,
+      "executive_touches_90d": 4,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000037_20251009",
+    "account_id": "CUST_000037",
+    "account_name": "Stokes and Sons",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 69,
+    "churn_probability": 0.81,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-12-28",
+    "estimated_days_to_churn": 141,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.82,
+    "velocity_metrics": {
+      "health_velocity": -2.23,
+      "health_trend": "Declining",
+      "usage_velocity": -0.22,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.13,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -0.7 points/day",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 41% in last 30 days",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 141,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-11-09",
+    "days_to_renewal": 191,
+    "arr_at_risk": 490470,
+    "model_inputs": {
+      "health_score_30d_avg": 49.4,
+      "health_velocity_30d": -0.6,
+      "utilization_rate_30d_avg": 42.1,
+      "support_tickets_30d": 3,
+      "executive_touches_90d": 4,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000039_20251009",
+    "account_id": "CUST_000039",
+    "account_name": "Mohr and Sons",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 72,
+    "churn_probability": 0.81,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-10-22",
+    "estimated_days_to_churn": 116,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.78,
+    "velocity_metrics": {
+      "health_velocity": -2.09,
+      "health_trend": "Declining",
+      "usage_velocity": -0.05,
+      "usage_trend": "Stable",
+      "engagement_velocity": 0.05,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Medium",
+        "description": "Health declining at -1.9 points/day",
+        "contribution_to_risk": 0.34,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 34% in last 30 days",
+        "contribution_to_risk": 0.28,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 116,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-04-21",
+    "days_to_renewal": 337,
+    "arr_at_risk": 396896,
+    "model_inputs": {
+      "health_score_30d_avg": 67.0,
+      "health_velocity_30d": -1.4,
+      "utilization_rate_30d_avg": 43.9,
+      "support_tickets_30d": 2,
+      "executive_touches_90d": 5,
+      "champion_strength": "Strong"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000040_20251009",
+    "account_id": "CUST_000040",
+    "account_name": "Data Solutions",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 37,
+    "churn_probability": 0.85,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-11-25",
+    "estimated_days_to_churn": 160,
+    "confidence_level": "LOW",
+    "confidence_score": 0.78,
+    "velocity_metrics": {
+      "health_velocity": -0.07,
+      "health_trend": "Improving",
+      "usage_velocity": -0.71,
+      "usage_trend": "Improving",
+      "engagement_velocity": -0.43,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -1.8 points/day",
+        "contribution_to_risk": 0.22,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 40% in last 30 days",
+        "contribution_to_risk": 0.18,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 160,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-05-08",
+    "days_to_renewal": 523,
+    "arr_at_risk": 119330,
+    "model_inputs": {
+      "health_score_30d_avg": 64.2,
+      "health_velocity_30d": -0.2,
+      "utilization_rate_30d_avg": 57.3,
+      "support_tickets_30d": 6,
+      "executive_touches_90d": 1,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000042_20251009",
+    "account_id": "CUST_000042",
+    "account_name": "Mitchell, Batz and Pouros",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 38,
+    "churn_probability": 0.7,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-10-16",
+    "estimated_days_to_churn": 15,
+    "confidence_level": "MEDIUM",
+    "confidence_score": 0.88,
+    "velocity_metrics": {
+      "health_velocity": 0.41,
+      "health_trend": "Stable",
+      "usage_velocity": -0.36,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.25,
+      "engagement_trend": "Stable"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "Critical",
+        "description": "Health declining at -0.8 points/day",
+        "contribution_to_risk": 0.36,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "High",
+        "description": "Usage dropped 30% in last 30 days",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 15,
+    "intervention_urgency": "Immediate",
+    "recommended_action": "Immediate executive escalation",
+    "contract_end_date": "2025-12-24",
+    "days_to_renewal": 190,
+    "arr_at_risk": 420242,
+    "model_inputs": {
+      "health_score_30d_avg": 54.6,
+      "health_velocity_30d": -0.1,
+      "utilization_rate_30d_avg": 38.7,
+      "support_tickets_30d": 4,
+      "executive_touches_90d": 3,
+      "champion_strength": "Weak"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000044_20251009",
+    "account_id": "CUST_000044",
+    "account_name": "Corwin LLC",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 56,
+    "churn_probability": 0.78,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2025-11-09",
+    "estimated_days_to_churn": 38,
+    "confidence_level": "LOW",
+    "confidence_score": 0.71,
+    "velocity_metrics": {
+      "health_velocity": 0.33,
+      "health_trend": "Declining",
+      "usage_velocity": -0.21,
+      "usage_trend": "Stable",
+      "engagement_velocity": -0.39,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -2.1 points/day",
+        "contribution_to_risk": 0.24,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 38% in last 30 days",
+        "contribution_to_risk": 0.21,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 38,
+    "intervention_urgency": "High",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2025-10-22",
+    "days_to_renewal": 381,
+    "arr_at_risk": 24362,
+    "model_inputs": {
+      "health_score_30d_avg": 62.2,
+      "health_velocity_30d": -0.3,
+      "utilization_rate_30d_avg": 42.7,
+      "support_tickets_30d": 7,
+      "executive_touches_90d": 0,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "prediction_id": "CHURN_PRED_CUST_000045_20251009",
+    "account_id": "CUST_000045",
+    "account_name": "Goldner - Bartoletti",
+    "prediction_date": "2025-10-09T15:27:11Z",
+    "model_version": "v2.3",
+    "model_type": "Gradient Boosting + Time Series",
+    "current_health_score": 73,
+    "churn_probability": 0.73,
+    "churn_probability_tier": "High",
+    "estimated_churn_date": "2026-02-09",
+    "estimated_days_to_churn": 175,
+    "confidence_level": "HIGH",
+    "confidence_score": 0.72,
+    "velocity_metrics": {
+      "health_velocity": -1.88,
+      "health_trend": "Improving",
+      "usage_velocity": -0.62,
+      "usage_trend": "Declining",
+      "engagement_velocity": -0.17,
+      "engagement_trend": "Declining"
+    },
+    "risk_factors": [
+      {
+        "factor": "Health Decline",
+        "severity": "High",
+        "description": "Health declining at -0.9 points/day",
+        "contribution_to_risk": 0.29,
+        "trend_direction": "Worsening"
+      },
+      {
+        "factor": "Usage Drop",
+        "severity": "Medium",
+        "description": "Usage dropped 25% in last 30 days",
+        "contribution_to_risk": 0.28,
+        "trend_direction": "Worsening"
+      }
+    ],
+    "intervention_window_days": 175,
+    "intervention_urgency": "Medium",
+    "recommended_action": "Schedule intervention call",
+    "contract_end_date": "2026-01-12",
+    "days_to_renewal": 369,
+    "arr_at_risk": 22076,
+    "model_inputs": {
+      "health_score_30d_avg": 71.6,
+      "health_velocity_30d": -1.3,
+      "utilization_rate_30d_avg": 57.3,
+      "support_tickets_30d": 6,
+      "executive_touches_90d": 3,
+      "champion_strength": "Moderate"
+    },
+    "last_updated": "2025-10-09T15:27:11Z"
+  }
+]

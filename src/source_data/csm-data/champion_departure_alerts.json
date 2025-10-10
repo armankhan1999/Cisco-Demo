@@ -1,0 +1,479 @@
+[
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000002_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "champion_id": "STAKE_000002",
+    "champion_name": "Vicky Dickens",
+    "champion_role": "CISO",
+    "departure_detected_date": "2025-10-05",
+    "departure_date": "2025-10-08",
+    "detection_lag_days": 10,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "TechCorp Inc",
+    "new_role": "VP of Security",
+    "impact_score": 86,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 95,
+      "champion_influence_score": 10,
+      "renewal_proximity": 94,
+      "multi_threading_gap": 83
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 7,
+      "champion_touch_count": 6,
+      "champion_touch_percentage": 0.78,
+      "other_active_relationships": 1,
+      "executive_level_relationships": 1
+    },
+    "historical_churn_probability": 0.7,
+    "arr_at_risk": 1522871,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "In Progress"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Resolved",
+    "outcome": "Escalated to Account Team",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000004_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "champion_id": "STAKE_000004",
+    "champion_name": "Lola Hoppe",
+    "champion_role": "IT Director",
+    "departure_detected_date": "2025-09-24",
+    "departure_date": "2025-09-20",
+    "detection_lag_days": 10,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "Unknown",
+    "new_role": "VP of Security",
+    "impact_score": 81,
+    "impact_level": "CRITICAL",
+    "risk_breakdown": {
+      "relationship_dependency": 86,
+      "champion_influence_score": 60,
+      "renewal_proximity": 96,
+      "multi_threading_gap": 91
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 9,
+      "champion_touch_count": 8,
+      "champion_touch_percentage": 0.64,
+      "other_active_relationships": 4,
+      "executive_level_relationships": 0
+    },
+    "historical_churn_probability": 0.73,
+    "arr_at_risk": 1522871,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Pending"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Open",
+    "outcome": null,
+    "last_updated": "2025-10-08"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000006_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "champion_id": "STAKE_000006",
+    "champion_name": "Sheri Schowalter",
+    "champion_role": "CIO",
+    "departure_detected_date": "2025-10-09",
+    "departure_date": "2025-10-06",
+    "detection_lag_days": 16,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "Innovation Labs",
+    "new_role": "Unknown",
+    "impact_score": 73,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 93,
+      "champion_influence_score": 60,
+      "renewal_proximity": 64,
+      "multi_threading_gap": 72
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 14,
+      "champion_touch_count": 10,
+      "champion_touch_percentage": 0.72,
+      "other_active_relationships": 3,
+      "executive_level_relationships": 1
+    },
+    "historical_churn_probability": 0.61,
+    "arr_at_risk": 3627162,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Pending"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Resolved",
+    "outcome": "Escalated to Account Team",
+    "last_updated": "2025-10-05"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000009_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "champion_id": "STAKE_000009",
+    "champion_name": "Dr. Allan O'Conner",
+    "champion_role": "CISO",
+    "departure_detected_date": "2025-10-06",
+    "departure_date": "2025-09-13",
+    "detection_lag_days": 16,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "Innovation Labs",
+    "new_role": "Unknown",
+    "impact_score": 83,
+    "impact_level": "CRITICAL",
+    "risk_breakdown": {
+      "relationship_dependency": 94,
+      "champion_influence_score": 10,
+      "renewal_proximity": 66,
+      "multi_threading_gap": 73
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 15,
+      "champion_touch_count": 11,
+      "champion_touch_percentage": 0.63,
+      "other_active_relationships": 3,
+      "executive_level_relationships": 2
+    },
+    "historical_churn_probability": 0.71,
+    "arr_at_risk": 3627162,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "In Progress"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "In Progress",
+    "outcome": "New Champion Identified",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000014_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "champion_id": "STAKE_000014",
+    "champion_name": "Hugo Reynolds",
+    "champion_role": "IT Director",
+    "departure_detected_date": "2025-09-30",
+    "departure_date": "2025-09-09",
+    "detection_lag_days": 21,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "Innovation Labs",
+    "new_role": "CISO",
+    "impact_score": 77,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 89,
+      "champion_influence_score": 90,
+      "renewal_proximity": 98,
+      "multi_threading_gap": 91
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 11,
+      "champion_touch_count": 8,
+      "champion_touch_percentage": 0.61,
+      "other_active_relationships": 3,
+      "executive_level_relationships": 2
+    },
+    "historical_churn_probability": 0.52,
+    "arr_at_risk": 804011,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Completed"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "In Progress",
+    "outcome": "New Champion Identified",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000017_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "champion_id": "STAKE_000017",
+    "champion_name": "Jeanne Kertzmann",
+    "champion_role": "Operations Director",
+    "departure_detected_date": "2025-10-08",
+    "departure_date": "2025-10-08",
+    "detection_lag_days": 13,
+    "detection_method": "Customer Notification",
+    "employment_status": "Departed",
+    "new_company": "Unknown",
+    "new_role": "VP of Security",
+    "impact_score": 92,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 74,
+      "champion_influence_score": 40,
+      "renewal_proximity": 79,
+      "multi_threading_gap": 93
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 12,
+      "champion_touch_count": 8,
+      "champion_touch_percentage": 0.85,
+      "other_active_relationships": 3,
+      "executive_level_relationships": 2
+    },
+    "historical_churn_probability": 0.58,
+    "arr_at_risk": 140615,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Completed"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Open",
+    "outcome": null,
+    "last_updated": "2025-10-06"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000003_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "champion_id": "STAKE_000003",
+    "champion_name": "Jody Gutmann",
+    "champion_role": "Operations Director",
+    "departure_detected_date": "2025-10-08",
+    "departure_date": "2025-09-27",
+    "detection_lag_days": 16,
+    "detection_method": "Email Bounce",
+    "employment_status": "Departed",
+    "new_company": "Digital Solutions LLC",
+    "new_role": "VP of Security",
+    "impact_score": 81,
+    "impact_level": "CRITICAL",
+    "risk_breakdown": {
+      "relationship_dependency": 75,
+      "champion_influence_score": 30,
+      "renewal_proximity": 64,
+      "multi_threading_gap": 79
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 0,
+      "champion_touch_count": 0,
+      "champion_touch_percentage": 0.72,
+      "other_active_relationships": 1,
+      "executive_level_relationships": 0
+    },
+    "historical_churn_probability": 0.51,
+    "arr_at_risk": 1522871,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Pending"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Open",
+    "outcome": null,
+    "last_updated": "2025-10-09"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000005_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "champion_id": "STAKE_000005",
+    "champion_name": "Ida Trantow",
+    "champion_role": "CIO",
+    "departure_detected_date": "2025-09-28",
+    "departure_date": "2025-09-17",
+    "detection_lag_days": 4,
+    "detection_method": "LinkedIn API",
+    "employment_status": "Departed",
+    "new_company": "Digital Solutions LLC",
+    "new_role": "CISO",
+    "impact_score": 91,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 86,
+      "champion_influence_score": 10,
+      "renewal_proximity": 85,
+      "multi_threading_gap": 90
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 0,
+      "champion_touch_count": 0,
+      "champion_touch_percentage": 0.8,
+      "other_active_relationships": 2,
+      "executive_level_relationships": 1
+    },
+    "historical_churn_probability": 0.6,
+    "arr_at_risk": 1522871,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "In Progress"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "Open",
+    "outcome": "New Champion Identified",
+    "last_updated": "2025-10-05"
+  },
+  {
+    "alert_id": "CHAMP_DEP_STAKE_000012_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "champion_id": "STAKE_000012",
+    "champion_name": "Darin Von III",
+    "champion_role": "CISO",
+    "departure_detected_date": "2025-09-28",
+    "departure_date": "2025-09-29",
+    "detection_lag_days": 14,
+    "detection_method": "Customer Notification",
+    "employment_status": "Departed",
+    "new_company": "TechCorp Inc",
+    "new_role": "CISO",
+    "impact_score": 65,
+    "impact_level": "HIGH",
+    "risk_breakdown": {
+      "relationship_dependency": 71,
+      "champion_influence_score": 50,
+      "renewal_proximity": 70,
+      "multi_threading_gap": 88
+    },
+    "relationship_metrics": {
+      "total_touches_12m": 0,
+      "champion_touch_count": 0,
+      "champion_touch_percentage": 0.66,
+      "other_active_relationships": 2,
+      "executive_level_relationships": 2
+    },
+    "historical_churn_probability": 0.52,
+    "arr_at_risk": 3627162,
+    "recommended_actions": [
+      {
+        "sequence": 1,
+        "action": "Identify replacement champion within 7 days",
+        "owner": "CSM",
+        "sla_days": 7,
+        "priority": "Critical",
+        "status": "Pending"
+      },
+      {
+        "sequence": 2,
+        "action": "Schedule meeting with remaining stakeholders",
+        "owner": "CSM",
+        "sla_days": 14,
+        "priority": "High",
+        "status": "Pending"
+      }
+    ],
+    "alert_status": "In Progress",
+    "outcome": "Escalated to Account Team",
+    "last_updated": "2025-10-06"
+  }
+]

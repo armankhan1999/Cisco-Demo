@@ -1,0 +1,409 @@
+{
+  "generation_summary": {
+    "generated_at": "2025-10-02T09:24:42.239Z",
+    "execution_time_ms": 3136,
+    "execution_time_readable": "3.14s",
+    "configuration_used": {
+      "MASTER_SEED": 99999,
+      "ACCOUNT_COUNT": 50,
+      "HERO_ACCOUNT_COUNT": 5,
+      "CSM_COUNT": 3,
+      "MONTHS_HISTORY": 12,
+      "DAILY_EVENTS_PER_ACCOUNT": 50,
+      "TARGET_ARR": 50000000
+    },
+    "seed_used": 99999
+  },
+  "dataset_overview": {
+    "total_accounts": 50,
+    "hero_accounts": 5,
+    "total_users": 2579,
+    "total_stakeholders": 178,
+    "total_usage_events": 445240,
+    "total_health_records": 4500,
+    "total_arr": 42213318,
+    "average_arr_per_account": 844266
+  },
+  "distributions": {
+    "tier_distribution": {
+      "Strategic": 5,
+      "Enterprise": 13,
+      "Commercial": 29,
+      "SMB": 3
+    },
+    "health_distribution": {
+      "Thriving": 20,
+      "Healthy": 30,
+      "Stable": 0,
+      "At Risk": 0,
+      "Critical": 0
+    },
+    "industry_distribution": {
+      "Technology": 6,
+      "Healthcare": 6,
+      "Financial Services": 10,
+      "Manufacturing": 4,
+      "Energy": 6,
+      "Education": 7,
+      "Retail": 4,
+      "Government": 7
+    },
+    "geographic_distribution": {
+      "EMEA": 19,
+      "AMER": 21,
+      "APAC": 10
+    },
+    "product_penetration": {
+      "Duo": {
+        "accounts": 47,
+        "percentage": 94
+      },
+      "Meraki": {
+        "accounts": 36,
+        "percentage": 72
+      },
+      "Umbrella": {
+        "accounts": 24,
+        "percentage": 48
+      },
+      "ThousandEyes": {
+        "accounts": 10,
+        "percentage": 20
+      },
+      "Splunk": {
+        "accounts": 4,
+        "percentage": 8
+      }
+    }
+  },
+  "data_quality": {
+    "validation_results": {
+      "account_count_match": true,
+      "user_count_match": true,
+      "stakeholder_count_match": true,
+      "hero_account_count": 5,
+      "total_arr": 42213318,
+      "tier_distribution": {
+        "Strategic": 5,
+        "Enterprise": 13,
+        "Commercial": 29,
+        "SMB": 3
+      },
+      "health_distribution": {
+        "Thriving": 20,
+        "Healthy": 30,
+        "Stable": 0,
+        "At Risk": 0,
+        "Critical": 0
+      },
+      "data_completeness": {
+        "overall_score": 100,
+        "total_checks": 5000,
+        "passed_checks": 5000
+      }
+    },
+    "completeness_score": 100,
+    "hero_account_names": [
+      "TechCorp Industries",
+      "MedSecure Systems",
+      "Global Financial Partners",
+      "Advanced Manufacturing Co",
+      "InnovateTech Solutions"
+    ],
+    "sample_customer_journey": {
+      "customer_name": "TechCorp Industries",
+      "story_type": "expansion_success",
+      "timeline_highlights": [
+        {
+          "month": 1,
+          "health_score": 65
+        },
+        {
+          "month": 2,
+          "health_score": 68
+        },
+        {
+          "month": 3,
+          "health_score": 72
+        }
+      ]
+    }
+  },
+  "usage_statistics": {
+    "total_events_per_day": 2474,
+    "events_per_account_per_day": 49,
+    "event_types": {
+      "logout": 88985,
+      "report_generate": 89014,
+      "login": 88647,
+      "feature_use": 89372,
+      "config_change": 89222
+    },
+    "peak_usage_analysis": {
+      "peak_hours": [
+        {
+          "hour": 17,
+          "events": 18681
+        },
+        {
+          "hour": 6,
+          "events": 18674
+        },
+        {
+          "hour": 8,
+          "events": 18664
+        }
+      ],
+      "total_events_analyzed": 445240
+    }
+  },
+  "story_analysis": {
+    "story_type_distribution": {
+      "expansion_success": 7,
+      "security_focused_growth": 10,
+      "digital_transformation": 5,
+      "startup_scaling": 10,
+      "acquisition_integration": 6,
+      "compliance_driven": 4,
+      "enterprise_modernization": 5,
+      "cost_optimization": 3
+    },
+    "expansion_ready_accounts": [
+      {
+        "customer_name": "TechCorp Industries",
+        "tier": "Enterprise",
+        "arr": 1522871,
+        "current_products": [
+          "Duo",
+          "Meraki",
+          "Umbrella"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Advanced Manufacturing Co",
+        "tier": "Commercial",
+        "arr": 140615,
+        "current_products": [
+          "Duo",
+          "Meraki",
+          "Umbrella"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Global Capital Management",
+        "tier": "Strategic",
+        "arr": 3669528,
+        "current_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Global Medical Network",
+        "tier": "Strategic",
+        "arr": 4199901,
+        "current_products": [
+          "Meraki",
+          "Duo"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Quality Corporation",
+        "tier": "Enterprise",
+        "arr": 1004742,
+        "current_products": [
+          "Duo",
+          "Meraki",
+          "Umbrella"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Block - Toy",
+        "tier": "Enterprise",
+        "arr": 1797331,
+        "current_products": [
+          "Meraki",
+          "Duo",
+          "ThousandEyes"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Pagac - Muller",
+        "tier": "Commercial",
+        "arr": 131258,
+        "current_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Kris - Dibbert",
+        "tier": "Commercial",
+        "arr": 215609,
+        "current_products": [
+          "Duo",
+          "Meraki",
+          "Umbrella"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Medical Systems",
+        "tier": "Commercial",
+        "arr": 215678,
+        "current_products": [
+          "Duo",
+          "Umbrella",
+          "Splunk"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      },
+      {
+        "customer_name": "Bashirian Inc",
+        "tier": "Commercial",
+        "arr": 88638,
+        "current_products": [
+          "Duo",
+          "Umbrella"
+        ],
+        "expansion_signals": [
+          "High utilization",
+          "Healthy score",
+          "Positive engagement"
+        ]
+      }
+    ],
+    "at_risk_accounts": [],
+    "success_stories": [
+      {
+        "customer_name": "TechCorp Industries",
+        "story_type": "expansion_success",
+        "narrative_summary": "Tech Innovations successfully expanded from initial security implementation to full platform adoption, demonstrating strong ROI and user engagement.",
+        "key_achievements": [
+          "95% user adoption",
+          "40% productivity increase",
+          "60% reduction in incidents"
+        ]
+      },
+      {
+        "customer_name": "MedSecure Systems",
+        "story_type": "security_focused_growth",
+        "narrative_summary": "Global Clinical Partners prioritized security modernization following industry compliance requirements, building comprehensive protection across their healthcare operations.",
+        "key_achievements": [
+          "100% compliance achievement",
+          "80% threat reduction",
+          "50% faster incident response"
+        ]
+      },
+      {
+        "customer_name": "Global Financial Partners",
+        "story_type": "digital_transformation",
+        "narrative_summary": "Financial Partners leveraged Cisco solutions as foundation for digital transformation initiative, modernizing infrastructure and enabling remote workforce.",
+        "key_achievements": [
+          "75% remote work capability",
+          "30% cost reduction",
+          "90% uptime achievement"
+        ]
+      },
+      {
+        "customer_name": "Advanced Manufacturing Co",
+        "story_type": "expansion_success",
+        "narrative_summary": "Industrial Systems successfully expanded from initial security implementation to full platform adoption, demonstrating strong ROI and user engagement.",
+        "key_achievements": [
+          "95% user adoption",
+          "40% productivity increase",
+          "60% reduction in incidents"
+        ]
+      },
+      {
+        "customer_name": "InnovateTech Solutions",
+        "story_type": "startup_scaling",
+        "narrative_summary": "Neural Innovations represents a typical technology customer journey.",
+        "key_achievements": [
+          "300% user growth",
+          "99.9% uptime",
+          "50% faster deployment"
+        ]
+      }
+    ]
+  },
+  "technical_metadata": {
+    "file_structure": {
+      "master-dataset.json": "Complete dataset in single file",
+      "accounts.json": "All customer account stories",
+      "hero-accounts.json": "Showcase accounts with rich narratives",
+      "master-data/": "Dimensional tables (customers, users, products, etc.)",
+      "usage-events/": "Chunked usage events by 10K records",
+      "health-history/": "Health score history by month"
+    },
+    "data_lineage": {
+      "accounts": "Generated from story templates with business logic",
+      "users": "Realistic user counts per tier with activity patterns",
+      "stakeholders": "Industry-appropriate roles with engagement history",
+      "usage_events": "Temporal patterns with realistic variance",
+      "health_history": "Progressive health scores aligned with story timelines"
+    },
+    "repeatability": {
+      "deterministic": true,
+      "seed_based": true,
+      "same_seed_same_output": true,
+      "validation": "All counters and IDs are sequential and predictable"
+    }
+  },
+  "demo_readiness": {
+    "hero_accounts_ready": true,
+    "drill_down_paths_validated": true,
+    "story_continuity_verified": true,
+    "cross_persona_consistency": true,
+    "recommended_demo_scenarios": [
+      "Hero Account Deep Dive: TechCorp Industries expansion journey",
+      "At-Risk Account Intervention: Health score drop analysis",
+      "Expansion Opportunity: High utilization accounts",
+      "Portfolio Health: CSM performance across segments",
+      "Cross-Sell Analysis: Product whitespace identification"
+    ]
+  }
+}

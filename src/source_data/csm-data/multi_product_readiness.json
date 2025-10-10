@@ -1,0 +1,597 @@
+[
+  {
+    "readiness_id": "MPR_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "calculation_date": "2025-09-27",
+    "readiness_score": 72,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 78,
+      "adoption_maturity": 77,
+      "engagement_quality": 81,
+      "expansion_indicators": 95
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-02"
+  },
+  {
+    "readiness_id": "MPR_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "calculation_date": "2025-10-01",
+    "readiness_score": 77,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 95,
+      "adoption_maturity": 82,
+      "engagement_quality": 79,
+      "expansion_indicators": 87
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-29"
+  },
+  {
+    "readiness_id": "MPR_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "calculation_date": "2025-09-24",
+    "readiness_score": 85,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 91,
+      "adoption_maturity": 78,
+      "engagement_quality": 72,
+      "expansion_indicators": 86
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 94160,
+    "last_updated": "2025-10-08"
+  },
+  {
+    "readiness_id": "MPR_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "calculation_date": "2025-09-24",
+    "readiness_score": 76,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 90,
+      "adoption_maturity": 77,
+      "engagement_quality": 88,
+      "expansion_indicators": 76
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-09"
+  },
+  {
+    "readiness_id": "MPR_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "calculation_date": "2025-10-08",
+    "readiness_score": 66,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 77,
+      "adoption_maturity": 85,
+      "engagement_quality": 89,
+      "expansion_indicators": 72
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-07"
+  },
+  {
+    "readiness_id": "MPR_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "calculation_date": "2025-09-29",
+    "readiness_score": 84,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 79,
+      "adoption_maturity": 79,
+      "engagement_quality": 87,
+      "expansion_indicators": 91
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-08"
+  },
+  {
+    "readiness_id": "MPR_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "calculation_date": "2025-09-24",
+    "readiness_score": 64,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 89,
+      "adoption_maturity": 76,
+      "engagement_quality": 77,
+      "expansion_indicators": 93
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-02"
+  },
+  {
+    "readiness_id": "MPR_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "calculation_date": "2025-10-01",
+    "readiness_score": 91,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 92,
+      "adoption_maturity": 80,
+      "engagement_quality": 85,
+      "expansion_indicators": 89
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 82316,
+    "last_updated": "2025-10-09"
+  },
+  {
+    "readiness_id": "MPR_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Global Medical Network",
+    "calculation_date": "2025-10-06",
+    "readiness_score": 87,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 87,
+      "adoption_maturity": 84,
+      "engagement_quality": 78,
+      "expansion_indicators": 84
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 138006,
+    "last_updated": "2025-10-02"
+  },
+  {
+    "readiness_id": "MPR_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "White, Boehm and Hilpert",
+    "calculation_date": "2025-10-08",
+    "readiness_score": 62,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 80,
+      "adoption_maturity": 87,
+      "engagement_quality": 89,
+      "expansion_indicators": 81
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-07"
+  },
+  {
+    "readiness_id": "MPR_CUST_000006_20251009",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "calculation_date": "2025-09-26",
+    "readiness_score": 91,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 79,
+      "adoption_maturity": 79,
+      "engagement_quality": 90,
+      "expansion_indicators": 84
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 143891,
+    "last_updated": "2025-10-08"
+  },
+  {
+    "readiness_id": "MPR_CUST_000007_20251009",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "calculation_date": "2025-09-24",
+    "readiness_score": 91,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 90,
+      "adoption_maturity": 87,
+      "engagement_quality": 73,
+      "expansion_indicators": 88
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 87305,
+    "last_updated": "2025-10-03"
+  },
+  {
+    "readiness_id": "MPR_CUST_000008_20251009",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "calculation_date": "2025-09-24",
+    "readiness_score": 76,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 93,
+      "adoption_maturity": 82,
+      "engagement_quality": 87,
+      "expansion_indicators": 93
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-04"
+  },
+  {
+    "readiness_id": "MPR_CUST_000009_20251009",
+    "account_id": "CUST_000009",
+    "account_name": "Quality Corporation",
+    "calculation_date": "2025-09-29",
+    "readiness_score": 78,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 76,
+      "adoption_maturity": 70,
+      "engagement_quality": 86,
+      "expansion_indicators": 73
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-07"
+  },
+  {
+    "readiness_id": "MPR_CUST_000010_20251009",
+    "account_id": "CUST_000010",
+    "account_name": "Block - Toy",
+    "calculation_date": "2025-09-28",
+    "readiness_score": 83,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 98,
+      "adoption_maturity": 88,
+      "engagement_quality": 68,
+      "expansion_indicators": 92
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-04"
+  },
+  {
+    "readiness_id": "MPR_CUST_000011_20251009",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "calculation_date": "2025-10-06",
+    "readiness_score": 84,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 88,
+      "adoption_maturity": 81,
+      "engagement_quality": 79,
+      "expansion_indicators": 85
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-04"
+  },
+  {
+    "readiness_id": "MPR_CUST_000012_20251009",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "calculation_date": "2025-10-02",
+    "readiness_score": 63,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 82,
+      "adoption_maturity": 77,
+      "engagement_quality": 88,
+      "expansion_indicators": 81
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-30"
+  },
+  {
+    "readiness_id": "MPR_CUST_000013_20251009",
+    "account_id": "CUST_000013",
+    "account_name": "Clinical Associates",
+    "calculation_date": "2025-10-07",
+    "readiness_score": 65,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 84,
+      "adoption_maturity": 73,
+      "engagement_quality": 78,
+      "expansion_indicators": 77
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-09"
+  },
+  {
+    "readiness_id": "MPR_CUST_000014_20251009",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "calculation_date": "2025-09-29",
+    "readiness_score": 94,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 76,
+      "adoption_maturity": 84,
+      "engagement_quality": 89,
+      "expansion_indicators": 85
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 154455,
+    "last_updated": "2025-10-01"
+  },
+  {
+    "readiness_id": "MPR_CUST_000015_20251009",
+    "account_id": "CUST_000015",
+    "account_name": "Investment Management",
+    "calculation_date": "2025-10-01",
+    "readiness_score": 86,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 75,
+      "adoption_maturity": 92,
+      "engagement_quality": 83,
+      "expansion_indicators": 90
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 82914,
+    "last_updated": "2025-10-04"
+  },
+  {
+    "readiness_id": "MPR_CUST_000016_20251009",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "calculation_date": "2025-09-27",
+    "readiness_score": 84,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 85,
+      "adoption_maturity": 88,
+      "engagement_quality": 71,
+      "expansion_indicators": 87
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-08"
+  },
+  {
+    "readiness_id": "MPR_CUST_000017_20251009",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "calculation_date": "2025-09-29",
+    "readiness_score": 73,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 90,
+      "adoption_maturity": 86,
+      "engagement_quality": 92,
+      "expansion_indicators": 93
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-04"
+  },
+  {
+    "readiness_id": "MPR_CUST_000018_20251009",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "calculation_date": "2025-09-30",
+    "readiness_score": 70,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 86,
+      "adoption_maturity": 83,
+      "engagement_quality": 74,
+      "expansion_indicators": 87
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-29"
+  },
+  {
+    "readiness_id": "MPR_CUST_000019_20251009",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "calculation_date": "2025-10-03",
+    "readiness_score": 64,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 84,
+      "adoption_maturity": 78,
+      "engagement_quality": 69,
+      "expansion_indicators": 81
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-30"
+  },
+  {
+    "readiness_id": "MPR_CUST_000020_20251009",
+    "account_id": "CUST_000020",
+    "account_name": "Credit Advisors",
+    "calculation_date": "2025-10-02",
+    "readiness_score": 85,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 94,
+      "adoption_maturity": 93,
+      "engagement_quality": 70,
+      "expansion_indicators": 94
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 190649,
+    "last_updated": "2025-09-30"
+  },
+  {
+    "readiness_id": "MPR_CUST_000021_20251009",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "calculation_date": "2025-09-29",
+    "readiness_score": 66,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 83,
+      "adoption_maturity": 72,
+      "engagement_quality": 86,
+      "expansion_indicators": 88
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-02"
+  },
+  {
+    "readiness_id": "MPR_CUST_000022_20251009",
+    "account_id": "CUST_000022",
+    "account_name": "Kris - Dibbert",
+    "calculation_date": "2025-10-03",
+    "readiness_score": 87,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 86,
+      "adoption_maturity": 95,
+      "engagement_quality": 70,
+      "expansion_indicators": 92
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 187969,
+    "last_updated": "2025-10-05"
+  },
+  {
+    "readiness_id": "MPR_CUST_000023_20251009",
+    "account_id": "CUST_000023",
+    "account_name": "Smith LLC",
+    "calculation_date": "2025-09-30",
+    "readiness_score": 92,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 88,
+      "adoption_maturity": 91,
+      "engagement_quality": 85,
+      "expansion_indicators": 82
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 106224,
+    "last_updated": "2025-10-03"
+  },
+  {
+    "readiness_id": "MPR_CUST_000024_20251009",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "calculation_date": "2025-10-01",
+    "readiness_score": 85,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 94,
+      "adoption_maturity": 86,
+      "engagement_quality": 82,
+      "expansion_indicators": 93
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 180065,
+    "last_updated": "2025-10-01"
+  },
+  {
+    "readiness_id": "MPR_CUST_000025_20251009",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "calculation_date": "2025-10-09",
+    "readiness_score": 71,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 95,
+      "adoption_maturity": 92,
+      "engagement_quality": 84,
+      "expansion_indicators": 77
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-30"
+  },
+  {
+    "readiness_id": "MPR_CUST_000026_20251009",
+    "account_id": "CUST_000026",
+    "account_name": "Credit Group",
+    "calculation_date": "2025-10-03",
+    "readiness_score": 91,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 96,
+      "adoption_maturity": 93,
+      "engagement_quality": 82,
+      "expansion_indicators": 80
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 163614,
+    "last_updated": "2025-10-01"
+  },
+  {
+    "readiness_id": "MPR_CUST_000027_20251009",
+    "account_id": "CUST_000027",
+    "account_name": "Gutmann, King and Gorczany",
+    "calculation_date": "2025-10-08",
+    "readiness_score": 87,
+    "readiness_category": "READY NOW",
+    "component_scores": {
+      "foundation_health": 91,
+      "adoption_maturity": 76,
+      "engagement_quality": 79,
+      "expansion_indicators": 86
+    },
+    "recommended_action": "Hand off to Sales AE for cross-sell",
+    "estimated_opportunity_arr": 99365,
+    "last_updated": "2025-10-06"
+  },
+  {
+    "readiness_id": "MPR_CUST_000028_20251009",
+    "account_id": "CUST_000028",
+    "account_name": "Medical Alliance",
+    "calculation_date": "2025-09-30",
+    "readiness_score": 69,
+    "readiness_category": "NURTURE",
+    "component_scores": {
+      "foundation_health": 88,
+      "adoption_maturity": 83,
+      "engagement_quality": 78,
+      "expansion_indicators": 74
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-09-29"
+  },
+  {
+    "readiness_id": "MPR_CUST_000029_20251009",
+    "account_id": "CUST_000029",
+    "account_name": "Medical Systems",
+    "calculation_date": "2025-09-26",
+    "readiness_score": 73,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 83,
+      "adoption_maturity": 79,
+      "engagement_quality": 88,
+      "expansion_indicators": 77
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-05"
+  },
+  {
+    "readiness_id": "MPR_CUST_000030_20251009",
+    "account_id": "CUST_000030",
+    "account_name": "Bashirian Inc",
+    "calculation_date": "2025-09-27",
+    "readiness_score": 75,
+    "readiness_category": "READY SOON",
+    "component_scores": {
+      "foundation_health": 82,
+      "adoption_maturity": 73,
+      "engagement_quality": 72,
+      "expansion_indicators": 78
+    },
+    "recommended_action": "Continue CSM nurturing",
+    "estimated_opportunity_arr": 0,
+    "last_updated": "2025-10-09"
+  }
+]

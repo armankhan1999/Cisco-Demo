@@ -1,0 +1,3587 @@
+[
+  {
+    "analysis_id": "LOOK_CUST_000001",
+    "customer_id": "CUST_000001",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Technology",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 1522871,
+      "product_health_avg": 79
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000006",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Company Size",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Umbrella",
+        "expansion_arr": 177340,
+        "time_to_expansion": 159,
+        "success_factors": [
+          "Compliance requirements",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 105324,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "4 months",
+        "success_probability": 80
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000002",
+    "customer_id": "CUST_000002",
+    "customer_profile": {
+      "tier": "Strategic",
+      "industry": "Healthcare",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 3627162,
+      "product_health_avg": 87
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 80,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "ARR Range",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 6 months after Umbrella",
+        "expansion_arr": 138878,
+        "time_to_expansion": 234,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 159945,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 73
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000003",
+    "customer_id": "CUST_000003",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 804011,
+      "product_health_avg": 86
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000011",
+        "similarity_score": 85,
+        "matching_attributes": [
+          "Industry",
+          "ARR Range",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Meraki",
+        "expansion_arr": 128739,
+        "time_to_expansion": 241,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000015",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "ARR Range",
+          "Usage Patterns",
+          "Product Portfolio",
+          "Industry",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Duo",
+        "expansion_arr": 178867,
+        "time_to_expansion": 261,
+        "success_factors": [
+          "Strong network team",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 93250,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "7 months",
+        "success_probability": 77
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000004",
+    "customer_id": "CUST_000004",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Manufacturing",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 140615,
+      "product_health_avg": 84
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000017",
+        "similarity_score": 94,
+        "matching_attributes": [
+          "Company Size",
+          "Geographic Footprint",
+          "ARR Range",
+          "Technology Stack",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 4 months after Umbrella",
+        "expansion_arr": 160570,
+        "time_to_expansion": 234,
+        "success_factors": [
+          "Performance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000016",
+        "similarity_score": 91,
+        "matching_attributes": [
+          "Company Size",
+          "Usage Patterns",
+          "Product Portfolio",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 7 months after Umbrella",
+        "expansion_arr": 146051,
+        "time_to_expansion": 214,
+        "success_factors": [
+          "CISO champion",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 91597,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 81
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000005",
+    "customer_id": "CUST_000005",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Technology",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Splunk",
+        "Meraki"
+      ],
+      "arr": 496079,
+      "product_health_avg": 81
+    },
+    "similar_customers": [],
+    "expansion_recommendations": []
+  },
+  {
+    "analysis_id": "LOOK_CUST_000001",
+    "customer_id": "CUST_000001",
+    "customer_profile": {
+      "tier": "Strategic",
+      "industry": "Manufacturing",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 3386280,
+      "product_health_avg": 87
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Company Size",
+          "ARR Range",
+          "Usage Patterns",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 8 months after Meraki",
+        "expansion_arr": 101282,
+        "time_to_expansion": 156,
+        "success_factors": [
+          "Compliance requirements",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 152208,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "8 months",
+        "success_probability": 80
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000002",
+    "customer_id": "CUST_000002",
+    "customer_profile": {
+      "tier": "Strategic",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 3669528,
+      "product_health_avg": 90
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 95,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Company Size",
+          "Geographic Footprint",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Umbrella",
+        "expansion_arr": 140039,
+        "time_to_expansion": 194,
+        "success_factors": [
+          "Budget availability",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 95535,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 88
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000003",
+    "customer_id": "CUST_000003",
+    "customer_profile": {
+      "tier": "Strategic",
+      "industry": "Manufacturing",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 3222435,
+      "product_health_avg": 89
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000004",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Technology Stack",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Meraki",
+        "expansion_arr": 127707,
+        "time_to_expansion": 226,
+        "success_factors": [
+          "Compliance requirements",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000002",
+        "similarity_score": 95,
+        "matching_attributes": [
+          "Industry",
+          "Technology Stack",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 137416,
+        "time_to_expansion": 268,
+        "success_factors": [
+          "CISO champion",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000002",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "ARR Range",
+          "Technology Stack",
+          "Usage Patterns",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Meraki",
+        "expansion_arr": 165400,
+        "time_to_expansion": 124,
+        "success_factors": [
+          "Security incident",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 166238,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "4 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000004",
+    "customer_id": "CUST_000004",
+    "customer_profile": {
+      "tier": "Strategic",
+      "industry": "Healthcare",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 4199901,
+      "product_health_avg": 80
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 76,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Usage Patterns",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 6 months after Meraki",
+        "expansion_arr": 173747,
+        "time_to_expansion": 139,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 172317,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 73
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000005",
+    "customer_id": "CUST_000005",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Splunk",
+        "Meraki"
+      ],
+      "arr": 1833761,
+      "product_health_avg": 84
+    },
+    "similar_customers": [],
+    "expansion_recommendations": []
+  },
+  {
+    "analysis_id": "LOOK_CUST_000006",
+    "customer_id": "CUST_000006",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 747423,
+      "product_health_avg": 86
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000008",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Product Portfolio",
+          "Company Size",
+          "Industry",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 6 months after ThousandEyes",
+        "expansion_arr": 144000,
+        "time_to_expansion": 207,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000009",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Company Size",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 7 months after ThousandEyes",
+        "expansion_arr": 100013,
+        "time_to_expansion": 149,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 152851,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "6 months",
+        "success_probability": 79
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000007",
+    "customer_id": "CUST_000007",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Education",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 1091244,
+      "product_health_avg": 84
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 91,
+        "matching_attributes": [
+          "Company Size",
+          "ARR Range",
+          "Product Portfolio",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Splunk adopted 5 months after Umbrella",
+        "expansion_arr": 108659,
+        "time_to_expansion": 178,
+        "success_factors": [
+          "Security incident",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000013",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Industry",
+          "Usage Patterns",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 4 months after Duo",
+        "expansion_arr": 146524,
+        "time_to_expansion": 130,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 94298,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "9 months",
+        "success_probability": 86
+      },
+      {
+        "product": "Splunk",
+        "confidence": 50,
+        "estimated_arr": 167748,
+        "rationale": "50% of similar customers successfully adopted Splunk",
+        "timeline": "4 months",
+        "success_probability": 85
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 105587,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "6 months",
+        "success_probability": 71
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000008",
+    "customer_id": "CUST_000008",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Education",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Meraki"
+      ],
+      "arr": 1456970,
+      "product_health_avg": 91
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000014",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Company Size",
+          "Geographic Footprint",
+          "Technology Stack",
+          "ARR Range",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Duo adopted 4 months after Umbrella",
+        "expansion_arr": 109078,
+        "time_to_expansion": 191,
+        "success_factors": [
+          "Budget availability",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000001",
+        "similarity_score": 86,
+        "matching_attributes": [
+          "Technology Stack",
+          "Geographic Footprint",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Duo adopted 8 months after Umbrella",
+        "expansion_arr": 102989,
+        "time_to_expansion": 268,
+        "success_factors": [
+          "Strong network team",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Company Size",
+          "Product Portfolio",
+          "Technology Stack",
+          "Industry",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "Duo adopted 5 months after Meraki",
+        "expansion_arr": 138033,
+        "time_to_expansion": 270,
+        "success_factors": [
+          "Compliance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Duo",
+        "confidence": 100,
+        "estimated_arr": 178280,
+        "rationale": "100% of similar customers successfully adopted Duo",
+        "timeline": "4 months",
+        "success_probability": 75
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 136507,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "7 months",
+        "success_probability": 83
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000009",
+    "customer_id": "CUST_000009",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Manufacturing",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 1004742,
+      "product_health_avg": 91
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000006",
+        "similarity_score": 85,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Industry",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 7 months after Duo",
+        "expansion_arr": 127784,
+        "time_to_expansion": 262,
+        "success_factors": [
+          "Performance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000010",
+        "similarity_score": 77,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Industry",
+          "Technology Stack",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 8 months after Meraki",
+        "expansion_arr": 130895,
+        "time_to_expansion": 233,
+        "success_factors": [
+          "Compliance requirements",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000003",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Technology Stack",
+          "Usage Patterns",
+          "Company Size",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Duo",
+        "expansion_arr": 113500,
+        "time_to_expansion": 123,
+        "success_factors": [
+          "Performance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 178092,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "4 months",
+        "success_probability": 82
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000010",
+    "customer_id": "CUST_000010",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Education",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 1797331,
+      "product_health_avg": 82
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000015",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Technology Stack",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Duo",
+        "expansion_arr": 98481,
+        "time_to_expansion": 213,
+        "success_factors": [
+          "Compliance requirements",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 116248,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "8 months",
+        "success_probability": 82
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000011",
+    "customer_id": "CUST_000011",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Technology",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 1209071,
+      "product_health_avg": 91
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000009",
+        "similarity_score": 93,
+        "matching_attributes": [
+          "Product Portfolio",
+          "ARR Range",
+          "Usage Patterns",
+          "Technology Stack",
+          "Company Size"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 109316,
+        "time_to_expansion": 236,
+        "success_factors": [
+          "Strong network team",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000010",
+        "similarity_score": 83,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Company Size",
+          "ARR Range",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Umbrella",
+        "expansion_arr": 98942,
+        "time_to_expansion": 247,
+        "success_factors": [
+          "Performance requirements",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 113474,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "7 months",
+        "success_probability": 80
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 110019,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "6 months",
+        "success_probability": 73
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000012",
+    "customer_id": "CUST_000012",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Healthcare",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 536311,
+      "product_health_avg": 87
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000010",
+        "similarity_score": 84,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Technology Stack",
+          "Geographic Footprint",
+          "Product Portfolio",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 8 months after Duo",
+        "expansion_arr": 94141,
+        "time_to_expansion": 230,
+        "success_factors": [
+          "Strong network team",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000015",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Technology Stack",
+          "Usage Patterns",
+          "ARR Range",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Duo",
+        "expansion_arr": 162963,
+        "time_to_expansion": 197,
+        "success_factors": [
+          "Performance requirements",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000006",
+        "similarity_score": 90,
+        "matching_attributes": [
+          "Company Size",
+          "Product Portfolio",
+          "Usage Patterns",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 8 months after Meraki",
+        "expansion_arr": 176517,
+        "time_to_expansion": 261,
+        "success_factors": [
+          "Performance requirements",
+          "Budget availability"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 33,
+        "estimated_arr": 165000,
+        "rationale": "33% of similar customers successfully adopted Umbrella",
+        "timeline": "7 months",
+        "success_probability": 85
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 66,
+        "estimated_arr": 163695,
+        "rationale": "66% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 86
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000013",
+    "customer_id": "CUST_000013",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Healthcare",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 1601116,
+      "product_health_avg": 78
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000007",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "ARR Range",
+          "Product Portfolio",
+          "Technology Stack",
+          "Geographic Footprint",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Duo",
+        "expansion_arr": 106803,
+        "time_to_expansion": 213,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 93525,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "9 months",
+        "success_probability": 80
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000014",
+    "customer_id": "CUST_000014",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Energy",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 1211950,
+      "product_health_avg": 85
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000009",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Industry",
+          "ARR Range",
+          "Company Size",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Meraki",
+        "expansion_arr": 167664,
+        "time_to_expansion": 141,
+        "success_factors": [
+          "Performance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000008",
+        "similarity_score": 84,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Company Size",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 176214,
+        "time_to_expansion": 228,
+        "success_factors": [
+          "Budget availability",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000013",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Industry",
+          "ARR Range",
+          "Usage Patterns",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 7 months after Meraki",
+        "expansion_arr": 132260,
+        "time_to_expansion": 266,
+        "success_factors": [
+          "Strong network team",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 66,
+        "estimated_arr": 103114,
+        "rationale": "66% of similar customers successfully adopted Umbrella",
+        "timeline": "9 months",
+        "success_probability": 76
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 134035,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "7 months",
+        "success_probability": 86
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000015",
+    "customer_id": "CUST_000015",
+    "customer_profile": {
+      "tier": "Enterprise",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 811945,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 86,
+        "matching_attributes": [
+          "Company Size",
+          "Usage Patterns",
+          "Industry",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Umbrella",
+        "expansion_arr": 128970,
+        "time_to_expansion": 266,
+        "success_factors": [
+          "CISO champion",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000012",
+        "similarity_score": 94,
+        "matching_attributes": [
+          "Industry",
+          "ARR Range",
+          "Geographic Footprint",
+          "Technology Stack",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Umbrella",
+        "expansion_arr": 164242,
+        "time_to_expansion": 255,
+        "success_factors": [
+          "CISO champion",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Splunk",
+        "confidence": 50,
+        "estimated_arr": 117490,
+        "rationale": "50% of similar customers successfully adopted Splunk",
+        "timeline": "6 months",
+        "success_probability": 72
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 175398,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "6 months",
+        "success_probability": 86
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000016",
+    "customer_id": "CUST_000016",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 439445,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000032",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Product Portfolio",
+          "Geographic Footprint",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 157662,
+        "time_to_expansion": 167,
+        "success_factors": [
+          "Budget availability",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000025",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Technology Stack",
+          "ARR Range",
+          "Usage Patterns",
+          "Product Portfolio",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Meraki",
+        "expansion_arr": 172150,
+        "time_to_expansion": 135,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 137746,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "7 months",
+        "success_probability": 74
+      },
+      {
+        "product": "Splunk",
+        "confidence": 50,
+        "estimated_arr": 121506,
+        "rationale": "50% of similar customers successfully adopted Splunk",
+        "timeline": "5 months",
+        "success_probability": 79
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000017",
+    "customer_id": "CUST_000017",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Retail",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 323711,
+      "product_health_avg": 82
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000025",
+        "similarity_score": 77,
+        "matching_attributes": [
+          "Company Size",
+          "Usage Patterns",
+          "Product Portfolio",
+          "Geographic Footprint",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 6 months after Meraki",
+        "expansion_arr": 168804,
+        "time_to_expansion": 180,
+        "success_factors": [
+          "CISO champion",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 104884,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "5 months",
+        "success_probability": 76
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000018",
+    "customer_id": "CUST_000018",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Government",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 407999,
+      "product_health_avg": 76
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000040",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Usage Patterns",
+          "ARR Range",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Meraki",
+        "expansion_arr": 107882,
+        "time_to_expansion": 127,
+        "success_factors": [
+          "Security incident",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 176333,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "8 months",
+        "success_probability": 75
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000019",
+    "customer_id": "CUST_000019",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Government",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 131258,
+      "product_health_avg": 86
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000038",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Technology Stack",
+          "Industry",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 137636,
+        "time_to_expansion": 143,
+        "success_factors": [
+          "CISO champion",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000030",
+        "similarity_score": 82,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "ARR Range",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Meraki",
+        "expansion_arr": 155070,
+        "time_to_expansion": 143,
+        "success_factors": [
+          "Compliance requirements",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000040",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Geographic Footprint",
+          "Usage Patterns",
+          "Company Size"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Duo",
+        "expansion_arr": 104000,
+        "time_to_expansion": 164,
+        "success_factors": [
+          "Compliance requirements",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 66,
+        "estimated_arr": 147602,
+        "rationale": "66% of similar customers successfully adopted Umbrella",
+        "timeline": "7 months",
+        "success_probability": 78
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 167264,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "4 months",
+        "success_probability": 85
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000020",
+    "customer_id": "CUST_000020",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Meraki"
+      ],
+      "arr": 137516,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000037",
+        "similarity_score": 92,
+        "matching_attributes": [
+          "Usage Patterns",
+          "ARR Range",
+          "Company Size",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "Duo adopted 6 months after Meraki",
+        "expansion_arr": 138200,
+        "time_to_expansion": 198,
+        "success_factors": [
+          "Strong network team",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000017",
+        "similarity_score": 76,
+        "matching_attributes": [
+          "ARR Range",
+          "Industry",
+          "Company Size",
+          "Product Portfolio",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 6 months after Meraki",
+        "expansion_arr": 179816,
+        "time_to_expansion": 151,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000025",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Industry",
+          "Usage Patterns",
+          "Product Portfolio",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Duo adopted 5 months after Meraki",
+        "expansion_arr": 117575,
+        "time_to_expansion": 161,
+        "success_factors": [
+          "CISO champion",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Duo",
+        "confidence": 100,
+        "estimated_arr": 174466,
+        "rationale": "100% of similar customers successfully adopted Duo",
+        "timeline": "7 months",
+        "success_probability": 71
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 66,
+        "estimated_arr": 125918,
+        "rationale": "66% of similar customers successfully adopted ThousandEyes",
+        "timeline": "4 months",
+        "success_probability": 85
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000021",
+    "customer_id": "CUST_000021",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Technology",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 331717,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000025",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Technology Stack",
+          "Company Size",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 6 months after Meraki",
+        "expansion_arr": 168920,
+        "time_to_expansion": 260,
+        "success_factors": [
+          "Performance requirements",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000037",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Industry",
+          "Technology Stack",
+          "Company Size",
+          "Usage Patterns",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 4 months after Meraki",
+        "expansion_arr": 116224,
+        "time_to_expansion": 198,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 50,
+        "estimated_arr": 100778,
+        "rationale": "50% of similar customers successfully adopted Umbrella",
+        "timeline": "4 months",
+        "success_probability": 75
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 122716,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "8 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000022",
+    "customer_id": "CUST_000022",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Energy",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 215609,
+      "product_health_avg": 86
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000040",
+        "similarity_score": 90,
+        "matching_attributes": [
+          "Company Size",
+          "Product Portfolio",
+          "Technology Stack",
+          "ARR Range",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 4 months after Duo",
+        "expansion_arr": 138182,
+        "time_to_expansion": 166,
+        "success_factors": [
+          "CISO champion",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000029",
+        "similarity_score": 93,
+        "matching_attributes": [
+          "Industry",
+          "Technology Stack",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk"
+        ],
+        "expansion_success": "Splunk adopted 4 months after Duo",
+        "expansion_arr": 115987,
+        "time_to_expansion": 187,
+        "success_factors": [
+          "Performance requirements",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 96525,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "7 months",
+        "success_probability": 83
+      },
+      {
+        "product": "Splunk",
+        "confidence": 50,
+        "estimated_arr": 168694,
+        "rationale": "50% of similar customers successfully adopted Splunk",
+        "timeline": "6 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000023",
+    "customer_id": "CUST_000023",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Government",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 450570,
+      "product_health_avg": 81
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000017",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Usage Patterns",
+          "ARR Range",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Umbrella",
+        "expansion_arr": 114975,
+        "time_to_expansion": 188,
+        "success_factors": [
+          "Security incident",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 100,
+        "estimated_arr": 140079,
+        "rationale": "100% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 83
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000024",
+    "customer_id": "CUST_000024",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Retail",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 464096,
+      "product_health_avg": 92
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000023",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Company Size",
+          "Usage Patterns",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 6 months after Duo",
+        "expansion_arr": 170960,
+        "time_to_expansion": 235,
+        "success_factors": [
+          "Compliance requirements",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000038",
+        "similarity_score": 93,
+        "matching_attributes": [
+          "ARR Range",
+          "Usage Patterns",
+          "Industry",
+          "Geographic Footprint",
+          "Company Size"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 6 months after Meraki",
+        "expansion_arr": 117815,
+        "time_to_expansion": 218,
+        "success_factors": [
+          "Performance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 168275,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "6 months",
+        "success_probability": 72
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000025",
+    "customer_id": "CUST_000025",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Education",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 343375,
+      "product_health_avg": 85
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 90,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "ARR Range",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Splunk adopted 6 months after Duo",
+        "expansion_arr": 129650,
+        "time_to_expansion": 221,
+        "success_factors": [
+          "Performance requirements",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000024",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "Industry",
+          "Geographic Footprint",
+          "Company Size",
+          "Product Portfolio",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Duo",
+        "expansion_arr": 107290,
+        "time_to_expansion": 142,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000021",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Industry",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 5 months after Duo",
+        "expansion_arr": 126831,
+        "time_to_expansion": 212,
+        "success_factors": [
+          "CISO champion",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Splunk",
+        "confidence": 33,
+        "estimated_arr": 124500,
+        "rationale": "33% of similar customers successfully adopted Splunk",
+        "timeline": "8 months",
+        "success_probability": 78
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 157760,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "6 months",
+        "success_probability": 83
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000026",
+    "customer_id": "CUST_000026",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 441614,
+      "product_health_avg": 78
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000039",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "Technology Stack",
+          "ARR Range",
+          "Usage Patterns",
+          "Industry",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 4 months after Umbrella",
+        "expansion_arr": 114004,
+        "time_to_expansion": 129,
+        "success_factors": [
+          "CISO champion",
+          "Security incident"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 111437,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "9 months",
+        "success_probability": 84
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000027",
+    "customer_id": "CUST_000027",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Education",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 474193,
+      "product_health_avg": 75
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000030",
+        "similarity_score": 86,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Usage Patterns",
+          "ARR Range",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 102265,
+        "time_to_expansion": 172,
+        "success_factors": [
+          "Security incident",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 80,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Product Portfolio",
+          "Technology Stack",
+          "Company Size",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Duo",
+        "expansion_arr": 144580,
+        "time_to_expansion": 139,
+        "success_factors": [
+          "Compliance requirements",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000029",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Industry",
+          "Product Portfolio",
+          "Technology Stack",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk"
+        ],
+        "expansion_success": "Splunk adopted 8 months after Duo",
+        "expansion_arr": 132406,
+        "time_to_expansion": 159,
+        "success_factors": [
+          "Strong network team",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 150323,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "9 months",
+        "success_probability": 85
+      },
+      {
+        "product": "Splunk",
+        "confidence": 66,
+        "estimated_arr": 149513,
+        "rationale": "66% of similar customers successfully adopted Splunk",
+        "timeline": "9 months",
+        "success_probability": 78
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000028",
+    "customer_id": "CUST_000028",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Healthcare",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 181551,
+      "product_health_avg": 87
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 94,
+        "matching_attributes": [
+          "Product Portfolio",
+          "ARR Range",
+          "Geographic Footprint",
+          "Company Size"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Splunk adopted 4 months after Meraki",
+        "expansion_arr": 127087,
+        "time_to_expansion": 202,
+        "success_factors": [
+          "Strong network team",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Splunk",
+        "confidence": 100,
+        "estimated_arr": 161716,
+        "rationale": "100% of similar customers successfully adopted Splunk",
+        "timeline": "8 months",
+        "success_probability": 82
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000029",
+    "customer_id": "CUST_000029",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Healthcare",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Splunk"
+      ],
+      "arr": 215678,
+      "product_health_avg": 89
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000022",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "Industry",
+          "Company Size",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 174825,
+        "time_to_expansion": 159,
+        "success_factors": [
+          "Strong network team",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000019",
+        "similarity_score": 90,
+        "matching_attributes": [
+          "ARR Range",
+          "Product Portfolio",
+          "Geographic Footprint",
+          "Company Size"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 9 months after Umbrella",
+        "expansion_arr": 138163,
+        "time_to_expansion": 251,
+        "success_factors": [
+          "Compliance requirements",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000021",
+        "similarity_score": 89,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Product Portfolio",
+          "Geographic Footprint",
+          "Technology Stack"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 170460,
+        "time_to_expansion": 167,
+        "success_factors": [
+          "CISO champion",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 102182,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "4 months",
+        "success_probability": 86
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000030",
+    "customer_id": "CUST_000030",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Government",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 88638,
+      "product_health_avg": 84
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000036",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "ARR Range",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 100378,
+        "time_to_expansion": 242,
+        "success_factors": [
+          "Security incident",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000021",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Company Size",
+          "Geographic Footprint",
+          "Usage Patterns",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 8 months after Umbrella",
+        "expansion_arr": 95910,
+        "time_to_expansion": 251,
+        "success_factors": [
+          "Strong network team",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000035",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Industry",
+          "Usage Patterns",
+          "Geographic Footprint",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Umbrella",
+        "expansion_arr": 155987,
+        "time_to_expansion": 124,
+        "success_factors": [
+          "Strong network team",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 113534,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 82
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 95932,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "4 months",
+        "success_probability": 83
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000031",
+    "customer_id": "CUST_000031",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 202633,
+      "product_health_avg": 89
+    },
+    "similar_customers": [],
+    "expansion_recommendations": []
+  },
+  {
+    "analysis_id": "LOOK_CUST_000032",
+    "customer_id": "CUST_000032",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Splunk"
+      ],
+      "arr": 320768,
+      "product_health_avg": 75
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000040",
+        "similarity_score": 85,
+        "matching_attributes": [
+          "Company Size",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 9 months after Umbrella",
+        "expansion_arr": 146858,
+        "time_to_expansion": 256,
+        "success_factors": [
+          "Strong network team",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000022",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "Industry",
+          "Company Size",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 9 months after Duo",
+        "expansion_arr": 176208,
+        "time_to_expansion": 244,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 170837,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 82
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 129669,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "4 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000033",
+    "customer_id": "CUST_000033",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Energy",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 82833,
+      "product_health_avg": 76
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000020",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Company Size",
+          "Industry",
+          "Technology Stack",
+          "Usage Patterns",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Duo",
+        "expansion_arr": 147119,
+        "time_to_expansion": 257,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000017",
+        "similarity_score": 84,
+        "matching_attributes": [
+          "Company Size",
+          "Usage Patterns",
+          "ARR Range",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Duo",
+        "expansion_arr": 148361,
+        "time_to_expansion": 244,
+        "success_factors": [
+          "CISO champion",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 50,
+        "estimated_arr": 148918,
+        "rationale": "50% of similar customers successfully adopted Umbrella",
+        "timeline": "8 months",
+        "success_probability": 77
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 116389,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 88
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000034",
+    "customer_id": "CUST_000034",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Technology",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Umbrella",
+        "Duo",
+        "Splunk"
+      ],
+      "arr": 395737,
+      "product_health_avg": 84
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000024",
+        "similarity_score": 95,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Technology Stack",
+          "ARR Range",
+          "Product Portfolio",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 157286,
+        "time_to_expansion": 244,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000004",
+        "similarity_score": 91,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Geographic Footprint",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Splunk",
+        "expansion_arr": 144675,
+        "time_to_expansion": 241,
+        "success_factors": [
+          "Strong network team",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000017",
+        "similarity_score": 94,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Usage Patterns",
+          "ARR Range",
+          "Industry",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 9 months after Umbrella",
+        "expansion_arr": 151504,
+        "time_to_expansion": 208,
+        "success_factors": [
+          "CISO champion",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 156536,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 88
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 179780,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "6 months",
+        "success_probability": 84
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000035",
+    "customer_id": "CUST_000035",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Retail",
+      "company_size": "5000-10000",
+      "current_products": [
+        "Umbrella",
+        "Meraki"
+      ],
+      "arr": 152780,
+      "product_health_avg": 76
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000038",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "ARR Range",
+          "Technology Stack",
+          "Product Portfolio",
+          "Usage Patterns",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Duo adopted 6 months after Umbrella",
+        "expansion_arr": 177432,
+        "time_to_expansion": 243,
+        "success_factors": [
+          "Compliance requirements",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000037",
+        "similarity_score": 81,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Usage Patterns",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 7 months after Meraki",
+        "expansion_arr": 120765,
+        "time_to_expansion": 173,
+        "success_factors": [
+          "Budget availability",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000026",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Technology Stack",
+          "Company Size",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Duo adopted 4 months after Meraki",
+        "expansion_arr": 146442,
+        "time_to_expansion": 149,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Duo",
+        "confidence": 100,
+        "estimated_arr": 105818,
+        "rationale": "100% of similar customers successfully adopted Duo",
+        "timeline": "8 months",
+        "success_probability": 77
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 33,
+        "estimated_arr": 153748,
+        "rationale": "33% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 80
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000036",
+    "customer_id": "CUST_000036",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 51826,
+      "product_health_avg": 86
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000031",
+        "similarity_score": 79,
+        "matching_attributes": [
+          "Technology Stack",
+          "Geographic Footprint",
+          "ARR Range",
+          "Industry",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 7 months after ThousandEyes",
+        "expansion_arr": 104539,
+        "time_to_expansion": 147,
+        "success_factors": [
+          "Budget availability",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000022",
+        "similarity_score": 78,
+        "matching_attributes": [
+          "Industry",
+          "Geographic Footprint",
+          "Technology Stack",
+          "Company Size",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 5 months after ThousandEyes",
+        "expansion_arr": 110582,
+        "time_to_expansion": 194,
+        "success_factors": [
+          "Performance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 156308,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "7 months",
+        "success_probability": 73
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000037",
+    "customer_id": "CUST_000037",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Government",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 490470,
+      "product_health_avg": 81
+    },
+    "similar_customers": [],
+    "expansion_recommendations": []
+  },
+  {
+    "analysis_id": "LOOK_CUST_000038",
+    "customer_id": "CUST_000038",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Financial Services",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 424729,
+      "product_health_avg": 76
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000028",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Technology Stack",
+          "Usage Patterns",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 8 months after Umbrella",
+        "expansion_arr": 101171,
+        "time_to_expansion": 188,
+        "success_factors": [
+          "Security incident",
+          "CISO champion"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000027",
+        "similarity_score": 86,
+        "matching_attributes": [
+          "ARR Range",
+          "Company Size",
+          "Technology Stack",
+          "Usage Patterns",
+          "Industry"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Duo",
+        "expansion_arr": 143648,
+        "time_to_expansion": 237,
+        "success_factors": [
+          "Budget availability",
+          "Security incident"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000039",
+        "similarity_score": 75,
+        "matching_attributes": [
+          "Company Size",
+          "Industry",
+          "Geographic Footprint",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 6 months after Duo",
+        "expansion_arr": 142645,
+        "time_to_expansion": 162,
+        "success_factors": [
+          "CISO champion",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 141546,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "4 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000039",
+    "customer_id": "CUST_000039",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Education",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 396896,
+      "product_health_avg": 78
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000034",
+        "similarity_score": 91,
+        "matching_attributes": [
+          "Usage Patterns",
+          "Technology Stack",
+          "Geographic Footprint",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk"
+        ],
+        "expansion_success": "Splunk adopted 6 months after Duo",
+        "expansion_arr": 126671,
+        "time_to_expansion": 255,
+        "success_factors": [
+          "Budget availability",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000036",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "ARR Range",
+          "Company Size",
+          "Geographic Footprint",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Meraki",
+        "expansion_arr": 115859,
+        "time_to_expansion": 197,
+        "success_factors": [
+          "Strong network team",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000040",
+        "similarity_score": 92,
+        "matching_attributes": [
+          "Usage Patterns",
+          "ARR Range",
+          "Company Size",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 4 months after Meraki",
+        "expansion_arr": 158332,
+        "time_to_expansion": 207,
+        "success_factors": [
+          "Performance requirements",
+          "Compliance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 33,
+        "estimated_arr": 93069,
+        "rationale": "33% of similar customers successfully adopted Umbrella",
+        "timeline": "4 months",
+        "success_probability": 87
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 66,
+        "estimated_arr": 167660,
+        "rationale": "66% of similar customers successfully adopted ThousandEyes",
+        "timeline": "6 months",
+        "success_probability": 77
+      },
+      {
+        "product": "Splunk",
+        "confidence": 33,
+        "estimated_arr": 129838,
+        "rationale": "33% of similar customers successfully adopted Splunk",
+        "timeline": "9 months",
+        "success_probability": 83
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000040",
+    "customer_id": "CUST_000040",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Technology",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 119330,
+      "product_health_avg": 82
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000005",
+        "similarity_score": 86,
+        "matching_attributes": [
+          "ARR Range",
+          "Geographic Footprint",
+          "Product Portfolio",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Splunk",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Duo",
+        "expansion_arr": 148816,
+        "time_to_expansion": 196,
+        "success_factors": [
+          "Budget availability",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 149394,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "6 months",
+        "success_probability": 77
+      },
+      {
+        "product": "Splunk",
+        "confidence": 100,
+        "estimated_arr": 166230,
+        "rationale": "100% of similar customers successfully adopted Splunk",
+        "timeline": "8 months",
+        "success_probability": 87
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000041",
+    "customer_id": "CUST_000041",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Education",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 80903,
+      "product_health_avg": 90
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000025",
+        "similarity_score": 93,
+        "matching_attributes": [
+          "Company Size",
+          "ARR Range",
+          "Usage Patterns",
+          "Technology Stack",
+          "Industry"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 8 months after Duo",
+        "expansion_arr": 137352,
+        "time_to_expansion": 236,
+        "success_factors": [
+          "Strong network team",
+          "Compliance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000023",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Industry",
+          "Technology Stack",
+          "ARR Range",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 7 months after Duo",
+        "expansion_arr": 148479,
+        "time_to_expansion": 139,
+        "success_factors": [
+          "Security incident",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000035",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Technology Stack",
+          "Usage Patterns",
+          "Product Portfolio",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 9 months after Meraki",
+        "expansion_arr": 147682,
+        "time_to_expansion": 245,
+        "success_factors": [
+          "Performance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 111344,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "5 months",
+        "success_probability": 86
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000042",
+    "customer_id": "CUST_000042",
+    "customer_profile": {
+      "tier": "Commercial",
+      "industry": "Retail",
+      "company_size": "10000+",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 420242,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000036",
+        "similarity_score": 91,
+        "matching_attributes": [
+          "Industry",
+          "ARR Range",
+          "Company Size",
+          "Usage Patterns",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Duo",
+        "expansion_arr": 163272,
+        "time_to_expansion": 214,
+        "success_factors": [
+          "Strong network team",
+          "Budget availability"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000028",
+        "similarity_score": 88,
+        "matching_attributes": [
+          "Industry",
+          "Product Portfolio",
+          "Geographic Footprint"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Duo",
+        "expansion_arr": 105432,
+        "time_to_expansion": 215,
+        "success_factors": [
+          "Security incident",
+          "Performance requirements"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 50,
+        "estimated_arr": 129748,
+        "rationale": "50% of similar customers successfully adopted Umbrella",
+        "timeline": "6 months",
+        "success_probability": 85
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 93667,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 74
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000043",
+    "customer_id": "CUST_000043",
+    "customer_profile": {
+      "tier": "SMB",
+      "industry": "Energy",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "Meraki"
+      ],
+      "arr": 10017,
+      "product_health_avg": 88
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000044",
+        "similarity_score": 84,
+        "matching_attributes": [
+          "Company Size",
+          "ARR Range",
+          "Usage Patterns"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 98855,
+        "time_to_expansion": 131,
+        "success_factors": [
+          "CISO champion",
+          "Performance requirements"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000045",
+        "similarity_score": 93,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Usage Patterns",
+          "Product Portfolio",
+          "ARR Range"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 9 months after Duo",
+        "expansion_arr": 108156,
+        "time_to_expansion": 249,
+        "success_factors": [
+          "Performance requirements",
+          "CISO champion"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 50,
+        "estimated_arr": 148973,
+        "rationale": "50% of similar customers successfully adopted Umbrella",
+        "timeline": "9 months",
+        "success_probability": 84
+      },
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 109527,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "9 months",
+        "success_probability": 80
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000044",
+    "customer_id": "CUST_000044",
+    "customer_profile": {
+      "tier": "SMB",
+      "industry": "Government",
+      "company_size": "10000+",
+      "current_products": [
+        "Umbrella",
+        "Duo"
+      ],
+      "arr": 24362,
+      "product_health_avg": 85
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000045",
+        "similarity_score": 87,
+        "matching_attributes": [
+          "Geographic Footprint",
+          "Industry",
+          "Usage Patterns",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "ThousandEyes",
+          "Meraki"
+        ],
+        "expansion_success": "ThousandEyes adopted 5 months after Umbrella",
+        "expansion_arr": 164972,
+        "time_to_expansion": 199,
+        "success_factors": [
+          "Budget availability",
+          "Strong network team"
+        ]
+      },
+      {
+        "similar_customer_id": "CUST_000043",
+        "similarity_score": 95,
+        "matching_attributes": [
+          "Industry",
+          "Company Size",
+          "Geographic Footprint",
+          "Technology Stack",
+          "Product Portfolio"
+        ],
+        "their_products": [
+          "Duo",
+          "Meraki"
+        ],
+        "expansion_success": "Meraki adopted 7 months after Umbrella",
+        "expansion_arr": 105765,
+        "time_to_expansion": 256,
+        "success_factors": [
+          "Compliance requirements",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "ThousandEyes",
+        "confidence": 50,
+        "estimated_arr": 126039,
+        "rationale": "50% of similar customers successfully adopted ThousandEyes",
+        "timeline": "5 months",
+        "success_probability": 77
+      },
+      {
+        "product": "Meraki",
+        "confidence": 100,
+        "estimated_arr": 165963,
+        "rationale": "100% of similar customers successfully adopted Meraki",
+        "timeline": "7 months",
+        "success_probability": 72
+      }
+    ]
+  },
+  {
+    "analysis_id": "LOOK_CUST_000045",
+    "customer_id": "CUST_000045",
+    "customer_profile": {
+      "tier": "SMB",
+      "industry": "Government",
+      "company_size": "1000-5000",
+      "current_products": [
+        "Duo",
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "arr": 22076,
+      "product_health_avg": 84
+    },
+    "similar_customers": [
+      {
+        "similar_customer_id": "CUST_000044",
+        "similarity_score": 90,
+        "matching_attributes": [
+          "Product Portfolio",
+          "Usage Patterns",
+          "Company Size"
+        ],
+        "their_products": [
+          "Umbrella",
+          "Duo"
+        ],
+        "expansion_success": "Umbrella adopted 4 months after Meraki",
+        "expansion_arr": 131599,
+        "time_to_expansion": 217,
+        "success_factors": [
+          "Security incident",
+          "Strong network team"
+        ]
+      }
+    ],
+    "expansion_recommendations": [
+      {
+        "product": "Umbrella",
+        "confidence": 100,
+        "estimated_arr": 105026,
+        "rationale": "100% of similar customers successfully adopted Umbrella",
+        "timeline": "4 months",
+        "success_probability": 87
+      }
+    ]
+  }
+]

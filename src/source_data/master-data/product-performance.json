@@ -1,0 +1,92 @@
+[
+  {
+    "product": "Duo",
+    "total_customers": 42,
+    "total_arr": 2100000,
+    "average_arr": 50000,
+    "market_penetration": 84,
+    "growth_rate": 25,
+    "churn_rate": 3,
+    "health_score": 88,
+    "competitive_position": "leader",
+    "strategic_importance": "high",
+    "customer_satisfaction": 89,
+    "usage_metrics": {
+      "average_utilization": 78,
+      "adoption_rate": 85,
+      "feature_usage": 72
+    }
+  },
+  {
+    "product": "Meraki",
+    "total_customers": 34,
+    "total_arr": 3200000,
+    "average_arr": 94118,
+    "market_penetration": 68,
+    "growth_rate": 22,
+    "churn_rate": 4,
+    "health_score": 85,
+    "competitive_position": "leader",
+    "strategic_importance": "high",
+    "customer_satisfaction": 87,
+    "usage_metrics": {
+      "average_utilization": 75,
+      "adoption_rate": 82,
+      "feature_usage": 69
+    }
+  },
+  {
+    "product": "Umbrella",
+    "total_customers": 23,
+    "total_arr": 1150000,
+    "average_arr": 50000,
+    "market_penetration": 46,
+    "growth_rate": 18,
+    "churn_rate": 5,
+    "health_score": 82,
+    "competitive_position": "challenger",
+    "strategic_importance": "medium",
+    "customer_satisfaction": 84,
+    "usage_metrics": {
+      "average_utilization": 72,
+      "adoption_rate": 78,
+      "feature_usage": 65
+    }
+  },
+  {
+    "product": "ThousandEyes",
+    "total_customers": 10,
+    "total_arr": 800000,
+    "average_arr": 80000,
+    "market_penetration": 20,
+    "growth_rate": 35,
+    "churn_rate": 2,
+    "health_score": 91,
+    "competitive_position": "leader",
+    "strategic_importance": "high",
+    "customer_satisfaction": 92,
+    "usage_metrics": {
+      "average_utilization": 85,
+      "adoption_rate": 88,
+      "feature_usage": 80
+    }
+  },
+  {
+    "product": "Splunk",
+    "total_customers": 4,
+    "total_arr": 600000,
+    "average_arr": 150000,
+    "market_penetration": 8,
+    "growth_rate": 12,
+    "churn_rate": 6,
+    "health_score": 79,
+    "competitive_position": "follower",
+    "strategic_importance": "medium",
+    "customer_satisfaction": 81,
+    "usage_metrics": {
+      "average_utilization": 68,
+      "adoption_rate": 75,
+      "feature_usage": 62
+    }
+  }
+]

@@ -1,0 +1,430 @@
+[
+  {
+    "tracking_period": "2025-Q3",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "csm_id": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "by_tier": [
+      {
+        "tier": "Strategic",
+        "qbr_frequency_days": 90,
+        "total_accounts": 3,
+        "compliant": 2,
+        "overdue": 1,
+        "completion_rate": 0.67,
+        "avg_days_since_last_qbr": 38,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000004",
+            "account_name": "Global Medical Network",
+            "last_qbr_date": "2025-07-19",
+            "days_since_last_qbr": 107,
+            "days_overdue": 19,
+            "arr": 4199901
+          }
+        ]
+      },
+      {
+        "tier": "Enterprise",
+        "qbr_frequency_days": 180,
+        "total_accounts": 7,
+        "compliant": 6,
+        "overdue": 1,
+        "completion_rate": 0.86,
+        "avg_days_since_last_qbr": 73,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000007",
+            "account_name": "Baumbach, Dietrich and Mueller",
+            "last_qbr_date": "2025-08-19",
+            "days_since_last_qbr": 132,
+            "days_overdue": 32,
+            "arr": 1091244
+          }
+        ]
+      },
+      {
+        "tier": "Commercial",
+        "qbr_frequency_days": 180,
+        "total_accounts": 14,
+        "compliant": 12,
+        "overdue": 2,
+        "completion_rate": 0.86,
+        "avg_days_since_last_qbr": 84,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000041",
+            "account_name": "Collier, Bayer and Ward",
+            "last_qbr_date": "2025-10-07",
+            "days_since_last_qbr": 126,
+            "days_overdue": 30,
+            "arr": 80903
+          },
+          {
+            "account_id": "CUST_000026",
+            "account_name": "Credit Group",
+            "last_qbr_date": "2025-06-28",
+            "days_since_last_qbr": 136,
+            "days_overdue": 92,
+            "arr": 441614
+          }
+        ]
+      }
+    ],
+    "qbr_history": [
+      {
+        "qbr_id": "QBR_CUST_000036_Q3_2025",
+        "account_id": "CUST_000036",
+        "qbr_date": "2025-10-03",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.3
+      },
+      {
+        "qbr_id": "QBR_CUST_000002_Q3_2025",
+        "account_id": "CUST_000002",
+        "qbr_date": "2025-09-08",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 7.4
+      },
+      {
+        "qbr_id": "QBR_CUST_000005_Q3_2025",
+        "account_id": "CUST_000005",
+        "qbr_date": "2025-09-09",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.6
+      },
+      {
+        "qbr_id": "QBR_CUST_000011_Q3_2025",
+        "account_id": "CUST_000011",
+        "qbr_date": "2025-09-12",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 6.7
+      },
+      {
+        "qbr_id": "QBR_CUST_000025_Q3_2025",
+        "account_id": "CUST_000025",
+        "qbr_date": "2025-08-19",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.9
+      },
+      {
+        "qbr_id": "QBR_CUST_000021_Q3_2025",
+        "account_id": "CUST_000021",
+        "qbr_date": "2025-09-12",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 3.0
+      },
+      {
+        "qbr_id": "QBR_CUST_000041_Q3_2025",
+        "account_id": "CUST_000041",
+        "qbr_date": "2025-09-07",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 7.9
+      },
+      {
+        "qbr_id": "QBR_CUST_000040_Q3_2025",
+        "account_id": "CUST_000040",
+        "qbr_date": "2025-08-27",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 6.1
+      },
+      {
+        "qbr_id": "QBR_CUST_000016_Q3_2025",
+        "account_id": "CUST_000016",
+        "qbr_date": "2025-08-25",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 7.6
+      },
+      {
+        "qbr_id": "QBR_CUST_000015_Q3_2025",
+        "account_id": "CUST_000015",
+        "qbr_date": "2025-09-06",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 4.1
+      }
+    ],
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "tracking_period": "2025-Q3",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "csm_id": "CSM_002",
+    "csm_name": "Michael Chen",
+    "by_tier": [
+      {
+        "tier": "Strategic",
+        "qbr_frequency_days": 90,
+        "total_accounts": 2,
+        "compliant": 1,
+        "overdue": 1,
+        "completion_rate": 0.5,
+        "avg_days_since_last_qbr": 65,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000003",
+            "account_name": "Global Quality Industries",
+            "last_qbr_date": "2025-09-23",
+            "days_since_last_qbr": 187,
+            "days_overdue": 48,
+            "arr": 3222435
+          }
+        ]
+      },
+      {
+        "tier": "Enterprise",
+        "qbr_frequency_days": 180,
+        "total_accounts": 5,
+        "compliant": 4,
+        "overdue": 1,
+        "completion_rate": 0.8,
+        "avg_days_since_last_qbr": 68,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000013",
+            "account_name": "Clinical Associates",
+            "last_qbr_date": "2025-09-27",
+            "days_since_last_qbr": 170,
+            "days_overdue": 19,
+            "arr": 1601116
+          }
+        ]
+      },
+      {
+        "tier": "Commercial",
+        "qbr_frequency_days": 180,
+        "total_accounts": 8,
+        "compliant": 7,
+        "overdue": 1,
+        "completion_rate": 0.88,
+        "avg_days_since_last_qbr": 67,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000019",
+            "account_name": "Pagac - Muller",
+            "last_qbr_date": "2025-06-23",
+            "days_since_last_qbr": 152,
+            "days_overdue": 22,
+            "arr": 131258
+          }
+        ]
+      }
+    ],
+    "qbr_history": [
+      {
+        "qbr_id": "QBR_CUST_000039_Q3_2025",
+        "account_id": "CUST_000039",
+        "qbr_date": "2025-09-28",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 7.1
+      },
+      {
+        "qbr_id": "QBR_CUST_000019_Q3_2025",
+        "account_id": "CUST_000019",
+        "qbr_date": "2025-10-07",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 4.8
+      },
+      {
+        "qbr_id": "QBR_CUST_000013_Q3_2025",
+        "account_id": "CUST_000013",
+        "qbr_date": "2025-08-25",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 4.2
+      },
+      {
+        "qbr_id": "QBR_CUST_000012_Q3_2025",
+        "account_id": "CUST_000012",
+        "qbr_date": "2025-08-24",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 6.7
+      },
+      {
+        "qbr_id": "QBR_CUST_000023_Q3_2025",
+        "account_id": "CUST_000023",
+        "qbr_date": "2025-09-11",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 4.4
+      },
+      {
+        "qbr_id": "QBR_CUST_000003_Q3_2025",
+        "account_id": "CUST_000003",
+        "qbr_date": "2025-08-12",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 3.7
+      },
+      {
+        "qbr_id": "QBR_CUST_000044_Q3_2025",
+        "account_id": "CUST_000044",
+        "qbr_date": "2025-10-04",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 7.3
+      },
+      {
+        "qbr_id": "QBR_CUST_000001_Q3_2025",
+        "account_id": "CUST_000001",
+        "qbr_date": "2025-10-03",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.4
+      },
+      {
+        "qbr_id": "QBR_CUST_000029_Q3_2025",
+        "account_id": "CUST_000029",
+        "qbr_date": "2025-10-09",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 3.1
+      },
+      {
+        "qbr_id": "QBR_CUST_000018_Q3_2025",
+        "account_id": "CUST_000018",
+        "qbr_date": "2025-09-29",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.0
+      }
+    ],
+    "last_updated": "2025-10-09T15:27:11Z"
+  },
+  {
+    "tracking_period": "2025-Q3",
+    "period_start": "2025-07-01",
+    "period_end": "2025-09-30",
+    "csm_id": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "by_tier": [
+      {
+        "tier": "Enterprise",
+        "qbr_frequency_days": 180,
+        "total_accounts": 1,
+        "compliant": 0,
+        "overdue": 1,
+        "completion_rate": 0.0,
+        "avg_days_since_last_qbr": 77,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000009",
+            "account_name": "Quality Corporation",
+            "last_qbr_date": "2025-07-09",
+            "days_since_last_qbr": 188,
+            "days_overdue": 96,
+            "arr": 1004742
+          }
+        ]
+      },
+      {
+        "tier": "Commercial",
+        "qbr_frequency_days": 180,
+        "total_accounts": 7,
+        "compliant": 6,
+        "overdue": 1,
+        "completion_rate": 0.86,
+        "avg_days_since_last_qbr": 78,
+        "accounts_needing_qbr": [
+          {
+            "account_id": "CUST_000027",
+            "account_name": "Gutmann, King and Gorczany",
+            "last_qbr_date": "2025-09-17",
+            "days_since_last_qbr": 116,
+            "days_overdue": 27,
+            "arr": 474193
+          }
+        ]
+      }
+    ],
+    "qbr_history": [
+      {
+        "qbr_id": "QBR_CUST_000004_Q3_2025",
+        "account_id": "CUST_000004",
+        "qbr_date": "2025-08-29",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 4.9
+      },
+      {
+        "qbr_id": "QBR_CUST_000024_Q3_2025",
+        "account_id": "CUST_000024",
+        "qbr_date": "2025-08-30",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 3.0
+      },
+      {
+        "qbr_id": "QBR_CUST_000043_Q3_2025",
+        "account_id": "CUST_000043",
+        "qbr_date": "2025-08-21",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 3.3
+      },
+      {
+        "qbr_id": "QBR_CUST_000035_Q3_2025",
+        "account_id": "CUST_000035",
+        "qbr_date": "2025-09-12",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 3.1
+      },
+      {
+        "qbr_id": "QBR_CUST_000009_Q3_2025",
+        "account_id": "CUST_000009",
+        "qbr_date": "2025-08-13",
+        "status": "Completed",
+        "generation_method": "Auto",
+        "prep_time_hours": 6.6
+      },
+      {
+        "qbr_id": "QBR_CUST_000033_Q3_2025",
+        "account_id": "CUST_000033",
+        "qbr_date": "2025-09-11",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.1
+      },
+      {
+        "qbr_id": "QBR_CUST_000042_Q3_2025",
+        "account_id": "CUST_000042",
+        "qbr_date": "2025-08-15",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.7
+      },
+      {
+        "qbr_id": "QBR_CUST_000027_Q3_2025",
+        "account_id": "CUST_000027",
+        "qbr_date": "2025-09-27",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 5.6
+      },
+      {
+        "qbr_id": "QBR_CUST_000017_Q3_2025",
+        "account_id": "CUST_000017",
+        "qbr_date": "2025-08-17",
+        "status": "Completed",
+        "generation_method": "Manual",
+        "prep_time_hours": 2.8
+      }
+    ],
+    "last_updated": "2025-10-09T15:27:11Z"
+  }
+]

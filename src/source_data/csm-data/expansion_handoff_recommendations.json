@@ -1,0 +1,1400 @@
+[
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "recommendation_date": "2025-09-23",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 70,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 75,
+      "adoption_maturity": 85,
+      "engagement_quality": 72,
+      "expansion_indicators": 92
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 75,
+      "estimated_arr": 138659,
+      "win_probability": 0.71,
+      "similar_customer_success_rate": 0.86,
+      "rationale": "79% of Technology accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Splunk",
+      "Meraki"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_017",
+    "ae_territory": "Technology West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 89 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 84% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "recommendation_date": "2025-09-21",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 73,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 91,
+      "engagement_quality": 79,
+      "expansion_indicators": 89
+    },
+    "opportunity_details": {
+      "recommended_product": "Splunk",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 84,
+      "estimated_arr": 158243,
+      "win_probability": 0.81,
+      "similar_customer_success_rate": 0.8,
+      "rationale": "80% of Healthcare accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk",
+      "Meraki"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_013",
+    "ae_territory": "Healthcare West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 82% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "recommendation_date": "2025-09-18",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 80,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 79,
+      "adoption_maturity": 70,
+      "engagement_quality": 88,
+      "expansion_indicators": 87
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Umbrella_001",
+      "fit_score": 88,
+      "estimated_arr": 186063,
+      "win_probability": 0.74,
+      "similar_customer_success_rate": 0.71,
+      "rationale": "88% of Financial Services accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Meraki"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_043",
+    "ae_territory": "Financial Services East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 84% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "recommendation_date": "2025-09-30",
+    "recommended_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "readiness_score": 73,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 79,
+      "adoption_maturity": 78,
+      "engagement_quality": 85,
+      "expansion_indicators": 77
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 82,
+      "estimated_arr": 173135,
+      "win_probability": 0.7,
+      "similar_customer_success_rate": 0.87,
+      "rationale": "83% of Manufacturing accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_030",
+    "ae_territory": "Manufacturing West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 90 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 76% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "recommendation_date": "2025-09-24",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 76,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 78,
+      "adoption_maturity": 91,
+      "engagement_quality": 80,
+      "expansion_indicators": 88
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 76,
+      "estimated_arr": 119525,
+      "win_probability": 0.68,
+      "similar_customer_success_rate": 0.74,
+      "rationale": "83% of Technology accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Meraki",
+      "Umbrella",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_050",
+    "ae_territory": "Technology West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 90 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 85% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "recommendation_date": "2025-09-29",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 90,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 75,
+      "adoption_maturity": 84,
+      "engagement_quality": 76,
+      "expansion_indicators": 78
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 80,
+      "estimated_arr": 208339,
+      "win_probability": 0.83,
+      "similar_customer_success_rate": 0.86,
+      "rationale": "74% of Manufacturing accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Splunk",
+      "Meraki"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_025",
+    "ae_territory": "Manufacturing West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 76 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 92% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-28"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "recommendation_date": "2025-09-09",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 70,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 76,
+      "engagement_quality": 68,
+      "expansion_indicators": 93
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Meraki_001",
+      "fit_score": 82,
+      "estimated_arr": 170269,
+      "win_probability": 0.72,
+      "similar_customer_success_rate": 0.72,
+      "rationale": "86% of Financial Services accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Meraki",
+      "Duo",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_019",
+    "ae_territory": "Financial Services East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 91% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-09-26"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "recommendation_date": "2025-09-11",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 91,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 85,
+      "adoption_maturity": 85,
+      "engagement_quality": 79,
+      "expansion_indicators": 78
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 75,
+      "estimated_arr": 139878,
+      "win_probability": 0.7,
+      "similar_customer_success_rate": 0.9,
+      "rationale": "76% of Manufacturing accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Splunk",
+      "Meraki"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_024",
+    "ae_territory": "Manufacturing Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 76 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 87% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-01"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Global Medical Network",
+    "recommendation_date": "2025-09-15",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 87,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 76,
+      "adoption_maturity": 89,
+      "engagement_quality": 69,
+      "expansion_indicators": 93
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 76,
+      "estimated_arr": 110353,
+      "win_probability": 0.75,
+      "similar_customer_success_rate": 0.78,
+      "rationale": "87% of Healthcare accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_020",
+    "ae_territory": "Healthcare East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 78 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 91% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-10-05"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "White, Boehm and Hilpert",
+    "recommendation_date": "2025-09-26",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 73,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 94,
+      "adoption_maturity": 73,
+      "engagement_quality": 77,
+      "expansion_indicators": 75
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 81,
+      "estimated_arr": 239646,
+      "win_probability": 0.7,
+      "similar_customer_success_rate": 0.75,
+      "rationale": "86% of Energy accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_011",
+    "ae_territory": "Energy West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 92 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-24"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000006_20251009",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "recommendation_date": "2025-09-29",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 77,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 75,
+      "adoption_maturity": 91,
+      "engagement_quality": 70,
+      "expansion_indicators": 75
+    },
+    "opportunity_details": {
+      "recommended_product": "Splunk",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 79,
+      "estimated_arr": 103614,
+      "win_probability": 0.83,
+      "similar_customer_success_rate": 0.72,
+      "rationale": "73% of Energy accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Meraki",
+      "ThousandEyes",
+      "Splunk"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_030",
+    "ae_territory": "Energy West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 78 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 80% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000007_20251009",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "recommendation_date": "2025-09-28",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 95,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 85,
+      "adoption_maturity": 83,
+      "engagement_quality": 71,
+      "expansion_indicators": 75
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 79,
+      "estimated_arr": 249659,
+      "win_probability": 0.69,
+      "similar_customer_success_rate": 0.77,
+      "rationale": "84% of Education accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Duo",
+      "Umbrella",
+      "Meraki"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_008",
+    "ae_territory": "Education East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 87 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 89% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000008_20251009",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "recommendation_date": "2025-09-17",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 85,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 95,
+      "adoption_maturity": 75,
+      "engagement_quality": 71,
+      "expansion_indicators": 76
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Meraki_001",
+      "fit_score": 78,
+      "estimated_arr": 189059,
+      "win_probability": 0.86,
+      "similar_customer_success_rate": 0.8,
+      "rationale": "88% of Education accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Meraki",
+      "ThousandEyes",
+      "Splunk"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_044",
+    "ae_territory": "Education Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 79 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000009_20251009",
+    "account_id": "CUST_000009",
+    "account_name": "Quality Corporation",
+    "recommendation_date": "2025-09-11",
+    "recommended_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "readiness_score": 83,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 76,
+      "adoption_maturity": 72,
+      "engagement_quality": 76,
+      "expansion_indicators": 92
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 91,
+      "estimated_arr": 231165,
+      "win_probability": 0.82,
+      "similar_customer_success_rate": 0.74,
+      "rationale": "80% of Manufacturing accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Meraki"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_023",
+    "ae_territory": "Manufacturing Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 87 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 79% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000010_20251009",
+    "account_id": "CUST_000010",
+    "account_name": "Block - Toy",
+    "recommendation_date": "2025-10-09",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 90,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 85,
+      "engagement_quality": 83,
+      "expansion_indicators": 77
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 85,
+      "estimated_arr": 143148,
+      "win_probability": 0.73,
+      "similar_customer_success_rate": 0.76,
+      "rationale": "86% of Education accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Splunk",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_016",
+    "ae_territory": "Education West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 89 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 89% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-09-25"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000011_20251009",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "recommendation_date": "2025-10-07",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 85,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 85,
+      "adoption_maturity": 73,
+      "engagement_quality": 83,
+      "expansion_indicators": 95
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 87,
+      "estimated_arr": 188092,
+      "win_probability": 0.66,
+      "similar_customer_success_rate": 0.81,
+      "rationale": "72% of Technology accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Splunk",
+      "Meraki",
+      "Umbrella"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_022",
+    "ae_territory": "Technology East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 76 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 82% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000012_20251009",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "recommendation_date": "2025-09-22",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 94,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 94,
+      "adoption_maturity": 85,
+      "engagement_quality": 90,
+      "expansion_indicators": 93
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 78,
+      "estimated_arr": 105542,
+      "win_probability": 0.82,
+      "similar_customer_success_rate": 0.74,
+      "rationale": "80% of Healthcare accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_003",
+    "ae_territory": "Healthcare West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 90 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 79% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-09-26"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000013_20251009",
+    "account_id": "CUST_000013",
+    "account_name": "Clinical Associates",
+    "recommendation_date": "2025-10-06",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 78,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 81,
+      "adoption_maturity": 76,
+      "engagement_quality": 71,
+      "expansion_indicators": 84
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 81,
+      "estimated_arr": 168587,
+      "win_probability": 0.67,
+      "similar_customer_success_rate": 0.78,
+      "rationale": "90% of Healthcare accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Splunk"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_032",
+    "ae_territory": "Healthcare West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 76% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-09-26"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000014_20251009",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "recommendation_date": "2025-09-13",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 88,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 75,
+      "engagement_quality": 90,
+      "expansion_indicators": 90
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_Meraki_001",
+      "fit_score": 78,
+      "estimated_arr": 181556,
+      "win_probability": 0.8,
+      "similar_customer_success_rate": 0.82,
+      "rationale": "80% of Energy accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Meraki",
+      "Splunk"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_022",
+    "ae_territory": "Energy East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 89 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 79% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-26"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000015_20251009",
+    "account_id": "CUST_000015",
+    "account_name": "Investment Management",
+    "recommendation_date": "2025-09-20",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 92,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 79,
+      "engagement_quality": 90,
+      "expansion_indicators": 89
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 81,
+      "estimated_arr": 132661,
+      "win_probability": 0.7,
+      "similar_customer_success_rate": 0.84,
+      "rationale": "81% of Financial Services accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_049",
+    "ae_territory": "Financial Services East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 92 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-09-26"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000016_20251009",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "recommendation_date": "2025-09-18",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 93,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 84,
+      "adoption_maturity": 83,
+      "engagement_quality": 68,
+      "expansion_indicators": 88
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 87,
+      "estimated_arr": 118096,
+      "win_probability": 0.66,
+      "similar_customer_success_rate": 0.71,
+      "rationale": "78% of Financial Services accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_004",
+    "ae_territory": "Financial Services Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 84 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 81% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000017_20251009",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "recommendation_date": "2025-09-28",
+    "recommended_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "readiness_score": 84,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 94,
+      "adoption_maturity": 91,
+      "engagement_quality": 85,
+      "expansion_indicators": 79
+    },
+    "opportunity_details": {
+      "recommended_product": "Splunk",
+      "recommended_product_id": "PROD_ThousandEyes_001",
+      "fit_score": 82,
+      "estimated_arr": 213935,
+      "win_probability": 0.83,
+      "similar_customer_success_rate": 0.86,
+      "rationale": "79% of Retail accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Splunk"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_044",
+    "ae_territory": "Retail East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 92 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 76% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-10-01"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000018_20251009",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "recommendation_date": "2025-10-03",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 89,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 82,
+      "adoption_maturity": 90,
+      "engagement_quality": 90,
+      "expansion_indicators": 94
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 92,
+      "estimated_arr": 238174,
+      "win_probability": 0.7,
+      "similar_customer_success_rate": 0.84,
+      "rationale": "76% of Government accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Meraki",
+      "Umbrella"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_012",
+    "ae_territory": "Government West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 78% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000019_20251009",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "recommendation_date": "2025-09-26",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 78,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 83,
+      "adoption_maturity": 74,
+      "engagement_quality": 73,
+      "expansion_indicators": 90
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Duo_001",
+      "fit_score": 85,
+      "estimated_arr": 202245,
+      "win_probability": 0.81,
+      "similar_customer_success_rate": 0.73,
+      "rationale": "74% of Government accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Splunk",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_032",
+    "ae_territory": "Government Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 92 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 86% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000020_20251009",
+    "account_id": "CUST_000020",
+    "account_name": "Credit Advisors",
+    "recommendation_date": "2025-09-23",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 77,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 91,
+      "adoption_maturity": 72,
+      "engagement_quality": 84,
+      "expansion_indicators": 77
+    },
+    "opportunity_details": {
+      "recommended_product": "ThousandEyes",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 92,
+      "estimated_arr": 185753,
+      "win_probability": 0.67,
+      "similar_customer_success_rate": 0.74,
+      "rationale": "76% of Financial Services accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk",
+      "Meraki"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_049",
+    "ae_territory": "Financial Services Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 91 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-09"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000021_20251009",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "recommendation_date": "2025-10-06",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 91,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 89,
+      "adoption_maturity": 77,
+      "engagement_quality": 88,
+      "expansion_indicators": 91
+    },
+    "opportunity_details": {
+      "recommended_product": "Splunk",
+      "recommended_product_id": "PROD_Meraki_001",
+      "fit_score": 76,
+      "estimated_arr": 164131,
+      "win_probability": 0.74,
+      "similar_customer_success_rate": 0.86,
+      "rationale": "73% of Technology accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "Splunk",
+      "Duo"
+    ],
+    "recommended_ae": "Mike Chen",
+    "recommended_ae_id": "AE_033",
+    "ae_territory": "Technology Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 89 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000022_20251009",
+    "account_id": "CUST_000022",
+    "account_name": "Kris - Dibbert",
+    "recommendation_date": "2025-09-11",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 90,
+    "readiness_category": "READY NOW",
+    "readiness_components": {
+      "foundation_health": 85,
+      "adoption_maturity": 86,
+      "engagement_quality": 70,
+      "expansion_indicators": 75
+    },
+    "opportunity_details": {
+      "recommended_product": "Meraki",
+      "recommended_product_id": "PROD_Splunk_001",
+      "fit_score": 92,
+      "estimated_arr": 81921,
+      "win_probability": 0.79,
+      "similar_customer_success_rate": 0.74,
+      "rationale": "90% of Energy accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_ae": "Sarah Johnson",
+    "recommended_ae_id": "AE_035",
+    "ae_territory": "Energy Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 88 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 77% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-05"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000023_20251009",
+    "account_id": "CUST_000023",
+    "account_name": "Smith LLC",
+    "recommendation_date": "2025-10-09",
+    "recommended_by_csm": "CSM_002",
+    "csm_name": "Michael Chen",
+    "readiness_score": 84,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 85,
+      "adoption_maturity": 71,
+      "engagement_quality": 70,
+      "expansion_indicators": 74
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Meraki_001",
+      "fit_score": 83,
+      "estimated_arr": 226298,
+      "win_probability": 0.67,
+      "similar_customer_success_rate": 0.86,
+      "rationale": "78% of Government accounts your size use this product"
+    },
+    "current_products_owned": [
+      "ThousandEyes",
+      "Splunk",
+      "Umbrella"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_028",
+    "ae_territory": "Government East",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 75 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 87% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "In Progress",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000024_20251009",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "recommendation_date": "2025-09-22",
+    "recommended_by_csm": "CSM_003",
+    "csm_name": "Emily Rodriguez",
+    "readiness_score": 70,
+    "readiness_category": "NURTURE",
+    "readiness_components": {
+      "foundation_health": 94,
+      "adoption_maturity": 72,
+      "engagement_quality": 86,
+      "expansion_indicators": 73
+    },
+    "opportunity_details": {
+      "recommended_product": "Duo",
+      "recommended_product_id": "PROD_Umbrella_001",
+      "fit_score": 91,
+      "estimated_arr": 107822,
+      "win_probability": 0.72,
+      "similar_customer_success_rate": 0.84,
+      "rationale": "89% of Retail accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Umbrella",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "Lisa Anderson",
+    "recommended_ae_id": "AE_026",
+    "ae_territory": "Retail Central",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 75 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 90% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Pending",
+    "last_updated": "2025-10-02"
+  },
+  {
+    "handoff_id": "EXP_HANDOFF_CUST_000025_20251009",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "recommendation_date": "2025-10-05",
+    "recommended_by_csm": "CSM_001",
+    "csm_name": "Sarah Johnson",
+    "readiness_score": 93,
+    "readiness_category": "READY SOON",
+    "readiness_components": {
+      "foundation_health": 92,
+      "adoption_maturity": 79,
+      "engagement_quality": 88,
+      "expansion_indicators": 76
+    },
+    "opportunity_details": {
+      "recommended_product": "Umbrella",
+      "recommended_product_id": "PROD_Umbrella_001",
+      "fit_score": 75,
+      "estimated_arr": 225103,
+      "win_probability": 0.85,
+      "similar_customer_success_rate": 0.73,
+      "rationale": "71% of Education accounts your size use this product"
+    },
+    "current_products_owned": [
+      "Splunk",
+      "ThousandEyes"
+    ],
+    "recommended_ae": "John Smith",
+    "recommended_ae_id": "AE_020",
+    "ae_territory": "Education West",
+    "talking_points": [
+      {
+        "category": "Account Health",
+        "point": "Account health is 86 - strong foundation for expansion",
+        "data_source": "accounts.health_score"
+      },
+      {
+        "category": "Usage Maturity",
+        "point": "Utilization at 81% - ready for more capacity",
+        "data_source": "accounts.utilization_rate"
+      }
+    ],
+    "handoff_status": "Accepted",
+    "last_updated": "2025-10-05"
+  }
+]

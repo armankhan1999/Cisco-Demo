@@ -1,0 +1,1398 @@
+[
+  {
+    "recommendation_id": "PBR_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "analysis_date": "2025-10-09",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.74,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "84% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 179,
+        "avg_deal_size": 121810,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1286,
+          "duo_customers_with_umbrella": 1023,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.78,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "86% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 145,
+        "avg_deal_size": 100443,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1139,
+          "duo_customers_with_umbrella": 869,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-05"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "analysis_date": "2025-10-07",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.84,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "74% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 190,
+        "avg_deal_size": 101533,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1329,
+          "duo_customers_with_umbrella": 1236,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.71,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "83% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 122,
+        "avg_deal_size": 93625,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1440,
+          "duo_customers_with_umbrella": 1259,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-04"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "analysis_date": "2025-09-23",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.81,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "85% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 172,
+        "avg_deal_size": 148770,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1186,
+          "duo_customers_with_umbrella": 1143,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.82,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "71% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 137,
+        "avg_deal_size": 105469,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1057,
+          "duo_customers_with_umbrella": 1092,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-08"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "analysis_date": "2025-09-27",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.79,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "84% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 187,
+        "avg_deal_size": 106502,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1254,
+          "duo_customers_with_umbrella": 1252,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.72,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "80% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 160,
+        "avg_deal_size": 111580,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1426,
+          "duo_customers_with_umbrella": 1099,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-06"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "analysis_date": "2025-10-01",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.87,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "73% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 133,
+        "avg_deal_size": 101478,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1109,
+          "duo_customers_with_umbrella": 1296,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-02"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "analysis_date": "2025-10-02",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.77,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "85% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 127,
+        "avg_deal_size": 122136,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1273,
+          "duo_customers_with_umbrella": 991,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "72% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 189,
+        "avg_deal_size": 117772,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1243,
+          "duo_customers_with_umbrella": 1149,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-05"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "analysis_date": "2025-10-08",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.86,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "86% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 166,
+        "avg_deal_size": 121144,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1366,
+          "duo_customers_with_umbrella": 988,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "70% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 197,
+        "avg_deal_size": 92281,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1430,
+          "duo_customers_with_umbrella": 1178,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-29"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "analysis_date": "2025-09-25",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.74,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "79% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 159,
+        "avg_deal_size": 131874,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1490,
+          "duo_customers_with_umbrella": 1158,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.77,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "84% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 135,
+        "avg_deal_size": 125055,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1443,
+          "duo_customers_with_umbrella": 921,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-03"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Global Medical Network",
+    "analysis_date": "2025-09-25",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.7,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "87% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 152,
+        "avg_deal_size": 109719,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1046,
+          "duo_customers_with_umbrella": 1279,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "74% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 146,
+        "avg_deal_size": 146322,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1455,
+          "duo_customers_with_umbrella": 882,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-29"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "White, Boehm and Hilpert",
+    "analysis_date": "2025-10-01",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.76,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "84% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 202,
+        "avg_deal_size": 116626,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1404,
+          "duo_customers_with_umbrella": 817,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-08"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000006_20251009",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "analysis_date": "2025-10-01",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "86% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 180,
+        "avg_deal_size": 138296,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1211,
+          "duo_customers_with_umbrella": 1274,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "82% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 132,
+        "avg_deal_size": 144027,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1082,
+          "duo_customers_with_umbrella": 1157,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-01"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000007_20251009",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "analysis_date": "2025-09-25",
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "pairing_rate": 0.71,
+        "pairing_type": "Duo \u2192 Meraki",
+        "rationale": "77% of Duo customers add Meraki",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 190,
+        "avg_deal_size": 138351,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1167,
+          "duo_customers_with_umbrella": 1032,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Duo \u2192 ThousandEyes",
+        "rationale": "83% of Duo customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 202,
+        "avg_deal_size": 132047,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1094,
+          "duo_customers_with_umbrella": 1122,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-29"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000008_20251009",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "analysis_date": "2025-09-19",
+    "owned_products": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Duo",
+        "product_id": "PROD_Duo_001",
+        "pairing_rate": 0.72,
+        "pairing_type": "Meraki \u2192 Duo",
+        "rationale": "77% of Meraki customers add Duo",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 200,
+        "avg_deal_size": 110024,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1160,
+          "duo_customers_with_umbrella": 1094,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.71,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "72% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 186,
+        "avg_deal_size": 136764,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1496,
+          "duo_customers_with_umbrella": 1193,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-07"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000009_20251009",
+    "account_id": "CUST_000009",
+    "account_name": "Quality Corporation",
+    "analysis_date": "2025-09-30",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "82% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 160,
+        "avg_deal_size": 119588,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1244,
+          "duo_customers_with_umbrella": 1247,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "74% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 207,
+        "avg_deal_size": 128864,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1423,
+          "duo_customers_with_umbrella": 967,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-06"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000010_20251009",
+    "account_id": "CUST_000010",
+    "account_name": "Block - Toy",
+    "analysis_date": "2025-09-19",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.72,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "76% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 170,
+        "avg_deal_size": 147435,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1193,
+          "duo_customers_with_umbrella": 1283,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "80% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 122,
+        "avg_deal_size": 91505,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1472,
+          "duo_customers_with_umbrella": 1085,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-30"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000011_20251009",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "analysis_date": "2025-10-05",
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "pairing_rate": 0.81,
+        "pairing_type": "Duo \u2192 Meraki",
+        "rationale": "86% of Duo customers add Meraki",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 179,
+        "avg_deal_size": 102993,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1134,
+          "duo_customers_with_umbrella": 1159,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.85,
+        "pairing_type": "Duo \u2192 ThousandEyes",
+        "rationale": "70% of Duo customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 199,
+        "avg_deal_size": 118108,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1307,
+          "duo_customers_with_umbrella": 933,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-08"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000012_20251009",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "analysis_date": "2025-10-06",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.87,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "73% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 192,
+        "avg_deal_size": 97690,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1007,
+          "duo_customers_with_umbrella": 1167,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.79,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "83% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 178,
+        "avg_deal_size": 144215,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1344,
+          "duo_customers_with_umbrella": 1053,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-06"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000013_20251009",
+    "account_id": "CUST_000013",
+    "account_name": "Clinical Associates",
+    "analysis_date": "2025-09-30",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "73% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 154,
+        "avg_deal_size": 108871,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1382,
+          "duo_customers_with_umbrella": 1053,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.77,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "77% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 146,
+        "avg_deal_size": 129327,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1110,
+          "duo_customers_with_umbrella": 1221,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-29"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000014_20251009",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "analysis_date": "2025-09-19",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.73,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "73% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 138,
+        "avg_deal_size": 91885,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1148,
+          "duo_customers_with_umbrella": 1299,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.75,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "81% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 151,
+        "avg_deal_size": 114224,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1298,
+          "duo_customers_with_umbrella": 1150,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-02"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000015_20251009",
+    "account_id": "CUST_000015",
+    "account_name": "Investment Management",
+    "analysis_date": "2025-10-07",
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "pairing_rate": 0.72,
+        "pairing_type": "Duo \u2192 Meraki",
+        "rationale": "78% of Duo customers add Meraki",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 161,
+        "avg_deal_size": 135417,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1203,
+          "duo_customers_with_umbrella": 1151,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.74,
+        "pairing_type": "Duo \u2192 ThousandEyes",
+        "rationale": "76% of Duo customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 174,
+        "avg_deal_size": 138241,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1305,
+          "duo_customers_with_umbrella": 931,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-08"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000016_20251009",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "analysis_date": "2025-10-08",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.8,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "70% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 150,
+        "avg_deal_size": 120863,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1465,
+          "duo_customers_with_umbrella": 981,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.88,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "86% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 196,
+        "avg_deal_size": 136502,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1383,
+          "duo_customers_with_umbrella": 1214,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-09"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000017_20251009",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "analysis_date": "2025-10-04",
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.75,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "81% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 158,
+        "avg_deal_size": 115866,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1343,
+          "duo_customers_with_umbrella": 989,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.72,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "86% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 125,
+        "avg_deal_size": 128042,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1091,
+          "duo_customers_with_umbrella": 933,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-01"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000018_20251009",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "analysis_date": "2025-10-05",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.79,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "76% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 179,
+        "avg_deal_size": 98645,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1045,
+          "duo_customers_with_umbrella": 962,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "77% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 153,
+        "avg_deal_size": 97657,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1160,
+          "duo_customers_with_umbrella": 822,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-02"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000019_20251009",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "analysis_date": "2025-10-04",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.86,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "85% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 166,
+        "avg_deal_size": 118186,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1144,
+          "duo_customers_with_umbrella": 1262,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.86,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "81% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 153,
+        "avg_deal_size": 123880,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1160,
+          "duo_customers_with_umbrella": 1023,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-04"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000020_20251009",
+    "account_id": "CUST_000020",
+    "account_name": "Credit Advisors",
+    "analysis_date": "2025-10-02",
+    "owned_products": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Duo",
+        "product_id": "PROD_Duo_001",
+        "pairing_rate": 0.83,
+        "pairing_type": "Meraki \u2192 Duo",
+        "rationale": "78% of Meraki customers add Duo",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 139,
+        "avg_deal_size": 126416,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1436,
+          "duo_customers_with_umbrella": 1272,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.82,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "84% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 126,
+        "avg_deal_size": 102381,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1076,
+          "duo_customers_with_umbrella": 827,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-07"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000021_20251009",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "analysis_date": "2025-09-22",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.71,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "74% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 210,
+        "avg_deal_size": 120614,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1223,
+          "duo_customers_with_umbrella": 859,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.88,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "86% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 125,
+        "avg_deal_size": 118935,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1182,
+          "duo_customers_with_umbrella": 1163,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-02"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000022_20251009",
+    "account_id": "CUST_000022",
+    "account_name": "Kris - Dibbert",
+    "analysis_date": "2025-10-01",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.78,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "72% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 138,
+        "avg_deal_size": 98103,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1178,
+          "duo_customers_with_umbrella": 847,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.74,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "75% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 141,
+        "avg_deal_size": 139147,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1260,
+          "duo_customers_with_umbrella": 1221,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-30"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000023_20251009",
+    "account_id": "CUST_000023",
+    "account_name": "Smith LLC",
+    "analysis_date": "2025-10-06",
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.86,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "80% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 194,
+        "avg_deal_size": 90270,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1269,
+          "duo_customers_with_umbrella": 1192,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "pairing_rate": 0.8,
+        "pairing_type": "Meraki \u2192 Splunk",
+        "rationale": "77% of Meraki customers add Splunk",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 129,
+        "avg_deal_size": 106132,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1393,
+          "duo_customers_with_umbrella": 1055,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-04"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000024_20251009",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "analysis_date": "2025-09-25",
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "pairing_rate": 0.7,
+        "pairing_type": "Meraki \u2192 Umbrella",
+        "rationale": "82% of Meraki customers add Umbrella",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 207,
+        "avg_deal_size": 97994,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1201,
+          "duo_customers_with_umbrella": 991,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.81,
+        "pairing_type": "Meraki \u2192 ThousandEyes",
+        "rationale": "87% of Meraki customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 161,
+        "avg_deal_size": 100077,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1014,
+          "duo_customers_with_umbrella": 841,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-09-29"
+  },
+  {
+    "recommendation_id": "PBR_CUST_000025_20251009",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "analysis_date": "2025-09-21",
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "recommended_bundles": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "pairing_rate": 0.79,
+        "pairing_type": "Duo \u2192 Meraki",
+        "rationale": "81% of Duo customers add Meraki",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 154,
+        "avg_deal_size": 128941,
+        "priority_ranking": 1,
+        "historical_data": {
+          "total_duo_customers": 1336,
+          "duo_customers_with_umbrella": 802,
+          "sample_period": "Last 3 years"
+        }
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "pairing_rate": 0.76,
+        "pairing_type": "Duo \u2192 ThousandEyes",
+        "rationale": "70% of Duo customers add ThousandEyes",
+        "use_case": "Complete identity + network security stack",
+        "integration_benefits": "Single-sign-on, unified policies",
+        "avg_time_to_add_days": 199,
+        "avg_deal_size": 119694,
+        "priority_ranking": 2,
+        "historical_data": {
+          "total_duo_customers": 1166,
+          "duo_customers_with_umbrella": 1285,
+          "sample_period": "Last 3 years"
+        }
+      }
+    ],
+    "last_updated": "2025-10-07"
+  }
+]

@@ -1,0 +1,1910 @@
+[
+  {
+    "trigger_id": "TRIG_CUST_000001_001",
+    "customer_id": "CUST_000001",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-14",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "milestone_achieved": "MFA rollout complete",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "ThousandEyes",
+      "estimated_arr": 149827,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000001_002",
+    "customer_id": "CUST_000001",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-12",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "current_utilization": 86,
+    "projected_capacity_date": "2025-11-14",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 118280,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000002_003",
+    "customer_id": "CUST_000002",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-14",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 111711,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000002_004",
+    "customer_id": "CUST_000002",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-01",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 156923,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000002_005",
+    "customer_id": "CUST_000002",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-17",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "renewal_date": "2025-11-02",
+    "days_to_renewal": 126,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "ThousandEyes"
+      ],
+      "estimated_arr": 163015,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000003_006",
+    "customer_id": "CUST_000003",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-21",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 168826,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000003_007",
+    "customer_id": "CUST_000003",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-29",
+    "product_affected": "ThousandEyes",
+    "urgency": "Low",
+    "renewal_date": "2026-01-05",
+    "days_to_renewal": 91,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Meraki",
+        "Splunk"
+      ],
+      "estimated_arr": 152218,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000004_008",
+    "customer_id": "CUST_000004",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-01",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "renewal_date": "2026-03-23",
+    "days_to_renewal": 125,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "ThousandEyes",
+        "Umbrella"
+      ],
+      "estimated_arr": 270323,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000004_009",
+    "customer_id": "CUST_000004",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-26",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "renewal_date": "2026-02-20",
+    "days_to_renewal": 169,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Splunk",
+        "Duo"
+      ],
+      "estimated_arr": 151926,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000005_010",
+    "customer_id": "CUST_000005",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-29",
+    "product_affected": "Splunk",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 143142,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000005_011",
+    "customer_id": "CUST_000005",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-22",
+    "product_affected": "Splunk",
+    "urgency": "Medium",
+    "renewal_date": "2026-01-01",
+    "days_to_renewal": 173,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Meraki",
+        "Splunk"
+      ],
+      "estimated_arr": 285605,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000005_012",
+    "customer_id": "CUST_000005",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-13",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "milestone_achieved": "Security analytics enabled",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "ThousandEyes",
+      "estimated_arr": 179228,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000001_013",
+    "customer_id": "CUST_000001",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-08",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 114003,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000001_014",
+    "customer_id": "CUST_000001",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-15",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 124979,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000002_015",
+    "customer_id": "CUST_000002",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-05",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 146494,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000002_016",
+    "customer_id": "CUST_000002",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-17",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "milestone_achieved": "MFA rollout complete",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 102793,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000003_017",
+    "customer_id": "CUST_000003",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-23",
+    "product_affected": "ThousandEyes",
+    "urgency": "Low",
+    "milestone_achieved": "MFA rollout complete",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 175778,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000003_018",
+    "customer_id": "CUST_000003",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-25",
+    "product_affected": "ThousandEyes",
+    "urgency": "High",
+    "current_utilization": 89,
+    "projected_capacity_date": "2025-12-02",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 113426,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000003_019",
+    "customer_id": "CUST_000003",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-23",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "renewal_date": "2025-11-09",
+    "days_to_renewal": 150,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Splunk"
+      ],
+      "estimated_arr": 168668,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000004_020",
+    "customer_id": "CUST_000004",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-09-07",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "milestone_achieved": "Security analytics enabled",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 144146,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000004_021",
+    "customer_id": "CUST_000004",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-15",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 86,
+    "projected_capacity_date": "2025-11-22",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 123633,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000004_022",
+    "customer_id": "CUST_000004",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-13",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 193035,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000005_023",
+    "customer_id": "CUST_000005",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-08",
+    "product_affected": "Splunk",
+    "urgency": "Low",
+    "current_utilization": 85,
+    "projected_capacity_date": "2025-11-19",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 77603,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000005_024",
+    "customer_id": "CUST_000005",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-11",
+    "product_affected": "Splunk",
+    "urgency": "High",
+    "current_utilization": 85,
+    "projected_capacity_date": "2025-12-22",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 90766,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000006_025",
+    "customer_id": "CUST_000006",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-10-01",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "current_utilization": 93,
+    "projected_capacity_date": "2025-11-30",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 126233,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000006_026",
+    "customer_id": "CUST_000006",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-15",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 175768,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000006_027",
+    "customer_id": "CUST_000006",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-13",
+    "product_affected": "ThousandEyes",
+    "urgency": "Low",
+    "current_utilization": 86,
+    "projected_capacity_date": "2025-10-12",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 70540,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000007_028",
+    "customer_id": "CUST_000007",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-26",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "milestone_achieved": "MFA rollout complete",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Meraki",
+      "estimated_arr": 140272,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000007_029",
+    "customer_id": "CUST_000007",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-02",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 187982,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000008_030",
+    "customer_id": "CUST_000008",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-10",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "renewal_date": "2025-11-13",
+    "days_to_renewal": 133,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Umbrella",
+        "Meraki"
+      ],
+      "estimated_arr": 193223,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000008_031",
+    "customer_id": "CUST_000008",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-10-08",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 107681,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000008_032",
+    "customer_id": "CUST_000008",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-02",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 91,
+    "projected_capacity_date": "2026-01-01",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 74897,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000009_033",
+    "customer_id": "CUST_000009",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-23",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 157846,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000009_034",
+    "customer_id": "CUST_000009",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-03",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 170406,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000009_035",
+    "customer_id": "CUST_000009",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-11",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 142180,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000010_036",
+    "customer_id": "CUST_000010",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-26",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 145164,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000010_037",
+    "customer_id": "CUST_000010",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-03",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 161631,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000011_038",
+    "customer_id": "CUST_000011",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-08-17",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 117054,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000011_039",
+    "customer_id": "CUST_000011",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-08",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "current_utilization": 86,
+    "projected_capacity_date": "2025-11-12",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 138569,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000012_040",
+    "customer_id": "CUST_000012",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-25",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "renewal_date": "2025-10-15",
+    "days_to_renewal": 160,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Meraki",
+        "ThousandEyes"
+      ],
+      "estimated_arr": 236665,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000012_041",
+    "customer_id": "CUST_000012",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-10-09",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Umbrella",
+      "estimated_arr": 165255,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000013_042",
+    "customer_id": "CUST_000013",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-10",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Umbrella",
+      "estimated_arr": 123540,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000013_043",
+    "customer_id": "CUST_000013",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-25",
+    "product_affected": "ThousandEyes",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 140853,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000013_044",
+    "customer_id": "CUST_000013",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-18",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "current_utilization": 89,
+    "projected_capacity_date": "2025-11-25",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 110987,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000014_045",
+    "customer_id": "CUST_000014",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-02",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 191673,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000014_046",
+    "customer_id": "CUST_000014",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-29",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 197247,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000014_047",
+    "customer_id": "CUST_000014",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-22",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 103969,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000015_048",
+    "customer_id": "CUST_000015",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-10",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 184844,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000015_049",
+    "customer_id": "CUST_000015",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-14",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 171248,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000015_050",
+    "customer_id": "CUST_000015",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-10",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 93,
+    "projected_capacity_date": "2025-12-24",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 133265,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000016_051",
+    "customer_id": "CUST_000016",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-31",
+    "product_affected": "ThousandEyes",
+    "urgency": "Medium",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Umbrella",
+      "estimated_arr": 153318,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000016_052",
+    "customer_id": "CUST_000016",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-10-02",
+    "product_affected": "ThousandEyes",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 88301,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000016_053",
+    "customer_id": "CUST_000016",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-19",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 167797,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000017_054",
+    "customer_id": "CUST_000017",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-08-28",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 125318,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000017_055",
+    "customer_id": "CUST_000017",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-29",
+    "product_affected": "ThousandEyes",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 81526,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000018_056",
+    "customer_id": "CUST_000018",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-16",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 89812,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000018_057",
+    "customer_id": "CUST_000018",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-24",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "renewal_date": "2025-12-13",
+    "days_to_renewal": 118,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "ThousandEyes",
+        "Meraki"
+      ],
+      "estimated_arr": 170664,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000019_058",
+    "customer_id": "CUST_000019",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-08-19",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 138598,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000019_059",
+    "customer_id": "CUST_000019",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-08",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "current_utilization": 92,
+    "projected_capacity_date": "2025-12-01",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 74696,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000019_060",
+    "customer_id": "CUST_000019",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-04",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 196668,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000020_061",
+    "customer_id": "CUST_000020",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-28",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 188175,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000020_062",
+    "customer_id": "CUST_000020",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-16",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "milestone_achieved": "Security analytics enabled",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 176136,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000021_063",
+    "customer_id": "CUST_000021",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-11",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 80287,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000021_064",
+    "customer_id": "CUST_000021",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-17",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "renewal_date": "2026-01-13",
+    "days_to_renewal": 179,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Duo"
+      ],
+      "estimated_arr": 193032,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000021_065",
+    "customer_id": "CUST_000021",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-10-01",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 160065,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000022_066",
+    "customer_id": "CUST_000022",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-11",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "current_utilization": 94,
+    "projected_capacity_date": "2025-11-03",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 114293,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000022_067",
+    "customer_id": "CUST_000022",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-08-22",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "current_utilization": 98,
+    "projected_capacity_date": "2025-10-25",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 129048,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000023_068",
+    "customer_id": "CUST_000023",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-02",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 80568,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000023_069",
+    "customer_id": "CUST_000023",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-06",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 146628,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000023_070",
+    "customer_id": "CUST_000023",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-02",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 93573,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000024_071",
+    "customer_id": "CUST_000024",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-14",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 115860,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000024_072",
+    "customer_id": "CUST_000024",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-21",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "renewal_date": "2025-12-01",
+    "days_to_renewal": 167,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Splunk",
+        "Umbrella"
+      ],
+      "estimated_arr": 295118,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000024_073",
+    "customer_id": "CUST_000024",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-26",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 169995,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000025_074",
+    "customer_id": "CUST_000025",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-29",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 173107,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000025_075",
+    "customer_id": "CUST_000025",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-04",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "renewal_date": "2026-01-24",
+    "days_to_renewal": 176,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "ThousandEyes",
+        "Duo"
+      ],
+      "estimated_arr": 287030,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000026_076",
+    "customer_id": "CUST_000026",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-15",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 81,
+    "projected_capacity_date": "2025-11-04",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 104993,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000026_077",
+    "customer_id": "CUST_000026",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-09-21",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 128684,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000027_078",
+    "customer_id": "CUST_000027",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-10-07",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 160754,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000027_079",
+    "customer_id": "CUST_000027",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-04",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 111142,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000028_080",
+    "customer_id": "CUST_000028",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-28",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 134600,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000028_081",
+    "customer_id": "CUST_000028",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-04",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "renewal_date": "2025-11-04",
+    "days_to_renewal": 169,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Meraki",
+        "Umbrella"
+      ],
+      "estimated_arr": 293291,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000028_082",
+    "customer_id": "CUST_000028",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-01",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 118558,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000029_083",
+    "customer_id": "CUST_000029",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-10-05",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 129440,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000029_084",
+    "customer_id": "CUST_000029",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-22",
+    "product_affected": "Splunk",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 101093,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000030_085",
+    "customer_id": "CUST_000030",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-18",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "current_utilization": 84,
+    "projected_capacity_date": "2025-10-15",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 90146,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000030_086",
+    "customer_id": "CUST_000030",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-01",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "renewal_date": "2025-12-26",
+    "days_to_renewal": 152,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Duo",
+        "Umbrella"
+      ],
+      "estimated_arr": 287729,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000030_087",
+    "customer_id": "CUST_000030",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-09-28",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "milestone_achieved": "MFA rollout complete",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "ThousandEyes",
+      "estimated_arr": 161182,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000031_088",
+    "customer_id": "CUST_000031",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-17",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 90,
+    "projected_capacity_date": "2025-11-21",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 117290,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000031_089",
+    "customer_id": "CUST_000031",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-26",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "renewal_date": "2026-03-02",
+    "days_to_renewal": 173,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Duo"
+      ],
+      "estimated_arr": 240703,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000031_090",
+    "customer_id": "CUST_000031",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-24",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 85226,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000032_091",
+    "customer_id": "CUST_000032",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-08-12",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 150809,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000032_092",
+    "customer_id": "CUST_000032",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-10-08",
+    "product_affected": "Splunk",
+    "urgency": "Medium",
+    "renewal_date": "2026-02-17",
+    "days_to_renewal": 147,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Duo",
+        "Umbrella"
+      ],
+      "estimated_arr": 200465,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000032_093",
+    "customer_id": "CUST_000032",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-07",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "renewal_date": "2026-01-16",
+    "days_to_renewal": 158,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Duo"
+      ],
+      "estimated_arr": 205255,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000033_094",
+    "customer_id": "CUST_000033",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-12",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 164746,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000033_095",
+    "customer_id": "CUST_000033",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-27",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 173961,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000034_096",
+    "customer_id": "CUST_000034",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-10-05",
+    "product_affected": "Umbrella",
+    "urgency": "High",
+    "current_utilization": 88,
+    "projected_capacity_date": "2025-12-20",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 79232,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000034_097",
+    "customer_id": "CUST_000034",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-18",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 130860,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000035_098",
+    "customer_id": "CUST_000035",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-19",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 150101,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000035_099",
+    "customer_id": "CUST_000035",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-24",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 171866,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000035_100",
+    "customer_id": "CUST_000035",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-11",
+    "product_affected": "Umbrella",
+    "urgency": "Medium",
+    "renewal_date": "2025-12-26",
+    "days_to_renewal": 167,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Umbrella"
+      ],
+      "estimated_arr": 264734,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000036_101",
+    "customer_id": "CUST_000036",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-08-18",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 100489,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000036_102",
+    "customer_id": "CUST_000036",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-10-01",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "milestone_achieved": "Network monitoring activated",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Umbrella",
+      "estimated_arr": 129066,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000036_103",
+    "customer_id": "CUST_000036",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-14",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 81461,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000037_104",
+    "customer_id": "CUST_000037",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-10-07",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "current_utilization": 92,
+    "projected_capacity_date": "2025-12-17",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 141765,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000037_105",
+    "customer_id": "CUST_000037",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-20",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "current_utilization": 91,
+    "projected_capacity_date": "2025-11-06",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 124087,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000038_106",
+    "customer_id": "CUST_000038",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-09-28",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "milestone_achieved": "Network monitoring activated",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Meraki",
+      "estimated_arr": 105023,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000038_107",
+    "customer_id": "CUST_000038",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-08-28",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "milestone_achieved": "Security analytics enabled",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Splunk",
+      "estimated_arr": 162045,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000039_108",
+    "customer_id": "CUST_000039",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-28",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "renewal_date": "2025-11-04",
+    "days_to_renewal": 164,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Umbrella",
+        "Splunk"
+      ],
+      "estimated_arr": 183610,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000039_109",
+    "customer_id": "CUST_000039",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-29",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 161201,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000040_110",
+    "customer_id": "CUST_000040",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-09-08",
+    "product_affected": "ThousandEyes",
+    "urgency": "Medium",
+    "renewal_date": "2025-12-27",
+    "days_to_renewal": 178,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Splunk"
+      ],
+      "estimated_arr": 298599,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000040_111",
+    "customer_id": "CUST_000040",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-08-19",
+    "product_affected": "ThousandEyes",
+    "urgency": "Medium",
+    "renewal_date": "2025-10-10",
+    "days_to_renewal": 130,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "Meraki"
+      ],
+      "estimated_arr": 264327,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000041_112",
+    "customer_id": "CUST_000041",
+    "trigger_type": "Renewal_Window",
+    "trigger_date": "2025-10-01",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "renewal_date": "2026-02-01",
+    "days_to_renewal": 135,
+    "expansion_opportunity": {
+      "type": "Bundle_Upgrade",
+      "recommended_products": [
+        "ThousandEyes",
+        "Duo"
+      ],
+      "estimated_arr": 196077,
+      "urgency": "Medium",
+      "recommended_action": "Schedule renewal + expansion discussion"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000041_113",
+    "customer_id": "CUST_000041",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-01",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 196824,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000041_114",
+    "customer_id": "CUST_000041",
+    "trigger_type": "Feature_Adoption_Milestone",
+    "trigger_date": "2025-09-23",
+    "product_affected": "Duo",
+    "urgency": "Low",
+    "milestone_achieved": "Advanced DNS filtering deployed",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "recommended_product": "Umbrella",
+      "estimated_arr": 156476,
+      "urgency": "Medium",
+      "recommended_action": "Present complementary product use case"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000042_115",
+    "customer_id": "CUST_000042",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-02",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 198791,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000042_116",
+    "customer_id": "CUST_000042",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-09-23",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 127948,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000043_117",
+    "customer_id": "CUST_000043",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-08-24",
+    "product_affected": "Meraki",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 145683,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000043_118",
+    "customer_id": "CUST_000043",
+    "trigger_type": "Capacity_Threshold",
+    "trigger_date": "2025-09-14",
+    "product_affected": "Meraki",
+    "urgency": "Low",
+    "current_utilization": 80,
+    "projected_capacity_date": "2026-01-02",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 101310,
+      "urgency": "High",
+      "recommended_action": "Schedule capacity planning call"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000044_119",
+    "customer_id": "CUST_000044",
+    "trigger_type": "Compliance_Requirement",
+    "trigger_date": "2025-10-01",
+    "product_affected": "Duo",
+    "urgency": "High",
+    "expansion_opportunity": {
+      "type": "Cross_Sell",
+      "estimated_arr": 154233,
+      "urgency": "Low",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000044_120",
+    "customer_id": "CUST_000044",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-08-15",
+    "product_affected": "Umbrella",
+    "urgency": "Low",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 127028,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000045_121",
+    "customer_id": "CUST_000045",
+    "trigger_type": "Usage_Spike",
+    "trigger_date": "2025-09-25",
+    "product_affected": "Duo",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 110673,
+      "urgency": "High",
+      "recommended_action": "Engage account team"
+    }
+  },
+  {
+    "trigger_id": "TRIG_CUST_000045_122",
+    "customer_id": "CUST_000045",
+    "trigger_type": "Executive_Change",
+    "trigger_date": "2025-09-26",
+    "product_affected": "Meraki",
+    "urgency": "Medium",
+    "expansion_opportunity": {
+      "type": "Upsell",
+      "estimated_arr": 141561,
+      "urgency": "Medium",
+      "recommended_action": "Engage account team"
+    }
+  }
+]

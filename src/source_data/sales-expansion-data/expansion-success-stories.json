@@ -1,0 +1,1102 @@
+[
+  {
+    "story_id": "SUCCESS_CUST_000003_ThousandEyes_to_Meraki",
+    "customer_id": "CUST_000003",
+    "initial_product": "ThousandEyes",
+    "expanded_product": "Meraki",
+    "expansion_date": "2025-03-08",
+    "expansion_arr": 244872,
+    "time_to_expansion_days": 161,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Strong ThousandEyes adoption",
+      "CISO champion",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 48,
+      "operational_efficiency_gained": 48,
+      "cost_savings_annual": 127640
+    },
+    "lessons_learned": "Meraki natural extension after ThousandEyes success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000045_Duo_to_ThousandEyes",
+    "customer_id": "CUST_000045",
+    "initial_product": "Duo",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2025-09-11",
+    "expansion_arr": 133605,
+    "time_to_expansion_days": 186,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Executive support",
+      "Network team buy-in",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 76,
+      "operational_efficiency_gained": 50,
+      "cost_savings_annual": 52440
+    },
+    "lessons_learned": "ThousandEyes natural extension after Duo success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000037_Meraki_to_ThousandEyes",
+    "customer_id": "CUST_000037",
+    "initial_product": "Meraki",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2025-06-21",
+    "expansion_arr": 207755,
+    "time_to_expansion_days": 275,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Budget availability",
+      "Network team buy-in",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 54,
+      "operational_efficiency_gained": 56,
+      "cost_savings_annual": 103840
+    },
+    "lessons_learned": "ThousandEyes natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000016_Duo_to_ThousandEyes",
+    "customer_id": "CUST_000016",
+    "initial_product": "Duo",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2025-01-12",
+    "expansion_arr": 133967,
+    "time_to_expansion_days": 305,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Executive support",
+      "Performance issues identified"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 44,
+      "operational_efficiency_gained": 37,
+      "cost_savings_annual": 99572
+    },
+    "lessons_learned": "ThousandEyes natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000002_Umbrella_to_Duo",
+    "customer_id": "CUST_000002",
+    "initial_product": "Umbrella",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-08-19",
+    "expansion_arr": 227025,
+    "time_to_expansion_days": 340,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Network team buy-in",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 78,
+      "operational_efficiency_gained": 33,
+      "cost_savings_annual": 73255
+    },
+    "lessons_learned": "Duo natural extension after Umbrella success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000029_Splunk_to_Umbrella",
+    "customer_id": "CUST_000029",
+    "initial_product": "Splunk",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2024-05-12",
+    "expansion_arr": 120806,
+    "time_to_expansion_days": 143,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Performance issues identified",
+      "CISO champion",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 74,
+      "operational_efficiency_gained": 56,
+      "cost_savings_annual": 50157
+    },
+    "lessons_learned": "Umbrella natural extension after Splunk success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000036_Meraki_to_ThousandEyes",
+    "customer_id": "CUST_000036",
+    "initial_product": "Meraki",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2024-08-05",
+    "expansion_arr": 187092,
+    "time_to_expansion_days": 343,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Executive support",
+      "Network team buy-in"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 54,
+      "operational_efficiency_gained": 60,
+      "cost_savings_annual": 113192
+    },
+    "lessons_learned": "ThousandEyes natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000013_ThousandEyes_to_Duo",
+    "customer_id": "CUST_000013",
+    "initial_product": "ThousandEyes",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-05-25",
+    "expansion_arr": 156720,
+    "time_to_expansion_days": 242,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Budget availability",
+      "Strong ThousandEyes adoption",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 78,
+      "operational_efficiency_gained": 58,
+      "cost_savings_annual": 121267
+    },
+    "lessons_learned": "Duo natural extension after ThousandEyes success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000012_Meraki_to_Duo",
+    "customer_id": "CUST_000012",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-04-11",
+    "expansion_arr": 91864,
+    "time_to_expansion_days": 267,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Strong Meraki adoption",
+      "Executive support",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 64,
+      "operational_efficiency_gained": 50,
+      "cost_savings_annual": 76924
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000033_Meraki_to_Duo",
+    "customer_id": "CUST_000033",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-06-22",
+    "expansion_arr": 130574,
+    "time_to_expansion_days": 229,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Compliance requirements",
+      "Budget availability",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 67,
+      "operational_efficiency_gained": 48,
+      "cost_savings_annual": 97925
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000030_Duo_to_Umbrella",
+    "customer_id": "CUST_000030",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-03-12",
+    "expansion_arr": 234730,
+    "time_to_expansion_days": 320,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Network team buy-in",
+      "CISO champion",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 75,
+      "operational_efficiency_gained": 47,
+      "cost_savings_annual": 113407
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000032_Duo_to_Splunk",
+    "customer_id": "CUST_000032",
+    "initial_product": "Duo",
+    "expanded_product": "Splunk",
+    "expansion_date": "2025-05-21",
+    "expansion_arr": 121217,
+    "time_to_expansion_days": 311,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Performance issues identified",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 46,
+      "operational_efficiency_gained": 36,
+      "cost_savings_annual": 116629
+    },
+    "lessons_learned": "Splunk natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000007_Duo_to_Umbrella",
+    "customer_id": "CUST_000007",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-03-24",
+    "expansion_arr": 91386,
+    "time_to_expansion_days": 325,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Budget availability",
+      "CISO champion",
+      "Network team buy-in"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 78,
+      "operational_efficiency_gained": 43,
+      "cost_savings_annual": 61552
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000020_Meraki_to_Umbrella",
+    "customer_id": "CUST_000020",
+    "initial_product": "Meraki",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-07-20",
+    "expansion_arr": 249653,
+    "time_to_expansion_days": 129,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Executive support",
+      "Performance issues identified"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 58,
+      "operational_efficiency_gained": 52,
+      "cost_savings_annual": 128311
+    },
+    "lessons_learned": "Umbrella natural extension after Meraki success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000034_Umbrella_to_Splunk",
+    "customer_id": "CUST_000034",
+    "initial_product": "Umbrella",
+    "expanded_product": "Splunk",
+    "expansion_date": "2025-09-29",
+    "expansion_arr": 142876,
+    "time_to_expansion_days": 337,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Compliance requirements",
+      "CISO champion",
+      "Strong Umbrella adoption"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 78,
+      "operational_efficiency_gained": 46,
+      "cost_savings_annual": 117608
+    },
+    "lessons_learned": "Splunk natural extension after Umbrella success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000019_Duo_to_Meraki",
+    "customer_id": "CUST_000019",
+    "initial_product": "Duo",
+    "expanded_product": "Meraki",
+    "expansion_date": "2025-07-09",
+    "expansion_arr": 152719,
+    "time_to_expansion_days": 287,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "CISO champion",
+      "Strong Duo adoption",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 65,
+      "operational_efficiency_gained": 41,
+      "cost_savings_annual": 137773
+    },
+    "lessons_learned": "Meraki natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000005_Meraki_to_Splunk",
+    "customer_id": "CUST_000005",
+    "initial_product": "Meraki",
+    "expanded_product": "Splunk",
+    "expansion_date": "2025-01-17",
+    "expansion_arr": 94028,
+    "time_to_expansion_days": 308,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Strong Meraki adoption",
+      "Executive support",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 75,
+      "operational_efficiency_gained": 59,
+      "cost_savings_annual": 126406
+    },
+    "lessons_learned": "Splunk natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000043_Meraki_to_Duo",
+    "customer_id": "CUST_000043",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-12-03",
+    "expansion_arr": 140993,
+    "time_to_expansion_days": 236,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Executive support",
+      "Strong Meraki adoption",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 51,
+      "operational_efficiency_gained": 43,
+      "cost_savings_annual": 116353
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000031_Meraki_to_Umbrella",
+    "customer_id": "CUST_000031",
+    "initial_product": "Meraki",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2024-12-12",
+    "expansion_arr": 179120,
+    "time_to_expansion_days": 362,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Budget availability",
+      "Executive support",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 74,
+      "operational_efficiency_gained": 56,
+      "cost_savings_annual": 125352
+    },
+    "lessons_learned": "Umbrella natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000025_Duo_to_Umbrella",
+    "customer_id": "CUST_000025",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-02-02",
+    "expansion_arr": 179040,
+    "time_to_expansion_days": 318,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Network team buy-in",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 41,
+      "operational_efficiency_gained": 45,
+      "cost_savings_annual": 65239
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000003_Duo_to_Meraki",
+    "customer_id": "CUST_000003",
+    "initial_product": "Duo",
+    "expanded_product": "Meraki",
+    "expansion_date": "2024-10-28",
+    "expansion_arr": 150274,
+    "time_to_expansion_days": 324,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Compliance requirements",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 74,
+      "operational_efficiency_gained": 30,
+      "cost_savings_annual": 141857
+    },
+    "lessons_learned": "Meraki natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000028_Umbrella_to_Meraki",
+    "customer_id": "CUST_000028",
+    "initial_product": "Umbrella",
+    "expanded_product": "Meraki",
+    "expansion_date": "2025-03-19",
+    "expansion_arr": 179651,
+    "time_to_expansion_days": 139,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "CISO champion",
+      "Network team buy-in",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 62,
+      "operational_efficiency_gained": 36,
+      "cost_savings_annual": 125197
+    },
+    "lessons_learned": "Meraki natural extension after Umbrella success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000008_Umbrella_to_Meraki",
+    "customer_id": "CUST_000008",
+    "initial_product": "Umbrella",
+    "expanded_product": "Meraki",
+    "expansion_date": "2025-03-19",
+    "expansion_arr": 151567,
+    "time_to_expansion_days": 308,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Budget availability",
+      "Compliance requirements",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 54,
+      "operational_efficiency_gained": 36,
+      "cost_savings_annual": 82728
+    },
+    "lessons_learned": "Meraki natural extension after Umbrella success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000039_Meraki_to_Duo",
+    "customer_id": "CUST_000039",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-08-09",
+    "expansion_arr": 110575,
+    "time_to_expansion_days": 293,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Executive support",
+      "Strong Meraki adoption",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 42,
+      "operational_efficiency_gained": 57,
+      "cost_savings_annual": 113214
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000022_Meraki_to_Duo",
+    "customer_id": "CUST_000022",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-02-29",
+    "expansion_arr": 162019,
+    "time_to_expansion_days": 245,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Budget availability",
+      "Executive support",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 65,
+      "operational_efficiency_gained": 37,
+      "cost_savings_annual": 148326
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000011_Umbrella_to_Duo",
+    "customer_id": "CUST_000011",
+    "initial_product": "Umbrella",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-08-02",
+    "expansion_arr": 215388,
+    "time_to_expansion_days": 360,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Strong Umbrella adoption",
+      "Executive support",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 65,
+      "operational_efficiency_gained": 57,
+      "cost_savings_annual": 139959
+    },
+    "lessons_learned": "Duo natural extension after Umbrella success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000027_Meraki_to_Duo",
+    "customer_id": "CUST_000027",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-06-25",
+    "expansion_arr": 172746,
+    "time_to_expansion_days": 296,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Strong Meraki adoption",
+      "Performance issues identified",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 64,
+      "operational_efficiency_gained": 48,
+      "cost_savings_annual": 63205
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000015_Duo_to_Umbrella",
+    "customer_id": "CUST_000015",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-01-02",
+    "expansion_arr": 158904,
+    "time_to_expansion_days": 180,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Executive support",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 63,
+      "operational_efficiency_gained": 35,
+      "cost_savings_annual": 115374
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000001_Umbrella_to_Meraki",
+    "customer_id": "CUST_000001",
+    "initial_product": "Umbrella",
+    "expanded_product": "Meraki",
+    "expansion_date": "2024-10-01",
+    "expansion_arr": 195012,
+    "time_to_expansion_days": 191,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "CISO champion",
+      "Executive support",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 76,
+      "operational_efficiency_gained": 51,
+      "cost_savings_annual": 79958
+    },
+    "lessons_learned": "Meraki natural extension after Umbrella success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000024_Meraki_to_Duo",
+    "customer_id": "CUST_000024",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-09-14",
+    "expansion_arr": 141396,
+    "time_to_expansion_days": 157,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Strong Meraki adoption",
+      "CISO champion"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 66,
+      "operational_efficiency_gained": 45,
+      "cost_savings_annual": 67625
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000040_Meraki_to_ThousandEyes",
+    "customer_id": "CUST_000040",
+    "initial_product": "Meraki",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2024-12-06",
+    "expansion_arr": 155791,
+    "time_to_expansion_days": 263,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Strong Meraki adoption",
+      "Network team buy-in",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 50,
+      "operational_efficiency_gained": 31,
+      "cost_savings_annual": 78241
+    },
+    "lessons_learned": "ThousandEyes natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000010_ThousandEyes_to_Duo",
+    "customer_id": "CUST_000010",
+    "initial_product": "ThousandEyes",
+    "expanded_product": "Duo",
+    "expansion_date": "2024-11-01",
+    "expansion_arr": 158096,
+    "time_to_expansion_days": 212,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Executive support",
+      "Budget availability",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 62,
+      "operational_efficiency_gained": 30,
+      "cost_savings_annual": 103970
+    },
+    "lessons_learned": "Duo natural extension after ThousandEyes success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000001_Duo_to_Umbrella",
+    "customer_id": "CUST_000001",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-05-17",
+    "expansion_arr": 183089,
+    "time_to_expansion_days": 203,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Performance issues identified",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 45,
+      "operational_efficiency_gained": 42,
+      "cost_savings_annual": 130434
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000026_Duo_to_Umbrella",
+    "customer_id": "CUST_000026",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2024-11-16",
+    "expansion_arr": 178444,
+    "time_to_expansion_days": 227,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Executive support",
+      "Network team buy-in",
+      "Strong Duo adoption"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 45,
+      "operational_efficiency_gained": 35,
+      "cost_savings_annual": 95039
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000044_Duo_to_Umbrella",
+    "customer_id": "CUST_000044",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2024-10-11",
+    "expansion_arr": 160116,
+    "time_to_expansion_days": 274,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Compliance requirements",
+      "Network team buy-in",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 77,
+      "operational_efficiency_gained": 46,
+      "cost_savings_annual": 109020
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000004_Umbrella_to_Duo",
+    "customer_id": "CUST_000004",
+    "initial_product": "Umbrella",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-09-07",
+    "expansion_arr": 151506,
+    "time_to_expansion_days": 289,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Budget availability",
+      "Strong Umbrella adoption"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 53,
+      "operational_efficiency_gained": 35,
+      "cost_savings_annual": 102041
+    },
+    "lessons_learned": "Duo natural extension after Umbrella success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000006_Duo_to_ThousandEyes",
+    "customer_id": "CUST_000006",
+    "initial_product": "Duo",
+    "expanded_product": "ThousandEyes",
+    "expansion_date": "2024-03-27",
+    "expansion_arr": 104110,
+    "time_to_expansion_days": 126,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Executive support",
+      "Strong Duo adoption",
+      "Performance issues identified"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 56,
+      "operational_efficiency_gained": 49,
+      "cost_savings_annual": 70352
+    },
+    "lessons_learned": "ThousandEyes natural extension after Duo success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000018_Meraki_to_Duo",
+    "customer_id": "CUST_000018",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-06-05",
+    "expansion_arr": 164494,
+    "time_to_expansion_days": 233,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "CISO champion",
+      "Executive support",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 41,
+      "operational_efficiency_gained": 31,
+      "cost_savings_annual": 136972
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000004_Duo_to_Meraki",
+    "customer_id": "CUST_000004",
+    "initial_product": "Duo",
+    "expanded_product": "Meraki",
+    "expansion_date": "2024-04-04",
+    "expansion_arr": 161411,
+    "time_to_expansion_days": 260,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "CISO champion",
+      "Performance issues identified",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 51,
+      "operational_efficiency_gained": 48,
+      "cost_savings_annual": 128326
+    },
+    "lessons_learned": "Meraki natural extension after Duo success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000035_Meraki_to_Umbrella",
+    "customer_id": "CUST_000035",
+    "initial_product": "Meraki",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2024-06-03",
+    "expansion_arr": 231470,
+    "time_to_expansion_days": 178,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Network team buy-in",
+      "Compliance requirements",
+      "Performance issues identified"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 66,
+      "operational_efficiency_gained": 38,
+      "cost_savings_annual": 70410
+    },
+    "lessons_learned": "Umbrella natural extension after Meraki success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000009_Umbrella_to_Duo",
+    "customer_id": "CUST_000009",
+    "initial_product": "Umbrella",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-05-23",
+    "expansion_arr": 180147,
+    "time_to_expansion_days": 193,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "Executive support",
+      "Strong Umbrella adoption",
+      "Network team buy-in"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 70,
+      "operational_efficiency_gained": 39,
+      "cost_savings_annual": 51197
+    },
+    "lessons_learned": "Duo natural extension after Umbrella success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000005_Splunk_to_Meraki",
+    "customer_id": "CUST_000005",
+    "initial_product": "Splunk",
+    "expanded_product": "Meraki",
+    "expansion_date": "2024-08-28",
+    "expansion_arr": 91892,
+    "time_to_expansion_days": 260,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "CISO champion",
+      "Network team buy-in",
+      "Executive support"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 67,
+      "operational_efficiency_gained": 42,
+      "cost_savings_annual": 82754
+    },
+    "lessons_learned": "Meraki natural extension after Splunk success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000038_Duo_to_Umbrella",
+    "customer_id": "CUST_000038",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-05-28",
+    "expansion_arr": 110764,
+    "time_to_expansion_days": 228,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Executive support",
+      "Budget availability",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 58,
+      "operational_efficiency_gained": 50,
+      "cost_savings_annual": 147376
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000023_Duo_to_Meraki",
+    "customer_id": "CUST_000023",
+    "initial_product": "Duo",
+    "expanded_product": "Meraki",
+    "expansion_date": "2025-09-04",
+    "expansion_arr": 137816,
+    "time_to_expansion_days": 154,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Strong Duo adoption",
+      "Performance issues identified",
+      "Network team buy-in"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 79,
+      "operational_efficiency_gained": 44,
+      "cost_savings_annual": 85669
+    },
+    "lessons_learned": "Meraki natural extension after Duo success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000042_Meraki_to_Duo",
+    "customer_id": "CUST_000042",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-09-30",
+    "expansion_arr": 129885,
+    "time_to_expansion_days": 132,
+    "expansion_driver": "Performance improvement",
+    "key_success_factors": [
+      "Strong Meraki adoption",
+      "CISO champion",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 58,
+      "operational_efficiency_gained": 38,
+      "cost_savings_annual": 66389
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000017_ThousandEyes_to_Duo",
+    "customer_id": "CUST_000017",
+    "initial_product": "ThousandEyes",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-08-24",
+    "expansion_arr": 129500,
+    "time_to_expansion_days": 123,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "CISO champion",
+      "Compliance requirements",
+      "Network team buy-in"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 59,
+      "operational_efficiency_gained": 55,
+      "cost_savings_annual": 115325
+    },
+    "lessons_learned": "Duo natural extension after ThousandEyes success",
+    "replication_potential": "Medium for enterprise customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000002_Duo_to_Umbrella",
+    "customer_id": "CUST_000002",
+    "initial_product": "Duo",
+    "expanded_product": "Umbrella",
+    "expansion_date": "2025-07-19",
+    "expansion_arr": 128296,
+    "time_to_expansion_days": 134,
+    "expansion_driver": "Compliance requirements",
+    "key_success_factors": [
+      "Budget availability",
+      "Network team buy-in",
+      "Strong Duo adoption"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 74,
+      "operational_efficiency_gained": 45,
+      "cost_savings_annual": 73803
+    },
+    "lessons_learned": "Umbrella natural extension after Duo success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000021_Meraki_to_Duo",
+    "customer_id": "CUST_000021",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-09-08",
+    "expansion_arr": 155263,
+    "time_to_expansion_days": 218,
+    "expansion_driver": "Cost optimization",
+    "key_success_factors": [
+      "CISO champion",
+      "Performance issues identified",
+      "Strong Meraki adoption"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 52,
+      "operational_efficiency_gained": 44,
+      "cost_savings_annual": 146380
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for similar customers"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000014_Duo_to_Meraki",
+    "customer_id": "CUST_000014",
+    "initial_product": "Duo",
+    "expanded_product": "Meraki",
+    "expansion_date": "2024-11-24",
+    "expansion_arr": 174689,
+    "time_to_expansion_days": 160,
+    "expansion_driver": "Security stack consolidation",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Executive support",
+      "Budget availability"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 47,
+      "operational_efficiency_gained": 38,
+      "cost_savings_annual": 113075
+    },
+    "lessons_learned": "Meraki natural extension after Duo success",
+    "replication_potential": "High for industry vertical"
+  },
+  {
+    "story_id": "SUCCESS_CUST_000041_Meraki_to_Duo",
+    "customer_id": "CUST_000041",
+    "initial_product": "Meraki",
+    "expanded_product": "Duo",
+    "expansion_date": "2025-08-17",
+    "expansion_arr": 147091,
+    "time_to_expansion_days": 148,
+    "expansion_driver": "Network visibility gap",
+    "key_success_factors": [
+      "Performance issues identified",
+      "Network team buy-in",
+      "Compliance requirements"
+    ],
+    "business_outcomes": {
+      "security_incidents_reduced": 40,
+      "operational_efficiency_gained": 35,
+      "cost_savings_annual": 86188
+    },
+    "lessons_learned": "Duo natural extension after Meraki success",
+    "replication_potential": "High for industry vertical"
+  }
+]

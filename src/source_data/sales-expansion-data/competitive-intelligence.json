@@ -1,0 +1,3432 @@
+[
+  {
+    "intel_id": "COMP_CUST_000001_ThousandEyes",
+    "customer_id": "CUST_000001",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 82
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Cisco ecosystem integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Customer success stories",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000001_Splunk",
+    "customer_id": "CUST_000001",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Enterprise-grade reliability",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000002_ThousandEyes",
+    "customer_id": "CUST_000002",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 66
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Cisco ecosystem integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000002_Splunk",
+    "customer_id": "CUST_000002",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 74
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Compliance reporting",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000003_Splunk",
+    "customer_id": "CUST_000003",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Customer success stories",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000003_Umbrella",
+    "customer_id": "CUST_000003",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Compliance reporting",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000004_ThousandEyes",
+    "customer_id": "CUST_000004",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 85
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000004_Splunk",
+    "customer_id": "CUST_000004",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 66
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Native network monitoring",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000005_ThousandEyes",
+    "customer_id": "CUST_000005",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 81
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Threat intelligence integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000001_Splunk",
+    "customer_id": "CUST_000001",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 84
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Security analytics focus",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000001_ThousandEyes",
+    "customer_id": "CUST_000001",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 69
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Native network monitoring",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000002_ThousandEyes",
+    "customer_id": "CUST_000002",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 64
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Threat intelligence integration",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000002_Splunk",
+    "customer_id": "CUST_000002",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Compliance reporting",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000003_Splunk",
+    "customer_id": "CUST_000003",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 83
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Compliance reporting",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Compliance reports",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000003_Umbrella",
+    "customer_id": "CUST_000003",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Palo Alto",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 81
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Security analytics focus",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000004_ThousandEyes",
+    "customer_id": "CUST_000004",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 77
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000004_Splunk",
+    "customer_id": "CUST_000004",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Enterprise-grade reliability",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000005_ThousandEyes",
+    "customer_id": "CUST_000005",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 84
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Cisco ecosystem integration",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000006_Splunk",
+    "customer_id": "CUST_000006",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Cisco ecosystem integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Compliance reports",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000006_Umbrella",
+    "customer_id": "CUST_000006",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Palo Alto",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 77
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Enterprise-grade reliability",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000007_Meraki",
+    "customer_id": "CUST_000007",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Aruba",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 80
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Threat intelligence integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000007_ThousandEyes",
+    "customer_id": "CUST_000007",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Threat intelligence integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000008_Splunk",
+    "customer_id": "CUST_000008",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 60
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Threat intelligence integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000008_ThousandEyes",
+    "customer_id": "CUST_000008",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Cisco ecosystem integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000009_Splunk",
+    "customer_id": "CUST_000009",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 66
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Cisco ecosystem integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000009_ThousandEyes",
+    "customer_id": "CUST_000009",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Compliance reports",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000010_Umbrella",
+    "customer_id": "CUST_000010",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000010_Splunk",
+    "customer_id": "CUST_000010",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Threat intelligence integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000011_Meraki",
+    "customer_id": "CUST_000011",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ubiquiti",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Threat intelligence integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000011_ThousandEyes",
+    "customer_id": "CUST_000011",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 76
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Security analytics focus",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000012_ThousandEyes",
+    "customer_id": "CUST_000012",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 79
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Compliance reporting",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000012_Splunk",
+    "customer_id": "CUST_000012",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 60
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Security analytics focus",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "ROI calculator",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000013_Splunk",
+    "customer_id": "CUST_000013",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 77
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Native network monitoring",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000013_Umbrella",
+    "customer_id": "CUST_000013",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Palo Alto",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 69
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Cisco ecosystem integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000014_Splunk",
+    "customer_id": "CUST_000014",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 78
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Security analytics focus",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000014_Umbrella",
+    "customer_id": "CUST_000014",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 80
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Native network monitoring",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Compliance reports",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000015_ThousandEyes",
+    "customer_id": "CUST_000015",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 83
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000015_Meraki",
+    "customer_id": "CUST_000015",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ruckus",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 82
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Threat intelligence integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000016_Splunk",
+    "customer_id": "CUST_000016",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 64
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Threat intelligence integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000016_Umbrella",
+    "customer_id": "CUST_000016",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Security analytics focus",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000017_Umbrella",
+    "customer_id": "CUST_000017",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 85
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Enterprise-grade reliability",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Customer success stories",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000017_Splunk",
+    "customer_id": "CUST_000017",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Security analytics focus",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000018_ThousandEyes",
+    "customer_id": "CUST_000018",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 77
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Native network monitoring",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000018_Splunk",
+    "customer_id": "CUST_000018",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Compliance reports",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000019_Umbrella",
+    "customer_id": "CUST_000019",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Palo Alto",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Enterprise-grade reliability",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000019_ThousandEyes",
+    "customer_id": "CUST_000019",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 84
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Compliance reporting",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000020_Duo",
+    "customer_id": "CUST_000020",
+    "target_product": "Duo",
+    "competitive_landscape": {
+      "incumbent_vendor": "Azure AD",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 76
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Compliance reports",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000020_Splunk",
+    "customer_id": "CUST_000020",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 68
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Threat intelligence integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000021_ThousandEyes",
+    "customer_id": "CUST_000021",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 62
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Compliance reporting",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000021_Umbrella",
+    "customer_id": "CUST_000021",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Palo Alto",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 72
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Compliance reporting",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "ROI calculator",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000022_ThousandEyes",
+    "customer_id": "CUST_000022",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Threat intelligence integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000022_Splunk",
+    "customer_id": "CUST_000022",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Security analytics focus",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000023_Splunk",
+    "customer_id": "CUST_000023",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Cisco ecosystem integration",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000023_ThousandEyes",
+    "customer_id": "CUST_000023",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 83
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Compliance reporting",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Compliance reports",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000024_ThousandEyes",
+    "customer_id": "CUST_000024",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Native network monitoring",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000024_Splunk",
+    "customer_id": "CUST_000024",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 81
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Threat intelligence integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000025_Meraki",
+    "customer_id": "CUST_000025",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Aruba",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 82
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000025_ThousandEyes",
+    "customer_id": "CUST_000025",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 81
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Security analytics focus",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000026_Meraki",
+    "customer_id": "CUST_000026",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Aruba",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 81
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Cisco ecosystem integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000026_Splunk",
+    "customer_id": "CUST_000026",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 71
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Threat intelligence integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000027_Umbrella",
+    "customer_id": "CUST_000027",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 78
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Native network monitoring",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000027_Splunk",
+    "customer_id": "CUST_000027",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 79
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Enterprise-grade reliability",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000028_Splunk",
+    "customer_id": "CUST_000028",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 61
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Security analytics focus",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000028_ThousandEyes",
+    "customer_id": "CUST_000028",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 68
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Compliance reporting",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000029_ThousandEyes",
+    "customer_id": "CUST_000029",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000029_Meraki",
+    "customer_id": "CUST_000029",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ubiquiti",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 78
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000030_ThousandEyes",
+    "customer_id": "CUST_000030",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Cisco ecosystem integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Compliance reports",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000030_Splunk",
+    "customer_id": "CUST_000030",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 68
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Enterprise-grade reliability",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000031_ThousandEyes",
+    "customer_id": "CUST_000031",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 60
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Native network monitoring",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Compliance reports",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000031_Splunk",
+    "customer_id": "CUST_000031",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 79
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Native network monitoring",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000032_ThousandEyes",
+    "customer_id": "CUST_000032",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 84
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Enterprise-grade reliability",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Threat detection demos",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000032_Meraki",
+    "customer_id": "CUST_000032",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ruckus",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 62
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Cisco ecosystem integration",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000033_ThousandEyes",
+    "customer_id": "CUST_000033",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 78
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Enterprise-grade reliability",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000033_Splunk",
+    "customer_id": "CUST_000033",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 76
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Security analytics focus",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000034_ThousandEyes",
+    "customer_id": "CUST_000034",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 72
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Threat intelligence integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Compliance reports",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000034_Meraki",
+    "customer_id": "CUST_000034",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ruckus",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Enterprise-grade reliability",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000035_Splunk",
+    "customer_id": "CUST_000035",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Compliance reporting",
+        "Security analytics focus",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000035_Duo",
+    "customer_id": "CUST_000035",
+    "target_product": "Duo",
+    "competitive_landscape": {
+      "incumbent_vendor": "Ping Identity",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 62
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Cisco ecosystem integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Network team engagement",
+      "proof_points": [
+        "ROI calculator",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000036_Umbrella",
+    "customer_id": "CUST_000036",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Security analytics focus",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000036_Splunk",
+    "customer_id": "CUST_000036",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Threat intelligence integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000037_Umbrella",
+    "customer_id": "CUST_000037",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 75
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Threat intelligence integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Performance benchmarks"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000037_Splunk",
+    "customer_id": "CUST_000037",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 67
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Compliance reporting",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000038_ThousandEyes",
+    "customer_id": "CUST_000038",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 76
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Compliance reporting",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000038_Meraki",
+    "customer_id": "CUST_000038",
+    "target_product": "Meraki",
+    "competitive_landscape": {
+      "incumbent_vendor": "Aruba",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Native network monitoring",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000039_Umbrella",
+    "customer_id": "CUST_000039",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 85
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Security analytics focus",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000039_Splunk",
+    "customer_id": "CUST_000039",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Native network monitoring",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "ROI calculator",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000040_Umbrella",
+    "customer_id": "CUST_000040",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 72
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Cisco ecosystem integration",
+        "Security analytics focus"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Compliance reports",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000040_Splunk",
+    "customer_id": "CUST_000040",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 63
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Threat intelligence integration",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000041_Splunk",
+    "customer_id": "CUST_000041",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Elastic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 78
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Threat intelligence integration",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000041_Umbrella",
+    "customer_id": "CUST_000041",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 61
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Native network monitoring",
+        "Security analytics focus",
+        "Threat intelligence integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Customer success stories",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000042_Umbrella",
+    "customer_id": "CUST_000042",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 71
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Cisco ecosystem integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "ROI calculator",
+        "Threat detection demos"
+      ],
+      "demo_focus": [
+        "Integration capabilities",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000042_Splunk",
+    "customer_id": "CUST_000042",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Price point",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Security analytics focus",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Incident response"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000043_ThousandEyes",
+    "customer_id": "CUST_000043",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "AppDynamics",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Integration complexity",
+      "cisco_advantage": "Network expertise and integration",
+      "win_probability": 76
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Threat intelligence integration",
+        "Enterprise-grade reliability",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "Infrastructure team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Customer success stories"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000043_Umbrella",
+    "customer_id": "CUST_000043",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Zscaler",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Security use case gaps",
+      "cisco_advantage": "Security-first approach",
+      "win_probability": 70
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Cisco ecosystem integration",
+        "Compliance reporting",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "Flexible licensing options",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "ROI calculator",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Integration capabilities"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000044_Splunk",
+    "customer_id": "CUST_000044",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Sumo Logic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 71
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Threat intelligence integration",
+        "Native network monitoring"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Better integration capabilities",
+        "switching_cost": "Minimal disruption approach"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "DevOps leadership",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Network troubleshooting",
+        "Performance monitoring"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000044_ThousandEyes",
+    "customer_id": "CUST_000044",
+    "target_product": "ThousandEyes",
+    "competitive_landscape": {
+      "incumbent_vendor": "New Relic",
+      "incumbent_strength": "Developer adoption",
+      "incumbent_weakness": "Limited network visibility",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 65
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Native network monitoring",
+        "Compliance reporting"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Comprehensive security coverage",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "ROI calculator"
+      ],
+      "demo_focus": [
+        "Performance monitoring",
+        "Network troubleshooting"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000045_Splunk",
+    "customer_id": "CUST_000045",
+    "target_product": "Splunk",
+    "competitive_landscape": {
+      "incumbent_vendor": "Datadog",
+      "incumbent_strength": "Open source flexibility",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Enterprise-grade reliability",
+      "win_probability": 73
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Security analytics focus",
+        "Native network monitoring",
+        "Enterprise-grade reliability"
+      ],
+      "objection_handling": {
+        "price_concern": "TCO advantage with integrated platform",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Gradual migration with parallel deployment"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Performance benchmarks",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Incident response",
+        "Security dashboards"
+      ]
+    }
+  },
+  {
+    "intel_id": "COMP_CUST_000045_Umbrella",
+    "customer_id": "CUST_000045",
+    "target_product": "Umbrella",
+    "competitive_landscape": {
+      "incumbent_vendor": "Cloudflare",
+      "incumbent_strength": "Market presence",
+      "incumbent_weakness": "Enterprise support",
+      "cisco_advantage": "Unified platform",
+      "win_probability": 74
+    },
+    "competitive_positioning": {
+      "key_differentiators": [
+        "Enterprise-grade reliability",
+        "Compliance reporting",
+        "Cisco ecosystem integration"
+      ],
+      "objection_handling": {
+        "price_concern": "ROI justification with security benefits",
+        "feature_gap": "Superior network path visibility",
+        "switching_cost": "Turnkey migration service available"
+      }
+    },
+    "sales_strategy": {
+      "champion_approach": "CISO and security team",
+      "proof_points": [
+        "Threat detection demos",
+        "Compliance reports"
+      ],
+      "demo_focus": [
+        "Security dashboards",
+        "Network troubleshooting"
+      ]
+    }
+  }
+]

@@ -1,0 +1,4490 @@
+[
+  {
+    "analysis_id": "WS_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "TechCorp Industries",
+    "industry": "Technology",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-27",
+    "current_arr": 1522871,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 70,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 92,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 81
+        },
+        "estimated_arr": 143609,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 225,
+          "avg_arr_for_product": 125568,
+          "adoption_rate": 0.84
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Technology accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 83,
+          "peer_adoption_rate": 0.89,
+          "tech_stack_compatibility": 94,
+          "account_size_match": 85
+        },
+        "estimated_arr": 89027,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 3K-7K employees",
+          "peer_sample_size": 225,
+          "avg_arr_for_product": 143701,
+          "adoption_rate": 0.75
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Technology accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 232636,
+    "expansion_potential_ratio": 0.15,
+    "summary": "Account has $232,636 in white-space ARR across 2 products",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "analysis_id": "WS_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "MedSecure Systems",
+    "industry": "Healthcare",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-23",
+    "current_arr": 3627162,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 70,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 82,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 77,
+          "account_size_match": 92
+        },
+        "estimated_arr": 104886,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 189,
+          "avg_arr_for_product": 130176,
+          "adoption_rate": 0.76
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Healthcare accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 73,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 79,
+          "account_size_match": 85
+        },
+        "estimated_arr": 194490,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 1K-5K employees",
+          "peer_sample_size": 177,
+          "avg_arr_for_product": 121809,
+          "adoption_rate": 0.74
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "87% of Healthcare accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 299376,
+    "expansion_potential_ratio": 0.08,
+    "summary": "Account has $299,376 in white-space ARR across 2 products",
+    "last_updated": "2025-10-01"
+  },
+  {
+    "analysis_id": "WS_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Financial Partners",
+    "industry": "Financial Services",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-23",
+    "current_arr": 804011,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 71,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 87,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.7,
+          "tech_stack_compatibility": 81,
+          "account_size_match": 95
+        },
+        "estimated_arr": 196623,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 165,
+          "avg_arr_for_product": 113653,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "86% of Financial Services accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 88,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 77,
+          "account_size_match": 89
+        },
+        "estimated_arr": 90215,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 174,
+          "avg_arr_for_product": 96633,
+          "adoption_rate": 0.85
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "87% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 286838,
+    "expansion_potential_ratio": 0.36,
+    "summary": "Account has $286,838 in white-space ARR across 2 products",
+    "last_updated": "2025-10-02"
+  },
+  {
+    "analysis_id": "WS_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Advanced Manufacturing Co",
+    "industry": "Manufacturing",
+    "employee_count": 5000,
+    "analysis_date": "2025-09-20",
+    "current_arr": 140615,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 88,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 85,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 88,
+          "account_size_match": 83
+        },
+        "estimated_arr": 180438,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 5K-10K employees",
+          "peer_sample_size": 267,
+          "avg_arr_for_product": 136042,
+          "adoption_rate": 0.83
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Manufacturing accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 87,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 92,
+          "account_size_match": 94
+        },
+        "estimated_arr": 126179,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 5K-10K employees",
+          "peer_sample_size": 233,
+          "avg_arr_for_product": 145368,
+          "adoption_rate": 0.77
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "88% of Manufacturing accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 306617,
+    "expansion_potential_ratio": 2.18,
+    "summary": "Account has $306,617 in white-space ARR across 2 products",
+    "last_updated": "2025-10-02"
+  },
+  {
+    "analysis_id": "WS_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "InnovateTech Solutions",
+    "industry": "Technology",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-09",
+    "current_arr": 496079,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 88,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 91
+        },
+        "estimated_arr": 139297,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 3K-7K employees",
+          "peer_sample_size": 150,
+          "avg_arr_for_product": 137599,
+          "adoption_rate": 0.71
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "75% of Technology accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      }
+    ],
+    "total_white_space_arr": 139297,
+    "expansion_potential_ratio": 0.28,
+    "summary": "Account has $139,297 in white-space ARR across 1 products",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "analysis_id": "WS_CUST_000001_20251009",
+    "account_id": "CUST_000001",
+    "account_name": "Global Premier Works",
+    "industry": "Manufacturing",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-08",
+    "current_arr": 3386280,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 84
+        },
+        "estimated_arr": 92358,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 3K-7K employees",
+          "peer_sample_size": 241,
+          "avg_arr_for_product": 100230,
+          "adoption_rate": 0.73
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "82% of Manufacturing accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 78,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 81,
+          "account_size_match": 82
+        },
+        "estimated_arr": 174841,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 3K-7K employees",
+          "peer_sample_size": 194,
+          "avg_arr_for_product": 121999,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "78% of Manufacturing accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 267199,
+    "expansion_potential_ratio": 0.08,
+    "summary": "Account has $267,199 in white-space ARR across 2 products",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "analysis_id": "WS_CUST_000002_20251009",
+    "account_id": "CUST_000002",
+    "account_name": "Global Capital Management",
+    "industry": "Financial Services",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-26",
+    "current_arr": 3669528,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 72,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.89,
+          "tech_stack_compatibility": 88,
+          "account_size_match": 93
+        },
+        "estimated_arr": 193748,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 152,
+          "avg_arr_for_product": 131542,
+          "adoption_rate": 0.86
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "76% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 86,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.82,
+          "tech_stack_compatibility": 85,
+          "account_size_match": 87
+        },
+        "estimated_arr": 100079,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 250,
+          "avg_arr_for_product": 119203,
+          "adoption_rate": 0.85
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "91% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 293827,
+    "expansion_potential_ratio": 0.08,
+    "summary": "Account has $293,827 in white-space ARR across 2 products",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "analysis_id": "WS_CUST_000003_20251009",
+    "account_id": "CUST_000003",
+    "account_name": "Global Quality Industries",
+    "industry": "Manufacturing",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-26",
+    "current_arr": 3222435,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 95,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 81
+        },
+        "estimated_arr": 151847,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 3K-7K employees",
+          "peer_sample_size": 171,
+          "avg_arr_for_product": 116117,
+          "adoption_rate": 0.8
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "79% of Manufacturing accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 85,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 90,
+          "peer_adoption_rate": 0.79,
+          "tech_stack_compatibility": 93,
+          "account_size_match": 86
+        },
+        "estimated_arr": 153553,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 1K-5K employees",
+          "peer_sample_size": 168,
+          "avg_arr_for_product": 107449,
+          "adoption_rate": 0.86
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "77% of Manufacturing accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 305400,
+    "expansion_potential_ratio": 0.09,
+    "summary": "Account has $305,400 in white-space ARR across 2 products",
+    "last_updated": "2025-09-28"
+  },
+  {
+    "analysis_id": "WS_CUST_000004_20251009",
+    "account_id": "CUST_000004",
+    "account_name": "Global Medical Network",
+    "industry": "Healthcare",
+    "employee_count": 7500,
+    "analysis_date": "2025-10-09",
+    "current_arr": 4199901,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 89
+        },
+        "estimated_arr": 102184,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 263,
+          "avg_arr_for_product": 130840,
+          "adoption_rate": 0.73
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "82% of Healthcare accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 91,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.72,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 87
+        },
+        "estimated_arr": 161396,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 3K-7K employees",
+          "peer_sample_size": 153,
+          "avg_arr_for_product": 112496,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "84% of Healthcare accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 263580,
+    "expansion_potential_ratio": 0.06,
+    "summary": "Account has $263,580 in white-space ARR across 2 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000005_20251009",
+    "account_id": "CUST_000005",
+    "account_name": "White, Boehm and Hilpert",
+    "industry": "Energy",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-04",
+    "current_arr": 1833761,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 76,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 91,
+          "account_size_match": 88
+        },
+        "estimated_arr": 151932,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 186,
+          "avg_arr_for_product": 135552,
+          "adoption_rate": 0.84
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "87% of Energy accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      }
+    ],
+    "total_white_space_arr": 151932,
+    "expansion_potential_ratio": 0.08,
+    "summary": "Account has $151,932 in white-space ARR across 1 products",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "analysis_id": "WS_CUST_000006_20251009",
+    "account_id": "CUST_000006",
+    "account_name": "Harber LLC",
+    "industry": "Energy",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-30",
+    "current_arr": 747423,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 79,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 88,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.8,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 82
+        },
+        "estimated_arr": 130940,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 242,
+          "avg_arr_for_product": 146641,
+          "adoption_rate": 0.72
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "87% of Energy accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 82,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 83,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 94,
+          "account_size_match": 82
+        },
+        "estimated_arr": 104434,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 267,
+          "avg_arr_for_product": 126745,
+          "adoption_rate": 0.89
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "76% of Energy accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 235374,
+    "expansion_potential_ratio": 0.31,
+    "summary": "Account has $235,374 in white-space ARR across 2 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000007_20251009",
+    "account_id": "CUST_000007",
+    "account_name": "Baumbach, Dietrich and Mueller",
+    "industry": "Education",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-10",
+    "current_arr": 1091244,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 85,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 85,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 91
+        },
+        "estimated_arr": 161950,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 278,
+          "avg_arr_for_product": 108079,
+          "adoption_rate": 0.86
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "87% of Education accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 87,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 87,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 84
+        },
+        "estimated_arr": 91507,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 208,
+          "avg_arr_for_product": 117350,
+          "adoption_rate": 0.75
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "88% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 89,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 84
+        },
+        "estimated_arr": 156156,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 229,
+          "avg_arr_for_product": 135123,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "88% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 409613,
+    "expansion_potential_ratio": 0.38,
+    "summary": "Account has $409,613 in white-space ARR across 3 products",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "analysis_id": "WS_CUST_000008_20251009",
+    "account_id": "CUST_000008",
+    "account_name": "Swaniawski Inc",
+    "industry": "Education",
+    "employee_count": 2500,
+    "analysis_date": "2025-10-03",
+    "current_arr": 1456970,
+    "owned_products": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Duo",
+        "product_id": "PROD_Duo_001",
+        "product_category": "Security",
+        "fit_score": 80,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 85
+        },
+        "estimated_arr": 121628,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 157,
+          "avg_arr_for_product": 140163,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Duo for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "88% of Education accounts your size use Duo",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 84,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 88,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 84
+        },
+        "estimated_arr": 104215,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 218,
+          "avg_arr_for_product": 129688,
+          "adoption_rate": 0.81
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "82% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 91,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.85,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 84
+        },
+        "estimated_arr": 145840,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 245,
+          "avg_arr_for_product": 102057,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "90% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 371683,
+    "expansion_potential_ratio": 0.26,
+    "summary": "Account has $371,683 in white-space ARR across 3 products",
+    "last_updated": "2025-10-02"
+  },
+  {
+    "analysis_id": "WS_CUST_000009_20251009",
+    "account_id": "CUST_000009",
+    "account_name": "Quality Corporation",
+    "industry": "Manufacturing",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-27",
+    "current_arr": 1004742,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 83,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 82,
+          "account_size_match": 86
+        },
+        "estimated_arr": 179323,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 1K-5K employees",
+          "peer_sample_size": 195,
+          "avg_arr_for_product": 118788,
+          "adoption_rate": 0.87
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Manufacturing accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 92,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 90
+        },
+        "estimated_arr": 131662,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Manufacturing 5K-10K employees",
+          "peer_sample_size": 177,
+          "avg_arr_for_product": 119596,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "82% of Manufacturing accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 310985,
+    "expansion_potential_ratio": 0.31,
+    "summary": "Account has $310,985 in white-space ARR across 2 products",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "analysis_id": "WS_CUST_000010_20251009",
+    "account_id": "CUST_000010",
+    "account_name": "Block - Toy",
+    "industry": "Education",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-11",
+    "current_arr": 1797331,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 87,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 92
+        },
+        "estimated_arr": 195919,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 268,
+          "avg_arr_for_product": 100910,
+          "adoption_rate": 0.78
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "76% of Education accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 86,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.72,
+          "tech_stack_compatibility": 91,
+          "account_size_match": 83
+        },
+        "estimated_arr": 103562,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 255,
+          "avg_arr_for_product": 111198,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "89% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 299481,
+    "expansion_potential_ratio": 0.17,
+    "summary": "Account has $299,481 in white-space ARR across 2 products",
+    "last_updated": "2025-09-25"
+  },
+  {
+    "analysis_id": "WS_CUST_000011_20251009",
+    "account_id": "CUST_000011",
+    "account_name": "Cyber Systems",
+    "industry": "Technology",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-18",
+    "current_arr": 1209071,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 72,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 80,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 82
+        },
+        "estimated_arr": 94963,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 242,
+          "avg_arr_for_product": 95590,
+          "adoption_rate": 0.8
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "91% of Technology accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 82,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 92,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 85,
+          "account_size_match": 84
+        },
+        "estimated_arr": 101249,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 1K-5K employees",
+          "peer_sample_size": 163,
+          "avg_arr_for_product": 117497,
+          "adoption_rate": 0.76
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "84% of Technology accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 73,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 80
+        },
+        "estimated_arr": 140115,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 3K-7K employees",
+          "peer_sample_size": 289,
+          "avg_arr_for_product": 142917,
+          "adoption_rate": 0.7
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "82% of Technology accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 336327,
+    "expansion_potential_ratio": 0.28,
+    "summary": "Account has $336,327 in white-space ARR across 3 products",
+    "last_updated": "2025-09-24"
+  },
+  {
+    "analysis_id": "WS_CUST_000012_20251009",
+    "account_id": "CUST_000012",
+    "account_name": "Medical Group",
+    "industry": "Healthcare",
+    "employee_count": 2500,
+    "analysis_date": "2025-10-06",
+    "current_arr": 536311,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 84,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 87
+        },
+        "estimated_arr": 195627,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 292,
+          "avg_arr_for_product": 143747,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Healthcare accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 89
+        },
+        "estimated_arr": 123399,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 1K-5K employees",
+          "peer_sample_size": 177,
+          "avg_arr_for_product": 117325,
+          "adoption_rate": 0.9
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "84% of Healthcare accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 84,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.9,
+          "tech_stack_compatibility": 77,
+          "account_size_match": 89
+        },
+        "estimated_arr": 122312,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 3K-7K employees",
+          "peer_sample_size": 167,
+          "avg_arr_for_product": 139705,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "84% of Healthcare accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 441338,
+    "expansion_potential_ratio": 0.82,
+    "summary": "Account has $441,338 in white-space ARR across 3 products",
+    "last_updated": "2025-10-01"
+  },
+  {
+    "analysis_id": "WS_CUST_000013_20251009",
+    "account_id": "CUST_000013",
+    "account_name": "Clinical Associates",
+    "industry": "Healthcare",
+    "employee_count": 1000,
+    "analysis_date": "2025-09-25",
+    "current_arr": 1601116,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 80,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 81,
+          "account_size_match": 81
+        },
+        "estimated_arr": 94326,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 3K-7K employees",
+          "peer_sample_size": 223,
+          "avg_arr_for_product": 117987,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "83% of Healthcare accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 88,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 95
+        },
+        "estimated_arr": 144553,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 209,
+          "avg_arr_for_product": 136437,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "75% of Healthcare accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 238879,
+    "expansion_potential_ratio": 0.15,
+    "summary": "Account has $238,879 in white-space ARR across 2 products",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "analysis_id": "WS_CUST_000014_20251009",
+    "account_id": "CUST_000014",
+    "account_name": "Ondricka, Waters and Wilderman",
+    "industry": "Energy",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-21",
+    "current_arr": 1211950,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 93,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 88,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 86
+        },
+        "estimated_arr": 81480,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 222,
+          "avg_arr_for_product": 106673,
+          "adoption_rate": 0.86
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "84% of Energy accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 94,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 83,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 93,
+          "account_size_match": 80
+        },
+        "estimated_arr": 189057,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 1K-5K employees",
+          "peer_sample_size": 234,
+          "avg_arr_for_product": 144645,
+          "adoption_rate": 0.77
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "90% of Energy accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 90,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 92,
+          "account_size_match": 90
+        },
+        "estimated_arr": 140616,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 164,
+          "avg_arr_for_product": 144729,
+          "adoption_rate": 0.8
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "92% of Energy accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 411153,
+    "expansion_potential_ratio": 0.34,
+    "summary": "Account has $411,153 in white-space ARR across 3 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000015_20251009",
+    "account_id": "CUST_000015",
+    "account_name": "Investment Management",
+    "industry": "Financial Services",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-16",
+    "current_arr": 811945,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 95,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.76,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 90
+        },
+        "estimated_arr": 129183,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 249,
+          "avg_arr_for_product": 102280,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "85% of Financial Services accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 78,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 90,
+          "peer_adoption_rate": 0.89,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 94
+        },
+        "estimated_arr": 188718,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 284,
+          "avg_arr_for_product": 109812,
+          "adoption_rate": 0.74
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "76% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 72,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 91,
+          "account_size_match": 84
+        },
+        "estimated_arr": 104931,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 284,
+          "avg_arr_for_product": 110339,
+          "adoption_rate": 0.86
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "78% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 422832,
+    "expansion_potential_ratio": 0.52,
+    "summary": "Account has $422,832 in white-space ARR across 3 products",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "analysis_id": "WS_CUST_000016_20251009",
+    "account_id": "CUST_000016",
+    "account_name": "Capital Management",
+    "industry": "Financial Services",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-22",
+    "current_arr": 439445,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 84,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.7,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 82
+        },
+        "estimated_arr": 123684,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 176,
+          "avg_arr_for_product": 124116,
+          "adoption_rate": 0.85
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "84% of Financial Services accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 88,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 88
+        },
+        "estimated_arr": 149766,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 180,
+          "avg_arr_for_product": 107868,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "78% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 273450,
+    "expansion_potential_ratio": 0.62,
+    "summary": "Account has $273,450 in white-space ARR across 2 products",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "analysis_id": "WS_CUST_000017_20251009",
+    "account_id": "CUST_000017",
+    "account_name": "Bode - Mayer",
+    "industry": "Retail",
+    "employee_count": 5000,
+    "analysis_date": "2025-09-30",
+    "current_arr": 323711,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 76,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 79,
+          "account_size_match": 89
+        },
+        "estimated_arr": 155246,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Retail 1K-5K employees",
+          "peer_sample_size": 168,
+          "avg_arr_for_product": 110406,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "92% of Retail accounts your size use Umbrella",
+          "Integrates seamlessly with your existing ThousandEyes deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 90,
+          "peer_adoption_rate": 0.9,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 83
+        },
+        "estimated_arr": 130279,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Retail 1K-5K employees",
+          "peer_sample_size": 259,
+          "avg_arr_for_product": 115684,
+          "adoption_rate": 0.74
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Retail accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 285525,
+    "expansion_potential_ratio": 0.88,
+    "summary": "Account has $285,525 in white-space ARR across 2 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000018_20251009",
+    "account_id": "CUST_000018",
+    "account_name": "Smith, Ratke and Ankunding",
+    "industry": "Government",
+    "employee_count": 10000,
+    "analysis_date": "2025-10-04",
+    "current_arr": 407999,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 76,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 84
+        },
+        "estimated_arr": 92178,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 1K-5K employees",
+          "peer_sample_size": 266,
+          "avg_arr_for_product": 110341,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "90% of Government accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 88,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.79,
+          "tech_stack_compatibility": 85,
+          "account_size_match": 90
+        },
+        "estimated_arr": 139412,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 1K-5K employees",
+          "peer_sample_size": 166,
+          "avg_arr_for_product": 121151,
+          "adoption_rate": 0.72
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Government accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 79,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 83
+        },
+        "estimated_arr": 122712,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 286,
+          "avg_arr_for_product": 120210,
+          "adoption_rate": 0.78
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "82% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 354302,
+    "expansion_potential_ratio": 0.87,
+    "summary": "Account has $354,302 in white-space ARR across 3 products",
+    "last_updated": "2025-09-24"
+  },
+  {
+    "analysis_id": "WS_CUST_000019_20251009",
+    "account_id": "CUST_000019",
+    "account_name": "Pagac - Muller",
+    "industry": "Government",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-18",
+    "current_arr": 131258,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 82,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 90,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 93,
+          "account_size_match": 93
+        },
+        "estimated_arr": 182801,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 5K-10K employees",
+          "peer_sample_size": 237,
+          "avg_arr_for_product": 125686,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "77% of Government accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 73,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.82,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 85
+        },
+        "estimated_arr": 120374,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 1K-5K employees",
+          "peer_sample_size": 177,
+          "avg_arr_for_product": 134925,
+          "adoption_rate": 0.86
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Government accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 90,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 81,
+          "use_case_alignment": 77,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 79,
+          "account_size_match": 80
+        },
+        "estimated_arr": 179231,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 5K-10K employees",
+          "peer_sample_size": 188,
+          "avg_arr_for_product": 119686,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 482406,
+    "expansion_potential_ratio": 3.68,
+    "summary": "Account has $482,406 in white-space ARR across 3 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000020_20251009",
+    "account_id": "CUST_000020",
+    "account_name": "Credit Advisors",
+    "industry": "Financial Services",
+    "employee_count": 2500,
+    "analysis_date": "2025-10-05",
+    "current_arr": 137516,
+    "owned_products": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Duo",
+        "product_id": "PROD_Duo_001",
+        "product_category": "Security",
+        "fit_score": 79,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 89,
+          "use_case_alignment": 88,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 82
+        },
+        "estimated_arr": 156379,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 280,
+          "avg_arr_for_product": 116489,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Duo for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "76% of Financial Services accounts your size use Duo",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 87,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 83
+        },
+        "estimated_arr": 192885,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 210,
+          "avg_arr_for_product": 118292,
+          "adoption_rate": 0.84
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "85% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 82,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 80,
+          "account_size_match": 95
+        },
+        "estimated_arr": 98228,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 248,
+          "avg_arr_for_product": 145268,
+          "adoption_rate": 0.88
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "79% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 447492,
+    "expansion_potential_ratio": 3.25,
+    "summary": "Account has $447,492 in white-space ARR across 3 products",
+    "last_updated": "2025-10-09"
+  },
+  {
+    "analysis_id": "WS_CUST_000021_20251009",
+    "account_id": "CUST_000021",
+    "account_name": "Data Innovations",
+    "industry": "Technology",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-11",
+    "current_arr": 331717,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 72,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 93
+        },
+        "estimated_arr": 97796,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 1K-5K employees",
+          "peer_sample_size": 256,
+          "avg_arr_for_product": 146370,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "80% of Technology accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 86,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 82,
+          "account_size_match": 85
+        },
+        "estimated_arr": 135675,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 277,
+          "avg_arr_for_product": 145496,
+          "adoption_rate": 0.85
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "88% of Technology accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 90,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 95
+        },
+        "estimated_arr": 170504,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 1K-5K employees",
+          "peer_sample_size": 284,
+          "avg_arr_for_product": 146318,
+          "adoption_rate": 0.9
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Technology accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 403975,
+    "expansion_potential_ratio": 1.22,
+    "summary": "Account has $403,975 in white-space ARR across 3 products",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "analysis_id": "WS_CUST_000022_20251009",
+    "account_id": "CUST_000022",
+    "account_name": "Kris - Dibbert",
+    "industry": "Energy",
+    "employee_count": 10000,
+    "analysis_date": "2025-10-09",
+    "current_arr": 215609,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 81
+        },
+        "estimated_arr": 198434,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 152,
+          "avg_arr_for_product": 120727,
+          "adoption_rate": 0.79
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Energy accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 89,
+          "use_case_alignment": 80,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 94,
+          "account_size_match": 89
+        },
+        "estimated_arr": 175285,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 1K-5K employees",
+          "peer_sample_size": 271,
+          "avg_arr_for_product": 127889,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "84% of Energy accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 373719,
+    "expansion_potential_ratio": 1.73,
+    "summary": "Account has $373,719 in white-space ARR across 2 products",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "analysis_id": "WS_CUST_000023_20251009",
+    "account_id": "CUST_000023",
+    "account_name": "Smith LLC",
+    "industry": "Government",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-15",
+    "current_arr": 450570,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 85,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.72,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 88
+        },
+        "estimated_arr": 97372,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 215,
+          "avg_arr_for_product": 90930,
+          "adoption_rate": 0.85
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "80% of Government accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 93,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.88,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 87
+        },
+        "estimated_arr": 143559,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 5K-10K employees",
+          "peer_sample_size": 158,
+          "avg_arr_for_product": 112468,
+          "adoption_rate": 0.9
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "79% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 240931,
+    "expansion_potential_ratio": 0.53,
+    "summary": "Account has $240,931 in white-space ARR across 2 products",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "analysis_id": "WS_CUST_000024_20251009",
+    "account_id": "CUST_000024",
+    "account_name": "Schultz - Collins",
+    "industry": "Retail",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-15",
+    "current_arr": 464096,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 77,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 80,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 81
+        },
+        "estimated_arr": 164182,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 1K-5K employees",
+          "peer_sample_size": 163,
+          "avg_arr_for_product": 100983,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "84% of Retail accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 93,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 87,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.85,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 95
+        },
+        "estimated_arr": 114422,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Retail 5K-10K employees",
+          "peer_sample_size": 261,
+          "avg_arr_for_product": 90777,
+          "adoption_rate": 0.76
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "87% of Retail accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 86,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 81,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.9,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 91
+        },
+        "estimated_arr": 190656,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 5K-10K employees",
+          "peer_sample_size": 219,
+          "avg_arr_for_product": 111952,
+          "adoption_rate": 0.75
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "83% of Retail accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 469260,
+    "expansion_potential_ratio": 1.01,
+    "summary": "Account has $469,260 in white-space ARR across 3 products",
+    "last_updated": "2025-10-02"
+  },
+  {
+    "analysis_id": "WS_CUST_000025_20251009",
+    "account_id": "CUST_000025",
+    "account_name": "Herzog, Bode and Frami",
+    "industry": "Education",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-17",
+    "current_arr": 343375,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 93,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 80,
+          "account_size_match": 90
+        },
+        "estimated_arr": 151776,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 152,
+          "avg_arr_for_product": 144505,
+          "adoption_rate": 0.71
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "78% of Education accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 91,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 82,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 86
+        },
+        "estimated_arr": 84461,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 173,
+          "avg_arr_for_product": 93727,
+          "adoption_rate": 0.89
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "78% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 72,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 85
+        },
+        "estimated_arr": 197440,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 197,
+          "avg_arr_for_product": 106602,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "89% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 433677,
+    "expansion_potential_ratio": 1.26,
+    "summary": "Account has $433,677 in white-space ARR across 3 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000026_20251009",
+    "account_id": "CUST_000026",
+    "account_name": "Credit Group",
+    "industry": "Financial Services",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-12",
+    "current_arr": 441614,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 78,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 83,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 92
+        },
+        "estimated_arr": 123601,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 217,
+          "avg_arr_for_product": 101660,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "81% of Financial Services accounts your size use Meraki",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 75,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 88,
+          "account_size_match": 86
+        },
+        "estimated_arr": 160473,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 216,
+          "avg_arr_for_product": 96769,
+          "adoption_rate": 0.71
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "83% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 70,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 88
+        },
+        "estimated_arr": 99871,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 297,
+          "avg_arr_for_product": 90242,
+          "adoption_rate": 0.8
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "90% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 383945,
+    "expansion_potential_ratio": 0.87,
+    "summary": "Account has $383,945 in white-space ARR across 3 products",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "analysis_id": "WS_CUST_000027_20251009",
+    "account_id": "CUST_000027",
+    "account_name": "Gutmann, King and Gorczany",
+    "industry": "Education",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-08",
+    "current_arr": 474193,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 87,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 83
+        },
+        "estimated_arr": 154349,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 227,
+          "avg_arr_for_product": 116254,
+          "adoption_rate": 0.71
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "86% of Education accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 72,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 89,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 92
+        },
+        "estimated_arr": 166603,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 249,
+          "avg_arr_for_product": 148750,
+          "adoption_rate": 0.72
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "90% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 90,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 87
+        },
+        "estimated_arr": 144124,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 288,
+          "avg_arr_for_product": 132166,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "75% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 465076,
+    "expansion_potential_ratio": 0.98,
+    "summary": "Account has $465,076 in white-space ARR across 3 products",
+    "last_updated": "2025-09-29"
+  },
+  {
+    "analysis_id": "WS_CUST_000028_20251009",
+    "account_id": "CUST_000028",
+    "account_name": "Medical Alliance",
+    "industry": "Healthcare",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-13",
+    "current_arr": 181551,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 95,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 81,
+          "use_case_alignment": 87,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 94
+        },
+        "estimated_arr": 168877,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 298,
+          "avg_arr_for_product": 105268,
+          "adoption_rate": 0.88
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "79% of Healthcare accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 90,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 84
+        },
+        "estimated_arr": 81882,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 5K-10K employees",
+          "peer_sample_size": 162,
+          "avg_arr_for_product": 149287,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "89% of Healthcare accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 250759,
+    "expansion_potential_ratio": 1.38,
+    "summary": "Account has $250,759 in white-space ARR across 2 products",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "analysis_id": "WS_CUST_000029_20251009",
+    "account_id": "CUST_000029",
+    "account_name": "Medical Systems",
+    "industry": "Healthcare",
+    "employee_count": 1000,
+    "analysis_date": "2025-09-14",
+    "current_arr": 215678,
+    "owned_products": [
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 73,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 82,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 81,
+          "account_size_match": 93
+        },
+        "estimated_arr": 124216,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 3K-7K employees",
+          "peer_sample_size": 180,
+          "avg_arr_for_product": 134832,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Healthcare accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 94,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 80,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 88
+        },
+        "estimated_arr": 98512,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Healthcare 1K-5K employees",
+          "peer_sample_size": 244,
+          "avg_arr_for_product": 126268,
+          "adoption_rate": 0.73
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "76% of Healthcare accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 222728,
+    "expansion_potential_ratio": 1.03,
+    "summary": "Account has $222,728 in white-space ARR across 2 products",
+    "last_updated": "2025-09-27"
+  },
+  {
+    "analysis_id": "WS_CUST_000030_20251009",
+    "account_id": "CUST_000030",
+    "account_name": "Bashirian Inc",
+    "industry": "Government",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-18",
+    "current_arr": 88638,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 94,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 80,
+          "use_case_alignment": 90,
+          "peer_adoption_rate": 0.72,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 85
+        },
+        "estimated_arr": 91683,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 271,
+          "avg_arr_for_product": 135374,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "83% of Government accounts your size use Meraki",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 83,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 85,
+          "use_case_alignment": 76,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 82
+        },
+        "estimated_arr": 162207,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 257,
+          "avg_arr_for_product": 90299,
+          "adoption_rate": 0.81
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "78% of Government accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 89,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 86
+        },
+        "estimated_arr": 116231,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 1K-5K employees",
+          "peer_sample_size": 178,
+          "avg_arr_for_product": 142206,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "90% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 370121,
+    "expansion_potential_ratio": 4.18,
+    "summary": "Account has $370,121 in white-space ARR across 3 products",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "analysis_id": "WS_CUST_000031_20251009",
+    "account_id": "CUST_000031",
+    "account_name": "Credit Partners",
+    "industry": "Financial Services",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-02",
+    "current_arr": 202633,
+    "owned_products": [
+      "Meraki",
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 84,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 90
+        },
+        "estimated_arr": 160847,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 176,
+          "avg_arr_for_product": 138523,
+          "adoption_rate": 0.71
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "80% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 95,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 82,
+          "account_size_match": 94
+        },
+        "estimated_arr": 157687,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 200,
+          "avg_arr_for_product": 138961,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "82% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 318534,
+    "expansion_potential_ratio": 1.57,
+    "summary": "Account has $318,534 in white-space ARR across 2 products",
+    "last_updated": "2025-10-06"
+  },
+  {
+    "analysis_id": "WS_CUST_000032_20251009",
+    "account_id": "CUST_000032",
+    "account_name": "Wealth Group",
+    "industry": "Financial Services",
+    "employee_count": 1000,
+    "analysis_date": "2025-09-12",
+    "current_arr": 320768,
+    "owned_products": [
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 82,
+          "account_size_match": 82
+        },
+        "estimated_arr": 141733,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 261,
+          "avg_arr_for_product": 99498,
+          "adoption_rate": 0.74
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Splunk deployment",
+        "rationale": [
+          "89% of Financial Services accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 82,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.86,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 91
+        },
+        "estimated_arr": 115349,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 182,
+          "avg_arr_for_product": 92103,
+          "adoption_rate": 0.84
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "83% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 257082,
+    "expansion_potential_ratio": 0.8,
+    "summary": "Account has $257,082 in white-space ARR across 2 products",
+    "last_updated": "2025-09-25"
+  },
+  {
+    "analysis_id": "WS_CUST_000033_20251009",
+    "account_id": "CUST_000033",
+    "account_name": "Hansen LLC",
+    "industry": "Energy",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-28",
+    "current_arr": 82833,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 84,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 85,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 85
+        },
+        "estimated_arr": 183487,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 291,
+          "avg_arr_for_product": 146033,
+          "adoption_rate": 0.75
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "91% of Energy accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 76,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.76,
+          "tech_stack_compatibility": 88,
+          "account_size_match": 87
+        },
+        "estimated_arr": 112483,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 3K-7K employees",
+          "peer_sample_size": 298,
+          "avg_arr_for_product": 104575,
+          "adoption_rate": 0.88
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "75% of Energy accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 71,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 91,
+          "account_size_match": 92
+        },
+        "estimated_arr": 142818,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 3K-7K employees",
+          "peer_sample_size": 276,
+          "avg_arr_for_product": 105762,
+          "adoption_rate": 0.72
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "88% of Energy accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 438788,
+    "expansion_potential_ratio": 5.3,
+    "summary": "Account has $438,788 in white-space ARR across 3 products",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "analysis_id": "WS_CUST_000034_20251009",
+    "account_id": "CUST_000034",
+    "account_name": "Cloud Solutions",
+    "industry": "Technology",
+    "employee_count": 2500,
+    "analysis_date": "2025-09-14",
+    "current_arr": 395737,
+    "owned_products": [
+      "Duo",
+      "Umbrella",
+      "Splunk"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 77,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 85
+        },
+        "estimated_arr": 172183,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 299,
+          "avg_arr_for_product": 91599,
+          "adoption_rate": 0.9
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "79% of Technology accounts your size use Meraki",
+          "Integrates seamlessly with your existing Splunk deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 82,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.85,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 82
+        },
+        "estimated_arr": 130446,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 158,
+          "avg_arr_for_product": 109437,
+          "adoption_rate": 0.79
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "92% of Technology accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Splunk deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 302629,
+    "expansion_potential_ratio": 0.76,
+    "summary": "Account has $302,629 in white-space ARR across 2 products",
+    "last_updated": "2025-10-07"
+  },
+  {
+    "analysis_id": "WS_CUST_000035_20251009",
+    "account_id": "CUST_000035",
+    "account_name": "Bruen - Adams",
+    "industry": "Retail",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-20",
+    "current_arr": 152780,
+    "owned_products": [
+      "Meraki",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Duo",
+        "product_id": "PROD_Duo_001",
+        "product_category": "Security",
+        "fit_score": 89,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 81,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 81
+        },
+        "estimated_arr": 94544,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 3K-7K employees",
+          "peer_sample_size": 269,
+          "avg_arr_for_product": 130575,
+          "adoption_rate": 0.71
+        },
+        "use_case": "Duo for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "80% of Retail accounts your size use Duo",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 87,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 79,
+          "peer_adoption_rate": 0.92,
+          "tech_stack_compatibility": 82,
+          "account_size_match": 83
+        },
+        "estimated_arr": 165070,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 5K-10K employees",
+          "peer_sample_size": 298,
+          "avg_arr_for_product": 147090,
+          "adoption_rate": 0.89
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "82% of Retail accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 88,
+          "peer_adoption_rate": 0.76,
+          "tech_stack_compatibility": 77,
+          "account_size_match": 91
+        },
+        "estimated_arr": 125249,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 3K-7K employees",
+          "peer_sample_size": 278,
+          "avg_arr_for_product": 124516,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "92% of Retail accounts your size use Splunk",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 384863,
+    "expansion_potential_ratio": 2.52,
+    "summary": "Account has $384,863 in white-space ARR across 3 products",
+    "last_updated": "2025-09-28"
+  },
+  {
+    "analysis_id": "WS_CUST_000036_20251009",
+    "account_id": "CUST_000036",
+    "account_name": "Trust Holdings",
+    "industry": "Financial Services",
+    "employee_count": 1000,
+    "analysis_date": "2025-09-30",
+    "current_arr": 51826,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 95,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.9,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 82
+        },
+        "estimated_arr": 90508,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 1K-5K employees",
+          "peer_sample_size": 223,
+          "avg_arr_for_product": 95042,
+          "adoption_rate": 0.72
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "78% of Financial Services accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 74,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 81,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 80
+        },
+        "estimated_arr": 118426,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 288,
+          "avg_arr_for_product": 98652,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "89% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 208934,
+    "expansion_potential_ratio": 4.03,
+    "summary": "Account has $208,934 in white-space ARR across 2 products",
+    "last_updated": "2025-10-03"
+  },
+  {
+    "analysis_id": "WS_CUST_000037_20251009",
+    "account_id": "CUST_000037",
+    "account_name": "Stokes and Sons",
+    "industry": "Government",
+    "employee_count": 10000,
+    "analysis_date": "2025-09-30",
+    "current_arr": 490470,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 72,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 87,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.84,
+          "tech_stack_compatibility": 88,
+          "account_size_match": 90
+        },
+        "estimated_arr": 165951,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 285,
+          "avg_arr_for_product": 145175,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "84% of Government accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 74,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 85,
+          "use_case_alignment": 83,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 89
+        },
+        "estimated_arr": 180892,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 1K-5K employees",
+          "peer_sample_size": 240,
+          "avg_arr_for_product": 108637,
+          "adoption_rate": 0.79
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 346843,
+    "expansion_potential_ratio": 0.71,
+    "summary": "Account has $346,843 in white-space ARR across 2 products",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "analysis_id": "WS_CUST_000038_20251009",
+    "account_id": "CUST_000038",
+    "account_name": "Wealth Capital",
+    "industry": "Financial Services",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-11",
+    "current_arr": 424729,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 75,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 80,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 76,
+          "account_size_match": 90
+        },
+        "estimated_arr": 155304,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 216,
+          "avg_arr_for_product": 114226,
+          "adoption_rate": 0.74
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Financial Services accounts your size use Meraki",
+          "Integrates seamlessly with your existing Umbrella deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 74,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 94,
+          "use_case_alignment": 92,
+          "peer_adoption_rate": 0.91,
+          "tech_stack_compatibility": 92,
+          "account_size_match": 89
+        },
+        "estimated_arr": 95923,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 3K-7K employees",
+          "peer_sample_size": 277,
+          "avg_arr_for_product": 140365,
+          "adoption_rate": 0.73
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "85% of Financial Services accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 70,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 95
+        },
+        "estimated_arr": 197437,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Financial Services 5K-10K employees",
+          "peer_sample_size": 187,
+          "avg_arr_for_product": 142401,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "85% of Financial Services accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 448664,
+    "expansion_potential_ratio": 1.06,
+    "summary": "Account has $448,664 in white-space ARR across 3 products",
+    "last_updated": "2025-10-08"
+  },
+  {
+    "analysis_id": "WS_CUST_000039_20251009",
+    "account_id": "CUST_000039",
+    "account_name": "Mohr and Sons",
+    "industry": "Education",
+    "employee_count": 7500,
+    "analysis_date": "2025-09-30",
+    "current_arr": 396896,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 74,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 97,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.77,
+          "tech_stack_compatibility": 87,
+          "account_size_match": 87
+        },
+        "estimated_arr": 138454,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 233,
+          "avg_arr_for_product": 93606,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "91% of Education accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 95,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.72,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 82
+        },
+        "estimated_arr": 147081,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 275,
+          "avg_arr_for_product": 110824,
+          "adoption_rate": 0.82
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "86% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 74,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 86,
+          "peer_adoption_rate": 0.78,
+          "tech_stack_compatibility": 75,
+          "account_size_match": 89
+        },
+        "estimated_arr": 125209,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 264,
+          "avg_arr_for_product": 147298,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "89% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 410744,
+    "expansion_potential_ratio": 1.03,
+    "summary": "Account has $410,744 in white-space ARR across 3 products",
+    "last_updated": "2025-10-04"
+  },
+  {
+    "analysis_id": "WS_CUST_000040_20251009",
+    "account_id": "CUST_000040",
+    "account_name": "Data Solutions",
+    "industry": "Technology",
+    "employee_count": 5000,
+    "analysis_date": "2025-09-22",
+    "current_arr": 119330,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 95,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 88,
+          "peer_adoption_rate": 0.73,
+          "tech_stack_compatibility": 93,
+          "account_size_match": 82
+        },
+        "estimated_arr": 98827,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Technology 3K-7K employees",
+          "peer_sample_size": 271,
+          "avg_arr_for_product": 146854,
+          "adoption_rate": 0.81
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "77% of Technology accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 94,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.79,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 93
+        },
+        "estimated_arr": 102923,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Technology 5K-10K employees",
+          "peer_sample_size": 295,
+          "avg_arr_for_product": 139495,
+          "adoption_rate": 0.88
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Technology accounts your size use Splunk",
+          "Integrates seamlessly with your existing ThousandEyes deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 201750,
+    "expansion_potential_ratio": 1.69,
+    "summary": "Account has $201,750 in white-space ARR across 2 products",
+    "last_updated": "2025-09-24"
+  },
+  {
+    "analysis_id": "WS_CUST_000041_20251009",
+    "account_id": "CUST_000041",
+    "account_name": "Collier, Bayer and Ward",
+    "industry": "Education",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-08",
+    "current_arr": 80903,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 71,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 84,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 89,
+          "account_size_match": 87
+        },
+        "estimated_arr": 83517,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Education 1K-5K employees",
+          "peer_sample_size": 217,
+          "avg_arr_for_product": 109671,
+          "adoption_rate": 0.89
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "78% of Education accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 83,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 82,
+          "peer_adoption_rate": 0.71,
+          "tech_stack_compatibility": 83,
+          "account_size_match": 95
+        },
+        "estimated_arr": 88745,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 5K-10K employees",
+          "peer_sample_size": 273,
+          "avg_arr_for_product": 127065,
+          "adoption_rate": 0.79
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "90% of Education accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 98,
+          "use_case_alignment": 75,
+          "peer_adoption_rate": 0.89,
+          "tech_stack_compatibility": 80,
+          "account_size_match": 81
+        },
+        "estimated_arr": 99154,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Education 3K-7K employees",
+          "peer_sample_size": 184,
+          "avg_arr_for_product": 113421,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "86% of Education accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 271416,
+    "expansion_potential_ratio": 3.35,
+    "summary": "Account has $271,416 in white-space ARR across 3 products",
+    "last_updated": "2025-09-30"
+  },
+  {
+    "analysis_id": "WS_CUST_000042_20251009",
+    "account_id": "CUST_000042",
+    "account_name": "Mitchell, Batz and Pouros",
+    "industry": "Retail",
+    "employee_count": 5000,
+    "analysis_date": "2025-09-17",
+    "current_arr": 420242,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 79,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 95,
+          "account_size_match": 85
+        },
+        "estimated_arr": 180229,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Retail 5K-10K employees",
+          "peer_sample_size": 192,
+          "avg_arr_for_product": 125632,
+          "adoption_rate": 0.76
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "84% of Retail accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 91,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 91,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.82,
+          "tech_stack_compatibility": 86,
+          "account_size_match": 84
+        },
+        "estimated_arr": 81690,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Retail 5K-10K employees",
+          "peer_sample_size": 222,
+          "avg_arr_for_product": 114445,
+          "adoption_rate": 0.86
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Duo deployment",
+        "rationale": [
+          "85% of Retail accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 73,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 84,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.75,
+          "tech_stack_compatibility": 81,
+          "account_size_match": 83
+        },
+        "estimated_arr": 134702,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Retail 1K-5K employees",
+          "peer_sample_size": 179,
+          "avg_arr_for_product": 143663,
+          "adoption_rate": 0.73
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "90% of Retail accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 396621,
+    "expansion_potential_ratio": 0.94,
+    "summary": "Account has $396,621 in white-space ARR across 3 products",
+    "last_updated": "2025-09-28"
+  },
+  {
+    "analysis_id": "WS_CUST_000043_20251009",
+    "account_id": "CUST_000043",
+    "account_name": "Cronin and Sons",
+    "industry": "Energy",
+    "employee_count": 5000,
+    "analysis_date": "2025-09-09",
+    "current_arr": 10017,
+    "owned_products": [
+      "Meraki",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 74,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 85,
+          "peer_adoption_rate": 0.74,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 80
+        },
+        "estimated_arr": 177577,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 1K-5K employees",
+          "peer_sample_size": 182,
+          "avg_arr_for_product": 146152,
+          "adoption_rate": 0.84
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "84% of Energy accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 76,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 88,
+          "peer_adoption_rate": 0.85,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 82
+        },
+        "estimated_arr": 82464,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Energy 3K-7K employees",
+          "peer_sample_size": 160,
+          "avg_arr_for_product": 102868,
+          "adoption_rate": 0.72
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "90% of Energy accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 78,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 82,
+          "use_case_alignment": 84,
+          "peer_adoption_rate": 0.85,
+          "tech_stack_compatibility": 78,
+          "account_size_match": 83
+        },
+        "estimated_arr": 158878,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Energy 5K-10K employees",
+          "peer_sample_size": 201,
+          "avg_arr_for_product": 102109,
+          "adoption_rate": 0.83
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "77% of Energy accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 418919,
+    "expansion_potential_ratio": 41.82,
+    "summary": "Account has $418,919 in white-space ARR across 3 products",
+    "last_updated": "2025-09-28"
+  },
+  {
+    "analysis_id": "WS_CUST_000044_20251009",
+    "account_id": "CUST_000044",
+    "account_name": "Corwin LLC",
+    "industry": "Government",
+    "employee_count": 1000,
+    "analysis_date": "2025-09-29",
+    "current_arr": 24362,
+    "owned_products": [
+      "Duo",
+      "Umbrella"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Meraki",
+        "product_id": "PROD_Meraki_001",
+        "product_category": "Infrastructure",
+        "fit_score": 81,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 96,
+          "use_case_alignment": 82,
+          "peer_adoption_rate": 0.81,
+          "tech_stack_compatibility": 77,
+          "account_size_match": 83
+        },
+        "estimated_arr": 187424,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 5K-10K employees",
+          "peer_sample_size": 205,
+          "avg_arr_for_product": 136911,
+          "adoption_rate": 0.74
+        },
+        "use_case": "Meraki for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "80% of Government accounts your size use Meraki",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "ThousandEyes",
+        "product_id": "PROD_ThousandEyes_001",
+        "product_category": "Infrastructure",
+        "fit_score": 93,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 86,
+          "use_case_alignment": 91,
+          "peer_adoption_rate": 0.89,
+          "tech_stack_compatibility": 90,
+          "account_size_match": 91
+        },
+        "estimated_arr": 171505,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 177,
+          "avg_arr_for_product": 101852,
+          "adoption_rate": 0.87
+        },
+        "use_case": "ThousandEyes for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "88% of Government accounts your size use ThousandEyes",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 2
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 86,
+        "fit_tier": "Excellent",
+        "fit_components": {
+          "industry_match": 93,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.87,
+          "tech_stack_compatibility": 85,
+          "account_size_match": 83
+        },
+        "estimated_arr": 141066,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 5K-10K employees",
+          "peer_sample_size": 184,
+          "avg_arr_for_product": 122493,
+          "adoption_rate": 0.85
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Umbrella deployment",
+        "rationale": [
+          "92% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Duo deployment"
+        ],
+        "priority_ranking": 3
+      }
+    ],
+    "total_white_space_arr": 499995,
+    "expansion_potential_ratio": 20.52,
+    "summary": "Account has $499,995 in white-space ARR across 3 products",
+    "last_updated": "2025-09-24"
+  },
+  {
+    "analysis_id": "WS_CUST_000045_20251009",
+    "account_id": "CUST_000045",
+    "account_name": "Goldner - Bartoletti",
+    "industry": "Government",
+    "employee_count": 5000,
+    "analysis_date": "2025-10-03",
+    "current_arr": 22076,
+    "owned_products": [
+      "Meraki",
+      "ThousandEyes",
+      "Duo"
+    ],
+    "white_space_opportunities": [
+      {
+        "product": "Umbrella",
+        "product_id": "PROD_Umbrella_001",
+        "product_category": "Security",
+        "fit_score": 73,
+        "fit_tier": "Good",
+        "fit_components": {
+          "industry_match": 89,
+          "use_case_alignment": 89,
+          "peer_adoption_rate": 0.83,
+          "tech_stack_compatibility": 84,
+          "account_size_match": 94
+        },
+        "estimated_arr": 109605,
+        "arr_confidence": "MEDIUM",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 259,
+          "avg_arr_for_product": 102372,
+          "adoption_rate": 0.87
+        },
+        "use_case": "Umbrella for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing ThousandEyes deployment",
+        "rationale": [
+          "86% of Government accounts your size use Umbrella",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 1
+      },
+      {
+        "product": "Splunk",
+        "product_id": "PROD_Splunk_001",
+        "product_category": "Infrastructure",
+        "fit_score": 70,
+        "fit_tier": "Fair",
+        "fit_components": {
+          "industry_match": 95,
+          "use_case_alignment": 78,
+          "peer_adoption_rate": 0.79,
+          "tech_stack_compatibility": 91,
+          "account_size_match": 82
+        },
+        "estimated_arr": 95626,
+        "arr_confidence": "HIGH",
+        "peer_benchmarks": {
+          "peer_group": "Government 3K-7K employees",
+          "peer_sample_size": 252,
+          "avg_arr_for_product": 135549,
+          "adoption_rate": 0.82
+        },
+        "use_case": "Splunk for enhanced security and compliance",
+        "integration_benefits": "Integrates with existing Meraki deployment",
+        "rationale": [
+          "80% of Government accounts your size use Splunk",
+          "Integrates seamlessly with your existing Meraki deployment"
+        ],
+        "priority_ranking": 2
+      }
+    ],
+    "total_white_space_arr": 205231,
+    "expansion_potential_ratio": 9.3,
+    "summary": "Account has $205,231 in white-space ARR across 2 products",
+    "last_updated": "2025-09-29"
+  }
+]
