@@ -1,0 +1,41 @@
+-- Level 1: Company-Wide GRR
+WITH cohort_base AS (
+    SELECT 
+        SUM(arr) AS starting_arr
+    FROM subscriptions
+    WHERE subscription_start_date <= DATE_TRUNC('year', CURRENT_DATE) - INTERVAL '1 year'
+        AND (subscription_end_date IS NULL OR 
+             subscription_end_date > DATE_TRUNC('year', CURRENT_DATE) - INTERVAL '1 year')
+),
+cohort_losses AS (
+    SELECT 
+        SUM(CASE WHEN movement_type = 'churn' THEN arr_change ELSE 0 END) AS churn_arr,
+        SUM(CASE WHEN movement_type = 'contraction' THEN arr_change ELSE 0 END) AS contraction_arr
+    FROM revenue_movements
+    WHERE effective_date BETWEEN DATE_TRUNC('year', CURRENT_DATE) - INTERVAL '1 year' 
+        AND DATE_TRUNC('year', CURRENT_DATE)
+)
+SELECT 
+    cb.starting_arr,
+    cl.churn_arr,
+    cl.contraction_arr,
+    (cb.starting_arr + cl.churn_arr + cl.contraction_arr) AS retained_arr,
+    ((cb.starting_arr + cl.churn_arr + cl.contraction_arr) * 100.0 / cb.starting_arr) AS grr_pct
+FROM cohort_base cb, cohort_losses cl;
+
+-- Level 2: GRR by Tier and Cohort
+SELECT 
+    a.tier,
+    DATE_TRUNC('year', s.subscription_start_date) AS cohort_year,
+    COUNT(DISTINCT a.id) AS cohort_size,
+    SUM(s.arr) AS cohort_starting_arr,
+    SUM(CASE WHEN rm.movement_type IN ('churn', 'contraction') 
+        THEN rm.arr_change ELSE 0 END) AS losses,
+    ((SUM(s.arr) + SUM(CASE WHEN rm.movement_type IN ('churn', 'contraction') 
+        THEN rm.arr_change ELSE 0 END)) * 100.0 / SUM(s.arr)) AS grr_pct
+FROM accounts a
+JOIN subscriptions s ON a.id = s.customer_id
+LEFT JOIN revenue_movements rm ON a.id = rm.customer_id
+WHERE s.subscription_start_date >= DATE_TRUNC('year', CURRENT_DATE) - INTERVAL '3 years'
+GROUP BY a.tier, DATE_TRUNC('year', s.subscription_start_date)
+ORDER BY cohort_year DESC, a.tier;

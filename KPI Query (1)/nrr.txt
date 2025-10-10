@@ -1,0 +1,83 @@
+-- ============================================================================
+-- NET REVENUE RETENTION (NRR) - SALES EXPANSION DASHBOARD
+-- ============================================================================
+-- Formula: NRR = ((Starting ARR + Expansion - Churn - Contraction) / Starting ARR) × 100
+-- Period: Configurable (set @period_start and @period_end)
+-- Scope: Company-wide with optional segmentation
+-- ============================================================================
+
+-- Set calculation period parameters
+SET @period_start = '2025-01-01';  -- Beginning of period
+SET @period_end = '2025-09-30';    -- End of period
+
+-- Main NRR calculation
+WITH cohort_customers AS (
+    -- Identify customers active at period start (the cohort)
+    SELECT DISTINCT
+        a.id AS customer_id,
+        a.name AS customer_name,
+        a.tier AS customer_tier,
+        a.starting_arr,
+        a.arr AS ending_arr,
+        COALESCE(a.expansion_arr, 0) AS expansion_arr,
+        COALESCE(a.churn_arr, 0) AS churn_arr,
+        COALESCE(a.contraction_arr, 0) AS contraction_arr,
+        a.csm_id
+    FROM accounts a
+    WHERE a.created_date < @period_start  -- Existed before period start
+        AND a.starting_arr > 0             -- Had revenue at start
+),
+
+revenue_breakdown AS (
+    -- Calculate components for each customer
+    SELECT
+        customer_id,
+        customer_name,
+        customer_tier,
+        csm_id,
+        starting_arr,
+        expansion_arr,
+        churn_arr,
+        contraction_arr,
+        ending_arr,
+        -- Calculate net ARR change
+        (starting_arr + expansion_arr - churn_arr - contraction_arr) AS calculated_ending_arr,
+        -- Calculate customer-level NRR
+        CASE 
+            WHEN starting_arr > 0 THEN
+                ((starting_arr + expansion_arr - churn_arr - contraction_arr) / starting_arr) * 100
+            ELSE 0
+        END AS customer_nrr
+    FROM cohort_customers
+)
+
+-- Aggregate NRR and components
+SELECT
+    -- Summary metrics
+    COUNT(DISTINCT customer_id) AS cohort_customer_count,
+    SUM(starting_arr) AS total_starting_arr,
+    SUM(expansion_arr) AS total_expansion_arr,
+    SUM(churn_arr) AS total_churn_arr,
+    SUM(contraction_arr) AS total_contraction_arr,
+    SUM(calculated_ending_arr) AS total_ending_arr,
+    
+    -- Net Revenue Retention (primary KPI)
+    CASE 
+        WHEN SUM(starting_arr) > 0 THEN
+            ((SUM(starting_arr) + SUM(expansion_arr) - SUM(churn_arr) - SUM(contraction_arr)) 
+             / SUM(starting_arr)) * 100
+        ELSE 0
+    END AS nrr_percentage,
+    
+    -- Component breakdown (as % of starting ARR)
+    CASE WHEN SUM(starting_arr) > 0 THEN (SUM(expansion_arr) / SUM(starting_arr)) * 100 ELSE 0 END AS expansion_rate,
+    CASE WHEN SUM(starting_arr) > 0 THEN (SUM(churn_arr) / SUM(starting_arr)) * 100 ELSE 0 END AS churn_rate,
+    CASE WHEN SUM(starting_arr) > 0 THEN (SUM(contraction_arr) / SUM(starting_arr)) * 100 ELSE 0 END AS contraction_rate,
+    
+    -- Period info
+    @period_start AS period_start_date,
+    @period_end AS period_end_date,
+    DATEDIFF(@period_end, @period_start) AS period_days,
+    CURRENT_TIMESTAMP AS calculated_at
+    
+FROM revenue_breakdown;

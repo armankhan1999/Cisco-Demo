@@ -9,10 +9,50 @@ interface SidebarProps {
   onPersonaChange: (persona: Persona) => void;
 }
 
+interface SubMenuItem {
+  id: string;
+  label: string;
+  description?: string;
+  onClick: () => void;
+}
+
 export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
 
   const personas: Persona[] = ['CSM', 'CO', 'SE'];
+
+  // Define submenus for each persona
+  const subMenus: Record<Persona, SubMenuItem[]> = {
+    CSM: [
+      {
+        id: 'portfolio',
+        label: 'Portfolio Dashboard',
+        description: 'Strategic overview & KPIs',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to portfolio dashboard
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/portfolio';
+          }
+        }
+      },
+      {
+        id: 'deep-dive',
+        label: 'Deep Dive Analytics',
+        description: 'Tactical analysis & insights',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to deep-dive page
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/deep-dive';
+          }
+        }
+      }
+    ],
+    CO: [],
+    SE: []
+  };
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
@@ -70,34 +110,84 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
         <div className="space-y-1 px-3">
           {personas.map((persona) => {
             const isActive = currentPersona === persona;
+            const isExpanded = expandedMenu === persona;
+            const hasSubMenu = subMenus[persona].length > 0;
 
             return (
-              <button
-                key={persona}
-                onClick={() => onPersonaChange(persona)}
-                className={`
-                  w-full flex items-center gap-4 px-4 py-3.5 rounded-lg transition-all duration-200
-                  ${isActive 
-                    ? 'bg-white/10 border-l-4 border-[#049FD9]' 
-                    : 'border-l-4 border-transparent hover:bg-white/5'
-                  }
-                `}
-              >
-                <div className={`flex-shrink-0 transition-all duration-200 ${isActive ? 'text-[#049FD9]' : 'text-white/60'}`}>
-                  {getPersonaIcon(persona)}
-                </div>
+              <div key={persona} className="space-y-1">
+                {/* Main Persona Button */}
+                <button
+                  onClick={() => {
+                    if (hasSubMenu) {
+                      setExpandedMenu(isExpanded ? null : persona);
+                    }
+                    onPersonaChange(persona);
+                  }}
+                  className={`
+                    w-full flex items-center gap-4 px-4 py-3.5 rounded-lg transition-all duration-200
+                    ${isActive 
+                      ? 'bg-white/10 border-l-4 border-[#049FD9]' 
+                      : 'border-l-4 border-transparent hover:bg-white/5'
+                    }
+                  `}
+                >
+                  <div className={`flex-shrink-0 transition-all duration-200 ${isActive ? 'text-[#049FD9]' : 'text-white/60'}`}>
+                    {getPersonaIcon(persona)}
+                  </div>
 
-                {!isCollapsed && (
-                  <div className="flex-1 text-left">
-                    <h3 className={`text-sm font-semibold transition-all duration-200 ${isActive ? 'text-white' : 'text-white/80'}`}>
-                      {persona}
-                    </h3>
-                    <p className={`text-xs mt-0.5 transition-all duration-200 ${isActive ? 'text-white/80' : 'text-white/50'}`}>
-                      {getPersonaName(persona)}
-                    </p>
+                  {!isCollapsed && (
+                    <>
+                      <div className="flex-1 text-left">
+                        <h3 className={`text-sm font-semibold transition-all duration-200 ${isActive ? 'text-white' : 'text-white/80'}`}>
+                          {persona}
+                        </h3>
+                        <p className={`text-xs mt-0.5 transition-all duration-200 ${isActive ? 'text-white/80' : 'text-white/50'}`}>
+                          {getPersonaName(persona)}
+                        </p>
+                      </div>
+
+                      {/* Expand/Collapse Icon */}
+                      {hasSubMenu && (
+                        <svg 
+                          className={`w-4 h-4 text-white/60 transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      )}
+                    </>
+                  )}
+                </button>
+
+                {/* Submenu Items */}
+                {!isCollapsed && isExpanded && hasSubMenu && (
+                  <div className="ml-4 space-y-1 py-1">
+                    {subMenus[persona].map((subItem) => (
+                      <button
+                        key={subItem.id}
+                        onClick={subItem.onClick}
+                        className="w-full text-left px-4 py-2.5 rounded-lg transition-all duration-200 hover:bg-white/5 group"
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-1 rounded-full bg-[#049FD9]"></div>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-white/90 group-hover:text-white">
+                              {subItem.label}
+                            </p>
+                            {subItem.description && (
+                              <p className="text-xs text-white/50 mt-0.5">
+                                {subItem.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
                   </div>
                 )}
-              </button>
+              </div>
             );
           })}
         </div>

@@ -1,0 +1,66 @@
+-- Level 1: Weighted Portfolio Health
+WITH account_health AS (
+    SELECT 
+        a.id AS customer_id,
+        a.name AS customer_name,
+        a.arr,
+        -- Usage Health (40%)
+        (AVG(l.utilization) * 0.40) +
+        -- Engagement Health (30%) - simplified for example
+        (CASE WHEN a.last_touch_date >= CURRENT_DATE - 30 THEN 85 ELSE 60 END * 0.30) +
+        -- Support Health (20%)
+        (CASE WHEN t.open_ticket_count = 0 THEN 90 
+              WHEN t.open_ticket_count <= 2 THEN 75 ELSE 55 END * 0.20) +
+        -- Business Outcome Health (10%) - placeholder
+        (75 * 0.10)
+        AS health_score
+    FROM accounts a
+    LEFT JOIN licenses l ON a.id = l.customer_id
+    LEFT JOIN (
+        SELECT customer_id, COUNT(*) AS open_ticket_count
+        FROM support_tickets
+        WHERE status = 'Open'
+        GROUP BY customer_id
+    ) t ON a.id = t.customer_id
+    WHERE a.status = 'Active'
+    GROUP BY a.id, a.name, a.arr, a.last_touch_date, t.open_ticket_count
+)
+SELECT 
+    SUM(health_score * arr) / SUM(arr) AS weighted_portfolio_health,
+    AVG(health_score) AS avg_health_score,
+    COUNT(*) AS total_accounts,
+    SUM(arr) AS total_arr
+FROM account_health;
+
+-- Level 2: Health Distribution
+SELECT 
+    CASE 
+        WHEN health_score >= 91 THEN 'Thriving (91-100)'
+        WHEN health_score >= 76 THEN 'Healthy (76-90)'
+        WHEN health_score >= 61 THEN 'Stable (61-75)'
+        WHEN health_score >= 46 THEN 'At Risk (46-60)'
+        ELSE 'Critical (0-45)'
+    END AS health_category,
+    COUNT(*) AS account_count,
+    SUM(arr) AS category_arr,
+    SUM(arr) * 100.0 / SUM(SUM(arr)) OVER () AS pct_of_total_arr
+FROM account_health
+GROUP BY health_category
+ORDER BY MIN(health_score) DESC;
+
+-- Level 3: At-Risk Accounts Detail
+SELECT 
+    ah.customer_id,
+    ah.customer_name,
+    ah.arr,
+    ah.health_score,
+    a.tier,
+    a.csm_assigned,
+    s.subscription_end_date AS renewal_date,
+    DATEDIFF(day, CURRENT_DATE, s.subscription_end_date) AS days_to_renewal
+FROM account_health ah
+JOIN accounts a ON ah.customer_id = a.id
+JOIN subscriptions s ON ah.customer_id = s.customer_id
+WHERE ah.health_score < 60
+    AND s.subscription_end_date >= CURRENT_DATE
+ORDER BY ah.health_score ASC, s.subscription_end_date ASC;

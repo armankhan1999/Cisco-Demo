@@ -1,0 +1,16 @@
+SELECT 
+    DATE_TRUNC('month', q.created_at) AS month,
+    COUNT(DISTINCT q.quote_id) AS total_quotes,
+    COUNT(DISTINCT p.payment_id) AS completed_cycles,
+    ROUND(AVG(EXTRACT(EPOCH FROM (p.payment_date - q.created_at)) / 86400), 1) AS avg_cycle_days,
+    ROUND(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY EXTRACT(EPOCH FROM (p.payment_date - q.created_at)) / 86400), 1) AS median_cycle_days,
+    ROUND(MIN(EXTRACT(EPOCH FROM (p.payment_date - q.created_at)) / 86400), 1) AS min_cycle_days,
+    ROUND(MAX(EXTRACT(EPOCH FROM (p.payment_date - q.created_at)) / 86400), 1) AS max_cycle_days
+FROM quotes q
+LEFT JOIN orders o ON q.quote_id = o.quote_id AND o.status NOT IN ('cancelled', 'rejected')
+LEFT JOIN invoices i ON o.order_id = i.order_id AND i.status != 'voided'
+LEFT JOIN payments p ON i.invoice_id = p.invoice_id AND p.status = 'completed'
+WHERE q.created_at >= CURRENT_DATE - INTERVAL '12 months'
+    AND q.status NOT IN ('draft', 'cancelled')
+GROUP BY DATE_TRUNC('month', q.created_at)
+ORDER BY month DESC;

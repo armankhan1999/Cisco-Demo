@@ -1,0 +1,51 @@
+-- Revenue Churn: Lost MRR as % of starting MRR
+-- More accurate for SaaS businesses with variable pricing
+
+WITH revenue_metrics AS (
+  SELECT
+    DATE_TRUNC('month', billing_date) AS month,
+    
+    SUM(CASE 
+      WHEN billing_date = DATE_TRUNC('month', billing_date) 
+      THEN mrr 
+      ELSE 0 
+    END) AS mrr_start,
+    
+    SUM(CASE 
+      WHEN churn_date IS NOT NULL 
+        AND DATE_TRUNC('month', churn_date) = DATE_TRUNC('month', billing_date)
+      THEN mrr 
+      ELSE 0 
+    END) AS mrr_churned,
+    
+    SUM(CASE 
+      WHEN expansion_revenue > 0 
+      THEN expansion_revenue 
+      ELSE 0 
+    END) AS mrr_expansion,
+    
+    SUM(CASE 
+      WHEN contraction_revenue < 0 
+      THEN ABS(contraction_revenue) 
+      ELSE 0 
+    END) AS mrr_contraction
+  FROM 
+    subscription_revenue  -- Replace with your table
+  WHERE 
+    billing_date >= DATE_TRUNC('month', CURRENT_DATE - INTERVAL '12 months')
+  GROUP BY 
+    1
+)
+
+SELECT
+  month,
+  mrr_start,
+  mrr_churned,
+  mrr_expansion,
+  mrr_contraction,
+  ROUND((mrr_churned / NULLIF(mrr_start, 0)) * 100, 2) AS gross_revenue_churn_rate,
+  ROUND(((mrr_churned + mrr_contraction - mrr_expansion) / NULLIF(mrr_start, 0)) * 100, 2) AS net_revenue_churn_rate
+FROM 
+  revenue_metrics
+ORDER BY 
+  month DESC;

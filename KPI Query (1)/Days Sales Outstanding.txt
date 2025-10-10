@@ -1,0 +1,36 @@
+-- Level 1: Company-Wide DSO
+SELECT 
+    SUM(total_ar_balance) / (SUM(arr) / 365.0) AS dso_days,
+    SUM(total_ar_balance) AS total_ar,
+    SUM(overdue_balance) AS overdue_ar,
+    SUM(overdue_balance) * 100.0 / NULLIF(SUM(total_ar_balance), 0) AS overdue_pct
+FROM accounts_receivable;
+
+-- Level 2: DSO by Customer Tier
+SELECT 
+    customer_tier,
+    COUNT(*) AS customer_count,
+    SUM(total_ar_balance) AS tier_ar,
+    SUM(current_0_30_days) AS current,
+    SUM(aging_31_60_days) AS aging_31_60,
+    SUM(aging_61_90_days) AS aging_61_90,
+    SUM(aging_90_plus_days) AS aging_90_plus,
+    AVG(avg_days_outstanding) AS avg_dso
+FROM accounts_receivable
+GROUP BY customer_tier
+ORDER BY avg_dso DESC;
+
+-- Level 3: Accounts with DSO > 60 Days
+SELECT 
+    ar.customer_id,
+    ar.customer_name,
+    ar.customer_tier,
+    ar.total_ar_balance,
+    ar.avg_days_outstanding AS dso,
+    ar.overdue_balance,
+    ar.disputed_amount,
+    a.arr AS customer_arr
+FROM accounts_receivable ar
+JOIN accounts a ON ar.customer_id = a.id
+WHERE ar.avg_days_outstanding > 60
+ORDER BY ar.total_ar_balance DESC;
