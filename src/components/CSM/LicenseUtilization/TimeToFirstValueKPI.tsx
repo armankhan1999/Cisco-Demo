@@ -108,7 +108,7 @@ export function TimeToFirstValueKPI({ onDrillDown, drillDownUrl }: TimeToFirstVa
   return (
     <div 
       className={`
-        group relative rounded-xl shadow-md border border-gray-200 p-4 h-56 transition-all duration-300
+        group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
         bg-gradient-to-br ${getStatusColor()}
         ${(drillDownUrl || onDrillDown) ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
@@ -146,15 +146,6 @@ export function TimeToFirstValueKPI({ onDrillDown, drillDownUrl }: TimeToFirstVa
           Target: &lt;{kpi.target} days
         </div>
         
-        {/* Distribution - Compact */}
-        <div className="mb-3 p-2 bg-gray-50 rounded text-xs">
-          <div className="text-gray-600 space-y-0.5">
-            <div>• 25th: {kpi.distribution.percentile25}d</div>
-            <div>• Median: {kpi.value}d</div>
-            <div>• 75th: {kpi.distribution.percentile75}d</div>
-          </div>
-        </div>
-        
         {/* Progress Bar */}
         <div className="mb-3">
           <div className="w-full bg-gray-200 rounded-full h-1.5">
@@ -165,15 +156,8 @@ export function TimeToFirstValueKPI({ onDrillDown, drillDownUrl }: TimeToFirstVa
           </div>
         </div>
         
-        {/* Action Buttons */}
-        <div className="flex gap-1 mb-2">
-          <button className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors">
-            📊 Product
-          </button>
-          <button className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded hover:bg-orange-200 transition-colors">
-            ⚠️ Slow
-          </button>
-        </div>
+        {/* Spacer for consistent layout */}
+        <div className="flex-grow"></div>
         
         {/* Footer with performance status */}
         <div className="flex items-center justify-between">

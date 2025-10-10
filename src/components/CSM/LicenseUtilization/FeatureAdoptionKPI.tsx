@@ -107,7 +107,7 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
   return (
     <div 
       className={`
-        group relative rounded-xl shadow-md border border-gray-200 p-4 h-56 transition-all duration-300
+        group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
         bg-gradient-to-br ${getStatusColor()}
         ${(drillDownUrl || onDrillDown) ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
@@ -145,27 +145,6 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
           Target: {kpi.target}%
         </div>
         
-        {/* Adoption Stage Distribution - Compact */}
-        <div className="mb-3 p-2 bg-gray-50 rounded text-xs">
-          <div className="space-y-1">
-            <div className="flex justify-between">
-              <span>Early</span>
-              <span>{kpi.earlyStage} ({kpi.earlyPercentage}%)</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Developing</span>
-              <span>{kpi.developingStage} ({kpi.developingPercentage}%)</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Mature</span>
-              <span>{kpi.matureStage} ({kpi.maturePercentage}%)</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Advanced</span>
-              <span>{kpi.advancedStage} ({kpi.advancedPercentage}%)</span>
-            </div>
-          </div>
-        </div>
         
         {/* Progress Bar */}
         <div className="mb-3">
@@ -177,15 +156,8 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
           </div>
         </div>
         
-        {/* Action Buttons */}
-        <div className="flex gap-1 mb-2">
-          <button className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors">
-            📊 Details
-          </button>
-          <button className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded hover:bg-orange-200 transition-colors">
-            🎯 Stuck
-          </button>
-        </div>
+        {/* Spacer for consistent layout */}
+        <div className="flex-grow"></div>
         
         {/* Footer with performance status */}
         <div className="flex items-center justify-between">

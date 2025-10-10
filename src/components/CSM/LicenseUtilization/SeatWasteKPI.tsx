@@ -108,7 +108,7 @@ export function SeatWasteKPI({ onDrillDown, drillDownUrl }: SeatWasteKPIProps) {
   return (
     <div 
       className={`
-        group relative rounded-xl shadow-md border border-gray-200 p-4 h-56 transition-all duration-300
+        group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
         bg-gradient-to-br ${getStatusColor()}
         ${(drillDownUrl || onDrillDown) ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
@@ -133,7 +133,7 @@ export function SeatWasteKPI({ onDrillDown, drillDownUrl }: SeatWasteKPIProps) {
         
         {/* Title */}
         <div className={`text-sm font-semibold ${getTextColor()} mb-1 leading-tight`}>
-          Seat Waste (Unused Licenses)
+          Seat Waste (Unused)
         </div>
         
         {/* Main Value */}
@@ -146,13 +146,6 @@ export function SeatWasteKPI({ onDrillDown, drillDownUrl }: SeatWasteKPIProps) {
           {kpi.wastePercentage}% of capacity
         </div>
         
-        {/* Financial Impact - Compact */}
-        <div className="mb-3 p-2 bg-gray-50 rounded text-xs">
-          <div className="text-gray-600">
-            💰 {kpi.annualWasteCost} waste
-          </div>
-        </div>
-        
         {/* Progress Bar */}
         <div className="mb-3">
           <div className="w-full bg-gray-200 rounded-full h-1.5">
@@ -163,12 +156,8 @@ export function SeatWasteKPI({ onDrillDown, drillDownUrl }: SeatWasteKPIProps) {
           </div>
         </div>
         
-        {/* Action Buttons */}
-        <div className="flex gap-1 mb-2">
-          <button className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded hover:bg-orange-200 transition-colors">
-            🎯 High-Waste
-          </button>
-        </div>
+        {/* Spacer for consistent layout */}
+        <div className="flex-grow"></div>
         
         {/* Footer with performance status */}
         <div className="flex items-center justify-between">

@@ -107,7 +107,7 @@ export function ActiveUsersKPI({ onDrillDown, drillDownUrl }: ActiveUsersKPIProp
   return (
     <div 
       className={`
-        group relative rounded-xl shadow-md border border-gray-200 p-4 h-56 transition-all duration-300
+        group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
         bg-gradient-to-br ${getStatusColor()}
         ${(drillDownUrl || onDrillDown) ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
@@ -155,15 +155,8 @@ export function ActiveUsersKPI({ onDrillDown, drillDownUrl }: ActiveUsersKPIProp
           </div>
         </div>
         
-        {/* Action Buttons */}
-        <div className="flex gap-1 mb-2">
-          <button className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors">
-            📈 Trend
-          </button>
-          <button className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors">
-            👥 Product
-          </button>
-        </div>
+        {/* Spacer for consistent layout */}
+        <div className="flex-grow"></div>
         
         {/* Footer with performance status */}
         <div className="flex items-center justify-between">

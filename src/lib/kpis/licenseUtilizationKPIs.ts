@@ -136,7 +136,8 @@ function calculateUtilizationFromData(utilizationData: any[], accounts: any[], s
     }
   });
   
-  const portfolioUtilization = totalArr > 0 ? weightedSum / totalArr : (totalUsed / totalLicenses) * 100;
+  // Use simple average utilization instead of weighted by ARR
+  const portfolioUtilization = (totalUsed / totalLicenses) * 100;
   
   // Calculate month-over-month change
   const previousMonth = new Date();
@@ -313,7 +314,7 @@ export function calculateSeatWasteKPI(): any {
     if (utilizationHistory.length === 0) {
       return {
         value: 0,
-        formatted: '0 seats',
+        formatted: '0',
         status: 'danger',
         trend: 'stable',
         change: '0',
@@ -343,7 +344,21 @@ export function calculateSeatWasteKPI(): any {
     const annualWasteCost = totalUnusedSeats * 1000; // $1000 per seat per year average
     
     // Calculate quarter-over-quarter change
-    const quarterlyChange = '-$87K'; // Placeholder
+    const previousQuarter = new Date();
+    previousQuarter.setMonth(previousQuarter.getMonth() - 3);
+    const previousQuarterStr = previousQuarter.toISOString().split('T')[0];
+    
+    const previousQuarterWaste = latestUtilization.reduce((sum, util) => {
+      const prevUtil = utilizationHistory.find(p => 
+        p.customer_id === util.customer_id && 
+        p.product_family === util.product_family &&
+        p.snapshot_date === previousQuarterStr
+      );
+      return sum + (prevUtil ? prevUtil.licenses_available : util.licenses_available);
+    }, 0);
+    
+    const wasteChange = totalUnusedSeats - previousQuarterWaste;
+    const quarterlyChange = wasteChange >= 0 ? `+$${(wasteChange * 0.1).toFixed(0)}K` : `-$${Math.abs(wasteChange * 0.1).toFixed(0)}K`;
     
     // Determine status and trend
     let status: 'success' | 'warning' | 'danger';
@@ -361,7 +376,7 @@ export function calculateSeatWasteKPI(): any {
     
     return {
       value: totalUnusedSeats,
-      formatted: `${totalUnusedSeats.toLocaleString()} seats`,
+      formatted: `${totalUnusedSeats.toLocaleString()}`,
       status,
       trend,
       change: `${quarterlyChange} vs last quarter`,
@@ -374,7 +389,7 @@ export function calculateSeatWasteKPI(): any {
     console.error('Error calculating Seat Waste KPI:', error);
     return {
       value: 0,
-      formatted: '0 seats',
+      formatted: '0',
       status: 'danger',
       trend: 'stable',
       change: '0',

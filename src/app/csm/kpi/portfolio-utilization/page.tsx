@@ -6,7 +6,7 @@ import { PortfolioUtilizationKPI } from '../../../../components/CSM/LicenseUtili
 import { ActiveUsersKPI } from '../../../../components/CSM/LicenseUtilization/ActiveUsersKPI';
 import { SeatWasteKPI } from '../../../../components/CSM/LicenseUtilization/SeatWasteKPI';
 import { FeatureAdoptionKPI } from '../../../../components/CSM/LicenseUtilization/FeatureAdoptionKPI';
-import { TimeToFirstValueKPI } from '../../../../components/CSM/LicenseUtilization/TimeToFirstValueKPI';
+import { TotalLicensedSeatsKPI } from '../../../../components/CSM/LicenseUtilization/TotalLicensedSeatsKPI';
 import { UtilizationDistribution } from '../../../../components/CSM/LicenseUtilization/UtilizationDistribution';
 import { UtilizationByProduct } from '../../../../components/CSM/LicenseUtilization/UtilizationByProduct';
 import { UtilizationTrendAnalysis } from '../../../../components/CSM/LicenseUtilization/UtilizationTrendAnalysis';
@@ -81,13 +81,13 @@ export default function PortfolioUtilizationPage() {
               <h2 className="text-2xl font-bold text-gray-900">Key Performance Indicators</h2>
               <span className="text-sm text-gray-500">Real-time metrics</span>
             </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              <PortfolioUtilizationKPI />
-              <ActiveUsersKPI />
-              <SeatWasteKPI />
-              <FeatureAdoptionKPI />
-              <TimeToFirstValueKPI />
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+               <PortfolioUtilizationKPI />
+               <TotalLicensedSeatsKPI />
+               <ActiveUsersKPI />
+               <SeatWasteKPI />
+               <FeatureAdoptionKPI />
+             </div>
           </section>
 
           {/* Distribution Analysis Section */}

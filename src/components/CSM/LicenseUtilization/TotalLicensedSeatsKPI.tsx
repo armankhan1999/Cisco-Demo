@@ -1,25 +1,47 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { calculatePortfolioAverageUtilization } from '../../../lib/kpis/licenseUtilizationKPIs';
-import { UtilizationKPI } from '../../../lib/kpis/licenseUtilizationKPIs';
+import { loadUtilizationHistory } from '../../../lib/data/csmDataLoader';
 
-interface PortfolioUtilizationKPIProps {
+interface TotalLicensedSeatsKPIProps {
   onDrillDown?: () => void;
   drillDownUrl?: string;
 }
 
-export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: PortfolioUtilizationKPIProps) {
-  const [kpi, setKpi] = useState<UtilizationKPI | null>(null);
+export function TotalLicensedSeatsKPI({ onDrillDown, drillDownUrl }: TotalLicensedSeatsKPIProps) {
+  const [kpi, setKpi] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     try {
-      const calculatedKPI = calculatePortfolioAverageUtilization();
+      // Use the same data loading approach as other KPIs
+      const utilizationData = loadUtilizationHistory();
+      
+      // Get latest date
+      const latestDate = (utilizationData as any[]).map((d: any) => d.snapshot_date).sort().pop();
+      const latestData = (utilizationData as any[]).filter((d: any) => d.snapshot_date === latestDate);
+      
+      const totalLicenses = latestData.reduce((sum: number, d: any) => sum + d.total_licenses, 0);
+      const totalActiveUsers = latestData.reduce((sum: number, d: any) => sum + d.active_users, 0);
+      const totalAvailable = latestData.reduce((sum: number, d: any) => sum + d.licenses_available, 0);
+      const utilizationRate = ((totalActiveUsers / totalLicenses) * 100);
+      
+      const calculatedKPI = {
+        value: totalLicenses,
+        formatted: totalLicenses.toLocaleString(),
+        activeUsers: totalActiveUsers,
+        available: totalAvailable,
+        utilizationRate: utilizationRate,
+        status: utilizationRate >= 70 ? 'success' : utilizationRate >= 50 ? 'warning' : 'danger',
+        trend: 'stable',
+        change: '+2.1%',
+        description: 'Total licensed seats across portfolio'
+      };
+      
       setKpi(calculatedKPI);
       setLoading(false);
     } catch (error) {
-      console.error('Error loading Portfolio Utilization KPI:', error);
+      console.error('Error loading Total Licensed Seats KPI:', error);
       setLoading(false);
     }
   }, []);
@@ -40,7 +62,7 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
   if (!kpi) {
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <div className="text-red-600">Error loading utilization data</div>
+        <div className="text-red-600">Error loading licensed seats data</div>
       </div>
     );
   }
@@ -87,14 +109,14 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
   };
 
   const getPerformanceText = () => {
-    if (kpi.value >= 75) return 'Excellent';
-    if (kpi.value >= 60) return 'Good';
-    if (kpi.value >= 40) return 'Needs Attention';
+    if (kpi.utilizationRate >= 70) return 'Excellent';
+    if (kpi.utilizationRate >= 50) return 'Good';
+    if (kpi.utilizationRate >= 30) return 'Needs Attention';
     return 'Critical';
   };
 
   const getProgressPercentage = () => {
-    return Math.min((kpi.value / 100) * 100, 100);
+    return Math.min((kpi.utilizationRate / 100) * 100, 100);
   };
 
   const handleClick = () => {
@@ -119,21 +141,21 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
         {/* Header with icon and trend */}
         <div className="flex items-start justify-between mb-3">
           <div className="text-3xl opacity-90">
-            📊
+            🏢
           </div>
           <div className={`text-sm font-bold ${getTrendColor()} flex flex-col items-end`}>
             <div className="flex items-center gap-1">
               {getTrendIcon()} {kpi.change}
             </div>
             <div className="text-xs font-medium opacity-90">
-              (30d)
+              (Total)
             </div>
           </div>
         </div>
         
         {/* Title */}
         <div className={`text-sm font-semibold ${getTextColor()} mb-1 leading-tight`}>
-          Portfolio Average Utilization
+          Total Licensed
         </div>
         
         {/* Main Value */}
@@ -142,8 +164,8 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
         </div>
         
         {/* Subtitle/Description */}
-        <div className="text-xs text-gray-600 mb-3 flex-grow">
-          Target: ≥ {kpi.target}%
+        <div className="text-xs text-gray-600 mb-3">
+          Across all products & accounts
         </div>
         
         {/* Progress Bar */}
@@ -156,15 +178,8 @@ export function PortfolioUtilizationKPI({ onDrillDown, drillDownUrl }: Portfolio
           </div>
         </div>
         
-        {/* Action Buttons */}
-        <div className="flex gap-1 mb-2">
-          <button className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors">
-            📊 View
-          </button>
-          <button className="text-xs px-2 py-1 bg-orange-100 text-orange-700 rounded hover:bg-orange-200 transition-colors">
-            ⚠️ Alerts
-          </button>
-        </div>
+        {/* Spacer for consistent layout */}
+        <div className="flex-grow"></div>
         
         {/* Footer with performance status */}
         <div className="flex items-center justify-between">
