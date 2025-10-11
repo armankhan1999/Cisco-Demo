@@ -25,7 +25,7 @@ export async function getSnowflakeConnection() {
   // Handle both formats: with actual newlines or with \n escape sequences
   // This ensures compatibility with Vercel and other platforms that might escape newlines
   let privateKeyData = privateKeyContent;
-  
+  console.log('SNOWFLAKE_PRIVATE_KEY content:\n', privateKeyData);
   // If the key doesn't have actual newlines but has \n escape sequences, replace them
   if (!privateKeyData.includes('\n') && privateKeyData.includes('\\n')) {
     privateKeyData = privateKeyData.replace(/\\n/g, '\n');
