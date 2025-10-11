@@ -1,0 +1,39 @@
+SELECT 
+    c.customer_id,
+    c.customer_name,
+    c.account_tier,
+    c.contract_start_date,
+    c.contract_end_date,
+    l.licenses_purchased,
+    u.licenses_used,
+    ROUND(
+        (u.licenses_used * 100.0) / NULLIF(l.licenses_purchased, 0), 
+        2
+    ) AS license_utilization_rate_pct,
+    CASE 
+        WHEN ROUND((u.licenses_used * 100.0) / NULLIF(l.licenses_purchased, 0), 2) >= 90 THEN 'High Risk - Upgrade Opportunity'
+        WHEN ROUND((u.licenses_used * 100.0) / NULLIF(l.licenses_purchased, 0), 2) BETWEEN 70 AND 89 THEN 'Healthy'
+        WHEN ROUND((u.licenses_used * 100.0) / NULLIF(l.licenses_purchased, 0), 2) < 70 THEN 'At Risk - Low Adoption'
+        ELSE 'Unknown'
+    END AS utilization_health_flag
+FROM 
+    customers c
+INNER JOIN 
+    license_entitlements l ON c.customer_id = l.customer_id
+LEFT JOIN (
+    SELECT 
+        customer_id,
+        COUNT(DISTINCT user_id) AS licenses_used
+    FROM 
+        user_license_assignments
+    WHERE 
+        status = 'active'
+        AND assigned_date <= CURRENT_DATE
+    GROUP BY 
+        customer_id
+) u ON c.customer_id = u.customer_id
+WHERE 
+    c.contract_end_date >= CURRENT_DATE  -- Active contracts only
+    AND l.licenses_purchased > 0          -- Exclude zero-license records
+ORDER BY 
+    license_utilization_rate_pct DESC;

@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import OpenAI from 'openai';
+import { callCortexAnalyst, isSnowflakeConfigured } from '@/lib/snowflake';
+import { getContextSummary, shouldUseCortex } from '@/lib/context-loader';
 
 interface Message {
   id: string;
@@ -12,144 +15,227 @@ interface ChatRequest {
   history: Message[];
 }
 
+// Initialize OpenAI client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 export async function POST(request: NextRequest) {
   try {
     const body: ChatRequest = await request.json();
     const { message, history } = body;
 
-    // For now, we'll implement a simple rule-based response system
-    // You can replace this with actual AI integration (OpenAI, Anthropic, etc.)
-    const response = await generateResponse(message, history);
+    if (!message || !message.trim()) {
+      return NextResponse.json(
+        { error: 'Message is required' },
+        { status: 400 }
+      );
+    }
+
+    console.log(`📨 Received message: "${message}"`);
+
+    // Check if we should use Snowflake Cortex for data queries
+    const useCortex = shouldUseCortex(message) && isSnowflakeConfigured();
+
+    let response: string;
+    let sqlQuery: string | undefined;
+    let queryResults: any[] | undefined;
+
+    if (useCortex) {
+      console.log('🔍 Using Snowflake Cortex for data query');
+      try {
+        const cortexResult = await callCortexAnalyst(message, history);
+        
+        // Extract the text response from Cortex
+        const textContent = cortexResult.message.content.find(
+          (c: any) => c.type === 'text'
+        );
+        response = textContent?.text || 'Query completed successfully.';
+        
+        // Get SQL query if available
+        const sqlContent = cortexResult.message.content.find(
+          (c: any) => c.type === 'sql'
+        );
+        sqlQuery = sqlContent?.statement;
+        queryResults = cortexResult.query_results;
+
+        // If we have results, enhance the response with OpenAI
+        if (queryResults && queryResults.length > 0) {
+          response = await enhanceResponseWithOpenAI(
+            message,
+            response,
+            queryResults,
+            history
+          );
+        }
+      } catch (cortexError: any) {
+        console.error('⚠️  Cortex query failed, falling back to OpenAI:', cortexError.message);
+        // Fall back to OpenAI if Cortex fails
+        response = await generateOpenAIResponse(message, history);
+      }
+    } else {
+      console.log('💬 Using OpenAI for response');
+      response = await generateOpenAIResponse(message, history);
+    }
 
     return NextResponse.json({
       response,
+      sqlQuery,
+      queryResults: queryResults?.slice(0, 10), // Limit results to first 10 rows
       timestamp: new Date().toISOString(),
     });
-  } catch (error) {
-    console.error('Error in chat API:', error);
+  } catch (error: any) {
+    console.error('❌ Error in chat API:', error);
     return NextResponse.json(
-      { error: 'Failed to process chat message' },
+      { 
+        error: 'Failed to process chat message',
+        details: error.message 
+      },
       { status: 500 }
     );
   }
 }
 
-async function generateResponse(message: string, history: Message[]): Promise<string> {
+/**
+ * Generate response using OpenAI with business context
+ */
+async function generateOpenAIResponse(
+  message: string,
+  history: Message[]
+): Promise<string> {
+  if (!process.env.OPENAI_API_KEY) {
+    return getFallbackResponse(message);
+  }
+
+  const contextSummary = getContextSummary();
+
+  const systemPrompt = `You are an AI assistant for Cisco Analytics, specializing in Customer Success Management (CSM), Commercial Operations (CO), and Sales Expansion (SE).
+
+${contextSummary}
+
+Your role is to:
+1. Help users understand business metrics and KPIs
+2. Explain how metrics are calculated
+3. Provide insights and recommendations
+4. Answer questions about customers, revenue, products, and sales
+
+Be concise, professional, and data-driven in your responses. When discussing metrics, explain both what they mean and why they matter.`;
+
+  const messages: any[] = [
+    { role: 'system', content: systemPrompt },
+    ...history.slice(-5).map(h => ({
+      role: h.role,
+      content: h.content
+    })),
+    { role: 'user', content: message }
+  ];
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4-turbo-preview',
+      messages,
+      temperature: 0.7,
+      max_tokens: 800,
+    });
+
+    return completion.choices[0]?.message?.content || 'I apologize, but I could not generate a response.';
+  } catch (error: any) {
+    console.error('OpenAI API error:', error);
+    if (error.status === 401) {
+      return 'OpenAI API key is invalid. Please check your configuration.';
+    }
+    return getFallbackResponse(message);
+  }
+}
+
+/**
+ * Enhance Cortex response with OpenAI for better natural language
+ */
+async function enhanceResponseWithOpenAI(
+  userQuestion: string,
+  cortexResponse: string,
+  queryResults: any[],
+  history: Message[]
+): Promise<string> {
+  if (!process.env.OPENAI_API_KEY) {
+    return cortexResponse;
+  }
+
+  try {
+    const enhancementPrompt = `The user asked: "${userQuestion}"
+
+I retrieved data from the database and got this initial response:
+${cortexResponse}
+
+Here's a sample of the data (first 3 rows):
+${JSON.stringify(queryResults.slice(0, 3), null, 2)}
+
+Please provide a clear, insightful response that:
+1. Directly answers the user's question
+2. Highlights key findings from the data
+3. Provides actionable insights if relevant
+4. Uses bullet points for multiple items
+5. Give all the facts and data)`;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: 'You are a data analyst providing clear, actionable insights from query results.' },
+        { role: 'user', content: enhancementPrompt }
+      ],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    return completion.choices[0]?.message?.content || cortexResponse;
+  } catch (error) {
+    console.error('Error enhancing response:', error);
+    return cortexResponse;
+  }
+}
+
+/**
+ * Fallback responses when OpenAI is not available
+ */
+function getFallbackResponse(message: string): string {
   const lowerMessage = message.toLowerCase();
 
-  // Simple keyword-based responses
-  // This is a placeholder - you'll want to integrate with a real AI service
-  
   if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-    return 'Hello! How can I assist you with your data analysis today?';
+    return 'Hello! I\'m your AI assistant for Cisco Analytics. I can help you analyze customer data, commercial operations, and sales expansion opportunities. What would you like to know?';
   }
 
-  if (lowerMessage.includes('customer') || lowerMessage.includes('csm')) {
-    return `I can help you with customer success management data. Here are some things I can help with:
-
-• Customer health scores and trends
-• Product adoption rates
-• Churn risk analysis
-• Expansion opportunities
-• CSM performance metrics
-
-What specific customer data would you like to explore?`;
-  }
-
-  if (lowerMessage.includes('revenue') || lowerMessage.includes('commercial') || lowerMessage.includes('co')) {
-    return `I can provide insights on commercial operations including:
-
-• Quote-to-cash tracking
-• Revenue recognition schedules
-• Invoice and payment status
-• Subscription management
-• Order fulfillment metrics
-
-What commercial data would you like me to analyze?`;
-  }
-
-  if (lowerMessage.includes('sales') || lowerMessage.includes('expansion') || lowerMessage.includes('se')) {
-    return `I can help with sales expansion analysis:
-
-• Expansion opportunities
-• Competitive intelligence
-• Pipeline tracking
-• Success stories and best practices
-• Lookalike customer analysis
-
-What sales expansion information do you need?`;
-  }
-
-  if (lowerMessage.includes('health score')) {
-    return `Based on the current data:
-
-• Average health score across all accounts: 89.8
-• 20 accounts are Thriving (90-100)
-• 30 accounts are Healthy (75-89)
-• Top performing customer: Global Financial Partners (92)
-• Requires attention: Advanced Manufacturing Co (85)
-
-Would you like me to dive deeper into any specific account?`;
-  }
-
-  if (lowerMessage.includes('product')) {
-    return `Here's an overview of product penetration:
-
-• Duo (Security): 94% penetration
-• Meraki (Networking): 72% penetration
-• Umbrella (Security): 48% penetration
-• ThousandEyes (Monitoring): 20% penetration
-• Splunk (Analytics): 8% penetration
-
-Which product would you like to explore further?`;
-  }
-
-  if (lowerMessage.includes('arr') || lowerMessage.includes('annual recurring revenue')) {
-    return `Current ARR insights:
-
-• Total ARR: $8,482,756
-• Highest ARR account: Global Financial Partners ($3,669,528)
-• Average ARR per account: $1,696,551
-• New business contribution: $2,800,000
-• Expansion revenue: $5,230,000
-
-Would you like a breakdown by customer tier or segment?`;
-  }
-
-  if (lowerMessage.includes('help') || lowerMessage.includes('what can you do')) {
-    return `I'm your AI assistant for data analysis. I can help you with:
+  if (lowerMessage.includes('help')) {
+    return `I can help you with:
 
 **Customer Success (CSM)**
-• Health scores and trends
-• Product adoption
-• Churn prediction
-• Expansion readiness
+• Health scores and retention metrics
+• Product adoption and utilization
+• Churn prediction and prevention
+• Customer engagement analysis
 
 **Commercial Operations (CO)**
-• Revenue tracking
-• Quote and order status
-• Invoice management
+• Revenue tracking and recognition
+• Quote-to-cash cycle metrics
+• Invoice and payment management
 • Subscription analytics
 
 **Sales Expansion (SE)**
-• Opportunity identification
-• Competitive insights
-• Pipeline analysis
-• Success stories
+• Expansion opportunities
+• Cross-sell and upsell analysis
+• White space identification
+• Win rate and pipeline metrics
 
 Just ask me a question about any of these areas!`;
   }
 
-  // Default response for unrecognized queries
-  return `I understand you're asking about: "${message}"
+  return `I can help you analyze your Cisco Analytics data. Try asking questions like:
 
-I'm here to help you analyze your customer data, commercial operations, and sales expansion opportunities. Could you please rephrase your question or ask about:
+• "Show me customers with health scores below 70"
+• "What's our Net Revenue Retention this quarter?"
+• "List top 10 customers by ARR"
+• "Explain how churn rate is calculated"
+• "What expansion opportunities do we have?"
 
-• Customer health and success metrics
-• Revenue and commercial operations
-• Sales expansion opportunities
-• Product adoption and performance
-
-Or type "help" to see what I can do!`;
+Note: For the best experience, please configure your OpenAI API key in the environment variables.`;
 }
 
