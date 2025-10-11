@@ -124,6 +124,8 @@ Requirements:
 - Use fully qualified table names (DB_CISCO_ANALYTICS.RAW.TABLE_NAME)
 - Use UPPERCASE for all column names
 - Return a single SELECT statement
+- Use DISTINCT when selecting to avoid duplicate rows
+- Use proper GROUP BY when counting or aggregating
 - No explanatory text, just the SQL query
 
 SQL query:`;
@@ -157,27 +159,68 @@ SQL query:`;
       console.error('❌ Query execution failed:', queryError);
     }
 
-    // Step 4: Generate natural language explanation
-    const explanationPrompt = `Based on this data query result, provide a brief natural language answer to the user's question.
-
-User question: ${message}
-SQL query executed: ${sqlQuery}
-${queryResults ? `Result count: ${queryResults.length} rows` : `Error: ${queryError}`}
-${queryResults?.length && queryResults.length > 0 ? `Sample data: ${JSON.stringify(queryResults[0])}` : ''}
-
-Provide a concise, helpful answer in 2-3 sentences:`;
-
-    const explanationResult = await executeSnowflakeQuery(`
-      SELECT SNOWFLAKE.CORTEX.COMPLETE(
-        'mistral-large',
-        '${explanationPrompt.replace(/'/g, "''")}'
-      ) as explanation
-    `);
-
-    const explanation =
-      explanationResult?.[0]?.EXPLANATION ||
-      explanationResult?.[0]?.explanation ||
-      'Query executed successfully.';
+    // Step 4: Generate natural language explanation with actual data
+    let explanation = '';
+    
+    if (queryError) {
+      explanation = `There was an error executing the query: ${queryError}`;
+    } else if (!queryResults || queryResults.length === 0) {
+      explanation = `No results found matching your criteria.`;
+    } else {
+      // Format the actual data in the response
+      const dataPreview = queryResults.slice(0, 20); // First 20 results
+      const columnNames = Object.keys(dataPreview[0]);
+      
+      // Check if we need to deduplicate (if only one column and has duplicates)
+      let uniqueData = dataPreview;
+      if (columnNames.length === 1) {
+        const seen = new Set();
+        uniqueData = dataPreview.filter(row => {
+          const value = row[columnNames[0]];
+          if (seen.has(value)) return false;
+          seen.add(value);
+          return true;
+        });
+      }
+      
+      // Create a formatted list of results
+      let formattedData = '';
+      if (uniqueData.length === 1) {
+        // Single result - show all columns
+        formattedData = Object.entries(uniqueData[0])
+          .map(([key, value]) => `**${key}**: ${value}`)
+          .join('\n');
+      } else if (columnNames.length === 1) {
+        // Single column - simple list
+        formattedData = uniqueData.map((row, idx) => {
+          const value = row[columnNames[0]];
+          return `${idx + 1}. ${value}`;
+        }).join('\n');
+      } else {
+        // Multiple columns - show with additional info
+        formattedData = uniqueData.map((row, idx) => {
+          const mainValue = row[columnNames[0]] || Object.values(row)[0];
+          const additionalInfo = columnNames.length > 1 
+            ? ` - ${Object.entries(row).slice(1, 3).map(([k, v]) => `${k}: ${v}`).join(', ')}` 
+            : '';
+          return `${idx + 1}. **${mainValue}**${additionalInfo}`;
+        }).join('\n');
+      }
+      
+      const totalCount = queryResults.length;
+      const uniqueCount = columnNames.length === 1 ? uniqueData.length : totalCount;
+      const showing = uniqueData.length;
+      
+      if (columnNames.length === 1 && uniqueCount < totalCount) {
+        explanation = `Found ${uniqueCount} unique result${uniqueCount !== 1 ? 's' : ''} (${totalCount} total rows)${uniqueCount > showing ? ` - showing first ${showing}` : ''}:\n\n${formattedData}`;
+      } else {
+        explanation = `Found ${totalCount} result${totalCount !== 1 ? 's' : ''}${totalCount > showing ? ` (showing first ${showing})` : ''}:\n\n${formattedData}`;
+      }
+      
+      if (uniqueCount > showing) {
+        explanation += `\n\n*Note: ${uniqueCount - showing} more result(s) not shown.*`;
+      }
+    }
 
     console.log('✅ Generated explanation');
 

@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     let response: string;
     let sqlQuery: string | undefined;
-    let queryResults: any[] | undefined;
+    let queryResults: any[] | undefined | null;
 
     if (useCortex) {
       console.log('🔍 Using Snowflake Cortex for data query');
@@ -57,16 +57,23 @@ export async function POST(request: NextRequest) {
           (c: any) => c.type === 'sql'
         );
         sqlQuery = sqlContent?.statement;
-        queryResults = cortexResult.query_results;
+        queryResults = cortexResult.query_results || undefined;
 
-        // If we have results, enhance the response with OpenAI
-        if (queryResults && queryResults.length > 0) {
-          response = await enhanceResponseWithOpenAI(
-            message,
-            response,
-            queryResults,
-            history
-          );
+        // OpenAI enhancement is optional - Cortex already provides good responses
+        // Only enhance if OpenAI key is valid and we have results
+        if (queryResults && queryResults.length > 0 && process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.startsWith('sk-')) {
+          try {
+            const enhanced = await enhanceResponseWithOpenAI(
+              message,
+              response,
+              queryResults,
+              history
+            );
+            response = enhanced;
+          } catch (error) {
+            // If enhancement fails, just use the Cortex response (which is already good)
+            console.log('Note: Using Cortex response without OpenAI enhancement');
+          }
         }
       } catch (cortexError: any) {
         console.error('⚠️  Cortex query failed, falling back to OpenAI:', cortexError.message);
