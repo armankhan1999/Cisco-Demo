@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
 import { loadAccounts, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
@@ -27,7 +27,7 @@ interface ProductLicenseData {
   utilizationRate: number;
 }
 
-export default function LicenseDetailsPage() {
+function LicenseDetailsPageContent() {
   const router = useRouter();
   const { isCollapsed } = useSidebar();
   const searchParams = useSearchParams();
@@ -421,5 +421,23 @@ export default function LicenseDetailsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LicenseDetailsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen overflow-hidden bg-gray-50">
+        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading license details...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <LicenseDetailsPageContent />
+    </Suspense>
   );
 }

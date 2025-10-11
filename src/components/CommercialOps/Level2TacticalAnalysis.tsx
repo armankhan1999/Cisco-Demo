@@ -62,14 +62,36 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     // Apply filters to data based on current filter state
     switch (viewId) {
       case 'stage-breakdown':
-        return getQ2CStageBreakdown().map(stage => ({
-          stage: stage.stage.replace(' → ', ' to '),
-          avgDays: stage.avgDays,
-          target: stage.target,
-          slaCompliance: stage.slaCompliance,
-          status: stage.impactLevel === 'high' ? 'critical' : stage.impactLevel === 'medium' ? 'warning' : 'good',
-          bottleneckScore: stage.bottleneckScore
-        }));
+        // Q2C Stage Waterfall: Quote Creation → Approval → Order → Provision → Invoice → Payment
+        return [
+          { stage: 'Quote Creation', avgDays: 0.8, target: 0.5, variance: 0.3, percentage: 1.9, status: 'warning' },
+          { stage: 'Approval Cycle', avgDays: 2.3, target: 2.0, variance: 0.3, percentage: 5.6, status: 'warning' },
+          { stage: 'Order Booking', avgDays: 3.1, target: 1.5, variance: 1.6, percentage: 7.5, status: 'critical' },
+          { stage: 'Provisioning', avgDays: 5.6, target: 2.0, variance: 3.6, percentage: 13.6, status: 'critical' },
+          { stage: 'Invoice Generation', avgDays: 1.2, target: 1.0, variance: 0.2, percentage: 2.9, status: 'good' },
+          { stage: 'Payment Collection', avgDays: 28.2, target: 20.0, variance: 8.2, percentage: 68.4, status: 'critical' }
+        ];
+      case 'payment-collection-deep-dive':
+        // Payment Collection Heatmap: Customer Segment vs Deal Type
+        return [
+          { segment: 'Enterprise', dealType: 'New Business', avgDays: 42.3, volume: 87, value: 12.3, status: 'critical' },
+          { segment: 'Enterprise', dealType: 'Renewal', avgDays: 22.1, volume: 156, value: 18.7, status: 'good' },
+          { segment: 'Enterprise', dealType: 'Expansion', avgDays: 31.2, volume: 56, value: 8.2, status: 'warning' },
+          { segment: 'Public Sector', dealType: 'New Business', avgDays: 51.8, volume: 43, value: 6.4, status: 'critical' },
+          { segment: 'Public Sector', dealType: 'Renewal', avgDays: 38.2, volume: 81, value: 9.3, status: 'critical' },
+          { segment: 'Mid-Market', dealType: 'New Business', avgDays: 35.7, volume: 143, value: 8.7, status: 'warning' },
+          { segment: 'SMB', dealType: 'New Business', avgDays: 28.4, volume: 95, value: 4.2, status: 'warning' },
+          { segment: 'SMB', dealType: 'Renewal', avgDays: 19.7, volume: 234, value: 7.8, status: 'good' }
+        ];
+      case 'legal-review-analysis':
+        // Legal Review Root Cause Pareto Analysis
+        return [
+          { cause: 'Resource Capacity', frequency: 87, avgDelay: 6, totalImpact: 522, percentage: 35, cumulative: 35 },
+          { cause: 'Complex Non-Standard Terms', frequency: 64, avgDelay: 4, totalImpact: 256, percentage: 28, cumulative: 63 },
+          { cause: 'Outdated Contract Templates', frequency: 43, avgDelay: 3, totalImpact: 129, percentage: 18, cumulative: 81 },
+          { cause: 'Customer Redline Cycles', frequency: 29, avgDelay: 2, totalImpact: 58, percentage: 12, cumulative: 93 },
+          { cause: 'Approval Authority Escalation', frequency: 18, avgDelay: 1, totalImpact: 18, percentage: 7, cumulative: 100 }
+        ];
       case 'bottleneck-heatmap':
         return getQ2CBottleneckHeatmap();
       case 'deal-size-correlation':
@@ -196,7 +218,103 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
   const renderChart = (view: Level2View) => {
     const data = getChartData(view.id, view.chartType);
 
-    switch (view.chartType) {
+    switch (view.id) {
+      case 'stage-breakdown':
+        // Waterfall Chart for Q2C Stage Breakdown
+        return (
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="stage" angle={-45} textAnchor="end" height={80} />
+              <YAxis label={{ value: 'Days', angle: -90, position: 'insideLeft' }} />
+              <Tooltip 
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                        <p className="font-semibold">{label}</p>
+                        <p className="text-sm">Current: {data.avgDays} days</p>
+                        <p className="text-sm">Target: {data.target} days</p>
+                        <p className="text-sm">Variance: +{data.variance} days</p>
+                        <p className="text-sm">% of Total: {data.percentage}%</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Bar 
+                dataKey="avgDays" 
+                fill={(entry: any) => entry.status === 'critical' ? '#EF4444' : entry.status === 'warning' ? '#F59E0B' : '#10B981'}
+                radius={[4, 4, 0, 0]} 
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        );
+      case 'payment-collection-deep-dive':
+        // Heatmap for Payment Collection Analysis
+        return (
+          <div className="space-y-4">
+            <div className="grid grid-cols-5 gap-2 text-sm font-medium text-gray-700">
+              <div></div>
+              <div className="text-center">New Business</div>
+              <div className="text-center">Renewal</div>
+              <div className="text-center">Expansion</div>
+              <div className="text-center">Amendment</div>
+            </div>
+            {['Enterprise', 'Public Sector', 'Mid-Market', 'SMB'].map(segment => (
+              <div key={segment} className="grid grid-cols-5 gap-2 items-center">
+                <div className="text-sm font-medium text-gray-700 pr-2">{segment}</div>
+                {['New Business', 'Renewal', 'Expansion', 'Amendment'].map(dealType => {
+                  const cellData = data.find((item: any) => item.segment === segment && item.dealType === dealType);
+                  const avgDays = cellData?.avgDays || 0;
+                  const status = cellData?.status || 'good';
+                  const value = cellData?.value || 0;
+                  const bgColor = status === 'critical' ? 'bg-red-500' : 
+                                 status === 'warning' ? 'bg-yellow-500' : 'bg-green-500';
+                  return (
+                    <div key={dealType} className={`${bgColor} text-white text-center py-3 px-2 rounded text-sm font-medium`}>
+                      <div>{avgDays}d</div>
+                      <div className="text-xs opacity-75">${value}M</div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        );
+      case 'legal-review-analysis':
+        // Pareto Chart for Legal Review Root Causes
+        return (
+          <ResponsiveContainer width="100%" height={400}>
+            <ComposedChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="cause" angle={-45} textAnchor="end" height={100} />
+              <YAxis yAxisId="left" label={{ value: 'Cases', angle: -90, position: 'insideLeft' }} />
+              <YAxis yAxisId="right" orientation="right" label={{ value: 'Cumulative %', angle: 90, position: 'insideRight' }} />
+              <Tooltip 
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                        <p className="font-semibold">{label}</p>
+                        <p className="text-sm">Cases: {data.frequency}</p>
+                        <p className="text-sm">Avg Delay: +{data.avgDelay} days</p>
+                        <p className="text-sm">Total Impact: {data.totalImpact} delay-days</p>
+                        <p className="text-sm">Cumulative: {data.cumulative}%</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Bar yAxisId="left" dataKey="frequency" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+              <Line yAxisId="right" type="monotone" dataKey="cumulative" stroke="#EF4444" strokeWidth={3} dot={{ fill: '#EF4444', strokeWidth: 2, r: 6 }} />
+            </ComposedChart>
+          </ResponsiveContainer>
+        );
       case 'breakdown':
         return (
           <ResponsiveContainer width="100%" height={400}>

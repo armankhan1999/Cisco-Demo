@@ -63,45 +63,78 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
 
     switch (kpiId) {
       case 'quote-to-cash-cycle':
-        // Get real data for enhanced action items
-        const processImprovements = getQ2CProcessImprovements();
-        const capacityInsights = getQ2CCapacityInsights();
-        const bottlenecks = getQ2CBottleneckHeatmap();
-
-        // Real quotes requiring immediate action (>5 days pending)
-        const realQuotes = getQ2CQuotesRequiringAction();
-        realQuotes.slice(0, 5).forEach((quote, index) => {
-          items.push({
-            id: quote.id, // Use actual quote ID
-            type: 'quote',
-            title: `Quote Pending ${quote.daysPending} Days`,
-            customer: quote.customerName,
-            amount: quote.arrValue,
-            daysOverdue: quote.daysPending,
-            assignee: quote.customerTier === 'Strategic' ? 'VP Sales' : 'Account Manager',
-            priority: quote.riskLevel === 'critical' ? 'high' : quote.riskLevel === 'high' ? 'medium' : 'low',
-            status: 'pending',
-            nextAction: `Follow up on ${quote.productFamily} quote`,
-            businessImpact: `${quote.customerTier} customer, $${quote.arrValue.toLocaleString()} ARR at risk`
-          });
+        // Enterprise Multi-Level Approval Delays (from Level 2 analysis)
+        items.push({
+          id: 'ENT-001',
+          type: 'account',
+          title: 'Enterprise CFO Approval Delays',
+          customer: 'Global Pharma Inc',
+          amount: 480000,
+          daysOverdue: 67,
+          assignee: 'Jennifer Lee (AM)',
+          priority: 'high',
+          status: 'pending',
+          nextAction: 'Escalate to CFO with value realization report',
+          businessImpact: '$12.3M ARR affected across 87 Enterprise deals. Early payment discount could save $4.7M cash flow.'
         });
 
-        // Stage-specific bottleneck items
-        const criticalBottlenecks = bottlenecks.filter(b => b.severity === 'critical' || b.severity === 'high');
-        criticalBottlenecks.slice(0, 2).forEach((bottleneck, index) => {
-          items.push({
-            id: `BTL-${index + 1}`,
-            type: 'quote',
-            title: `${bottleneck.stage} Bottleneck - ${bottleneck.customerTier}`,
-            customer: `${bottleneck.customerTier} Tier Customers`,
-            amount: bottleneck.volume * 150000, // Estimate impact
-            daysOverdue: Math.round(bottleneck.avgDays - 30),
-            assignee: bottleneck.stage.includes('Legal') ? 'Legal Team' : 'Process Owner',
-            priority: bottleneck.severity === 'critical' ? 'high' : 'medium',
-            status: 'pending',
-            nextAction: `Address ${bottleneck.stage.toLowerCase()} delays`,
-            businessImpact: bottleneck.rootCause
-          });
+        items.push({
+          id: 'ENT-002',
+          type: 'account',
+          title: 'Aerospace Corp Legal Review Loop',
+          customer: 'Aerospace Corp',
+          amount: 320000,
+          daysOverdue: 61,
+          assignee: 'Legal Team',
+          priority: 'high',
+          status: 'in_progress',
+          nextAction: 'Apply EU data residency template',
+          businessImpact: 'MSA terms disputed 3x. Use pre-approved template to resolve in 2 days vs 7 days avg.'
+        });
+
+        // Legal Resource Bottleneck (from Level 2 analysis)
+        items.push({
+          id: 'LEG-001',
+          type: 'contract',
+          title: 'Legal Team Resource Shortage',
+          customer: 'Multiple Customers',
+          amount: 2400000,
+          daysOverdue: 14,
+          assignee: 'Legal Director',
+          priority: 'high',
+          status: 'pending',
+          nextAction: 'Hire additional attorney or redistribute workload',
+          businessImpact: '400 deals/quarter with only 2 attorneys. Attorney B taking 2.25x longer than Attorney A.'
+        });
+
+        // Quote/PO Mismatch Issues (from Level 2 analysis)
+        items.push({
+          id: 'SPL-001',
+          type: 'quote',
+          title: 'Splunk Quote/PO Mismatches',
+          customer: 'Multiple Splunk Customers',
+          amount: 1800000,
+          daysOverdue: 12,
+          assignee: 'Order Operations',
+          priority: 'medium',
+          status: 'pending',
+          nextAction: 'Implement automated quote validation',
+          businessImpact: '45% of Splunk deals have discrepancies. Automated validation could save $3.2M cash flow.'
+        });
+
+        // Public Sector Payment Terms (from Level 2 analysis)
+        items.push({
+          id: 'PUB-001',
+          type: 'account',
+          title: 'Public Sector Payment Delays',
+          customer: 'Government Agencies',
+          amount: 6400000,
+          daysOverdue: 52,
+          assignee: 'Public Sector Team',
+          priority: 'medium',
+          status: 'pending',
+          nextAction: 'Implement flexible payment terms pilot',
+          businessImpact: '67% subject to government fiscal constraints. 90-day terms + 1% premium could reduce delays.'
         });
 
         break;

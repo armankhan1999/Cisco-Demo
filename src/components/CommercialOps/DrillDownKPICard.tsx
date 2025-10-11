@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
-import { TrendingUp, TrendingDown, Minus, ChevronRight, BarChart3, Layers, AlertTriangle } from 'lucide-react';
+import { ReactNode } from 'react';
+import { TrendingUp, TrendingDown, Minus, Layers } from 'lucide-react';
 import { drillDownService } from '@/services/drillDownService';
 
 interface DrillDownKPICardProps {
@@ -31,7 +31,6 @@ export default function DrillDownKPICard({
   color,
   onDrillDown
 }: DrillDownKPICardProps) {
-  const [isHovered, setIsHovered] = useState(false);
 
   const getColorClasses = () => {
     const colors = {
@@ -41,8 +40,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-blue-500',
         iconColor: 'text-white',
         valueColor: 'text-blue-900',
-        titleColor: 'text-blue-700',
-        drillBg: 'bg-blue-600 hover:bg-blue-700'
+        titleColor: 'text-blue-700'
       },
       green: {
         bg: 'bg-gradient-to-br from-green-50 to-green-100',
@@ -50,8 +48,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-green-500',
         iconColor: 'text-white',
         valueColor: 'text-green-900',
-        titleColor: 'text-green-700',
-        drillBg: 'bg-green-600 hover:bg-green-700'
+        titleColor: 'text-green-700'
       },
       emerald: {
         bg: 'bg-gradient-to-br from-emerald-50 to-emerald-100',
@@ -59,8 +56,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-emerald-500',
         iconColor: 'text-white',
         valueColor: 'text-emerald-900',
-        titleColor: 'text-emerald-700',
-        drillBg: 'bg-emerald-600 hover:bg-emerald-700'
+        titleColor: 'text-emerald-700'
       },
       orange: {
         bg: 'bg-gradient-to-br from-orange-50 to-orange-100',
@@ -68,8 +64,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-orange-500',
         iconColor: 'text-white',
         valueColor: 'text-orange-900',
-        titleColor: 'text-orange-700',
-        drillBg: 'bg-orange-600 hover:bg-orange-700'
+        titleColor: 'text-orange-700'
       },
       purple: {
         bg: 'bg-gradient-to-br from-purple-50 to-purple-100',
@@ -77,8 +72,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-purple-500',
         iconColor: 'text-white',
         valueColor: 'text-purple-900',
-        titleColor: 'text-purple-700',
-        drillBg: 'bg-purple-600 hover:bg-purple-700'
+        titleColor: 'text-purple-700'
       },
       indigo: {
         bg: 'bg-gradient-to-br from-indigo-50 to-indigo-100',
@@ -86,8 +80,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-indigo-500',
         iconColor: 'text-white',
         valueColor: 'text-indigo-900',
-        titleColor: 'text-indigo-700',
-        drillBg: 'bg-indigo-600 hover:bg-indigo-700'
+        titleColor: 'text-indigo-700'
       },
       teal: {
         bg: 'bg-gradient-to-br from-teal-50 to-teal-100',
@@ -95,8 +88,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-teal-500',
         iconColor: 'text-white',
         valueColor: 'text-teal-900',
-        titleColor: 'text-teal-700',
-        drillBg: 'bg-teal-600 hover:bg-teal-700'
+        titleColor: 'text-teal-700'
       },
       cyan: {
         bg: 'bg-gradient-to-br from-cyan-50 to-cyan-100',
@@ -104,8 +96,7 @@ export default function DrillDownKPICard({
         iconBg: 'bg-cyan-500',
         iconColor: 'text-white',
         valueColor: 'text-cyan-900',
-        titleColor: 'text-cyan-700',
-        drillBg: 'bg-cyan-600 hover:bg-cyan-700'
+        titleColor: 'text-cyan-700'
       }
     };
     return colors[color];
@@ -164,8 +155,7 @@ export default function DrillDownKPICard({
   return (
     <div 
       className={`${colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onDrillDown(kpiId, 2)}
     >
       {/* Background Pattern */}
       <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
@@ -240,42 +230,6 @@ export default function DrillDownKPICard({
         </div>
       </div>
 
-      {/* Drill-Down Actions */}
-      {isHovered && kpiDrillDown && (
-        <div className="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex items-center justify-center z-20 transition-all duration-300">
-          <div className="text-center space-y-3">
-            <h4 className="text-white font-semibold text-lg mb-4">Drill Down Options</h4>
-            
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onDrillDown(kpiId, 2);
-              }}
-              className={`${colorClasses.drillBg} text-white px-4 py-2 rounded-lg flex items-center gap-2 mx-auto transition-colors duration-200`}
-            >
-              <BarChart3 className="h-4 w-4" />
-              <span>Tactical Analysis</span>
-              <ChevronRight className="h-4 w-4" />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onDrillDown(kpiId, 3);
-              }}
-              className={`${colorClasses.drillBg} text-white px-4 py-2 rounded-lg flex items-center gap-2 mx-auto transition-colors duration-200`}
-            >
-              <AlertTriangle className="h-4 w-4" />
-              <span>Action Items</span>
-              <ChevronRight className="h-4 w-4" />
-            </button>
-
-            <div className="text-xs text-white opacity-75 mt-2">
-              {kpiDrillDown.level2Views.length} analysis views • {kpiDrillDown.level3Actions.length} action items
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Business Context Indicator */}
       {kpiDrillDown && (

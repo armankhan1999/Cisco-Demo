@@ -42,98 +42,70 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
   {
     kpiId: 'quote-to-cash-cycle',
     kpiName: 'Quote-to-Cash Cycle Time',
-    businessContext: 'Measures end-to-end efficiency from quote creation to payment collection. Critical for cash flow and customer satisfaction.',
+    businessContext: 'End-to-end process from quote creation to payment collection. 41.2 days current vs 45-day target. Payment Collection (68% of cycle) is primary bottleneck.',
     level2Views: [
       {
         id: 'stage-breakdown',
-        title: 'Process Stage Breakdown',
-        description: 'Analyze cycle time by each stage to identify bottlenecks',
-        chartType: 'breakdown',
-        businessQuestion: 'Where are the bottlenecks causing deal delays?',
+        title: 'Q2C Stage Breakdown Analysis',
+        description: 'Waterfall chart showing time contribution of each stage: Quote Creation → Approval → Order → Provision → Invoice → Payment',
+        chartType: 'waterfall',
+        businessQuestion: 'WHICH stages contribute most to cycle time delays?',
         actionableInsights: [
-          'Quote acceptance stage showing highest variance (+2.5 days)',
-          'Customer engagement and pricing clarity issues identified',
-          '72% SLA compliance indicates process improvement needed'
+          'Payment Collection: 28.2 days (68% of total cycle, +8.2d over target)',
+          'Provisioning Time: 5.6 days (Technical delays in SaaS activation)',
+          'Order Booking: 3.1 days (Manual entry bottlenecks)'
         ]
       },
       {
-        id: 'bottleneck-heatmap',
-        title: 'Bottleneck Analysis Heatmap',
-        description: 'Visual heatmap showing cycle time performance by stage and customer tier',
+        id: 'payment-collection-deep-dive',
+        title: 'Payment Collection Deep Dive',
+        description: 'Heatmap analysis: Payment delays by customer segment & deal type. Enterprise New Business = 42.3d avg (Primary Problem)',
         chartType: 'heatmap',
-        businessQuestion: 'Which stage-customer combinations are creating the most delays?',
+        businessQuestion: 'WHICH segments drive payment delays?',
         actionableInsights: [
-          'Enterprise legal reviews taking 40% longer than target',
-          'SMB order processing surprisingly efficient',
-          'Strategic account approvals need dedicated workflow'
+          'Enterprise New Business: 42.3d avg (87 deals, $12.3M) - Multi-level approvals',
+          'Public Sector: 41.9d avg (124 deals, $21.2M) - Government fiscal constraints',
+          'SMB performs well: 28.4d avg - Simple approval processes'
         ]
       },
       {
-        id: 'deal-size-correlation',
-        title: 'Deal Size vs Cycle Time Analysis',
-        description: 'Scatter plot showing correlation between deal value and cycle duration',
-        chartType: 'scatter',
-        businessQuestion: 'How does deal size impact cycle time efficiency?',
+        id: 'legal-review-analysis',
+        title: 'Legal Review Bottleneck Analysis',
+        description: 'Root cause analysis of legal review delays: Resource capacity (35% of cases), Complex terms (28% of cases)',
+        chartType: 'breakdown',
+        businessQuestion: 'WHY is Legal Review taking 14 days vs 5-day target?',
         actionableInsights: [
-          'Deals >$500K show exponential cycle time increase',
-          'Sweet spot at $100K-$250K range for efficiency',
-          'Small deals (<$50K) have disproportionate overhead'
-        ]
-      },
-      {
-        id: 'product-family-impact',
-        title: 'Product Family Complexity Analysis',
-        description: 'Compare cycle times across different product families',
-        chartType: 'matrix',
-        businessQuestion: 'Which products create the most process complexity?',
-        actionableInsights: [
-          'ThousandEyes deals take 35% longer due to technical complexity',
-          'Duo has most streamlined process (avg 28 days)',
-          'Splunk requires specialized approval workflow'
-        ]
-      },
-      {
-        id: 'seasonal-trends',
-        title: 'Seasonal Performance Patterns',
-        description: 'Quarterly trends with business context and seasonal factors',
-        chartType: 'trend',
-        businessQuestion: 'How do seasonal patterns affect our Q2C performance?',
-        actionableInsights: [
-          'Q4 cycles 20% faster due to budget urgency',
-          'Q1 shows approval delays from new budget processes',
-          'Mid-year performance most predictable and optimizable'
-        ]
-      },
-      {
-        id: 'historical-trend',
-        title: 'Historical Trend Analysis',
-        description: 'Long-term Q2C performance trends with key business drivers',
-        chartType: 'trend',
-        businessQuestion: 'What are the long-term trends and improvement opportunities?',
-        actionableInsights: [
-          'Overall 18% improvement in cycle time over last 12 months',
-          'Process automation reducing manual delays by 25%',
-          'Customer tier optimization showing measurable impact'
+          'Resource Capacity: +6d delay (35% of cases) - 2 attorneys, 400 deals/quarter',
+          'Complex Non-Standard Terms: +4d delay (28% of cases) - Data residency clauses',
+          'Attorney A: 8d avg vs Attorney B: 18d avg - Training opportunity'
         ]
       }
     ],
     level3Actions: [
       {
-        id: 'pending-quotes',
-        title: 'Quotes Requiring Immediate Action',
-        description: 'Quotes pending approval > 5 days with high ARR impact',
+        id: 'enterprise-approval-delays',
+        title: 'Enterprise Multi-Level Approval Delays',
+        description: '87 Enterprise deals with CFO approval delays. Root cause: Multi-level approvals (Finance+Legal+Procurement)',
         actionType: 'exception',
         urgency: 'high',
-        businessImpact: '$1.8M ARR at risk from delayed approvals'
+        businessImpact: '$12.3M ARR affected, +16.7d avg delay. Early payment discount program could save $4.7M cash flow.'
       },
       {
-        id: 'stage-bottlenecks',
-        title: 'Stage-Specific Bottleneck Resolution',
-        description: 'Process bottlenecks identified by stage and customer tier',
+        id: 'legal-resource-bottleneck',
+        title: 'Legal Team Resource Shortage',
+        description: '400 deals/quarter with only 2 attorneys. Attorney B taking 2.25x longer than Attorney A.',
         actionType: 'workflow',
         urgency: 'high',
-        businessImpact: 'Reduce cycle time by 15-25% through targeted improvements'
+        businessImpact: 'Hire 1 additional attorney or redistribute workload. Potential -9d cycle time reduction.'
       },
+      {
+        id: 'quote-po-mismatches',
+        title: 'Quote/PO Mismatch Resolution',
+        description: '64 deals annually with quote/invoice discrepancies. 45% of Splunk deals affected.',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Automated validation could save $3.2M cash flow, -12.3d avg per deal.'
+      }
     ]
   },
   {
