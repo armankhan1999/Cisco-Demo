@@ -25,14 +25,22 @@ export async function getSnowflakeConnection() {
   // Handle both formats: with actual newlines or with \n escape sequences
   // This ensures compatibility with Vercel and other platforms that might escape newlines
   let privateKeyData = privateKeyContent;
-  console.log('SNOWFLAKE_PRIVATE_KEY content:\n', privateKeyData);
-  // If the key doesn't have actual newlines but has \n escape sequences, replace them
-  if (!privateKeyData.includes('\n') && privateKeyData.includes('\\n')) {
-    privateKeyData = privateKeyData.replace(/\\n/g, '\n');
-  }
   
   // Remove any quotes that might have been added
-  privateKeyData = privateKeyData.replace(/^["']|["']$/g, '');
+  privateKeyData = privateKeyData.replace(/^["']|["']$/g, '').trim();
+  
+  // Check if we need to convert \n literals to actual newlines
+  // Count actual newlines vs the string length to determine format
+  const hasActualNewlines = privateKeyData.split('\n').length > 2;
+  
+  if (!hasActualNewlines) {
+    // This is the single-line format with \n as literal characters
+    // Replace all \n sequences with actual newlines
+    console.log('🔄 Converting \\n sequences to actual newlines');
+    privateKeyData = privateKeyData.split('\\n').join('\n');
+  }
+  
+  console.log('✅ Private key format processed');
   
   // Decrypt the private key using the passphrase
   let privateKeyObject;
