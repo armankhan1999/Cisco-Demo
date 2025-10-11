@@ -52,6 +52,7 @@ export const colors = {
   text: {
     primary: '#111827',
     secondary: '#6B7280',
+    tertiary: '#9CA3AF',
     light: '#FFFFFF',
     muted: '#9CA3AF',
   },
@@ -75,6 +76,11 @@ export const personaColors = {
     primary: colors.secondary.orange,
     accent: colors.primary.DEFAULT,
     gradient: 'from-[#F58220] to-[#049FD9]',
+  },
+  AI_CHAT: {
+    primary: colors.primary.DEFAULT,
+    accent: colors.secondary.purple,
+    gradient: 'from-[#049FD9] to-[#7B5EA7]',
   },
 } as const;
 

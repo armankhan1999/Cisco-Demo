@@ -1,0 +1,53 @@
+-- ================================================================
+-- KPI: Expansion Win Rate
+-- Dashboard: Sales Expansion Leader Dashboard
+-- Definition: Percentage of expansion quotes that are accepted
+-- Formula: (Accepted Expansion Quotes / Total Expansion Quotes) × 100
+-- ================================================================
+
+WITH expansion_quotes AS (
+    -- Get all expansion quotes that have been sent (exclude drafts)
+    SELECT 
+        quote_id,
+        quote_number,
+        customer_id,
+        quote_status,
+        arr_value,
+        quote_created_date,
+        quote_accepted_date,
+        EXTRACT(YEAR FROM quote_created_date) AS fiscal_year,
+        EXTRACT(QUARTER FROM quote_created_date) AS fiscal_quarter
+    FROM quotes
+    WHERE quote_type = 'expansion'
+      AND quote_status IN ('sent', 'accepted', 'rejected', 'expired')
+      -- Time period filter: Current fiscal year (adjust as needed)
+      AND EXTRACT(YEAR FROM quote_created_date) = EXTRACT(YEAR FROM CURRENT_DATE)
+),
+
+win_rate_calculation AS (
+    SELECT
+        COUNT(*) AS total_expansion_quotes,
+        COUNT(CASE WHEN quote_status = 'accepted' THEN 1 END) AS accepted_expansion_quotes,
+        SUM(arr_value) AS total_expansion_arr_quoted,
+        SUM(CASE WHEN quote_status = 'accepted' THEN arr_value ELSE 0 END) AS expansion_arr_won,
+        -- Calculate win rate (handle division by zero)
+        ROUND(
+            (COUNT(CASE WHEN quote_status = 'accepted' THEN 1 END)::DECIMAL / 
+             NULLIF(COUNT(*), 0)) * 100, 
+            2
+        ) AS expansion_win_rate_pct
+    FROM expansion_quotes
+)
+
+-- Final output
+SELECT
+    'Expansion Win Rate' AS kpi_name,
+    expansion_win_rate_pct AS kpi_value,
+    '%' AS unit,
+    accepted_expansion_quotes AS numerator,
+    total_expansion_quotes AS denominator,
+    expansion_arr_won AS arr_won,
+    total_expansion_arr_quoted AS arr_quoted,
+    EXTRACT(YEAR FROM CURRENT_DATE) AS fiscal_year,
+    CURRENT_DATE AS calculation_date
+FROM win_rate_calculation;

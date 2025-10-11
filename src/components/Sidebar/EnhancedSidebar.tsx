@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
-import { ChevronRight, Heart, BarChart3, Target, Menu } from 'lucide-react';
+import { ChevronRight, Heart, BarChart3, Target, Menu, MessageSquare } from 'lucide-react';
 
 // Utility function for conditional classes
 const cn = (...classes: (string | undefined | boolean)[]) => {
@@ -21,13 +21,14 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
-  const personas: Persona[] = ['CSM', 'CO', 'SE'];
+  const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
       CSM: Heart,
       CO: BarChart3,
       SE: Target,
+      AI_CHAT: MessageSquare,
     };
     const IconComponent = icons[persona];
     return <IconComponent className="h-4 w-4" />;
@@ -68,6 +69,8 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
             icon: Target
           }
         ];
+      case 'AI_CHAT':
+        return []; // No sub-dashboards for AI Chat
       default:
         return [];
     }

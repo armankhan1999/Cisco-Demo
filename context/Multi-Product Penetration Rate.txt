@@ -1,0 +1,46 @@
+-- Multi-Product Penetration Rate for Sales Expansion Leader Dashboard
+-- Definition: % of customers using 2 or more distinct product families
+
+WITH customer_product_counts AS (
+    -- Count distinct products per customer from active subscriptions
+    SELECT 
+        s.customer_id,
+        COUNT(DISTINCT s.product_family) AS product_count
+    FROM 
+        subscriptions s
+    WHERE 
+        s.subscription_status = 'Active'
+        AND s.product_family IS NOT NULL
+    GROUP BY 
+        s.customer_id
+),
+multi_product_customers AS (
+    -- Identify customers with 2+ products
+    SELECT 
+        customer_id,
+        product_count
+    FROM 
+        customer_product_counts
+    WHERE 
+        product_count >= 2
+),
+metrics AS (
+    -- Calculate totals
+    SELECT 
+        COUNT(DISTINCT cpc.customer_id) AS total_customers,
+        COUNT(DISTINCT mpc.customer_id) AS multi_product_customers
+    FROM 
+        customer_product_counts cpc
+    LEFT JOIN 
+        multi_product_customers mpc ON cpc.customer_id = mpc.customer_id
+)
+-- Final KPI calculation
+SELECT 
+    total_customers,
+    multi_product_customers,
+    ROUND(
+        (multi_product_customers * 100.0) / NULLIF(total_customers, 0), 
+        2
+    ) AS multi_product_penetration_rate_pct
+FROM 
+    metrics;

@@ -1,0 +1,50 @@
+-- Level 1: Total White Space Potential
+WITH product_coverage AS (
+    SELECT 
+        a.id AS customer_id,
+        a.name AS customer_name,
+        a.tier,
+        a.arr AS current_arr,
+        COUNT(DISTINCT l.product_family) AS products_deployed,
+        5 - COUNT(DISTINCT l.product_family) AS white_space_products
+    FROM accounts a
+    LEFT JOIN licenses l ON a.id = l.customer_id
+    WHERE a.status = 'Active'
+    GROUP BY a.id, a.name, a.tier, a.arr
+)
+SELECT 
+    SUM(white_space_products) AS total_white_space_gaps,
+    SUM(white_space_products * current_arr * 0.35) AS estimated_white_space_arr,
+    AVG(white_space_products) AS avg_gaps_per_customer
+FROM product_coverage
+WHERE white_space_products > 0;
+
+-- Level 2: White Space by Customer Segment
+SELECT 
+    tier,
+    products_deployed,
+    COUNT(*) AS customer_count,
+    SUM(white_space_products) AS total_gaps,
+    SUM(current_arr) AS segment_arr,
+    SUM(white_space_products * current_arr * 0.35) AS est_opportunity
+FROM product_coverage
+GROUP BY tier, products_deployed
+ORDER BY tier, products_deployed;
+
+-- Level 3: Top White Space Opportunities
+SELECT 
+    pc.customer_id,
+    pc.customer_name,
+    pc.tier,
+    pc.current_arr,
+    pc.products_deployed,
+    pc.white_space_products,
+    (pc.white_space_products * pc.current_arr * 0.35) AS estimated_expansion_arr,
+    ARRAY_AGG(l.product_family) AS deployed_products
+FROM product_coverage pc
+LEFT JOIN licenses l ON pc.customer_id = l.customer_id
+WHERE pc.white_space_products >= 2
+GROUP BY pc.customer_id, pc.customer_name, pc.tier, pc.current_arr, 
+         pc.products_deployed, pc.white_space_products
+ORDER BY estimated_expansion_arr DESC
+LIMIT 50;

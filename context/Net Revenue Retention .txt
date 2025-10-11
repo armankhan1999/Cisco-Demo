@@ -1,0 +1,36 @@
+-- Level 1: Company-Wide NRR
+WITH cohort_base AS (
+    SELECT 
+        SUM(arr) AS starting_arr
+    FROM subscriptions
+    WHERE subscription_start_date <= DATE_TRUNC('quarter', CURRENT_DATE) - INTERVAL '1 year'
+        AND (subscription_end_date IS NULL OR subscription_end_date > DATE_TRUNC('quarter', CURRENT_DATE) - INTERVAL '1 year')
+),
+cohort_movements AS (
+    SELECT 
+        SUM(CASE WHEN movement_type = 'expansion' THEN arr_change ELSE 0 END) AS expansion_arr,
+        SUM(CASE WHEN movement_type = 'churn' THEN arr_change ELSE 0 END) AS churn_arr,
+        SUM(CASE WHEN movement_type = 'contraction' THEN arr_change ELSE 0 END) AS contraction_arr
+    FROM revenue_movements
+    WHERE effective_date BETWEEN DATE_TRUNC('quarter', CURRENT_DATE) - INTERVAL '1 year' 
+        AND DATE_TRUNC('quarter', CURRENT_DATE)
+)
+SELECT 
+    cb.starting_arr,
+    cm.expansion_arr,
+    cm.churn_arr,
+    cm.contraction_arr,
+    (cb.starting_arr + cm.expansion_arr + cm.churn_arr + cm.contraction_arr) AS ending_arr,
+    ((cb.starting_arr + cm.expansion_arr + cm.churn_arr + cm.contraction_arr) * 100.0 / cb.starting_arr) AS nrr_pct
+FROM cohort_base cb, cohort_movements cm;
+
+-- Level 2: NRR by Customer Tier
+SELECT 
+    a.tier,
+    SUM(CASE WHEN rm.movement_type = 'expansion' THEN rm.arr_change ELSE 0 END) AS expansion,
+    SUM(CASE WHEN rm.movement_type = 'churn' THEN rm.arr_change ELSE 0 END) AS churn,
+    SUM(CASE WHEN rm.movement_type = 'contraction' THEN rm.arr_change ELSE 0 END) AS contraction
+FROM revenue_movements rm
+JOIN accounts a ON rm.customer_id = a.id
+WHERE rm.effective_date >= DATE_TRUNC('year', CURRENT_DATE)
+GROUP BY a.tier;

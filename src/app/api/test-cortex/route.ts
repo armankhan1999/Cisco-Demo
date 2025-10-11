@@ -1,0 +1,53 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { callCortexAnalyst, isSnowflakeConfigured } from '@/lib/snowflake';
+
+/**
+ * Test endpoint for Snowflake Cortex
+ * Usage: GET /api/test-cortex?q=your+question
+ */
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const query = searchParams.get('q') || 'List all customers who have placed more than 3 orders';
+  
+  console.log('🧪 Testing Cortex with query:', query);
+  console.log('Snowflake configured:', isSnowflakeConfigured());
+  
+  if (!isSnowflakeConfigured()) {
+    return NextResponse.json({
+      error: 'Snowflake is not configured',
+      details: {
+        account: !!process.env.SNOWFLAKE_ACCOUNT,
+        username: !!process.env.SNOWFLAKE_USERNAME,
+        privateKeyPath: !!process.env.SNOWFLAKE_PRIVATE_KEY_PATH,
+        privateKeyPass: !!process.env.SNOWFLAKE_PRIVATE_KEY_PASS,
+      }
+    }, { status: 500 });
+  }
+  
+  try {
+    const result = await callCortexAnalyst(query);
+    
+    // Extract response text
+    const textContent = result.message.content.find((c: any) => c.type === 'text');
+    const sqlContent = result.message.content.find((c: any) => c.type === 'sql');
+    
+    return NextResponse.json({
+      success: true,
+      query: query,
+      response: textContent?.text,
+      sql: sqlContent?.statement,
+      resultsCount: result.query_results?.length || 0,
+      results: result.query_results?.slice(0, 5), // First 5 rows
+      error: result.error,
+    });
+    
+  } catch (error: any) {
+    console.error('❌ Cortex test failed:', error);
+    return NextResponse.json({
+      success: false,
+      error: error.message,
+      stack: error.stack,
+    }, { status: 500 });
+  }
+}
+
