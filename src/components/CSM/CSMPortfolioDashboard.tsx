@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Filter } from 'lucide-react';
 import { KPITile } from './KPITile';
 import { HealthDistribution } from './HealthDistribution';
@@ -21,6 +22,7 @@ import {
 import { getActiveAccounts, getAllQBRTracking } from '@/lib/data/csmDataLoader';
 
 export function CSMPortfolioDashboard() {
+  const router = useRouter();
   const [kpis, setKPIs] = useState<ReturnType<typeof calculateAllKPIs> | null>(null);
   const [healthDistribution, setHealthDistribution] = useState<HealthCategory[]>([]);
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
@@ -408,25 +410,37 @@ export function CSMPortfolioDashboard() {
               
               {/* Content Grid */}
               <div className="grid grid-cols-2 gap-3 flex-grow mb-3">
-                <div className="bg-gray-50 rounded-lg p-2.5">
+                <div 
+                  onClick={() => router.push('/csm/accounts?filter=all')}
+                  className="bg-gray-50 rounded-lg p-2.5 cursor-pointer hover:bg-gray-100 hover:shadow-md transition-all"
+                >
                   <div className="text-xl font-bold text-gray-900 mb-0.5">
                     {healthDistribution.reduce((sum, h) => sum + h.accounts, 0)}
                   </div>
                   <div className="text-xs text-gray-600 font-medium">Active Accounts</div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-2.5">
+                <div 
+                  onClick={() => router.push('/csm/accounts?filter=all')}
+                  className="bg-gray-50 rounded-lg p-2.5 cursor-pointer hover:bg-gray-100 hover:shadow-md transition-all"
+                >
                   <div className="text-xl font-bold text-gray-900 mb-0.5">
                     ${(healthDistribution.reduce((sum, h) => sum + h.arr, 0) / 1000000).toFixed(1)}M
                   </div>
                   <div className="text-xs text-gray-600 font-medium">Portfolio ARR</div>
                 </div>
-                <div className="bg-green-50 rounded-lg p-2.5">
+                <div 
+                  onClick={() => router.push('/csm/accounts?filter=healthy')}
+                  className="bg-green-50 rounded-lg p-2.5 cursor-pointer hover:bg-green-100 hover:shadow-md transition-all"
+                >
                   <div className="text-xl font-bold text-green-700 mb-0.5">
                     {healthDistribution.slice(0, 2).reduce((sum, h) => sum + h.accounts, 0)}
                   </div>
                   <div className="text-xs text-green-600 font-medium">Healthy Accounts</div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-2.5">
+                <div 
+                  onClick={() => router.push('/csm/accounts?filter=at-risk')}
+                  className="bg-red-50 rounded-lg p-2.5 cursor-pointer hover:bg-red-100 hover:shadow-md transition-all"
+                >
                   <div className="text-xl font-bold text-red-700 mb-0.5">
                     {healthDistribution.slice(3, 5).reduce((sum, h) => sum + h.accounts, 0)}
                   </div>

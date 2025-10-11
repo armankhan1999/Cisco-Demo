@@ -13,6 +13,7 @@ export default function ChurnRateDrillDown() {
   const [churnPredictions, setChurnPredictions] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
+  const [selectedTier, setSelectedTier] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -33,28 +34,32 @@ export default function ChurnRateDrillDown() {
         return effectiveDate >= oneYearAgo && m.movement_type === 'churn';
       });
       
-      // Map churned accounts with details
+      // Map churned accounts with details using REAL churn reasons from data
       const churnedAccountsData = churnMovements.map(movement => {
         const account = allAccounts.find(acc => acc.account.id === movement.customer_id);
         
-        // Determine churn reason (mock analysis)
-        const reasons = [
-          'Low utilization (<50%)',
-          'Lack of engagement (>90 days)',
-          'Support escalations',
-          'Budget constraints',
-          'Feature gaps',
-          'Competitive replacement'
-        ];
-        const primaryReason = reasons[Math.floor(Math.random() * reasons.length)];
+        // Map real reason codes to human-readable descriptions
+        const reasonMapping: { [key: string]: { label: string, preventable: boolean } } = {
+          'not_using': { label: 'Low Utilization / Not Using Product', preventable: true },
+          'competitor': { label: 'Switched to Competitor', preventable: true },
+          'product_fit': { label: 'Product Not Meeting Needs', preventable: true },
+          'budget_constraints': { label: 'Budget Constraints', preventable: false },
+          'consolidation': { label: 'Vendor Consolidation', preventable: false },
+          'company_closure': { label: 'Company Closed/Acquired', preventable: false },
+          'support_issues': { label: 'Support/Service Issues', preventable: true },
+          'feature_gaps': { label: 'Missing Features', preventable: true }
+        };
+        
+        const reasonInfo = reasonMapping[movement.reason_code] || { label: movement.reason_code, preventable: false };
         
         return {
           ...movement,
           accountName: account?.account.name || 'Unknown Account',
           tier: account?.account.tier || 'Unknown',
           previousHealthScore: Math.max(20, (account?.account.health_score || 0) - 20),
-          churnReason: primaryReason,
-          preventable: Math.random() > 0.3 // 70% preventable
+          churnReason: reasonInfo.label,
+          churnReasonCode: movement.reason_code,
+          preventable: reasonInfo.preventable
         };
       }).sort((a, b) => new Date(b.effective_date).getTime() - new Date(a.effective_date).getTime());
       
@@ -155,8 +160,23 @@ export default function ChurnRateDrillDown() {
     );
   }
 
-  const totalPages = Math.ceil(churnedAccounts.length / perPage);
-  const paginatedChurnedAccounts = churnedAccounts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  // Filter churned accounts by selected tier
+  const filteredChurnedAccounts = selectedTier 
+    ? churnedAccounts.filter(acc => acc.tier === selectedTier)
+    : churnedAccounts;
+  
+  const totalPages = Math.ceil(filteredChurnedAccounts.length / perPage);
+  const paginatedChurnedAccounts = filteredChurnedAccounts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  
+  // Handle tier filter click
+  const handleTierClick = (tier: string) => {
+    const newTier = selectedTier === tier ? null : tier;
+    console.log('🔍 Tier filter clicked:', tier);
+    console.log('📊 Total churned accounts:', churnedAccounts.length);
+    console.log('📊 Accounts in tier:', churnedAccounts.filter(acc => acc.tier === tier).length);
+    setSelectedTier(newTier);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
@@ -313,10 +333,25 @@ export default function ChurnRateDrillDown() {
                         <div className="text-sm font-medium text-gray-900">{tier.tier}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{tier.accountCount}</div>
+                        <Link 
+                          href={`/csm/accounts?tier=${encodeURIComponent(tier.tier)}`}
+                          className="text-sm font-medium text-gray-900 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          {tier.accountCount}
+                        </Link>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{tier.churnedAccounts}</div>
+                        <button
+                          onClick={() => handleTierClick(tier.tier)}
+                          className={`text-sm font-medium transition-colors hover:underline ${
+                            selectedTier === tier.tier 
+                              ? 'text-blue-600 underline' 
+                              : tier.churnedAccounts > 0 ? 'text-gray-900 hover:text-blue-600' : 'text-gray-400 cursor-not-allowed'
+                          }`}
+                          disabled={tier.churnedAccounts === 0}
+                        >
+                          {tier.churnedAccounts}
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -380,21 +415,50 @@ export default function ChurnRateDrillDown() {
           </div>
 
           {/* Recent Churned Accounts */}
-          <div className="bg-white rounded-lg border border-gray-200 mb-8">
-            <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="font-semibold text-gray-900">Recent Churned Accounts (Last 12 Months)</h3>
-              <div className="flex items-center gap-4">
-                <select 
-                  value={perPage} 
-                  onChange={(e) => setPerPage(Number(e.target.value))}
-                  className="text-sm border border-gray-300 rounded-lg px-3 py-2"
-                >
-                  <option value={10}>10 per page</option>
-                  <option value={20}>20 per page</option>
-                </select>
-                <span className="text-sm text-gray-600">
-                  Showing {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, churnedAccounts.length)} of {churnedAccounts.length}
-                </span>
+          <div className={`rounded-lg border mb-8 transition-all ${
+            selectedTier 
+              ? 'bg-blue-50 border-blue-300 shadow-lg' 
+              : 'bg-white border-gray-200'
+          }`}>
+            <div className="px-6 py-4 border-b border-gray-200">
+              {selectedTier && (
+                <div className="mb-4 px-4 py-3 bg-yellow-100 border-2 border-yellow-400 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-bold text-yellow-900">
+                      🔍 FILTERING ACTIVE: Showing only <span className="text-lg">{filteredChurnedAccounts.length}</span> churned account(s) from <strong>{selectedTier}</strong> tier
+                    </p>
+                    <button
+                      onClick={() => setSelectedTier(null)}
+                      className="px-3 py-1 text-xs font-medium text-yellow-800 bg-yellow-200 hover:bg-yellow-300 rounded border border-yellow-500"
+                    >
+                      ✕ Clear Filter
+                    </button>
+                  </div>
+                </div>
+              )}
+              
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <h3 className="font-semibold text-gray-900">Recent Churned Accounts (Last 12 Months)</h3>
+                </div>
+                <div className="flex items-center gap-4">
+                  <select 
+                    value={perPage} 
+                    onChange={(e) => setPerPage(Number(e.target.value))}
+                    className="text-sm border border-gray-300 rounded-lg px-3 py-2"
+                  >
+                    <option value={10}>10 per page</option>
+                    <option value={20}>20 per page</option>
+                  </select>
+                  <span className="text-sm text-gray-600">
+                    Showing {filteredChurnedAccounts.length > 0 ? ((currentPage - 1) * perPage) + 1 : 0}-{Math.min(currentPage * perPage, filteredChurnedAccounts.length)} of {filteredChurnedAccounts.length}
+                  </span>
+                </div>
+              </div>
+              <div className="px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-xs text-green-800">
+                  ✅ <strong>Real Data Source:</strong> Churn reasons from <code className="bg-green-100 px-1 rounded">revenue_movements.json</code> - reason_code field
+                </p>
               </div>
             </div>
 
@@ -420,7 +484,12 @@ export default function ChurnRateDrillDown() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{account.accountName}</div>
+                        <Link 
+                          href={`/csm/accounts/${account.customer_id}`}
+                          className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                        >
+                          {account.accountName}
+                        </Link>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-red-600">

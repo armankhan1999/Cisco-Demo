@@ -271,7 +271,7 @@ export function QBRCompletionAnalysis() {
             <div>
               <p className="text-sm font-medium text-gray-600">Completion Rate</p>
               <p className={`text-3xl font-bold ${metrics.overallCompletionRate >= 85 ? 'text-green-600' : 'text-orange-600'}`}>
-                {metrics.overallCompletionRate.toFixed(1)}%
+                {Math.ceil(metrics.overallCompletionRate)}%
               </p>
             </div>
             <div className={`p-3 rounded-full ${metrics.overallCompletionRate >= 85 ? 'bg-green-100' : 'bg-orange-100'}`}>
@@ -301,7 +301,7 @@ export function QBRCompletionAnalysis() {
 
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <p className="text-sm font-medium text-gray-600">Avg Prep Time</p>
-          <p className="text-3xl font-bold text-blue-600">{metrics.avgPrepTime.toFixed(1)}h</p>
+          <p className="text-3xl font-bold text-blue-600">{metrics.avgPrepTime.toFixed(2)}h</p>
           <span className="text-sm font-medium text-blue-600 mt-4 block">⚡ Per QBR</span>
         </div>
       </div>
@@ -403,7 +403,7 @@ export function QBRCompletionAnalysis() {
                               fontSize="16"
                               fontWeight="700"
                             >
-                              {point.rate.toFixed(1)}%
+                              {Math.ceil(point.rate)}%
                             </text>
                           )}
                         </g>
@@ -443,7 +443,7 @@ export function QBRCompletionAnalysis() {
               <div className="text-sm font-bold text-gray-900 mb-2">{period.period}</div>
               <div className="text-sm text-gray-600 space-y-1">
                 <div><span className="font-semibold text-gray-900">{period.onTimeQBRs}</span> / {period.totalQBRs}</div>
-                <div className="text-xs text-gray-500">Prep: {period.avgPrepTime.toFixed(1)}h</div>
+                <div className="text-xs text-gray-500">Prep: {period.avgPrepTime.toFixed(2)}h</div>
                 {period.qbrsCompleted && <div className="text-xs text-blue-600">{period.qbrsCompleted} QBRs done</div>}
               </div>
             </div>
@@ -478,7 +478,7 @@ export function QBRCompletionAnalysis() {
                     tier.completionRate >= 85 ? 'bg-green-100 text-green-800' :
                     tier.completionRate >= 70 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'
                   }`}>
-                    {tier.completionRate.toFixed(1)}%
+                    {Math.ceil(tier.completionRate)}%
                   </span>
                 </td>
               </tr>
@@ -514,11 +514,11 @@ export function QBRCompletionAnalysis() {
                     csm.completionRate >= 85 ? 'bg-green-100 text-green-800' :
                     csm.completionRate >= 70 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'
                   }`}>
-                    {csm.completionRate.toFixed(1)}%
+                    {Math.ceil(csm.completionRate)}%
                   </span>
                 </td>
                 <td className="px-6 py-4"><div className="text-sm text-gray-900">{csm.totalQBRsCompleted}</div></td>
-                <td className="px-6 py-4"><div className="text-sm text-gray-900">{csm.avgPrepTime.toFixed(1)}h</div></td>
+                <td className="px-6 py-4"><div className="text-sm text-gray-900">{csm.avgPrepTime.toFixed(2)}h</div></td>
               </tr>
             ))}
           </tbody>

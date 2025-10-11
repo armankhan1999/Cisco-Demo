@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, RefreshCw, Calendar, TrendingUp, ExternalLink } from 'lucide-react';
 
@@ -25,17 +25,20 @@ interface AccountData {
   risk_level: string;
 }
 
-export default function AccountPage({ params }: { params: { id: string } }) {
+export default function AccountPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [account, setAccount] = useState<AccountData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Unwrap the params Promise using React.use()
+  const resolvedParams = use(params);
 
   const fetchAccountData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/accounts/${params.id}`);
+      const response = await fetch(`/api/accounts/${resolvedParams.id}`);
       const result = await response.json();
       
       if (result.success) {
@@ -53,7 +56,7 @@ export default function AccountPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetchAccountData();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   if (loading) {
     return (

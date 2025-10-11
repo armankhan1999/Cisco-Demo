@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, RefreshCw, Users, Package, TrendingUp, AlertCircle, Mail, Phone, Calendar } from 'lucide-react';
 
@@ -21,17 +21,20 @@ interface CustomerProfileData {
   healthTimeline: any[];
 }
 
-export default function CustomerProfilePage({ params }: { params: { id: string } }) {
+export default function CustomerProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [profileData, setProfileData] = useState<CustomerProfileData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Unwrap the params Promise using React.use()
+  const resolvedParams = use(params);
 
   const fetchProfileData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/customer-profile/${params.id}`);
+      const response = await fetch(`/api/customer-profile/${resolvedParams.id}`);
       const result = await response.json();
       
       if (result.success) {
@@ -49,7 +52,7 @@ export default function CustomerProfilePage({ params }: { params: { id: string }
 
   useEffect(() => {
     fetchProfileData();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   if (loading) {
     return (
