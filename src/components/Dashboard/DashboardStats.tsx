@@ -87,6 +87,39 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
   const quota = 2500000; // $2.5M quota
   const coverageRatio = totalPipeline / quota;
 
+  // 6. Cross-Sell Attach Rate Calculation
+  const crossSellOpportunities = expansionOpportunities.filter(opp => opp.opportunity_type === 'cross_sell');
+  const totalRenewals = customersData.length; // Assuming all customers have renewals
+  const crossSellAttachRate = Math.round((crossSellOpportunities.length / totalRenewals) * 100);
+  const crossSellCount = crossSellOpportunities.length;
+  const renewalOnlyCount = totalRenewals - crossSellCount;
+
+  // 7. Expansion Win Rate Calculation
+  const closedWonOpportunities = expansionOpportunities.filter(opp => opp.stage === 'Negotiating' && opp.close_probability > 80);
+  const totalClosedOpportunities = expansionOpportunities.filter(opp => 
+    opp.stage === 'Negotiating' || opp.close_probability > 70
+  );
+  const expansionWinRate = totalClosedOpportunities.length > 0 
+    ? Math.round((closedWonOpportunities.length / totalClosedOpportunities.length) * 100)
+    : 0;
+
+  // 8. Time to Expansion Calculation (average days in pipeline)
+  const avgTimeToExpansion = Math.round(
+    expansionOpportunities.reduce((sum, opp) => sum + opp.days_in_stage, 0) / expansionOpportunities.length
+  );
+
+  // 9. Share of Wallet Calculation (based on customer ARR vs estimated potential)
+  const totalCustomerARR = customersData.reduce((sum, c) => sum + c.arr, 0);
+  const totalWhiteSpacePotential = totalWhiteSpaceValue;
+  const shareOfWallet = Math.round((totalCustomerARR / (totalCustomerARR + totalWhiteSpacePotential)) * 100);
+
+  // 10. Utilization-Driven Expansion Calculations
+  const highUtilizationLicenses = licensesData.filter(license => license.utilization >= 85);
+  const criticalAlerts = highUtilizationLicenses.filter(license => license.utilization >= 95).length;
+  const highAlerts = highUtilizationLicenses.filter(license => license.utilization >= 90 && license.utilization < 95).length;
+  const mediumAlerts = highUtilizationLicenses.filter(license => license.utilization >= 85 && license.utilization < 90).length;
+  const totalUtilizationAlerts = criticalAlerts + highAlerts + mediumAlerts;
+
   const renderCSMStats = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <StatCard
@@ -364,7 +397,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 <div className="text-sm text-gray-500">YTD Renewals</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-indigo-600">28%</div>
+                <div className="text-4xl font-bold text-indigo-600">{crossSellAttachRate}%</div>
                 <div className="text-xs text-green-600 font-bold">↑ +3pp vs Target</div>
               </div>
             </div>
@@ -376,11 +409,11 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                   {/* Background circle */}
                   <circle cx="160" cy="160" r="140" fill="#f3f4f6" />
                   
-                  {/* Cross-Sell slice - 28% (100.8 degrees) */}
-                  <path d="M 160 160 L 160 20 A 140 140 0 0 1 289 63 Z" fill="url(#indigoGradient)" />
+                  {/* Cross-Sell slice - Dynamic based on real data */}
+                  <path d={`M 160 160 L 160 20 A 140 140 0 ${crossSellAttachRate > 50 ? 1 : 0} 1 ${160 + 140 * Math.sin(2 * Math.PI * crossSellAttachRate / 100)} ${160 - 140 * Math.cos(2 * Math.PI * crossSellAttachRate / 100)} Z`} fill="url(#indigoGradient)" />
                   
-                  {/* No Cross-Sell slice - 72% */}
-                  <path d="M 160 160 L 289 63 A 140 140 0 1 1 160 20 Z" fill="#e0e7ff" />
+                  {/* No Cross-Sell slice - Dynamic based on real data */}
+                  <path d={`M 160 160 L ${160 + 140 * Math.sin(2 * Math.PI * crossSellAttachRate / 100)} ${160 - 140 * Math.cos(2 * Math.PI * crossSellAttachRate / 100)} A 140 140 0 ${crossSellAttachRate < 50 ? 1 : 0} 1 160 20 Z`} fill="#e0e7ff" />
                   
                   {/* Center hole for donut effect */}
                   <circle cx="160" cy="160" r="90" fill="white" />
@@ -395,7 +428,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 
                 {/* Center text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-5xl font-bold text-indigo-600">28%</div>
+                  <div className="text-5xl font-bold text-indigo-600">{crossSellAttachRate}%</div>
                   <div className="text-base text-gray-600 mt-2">Attach Rate</div>
                 </div>
               </div>
@@ -408,14 +441,14 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                   <div className="w-4 h-4 rounded-full bg-indigo-600"></div>
                   <span className="text-base font-semibold text-gray-700">With Cross-Sell</span>
                 </div>
-                <span className="text-lg font-bold text-indigo-600">12 (28%)</span>
+                <span className="text-lg font-bold text-indigo-600">{crossSellCount} ({crossSellAttachRate}%)</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-indigo-200"></div>
                   <span className="text-base font-semibold text-gray-700">Renewal Only</span>
                 </div>
-                <span className="text-lg font-bold text-gray-600">30 (72%)</span>
+                <span className="text-lg font-bold text-gray-600">{renewalOnlyCount} ({100 - crossSellAttachRate}%)</span>
               </div>
             </div>
 
@@ -438,7 +471,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 <div className="text-sm text-gray-500">Last 90 Days</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-emerald-600">64%</div>
+                <div className="text-4xl font-bold text-emerald-600">{expansionWinRate}%</div>
                 <div className="text-xs text-green-600 font-bold">↑ +4% vs Last Quarter</div>
               </div>
             </div>
@@ -451,8 +484,8 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                   <path d="M 53 160 A 107 107 0 1 1 267 160" 
                     stroke="#e5e7eb" strokeWidth="35" fill="none" strokeLinecap="round" />
                   
-                  {/* Progress arc - 64% */}
-                  <path d="M 53 160 A 107 107 0 1 1 252 93" 
+                  {/* Progress arc - Dynamic based on real data */}
+                  <path d={`M 53 160 A 107 107 0 ${expansionWinRate > 50 ? 1 : 0} 1 ${160 + 107 * Math.cos(Math.PI * (1 - expansionWinRate / 100))} ${160 - 107 * Math.sin(Math.PI * (1 - expansionWinRate / 100))}`} 
                     stroke="url(#emeraldGradient2)" strokeWidth="35" fill="none" strokeLinecap="round" />
                   
                   <defs>
@@ -468,7 +501,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 
                 {/* Center text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-5xl font-bold text-emerald-600">64%</div>
+                  <div className="text-5xl font-bold text-emerald-600">{expansionWinRate}%</div>
                   <div className="text-base text-gray-600 mt-2">Win Rate</div>
                 </div>
               </div>
@@ -477,15 +510,15 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 bg-gray-50 rounded-lg p-4">
               <div className="bg-green-100 rounded-lg p-3 text-center">
-                <div className="text-2xl font-bold text-green-600">32</div>
+                <div className="text-2xl font-bold text-green-600">{closedWonOpportunities.length}</div>
                 <div className="text-sm font-semibold text-gray-600 mt-1">Won</div>
               </div>
               <div className="bg-red-100 rounded-lg p-3 text-center">
-                <div className="text-2xl font-bold text-red-600">18</div>
+                <div className="text-2xl font-bold text-red-600">{totalClosedOpportunities.length - closedWonOpportunities.length}</div>
                 <div className="text-sm font-semibold text-gray-600 mt-1">Lost</div>
               </div>
               <div className="bg-gray-200 rounded-lg p-3 text-center">
-                <div className="text-2xl font-bold text-gray-600">50</div>
+                <div className="text-2xl font-bold text-gray-600">{totalClosedOpportunities.length}</div>
                 <div className="text-sm font-semibold text-gray-600 mt-1">Total</div>
               </div>
             </div>
@@ -512,7 +545,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 <div className="text-sm text-gray-500">Distribution (Days)</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-amber-600">142</div>
+                <div className="text-4xl font-bold text-amber-600">{avgTimeToExpansion}</div>
                 <div className="text-xs text-green-600 font-bold">↓ 38 days vs target</div>
               </div>
             </div>
@@ -579,7 +612,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
 
             <div className="mt-6 pt-4 border-t border-gray-200">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">28 Total Expansions</span>
+                <span className="text-sm text-gray-600">{expansionOpportunities.length} Total Expansions</span>
                 <span className="px-3 py-1.5 rounded-full text-sm font-bold bg-green-100 text-green-700">Fast</span>
               </div>
             </div>
@@ -681,7 +714,7 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 <div className="text-sm text-gray-500">By Customer Tier</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-violet-600">34%</div>
+                <div className="text-4xl font-bold text-violet-600">{shareOfWallet}%</div>
                 <div className="text-xs text-green-600 font-bold">↑ +2% QoQ</div>
               </div>
             </div>
@@ -781,25 +814,25 @@ export default function DashboardStats({ persona }: DashboardStatsProps) {
                 <div className="text-sm text-gray-500">Real-time capacity alerts</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-orange-600">18</div>
-                <div className="text-xs text-red-600 font-bold">6 Critical Alerts</div>
+                <div className="text-4xl font-bold text-orange-600">{totalUtilizationAlerts}</div>
+                <div className="text-xs text-red-600 font-bold">{criticalAlerts} Critical Alerts</div>
               </div>
             </div>
 
             {/* Alert Priority Breakdown */}
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
-                <div className="text-3xl font-bold text-red-600">6</div>
+                <div className="text-3xl font-bold text-red-600">{criticalAlerts}</div>
                 <div className="text-sm text-gray-800 font-bold mt-1">Critical (&gt;95%)</div>
                 <div className="text-xs text-gray-600 mt-1">$840K ARR</div>
               </div>
               <div className="bg-orange-50 rounded-lg p-6 border-l-4 border-orange-500">
-                <div className="text-5xl font-bold text-orange-600">8</div>
+                <div className="text-5xl font-bold text-orange-600">{highAlerts}</div>
                 <div className="text-lg text-gray-800 font-bold mt-2">High (90-95%)</div>
                 <div className="text-base text-gray-600 mt-1">$960K ARR</div>
               </div>
               <div className="bg-yellow-50 rounded-lg p-6 border-l-4 border-yellow-500">
-                <div className="text-5xl font-bold text-yellow-600">4</div>
+                <div className="text-5xl font-bold text-yellow-600">{mediumAlerts}</div>
                 <div className="text-lg text-gray-800 font-bold mt-2">Medium (85-90%)</div>
                 <div className="text-base text-gray-600 mt-1">$600K ARR</div>
               </div>

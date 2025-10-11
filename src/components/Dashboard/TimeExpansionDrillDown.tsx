@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
 
+// Import master data
+import expansionOpportunities from '@/source_data/sales-expansion-data/expansion-opportunities.json';
+import customersData from '@/source_data/master-data/customers.json';
+
 interface TimeExpansionDrillDownProps {
   level: number;
   onClose: () => void;
@@ -9,6 +13,69 @@ interface TimeExpansionDrillDownProps {
 
 export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ level, onClose, onLevelChange }) => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  
+  // Calculate real time to expansion metrics
+  const avgTimeToExpansion = Math.round(
+    expansionOpportunities.reduce((sum, opp) => sum + opp.days_in_stage, 0) / expansionOpportunities.length
+  );
+  
+  const fastExpansions = expansionOpportunities.filter(opp => opp.days_in_stage < 120);
+  const mediumExpansions = expansionOpportunities.filter(opp => opp.days_in_stage >= 120 && opp.days_in_stage <= 180);
+  const slowExpansions = expansionOpportunities.filter(opp => opp.days_in_stage > 180);
+  
+  const totalExpansions = expansionOpportunities.length;
+  const fastPercent = Math.round((fastExpansions.length / totalExpansions) * 100);
+  const mediumPercent = Math.round((mediumExpansions.length / totalExpansions) * 100);
+  const slowPercent = Math.round((slowExpansions.length / totalExpansions) * 100);
+  
+  // Calculate by tier
+  const tierData = ['Strategic', 'Enterprise', 'Commercial', 'SMB'].map(tier => {
+    const tierOpps = expansionOpportunities.filter(opp => {
+      const customer = customersData.find(c => c.customer_id === opp.customer_id);
+      return customer?.tier === tier;
+    });
+    const avgDays = tierOpps.length > 0 
+      ? Math.round(tierOpps.reduce((sum, opp) => sum + opp.days_in_stage, 0) / tierOpps.length)
+      : 0;
+    return {
+      tier,
+      days: avgDays,
+      count: tierOpps.length,
+      variance: avgDays - avgTimeToExpansion
+    };
+  });
+  
+  // Calculate by product
+  const products = ['Duo', 'Umbrella', 'Meraki', 'ThousandEyes', 'Splunk'];
+  const productData = products.map(product => {
+    const productOpps = expansionOpportunities.filter(opp => opp.recommended_product === product);
+    const avgDays = productOpps.length > 0
+      ? Math.round(productOpps.reduce((sum, opp) => sum + opp.days_in_stage, 0) / productOpps.length)
+      : 0;
+    return {
+      product,
+      days: avgDays,
+      count: productOpps.length
+    };
+  });
+  
+  // Accounts approaching timeline (high days in stage)
+  const accountsNearTimeline = expansionOpportunities
+    .filter(opp => opp.days_in_stage > 150)
+    .slice(0, 5)
+    .map(opp => {
+      const customer = customersData.find(c => c.customer_id === opp.customer_id);
+      return {
+        customer: customer?.customer_name || 'Unknown',
+        product: opp.recommended_product,
+        days: opp.days_in_stage,
+        arr: `$${Math.round(opp.estimated_arr / 1000)}K`,
+        stage: opp.stage,
+        tier: customer?.tier || 'Unknown',
+        health: opp.expansion_readiness_score || 75,
+        action: opp.stage === 'Prospecting' ? 'Schedule expansion QBR' : 'Present cross-sell opportunity'
+      };
+    });
   return (
     <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
       <div className="min-h-screen">
@@ -53,23 +120,23 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-gradient-to-br from-amber-50 to-white p-6 rounded-xl border-2 border-amber-200 shadow-md">
                   <div className="text-sm text-gray-600 mb-2">Average Days</div>
-                  <div className="text-4xl font-bold text-amber-600">142</div>
-                  <div className="text-xs text-green-600 font-semibold mt-1">↓ 38 days vs target (180d)</div>
+                  <div className="text-4xl font-bold text-amber-600">{avgTimeToExpansion}</div>
+                  <div className="text-xs text-green-600 font-semibold mt-1">↓ {180 - avgTimeToExpansion} days vs target (180d)</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
                   <div className="text-sm text-gray-600 mb-2">Fast (&lt;120d)</div>
-                  <div className="text-4xl font-bold text-green-600">12</div>
-                  <div className="text-xs text-gray-600 mt-1">43% of expansions</div>
+                  <div className="text-4xl font-bold text-green-600">{fastExpansions.length}</div>
+                  <div className="text-xs text-gray-600 mt-1">{fastPercent}% of expansions</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
                   <div className="text-sm text-gray-600 mb-2">Medium (121-180d)</div>
-                  <div className="text-4xl font-bold text-amber-600">11</div>
-                  <div className="text-xs text-gray-600 mt-1">39% of expansions</div>
+                  <div className="text-4xl font-bold text-amber-600">{mediumExpansions.length}</div>
+                  <div className="text-xs text-gray-600 mt-1">{mediumPercent}% of expansions</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
                   <div className="text-sm text-gray-600 mb-2">Slow (&gt;180d)</div>
-                  <div className="text-4xl font-bold text-orange-600">5</div>
-                  <div className="text-xs text-gray-600 mt-1">18% of expansions</div>
+                  <div className="text-4xl font-bold text-orange-600">{slowExpansions.length}</div>
+                  <div className="text-xs text-gray-600 mt-1">{slowPercent}% of expansions</div>
                 </div>
               </div>
 
@@ -141,30 +208,24 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
               <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl border-2 border-purple-200 shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Time to Expansion by Customer Tier</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Strategic</div>
-                    <div className="text-5xl font-bold text-green-600">98d</div>
-                    <div className="text-sm text-gray-600 mt-2">8 expansions</div>
-                    <div className="text-xs font-semibold mt-1 text-green-600">↓ 44d vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-xl border-2 border-blue-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Enterprise</div>
-                    <div className="text-5xl font-bold text-blue-600">128d</div>
-                    <div className="text-sm text-gray-600 mt-2">12 expansions</div>
-                    <div className="text-xs font-semibold mt-1 text-green-600">↓ 14d vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-yellow-100 to-yellow-50 p-6 rounded-xl border-2 border-yellow-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Commercial</div>
-                    <div className="text-5xl font-bold text-yellow-600">165d</div>
-                    <div className="text-sm text-gray-600 mt-2">6 expansions</div>
-                    <div className="text-xs font-semibold mt-1 text-orange-600">↑ 23d vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-orange-100 to-orange-50 p-6 rounded-xl border-2 border-orange-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">SMB</div>
-                    <div className="text-5xl font-bold text-orange-600">198d</div>
-                    <div className="text-sm text-gray-600 mt-2">2 expansions</div>
-                    <div className="text-xs font-semibold mt-1 text-red-600">↑ 56d vs avg</div>
-                  </div>
+                  {tierData.map((tier, idx) => {
+                    const colors = [
+                      { bg: 'from-green-100 to-green-50', border: 'border-green-300', text: 'text-green-600' },
+                      { bg: 'from-blue-100 to-blue-50', border: 'border-blue-300', text: 'text-blue-600' },
+                      { bg: 'from-yellow-100 to-yellow-50', border: 'border-yellow-300', text: 'text-yellow-600' },
+                      { bg: 'from-orange-100 to-orange-50', border: 'border-orange-300', text: 'text-orange-600' }
+                    ][idx];
+                    return (
+                      <div key={tier.tier} className={`bg-gradient-to-br ${colors.bg} p-6 rounded-xl border-2 ${colors.border} shadow-md hover:shadow-lg transition-all`}>
+                        <div className="text-sm text-gray-700 font-semibold mb-2">{tier.tier}</div>
+                        <div className={`text-5xl font-bold ${colors.text}`}>{tier.days}d</div>
+                        <div className="text-sm text-gray-600 mt-2">{tier.count} expansions</div>
+                        <div className={`text-xs font-semibold mt-1 ${tier.variance < 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          {tier.variance < 0 ? '↓' : '↑'} {Math.abs(tier.variance)}d vs avg
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -184,30 +245,29 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
                       </tr>
                     </thead>
                     <tbody>
-                      {[
-                        { product: 'Duo', avg: 125, count: 8, fastest: 68, slowest: 186, target: -55 },
-                        { product: 'ThousandEyes', avg: 161, count: 6, fastest: 95, slowest: 305, target: -19 },
-                        { product: 'Meraki', avg: 152, count: 5, fastest: 110, slowest: 275, target: -28 },
-                        { product: 'Umbrella', avg: 165, count: 4, fastest: 125, slowest: 228, target: -15 },
-                        { product: 'Splunk', avg: 178, count: 2, fastest: 145, slowest: 211, target: -2 }
-                      ].map((row, idx) => (
-                        <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
-                          <td className="py-4 px-4 font-semibold">{row.product}</td>
-                          <td className="py-4 px-4 text-center">
-                            <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full font-bold">
-                              {row.avg} days
-                            </span>
-                          </td>
-                          <td className="py-4 px-4 text-center">{row.count}</td>
-                          <td className="py-4 px-4 text-center text-green-600 font-bold">{row.fastest}d</td>
-                          <td className="py-4 px-4 text-center text-red-600">{row.slowest}d</td>
-                          <td className="py-4 px-4 text-center">
-                            <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full font-bold text-sm">
-                              {row.target}d
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
+                      {productData.map((row, idx) => {
+                        const productOpps = expansionOpportunities.filter(opp => opp.recommended_product === row.product);
+                        const fastest = productOpps.length > 0 ? Math.min(...productOpps.map(o => o.days_in_stage)) : 0;
+                        const slowest = productOpps.length > 0 ? Math.max(...productOpps.map(o => o.days_in_stage)) : 0;
+                        return (
+                          <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
+                            <td className="py-4 px-4 font-semibold">{row.product}</td>
+                            <td className="py-4 px-4 text-center">
+                              <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full font-bold">
+                                {row.days} days
+                              </span>
+                            </td>
+                            <td className="py-4 px-4 text-center">{row.count}</td>
+                            <td className="py-4 px-4 text-center text-green-600 font-bold">{fastest}d</td>
+                            <td className="py-4 px-4 text-center text-red-600">{slowest}d</td>
+                            <td className="py-4 px-4 text-center">
+                              <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full font-bold text-sm">
+                                {180 - row.days}d
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
@@ -221,13 +281,7 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
               <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Accounts Approaching Expansion Timeline (90-150 Days Since Acquisition)</h3>
                 <div className="space-y-4">
-                  {[
-                    { customer: 'DataFlow Systems', days: 95, arr: '$420K', product: 'Duo', health: 88, tier: 'Enterprise', action: 'Schedule expansion QBR' },
-                    { customer: 'SecureNet Corp', days: 108, arr: '$680K', product: 'Meraki', health: 92, tier: 'Strategic', action: 'Present cross-sell opportunity' },
-                    { customer: 'CloudFirst Inc', days: 122, arr: '$290K', product: 'Umbrella', health: 85, tier: 'Commercial', action: 'Assess expansion readiness' },
-                    { customer: 'TechVision Ltd', days: 135, arr: '$540K', product: 'Duo', health: 90, tier: 'Enterprise', action: 'Prepare expansion proposal' },
-                    { customer: 'NetGuard Solutions', days: 148, arr: '$380K', product: 'ThousandEyes', health: 82, tier: 'Commercial', action: 'Initiate expansion discussion' }
-                  ].map((account, idx) => (
+                  {accountsNearTimeline.map((account, idx) => (
                     <div 
                       key={idx} 
                       className="flex items-center justify-between p-6 bg-gradient-to-r from-amber-50 to-white rounded-lg hover:shadow-md transition-all border-l-4 border-amber-500 cursor-pointer"

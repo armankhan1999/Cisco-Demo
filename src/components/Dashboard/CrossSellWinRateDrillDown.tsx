@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
 
+// Import master data
+import expansionOpportunities from '@/source_data/sales-expansion-data/expansion-opportunities.json';
+import customersData from '@/source_data/master-data/customers.json';
+import contractsData from '@/source_data/master-data/contracts.json';
+
 interface CrossSellDrillDownProps {
   level: number;
   onClose: () => void;
@@ -9,6 +14,52 @@ interface CrossSellDrillDownProps {
 
 export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, onClose, onLevelChange }) => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  
+  // Calculate real cross-sell metrics
+  const crossSellOpportunities = expansionOpportunities.filter(opp => opp.opportunity_type === 'cross_sell');
+  const totalRenewals = customersData.length;
+  const crossSellCount = crossSellOpportunities.length;
+  const crossSellAttachRate = Math.round((crossSellCount / totalRenewals) * 100);
+  const totalCrossSellARR = crossSellOpportunities.reduce((sum, opp) => sum + opp.estimated_arr, 0);
+  const avgDealSize = crossSellCount > 0 ? Math.round(totalCrossSellARR / crossSellCount) : 0;
+  
+  // Calculate by product
+  const productCombinations = [
+    { base: 'Duo', cross: 'Umbrella' },
+    { base: 'Meraki', cross: 'ThousandEyes' },
+    { base: 'Umbrella', cross: 'Duo' },
+    { base: 'ThousandEyes', cross: 'Splunk' }
+  ];
+  
+  // Calculate by tier
+  const tierData = ['Strategic', 'Enterprise', 'Commercial', 'SMB'].map(tier => {
+    const tierCustomers = customersData.filter(c => c.tier === tier);
+    const tierCrossSell = crossSellOpportunities.filter(opp => {
+      const customer = customersData.find(c => c.customer_id === opp.customer_id);
+      return customer?.tier === tier;
+    });
+    return {
+      tier,
+      count: tierCustomers.length,
+      crossSellCount: tierCrossSell.length,
+      rate: tierCustomers.length > 0 ? Math.round((tierCrossSell.length / tierCustomers.length) * 100) : 0
+    };
+  });
+  
+  // Get upcoming renewals with cross-sell potential
+  const upcomingRenewals = customersData.slice(0, 5).map(customer => {
+    const contract = contractsData.find(c => c.customer_id === customer.customer_id);
+    const opportunity = crossSellOpportunities.find(opp => opp.customer_id === customer.customer_id);
+    return {
+      customer: customer.customer_name,
+      renewal_date: contract?.end_date || '2025-12-31',
+      arr: `$${(customer.arr / 1000000).toFixed(1)}M`,
+      product: 'Duo',
+      opportunity: opportunity?.recommended_product || 'Umbrella',
+      score: opportunity?.expansion_readiness_score || 75,
+      tier: customer.tier
+    };
+  });
   return (
     <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
       <div className="min-h-screen">
@@ -53,22 +104,22 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-xl border-2 border-indigo-200">
                   <div className="text-sm text-gray-600 mb-2">Overall Attach Rate</div>
-                  <div className="text-4xl font-bold text-indigo-600">28%</div>
+                  <div className="text-4xl font-bold text-indigo-600">{crossSellAttachRate}%</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +3pp vs Target</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Total Renewals (YTD)</div>
-                  <div className="text-4xl font-bold text-gray-900">42</div>
-                  <div className="text-xs text-gray-600 mt-1">12 with cross-sell</div>
+                  <div className="text-4xl font-bold text-gray-900">{totalRenewals}</div>
+                  <div className="text-xs text-gray-600 mt-1">{crossSellCount} with cross-sell</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Cross-Sell ARR</div>
-                  <div className="text-4xl font-bold text-gray-900">$3.2M</div>
+                  <div className="text-4xl font-bold text-gray-900">${(totalCrossSellARR / 1000000).toFixed(1)}M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +18% YoY</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Avg Deal Size</div>
-                  <div className="text-4xl font-bold text-gray-900">$267K</div>
+                  <div className="text-4xl font-bold text-gray-900">${Math.round(avgDealSize / 1000)}K</div>
                   <div className="text-xs text-gray-600 mt-1">Per cross-sell</div>
                 </div>
               </div>
@@ -183,30 +234,24 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl border-2 border-purple-200 shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Attach Rate by Customer Tier</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-xl border-2 border-purple-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Strategic</div>
-                    <div className="text-5xl font-bold text-purple-600">45%</div>
-                    <div className="text-sm text-gray-600 mt-2">9/20 renewals</div>
-                    <div className="text-xs font-semibold mt-1 text-green-600">↑ +8pp vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-xl border-2 border-blue-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Enterprise</div>
-                    <div className="text-5xl font-bold text-blue-600">30%</div>
-                    <div className="text-sm text-gray-600 mt-2">6/20 renewals</div>
-                    <div className="text-xs font-semibold mt-1 text-green-600">↑ +2pp vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">Commercial</div>
-                    <div className="text-5xl font-bold text-green-600">18%</div>
-                    <div className="text-sm text-gray-600 mt-2">2/11 renewals</div>
-                    <div className="text-xs font-semibold mt-1 text-red-600">↓ 10pp vs avg</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-gray-100 to-gray-50 p-6 rounded-xl border-2 border-gray-300 shadow-md hover:shadow-lg transition-all">
-                    <div className="text-sm text-gray-700 font-semibold mb-2">SMB</div>
-                    <div className="text-5xl font-bold text-gray-600">10%</div>
-                    <div className="text-sm text-gray-600 mt-2">1/10 renewals</div>
-                    <div className="text-xs font-semibold mt-1 text-red-600">↓ 18pp vs avg</div>
-                  </div>
+                  {tierData.map((tier, idx) => {
+                    const colors = [
+                      { bg: 'from-purple-100 to-purple-50', border: 'border-purple-300', text: 'text-purple-600' },
+                      { bg: 'from-blue-100 to-blue-50', border: 'border-blue-300', text: 'text-blue-600' },
+                      { bg: 'from-green-100 to-green-50', border: 'border-green-300', text: 'text-green-600' },
+                      { bg: 'from-gray-100 to-gray-50', border: 'border-gray-300', text: 'text-gray-600' }
+                    ][idx];
+                    return (
+                      <div key={tier.tier} className={`bg-gradient-to-br ${colors.bg} p-6 rounded-xl border-2 ${colors.border} shadow-md hover:shadow-lg transition-all`}>
+                        <div className="text-sm text-gray-700 font-semibold mb-2">{tier.tier}</div>
+                        <div className={`text-5xl font-bold ${colors.text}`}>{tier.rate}%</div>
+                        <div className="text-sm text-gray-600 mt-2">{tier.crossSellCount}/{tier.count} renewals</div>
+                        <div className={`text-xs font-semibold mt-1 ${tier.rate >= crossSellAttachRate ? 'text-green-600' : 'text-red-600'}`}>
+                          {tier.rate >= crossSellAttachRate ? '↑' : '↓'} {Math.abs(tier.rate - crossSellAttachRate)}pp vs avg
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -218,13 +263,7 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Upcoming Renewals with Cross-Sell Potential (Next 90 Days)</h3>
                 <div className="space-y-4">
-                  {[
-                    { customer: 'TechCorp Industries', renewal_date: '2025-11-15', arr: '$1.5M', product: 'Duo', opportunity: 'Umbrella', score: 92, tier: 'Enterprise' },
-                    { customer: 'MedSecure Systems', renewal_date: '2025-11-22', arr: '$3.6M', product: 'Meraki', opportunity: 'ThousandEyes', score: 88, tier: 'Strategic' },
-                    { customer: 'Global Financial Partners', renewal_date: '2025-12-05', arr: '$804K', product: 'Umbrella', opportunity: 'Duo', score: 85, tier: 'Enterprise' },
-                    { customer: 'InnovateTech Solutions', renewal_date: '2025-12-18', arr: '$1.0M', product: 'Duo', opportunity: 'Splunk', score: 78, tier: 'Enterprise' },
-                    { customer: 'Advanced Manufacturing Co', renewal_date: '2025-12-28', arr: '$141K', product: 'Meraki', opportunity: 'Umbrella', score: 72, tier: 'Commercial' }
-                  ].map((renewal, idx) => (
+                  {upcomingRenewals.map((renewal, idx) => (
                     <div 
                       key={idx} 
                       className="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border-l-4 border-indigo-500 cursor-pointer"
@@ -284,6 +323,59 @@ interface WinRateDrillDownProps {
 
 export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClose, onLevelChange }) => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  
+  // Calculate real win rate metrics
+  const closedWonOpportunities = expansionOpportunities.filter(opp => opp.stage === 'Negotiating' && opp.close_probability > 80);
+  const totalClosedOpportunities = expansionOpportunities.filter(opp => opp.stage === 'Negotiating' || opp.close_probability > 70);
+  const wonCount = closedWonOpportunities.length;
+  const lostCount = totalClosedOpportunities.length - wonCount;
+  const totalCount = totalClosedOpportunities.length;
+  const winRate = totalCount > 0 ? Math.round((wonCount / totalCount) * 100) : 0;
+  const wonARR = closedWonOpportunities.reduce((sum, opp) => sum + opp.estimated_arr, 0);
+  const avgWinSize = wonCount > 0 ? Math.round(wonARR / wonCount) : 0;
+  
+  // Calculate by product
+  const products = ['Duo', 'Umbrella', 'Meraki', 'ThousandEyes', 'Splunk'];
+  const productData = products.map(product => {
+    const productOpps = expansionOpportunities.filter(opp => opp.recommended_product === product);
+    const productWon = productOpps.filter(opp => opp.close_probability > 80).length;
+    const productTotal = productOpps.length;
+    return {
+      product,
+      total: productTotal,
+      won: productWon,
+      lost: productTotal - productWon,
+      rate: productTotal > 0 ? Math.round((productWon / productTotal) * 100) : 0,
+      arr: `$${(productOpps.filter(opp => opp.close_probability > 80).reduce((sum, opp) => sum + opp.estimated_arr, 0) / 1000000).toFixed(1)}M`,
+      days: Math.round(productOpps.reduce((sum, opp) => sum + opp.days_in_stage, 0) / productTotal) || 0
+    };
+  });
+  
+  // Recent wins
+  const recentWins = closedWonOpportunities.slice(0, 3).map(opp => {
+    const customer = customersData.find(c => c.customer_id === opp.customer_id);
+    return {
+      customer: customer?.customer_name || 'Unknown',
+      product: opp.recommended_product,
+      arr: `$${Math.round(opp.estimated_arr / 1000)}K`,
+      close_date: opp.expected_close_date,
+      days: opp.days_in_stage,
+      rep: 'Sarah Johnson'
+    };
+  });
+  
+  // Recent losses (simulated from low probability)
+  const recentLosses = expansionOpportunities.filter(opp => opp.close_probability < 30).slice(0, 2).map(opp => {
+    const customer = customersData.find(c => c.customer_id === opp.customer_id);
+    return {
+      customer: customer?.customer_name || 'Unknown',
+      product: opp.recommended_product,
+      arr: `$${Math.round(opp.estimated_arr / 1000)}K`,
+      close_date: opp.expected_close_date,
+      reason: 'Price',
+      competitor: opp.competitive_threat || 'None'
+    };
+  });
   return (
     <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
       <div className="min-h-screen">
@@ -328,27 +420,27 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                 <div className="bg-gradient-to-br from-emerald-50 to-white p-6 rounded-xl border-2 border-emerald-200">
                   <div className="text-sm text-gray-600 mb-2">Overall Win Rate</div>
-                  <div className="text-4xl font-bold text-emerald-600">64%</div>
+                  <div className="text-4xl font-bold text-emerald-600">{winRate}%</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +4% vs Target</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Won</div>
-                  <div className="text-4xl font-bold text-green-600">32</div>
+                  <div className="text-4xl font-bold text-green-600">{wonCount}</div>
                   <div className="text-xs text-gray-600 mt-1">Opportunities</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Lost</div>
-                  <div className="text-4xl font-bold text-red-600">18</div>
+                  <div className="text-4xl font-bold text-red-600">{lostCount}</div>
                   <div className="text-xs text-gray-600 mt-1">Opportunities</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Won ARR</div>
-                  <div className="text-4xl font-bold text-gray-900">$7.2M</div>
+                  <div className="text-4xl font-bold text-gray-900">${(wonARR / 1000000).toFixed(1)}M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +22% YoY</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
                   <div className="text-sm text-gray-600 mb-2">Avg Win Size</div>
-                  <div className="text-4xl font-bold text-gray-900">$225K</div>
+                  <div className="text-4xl font-bold text-gray-900">${Math.round(avgWinSize / 1000)}K</div>
                   <div className="text-xs text-gray-600 mt-1">Per deal</div>
                 </div>
               </div>
@@ -434,13 +526,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
                       </tr>
                     </thead>
                     <tbody>
-                      {[
-                        { product: 'Duo', total: 15, won: 11, lost: 4, rate: 73, arr: '$2.1M', days: 42 },
-                        { product: 'Umbrella', total: 12, won: 8, lost: 4, rate: 67, arr: '$1.8M', days: 38 },
-                        { product: 'Meraki', total: 10, won: 6, lost: 4, rate: 60, arr: '$1.5M', days: 51 },
-                        { product: 'ThousandEyes', total: 8, won: 5, lost: 3, rate: 63, arr: '$1.2M', days: 45 },
-                        { product: 'Splunk', total: 5, won: 2, lost: 3, rate: 40, arr: '$600K', days: 68 }
-                      ].map((row, idx) => (
+                      {productData.map((row, idx) => (
                         <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
                           <td className="py-4 px-4 font-semibold">{row.product}</td>
                           <td className="py-4 px-4 text-center">{row.total}</td>
@@ -503,11 +589,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Recent Wins (Last 30 Days)</h3>
                 <div className="space-y-4">
-                  {[
-                    { customer: 'TechCorp Industries', product: 'Duo', arr: '$280K', close_date: '2025-10-05', days: 38, rep: 'Sarah Johnson' },
-                    { customer: 'Global Financial Partners', product: 'Umbrella', arr: '$195K', close_date: '2025-10-12', days: 42, rep: 'Michael Chen' },
-                    { customer: 'InnovateTech Solutions', product: 'Meraki', arr: '$320K', close_date: '2025-10-18', days: 51, rep: 'Sarah Johnson' }
-                  ].map((win, idx) => (
+                  {recentWins.map((win, idx) => (
                     <div 
                       key={idx} 
                       className="flex items-center justify-between p-6 bg-green-50 rounded-lg border-l-4 border-green-500 cursor-pointer hover:shadow-md transition-all"
@@ -532,10 +614,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Recent Losses (Last 30 Days)</h3>
                 <div className="space-y-4">
-                  {[
-                    { customer: 'Enterprise Corp', product: 'Splunk', arr: '$450K', close_date: '2025-10-08', reason: 'Price', competitor: 'Datadog' },
-                    { customer: 'Tech Startup Inc', product: 'ThousandEyes', arr: '$180K', close_date: '2025-10-15', reason: 'Timeline', competitor: 'None' }
-                  ].map((loss, idx) => (
+                  {recentLosses.map((loss, idx) => (
                     <div 
                       key={idx} 
                       className="flex items-center justify-between p-6 bg-red-50 rounded-lg border-l-4 border-red-500 cursor-pointer hover:shadow-md transition-all"
