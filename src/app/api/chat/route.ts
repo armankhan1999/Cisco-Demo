@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { callCortexAnalyst, isSnowflakeConfigured } from '@/lib/snowflake';
 import { getContextSummary, shouldUseCortex } from '@/lib/context-loader';
+import type { SnowflakeQueryResult } from '@/types/snowflake';
 
 interface Message {
   id: string;
@@ -39,24 +40,16 @@ export async function POST(request: NextRequest) {
 
     let response: string;
     let sqlQuery: string | undefined;
-    let queryResults: any[] | undefined | null;
+    let queryResults: SnowflakeQueryResult[] | undefined;
 
     if (useCortex) {
       console.log('🔍 Using Snowflake Cortex for data query');
       try {
         const cortexResult = await callCortexAnalyst(message, history);
         
-        // Extract the text response from Cortex
-        const textContent = cortexResult.message.content.find(
-          (c: any) => c.type === 'text'
-        );
-        response = textContent?.text || 'Query completed successfully.';
-        
-        // Get SQL query if available
-        const sqlContent = cortexResult.message.content.find(
-          (c: any) => c.type === 'sql'
-        );
-        sqlQuery = sqlContent?.statement;
+        // Extract the response from Cortex
+        response = cortexResult.explanation;
+        sqlQuery = cortexResult.sql_query;
         queryResults = cortexResult.query_results || undefined;
 
         // OpenAI enhancement is optional - Cortex already provides good responses
@@ -66,17 +59,17 @@ export async function POST(request: NextRequest) {
             const enhanced = await enhanceResponseWithOpenAI(
               message,
               response,
-              queryResults,
-              history
+              queryResults
             );
             response = enhanced;
-          } catch (error) {
+          } catch (_) {
             // If enhancement fails, just use the Cortex response (which is already good)
             console.log('Note: Using Cortex response without OpenAI enhancement');
           }
         }
-      } catch (cortexError: any) {
-        console.error('⚠️  Cortex query failed, falling back to OpenAI:', cortexError.message);
+      } catch (cortexError) {
+        const error = cortexError as Error;
+        console.error('⚠️  Cortex query failed, falling back to OpenAI:', error.message);
         // Fall back to OpenAI if Cortex fails
         response = await generateOpenAIResponse(message, history);
       }
@@ -91,12 +84,13 @@ export async function POST(request: NextRequest) {
       queryResults: queryResults?.slice(0, 10), // Limit results to first 10 rows
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
-    console.error('❌ Error in chat API:', error);
+  } catch (error) {
+    const err = error as Error;
+    console.error('❌ Error in chat API:', err);
     return NextResponse.json(
       { 
         error: 'Failed to process chat message',
-        details: error.message 
+        details: err.message 
       },
       { status: 500 }
     );
@@ -128,7 +122,7 @@ Your role is to:
 
 Be concise, professional, and data-driven in your responses. When discussing metrics, explain both what they mean and why they matter.`;
 
-  const messages: any[] = [
+  const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
     { role: 'system', content: systemPrompt },
     ...history.slice(-5).map(h => ({
       role: h.role,
@@ -146,9 +140,10 @@ Be concise, professional, and data-driven in your responses. When discussing met
     });
 
     return completion.choices[0]?.message?.content || 'I apologize, but I could not generate a response.';
-  } catch (error: any) {
-    console.error('OpenAI API error:', error);
-    if (error.status === 401) {
+  } catch (error) {
+    const err = error as Error & { status?: number };
+    console.error('OpenAI API error:', err);
+    if (err.status === 401) {
       return 'OpenAI API key is invalid. Please check your configuration.';
     }
     return getFallbackResponse(message);
@@ -161,8 +156,7 @@ Be concise, professional, and data-driven in your responses. When discussing met
 async function enhanceResponseWithOpenAI(
   userQuestion: string,
   cortexResponse: string,
-  queryResults: any[],
-  history: Message[]
+  queryResults: SnowflakeQueryResult[]
 ): Promise<string> {
   if (!process.env.OPENAI_API_KEY) {
     return cortexResponse;

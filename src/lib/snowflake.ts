@@ -1,8 +1,9 @@
 import snowflake from 'snowflake-sdk';
 import fs from 'fs';
 import crypto from 'crypto';
+import type { SnowflakeQueryResult, CortexAnalystResult, ConversationMessage } from '@/types/snowflake';
 
-let connectionInstance: any = null;
+let connectionInstance: snowflake.Connection | null = null;
 
 /**
  * Get or create Snowflake connection with JWT key-pair auth
@@ -51,6 +52,10 @@ export async function getSnowflakeConnection() {
     
     console.log('✅ Private key decrypted and formatted successfully');
     
+    if (!process.env.SNOWFLAKE_ACCOUNT || !process.env.SNOWFLAKE_USERNAME || !process.env.SNOWFLAKE_WAREHOUSE || !process.env.SNOWFLAKE_DATABASE) {
+      throw new Error('Missing required Snowflake environment variables');
+    }
+    
     connectionInstance = snowflake.createConnection({
       account: process.env.SNOWFLAKE_ACCOUNT,
       username: process.env.SNOWFLAKE_USERNAME,
@@ -59,12 +64,25 @@ export async function getSnowflakeConnection() {
       warehouse: process.env.SNOWFLAKE_WAREHOUSE,
       database: process.env.SNOWFLAKE_DATABASE,
     });
-  } catch (keyError: any) {
-    console.error('❌ Error processing private key:', keyError.message);
-    throw new Error(`Failed to process private key: ${keyError.message}`);
+  } catch (keyError) {
+    const error = keyError as Error;
+    console.error('❌ Error processing private key:', error.message);
+    throw new Error(`Failed to process private key: ${error.message}`);
   }
 
-  await connectionInstance.connectAsync();
+  if (!connectionInstance) {
+    throw new Error('Failed to create Snowflake connection');
+  }
+
+  await new Promise<void>((resolve, reject) => {
+    connectionInstance!.connect((err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
 
   // Set database context
   await executeSnowflakeQuery(`USE WAREHOUSE ${process.env.SNOWFLAKE_WAREHOUSE}`);
@@ -77,13 +95,13 @@ export async function getSnowflakeConnection() {
 /**
  * Execute a Snowflake query
  */
-export async function executeSnowflakeQuery(query: string): Promise<any[]> {
+export async function executeSnowflakeQuery(query: string): Promise<SnowflakeQueryResult[]> {
   const connection = await getSnowflakeConnection();
 
   return new Promise((resolve, reject) => {
     connection.execute({
       sqlText: query,
-      complete: (err: any, stmt: any, rows: any[]) => {
+      complete: (err: Error | undefined, _stmt: unknown, rows: SnowflakeQueryResult[] | undefined) => {
         if (err) {
           reject(new Error(`Snowflake query failed: ${err.message}`));
         } else {
@@ -98,15 +116,15 @@ export async function executeSnowflakeQuery(query: string): Promise<any[]> {
  * Main function: Convert natural language to SQL and execute
  *
  * @param message - User's natural language question
- * @param conversationHistory - Previous messages (optional)
+ * @param _conversationHistory - Previous messages (optional, currently unused)
  * @param tableName - Target table (default: T_BRZ_ACCOUNTS)
  * @returns Response with SQL, results, and explanation
  */
 export async function callCortexAnalyst(
   message: string,
-  conversationHistory: any[] = [],
+  _conversationHistory: ConversationMessage[] = [],
   tableName: string = 'DB_CISCO_ANALYTICS.RAW.T_BRZ_ACCOUNTS'
-) {
+): Promise<CortexAnalystResult> {
   console.log(`🔍 Processing question: "${message}"`);
   console.log(`📊 Target table: ${tableName}`);
 
@@ -115,7 +133,7 @@ export async function callCortexAnalyst(
     const schemaResult = await executeSnowflakeQuery(`DESCRIBE TABLE ${tableName}`);
 
     const schemaInfo = schemaResult
-      .map((col: any) => `${col.name} (${col.type})`)
+      .map((col) => `${col.name || col.NAME} (${col.type || col.TYPE})`)
       .join(', ');
 
     console.log(`✅ Schema retrieved: ${schemaResult.length} columns`);
@@ -145,7 +163,10 @@ SQL query:`;
       ) as sql_query
     `);
 
-    let sqlQuery = sqlGenResult?.[0]?.SQL_QUERY || sqlGenResult?.[0]?.sql_query || '';
+    const rawSqlQuery = sqlGenResult?.[0]?.SQL_QUERY || sqlGenResult?.[0]?.sql_query || '';
+    
+    // Ensure it's a string
+    let sqlQuery = String(rawSqlQuery);
 
     // Clean up the generated SQL
     sqlQuery = sqlQuery
@@ -156,14 +177,15 @@ SQL query:`;
     console.log('✅ Generated SQL:', sqlQuery.substring(0, 100) + '...');
 
     // Step 3: Execute the generated SQL
-    let queryResults: any[] | null = null;
+    let queryResults: SnowflakeQueryResult[] | null = null;
     let queryError: string | null = null;
 
     try {
       queryResults = await executeSnowflakeQuery(sqlQuery);
       console.log(`✅ Query executed: ${queryResults?.length || 0} rows returned`);
-    } catch (execError: any) {
-      queryError = execError.message;
+    } catch (execError) {
+      const error = execError as Error;
+      queryError = error.message;
       console.error('❌ Query execution failed:', queryError);
     }
 
@@ -234,25 +256,15 @@ SQL query:`;
 
     // Return response in Cortex Analyst format
     return {
-      message: {
-        content: [
-          {
-            type: 'text',
-            text: explanation.trim(),
-          },
-          {
-            type: 'sql',
-            statement: sqlQuery,
-          },
-        ],
-      },
       sql_query: sqlQuery,
       query_results: queryResults,
-      error: queryError,
+      explanation: explanation.trim(),
+      error: queryError || undefined,
     };
-  } catch (error: any) {
-    console.error('❌ Cortex analyst error:', error);
-    throw error;
+  } catch (error) {
+    const err = error as Error;
+    console.error('❌ Cortex analyst error:', err);
+    throw err;
   }
 }
 

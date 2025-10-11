@@ -161,28 +161,27 @@ export default function ChatInterface() {
                       remarkPlugins={[remarkGfm]}
                       components={{
                         // Customize heading styles
-                        h1: ({ node, ...props }) => <h1 className="text-xl font-bold mt-4 mb-2" {...props} />,
-                        h2: ({ node, ...props }) => <h2 className="text-lg font-bold mt-3 mb-2" {...props} />,
-                        h3: ({ node, ...props }) => <h3 className="text-base font-bold mt-2 mb-1" {...props} />,
-                        h4: ({ node, ...props }) => <h4 className="text-sm font-bold mt-2 mb-1" {...props} />,
+                        h1: ({ ...props }) => <h1 className="text-xl font-bold mt-4 mb-2" {...props} />,
+                        h2: ({ ...props }) => <h2 className="text-lg font-bold mt-3 mb-2" {...props} />,
+                        h3: ({ ...props }) => <h3 className="text-base font-bold mt-2 mb-1" {...props} />,
+                        h4: ({ ...props }) => <h4 className="text-sm font-bold mt-2 mb-1" {...props} />,
                         
                         // Customize list styles
-                        ul: ({ node, ...props }) => <ul className="list-disc list-inside space-y-1 my-2" {...props} />,
-                        ol: ({ node, ...props }) => <ol className="list-decimal list-inside space-y-1 my-2" {...props} />,
-                        li: ({ node, ...props }) => <li className="ml-2" {...props} />,
+                        ul: ({ ...props }) => <ul className="list-disc list-inside space-y-1 my-2" {...props} />,
+                        ol: ({ ...props }) => <ol className="list-decimal list-inside space-y-1 my-2" {...props} />,
+                        li: ({ ...props }) => <li className="ml-2" {...props} />,
                         
                         // Customize paragraph
-                        p: ({ node, ...props }) => <p className="my-2" {...props} />,
+                        p: ({ ...props }) => <p className="my-2" {...props} />,
                         
                         // Customize strong/bold text
-                        strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
+                        strong: ({ ...props }) => <strong className="font-semibold" {...props} />,
                         
                         // Customize code blocks
-                        code: ({ node, inline, className, children, ...props }: any) => {
-                          const match = /language-(\w+)/.exec(className || '');
+                        code: ({ inline, className, children, ...props }: { inline?: boolean; className?: string; children?: React.ReactNode }) => {
                           return !inline ? (
                             <pre className="bg-gray-100 rounded-lg p-3 my-2 overflow-x-auto">
-                              <code className={`text-xs ${className}`} {...props}>
+                              <code className={`text-xs ${className || ''}`} {...props}>
                                 {children}
                               </code>
                             </pre>
@@ -194,25 +193,25 @@ export default function ChatInterface() {
                         },
                         
                         // Customize links
-                        a: ({ node, ...props }) => (
+                        a: ({ ...props }) => (
                           <a className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
                         ),
                         
                         // Customize blockquotes
-                        blockquote: ({ node, ...props }) => (
+                        blockquote: ({ ...props }) => (
                           <blockquote className="border-l-4 border-gray-300 pl-4 italic my-2" {...props} />
                         ),
                         
                         // Customize tables
-                        table: ({ node, ...props }) => (
+                        table: ({ ...props }) => (
                           <div className="overflow-x-auto my-2">
                             <table className="min-w-full divide-y divide-gray-200 border" {...props} />
                           </div>
                         ),
-                        th: ({ node, ...props }) => (
+                        th: ({ ...props }) => (
                           <th className="px-3 py-2 bg-gray-50 text-left text-xs font-semibold" {...props} />
                         ),
-                        td: ({ node, ...props }) => (
+                        td: ({ ...props }) => (
                           <td className="px-3 py-2 border-t text-xs" {...props} />
                         ),
                       }}

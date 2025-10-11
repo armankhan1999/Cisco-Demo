@@ -27,26 +27,23 @@ export async function GET(request: NextRequest) {
   try {
     const result = await callCortexAnalyst(query);
     
-    // Extract response text
-    const textContent = result.message.content.find((c: any) => c.type === 'text');
-    const sqlContent = result.message.content.find((c: any) => c.type === 'sql');
-    
     return NextResponse.json({
       success: true,
       query: query,
-      response: textContent?.text,
-      sql: sqlContent?.statement,
+      response: result.explanation,
+      sql: result.sql_query,
       resultsCount: result.query_results?.length || 0,
       results: result.query_results?.slice(0, 5), // First 5 rows
       error: result.error,
     });
     
-  } catch (error: any) {
-    console.error('❌ Cortex test failed:', error);
+  } catch (error) {
+    const err = error as Error;
+    console.error('❌ Cortex test failed:', err);
     return NextResponse.json({
       success: false,
-      error: error.message,
-      stack: error.stack,
+      error: err.message,
+      stack: err.stack,
     }, { status: 500 });
   }
 }
