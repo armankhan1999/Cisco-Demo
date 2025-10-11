@@ -64,7 +64,7 @@ export async function getSnowflakeConnection() {
   console.log('7️⃣ Key ends with:', privateKeyData.substring(privateKeyData.length - 30));
   console.log('7️⃣ Total lines in key:', privateKeyData.split('\n').length);
   
-  // Decrypt the private key using the passphrase
+  // Decrypt the private key using the passphrase (if encrypted)
   let privateKeyObject;
   try {
     console.log('8️⃣ Attempting to create private key object...');
@@ -72,12 +72,28 @@ export async function getSnowflakeConnection() {
     console.log('8️⃣ Key type check - contains RSA:', privateKeyData.includes('RSA PRIVATE KEY'));
     console.log('8️⃣ Key type check - contains ENCRYPTED:', privateKeyData.includes('ENCRYPTED'));
     
+    const isEncrypted = privateKeyData.includes('ENCRYPTED');
+    console.log('8️⃣ Key is encrypted:', isEncrypted);
+    
     // Try to create the private key object
-    privateKeyObject = crypto.createPrivateKey({
-      key: Buffer.from(privateKeyData, 'utf-8'),
+    // Only use passphrase if the key is actually encrypted
+    const keyOptions: {
+      key: string | Buffer;
+      format: 'pem';
+      passphrase?: string;
+    } = {
+      key: privateKeyData,
       format: 'pem',
-      passphrase: privateKeyPass,
-    });
+    };
+    
+    if (isEncrypted && privateKeyPass) {
+      console.log('8️⃣ Using passphrase for encrypted key');
+      keyOptions.passphrase = privateKeyPass;
+    } else {
+      console.log('8️⃣ No passphrase needed (unencrypted key)');
+    }
+    
+    privateKeyObject = crypto.createPrivateKey(keyOptions);
     
     console.log('9️⃣ Private key object created successfully');
     console.log('9️⃣ Key type:', privateKeyObject.asymmetricKeyType);
