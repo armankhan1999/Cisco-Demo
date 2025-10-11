@@ -13,6 +13,8 @@ const cn = (...classes: (string | undefined | boolean)[]) => {
 interface SidebarProps {
   currentPersona: Persona;
   onPersonaChange: (persona: Persona) => void;
+  currentLevel?: number;
+  onLevelChange?: (level: number) => void;
 }
 
 interface SubMenuItem {
@@ -25,6 +27,9 @@ interface SubMenuItem {
 export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
   const { isCollapsed, toggleSidebar } = useSidebar();
   const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
+export default function Sidebar({ currentPersona, onPersonaChange, currentLevel = 1, onLevelChange }: SidebarProps) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
   const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
 

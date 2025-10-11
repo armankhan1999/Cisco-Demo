@@ -7,7 +7,8 @@ import DrillDownDashboard from '@/components/CommercialOps/DrillDownDashboard';
 import { Persona } from '@/data/dummyData';
 
 export default function Home() {
-  const [currentPersona, setCurrentPersona] = useState<Persona>('CO');
+
+  const [currentPersona, setCurrentPersona] = useState<Persona>('CSM');
   const [currentView, setCurrentView] = useState<string>('command-center');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -19,6 +20,9 @@ export default function Home() {
     // Default to original dashboard for other personas/views
     return <Dashboard persona={currentPersona} />;
   };
+
+  const [currentLevel, setCurrentLevel] = useState(1);
+
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -37,6 +41,12 @@ export default function Home() {
       }`}>
         {renderMainContent()}
       </div>
+        currentLevel={currentLevel}
+        onLevelChange={setCurrentLevel}
+      />
+      
+      {/* Main Content */}
+      <Dashboard persona={currentPersona} level={currentLevel} />
     </div>
   );
 }
