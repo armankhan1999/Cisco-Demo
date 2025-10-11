@@ -41,12 +41,6 @@ export default function Home() {
       }`}>
         {renderMainContent()}
       </div>
-        currentLevel={currentLevel}
-        onLevelChange={setCurrentLevel}
-      />
-      
-      {/* Main Content */}
-      <Dashboard persona={currentPersona} level={currentLevel} />
     </div>
   );
 }

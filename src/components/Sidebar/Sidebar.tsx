@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, Heart, BarChart3, Target, ChevronRight, Activity, Users, TrendingUp, AlertCircle, Home ,MessageSquare} from 'lucide-react';
+import { Activity, Users, TrendingUp, AlertCircle, MessageCircle, User, BarChart2, Target, ChevronRight, Menu, Home } from 'lucide-react';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
 import { useSidebar } from '@/contexts/SidebarContext';
 
@@ -24,11 +24,9 @@ interface SubMenuItem {
   onClick: () => void;
 }
 
-export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
+export default function Sidebar({ currentPersona, onPersonaChange, currentLevel = 1, onLevelChange }: SidebarProps) {
   const { isCollapsed, toggleSidebar } = useSidebar();
   const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
-export default function Sidebar({ currentPersona, onPersonaChange, currentLevel = 1, onLevelChange }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
   const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
@@ -130,15 +128,16 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
       }
     ],
     CO: [],
-    SE: []
+    SE: [],
+    AI_CHAT: []
   };
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
-      CSM: Heart,
-      CO: BarChart3,
+      CSM: User,
+      CO: BarChart2,
       SE: Target,
-      AI_CHAT: MessageSquare,
+      AI_CHAT: MessageCircle,
     };
     const IconComponent = icons[persona];
     return <IconComponent className="h-4 w-4" />;
