@@ -48,6 +48,18 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
             window.location.href = '/csm/deep-dive';
           }
         }
+      },
+      {
+        id: 'action-center',
+        label: 'Action Center',
+        description: 'Operational alerts & exceptions',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to action center page
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/action-center';
+          }
+        }
       }
     ],
     CO: [],

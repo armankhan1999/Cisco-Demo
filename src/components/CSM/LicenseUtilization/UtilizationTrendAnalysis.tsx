@@ -108,62 +108,112 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
 
       {/* Trend Chart */}
       <div className="mb-6">
-        <div className="h-64 relative">
-          <svg className="w-full h-full" viewBox="0 0 800 200">
+        <div className="h-96 relative">
+          <svg className="w-full h-full" viewBox="0 0 900 350" preserveAspectRatio="xMidYMid meet">
             {/* Grid lines */}
             <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+              <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
+            <rect x="60" y="20" width="820" height="280" fill="url(#grid)" />
             
-            {/* Target zone (70-90%) */}
-            <rect x="0" y="60" width="100%" height="80" fill="#dcfce7" opacity="0.3" />
-            <text x="10" y="55" className="text-xs fill-green-600 font-medium">Target Zone (70-90%)</text>
+            {/* Y-axis */}
+            <line x1="60" y1="20" x2="60" y2="300" stroke="#9ca3af" strokeWidth="2" />
             
-            {/* Trend line */}
-            <polyline
-              points={trendData.map((point, index) => 
-                `${(index / (trendData.length - 1)) * 800},${200 - (point.utilization / 100) * 200}`
-              ).join(' ')}
-              fill="none"
-              stroke="#3b82f6"
-              strokeWidth="2"
-              className="hover:stroke-blue-600"
-            />
+            {/* X-axis */}
+            <line x1="60" y1="300" x2="880" y2="300" stroke="#9ca3af" strokeWidth="2" />
             
-            {/* Rolling averages */}
-            <polyline
-              points={trendData.map((point, index) => 
-                `${(index / (trendData.length - 1)) * 800},${200 - (point.rolling7Day / 100) * 200}`
-              ).join(' ')}
-              fill="none"
-              stroke="#10b981"
-              strokeWidth="1.5"
-              strokeDasharray="5,5"
-            />
+            {/* Target zone (70-90%) - properly scaled */}
+            <rect x="60" y="48" width="820" height="112" fill="#dcfce7" opacity="0.3" />
+            <text x="70" y="42" className="text-xs fill-green-600 font-semibold">Target Zone (70-90%)</text>
             
-            {/* Data points */}
-            {trendData.map((point, index) => (
-              <circle
-                key={index}
-                cx={(index / (trendData.length - 1)) * 800}
-                cy={200 - (point.utilization / 100) * 200}
-                r="3"
-                fill="#3b82f6"
-                className="hover:r-4 hover:fill-blue-600 cursor-pointer"
-                onClick={() => onDateClick?.(point.date)}
-              />
+            {/* Y-axis labels - properly aligned */}
+            <text x="50" y="25" textAnchor="end" className="text-xs fill-gray-700 font-medium">100%</text>
+            <text x="50" y="81" textAnchor="end" className="text-xs fill-gray-700 font-medium">80%</text>
+            <text x="50" y="137" textAnchor="end" className="text-xs fill-gray-700 font-medium">60%</text>
+            <text x="50" y="193" textAnchor="end" className="text-xs fill-gray-700 font-medium">40%</text>
+            <text x="50" y="249" textAnchor="end" className="text-xs fill-gray-700 font-medium">20%</text>
+            <text x="50" y="305" textAnchor="end" className="text-xs fill-gray-700 font-medium">0%</text>
+            
+            {/* Horizontal grid lines at each label */}
+            {[20, 76, 132, 188, 244, 300].map((y) => (
+              <line key={y} x1="60" y1={y} x2="880" y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
             ))}
             
-            {/* Y-axis labels */}
-            <text x="10" y="20" className="text-xs fill-gray-600">100%</text>
-            <text x="10" y="60" className="text-xs fill-gray-600">90%</text>
-            <text x="10" y="100" className="text-xs fill-gray-600">80%</text>
-            <text x="10" y="140" className="text-xs fill-gray-600">70%</text>
-            <text x="10" y="180" className="text-xs fill-gray-600">60%</text>
-            <text x="10" y="200" className="text-xs fill-gray-600">50%</text>
+            {/* Trend line - with proper scaling */}
+            <polyline
+              points={trendData.map((point, index) => {
+                const x = 60 + (index / (trendData.length - 1)) * 820;
+                const y = 300 - (point.utilization / 100) * 280;
+                return `${x},${y}`;
+              }).join(' ')}
+              fill="none"
+              stroke="#3b82f6"
+              strokeWidth="3"
+              className="hover:stroke-blue-700 transition-colors"
+            />
+            
+            {/* Rolling 7-day average */}
+            <polyline
+              points={trendData.map((point, index) => {
+                const x = 60 + (index / (trendData.length - 1)) * 820;
+                const y = 300 - (point.rolling7Day / 100) * 280;
+                return `${x},${y}`;
+              }).join(' ')}
+              fill="none"
+              stroke="#10b981"
+              strokeWidth="2"
+              strokeDasharray="8,4"
+              opacity="0.7"
+            />
+            
+            {/* X-axis date labels - show every 15 days */}
+            {trendData.filter((_, index) => index % 15 === 0 || index === trendData.length - 1).map((point, idx, filtered) => {
+              const index = trendData.indexOf(point);
+              const x = 60 + (index / (trendData.length - 1)) * 820;
+              const dateObj = new Date(point.date);
+              const label = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+              return (
+                <text 
+                  key={index} 
+                  x={x} 
+                  y="320" 
+                  textAnchor="middle" 
+                  className="text-xs fill-gray-600 font-medium"
+                >
+                  {label}
+                </text>
+              );
+            })}
+            
+            {/* Data points - show every 3rd point to avoid clutter */}
+            {trendData.filter((_, index) => index % 3 === 0).map((point) => {
+              const index = trendData.indexOf(point);
+              const x = 60 + (index / (trendData.length - 1)) * 820;
+              const y = 300 - (point.utilization / 100) * 280;
+              return (
+                <circle
+                  key={index}
+                  cx={x}
+                  cy={y}
+                  r="4"
+                  fill="#3b82f6"
+                  className="hover:r-6 hover:fill-blue-700 cursor-pointer transition-all"
+                  onClick={() => onDateClick?.(point.date)}
+                />
+              );
+            })}
+            
+            {/* Y-axis label */}
+            <text x="20" y="160" textAnchor="middle" className="text-sm fill-gray-700 font-semibold" transform="rotate(-90, 20, 160)">
+              Utilization %
+            </text>
+            
+            {/* X-axis label */}
+            <text x="470" y="345" textAnchor="middle" className="text-sm fill-gray-700 font-semibold">
+              Date (Last 90 Days)
+            </text>
           </svg>
         </div>
         

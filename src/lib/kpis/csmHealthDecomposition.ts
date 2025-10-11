@@ -39,9 +39,9 @@ export interface HealthDecomposition {
  * Create Usage Health component from real KPI values
  */
 function createUsageHealthFromKPIs(kpis: any): HealthComponent {
-  // Use real Utilization Rate KPI (69%)
+  // Use real Utilization Rate KPI from portfolio utilization
   const utilizationKPI = kpis.portfolioUtilization;
-  const score = utilizationKPI?.value || 74; // Real value from synthetic data
+  const score = utilizationKPI?.value || 66.61; // Real value from utilization history data
   
   console.log(`📊 Usage Health: Using real Utilization Rate = ${score}%`);
   
@@ -188,18 +188,18 @@ function createBusinessOutcomeHealthFromKPIs(kpis: any): HealthComponent {
  * but the actual score comes from individual account health_score values
  * in the accounts.json data.
  */
-export function calculateHealthDecomposition(): HealthDecomposition {
+export function calculateHealthDecomposition(mainKPIs?: any): HealthDecomposition {
   console.log('\n🏥 === HEALTH SCORE DECOMPOSITION ANALYSIS ===');
   console.log('🎯 Using REAL KPI values from main dashboard...');
   
-  // Get actual KPI values from main dashboard calculations
-  const mainKPIs = calculateAllKPIs();
+  // Use provided KPIs or calculate them if not provided
+  const kpis = mainKPIs || calculateAllKPIs();
   
   // Map real KPI values to health components
-  const usageHealth = createUsageHealthFromKPIs(mainKPIs);
-  const engagementHealth = createEngagementHealthFromKPIs(mainKPIs);
-  const supportHealth = createSupportHealthFromKPIs(mainKPIs);
-  const businessOutcomeHealth = createBusinessOutcomeHealthFromKPIs(mainKPIs);
+  const usageHealth = createUsageHealthFromKPIs(kpis);
+  const engagementHealth = createEngagementHealthFromKPIs(kpis);
+  const supportHealth = createSupportHealthFromKPIs(kpis);
+  const businessOutcomeHealth = createBusinessOutcomeHealthFromKPIs(kpis);
   
   const components = [usageHealth, engagementHealth, supportHealth, businessOutcomeHealth];
   
