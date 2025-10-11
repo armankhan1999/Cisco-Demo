@@ -12,7 +12,7 @@ interface SidebarProps {
 export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const personas: Persona[] = ['CSM', 'CO', 'SE'];
+  const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
@@ -29,6 +29,11 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
       SE: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      ),
+      AI_CHAT: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
       ),
     };
