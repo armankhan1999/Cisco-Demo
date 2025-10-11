@@ -1,0 +1,140 @@
+Page	Element Type	Element Name/Description	Has Drill-Down	Product Owner Correction - Should have Drill - Down?	QA Test Pass or Fail?	Drill-Down Destination	Notes
+/csm/health	Header	"Page Title ""Portfolio Health & Risk Overview"""	No			N/A	Static text
+/csm/health	Header	Last Updated Timestamp	No			N/A	Static text
+/csm/health	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/health	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/health	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/health	KPI Card	Portfolio Health Score	Yes	Yes	PASS	Account list filtered by health score	Via KPICard component
+/csm/health	KPI Card	Total Accounts	Yes	Yes	PASS	Account list	Via KPICard component
+/csm/health	KPI Card	Total ARR	Yes	Yes	PASS	Account list sorted by ARR	Via KPICard component
+/csm/health	KPI Card	At-Risk ARR	Yes	Yes	PASS	/account/CUST_000001	Hardcoded to first high-risk account
+/csm/health	KPI Card	Renewal Pipeline	Yes	Yes	PASS	/account/CUST_000001	Hardcoded to first renewal account
+/csm/health	KPI Card	Expansion Opportunities	Yes	Yes	PASS	/account/CUST_000001	Hardcoded to first expansion account
+/csm/health	Chart	Health Distribution Pie Chart	Yes		PASS	Dashboard filtered by health category	Click pie segments
+/csm/health	Chart	Health Distribution Center Text	No			N/A	Portfolio health score display
+/csm/health	Chart	Health Distribution Legend	Yes		PASS	Dashboard filtered by health category	Click legend items
+/csm/health	Chart	Risk/Opportunity Matrix Scatter Plot	Yes		PASS	/account/[accountId]	Click bubbles to navigate
+/csm/health	Chart	Risk/Opportunity Matrix Quadrant Labels	No			N/A	Static labels
+/csm/health	Chart	Risk/Opportunity Matrix Legend	No			N/A	Color legend
+/csm/health	Card	Action Priority Queue	No			N/A	Placeholder content
+/csm/usage	Header	"Page Title ""Usage & Adoption Analytics"""	No			N/A	Static text
+/csm/usage	Header	Last Updated Timestamp	No			N/A	Static text
+/csm/usage	Header	Account Count Display	No			N/A	Static text
+/csm/usage	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/usage	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/usage	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/usage	Chart	Product Adoption Trends Line Chart	No			N/A	"Visual only, no click handlers on lines"
+/csm/usage	Button	Product Adoption Time Range Buttons (30d/90d/6m)	No			N/A	Changes time range only
+/csm/usage	Card	Product Metric Cards (Meraki/Duo/Umbrella/etc)	Yes		PASS	Dashboard filtered by product	Click to toggle + filter
+/csm/usage	Chart	Feature Usage Heatmap Grid	Yes		PASS	/account/[accountId]	Click cells to navigate to account
+/csm/usage	Button	Feature Heatmap Product Selector	No			N/A	Changes heatmap product only
+/csm/usage	Chart	License Utilization Charts	Yes		PASS	/account/[accountId]	Click utilization categories
+/csm/usage	Button	License Utilization View Toggle	No			N/A	Changes view type only
+/csm/usage	Card	Usage Anomaly Cards	Yes		PASS	/account/[accountId]	Click anomalies to navigate
+/csm/usage	Text	Usage Anomaly Descriptions	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/usage	Badge	Usage Anomaly Severity Badges	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Header	"Page Title ""Renewal Management"""	No			N/A	Static text
+/csm/renewals	Header	Last Updated + Contract Count	No			N/A	Static text
+/csm/renewals	Button	Time Frame Buttons (30/60/90/all days)	No			N/A	Filters renewal list only
+/csm/renewals	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/renewals	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/renewals	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/renewals	KPI Card	Total Pipeline	Yes	Yes	PASS	Filtered renewal list	KPI filtering implemented
+/csm/renewals	KPI Card	At Risk	Yes	Yes	PASS	Filtered renewal list (high/critical risk)	KPI filtering implemented
+/csm/renewals	KPI Card	Avg Probability	Yes	Yes	PASS	Filtered renewal list (sorted by probability)	KPI filtering implemented
+/csm/renewals	KPI Card	Due 90 Days	Yes	Yes	PASS	Filtered renewal list (due in 90 days)	KPI filtering implemented
+/csm/renewals	KPI Card	Renewal Rate	Yes	Yes	PASS	Filtered renewal list (high probability)	KPI filtering implemented
+/csm/renewals	KPI Card	Growth Rate	Yes	Yes	PASS	Filtered renewal list (sorted by growth)	KPI filtering implemented
+/csm/renewals	List Item	Renewal Contract Cards	Yes		PASS	/account/[accountId]	Double-click to navigate
+/csm/renewals	Text	Account Names in Renewal List	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Badge	Risk Level Badges	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Text	Tier and CSM Information	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Text	ARR Values	Yes		PASS	/account/[accountId]	Part of clickable card
+/csv/renewals	Text	Days to Renewal	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Text	Renewal Probability	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Text	Health Score	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/renewals	Card	Selected Contract Details	Yes	Yes	PASS	/account/[accountId]	Clickable contract details
+/csm/renewals	Badge	Contract Type Badges	No			N/A	Display only
+/csm/renewals	Badge	Product Badges	No			N/A	Display only
+/csm/renewals	Badge	Stakeholder Badges	No			N/A	Display only
+/csm/renewals	Progress Bar	Renewal Progress Bar	No			N/A	Visual indicator only
+/csm/renewals	Text	Predicted Outcome Values	Yes	Yes	PASS	/account/[accountId]	Clickable outcome values
+/csm/renewals	List	Risk Factors List	No			N/A	Display only
+/csm/renewals	List	Opportunities List	No			N/A	Display only
+/csm/expansion	Header	"Page Title ""Expansion Opportunities"""	No			N/A	Static text
+/csm/expansion	Header	Last Updated + Opportunity Count	No			N/A	Static text
+/csm/expansion	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/expansion	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/expansion	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/expansion	KPI Card	Total Pipeline	Yes	Yes	PASS	Filtered opportunity list	KPI filtering implemented
+/csm/expansion	KPI Card	High Priority	Yes	Yes	PASS	Filtered opportunity list (high priority)	KPI filtering implemented
+/csm/expansion	KPI Card	Avg Score	Yes	Yes	PASS	Filtered opportunity list (sorted by score)	KPI filtering implemented
+/csm/expansion	KPI Card	Ready Accounts	Yes	Yes	PASS	Filtered opportunity list (Q1/Q2 timeline)	KPI filtering implemented
+/csm/expansion	List Item	Expansion Opportunity Cards	Yes		PASS	/account/[accountId]	Double-click to navigate
+/csm/expansion	Text	Account Names in Opportunity List	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/expansion	Badge	Priority Badges	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/expansion	Text	Current and Potential ARR	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/expansion	Text	Expansion Score	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/expansion	Progress Bar	Readiness Factors	No			N/A	Visual indicator only
+/csm/expansion	Badge	Product Badges	No			N/A	Display only
+/csm/expansion	Text	Timeline Information	Yes	Yes	PASS	/account/[accountId]	Clickable timeline navigation
+/csm/expansion	List	Risk Factors	No			N/A	Display only
+/csm/expansion	List	Next Actions	No			N/A	Display only
+/csm/expansion	Table	White Space Analysis	No			N/A	Table display only
+/csm/relationships	Header	"Page Title ""Stakeholder Relationships"""	No			N/A	Static text
+/csm/relationships	Header	Last Updated + Account Count	No			N/A	Static text
+/csm/relationships	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/relationships	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/relationships	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/relationships	KPI Card	Avg Relationship Strength	Yes	Yes	PASS	Filtered relationship list (sorted by strength)	KPI filtering implemented
+/csm/relationships	KPI Card	Total Contacts	Yes	Yes	PASS	Filtered relationship list (sorted by contacts)	KPI filtering implemented
+/csm/relationships	KPI Card	Active Contacts	Yes	Yes	PASS	Filtered relationship list (active contacts >= 5)	KPI filtering implemented
+/csm/relationships	KPI Card	Champions	Yes	Yes	PASS	Filtered relationship list (champions >= 2)	KPI filtering implemented
+/csm/relationships	List Item	Relationship Account Cards	Yes		PASS	/account/[accountId]	Double-click to navigate
+/csm/relationships	Text	Account Names in Relationship List	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/relationships	Badge	Tier Badges	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/relationships	Text	CSM Information	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/relationships	Text	Health and Relationship Scores	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/relationships	Progress Bar	Relationship Strength Bar	No			N/A	Visual indicator only
+/csm/relationships	Text	Contact Metrics	Yes	Yes	PASS	/account/[accountId]	Clickable contact metrics
+/csm/relationships	List	Stakeholder Contact Cards	No			N/A	Display only
+/csm/relationships	Badge	Contact Role Badges	No			N/A	Display only
+/csm/relationships	Badge	Contact Status Badges	No			N/A	Display only
+/csm/relationships	Text	Contact Information	Yes	Yes	PASS	/account/[accountId]	Clickable contact information
+/csm/journey	Header	"Page Title ""Customer Journey Tracking"""	No			N/A	Static text
+/csm/journey	Header	Last Updated + Journey Count	No			N/A	Static text
+/csm/journey	Button	Refresh Button	No			N/A	Refreshes data only
+/csm/journey	Button	Export Button	No			N/A	Export functionality (not implemented)
+/csm/journey	Button	Filters Button	No			N/A	Filter UI (not implemented)
+/csm/journey	KPI Card	Avg Journey Progress	Yes	Yes	PASS	Filtered journey list (sorted by progress)	KPI filtering implemented
+/csm/journey	KPI Card	Active Journeys	Yes	Yes	PASS	Filtered journey list (non-renewal journeys)	KPI filtering implemented
+/csm/journey	KPI Card	Completed Milestones	Yes	Yes	PASS	Filtered journey list (sorted by milestones)	KPI filtering implemented
+/csm/journey	KPI Card	At Risk Journeys	Yes	Yes	PASS	Filtered journey list (at-risk/low health)	KPI filtering implemented
+/csm/journey	List Item	Journey Account Cards	Yes		PASS	/account/[accountId]	Double-click to navigate
+/csm/journey	Text	Account Names in Journey List	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/journey	Badge	Journey Phase Badges	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/journey	Text	CSM and Tier Information	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/journey	Text	Onboarding Date	Yes		PASS	/account/[accountId]	Part of clickable card
+/csm/journey	Progress Bar	Journey Progress Bar	No			N/A	Visual indicator only
+/csm/journey	Timeline	Journey Milestone Timeline	No			N/A	Visual timeline only
+/csm/journey	Badge	Milestone Status Badges	No			N/A	Display only
+/csm/journey	Text	Milestone Descriptions	Yes	Yes	PASS	/account/[accountId]	Clickable milestone descriptions
+/csm/journey	Text	Next Milestone Information	Yes	Yes	PASS	/account/[accountId]	Clickable next milestone info
+/account/[id]	Header	Account Name	No			N/A	Static text
+/account/[id]	Header	Account Tier and Industry	No			N/A	Static text
+/account/[id]	Badge	Health Category Badge	No			N/A	Display only
+/account/[id]	Text	ARR Value	Yes	Yes	PASS	/csm/renewals	Clickable ARR navigation
+/account/[id]	Text	CSM Assignment	Yes	Yes	PASS	/csm/relationships	Clickable CSM navigation
+/account/[id]	Text	Geography Information	Yes	Yes	PASS	/csm/health	Clickable geography navigation
+/account/[id]	Progress Bar	Health Score Bar	No			N/A	Visual indicator only
+/account/[id]	Chart	Health Trend Chart	No			N/A	Visual chart only
+/account/[id]	List	Risk Indicators	No			N/A	Display only
+/account/[id]	List	Improvement Recommendations	No			N/A	Display only
+/account/[id]	Chart	Usage Trends Chart	No			N/A	Visual chart only (if implemented)
+/account/[id]	Timeline	Engagement Timeline	No			N/A	Display only
+/account/[id]	Card	Support Activity Metrics	Yes	Yes	PASS	/csm/usage	Clickable support metrics card
+/account/[id]	Card	Expansion Signals	Yes	Yes	PASS	/csm/expansion	Clickable expansion signals card
+/account/[id]	Card	Renewal Forecast	Yes	Yes	PASS	/csm/renewals	Clickable renewal forecast card
+/account/[id]	List	Stakeholder Information	No			N/A	Display only
+/account/[id]	List	Recent Activities	No			N/A	Display only
+/account/[id]	List	AI Insights	No			N/A	Display only
