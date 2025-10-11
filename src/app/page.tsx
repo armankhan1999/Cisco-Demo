@@ -13,7 +13,8 @@ export default function Home() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderMainContent = () => {
-    if (currentPersona === 'CO' && currentView === 'command-center') {
+    // Always show the new dashboard for CO persona
+    if (currentPersona === 'CO') {
       return <DrillDownDashboard />;
     }
     

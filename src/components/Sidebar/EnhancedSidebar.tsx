@@ -79,6 +79,11 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
   const handlePersonaClick = (persona: Persona) => {
     onPersonaChange(persona);
     setExpandedPersona(expandedPersona === persona ? null : persona);
+    
+    // Auto-select default dashboard for CO persona
+    if (persona === 'CO' && onViewChange) {
+      onViewChange('command-center');
+    }
   };
 
   const handleDashboardClick = (dashboardId: string) => {
