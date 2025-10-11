@@ -21,7 +21,18 @@ export async function getSnowflakeConnection() {
   }
 
   console.log('✅ Using private key from environment variable');
-  const privateKeyData = privateKeyContent;
+  
+  // Handle both formats: with actual newlines or with \n escape sequences
+  // This ensures compatibility with Vercel and other platforms that might escape newlines
+  let privateKeyData = privateKeyContent;
+  
+  // If the key doesn't have actual newlines but has \n escape sequences, replace them
+  if (!privateKeyData.includes('\n') && privateKeyData.includes('\\n')) {
+    privateKeyData = privateKeyData.replace(/\\n/g, '\n');
+  }
+  
+  // Remove any quotes that might have been added
+  privateKeyData = privateKeyData.replace(/^["']|["']$/g, '');
   
   // Decrypt the private key using the passphrase
   let privateKeyObject;
