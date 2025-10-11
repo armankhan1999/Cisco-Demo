@@ -7,7 +7,7 @@
  * in components to use your actual data source/API.
  */
 
-export type Persona = 'CSM' | 'CO' | 'SE';
+export type Persona = 'CSM' | 'CO' | 'SE' | 'AI_CHAT';
 
 // ============================================================================
 // CSM (Customer Success Management) Dummy Data
@@ -128,6 +128,8 @@ export function getPersonaData(persona: Persona) {
       return coDummyData;
     case 'SE':
       return seDummyData;
+    case 'AI_CHAT':
+      return {};
     default:
       return csmDummyData;
   }
@@ -141,6 +143,7 @@ export function getPersonaName(persona: Persona): string {
     CSM: 'Customer Success Manager',
     CO: 'Commercial Operations',
     SE: 'Sales Expansion',
+    AI_CHAT: 'AI Chat Assistant',
   };
   return names[persona];
 }
@@ -153,6 +156,7 @@ export function getPersonaDescription(persona: Persona): string {
     CSM: 'Monitor customer health, engagement, and product adoption',
     CO: 'Track quotes, orders, invoices, and revenue operations',
     SE: 'Identify expansion opportunities and manage sales pipeline',
+    AI_CHAT: 'Ask questions about your data and get intelligent insights',
   };
   return descriptions[persona];
 }

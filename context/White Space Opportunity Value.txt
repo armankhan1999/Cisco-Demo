@@ -1,0 +1,116 @@
+-- White Space Opportunity Value for Sales Expansion Leader Dashboard
+-- Calculates untapped revenue potential from customers who haven't adopted all product families
+
+WITH product_catalog AS (
+    -- Define all available Cisco product families
+    SELECT product_family, 
+           CASE 
+               WHEN product_family = 'Duo' THEN 120000
+               WHEN product_family = 'Meraki' THEN 250000
+               WHEN product_family = 'Umbrella' THEN 180000
+               WHEN product_family = 'SecureX' THEN 150000
+               WHEN product_family = 'ThousandEyes' THEN 200000
+           END AS avg_arr_potential
+    FROM (
+        SELECT 'Duo' AS product_family
+        UNION ALL SELECT 'Meraki'
+        UNION ALL SELECT 'Umbrella'
+        UNION ALL SELECT 'SecureX'
+        UNION ALL SELECT 'ThousandEyes'
+    ) products
+),
+
+customer_current_products AS (
+    -- Identify which products each customer currently has
+    SELECT 
+        a.id AS customer_id,
+        a.name AS customer_name,
+        a.tier,
+        a.health_score,
+        a.arr AS current_arr,
+        STRING_AGG(DISTINCT s.product_family, ', ') AS owned_products,
+        COUNT(DISTINCT s.product_family) AS product_count
+    FROM accounts a
+    LEFT JOIN subscriptions s 
+        ON a.id = s.customer_id 
+        AND s.subscription_status = 'active'
+    WHERE a.health_score >= 60  -- Focus on healthy customers
+    GROUP BY a.id, a.name, a.tier, a.health_score, a.arr
+),
+
+white_space_calc AS (
+    -- Calculate white space for each customer
+    SELECT 
+        ccp.customer_id,
+        ccp.customer_name,
+        ccp.tier,
+        ccp.health_score,
+        ccp.current_arr,
+        ccp.product_count AS products_owned,
+        (5 - ccp.product_count) AS products_not_owned,
+        ccp.owned_products,
+        
+        -- Calculate weighted opportunity value
+        SUM(
+            CASE 
+                WHEN pc.product_family NOT IN (
+                    SELECT UNNEST(STRING_TO_ARRAY(ccp.owned_products, ', '))
+                )
+                THEN pc.avg_arr_potential * 
+                     (ccp.health_score / 100.0) *  -- Health score weight
+                     CASE ccp.tier                   -- Tier weight
+                         WHEN 'Enterprise' THEN 1.5
+                         WHEN 'Growth' THEN 1.0
+                         WHEN 'Startup' THEN 0.6
+                         ELSE 0.8
+                     END
+                ELSE 0
+            END
+        ) AS white_space_opportunity_value,
+        
+        -- Identify missing products
+        STRING_AGG(
+            CASE 
+                WHEN pc.product_family NOT IN (
+                    SELECT UNNEST(STRING_TO_ARRAY(ccp.owned_products, ', '))
+                )
+                THEN pc.product_family
+                ELSE NULL
+            END, 
+            ', '
+        ) AS missing_products
+    FROM customer_current_products ccp
+    CROSS JOIN product_catalog pc
+    GROUP BY 
+        ccp.customer_id, 
+        ccp.customer_name, 
+        ccp.tier, 
+        ccp.health_score, 
+        ccp.current_arr,
+        ccp.product_count,
+        ccp.owned_products
+)
+
+-- Final aggregated output for dashboard KPI
+SELECT 
+    -- Total white space opportunity across all customers
+    SUM(white_space_opportunity_value) AS total_white_space_value,
+    
+    -- Average per customer
+    AVG(white_space_opportunity_value) AS avg_white_space_per_customer,
+    
+    -- Count of customers with white space
+    COUNT(DISTINCT customer_id) AS customers_with_white_space,
+    
+    -- Breakdown by tier
+    tier,
+    SUM(white_space_opportunity_value) AS white_space_by_tier,
+    COUNT(DISTINCT customer_id) AS customer_count_by_tier,
+    
+    -- Top missing products
+    missing_products,
+    COUNT(*) AS frequency
+FROM white_space_calc
+WHERE white_space_opportunity_value > 0
+GROUP BY ROLLUP(tier, missing_products)
+ORDER BY white_space_by_tier DESC NULLS LAST;

@@ -7,6 +7,7 @@ import { colors, personaColors } from '@/config/theme';
 import { Persona, getPersonaData, getPersonaName } from '@/data/dummyData';
 import PersonaDropdowns from './PersonaDropdowns';
 import DashboardStats from './DashboardStats';
+import ChatInterface from '../Chat/ChatInterface';
 import { CSMPortfolioDashboard } from '@/components/CSM/CSMPortfolioDashboard';
 
 interface DashboardProps {
@@ -16,6 +17,11 @@ interface DashboardProps {
 export default function Dashboard({ persona }: DashboardProps) {
   const personaColor = personaColors[persona];
   const data = getPersonaData(persona);
+
+  // If AI_CHAT persona is selected, render the ChatInterface
+  if (persona === 'AI_CHAT') {
+    return <ChatInterface />;
+  }
 
   // Show new CSM Portfolio Dashboard for CSM persona
   if (persona === 'CSM') {

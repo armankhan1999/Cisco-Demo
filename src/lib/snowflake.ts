@@ -1,0 +1,352 @@
+import snowflake from 'snowflake-sdk';
+import crypto from 'crypto';
+import type { SnowflakeQueryResult, CortexAnalystResult, ConversationMessage } from '@/types/snowflake';
+
+let connectionInstance: snowflake.Connection | null = null;
+
+/**
+ * Get or create Snowflake connection with JWT key-pair auth
+ */
+export async function getSnowflakeConnection() {
+  if (connectionInstance?.isUp()) {
+    return connectionInstance;
+  }
+
+  const privateKeyContent = process.env.SNOWFLAKE_PRIVATE_KEY;
+  const privateKeyPass = process.env.SNOWFLAKE_PRIVATE_KEY_PASS;
+
+  console.log('=== SNOWFLAKE CONNECTION DEBUG ===');
+  console.log('1️⃣ Private key exists:', !!privateKeyContent);
+  console.log('1️⃣ Private key length:', privateKeyContent?.length || 0);
+  console.log('1️⃣ Passphrase exists:', !!privateKeyPass);
+
+  // Get private key from environment variable
+  if (!privateKeyContent) {
+    throw new Error('SNOWFLAKE_PRIVATE_KEY environment variable is not configured');
+  }
+
+  console.log('2️⃣ Using private key from environment variable');
+  
+  // Handle both formats: with actual newlines or with \n escape sequences
+  // This ensures compatibility with Vercel and other platforms that might escape newlines
+  let privateKeyData = privateKeyContent;
+  
+  console.log('3️⃣ Before trim/quote removal - length:', privateKeyData.length);
+  console.log('3️⃣ First 30 chars:', JSON.stringify(privateKeyData.substring(0, 30)));
+  
+  // Remove any quotes that might have been added
+  privateKeyData = privateKeyData.replace(/^["']|["']$/g, '').trim();
+  
+  console.log('4️⃣ After trim/quote removal - length:', privateKeyData.length);
+  
+  // Check if we need to convert \n literals to actual newlines
+  // Count actual newlines vs the string length to determine format
+  const lineCount = privateKeyData.split('\n').length;
+  const hasBackslashN = privateKeyData.includes('\\n');
+  
+  console.log('5️⃣ Line count (by newlines):', lineCount);
+  console.log('5️⃣ Contains \\n sequences:', hasBackslashN);
+  
+  const hasActualNewlines = lineCount > 2;
+  
+  if (!hasActualNewlines) {
+    // This is the single-line format with \n as literal characters
+    // Replace all \n sequences with actual newlines
+    console.log('6️⃣ Converting \\n sequences to actual newlines');
+    privateKeyData = privateKeyData.split('\\n').join('\n');
+    console.log('6️⃣ After conversion - line count:', privateKeyData.split('\n').length);
+  } else {
+    console.log('6️⃣ Key already has actual newlines, no conversion needed');
+  }
+  
+  console.log('7️⃣ Final key format processed');
+  console.log('7️⃣ Key starts with:', privateKeyData.substring(0, 35));
+  console.log('7️⃣ Key ends with:', privateKeyData.substring(privateKeyData.length - 35));
+  console.log('7️⃣ Total lines in key:', privateKeyData.split('\n').length);
+  
+  // Debug: Check exact header and footer
+  const lines = privateKeyData.split('\n');
+  console.log('7️⃣ First line:', JSON.stringify(lines[0]));
+  console.log('7️⃣ Second line (first 40 chars):', JSON.stringify(lines[1]?.substring(0, 40)));
+  console.log('7️⃣ Last line:', JSON.stringify(lines[lines.length - 1]));
+  console.log('7️⃣ Second to last line (last 40 chars):', JSON.stringify(lines[lines.length - 2]?.substring(lines[lines.length - 2].length - 40)));
+  
+  // Decrypt the private key using the passphrase (if encrypted)
+  let privateKeyObject;
+  try {
+    console.log('8️⃣ Attempting to create private key object...');
+    console.log('8️⃣ Key type check - starts with BEGIN:', privateKeyData.startsWith('-----BEGIN'));
+    console.log('8️⃣ Key type check - contains RSA:', privateKeyData.includes('RSA PRIVATE KEY'));
+    console.log('8️⃣ Key type check - contains ENCRYPTED:', privateKeyData.includes('ENCRYPTED'));
+    
+    const isEncrypted = privateKeyData.includes('ENCRYPTED');
+    console.log('8️⃣ Key is encrypted:', isEncrypted);
+    
+    // Try to create the private key object
+    // Only use passphrase if the key is actually encrypted
+    const keyOptions: {
+      key: string | Buffer;
+      format: 'pem';
+      passphrase?: string;
+    } = {
+      key: privateKeyData,
+      format: 'pem',
+    };
+    
+    if (isEncrypted && privateKeyPass) {
+      console.log('8️⃣ Using passphrase for encrypted key');
+      keyOptions.passphrase = privateKeyPass;
+    } else {
+      console.log('8️⃣ No passphrase needed (unencrypted key)');
+    }
+    
+    privateKeyObject = crypto.createPrivateKey(keyOptions);
+    
+    console.log('9️⃣ Private key object created successfully');
+    console.log('9️⃣ Key type:', privateKeyObject.asymmetricKeyType);
+    
+    // Export as PKCS8 format (unencrypted) which Snowflake SDK expects
+    console.log('🔟 Exporting to PKCS8 format...');
+    const privateKeyPem = privateKeyObject.export({
+      type: 'pkcs8',
+      format: 'pem',
+    });
+    
+    console.log('✅ Private key decrypted and formatted successfully');
+    console.log('✅ Exported key length:', (privateKeyPem as string).length);
+    
+    if (!process.env.SNOWFLAKE_ACCOUNT || !process.env.SNOWFLAKE_USERNAME || !process.env.SNOWFLAKE_WAREHOUSE || !process.env.SNOWFLAKE_DATABASE) {
+      throw new Error('Missing required Snowflake environment variables');
+    }
+    
+    connectionInstance = snowflake.createConnection({
+      account: process.env.SNOWFLAKE_ACCOUNT,
+      username: process.env.SNOWFLAKE_USERNAME,
+      authenticator: 'SNOWFLAKE_JWT',
+      privateKey: privateKeyPem as string,
+      warehouse: process.env.SNOWFLAKE_WAREHOUSE,
+      database: process.env.SNOWFLAKE_DATABASE,
+    });
+  } catch (keyError) {
+    const error = keyError as Error;
+    console.error('❌ ========================================');
+    console.error('❌ ERROR PROCESSING PRIVATE KEY');
+    console.error('❌ ========================================');
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error name:', error.name);
+    console.error('❌ Full error:', error);
+    console.error('❌ Stack trace:', error.stack);
+    console.error('❌ ========================================');
+    throw new Error(`Failed to process private key: ${error.message}`);
+  }
+
+  if (!connectionInstance) {
+    throw new Error('Failed to create Snowflake connection');
+  }
+
+  await new Promise<void>((resolve, reject) => {
+    connectionInstance!.connect((err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+
+  // Set database context
+  await executeSnowflakeQuery(`USE WAREHOUSE ${process.env.SNOWFLAKE_WAREHOUSE}`);
+  await executeSnowflakeQuery(`USE DATABASE ${process.env.SNOWFLAKE_DATABASE}`);
+
+  console.log('✅ Connected to Snowflake');
+  return connectionInstance;
+}
+
+/**
+ * Execute a Snowflake query
+ */
+export async function executeSnowflakeQuery(query: string): Promise<SnowflakeQueryResult[]> {
+  const connection = await getSnowflakeConnection();
+
+  return new Promise((resolve, reject) => {
+    connection.execute({
+      sqlText: query,
+      complete: (err: Error | undefined, _stmt: unknown, rows: SnowflakeQueryResult[] | undefined) => {
+        if (err) {
+          reject(new Error(`Snowflake query failed: ${err.message}`));
+        } else {
+          resolve(rows || []);
+        }
+      },
+    });
+  });
+}
+
+/**
+ * Main function: Convert natural language to SQL and execute
+ *
+ * @param message - User's natural language question
+ * @param _conversationHistory - Previous messages (optional, currently unused)
+ * @param tableName - Target table (default: T_BRZ_ACCOUNTS)
+ * @returns Response with SQL, results, and explanation
+ */
+export async function callCortexAnalyst(
+  message: string,
+  _conversationHistory: ConversationMessage[] = [],
+  tableName: string = 'DB_CISCO_ANALYTICS.RAW.T_BRZ_ACCOUNTS'
+): Promise<CortexAnalystResult> {
+  console.log(`🔍 Processing question: "${message}"`);
+  console.log(`📊 Target table: ${tableName}`);
+
+  try {
+    // Step 1: Get table schema
+    const schemaResult = await executeSnowflakeQuery(`DESCRIBE TABLE ${tableName}`);
+
+    const schemaInfo = schemaResult
+      .map((col) => `${col.name || col.NAME} (${col.type || col.TYPE})`)
+      .join(', ');
+
+    console.log(`✅ Schema retrieved: ${schemaResult.length} columns`);
+
+    // Step 2: Generate SQL with CORTEX.COMPLETE
+    const promptText = `Generate a single SQL query to answer this question. Return ONLY the SQL query with no explanation, no markdown formatting, no code blocks.
+
+Database: ${tableName}
+Available columns: ${schemaInfo.substring(0, 500)}...
+
+Question: ${message}
+
+Requirements:
+- Use fully qualified table names (DB_CISCO_ANALYTICS.RAW.TABLE_NAME)
+- Use UPPERCASE for all column names
+- Return a single SELECT statement
+- Use DISTINCT when selecting to avoid duplicate rows
+- Use proper GROUP BY when counting or aggregating
+- No explanatory text, just the SQL query
+
+SQL query:`;
+
+    const sqlGenResult = await executeSnowflakeQuery(`
+      SELECT SNOWFLAKE.CORTEX.COMPLETE(
+        'mistral-large',
+        '${promptText.replace(/'/g, "''")}'
+      ) as sql_query
+    `);
+
+    const rawSqlQuery = sqlGenResult?.[0]?.SQL_QUERY || sqlGenResult?.[0]?.sql_query || '';
+    
+    // Ensure it's a string
+    let sqlQuery = String(rawSqlQuery);
+
+    // Clean up the generated SQL
+    sqlQuery = sqlQuery
+      .replace(/```sql/gi, '')
+      .replace(/```/g, '')
+      .trim();
+
+    console.log('✅ Generated SQL:', sqlQuery.substring(0, 100) + '...');
+
+    // Step 3: Execute the generated SQL
+    let queryResults: SnowflakeQueryResult[] | null = null;
+    let queryError: string | null = null;
+
+    try {
+      queryResults = await executeSnowflakeQuery(sqlQuery);
+      console.log(`✅ Query executed: ${queryResults?.length || 0} rows returned`);
+    } catch (execError) {
+      const error = execError as Error;
+      queryError = error.message;
+      console.error('❌ Query execution failed:', queryError);
+    }
+
+    // Step 4: Generate natural language explanation with actual data
+    let explanation = '';
+    
+    if (queryError) {
+      explanation = `There was an error executing the query: ${queryError}`;
+    } else if (!queryResults || queryResults.length === 0) {
+      explanation = `No results found matching your criteria.`;
+    } else {
+      // Format the actual data in the response
+      const dataPreview = queryResults.slice(0, 20); // First 20 results
+      const columnNames = Object.keys(dataPreview[0]);
+      
+      // Check if we need to deduplicate (if only one column and has duplicates)
+      let uniqueData = dataPreview;
+      if (columnNames.length === 1) {
+        const seen = new Set();
+        uniqueData = dataPreview.filter(row => {
+          const value = row[columnNames[0]];
+          if (seen.has(value)) return false;
+          seen.add(value);
+          return true;
+        });
+      }
+      
+      // Create a formatted list of results
+      let formattedData = '';
+      if (uniqueData.length === 1) {
+        // Single result - show all columns
+        formattedData = Object.entries(uniqueData[0])
+          .map(([key, value]) => `**${key}**: ${value}`)
+          .join('\n');
+      } else if (columnNames.length === 1) {
+        // Single column - simple list
+        formattedData = uniqueData.map((row, idx) => {
+          const value = row[columnNames[0]];
+          return `${idx + 1}. ${value}`;
+        }).join('\n');
+      } else {
+        // Multiple columns - show with additional info
+        formattedData = uniqueData.map((row, idx) => {
+          const mainValue = row[columnNames[0]] || Object.values(row)[0];
+          const additionalInfo = columnNames.length > 1 
+            ? ` - ${Object.entries(row).slice(1, 3).map(([k, v]) => `${k}: ${v}`).join(', ')}` 
+            : '';
+          return `${idx + 1}. **${mainValue}**${additionalInfo}`;
+        }).join('\n');
+      }
+      
+      const totalCount = queryResults.length;
+      const uniqueCount = columnNames.length === 1 ? uniqueData.length : totalCount;
+      const showing = uniqueData.length;
+      
+      if (columnNames.length === 1 && uniqueCount < totalCount) {
+        explanation = `Found ${uniqueCount} unique result${uniqueCount !== 1 ? 's' : ''} (${totalCount} total rows)${uniqueCount > showing ? ` - showing first ${showing}` : ''}:\n\n${formattedData}`;
+      } else {
+        explanation = `Found ${totalCount} result${totalCount !== 1 ? 's' : ''}${totalCount > showing ? ` (showing first ${showing})` : ''}:\n\n${formattedData}`;
+      }
+      
+      if (uniqueCount > showing) {
+        explanation += `\n\n*Note: ${uniqueCount - showing} more result(s) not shown.*`;
+      }
+    }
+
+    console.log('✅ Generated explanation');
+
+    // Return response in Cortex Analyst format
+    return {
+      sql_query: sqlQuery,
+      query_results: queryResults,
+      explanation: explanation.trim(),
+      error: queryError || undefined,
+    };
+  } catch (error) {
+    const err = error as Error;
+    console.error('❌ Cortex analyst error:', err);
+    throw err;
+  }
+}
+
+/**
+ * Check if Snowflake credentials are configured
+ */
+export function isSnowflakeConfigured(): boolean {
+  return !!(
+    process.env.SNOWFLAKE_ACCOUNT &&
+    process.env.SNOWFLAKE_USERNAME &&
+    process.env.SNOWFLAKE_PRIVATE_KEY &&
+    process.env.SNOWFLAKE_PRIVATE_KEY_PASS
+  );
+}
+

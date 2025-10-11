@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, Heart, BarChart3, Target, ChevronRight, Activity, Users, TrendingUp, AlertCircle, Home } from 'lucide-react';
+import { Menu, Heart, BarChart3, Target, ChevronRight, Activity, Users, TrendingUp, AlertCircle, Home ,MessageSquare} from 'lucide-react';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
 import { useSidebar } from '@/contexts/SidebarContext';
 
@@ -26,7 +26,7 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
   const { isCollapsed, toggleSidebar } = useSidebar();
   const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
 
-  const personas: Persona[] = ['CSM', 'CO', 'SE'];
+  const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
 
   // Define main navigation sections
   const mainSections = [
@@ -133,6 +133,7 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
       CSM: Heart,
       CO: BarChart3,
       SE: Target,
+      AI_CHAT: MessageSquare,
     };
     const IconComponent = icons[persona];
     return <IconComponent className="h-4 w-4" />;

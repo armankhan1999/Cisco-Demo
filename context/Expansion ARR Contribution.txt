@@ -1,0 +1,37 @@
+-- Level 1: Overall Expansion Contribution
+SELECT 
+    SUM(CASE WHEN movement_type = 'expansion' THEN arr_change ELSE 0 END) AS expansion_arr,
+    SUM(arr_change) AS total_arr_change,
+    SUM(CASE WHEN movement_type = 'expansion' THEN arr_change ELSE 0 END) * 100.0 / 
+        NULLIF(SUM(arr_change), 0) AS expansion_contribution_pct
+FROM revenue_movements
+WHERE fiscal_year = EXTRACT(YEAR FROM CURRENT_DATE)
+    AND fiscal_quarter = 'Q' || EXTRACT(QUARTER FROM CURRENT_DATE);
+
+-- Level 2: Expansion by Category
+SELECT 
+    movement_category,
+    COUNT(*) AS expansion_count,
+    SUM(arr_change) AS total_expansion_arr,
+    AVG(arr_change) AS avg_expansion_value
+FROM revenue_movements
+WHERE movement_type = 'expansion'
+    AND fiscal_year = EXTRACT(YEAR FROM CURRENT_DATE)
+GROUP BY movement_category
+ORDER BY total_expansion_arr DESC;
+
+-- Level 3: Recent Expansion Movements
+SELECT 
+    rm.movement_id,
+    rm.customer_id,
+    a.name AS customer_name,
+    rm.movement_category,
+    rm.arr_change AS expansion_arr,
+    rm.effective_date,
+    s.product_family
+FROM revenue_movements rm
+JOIN accounts a ON rm.customer_id = a.id
+JOIN subscriptions s ON rm.subscription_id = s.subscription_id
+WHERE rm.movement_type = 'expansion'
+    AND rm.effective_date >= CURRENT_DATE - INTERVAL '30 days'
+ORDER BY rm.effective_date DESC;

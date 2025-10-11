@@ -1,0 +1,28 @@
+-- Renewal Quote Velocity: Monthly renewal quote creation rate with key metrics
+-- Purpose: Track how quickly the commercial ops team is generating renewal quotes
+
+SELECT 
+    DATE_TRUNC('month', quote_created_date) AS month,
+    COUNT(*) AS renewal_quotes_created,
+    COUNT(CASE WHEN quote_status = 'accepted' THEN 1 END) AS accepted_quotes,
+    COUNT(CASE WHEN quote_status IN ('sent', 'pending') THEN 1 END) AS pending_quotes,
+    ROUND(
+        COUNT(CASE WHEN quote_status = 'accepted' THEN 1 END)::NUMERIC / 
+        NULLIF(COUNT(*), 0) * 100, 
+        2
+    ) AS acceptance_rate_pct,
+    SUM(arr_value) AS total_renewal_arr,
+    AVG(arr_value) AS avg_renewal_arr,
+    ROUND(AVG(
+        EXTRACT(EPOCH FROM (quote_sent_date - quote_created_date)) / 86400
+    ), 2) AS avg_days_to_send
+FROM 
+    quotes
+WHERE 
+    quote_type = 'renewal'
+    AND quote_created_date >= CURRENT_DATE - INTERVAL '12 months'
+    AND quote_status NOT IN ('cancelled', 'expired')
+GROUP BY 
+    DATE_TRUNC('month', quote_created_date)
+ORDER BY 
+    month DESC;
