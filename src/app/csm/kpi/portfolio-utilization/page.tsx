@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PortfolioUtilizationKPI } from '../../../../components/CSM/LicenseUtilization/PortfolioUtilizationKPI';
 import { ActiveUsersKPI } from '../../../../components/CSM/LicenseUtilization/ActiveUsersKPI';
 import { SeatWasteKPI } from '../../../../components/CSM/LicenseUtilization/SeatWasteKPI';
 import { FeatureAdoptionKPI } from '../../../../components/CSM/LicenseUtilization/FeatureAdoptionKPI';
@@ -12,10 +11,12 @@ import { UtilizationByProduct } from '../../../../components/CSM/LicenseUtilizat
 import { UtilizationTrendAnalysis } from '../../../../components/CSM/LicenseUtilization/UtilizationTrendAnalysis';
 import { AccountUtilizationTable } from '../../../../components/CSM/LicenseUtilization/AccountUtilizationTable';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
+import { useSidebar } from '../../../../contexts/SidebarContext';
 
 export default function PortfolioUtilizationPage() {
   const router = useRouter();
   const [selectedBucket, setSelectedBucket] = useState<string | undefined>();
+  const { isCollapsed } = useSidebar();
 
   const handleBucketClick = (bucket: string) => {
     setSelectedBucket(bucket);
@@ -38,18 +39,18 @@ export default function PortfolioUtilizationPage() {
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         {/* Header Section */}
         <div className="bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-8 py-6">
+            <button
+              onClick={handleBackToOverview}
+              className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            >
+              ← Back to Portfolio Dashboard
+            </button>
             <div className="flex items-center justify-between">
               <div>
-                <button
-                  onClick={handleBackToOverview}
-                  className="text-blue-600 hover:text-blue-700 mb-3 flex items-center text-sm font-medium transition-colors"
-                >
-                  ← Back to Portfolio Dashboard
-                </button>
                 <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
                   📊 Portfolio License Utilization
                 </h1>
@@ -81,11 +82,10 @@ export default function PortfolioUtilizationPage() {
               <h2 className="text-2xl font-bold text-gray-900">Key Performance Indicators</h2>
               <span className="text-sm text-gray-500">Real-time metrics</span>
             </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-               <PortfolioUtilizationKPI />
-               <TotalLicensedSeatsKPI />
-               <ActiveUsersKPI />
-               <SeatWasteKPI />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               <TotalLicensedSeatsKPI drillDownUrl="/csm/kpi/license-details?focus=all" />
+               <ActiveUsersKPI drillDownUrl="/csm/kpi/license-details?focus=active" />
+               <SeatWasteKPI drillDownUrl="/csm/kpi/license-details?focus=waste" />
                <FeatureAdoptionKPI />
              </div>
           </section>

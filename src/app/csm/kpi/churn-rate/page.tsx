@@ -1,12 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
+import { useSidebar } from '../../../../contexts/SidebarContext';
 import { calculateAllKPIs, calculateChurnRate } from '@/lib/kpis/csmKPICalculations';
 import { getActiveAccounts, getAllRevenueMovements, getAllChurnPredictions } from '@/lib/data/csmDataLoader';
 
 export default function ChurnRateDrillDown() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [churnData, setChurnData] = useState<any>(null);
   const [churnedAccounts, setChurnedAccounts] = useState<any[]>([]);
@@ -14,6 +18,8 @@ export default function ChurnRateDrillDown() {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
+
+  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -153,7 +159,7 @@ export default function ChurnRateDrillDown() {
     return (
       <div className="flex h-screen overflow-hidden bg-gray-50">
         <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+        <div className={`flex-1 flex items-center justify-center transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
           <div className="text-gray-500">Loading Churn Analysis...</div>
         </div>
       </div>
@@ -190,18 +196,12 @@ export default function ChurnRateDrillDown() {
       <div className="flex-1 overflow-y-auto bg-gray-50">
         {/* Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-6">
-          <div className="flex items-center gap-4 mb-4">
-            <Link 
-              href="/csm/portfolio" 
-              className="flex items-center text-sm text-gray-600 hover:text-gray-800 transition-colors"
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Portfolio Dashboard
-            </Link>
-          </div>
-          
+          <button
+            onClick={() => router.push('/csm')}
+            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+          >
+            ← Back to Portfolio Dashboard
+          </button>
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Churn Rate Analysis</h1>

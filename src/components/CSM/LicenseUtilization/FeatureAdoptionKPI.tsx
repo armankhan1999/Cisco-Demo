@@ -46,27 +46,27 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
 
   const getStatusColor = () => {
     switch (kpi.status) {
-      case 'success': return 'from-green-50 to-green-100';
-      case 'warning': return 'from-orange-50 to-orange-100';
-      case 'danger': return 'from-red-50 to-red-100';
+      case 'success': return 'from-blue-50 to-blue-100';
+      case 'warning': return 'from-cyan-50 to-cyan-100';
+      case 'danger': return 'from-slate-50 to-slate-100';
       default: return 'from-gray-50 to-gray-100';
     }
   };
 
   const getTextColor = () => {
     switch (kpi.status) {
-      case 'success': return 'text-green-700';
-      case 'warning': return 'text-orange-700';
-      case 'danger': return 'text-red-700';
+      case 'success': return 'text-blue-700';
+      case 'warning': return 'text-cyan-700';
+      case 'danger': return 'text-slate-700';
       default: return 'text-gray-700';
     }
   };
 
   const getProgressColor = () => {
     switch (kpi.status) {
-      case 'success': return 'bg-green-500';
-      case 'warning': return 'bg-orange-500';
-      case 'danger': return 'bg-red-500';
+      case 'success': return 'bg-blue-500';
+      case 'warning': return 'bg-cyan-500';
+      case 'danger': return 'bg-slate-500';
       default: return 'bg-gray-500';
     }
   };
@@ -82,7 +82,7 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
 
   const getTrendColor = () => {
     if (kpi.trend === 'stable') return 'text-gray-600';
-    return kpi.trend === 'up' ? 'text-green-600' : 'text-red-600';
+    return kpi.trend === 'up' ? 'text-blue-600' : 'text-slate-600';
   };
 
   const getPerformanceText = () => {

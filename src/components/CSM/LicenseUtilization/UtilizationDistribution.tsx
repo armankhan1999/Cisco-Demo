@@ -1,13 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { calculateUtilizationDistribution, UtilizationDistribution } from '../../../lib/kpis/licenseUtilizationKPIs';
+import { useRouter } from 'next/navigation';
+import { calculateUtilizationDistribution, type UtilizationDistribution } from '../../../lib/kpis/licenseUtilizationKPIs';
 
 interface UtilizationDistributionProps {
   onBucketClick?: (bucket: string) => void;
 }
 
 export function UtilizationDistribution({ onBucketClick }: UtilizationDistributionProps) {
+  const router = useRouter();
   const [distribution, setDistribution] = useState<UtilizationDistribution[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,83 +78,66 @@ export function UtilizationDistribution({ onBucketClick }: UtilizationDistributi
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-8">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">
-        📊 Portfolio Utilization Distribution
-      </h3>
-      
-      {/* Large Histogram Visualization */}
-      <div className="mb-8">
-        <div className="text-lg font-semibold text-gray-700 mb-4">Accounts by Utilization Range</div>
-        <div className="space-y-4">
-          {distribution.map((bucket, index) => {
-            const maxAccounts = getMaxAccounts();
-            const barWidth = maxAccounts > 0 ? (bucket.accounts / maxAccounts) * 100 : 0;
-            
-            return (
-              <div key={index} className="flex items-center space-x-6">
-                <div className="w-24 text-sm font-semibold text-gray-700">
-                  {bucket.range}
-                </div>
-                <div className="flex-1 relative">
-                  <div className="w-full bg-gray-200 rounded-full h-8 flex items-center">
-                    <div 
-                      className={`h-8 rounded-full flex items-center justify-end pr-3 ${getBucketColor(bucket.status)}`}
-                      style={{ width: `${barWidth}%` }}
-                    >
-                      <span className="text-sm font-bold">
-                        {bucket.accounts}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-24 text-sm font-semibold text-gray-700 text-right">
-                  {formatCurrency(bucket.arr)}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Detailed Table */}
+    <div>
+      {/* Table with proper structure */}
       <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b-2 border-gray-300">
-              <th className="text-left py-4 px-6 text-base font-bold text-gray-900">Utilization Range</th>
-              <th className="text-right py-4 px-6 text-base font-bold text-gray-900">Accounts</th>
-              <th className="text-right py-4 px-6 text-base font-bold text-gray-900">ARR</th>
-              <th className="text-right py-4 px-6 text-base font-bold text-gray-900">% of Portfolio</th>
-              <th className="text-center py-4 px-6 text-base font-bold text-gray-900">Status</th>
+        <table className="min-w-full divide-y divide-gray-300">
+          <thead className="bg-gray-50">
+            <tr>
+              <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                Utilization Range
+              </th>
+              <th scope="col" className="px-3 py-3.5 text-right text-sm font-semibold text-gray-900">
+                Accounts
+              </th>
+              <th scope="col" className="px-3 py-3.5 text-right text-sm font-semibold text-gray-900">
+                ARR
+              </th>
+              <th scope="col" className="px-3 py-3.5 text-right text-sm font-semibold text-gray-900">
+                % of Portfolio
+              </th>
+              <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                Status
+              </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-gray-200 bg-white">
             {distribution.map((bucket, index) => (
               <tr
                 key={index}
-                className={`border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer ${onBucketClick ? 'hover:shadow-sm' : ''}`}
+                className={`hover:bg-gray-50 transition-colors ${onBucketClick ? 'cursor-pointer' : ''}`}
                 onClick={() => onBucketClick?.(bucket.range)}
                 title={onBucketClick ? `Click to view accounts in ${bucket.range} range` : ''}
               >
-                <td className="py-5 px-6 text-base font-semibold text-gray-900 flex items-center gap-3">
-                  <span className="text-2xl">{getBucketIcon(bucket.status)}</span>
-                  <div>
-                    <div className="text-lg">{bucket.range}</div>
-                    <div className="text-sm text-gray-500">Avg: {bucket.avgUtilization.toFixed(0)}%</div>
+                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">{getBucketIcon(bucket.status)}</span>
+                    <div>
+                      <div className="font-medium text-gray-900">{bucket.range}</div>
+                      <div className="text-gray-500">Avg: {bucket.avgUtilization.toFixed(0)}%</div>
+                    </div>
                   </div>
                 </td>
-                <td className="py-5 px-6 text-base text-right font-bold text-gray-900">
-                  {bucket.accounts}
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-right">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/csm/kpi/license-details?focus=range&range=${encodeURIComponent(bucket.range)}`);
+                    }}
+                    className="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                    title={`View ${bucket.accounts} accounts in ${bucket.range} range`}
+                  >
+                    {bucket.accounts}
+                  </button>
                 </td>
-                <td className="py-5 px-6 text-base text-right font-bold text-gray-900">
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
                   {formatCurrency(bucket.arr)}
                 </td>
-                <td className="py-5 px-6 text-base text-right font-semibold text-gray-900">
-                  {bucket.percentage.toFixed(0)}%
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
+                  {bucket.percentage.toFixed(1)}%
                 </td>
-                <td className="py-5 px-6 text-center">
-                  <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-bold ${getBucketColor(bucket.status)}`}>
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-center">
+                  <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ${getBucketColor(bucket.status)}`}>
                     {bucket.status.replace('-', ' ').toUpperCase()}
                   </span>
                 </td>
@@ -162,7 +147,7 @@ export function UtilizationDistribution({ onBucketClick }: UtilizationDistributi
         </table>
       </div>
       
-      <div className="mt-4 text-sm text-gray-500 text-center">
+      <div className="mt-4 text-xs text-gray-500 text-center">
         💡 Click on any row to view detailed accounts in that utilization range
       </div>
     </div>

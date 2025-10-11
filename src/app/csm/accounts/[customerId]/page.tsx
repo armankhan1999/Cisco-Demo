@@ -4,6 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
 import { loadAccounts, loadSubscriptions, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
+import { useSidebar } from '../../../../contexts/SidebarContext';
 // Icons replaced with emoji for simplicity
 
 interface ContractInfo {
@@ -125,14 +126,15 @@ interface AccountDetail {
 
 export default function AccountDetailPage({ params }: { params: Promise<{ customerId: string }> }) {
   const router = useRouter();
+  const { isCollapsed } = useSidebar();
+  const resolvedParams = use(params);
+  const customerId = resolvedParams.customerId;
   const [account, setAccount] = useState<AccountDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
   
   // Unwrap the params Promise using React.use()
-  const resolvedParams = use(params);
-
   useEffect(() => {
     try {
       // Load all related data
@@ -363,7 +365,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
     return (
       <div className="flex h-screen">
         <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 ml-[280px] p-6">
+        <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -379,7 +381,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
     return (
       <div className="flex h-screen">
         <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 ml-[280px] p-6">
+        <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Account Not Found</h1>
             <p className="text-gray-600 mb-4">The requested account could not be found.</p>
@@ -396,9 +398,9 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden bg-gray-50">
       <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      <div className="flex-1 ml-[280px] p-6 overflow-y-auto">
+      <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -410,64 +412,6 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
                 ← Back to Dashboard
               </button>
               <h1 className="text-3xl font-bold text-gray-900">{account.customerName}</h1>
-              
-              {/* Churn Risk Banner (Predictive) */}
-              {account.isAtChurnRisk && account.churnPrediction && (
-                <div className="mt-4 p-4 bg-orange-50 border-2 border-orange-300 rounded-lg">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <svg className="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                    </div>
-                    <div className="ml-3 flex-1">
-                      <h3 className="text-lg font-bold text-orange-900">
-                        ⚠️ HIGH CHURN RISK - PREDICTIVE ALERT
-                      </h3>
-                      <div className="mt-2 text-sm text-orange-800 space-y-1">
-                        <p><strong>Risk Level:</strong> <span className={`px-2 py-1 rounded font-bold ${account.churnRiskLevel === 'High' ? 'bg-red-200 text-red-900' : 'bg-orange-200 text-orange-900'}`}>{account.churnRiskLevel}</span></p>
-                        <p><strong>Churn Probability:</strong> <span className="text-lg font-bold">{(account.churnProbability * 100).toFixed(1)}%</span></p>
-                        {account.estimatedChurnDate && (
-                          <p><strong>Estimated Churn Date:</strong> {new Date(account.estimatedChurnDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                        )}
-                        <p><strong>ARR at Risk:</strong> <span className="text-lg font-bold">${(account.churnPrediction.arr_at_risk || account.arr).toLocaleString()}</span></p>
-                        <p><strong>Intervention Window:</strong> {account.churnPrediction.intervention_window_days || 'N/A'} days</p>
-                        <p><strong>Recommended Action:</strong> <span className="font-semibold">{account.churnPrediction.recommended_action}</span></p>
-                      </div>
-                      
-                      {/* Churn Risk Factors */}
-                      {account.churnPrediction.risk_factors && account.churnPrediction.risk_factors.length > 0 && (
-                        <div className="mt-4 p-3 bg-orange-100 rounded border border-orange-200">
-                          <h4 className="font-bold text-orange-900 mb-2">📉 AI-Detected Risk Factors:</h4>
-                          <div className="space-y-2">
-                            {account.churnPrediction.risk_factors.map((factor: any, idx: number) => (
-                              <div key={idx} className="flex items-start">
-                                <span className="text-orange-600 mr-2">•</span>
-                                <div className="flex-1">
-                                  <p className="font-medium text-orange-900">{factor.factor} <span className="text-xs px-2 py-0.5 bg-orange-200 rounded">{factor.severity}</span></p>
-                                  <p className="text-xs text-orange-700">{factor.description}</p>
-                                  <p className="text-xs text-orange-600 mt-1">Risk Contribution: {(factor.contribution_to_risk * 100).toFixed(0)}%</p>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Data Source */}
-                      <div className="mt-3 px-3 py-2 bg-green-50 border border-green-200 rounded">
-                        <p className="text-xs text-green-800">
-                          ✅ <strong>Predictive Model:</strong> <code className="bg-green-100 px-1 rounded">{account.churnPrediction.model_type}</code> (v{account.churnPrediction.model_version})
-                          <br/>
-                          📊 <strong>Data Source:</strong> <code className="bg-green-100 px-1 rounded">churn_predictions.json</code>
-                          <br/>
-                          🎯 <strong>Confidence:</strong> {account.churnPrediction.confidence_level} ({(account.churnPrediction.confidence_score * 100).toFixed(0)}%)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
               <div className="flex items-center mt-2 space-x-4">
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${getHealthColor(account.healthScore)}`}>
                   Health Score: {account.healthScore}
@@ -752,6 +696,85 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
 
           {/* Sidebar Information */}
           <div className="space-y-6">
+            {/* Churn Risk Alert (Predictive) */}
+            {account.isAtChurnRisk && account.churnPrediction && (
+              <div className="bg-orange-50 border-2 border-orange-300 rounded-lg shadow-sm p-4">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <svg className="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div className="ml-3 flex-1">
+                    <h3 className="text-base font-bold text-orange-900">
+                      ⚠️ HIGH CHURN RISK
+                    </h3>
+                    <p className="text-xs text-orange-700 mt-1">Predictive Alert</p>
+                  </div>
+                </div>
+                
+                <div className="mt-3 space-y-2 text-sm text-orange-800">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Risk Level:</span>
+                    <span className={`px-2 py-0.5 rounded text-xs font-bold ${account.churnRiskLevel === 'High' ? 'bg-red-200 text-red-900' : 'bg-orange-200 text-orange-900'}`}>
+                      {account.churnRiskLevel}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Probability:</span>
+                    <span className="font-bold text-base">{(account.churnProbability * 100).toFixed(1)}%</span>
+                  </div>
+                  {account.estimatedChurnDate && (
+                    <div className="pt-2 border-t border-orange-200">
+                      <p className="text-xs font-medium">Estimated Churn:</p>
+                      <p className="text-sm font-semibold">{new Date(account.estimatedChurnDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                  )}
+                  <div className="pt-2 border-t border-orange-200">
+                    <p className="text-xs font-medium">ARR at Risk:</p>
+                    <p className="text-base font-bold">${(account.churnPrediction.arr_at_risk || account.arr).toLocaleString()}</p>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs">Intervention Window:</span>
+                    <span className="font-semibold">{account.churnPrediction.intervention_window_days || 'N/A'} days</span>
+                  </div>
+                </div>
+                
+                {/* Recommended Action */}
+                <div className="mt-3 p-2 bg-orange-100 rounded border border-orange-200">
+                  <p className="text-xs font-medium text-orange-900">Recommended Action:</p>
+                  <p className="text-sm font-semibold text-orange-900 mt-1">{account.churnPrediction.recommended_action}</p>
+                </div>
+                
+                {/* Risk Factors */}
+                {account.churnPrediction.risk_factors && account.churnPrediction.risk_factors.length > 0 && (
+                  <div className="mt-3 p-2 bg-orange-100 rounded border border-orange-200">
+                    <h4 className="text-xs font-bold text-orange-900 mb-2">📉 AI-Detected Risk Factors:</h4>
+                    <div className="space-y-2">
+                      {account.churnPrediction.risk_factors.map((factor: any, idx: number) => (
+                        <div key={idx} className="text-xs">
+                          <p className="font-medium text-orange-900">
+                            {factor.factor} <span className="px-1.5 py-0.5 bg-orange-200 rounded">{factor.severity}</span>
+                          </p>
+                          <p className="text-orange-700 mt-0.5">{factor.description}</p>
+                          <p className="text-orange-600 mt-0.5">Risk: {(factor.contribution_to_risk * 100).toFixed(0)}%</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Model Info */}
+                <div className="mt-3 px-2 py-1.5 bg-green-50 border border-green-200 rounded">
+                  <p className="text-xs text-green-800">
+                    ✅ <strong>Model:</strong> {account.churnPrediction.model_type} (v{account.churnPrediction.model_version})
+                    <br/>
+                    🎯 <strong>Confidence:</strong> {account.churnPrediction.confidence_level} ({(account.churnPrediction.confidence_score * 100).toFixed(0)}%)
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* CSM Information */}
             {account.csm && (
               <div className="bg-white rounded-lg shadow-sm border p-6">

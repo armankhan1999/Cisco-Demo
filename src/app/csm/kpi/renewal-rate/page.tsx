@@ -1,18 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
+import { useSidebar } from '../../../../contexts/SidebarContext';
 import { calculateAllKPIs, calculateRenewalPipeline } from '@/lib/kpis/csmKPICalculations';
 import { getActiveAccounts, getActiveSubscriptions, getAllChurnPredictions } from '@/lib/data/csmDataLoader';
 
 export default function RenewalRateDrillDown() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [renewalData, setRenewalData] = useState<any>(null);
   const [upcomingRenewals, setUpcomingRenewals] = useState<any[]>([]);
   const [renewalPipeline, setRenewalPipeline] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
+
+  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -41,7 +47,7 @@ export default function RenewalRateDrillDown() {
         })
         .map(subscription => {
           const account = allAccounts.find(acc => acc.account.id === subscription.customer_id);
-          const churnPrediction = churnPredictions.find(pred => pred.customer_id === subscription.customer_id);
+          const churnPrediction = churnPredictions.find(pred => pred.account_id === subscription.customer_id);
           
           const endDate = new Date(subscription.subscription_end_date);
           const daysToRenewal = Math.ceil((endDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
@@ -184,7 +190,7 @@ export default function RenewalRateDrillDown() {
     return (
       <div className="flex h-screen overflow-hidden bg-gray-50">
         <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+        <div className={`flex-1 flex items-center justify-center transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
           <div className="text-gray-500">Loading Renewal Analysis...</div>
         </div>
       </div>
@@ -206,18 +212,12 @@ export default function RenewalRateDrillDown() {
       <div className="flex-1 overflow-y-auto bg-gray-50">
         {/* Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-6">
-          <div className="flex items-center gap-4 mb-4">
-            <Link 
-              href="/csm/portfolio" 
-              className="flex items-center text-sm text-gray-600 hover:text-gray-800 transition-colors"
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Portfolio Dashboard
-            </Link>
-          </div>
-          
+          <button
+            onClick={() => router.push('/csm')}
+            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+          >
+            ← Back to Portfolio Dashboard
+          </button>
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Renewal Rate Analysis</h1>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { calculateProductUtilizationAnalysis } from '../../../lib/kpis/licenseUtilizationKPIs';
 
 interface UtilizationByProductProps {
@@ -8,6 +9,7 @@ interface UtilizationByProductProps {
 }
 
 export function UtilizationByProduct({ onProductClick }: UtilizationByProductProps) {
+  const router = useRouter();
   const [productData, setProductData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -94,10 +96,12 @@ export function UtilizationByProduct({ onProductClick }: UtilizationByProductPro
             {productData.map((product, index) => (
               <tr 
                 key={product.productFamily}
-                className={`border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors ${
-                  onProductClick ? 'hover:bg-blue-50' : ''
-                }`}
-                onClick={() => onProductClick?.(product.productFamily)}
+                className="border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors"
+                onClick={() => {
+                  router.push(`/csm/kpi/product-details?product=${encodeURIComponent(product.productFamily)}`);
+                  onProductClick?.(product.productFamily);
+                }}
+                title={`Click to view detailed ${product.productFamily} analytics`}
               >
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-3">
@@ -108,7 +112,7 @@ export function UtilizationByProduct({ onProductClick }: UtilizationByProductPro
                         {product.productDescription}
                       </div>
                       <div className="text-xs text-gray-400">
-                        ({product.penetration}% penetration)
+                        ({product.penetration.toFixed(1)}% penetration)
                       </div>
                     </div>
                   </div>

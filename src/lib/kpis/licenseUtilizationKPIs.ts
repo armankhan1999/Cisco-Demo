@@ -118,8 +118,8 @@ export function calculatePortfolioAverageUtilization(): UtilizationKPI {
 function calculateUtilizationFromData(utilizationData: any[], accounts: any[], subscriptions: any[]): UtilizationKPI {
   // Calculate portfolio-level metrics
   const totalLicenses = utilizationData.reduce((sum, util) => sum + util.total_licenses, 0);
-  const totalUsed = utilizationData.reduce((sum, util) => sum + util.licenses_used, 0);
-  const totalAvailable = utilizationData.reduce((sum, util) => sum + util.licenses_available, 0);
+  const totalUsed = utilizationData.reduce((sum, util) => sum + util.active_users, 0);
+  const totalAvailable = totalLicenses - totalUsed;
   
   // Calculate weighted average utilization by ARR
   let weightedSum = 0;
@@ -685,6 +685,32 @@ export function calculateUtilizationDistribution(): UtilizationDistribution[] {
       );
     }
     
+    // First, aggregate utilization by account (average across all products)
+    const accountUtilizationMap = new Map<string, { totalLicenses: number, activeUsers: number, arr: number }>();
+    
+    currentUtilization.forEach(util => {
+      const customerId = util.customer_id;
+      if (!accountUtilizationMap.has(customerId)) {
+        const subscription = subscriptions.find(sub => sub.customer_id === customerId);
+        accountUtilizationMap.set(customerId, {
+          totalLicenses: 0,
+          activeUsers: 0,
+          arr: subscription?.arr || 0
+        });
+      }
+      
+      const accountData = accountUtilizationMap.get(customerId)!;
+      accountData.totalLicenses += util.total_licenses;
+      accountData.activeUsers += util.active_users;
+    });
+    
+    // Calculate overall utilization percentage per account
+    const accountUtilizations = Array.from(accountUtilizationMap.entries()).map(([customerId, data]) => ({
+      customerId,
+      utilizationRate: (data.activeUsers / data.totalLicenses) * 100,
+      arr: data.arr
+    }));
+    
     // Define utilization buckets
     const buckets = [
       { min: 0, max: 20, label: '0-20%', status: 'critical' as const, color: 'bg-red-600' },
@@ -698,28 +724,18 @@ export function calculateUtilizationDistribution(): UtilizationDistribution[] {
     const distribution: UtilizationDistribution[] = [];
     
     buckets.forEach(bucket => {
-      const bucketData = currentUtilization.filter(util => 
-        util.utilization_percentage >= bucket.min && 
-        util.utilization_percentage <= bucket.max
+      const accountsInBucket = accountUtilizations.filter(acc => 
+        acc.utilizationRate >= bucket.min && 
+        acc.utilizationRate <= bucket.max
       );
       
-      const uniqueAccounts = new Set(bucketData.map(util => util.customer_id));
-      const accountCount = uniqueAccounts.size;
-      
-      // Calculate ARR for this bucket
-      let bucketArr = 0;
-      uniqueAccounts.forEach(customerId => {
-        const subscription = subscriptions.find(sub => sub.customer_id === customerId);
-        if (subscription) {
-          bucketArr += subscription.arr || 0;
-        }
-      });
-      
-      const avgUtilization = bucketData.length > 0 
-        ? bucketData.reduce((sum, util) => sum + util.utilization_percentage, 0) / bucketData.length
+      const accountCount = accountsInBucket.length;
+      const bucketArr = accountsInBucket.reduce((sum, acc) => sum + acc.arr, 0);
+      const avgUtilization = accountsInBucket.length > 0
+        ? accountsInBucket.reduce((sum, acc) => sum + acc.utilizationRate, 0) / accountsInBucket.length
         : 0;
       
-      const totalAccounts = new Set(currentUtilization.map(util => util.customer_id)).size;
+      const totalAccounts = accountUtilizations.length;
       const percentage = totalAccounts > 0 ? (accountCount / totalAccounts) * 100 : 0;
       
       distribution.push({

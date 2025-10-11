@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import { getActiveAccounts, loadSubscriptions, loadUtilizationHistory } from '@/lib/data/csmDataLoader';
+import { useSidebar } from '@/contexts/SidebarContext';
 
 interface EnrichedAccountData {
   account: any;
@@ -22,6 +23,7 @@ interface EnrichedAccountData {
 
 export default function AccountsPage() {
   const router = useRouter();
+  const { isCollapsed } = useSidebar();
   const searchParams = useSearchParams();
   const filter = searchParams.get('filter'); // 'all', 'at-risk', 'healthy'
   const tierFilter = searchParams.get('tier'); // Tier filter from churn analysis
@@ -201,7 +203,7 @@ export default function AccountsPage() {
     <div className="flex h-screen overflow-hidden bg-gray-50">
       <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
       
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         <div className="p-8">
           {/* Header */}
           <div className="mb-8">
