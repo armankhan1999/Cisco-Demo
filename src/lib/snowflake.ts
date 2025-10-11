@@ -15,49 +15,82 @@ export async function getSnowflakeConnection() {
   const privateKeyContent = process.env.SNOWFLAKE_PRIVATE_KEY;
   const privateKeyPass = process.env.SNOWFLAKE_PRIVATE_KEY_PASS;
 
+  console.log('=== SNOWFLAKE CONNECTION DEBUG ===');
+  console.log('1️⃣ Private key exists:', !!privateKeyContent);
+  console.log('1️⃣ Private key length:', privateKeyContent?.length || 0);
+  console.log('1️⃣ Passphrase exists:', !!privateKeyPass);
+
   // Get private key from environment variable
   if (!privateKeyContent) {
     throw new Error('SNOWFLAKE_PRIVATE_KEY environment variable is not configured');
   }
 
-  console.log('✅ Using private key from environment variable');
+  console.log('2️⃣ Using private key from environment variable');
   
   // Handle both formats: with actual newlines or with \n escape sequences
   // This ensures compatibility with Vercel and other platforms that might escape newlines
   let privateKeyData = privateKeyContent;
   
+  console.log('3️⃣ Before trim/quote removal - length:', privateKeyData.length);
+  console.log('3️⃣ First 30 chars:', JSON.stringify(privateKeyData.substring(0, 30)));
+  
   // Remove any quotes that might have been added
   privateKeyData = privateKeyData.replace(/^["']|["']$/g, '').trim();
   
+  console.log('4️⃣ After trim/quote removal - length:', privateKeyData.length);
+  
   // Check if we need to convert \n literals to actual newlines
   // Count actual newlines vs the string length to determine format
-  const hasActualNewlines = privateKeyData.split('\n').length > 2;
+  const lineCount = privateKeyData.split('\n').length;
+  const hasBackslashN = privateKeyData.includes('\\n');
+  
+  console.log('5️⃣ Line count (by newlines):', lineCount);
+  console.log('5️⃣ Contains \\n sequences:', hasBackslashN);
+  
+  const hasActualNewlines = lineCount > 2;
   
   if (!hasActualNewlines) {
     // This is the single-line format with \n as literal characters
     // Replace all \n sequences with actual newlines
-    console.log('🔄 Converting \\n sequences to actual newlines');
+    console.log('6️⃣ Converting \\n sequences to actual newlines');
     privateKeyData = privateKeyData.split('\\n').join('\n');
+    console.log('6️⃣ After conversion - line count:', privateKeyData.split('\n').length);
+  } else {
+    console.log('6️⃣ Key already has actual newlines, no conversion needed');
   }
   
-  console.log('✅ Private key format processed');
+  console.log('7️⃣ Final key format processed');
+  console.log('7️⃣ Key starts with:', privateKeyData.substring(0, 30));
+  console.log('7️⃣ Key ends with:', privateKeyData.substring(privateKeyData.length - 30));
+  console.log('7️⃣ Total lines in key:', privateKeyData.split('\n').length);
   
   // Decrypt the private key using the passphrase
   let privateKeyObject;
   try {
+    console.log('8️⃣ Attempting to create private key object...');
+    console.log('8️⃣ Key type check - starts with BEGIN:', privateKeyData.startsWith('-----BEGIN'));
+    console.log('8️⃣ Key type check - contains RSA:', privateKeyData.includes('RSA PRIVATE KEY'));
+    console.log('8️⃣ Key type check - contains ENCRYPTED:', privateKeyData.includes('ENCRYPTED'));
+    
+    // Try to create the private key object
     privateKeyObject = crypto.createPrivateKey({
-      key: privateKeyData,
+      key: Buffer.from(privateKeyData, 'utf-8'),
       format: 'pem',
       passphrase: privateKeyPass,
     });
     
+    console.log('9️⃣ Private key object created successfully');
+    console.log('9️⃣ Key type:', privateKeyObject.asymmetricKeyType);
+    
     // Export as PKCS8 format (unencrypted) which Snowflake SDK expects
+    console.log('🔟 Exporting to PKCS8 format...');
     const privateKeyPem = privateKeyObject.export({
       type: 'pkcs8',
       format: 'pem',
     });
     
     console.log('✅ Private key decrypted and formatted successfully');
+    console.log('✅ Exported key length:', (privateKeyPem as string).length);
     
     if (!process.env.SNOWFLAKE_ACCOUNT || !process.env.SNOWFLAKE_USERNAME || !process.env.SNOWFLAKE_WAREHOUSE || !process.env.SNOWFLAKE_DATABASE) {
       throw new Error('Missing required Snowflake environment variables');
@@ -73,7 +106,14 @@ export async function getSnowflakeConnection() {
     });
   } catch (keyError) {
     const error = keyError as Error;
-    console.error('❌ Error processing private key:', error.message);
+    console.error('❌ ========================================');
+    console.error('❌ ERROR PROCESSING PRIVATE KEY');
+    console.error('❌ ========================================');
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error name:', error.name);
+    console.error('❌ Full error:', error);
+    console.error('❌ Stack trace:', error.stack);
+    console.error('❌ ========================================');
     throw new Error(`Failed to process private key: ${error.message}`);
   }
 
