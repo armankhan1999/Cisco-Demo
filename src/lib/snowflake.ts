@@ -1,5 +1,4 @@
 import snowflake from 'snowflake-sdk';
-import fs from 'fs';
 import crypto from 'crypto';
 import type { SnowflakeQueryResult, CortexAnalystResult, ConversationMessage } from '@/types/snowflake';
 
@@ -13,27 +12,16 @@ export async function getSnowflakeConnection() {
     return connectionInstance;
   }
 
-  const privateKeyPath = process.env.SNOWFLAKE_PRIVATE_KEY_PATH;
   const privateKeyContent = process.env.SNOWFLAKE_PRIVATE_KEY;
   const privateKeyPass = process.env.SNOWFLAKE_PRIVATE_KEY_PASS;
 
-  // Get private key data - either from file (local dev) or env variable (production)
-  let privateKeyData: string;
-  
-  if (privateKeyContent) {
-    // Production: Use private key from environment variable
-    console.log('✅ Using private key from environment variable');
-    privateKeyData = privateKeyContent;
-  } else if (privateKeyPath) {
-    // Local development: Read from file
-    if (!fs.existsSync(privateKeyPath)) {
-      throw new Error(`Private key file not found at: ${privateKeyPath}`);
-    }
-    console.log('✅ Using private key from file path');
-    privateKeyData = fs.readFileSync(privateKeyPath, 'utf8');
-  } else {
-    throw new Error('Neither SNOWFLAKE_PRIVATE_KEY nor SNOWFLAKE_PRIVATE_KEY_PATH is configured');
+  // Get private key from environment variable
+  if (!privateKeyContent) {
+    throw new Error('SNOWFLAKE_PRIVATE_KEY environment variable is not configured');
   }
+
+  console.log('✅ Using private key from environment variable');
+  const privateKeyData = privateKeyContent;
   
   // Decrypt the private key using the passphrase
   let privateKeyObject;
@@ -275,7 +263,7 @@ export function isSnowflakeConfigured(): boolean {
   return !!(
     process.env.SNOWFLAKE_ACCOUNT &&
     process.env.SNOWFLAKE_USERNAME &&
-    process.env.SNOWFLAKE_PRIVATE_KEY_PATH &&
+    process.env.SNOWFLAKE_PRIVATE_KEY &&
     process.env.SNOWFLAKE_PRIVATE_KEY_PASS
   );
 }
