@@ -1,60 +1,77 @@
 'use client';
 
 import { useState } from 'react';
-import { colors, personaColors } from '@/config/theme';
-import { Persona, getPersonaData, getPersonaName } from '@/data/dummyData';
-import PersonaDropdowns from './PersonaDropdowns';
+import { Persona, getPersonaName } from '@/data/dummyData';
+import DashboardTabs from './DashboardTabs';
 import DashboardStats from './DashboardStats';
 
 interface DashboardProps {
   persona: Persona;
-  level?: number;
 }
 
-export default function Dashboard({ persona, level = 1 }: DashboardProps) {
-  const personaColor = personaColors[persona];
-  const data = getPersonaData(persona);
+export default function Dashboard({ persona }: DashboardProps) {
+  const [activeTab, setActiveTab] = useState<'overview' | 'analysis' | 'deep'>('overview');
+
+  // Map tabs to levels for backward compatibility
+  const levelMap = {
+    'overview': 1,
+    'analysis': 2,
+    'deep': 3
+  };
 
   return (
-    <div className="flex-1 flex flex-col h-screen overflow-hidden">
+    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
       {/* Dashboard Header */}
-      <div
-        className="px-8 py-6 border-b bg-white"
-        style={{
-          borderColor: colors.neutral[200],
-        }}
-      >
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold" style={{ color: colors.text.primary }}>
-              {getPersonaName(persona)} Dashboard
-            </h2>
-            <p className="text-sm mt-1" style={{ color: colors.text.secondary }}>
-              {persona === 'CSM' && 'Monitor customer health, engagement, and product adoption'}
-              {persona === 'CO' && 'Track quotes, orders, invoices, and revenue operations'}
-              {persona === 'SE' && 'Identify expansion opportunities and manage sales pipeline'}
-            </p>
-          </div>
+      <div className="bg-white border-b border-gray-200">
+        <div className="px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center text-white font-bold text-lg">
+                  {persona === 'CSM' && '👥'}
+                  {persona === 'CO' && '💼'}
+                  {persona === 'SE' && '📈'}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {getPersonaName(persona)}
+                  </h2>
+                  <p className="text-sm text-gray-600 mt-0.5">
+                    {persona === 'CSM' && 'Strategic oversight of customer health, engagement, and product adoption'}
+                    {persona === 'CO' && 'Strategic oversight of quote-to-cash process efficiency, pricing accuracy, and revenue realization'}
+                    {persona === 'SE' && 'Strategic oversight of expansion opportunities and pipeline management'}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          <div
-            className="px-5 py-2 rounded-lg font-semibold text-white transition-all duration-200"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
-          >
-            {persona}
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="text-xs text-gray-500 font-medium">Current Quarter</div>
+                <div className="text-lg font-bold text-gray-900">Q2 2025</div>
+              </div>
+              <div className="text-right">
+                <div className="text-xs text-gray-500 font-medium">Health Status</div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                  <span className="text-lg font-bold text-green-600">Excellent</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Dashboard Tabs */}
+        <DashboardTabs 
+          activeTab={activeTab} 
+          onTabChange={setActiveTab} 
+          persona={persona}
+        />
       </div>
 
-      {/* Dropdowns Section - Only for CSM and CO */}
-      {persona !== 'SE' && (
-        <div className="px-8 py-6 border-b" style={{ backgroundColor: colors.background.secondary, borderColor: colors.neutral[200] }}>
-          <PersonaDropdowns persona={persona} />
-        </div>
-      )}
-
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto px-8 py-6" style={{ backgroundColor: colors.background.primary }}>
-        <DashboardStats persona={persona} level={level} />
+      <div className="flex-1 overflow-y-auto px-8 py-6">
+        <DashboardStats persona={persona} level={levelMap[activeTab]} />
       </div>
     </div>
   );

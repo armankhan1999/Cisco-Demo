@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 /**
  * Premium KPI Card Component
  * 
@@ -13,6 +15,7 @@
  * - Large bold value display
  * - Progress bar
  * - Performance badge
+ * - Hover overlay with drill-down options
  * - Hover effects and shadows
  * 
  * DO NOT MODIFY without updating all persona dashboards
@@ -51,6 +54,11 @@ interface PremiumKPICardProps {
   // Interactivity
   onClick?: () => void;
   clickable?: boolean;
+  
+  // Drill-down options
+  onTacticalAnalysis?: () => void;
+  onActionItems?: () => void;
+  showDrillDown?: boolean;
 }
 
 export default function PremiumKPICard({
@@ -70,8 +78,12 @@ export default function PremiumKPICard({
   progressFillColor,
   performance,
   onClick,
-  clickable = false
+  clickable = false,
+  onTacticalAnalysis,
+  onActionItems,
+  showDrillDown = false
 }: PremiumKPICardProps) {
+  const [isHovered, setIsHovered] = useState(false);
   
   const performanceConfig = {
     Good: {
@@ -98,7 +110,10 @@ export default function PremiumKPICard({
   return (
     <div 
       onClick={clickable ? onClick : undefined}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={`
+        relative
         bg-gradient-to-br ${gradientFrom} ${gradientTo}
         rounded-2xl p-6 shadow-md hover:shadow-xl transition-all
         border ${borderColor}
@@ -159,6 +174,43 @@ export default function PremiumKPICard({
           {performance}
         </span>
       </div>
+
+      {/* Hover Overlay - Drill Down Options */}
+      {showDrillDown && isHovered && (
+        <div className="absolute inset-0 bg-black/90 rounded-2xl flex flex-col items-center justify-center gap-4 transition-all duration-300">
+          <h3 className="text-white text-lg font-bold mb-2">Drill Down Options</h3>
+          
+          {onTacticalAnalysis && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onTacticalAnalysis();
+              }}
+              className="flex items-center gap-2 px-6 py-2.5 bg-teal-500 hover:bg-teal-600 text-white rounded-lg font-semibold transition-colors"
+            >
+              <span>📊</span>
+              <span>Tactical Analysis</span>
+              <span>→</span>
+            </button>
+          )}
+          
+          {onActionItems && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onActionItems();
+              }}
+              className="flex items-center gap-2 px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-colors"
+            >
+              <span>⚠️</span>
+              <span>Action Items</span>
+              <span>→</span>
+            </button>
+          )}
+          
+          <p className="text-white/60 text-xs mt-2">{title.split(' ').length} analysis views • {Math.floor(Math.random() * 5) + 1} action items</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,7 +7,6 @@ import { Persona } from '@/data/dummyData';
 
 export default function Home() {
   const [currentPersona, setCurrentPersona] = useState<Persona>('CSM');
-  const [currentLevel, setCurrentLevel] = useState(1);
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
@@ -15,12 +14,10 @@ export default function Home() {
       <Sidebar 
         currentPersona={currentPersona} 
         onPersonaChange={setCurrentPersona}
-        currentLevel={currentLevel}
-        onLevelChange={setCurrentLevel}
       />
       
       {/* Main Content */}
-      <Dashboard persona={currentPersona} level={currentLevel} />
+      <Dashboard persona={currentPersona} />
     </div>
   );
 }

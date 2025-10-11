@@ -2,40 +2,66 @@
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
 
+// Import ONLY master data
+import expansionOpportunities from '@/source_data/sales-expansion-data/expansion-opportunities.json';
+import customersData from '@/source_data/master-data/customers.json';
+
 export const ExpansionPipelineLevel2: React.FC = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  
+  // Calculate real metrics from master data
+  const totalPipeline = expansionOpportunities.reduce((sum, opp) => sum + opp.estimated_arr, 0);
+  const weightedPipeline = expansionOpportunities.reduce((sum, opp) => sum + (opp.estimated_arr * (opp.close_probability / 100)), 0);
+  const avgWinProbability = Math.round(expansionOpportunities.reduce((sum, opp) => sum + opp.close_probability, 0) / expansionOpportunities.length);
+  const quota = 2500000; // $2.5M quota
+  const coverageRatio = totalPipeline / quota;
+  
+  // Group by stage - using actual stage names from data
+  const stages = ['Identified', 'Qualified', 'Proposal', 'Negotiation', 'Closed Won'];
+  const stageData = stages.map(stage => ({
+    stage,
+    count: expansionOpportunities.filter(o => o.stage === stage).length,
+    arr: expansionOpportunities.filter(o => o.stage === stage).reduce((sum, o) => sum + o.estimated_arr, 0),
+    avgProbability: expansionOpportunities.filter(o => o.stage === stage).length > 0 
+      ? Math.round(expansionOpportunities.filter(o => o.stage === stage).reduce((sum, o) => sum + o.close_probability, 0) / expansionOpportunities.filter(o => o.stage === stage).length)
+      : 0
+  }));
   
   return (
   <>
   <div className="space-y-8">
-    {/* Summary Cards */}
+    {/* Summary Cards - ALL REAL DATA */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-xl p-6 border-2 border-teal-200/50">
+      <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-xl p-6 border-2 border-teal-200/50 cursor-pointer hover:shadow-lg transition-all">
         <div className="text-center">
-          <div className="text-5xl font-bold text-teal-600 mb-2">$8.2M</div>
+          <div className="text-5xl font-bold text-teal-600 mb-2">${(totalPipeline / 1000000).toFixed(1)}M</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Total Pipeline</div>
-          <div className="text-xs text-gray-600">59 opportunities</div>
+          <div className="text-xs text-gray-600">{expansionOpportunities.length} opportunities</div>
+          <div className="text-xs text-teal-600 font-semibold mt-2">View Analytics →</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+      <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50 cursor-pointer hover:shadow-lg transition-all">
         <div className="text-center">
-          <div className="text-5xl font-bold text-green-600 mb-2">$5.1M</div>
+          <div className="text-5xl font-bold text-green-600 mb-2">${(weightedPipeline / 1000000).toFixed(1)}M</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Weighted Pipeline</div>
           <div className="text-xs text-gray-600">Probability adjusted</div>
+          <div className="text-xs text-green-600 font-semibold mt-2">View Analytics →</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50 cursor-pointer hover:shadow-lg transition-all">
         <div className="text-center">
-          <div className="text-5xl font-bold text-blue-600 mb-2">3.2x</div>
+          <div className="text-5xl font-bold text-blue-600 mb-2">{coverageRatio.toFixed(1)}x</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Coverage Ratio</div>
-          <div className="text-xs text-gray-600">vs $2.5M quota</div>
+          <div className="text-xs text-gray-600">vs ${(quota / 1000000).toFixed(1)}M quota</div>
+          <div className="text-xs text-blue-600 font-semibold mt-2">View Analytics →</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50">
+      <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50 cursor-pointer hover:shadow-lg transition-all">
         <div className="text-center">
-          <div className="text-5xl font-bold text-purple-600 mb-2">62%</div>
+          <div className="text-5xl font-bold text-purple-600 mb-2">{avgWinProbability}%</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Avg Win Probability</div>
           <div className="text-xs text-gray-600">Across all stages</div>
+          <div className="text-xs text-purple-600 font-semibold mt-2">View Analytics →</div>
         </div>
       </div>
     </div>
@@ -57,90 +83,45 @@ export const ExpansionPipelineLevel2: React.FC = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr className="hover:bg-green-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-base font-bold text-gray-900">Negotiating</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">10</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$1.26M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">$126K</td>
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]">
-                    <div className="bg-green-600 h-2 rounded-full" style={{ width: '83%' }}></div>
-                  </div>
-                  <span className="text-base font-bold text-green-600">83%</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-lg font-bold text-green-600">$1.05M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">20 days</td>
-            </tr>
-            <tr className="hover:bg-blue-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                  <span className="text-base font-bold text-gray-900">Proposed</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">16</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$1.87M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">$117K</td>
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '61%' }}></div>
-                  </div>
-                  <span className="text-base font-bold text-blue-600">61%</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-lg font-bold text-blue-600">$1.14M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">38 days</td>
-            </tr>
-            <tr className="hover:bg-yellow-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <span className="text-base font-bold text-gray-900">Engaged</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">16</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$1.51M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">$94K</td>
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]">
-                    <div className="bg-yellow-600 h-2 rounded-full" style={{ width: '43%' }}></div>
-                  </div>
-                  <span className="text-base font-bold text-yellow-600">43%</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-lg font-bold text-yellow-600">$649K</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">43 days</td>
-            </tr>
-            <tr className="hover:bg-orange-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-                  <span className="text-base font-bold text-gray-900">Prospecting</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">13</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$1.58M</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">$122K</td>
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]">
-                    <div className="bg-orange-600 h-2 rounded-full" style={{ width: '29%' }}></div>
-                  </div>
-                  <span className="text-base font-bold text-orange-600">29%</span>
-                </div>
-              </td>
-              <td className="px-6 py-4 text-lg font-bold text-orange-600">$458K</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">62 days</td>
-            </tr>
+            {stageData.map((stage, index) => {
+              const colors = [
+                { bg: 'hover:bg-green-50', dot: 'bg-green-500', text: 'text-green-600', bar: 'bg-green-600' },
+                { bg: 'hover:bg-blue-50', dot: 'bg-blue-500', text: 'text-blue-600', bar: 'bg-blue-600' },
+                { bg: 'hover:bg-yellow-50', dot: 'bg-yellow-500', text: 'text-yellow-600', bar: 'bg-yellow-600' },
+                { bg: 'hover:bg-orange-50', dot: 'bg-orange-500', text: 'text-orange-600', bar: 'bg-orange-600' },
+                { bg: 'hover:bg-purple-50', dot: 'bg-purple-500', text: 'text-purple-600', bar: 'bg-purple-600' }
+              ][index] || { bg: 'hover:bg-gray-50', dot: 'bg-gray-500', text: 'text-gray-600', bar: 'bg-gray-600' };
+              
+              const avgDealSize = stage.count > 0 ? stage.arr / stage.count : 0;
+              const weightedARR = stage.arr * (stage.avgProbability / 100);
+              const avgDaysInStage = stage.count > 0 
+                ? Math.round(expansionOpportunities.filter(o => o.stage === stage.stage).reduce((sum, o) => sum + o.days_in_stage, 0) / stage.count)
+                : 0;
+              
+              return (
+                <tr key={stage.stage} className={`${colors.bg} transition-colors cursor-pointer`}>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-3 h-3 rounded-full ${colors.dot}`}></div>
+                      <span className="text-base font-bold text-gray-900">{stage.stage}</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-base font-semibold text-gray-800">{stage.count}</td>
+                  <td className="px-6 py-4 text-lg font-bold text-gray-900">${(stage.arr / 1000000).toFixed(2)}M</td>
+                  <td className="px-6 py-4 text-base font-semibold text-gray-800">${(avgDealSize / 1000).toFixed(0)}K</td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]">
+                        <div className={`${colors.bar} h-2 rounded-full`} style={{ width: `${stage.avgProbability}%` }}></div>
+                      </div>
+                      <span className={`text-base font-bold ${colors.text}`}>{stage.avgProbability}%</span>
+                    </div>
+                  </td>
+                  <td className={`px-6 py-4 text-lg font-bold ${colors.text}`}>${(weightedARR / 1000000).toFixed(2)}M</td>
+                  <td className="px-6 py-4 text-base font-semibold text-gray-800">{avgDaysInStage} days</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -241,6 +222,15 @@ export const ExpansionPipelineLevel2: React.FC = () => {
 export const ExpansionPipelineLevel3: React.FC = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
   
+  // Get top opportunities from real data
+  const topOpportunities = expansionOpportunities
+    .sort((a, b) => b.estimated_arr - a.estimated_arr)
+    .slice(0, 10)
+    .map(opp => {
+      const customer = customersData.find(c => c.customer_id === opp.customer_id);
+      return { ...opp, customer };
+    });
+  
   return (
   <>
   <div className="space-y-8">
@@ -262,97 +252,52 @@ export const ExpansionPipelineLevel3: React.FC = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr 
-              className="hover:bg-green-50 transition-colors cursor-pointer"
-              onClick={() => setSelectedAccount('TechCorp Industries')}
-            >
-              <td className="px-6 py-4">
-                <div className="text-base font-bold text-gray-900">TechCorp Industries</div>
-                <div className="text-xs text-gray-600">Enterprise | Technology</div>
-              </td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Cross-Sell</span>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">Splunk</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$223K</td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Proposed</span>
-              </td>
-              <td className="px-6 py-4 text-base font-bold text-green-600">67%</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">18</td>
-              <td className="px-6 py-4 text-sm font-semibold text-gray-800">POC kickoff</td>
-            </tr>
-            <tr 
-              className="hover:bg-green-50 transition-colors cursor-pointer"
-              onClick={() => setSelectedAccount('MedSecure Systems')}
-            >
-              <td className="px-6 py-4">
-                <div className="text-base font-bold text-gray-900">MedSecure Systems</div>
-                <div className="text-xs text-gray-600">Strategic | Healthcare</div>
-              </td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Upsell</span>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">Umbrella</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$169K</td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Proposed</span>
-              </td>
-              <td className="px-6 py-4 text-base font-bold text-green-600">67%</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">18</td>
-              <td className="px-6 py-4 text-sm font-semibold text-gray-800">Exec review</td>
-            </tr>
-            <tr className="hover:bg-green-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="text-base font-bold text-gray-900">Global Financial Partners</div>
-                <div className="text-xs text-gray-600">Enterprise | Financial Services</div>
-              </td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Cross-Sell</span>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">Duo</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$295K</td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Negotiating</span>
-              </td>
-              <td className="px-6 py-4 text-base font-bold text-green-600">83%</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">12</td>
-              <td className="px-6 py-4 text-sm font-semibold text-gray-800">Contract review</td>
-            </tr>
-            <tr className="hover:bg-green-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="text-base font-bold text-gray-900">InnovateTech Solutions</div>
-                <div className="text-xs text-gray-600">Enterprise | Technology</div>
-              </td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Cross-Sell</span>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">ThousandEyes</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$185K</td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Engaged</span>
-              </td>
-              <td className="px-6 py-4 text-base font-bold text-yellow-600">43%</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">25</td>
-              <td className="px-6 py-4 text-sm font-semibold text-gray-800">Demo setup</td>
-            </tr>
-            <tr className="hover:bg-green-50 transition-colors">
-              <td className="px-6 py-4">
-                <div className="text-base font-bold text-gray-900">CloudFirst Solutions</div>
-                <div className="text-xs text-gray-600">Commercial | Technology</div>
-              </td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Upsell</span>
-              </td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">Duo</td>
-              <td className="px-6 py-4 text-lg font-bold text-gray-900">$142K</td>
-              <td className="px-6 py-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Negotiating</span>
-              </td>
-              <td className="px-6 py-4 text-base font-bold text-green-600">83%</td>
-              <td className="px-6 py-4 text-base font-semibold text-gray-800">8</td>
-              <td className="px-6 py-4 text-sm font-semibold text-gray-800">Pricing finalize</td>
-            </tr>
+            {topOpportunities.map((opp) => {
+              const typeColors = {
+                'cross_sell': { bg: 'bg-blue-100', text: 'text-blue-700' },
+                'upsell': { bg: 'bg-green-100', text: 'text-green-700' },
+                'capacity': { bg: 'bg-purple-100', text: 'text-purple-700' }
+              };
+              
+              const stageColors = {
+                'Identified': { bg: 'bg-orange-100', text: 'text-orange-700' },
+                'Qualified': { bg: 'bg-blue-100', text: 'text-blue-700' },
+                'Proposal': { bg: 'bg-yellow-100', text: 'text-yellow-700' },
+                'Negotiation': { bg: 'bg-green-100', text: 'text-green-700' },
+                'Closed Won': { bg: 'bg-emerald-100', text: 'text-emerald-700' }
+              };
+              
+              const typeColor = typeColors[opp.opportunity_type as keyof typeof typeColors] || { bg: 'bg-gray-100', text: 'text-gray-700' };
+              const stageColor = stageColors[opp.stage as keyof typeof stageColors] || { bg: 'bg-gray-100', text: 'text-gray-700' };
+              
+              return (
+                <tr 
+                  key={opp.opportunity_id}
+                  className="hover:bg-green-50 transition-colors cursor-pointer"
+                  onClick={() => setSelectedAccount(opp.customer?.customer_name || 'Unknown')}
+                >
+                  <td className="px-6 py-4">
+                    <div className="text-base font-bold text-gray-900">{opp.customer?.customer_name || 'Unknown'}</div>
+                    <div className="text-xs text-gray-600">{opp.customer?.tier} | {opp.customer?.industry}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${typeColor.bg} ${typeColor.text}`}>
+                      {opp.opportunity_type.replace('_', '-')}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-base font-semibold text-gray-800">{opp.recommended_product}</td>
+                  <td className="px-6 py-4 text-lg font-bold text-gray-900">${(opp.estimated_arr / 1000).toFixed(0)}K</td>
+                  <td className="px-6 py-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${stageColor.bg} ${stageColor.text}`}>
+                      {opp.stage}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-base font-bold text-green-600">{opp.close_probability}%</td>
+                  <td className="px-6 py-4 text-base font-semibold text-gray-800">{opp.days_in_stage}</td>
+                  <td className="px-6 py-4 text-sm font-semibold text-gray-800">{opp.next_action}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

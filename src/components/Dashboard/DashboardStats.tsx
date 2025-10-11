@@ -4,9 +4,16 @@ import { useState } from 'react';
 import { colors, personaColors } from '@/config/theme';
 import { Persona, getPersonaData } from '@/data/dummyData';
 import NRRDrillDownModal from './NRRDrillDownModal';
+import ExpansionARRDrillDownModal from './ExpansionARRDrillDownModal';
+import MultiProductDrillDownModal from './MultiProductDrillDownModal_Simple'; // Multi-product modal
 import PremiumKPICard from '@/components/shared/PremiumKPICard';
-import { renderMultiProductLevel2, renderMultiProductLevel3 } from './MultiProductDrillDown';
-import { renderWhiteSpaceLevel2, renderWhiteSpaceLevel3 } from './WhiteSpaceDrillDown';
+
+// Import master data for calculations
+import expansionOpportunities from '@/source_data/sales-expansion-data/expansion-opportunities.json';
+import customersData from '@/source_data/master-data/customers.json';
+import licensesData from '@/source_data/master-data/licenses.json';
+import whiteSpaceAnalysis from '@/source_data/csm-data/white_space_analysis.json';
+import WhiteSpaceDrillDownModal from './WhiteSpaceDrillDownModal';
 import { renderExpansionPipelineLevel2, renderExpansionPipelineLevel3 } from './ExpansionPipelineDrillDown';
 import { CrossSellDrillDown, WinRateDrillDown } from './CrossSellWinRateDrillDown';
 import { TimeExpansionDrillDown } from './TimeExpansionDrillDown';
@@ -17,15 +24,18 @@ import { AccountDetailModal } from './AccountDetailModal';
 
 interface DashboardStatsProps {
   persona: Persona;
-  level?: number;
 }
 
-export default function DashboardStats({ persona, level = 1 }: DashboardStatsProps) {
+export default function DashboardStats({ persona }: DashboardStatsProps) {
   const data = getPersonaData(persona) as any;
   const [nrrDrillLevel, setNrrDrillLevel] = useState<1 | 2 | 3 | null>(null);
   const [expansionDrillLevel, setExpansionDrillLevel] = useState<1 | 2 | 3 | null>(null);
   const [multiProductDrillLevel, setMultiProductDrillLevel] = useState<1 | 2 | 3 | null>(null);
   const [whiteSpaceDrillLevel, setWhiteSpaceDrillLevel] = useState<1 | 2 | 3 | null>(null);
+  const [whiteSpaceInitialFilter, setWhiteSpaceInitialFilter] = useState<{
+    type: 'product' | 'tier' | 'readiness' | 'all';
+    value: string;
+  } | null>(null);
   const [pipelineDrillLevel, setPipelineDrillLevel] = useState<number | null>(null);
   const [crossSellDrillLevel, setCrossSellDrillLevel] = useState<number | null>(null);
   const [winRateDrillLevel, setWinRateDrillLevel] = useState<number | null>(null);
@@ -35,12 +45,47 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
   const [utilizationDrillLevel, setUtilizationDrillLevel] = useState<number | null>(null);
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
 
-  // Calculate NRR in dollar values
-  const baseARR = 42200000; // $42.2M base ARR
-  const expansionARR = 7680000; // $7.68M expansion
-  const churnARR = 1440000; // $1.44M churn
-  const netARR = baseARR + expansionARR - churnARR; // $48.44M
-  const nrrPercent = (netARR / baseARR) * 100; // 114.8%
+  // ===== REAL MASTER DATA CALCULATIONS =====
+  
+  // 1. NRR Calculation
+  const baseARR = customersData.reduce((sum, customer) => sum + customer.arr, 0);
+  const totalExpansionARR = expansionOpportunities.reduce((sum, opp) => sum + opp.estimated_arr, 0);
+  const churnARR = 1440000; // From churn predictions
+  const netNRR = baseARR + totalExpansionARR - churnARR;
+  const nrrPercentage = ((netNRR / baseARR) * 100).toFixed(1);
+
+  // 2. Expansion ARR Calculation
+  const expansionARRValue = (totalExpansionARR / 1000000).toFixed(2);
+
+  // 3. Multi-Product Penetration
+  const customerProductCounts = customersData.map(customer => {
+    const customerLicenses = licensesData.filter(license => license.customer_id === customer.customer_id);
+    const uniqueProducts = [...new Set(customerLicenses.map(license => license.product_family))];
+    return { customerId: customer.customer_id, productCount: uniqueProducts.length };
+  });
+  const multiProductCustomers = customerProductCounts.filter(c => c.productCount >= 2).length;
+  const multiProductPercentage = Math.round((multiProductCustomers / customersData.length) * 100);
+
+  // 4. White Space Calculation
+  const allWhiteSpaceOpps = whiteSpaceAnalysis.flatMap(ws => ws.white_space_opportunities);
+  const totalWhiteSpaceValue = allWhiteSpaceOpps.reduce((sum, opp) => sum + opp.estimated_arr, 0);
+  const whiteSpaceValueM = (totalWhiteSpaceValue / 1000000).toFixed(1);
+
+  // 5. Pipeline Stage Calculations - REAL STAGES FROM DATA
+  const stages = ['Prospecting', 'Qualified', 'Engaged', 'Proposed', 'Negotiating'];
+  const stageData = stages.map(stage => ({
+    stage,
+    count: expansionOpportunities.filter(o => o.stage === stage).length,
+    arr: expansionOpportunities.filter(o => o.stage === stage).reduce((sum, o) => sum + o.estimated_arr, 0),
+    avgProbability: expansionOpportunities.filter(o => o.stage === stage).length > 0 
+      ? Math.round(expansionOpportunities.filter(o => o.stage === stage).reduce((sum, o) => sum + o.close_probability, 0) / expansionOpportunities.filter(o => o.stage === stage).length)
+      : 0
+  }));
+
+  const totalPipeline = totalExpansionARR;
+  const weightedPipeline = expansionOpportunities.reduce((sum, opp) => sum + (opp.estimated_arr * (opp.close_probability / 100)), 0);
+  const quota = 2500000; // $2.5M quota
+  const coverageRatio = totalPipeline / quota;
 
   const renderCSMStats = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -124,8 +169,8 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* NRR Card - Clickable */}
         <PremiumKPICard
           title="Net Revenue Retention"
-          subtitle={`${formatCurrency(netARR)} (${nrrPercent.toFixed(1)}%)`}
-          value={formatCurrency(netARR)}
+          subtitle="Current Quarter"
+          value={`$${(netNRR / 1000000).toFixed(1)}M`}
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -135,22 +180,23 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           gradientFrom="from-blue-50"
           gradientTo="to-blue-100/50"
           borderColor="border-blue-200/50"
-          trend="+$6.2M"
+          trend="+3.2pp"
           trendDirection="up"
           trendLabel="On Target"
           progressPercent={100}
           progressBgColor="bg-blue-200"
           progressFillColor="bg-blue-600"
           performance="Good"
-          clickable={true}
-          onClick={() => setNrrDrillLevel(1)}
+          showDrillDown={true}
+          onTacticalAnalysis={() => setNrrDrillLevel(1)}
+          onActionItems={() => setNrrDrillLevel(3)}
         />
 
         {/* Expansion ARR Card - Clickable */}
         <PremiumKPICard
           title="Expansion ARR"
           subtitle="YTD vs target"
-          value="$10.3M"
+          value={`$${(totalExpansionARR / 1000000).toFixed(2)}M`}
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -167,15 +213,16 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           progressBgColor="bg-green-200"
           progressFillColor="bg-green-600"
           performance="Good"
-          clickable={true}
-          onClick={() => setExpansionDrillLevel(2)}
+          showDrillDown={true}
+          onTacticalAnalysis={() => setExpansionDrillLevel(1)}
+          onActionItems={() => setExpansionDrillLevel(3)}
         />
 
         {/* Multi-Product Card - Clickable */}
         <PremiumKPICard
           title="Multi-Product Penetration"
           subtitle="Customers with 2+ products"
-          value="86%"
+          value={`${multiProductPercentage}%`}
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -192,15 +239,16 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           progressBgColor="bg-purple-200"
           progressFillColor="bg-purple-600"
           performance="Good"
-          clickable={true}
-          onClick={() => setMultiProductDrillLevel(2)}
+          showDrillDown={true}
+          onTacticalAnalysis={() => setMultiProductDrillLevel(1)}
+          onActionItems={() => setMultiProductDrillLevel(3)}
         />
 
         {/* White Space Card */}
         <PremiumKPICard
           title="White Space Opportunity"
           subtitle="YTD Identified"
-          value="$8.2M"
+          value={`$${whiteSpaceValueM}M`}
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -217,8 +265,15 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           progressBgColor="bg-orange-200"
           progressFillColor="bg-orange-600"
           performance="Good"
-          clickable={true}
-          onClick={() => setWhiteSpaceDrillLevel(2)}
+          showDrillDown={true}
+          onTacticalAnalysis={() => {
+            setWhiteSpaceInitialFilter(null);
+            setWhiteSpaceDrillLevel(1);
+          }}
+          onActionItems={() => {
+            setWhiteSpaceInitialFilter({ type: 'readiness', value: 'high' });
+            setWhiteSpaceDrillLevel(1);
+          }}
         />
 
       </div>
@@ -228,82 +283,69 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* Row 1: Expansion Pipeline (Full Width) */}
         <div className="grid grid-cols-1 gap-6">
           {/* Expansion Pipeline ARR - FUNNEL CHART */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-            onClick={() => setPipelineDrillLevel(2)}
-          >
+          <div className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            {/* Hover overlay for drill-through options */}
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 z-20">
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setPipelineDrillLevel(2)}
+                  className="px-6 py-3 bg-teal-600 text-white rounded-lg font-bold hover:bg-teal-700 transition-colors shadow-lg"
+                >
+                  View Analytics
+                </button>
+                <button
+                  onClick={() => setPipelineDrillLevel(3)}
+                  className="px-6 py-3 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg"
+                >
+                  Action Items
+                </button>
+              </div>
+            </div>
             <div className="flex items-center justify-between mb-6">
               <div>
                 <div className="text-2xl font-bold text-gray-900">Expansion Pipeline ARR</div>
-                <div className="text-sm text-gray-500">Q4 2025 • 59 Opportunities</div>
+                <div className="text-sm text-gray-500">Q4 2025 • {expansionOpportunities.length} Opportunities</div>
               </div>
               <div className="text-right">
-                <div className="text-4xl font-bold text-teal-600">$8.2M</div>
-                <div className="text-xs text-green-600 font-bold">↑ +18% • 3.2x Coverage</div>
+                <div className="text-4xl font-bold text-teal-600">${(totalPipeline / 1000000).toFixed(1)}M</div>
+                <div className="text-xs text-green-600 font-bold">↑ +18% • {coverageRatio.toFixed(1)}x Coverage</div>
               </div>
             </div>
 
-            {/* Funnel Chart */}
+            {/* Funnel Chart - REAL DATA */}
             <div className="relative h-64 flex flex-col justify-center gap-3 mt-4">
-              {/* Negotiating - 83% */}
-              <div className="relative">
-                <div className="mx-auto bg-gradient-to-r from-green-500 via-green-600 to-green-500 rounded-lg shadow-lg" 
-                  style={{ width: '100%', height: '48px' }}>
-                  <div className="flex items-center justify-between px-6 h-full">
-                    <span className="text-white font-bold text-base">Negotiating</span>
-                    <div className="text-right">
-                      <div className="text-white font-bold text-lg">$1.26M</div>
-                      <div className="text-white/90 text-sm">10 opps • 83%</div>
+              {stageData.slice().reverse().map((stage, index) => {
+                const colors = [
+                  { from: 'from-green-500', via: 'via-green-600', to: 'to-green-500' },
+                  { from: 'from-blue-500', via: 'via-blue-600', to: 'to-blue-500' },
+                  { from: 'from-yellow-500', via: 'via-yellow-600', to: 'to-yellow-500' },
+                  { from: 'from-orange-500', via: 'via-orange-600', to: 'to-orange-500' },
+                  { from: 'from-red-500', via: 'via-red-600', to: 'to-red-500' }
+                ][index] || { from: 'from-gray-500', via: 'via-gray-600', to: 'to-gray-500' };
+                
+                const widthPercent = Math.max(60, 100 - (index * 15)); // Decreasing width for funnel effect
+                
+                return (
+                  <div key={stage.stage} className="relative">
+                    <div 
+                      className={`mx-auto bg-gradient-to-r ${colors.from} ${colors.via} ${colors.to} rounded-lg shadow-lg`}
+                      style={{ width: `${widthPercent}%`, height: '48px' }}
+                    >
+                      <div className="flex items-center justify-between px-6 h-full">
+                        <span className="text-white font-bold text-base">{stage.stage}</span>
+                        <div className="text-right">
+                          <div className="text-white font-bold text-lg">${(stage.arr / 1000000).toFixed(2)}M</div>
+                          <div className="text-white/90 text-sm">{stage.count} opps • {stage.avgProbability}%</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Proposed - 61% */}
-              <div className="relative">
-                <div className="mx-auto bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 rounded-lg shadow-lg" 
-                  style={{ width: '90%', height: '48px' }}>
-                  <div className="flex items-center justify-between px-6 h-full">
-                    <span className="text-white font-bold text-base">Proposed</span>
-                    <div className="text-right">
-                      <div className="text-white font-bold text-lg">$1.87M</div>
-                      <div className="text-white/90 text-sm">16 opps • 61%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Engaged - 43% */}
-              <div className="relative">
-                <div className="mx-auto bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-500 rounded-lg shadow-lg" 
-                  style={{ width: '75%', height: '48px' }}>
-                  <div className="flex items-center justify-between px-6 h-full">
-                    <span className="text-white font-bold text-base">Engaged</span>
-                    <div className="text-right">
-                      <div className="text-white font-bold text-lg">$1.51M</div>
-                      <div className="text-white/90 text-sm">16 opps • 43%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Prospecting - 29% */}
-              <div className="relative">
-                <div className="mx-auto bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 rounded-lg shadow-lg" 
-                  style={{ width: '60%', height: '48px' }}>
-                  <div className="flex items-center justify-between px-6 h-full">
-                    <span className="text-white font-bold text-base">Prospecting</span>
-                    <div className="text-right">
-                      <div className="text-white font-bold text-lg">$1.58M</div>
-                      <div className="text-white/90 text-sm">13 opps • 29%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
 
             <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center">
-              <span className="text-sm font-bold text-gray-700">Weighted Pipeline: <span className="text-teal-600">$5.1M</span></span>
+              <span className="text-sm font-bold text-gray-700">Weighted Pipeline: <span className="text-teal-600">${(weightedPipeline / 1000000).toFixed(1)}M</span></span>
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Healthy</span>
             </div>
           </div>
@@ -882,139 +924,35 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         />
       )}
 
-      {/* Expansion ARR Drill-Down - Show Level 2 or 3 inline */}
-      {(expansionDrillLevel === 2 || expansionDrillLevel === 3) && (
-        <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
-          <div className="min-h-screen">
-            <div className="sticky top-0 bg-white border-b-2 border-gray-200 px-8 py-6 flex items-center justify-between shadow-sm z-10">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Expansion ARR</h2>
-                <div className="flex gap-4 mt-3">
-                  <button
-                    onClick={() => setExpansionDrillLevel(2)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      expansionDrillLevel === 2
-                        ? 'bg-green-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Analytics
-                  </button>
-                  <button
-                    onClick={() => setExpansionDrillLevel(3)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      expansionDrillLevel === 3
-                        ? 'bg-green-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Details
-                  </button>
-                </div>
-              </div>
-              <button
-                onClick={() => setExpansionDrillLevel(null)}
-                className="text-gray-500 hover:text-gray-700 text-5xl font-bold leading-none px-4"
-              >
-                ×
-              </button>
-            </div>
-            <div className="px-8 py-6">
-              {expansionDrillLevel === 2 && renderSELevel2()}
-              {expansionDrillLevel === 3 && renderSELevel3()}
-            </div>
-          </div>
-        </div>
+      {/* Expansion ARR Drill-Down Modal */}
+      {expansionDrillLevel && (
+        <ExpansionARRDrillDownModal
+          level={expansionDrillLevel}
+          onClose={() => setExpansionDrillLevel(null)}
+          onLevelChange={setExpansionDrillLevel}
+        />
       )}
 
-      {/* Multi-Product Penetration Drill-Down */}
-      {(multiProductDrillLevel === 2 || multiProductDrillLevel === 3) && (
-        <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
-          <div className="min-h-screen">
-            <div className="sticky top-0 bg-white border-b-2 border-gray-200 px-8 py-6 flex items-center justify-between shadow-sm z-10">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Multi-Product Penetration</h2>
-                <div className="flex gap-4 mt-3">
-                  <button
-                    onClick={() => setMultiProductDrillLevel(2)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      multiProductDrillLevel === 2
-                        ? 'bg-purple-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Analytics
-                  </button>
-                  <button
-                    onClick={() => setMultiProductDrillLevel(3)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      multiProductDrillLevel === 3
-                        ? 'bg-purple-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Details
-                  </button>
-                </div>
-              </div>
-              <button
-                onClick={() => setMultiProductDrillLevel(null)}
-                className="text-gray-500 hover:text-gray-700 text-5xl font-bold leading-none px-4"
-              >
-                ×
-              </button>
-            </div>
-            <div className="px-8 py-6">
-              {multiProductDrillLevel === 2 && renderMultiProductLevel2()}
-              {multiProductDrillLevel === 3 && renderMultiProductLevel3()}
-            </div>
-          </div>
-        </div>
+      {/* Multi-Product Penetration Drill-Down Modal */}
+      {multiProductDrillLevel && (
+        <MultiProductDrillDownModal
+          level={multiProductDrillLevel}
+          onClose={() => setMultiProductDrillLevel(null)}
+          onLevelChange={setMultiProductDrillLevel}
+        />
       )}
 
-      {/* White Space Drill-Down */}
-      {(whiteSpaceDrillLevel === 2 || whiteSpaceDrillLevel === 3) && (
-        <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
-          <div className="min-h-screen">
-            <div className="sticky top-0 bg-white border-b-2 border-gray-200 px-8 py-6 flex items-center justify-between shadow-sm z-10">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">White Space Opportunity</h2>
-                <div className="flex gap-4 mt-3">
-                  <button
-                    onClick={() => setWhiteSpaceDrillLevel(2)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      whiteSpaceDrillLevel === 2
-                        ? 'bg-orange-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Analytics
-                  </button>
-                  <button
-                    onClick={() => setWhiteSpaceDrillLevel(3)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      whiteSpaceDrillLevel === 3
-                        ? 'bg-orange-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Details
-                  </button>
-                </div>
-              </div>
-              <button
-                onClick={() => setWhiteSpaceDrillLevel(null)}
-                className="text-gray-500 hover:text-gray-700 text-5xl font-bold leading-none px-4"
-              >
-                ×
-              </button>
-            </div>
-            <div className="px-8 py-6">
-              {whiteSpaceDrillLevel === 2 && renderWhiteSpaceLevel2()}
-              {whiteSpaceDrillLevel === 3 && renderWhiteSpaceLevel3()}
-            </div>
-          </div>
-        </div>
+      {/* White Space Drill-Down Modal */}
+      {whiteSpaceDrillLevel && (
+        <WhiteSpaceDrillDownModal
+          level={whiteSpaceDrillLevel}
+          onClose={() => {
+            setWhiteSpaceDrillLevel(null);
+            setWhiteSpaceInitialFilter(null);
+          }}
+          onLevelChange={setWhiteSpaceDrillLevel}
+          initialFilter={whiteSpaceInitialFilter}
+        />
       )}
 
       {/* Expansion Pipeline Drill-Down */}
@@ -1023,29 +961,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           <div className="min-h-screen">
             <div className="sticky top-0 bg-white border-b-2 border-gray-200 px-8 py-6 flex items-center justify-between shadow-sm z-10">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Expansion Pipeline ARR</h2>
-                <div className="flex gap-4 mt-3">
-                  <button
-                    onClick={() => setPipelineDrillLevel(2)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      pipelineDrillLevel === 2
-                        ? 'bg-teal-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Analytics
-                  </button>
-                  <button
-                    onClick={() => setPipelineDrillLevel(3)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
-                      pipelineDrillLevel === 3
-                        ? 'bg-teal-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Details
-                  </button>
-                </div>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {pipelineDrillLevel === 2 ? 'Expansion Pipeline Analytics' : 'Pipeline Action Items'}
+                </h2>
               </div>
               <button
                 onClick={() => setPipelineDrillLevel(null)}
@@ -1876,8 +1794,6 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
   );
 
   const renderSEStats = () => {
-    if (level === 2) return renderSELevel2();
-    if (level === 3) return renderSELevel3();
     return renderSELevel1();
   };
 
