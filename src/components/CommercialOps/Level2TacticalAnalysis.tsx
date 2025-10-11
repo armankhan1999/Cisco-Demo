@@ -7,6 +7,15 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, RefreshCw, Layers, Target, AlertCircle } from 'lucide-react';
 import { drillDownService, type KPIDrillDown, type Level2View } from '@/services/drillDownService';
 import { getCommercialOpsKPIs } from '@/services/commercialOpsService';
+import { 
+  getQ2CStageBreakdown, 
+  getQ2CBottleneckHeatmap, 
+  getQ2CDealSizeCorrelation, 
+  getQ2CProductFamilyImpact,
+  getQ2CCapacityInsights,
+  getQ2CSeasonalTrends,
+  getQ2CHistoricalTrends
+} from '@/services/q2cAnalyticsService';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, ComposedChart, ScatterChart, Scatter, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import AdvancedVisualizationCharts from './AdvancedVisualizationCharts';
 
@@ -21,9 +30,10 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
   const [kpiDrillDown, setKpiDrillDown] = useState<KPIDrillDown | null>(null);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
-    timeRange: 'Q2-2025',
-    segment: 'all',
-    product: 'all'
+    timeRange: 'last-12-months',
+    customerTier: 'all',
+    productFamily: 'all',
+    dealSize: 'all'
   });
 
   useEffect(() => {
@@ -49,16 +59,39 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
   const activeViewData = kpiDrillDown.level2Views.find(view => view.id === activeView);
 
   const getChartData = (viewId: string, chartType: string) => {
+    // Apply filters to data based on current filter state
     switch (viewId) {
       case 'stage-breakdown':
-        return [
-          { stage: 'Quote Creation', avgDays: 0.8, target: 1.0, slaCompliance: 95, status: 'good' },
-          { stage: 'Quote Approval', avgDays: 12.5, target: 10.0, slaCompliance: 72, status: 'warning' },
-          { stage: 'Order Processing', avgDays: 0.2, target: 0.5, slaCompliance: 98, status: 'good' },
-          { stage: 'Fulfillment', avgDays: 1.5, target: 2.0, slaCompliance: 94, status: 'good' },
-          { stage: 'Invoicing', avgDays: 0.5, target: 1.0, slaCompliance: 97, status: 'good' },
-          { stage: 'Payment Collection', avgDays: 22.5, target: 30.0, slaCompliance: 83, status: 'good' }
-        ];
+        return getQ2CStageBreakdown().map(stage => ({
+          stage: stage.stage.replace(' → ', ' to '),
+          avgDays: stage.avgDays,
+          target: stage.target,
+          slaCompliance: stage.slaCompliance,
+          status: stage.impactLevel === 'high' ? 'critical' : stage.impactLevel === 'medium' ? 'warning' : 'good',
+          bottleneckScore: stage.bottleneckScore
+        }));
+      case 'bottleneck-heatmap':
+        return getQ2CBottleneckHeatmap();
+      case 'deal-size-correlation':
+        return getQ2CDealSizeCorrelation().map(item => ({
+          x: item.avgCycleDays,
+          y: item.volume,
+          name: item.dealSize,
+          efficiency: item.efficiency,
+          trend: item.trend
+        }));
+      case 'product-family-impact':
+        return getQ2CProductFamilyImpact();
+      case 'seasonal-trends':
+        return getQ2CSeasonalTrends().map(trend => ({
+          period: trend.period,
+          value: trend.avgCycleDays,
+          volume: trend.volume,
+          seasonalFactor: trend.seasonalFactor,
+          businessContext: trend.businessContext
+        }));
+      case 'historical-trend':
+        return getQ2CHistoricalTrends();
       case 'customer-segment':
         return [
           { segment: 'Strategic', avgCycle: 35, volume: 45, impact: 'high', color: '#10B981' },
@@ -190,17 +223,106 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
         );
       case 'heatmap':
         return (
-          <div className="grid grid-cols-4 gap-4 h-96">
-            {data.map((item: any, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div className="space-y-4">
+            <div className="grid grid-cols-6 gap-2 text-sm font-medium text-gray-700">
+              <div></div>
+              <div className="text-center">Strategic</div>
+              <div className="text-center">Enterprise</div>
+              <div className="text-center">Commercial</div>
+              <div className="text-center">SMB</div>
+              <div className="text-center">Avg</div>
+            </div>
+            {['Quote Approval', 'Legal Review', 'Order Processing', 'Fulfillment', 'Billing', 'Collection'].map(stage => (
+              <div key={stage} className="grid grid-cols-6 gap-2 items-center">
+                <div className="text-sm font-medium text-gray-700 pr-2">{stage}</div>
+                {['Strategic', 'Enterprise', 'Commercial', 'SMB'].map(tier => {
+                  const cellData = data.find((item: any) => item.stage === stage && item.customerTier === tier);
+                  const severity = cellData?.severity || 'low';
+                  const avgDays = cellData?.avgDays || 0;
+                  const bgColor = severity === 'critical' ? 'bg-red-500' : 
+                                 severity === 'high' ? 'bg-orange-500' : 
+                                 severity === 'medium' ? 'bg-yellow-500' : 'bg-green-500';
+                  return (
+                    <div key={tier} className={`${bgColor} text-white text-center py-2 px-1 rounded text-sm font-medium`}>
+                      {avgDays.toFixed(1)}d
+                    </div>
+                  );
+                })}
+                <div className="text-sm text-gray-600 text-center">
+                  {(data.filter((item: any) => item.stage === stage).reduce((sum: number, item: any) => sum + item.avgDays, 0) / 4).toFixed(1)}d
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      case 'scatter':
+        return (
+          <ResponsiveContainer width="100%" height={400}>
+            <ScatterChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="x" name="Cycle Days" />
+              <YAxis dataKey="y" name="Volume" />
+              <Tooltip 
+                content={({ active, payload }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                        <p className="font-semibold">{data.name}</p>
+                        <p className="text-sm">Cycle Days: {data.x}</p>
+                        <p className="text-sm">Volume: {data.y}</p>
+                        <p className="text-sm">Efficiency: {data.efficiency}%</p>
+                        <p className="text-sm capitalize">Trend: {data.trend}</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Scatter dataKey="y" fill="#3B82F6" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        );
+      case 'matrix':
+        return (
+          <div className="space-y-4">
+            <div className="grid grid-cols-5 gap-4">
+              <div className="font-semibold text-gray-700">Product Family</div>
+              <div className="font-semibold text-gray-700 text-center">Avg Cycle Days</div>
+              <div className="font-semibold text-gray-700 text-center">Complexity</div>
+              <div className="font-semibold text-gray-700 text-center">Volume</div>
+              <div className="font-semibold text-gray-700 text-center">Improvement Opportunity</div>
+            </div>
+            {data.map((item: any, index: number) => (
+              <div key={index} className="grid grid-cols-5 gap-4 items-center py-3 border-b border-gray-200">
+                <div className="font-medium text-gray-900">{item.productFamily}</div>
                 <div className="text-center">
-                  <div className={`w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg`} 
-                       style={{ backgroundColor: item.color }}>
-                    {item.avgCycle || item.avgDSO}
+                  <span className={`px-2 py-1 rounded-full text-sm font-medium ${
+                    item.avgCycleDays > 45 ? 'bg-red-100 text-red-800' :
+                    item.avgCycleDays > 35 ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {item.avgCycleDays}d
+                  </span>
+                </div>
+                <div className="text-center">
+                  <div className="flex justify-center">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className={`w-2 h-2 rounded-full mx-0.5 ${
+                        i < item.complexity ? 'bg-blue-500' : 'bg-gray-200'
+                      }`} />
+                    ))}
                   </div>
-                  <h4 className="font-semibold text-gray-900 mb-1">{item.segment || item.tier}</h4>
-                  <p className="text-sm text-gray-600">Volume: {item.volume}</p>
-                  <p className="text-xs text-gray-500 capitalize">Impact: {item.impact}</p>
+                </div>
+                <div className="text-center text-gray-600">{item.volume}</div>
+                <div className="text-center">
+                  <span className={`px-2 py-1 rounded-full text-sm font-medium ${
+                    item.improvementOpportunity > 20 ? 'bg-red-100 text-red-800' :
+                    item.improvementOpportunity > 10 ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {item.improvementOpportunity}%
+                  </span>
                 </div>
               </div>
             ))}
@@ -273,8 +395,8 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                   <option value="Q4-2024">Q4 2024</option>
                 </select>
                 <select 
-                  value={filters.segment}
-                  onChange={(e) => setFilters({...filters, segment: e.target.value})}
+                  value={filters.customerTier}
+                  onChange={(e) => setFilters({...filters, customerTier: e.target.value})}
                   className="border border-gray-300 rounded-lg px-3 py-1 text-sm"
                 >
                   <option value="all">All Segments</option>

@@ -1,7 +1,6 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Clock, AlertTriangle, CheckCircle, TrendingUp } from 'lucide-react';

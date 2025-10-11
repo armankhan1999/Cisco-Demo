@@ -9,6 +9,7 @@ import { Persona } from '@/data/dummyData';
 export default function Home() {
   const [currentPersona, setCurrentPersona] = useState<Persona>('CO');
   const [currentView, setCurrentView] = useState<string>('command-center');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderMainContent = () => {
     if (currentPersona === 'CO' && currentView === 'command-center') {
@@ -27,10 +28,13 @@ export default function Home() {
         onPersonaChange={setCurrentPersona}
         currentView={currentView}
         onViewChange={setCurrentView}
+        onCollapseChange={setSidebarCollapsed}
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${
+        sidebarCollapsed ? 'ml-14' : 'ml-64'
+      }`}>
         {renderMainContent()}
       </div>
     </div>

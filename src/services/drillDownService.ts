@@ -23,7 +23,7 @@ export interface Level2View {
   id: string;
   title: string;
   description: string;
-  chartType: 'breakdown' | 'trend' | 'heatmap' | 'matrix' | 'funnel' | 'waterfall';
+  chartType: 'breakdown' | 'trend' | 'heatmap' | 'matrix' | 'funnel' | 'waterfall' | 'scatter' | 'correlation';
   businessQuestion: string;
   actionableInsights: string[];
 }
@@ -57,27 +57,63 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
         ]
       },
       {
-        id: 'customer-segment',
-        title: 'Cycle Time by Customer Segment',
-        description: 'Compare performance across customer tiers and deal sizes',
+        id: 'bottleneck-heatmap',
+        title: 'Bottleneck Analysis Heatmap',
+        description: 'Visual heatmap showing cycle time performance by stage and customer tier',
         chartType: 'heatmap',
-        businessQuestion: 'Which customer segments have longer cycles?',
+        businessQuestion: 'Which stage-customer combinations are creating the most delays?',
         actionableInsights: [
-          'Enterprise deals take 15% longer due to approval complexity',
-          'SMB deals fastest but lower value',
-          'Strategic accounts need dedicated process'
+          'Enterprise legal reviews taking 40% longer than target',
+          'SMB order processing surprisingly efficient',
+          'Strategic account approvals need dedicated workflow'
         ]
       },
       {
-        id: 'trend-analysis',
-        title: 'Historical Trend Analysis',
-        description: 'Track cycle time improvements over quarters',
-        chartType: 'trend',
-        businessQuestion: 'Are we achieving cycle time targets consistently?',
+        id: 'deal-size-correlation',
+        title: 'Deal Size vs Cycle Time Analysis',
+        description: 'Scatter plot showing correlation between deal value and cycle duration',
+        chartType: 'scatter',
+        businessQuestion: 'How does deal size impact cycle time efficiency?',
         actionableInsights: [
-          'Q2 showing 15% improvement over Q1',
-          'Seasonal patterns identified in Q4',
-          'Process automation reducing manual delays'
+          'Deals >$500K show exponential cycle time increase',
+          'Sweet spot at $100K-$250K range for efficiency',
+          'Small deals (<$50K) have disproportionate overhead'
+        ]
+      },
+      {
+        id: 'product-family-impact',
+        title: 'Product Family Complexity Analysis',
+        description: 'Compare cycle times across different product families',
+        chartType: 'matrix',
+        businessQuestion: 'Which products create the most process complexity?',
+        actionableInsights: [
+          'ThousandEyes deals take 35% longer due to technical complexity',
+          'Duo has most streamlined process (avg 28 days)',
+          'Splunk requires specialized approval workflow'
+        ]
+      },
+      {
+        id: 'seasonal-trends',
+        title: 'Seasonal Performance Patterns',
+        description: 'Quarterly trends with business context and seasonal factors',
+        chartType: 'trend',
+        businessQuestion: 'How do seasonal patterns affect our Q2C performance?',
+        actionableInsights: [
+          'Q4 cycles 20% faster due to budget urgency',
+          'Q1 shows approval delays from new budget processes',
+          'Mid-year performance most predictable and optimizable'
+        ]
+      },
+      {
+        id: 'historical-trend',
+        title: 'Historical Trend Analysis',
+        description: 'Long-term Q2C performance trends with key business drivers',
+        chartType: 'trend',
+        businessQuestion: 'What are the long-term trends and improvement opportunities?',
+        actionableInsights: [
+          'Overall 18% improvement in cycle time over last 12 months',
+          'Process automation reducing manual delays by 25%',
+          'Customer tier optimization showing measurable impact'
         ]
       }
     ],
@@ -91,13 +127,13 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
         businessImpact: '$1.8M ARR at risk from delayed approvals'
       },
       {
-        id: 'escalation-workflow',
-        title: 'Approval Escalation Workflow',
-        description: 'Automated escalation for quotes exceeding SLA',
+        id: 'stage-bottlenecks',
+        title: 'Stage-Specific Bottleneck Resolution',
+        description: 'Process bottlenecks identified by stage and customer tier',
         actionType: 'workflow',
-        urgency: 'medium',
-        businessImpact: 'Reduce approval delays by 40%'
-      }
+        urgency: 'high',
+        businessImpact: 'Reduce cycle time by 15-25% through targeted improvements'
+      },
     ]
   },
   {

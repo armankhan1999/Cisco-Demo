@@ -3,8 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, AlertTriangle, Clock, DollarSign, User, Phone, Mail, FileText, CheckCircle, XCircle, RefreshCw, Filter, Search, Calendar, Bell } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, Clock, DollarSign, User, Phone, Mail, FileText, CheckCircle, XCircle, RefreshCw, Filter, Search, Calendar, Bell, TrendingUp, Target, Zap } from 'lucide-react';
 import { drillDownService, type KPIDrillDown } from '@/services/drillDownService';
+import { getQ2CProcessImprovements, getQ2CCapacityInsights, getQ2CBottleneckHeatmap, getQ2CQuotesRequiringAction } from '@/services/q2cAnalyticsService';
 
 interface Level3OperationalActionsProps {
   kpiId: string;
@@ -37,12 +38,21 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
   });
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [showQuoteDetails, setShowQuoteDetails] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [quotesRequiringAction, setQuotesRequiringAction] = useState<any[]>([]);
 
   useEffect(() => {
     const drillDown = drillDownService.getKPIDrillDown(kpiId);
     if (drillDown) {
       setKpiDrillDown(drillDown);
       loadActionItems(kpiId);
+      
+      // Load real quotes requiring action for Q2C
+      if (kpiId === 'quote-to-cash-cycle') {
+        const realQuotes = getQ2CQuotesRequiringAction();
+        setQuotesRequiringAction(realQuotes);
+      }
     }
     setLoading(false);
   }, [kpiId]);
@@ -53,47 +63,47 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
 
     switch (kpiId) {
       case 'quote-to-cash-cycle':
-        items.push(
-          {
-            id: 'QUO-2025-1847',
+        // Get real data for enhanced action items
+        const processImprovements = getQ2CProcessImprovements();
+        const capacityInsights = getQ2CCapacityInsights();
+        const bottlenecks = getQ2CBottleneckHeatmap();
+
+        // Real quotes requiring immediate action (>5 days pending)
+        const realQuotes = getQ2CQuotesRequiringAction();
+        realQuotes.slice(0, 5).forEach((quote, index) => {
+          items.push({
+            id: quote.id, // Use actual quote ID
             type: 'quote',
-            title: 'High-Value Quote Pending Approval',
-            customer: 'Acme Corp',
-            amount: 285000,
-            daysOverdue: 8,
-            assignee: 'Dir, Sales Ops',
-            priority: 'high',
+            title: `Quote Pending ${quote.daysPending} Days`,
+            customer: quote.customerName,
+            amount: quote.arrValue,
+            daysOverdue: quote.daysPending,
+            assignee: quote.customerTier === 'Strategic' ? 'VP Sales' : 'Account Manager',
+            priority: quote.riskLevel === 'critical' ? 'high' : quote.riskLevel === 'high' ? 'medium' : 'low',
             status: 'pending',
-            nextAction: 'Escalate to VP for immediate approval',
-            businessImpact: '$285K ARR at risk, customer expecting response'
-          },
-          {
-            id: 'QUO-2025-1923',
+            nextAction: `Follow up on ${quote.productFamily} quote`,
+            businessImpact: `${quote.customerTier} customer, $${quote.arrValue.toLocaleString()} ARR at risk`
+          });
+        });
+
+        // Stage-specific bottleneck items
+        const criticalBottlenecks = bottlenecks.filter(b => b.severity === 'critical' || b.severity === 'high');
+        criticalBottlenecks.slice(0, 2).forEach((bottleneck, index) => {
+          items.push({
+            id: `BTL-${index + 1}`,
             type: 'quote',
-            title: 'Legal Review Bottleneck',
-            customer: 'GlobalTech',
-            amount: 156000,
-            daysOverdue: 6,
-            assignee: 'Legal Team',
-            priority: 'medium',
-            status: 'in_progress',
-            nextAction: 'Schedule legal review meeting',
-            businessImpact: 'Standard contract terms, should be fast-tracked'
-          },
-          {
-            id: 'QUO-2025-2011',
-            type: 'quote',
-            title: 'Pricing Exception Required',
-            customer: 'TechStart',
-            amount: 92000,
-            daysOverdue: 5,
-            assignee: 'VP, Commercial',
-            priority: 'medium',
+            title: `${bottleneck.stage} Bottleneck - ${bottleneck.customerTier}`,
+            customer: `${bottleneck.customerTier} Tier Customers`,
+            amount: bottleneck.volume * 150000, // Estimate impact
+            daysOverdue: Math.round(bottleneck.avgDays - 30),
+            assignee: bottleneck.stage.includes('Legal') ? 'Legal Team' : 'Process Owner',
+            priority: bottleneck.severity === 'critical' ? 'high' : 'medium',
             status: 'pending',
-            nextAction: 'Review pricing exception request',
-            businessImpact: 'Startup customer, strategic importance'
-          }
-        );
+            nextAction: `Address ${bottleneck.stage.toLowerCase()} delays`,
+            businessImpact: bottleneck.rootCause
+          });
+        });
+
         break;
 
       case 'invoice-accuracy':
@@ -383,7 +393,15 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredItems.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50 transition-colors">
+                  <tr 
+                    key={item.id} 
+                    className="hover:bg-gray-50 transition-colors cursor-pointer"
+                    onClick={() => {
+                      if (kpiId === 'quote-to-cash-cycle' && item.type === 'quote') {
+                        setShowQuoteDetails(item.id);
+                      }
+                    }}
+                  >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <input 
                         type="checkbox" 
@@ -520,6 +538,161 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
           </div>
         </div>
       </div>
+
+      {/* Quote Details Modal */}
+      {showQuoteDetails && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-gray-900">Quote Details</h2>
+                <button
+                  onClick={() => setShowQuoteDetails(null)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <XCircle className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              {(() => {
+                const quote = quotesRequiringAction.find(q => q.id === showQuoteDetails);
+                if (!quote) return <p>Quote not found</p>;
+                
+                return (
+                  <div className="space-y-6">
+                    {/* Quote Overview */}
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Quote ID</label>
+                          <p className="text-lg font-semibold text-gray-900">{quote.id}</p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Customer</label>
+                          <p className="text-lg font-semibold text-gray-900">{quote.customerName}</p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Customer Tier</label>
+                          <p className="text-lg font-semibold text-gray-900">{quote.customerTier}</p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Product Family</label>
+                          <p className="text-lg font-semibold text-gray-900">{quote.productFamily}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">ARR Value</label>
+                          <p className="text-lg font-semibold text-green-600">${quote.arrValue.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Days Pending</label>
+                          <p className={`text-lg font-semibold ${
+                            quote.daysPending > 15 ? 'text-red-600' : 
+                            quote.daysPending > 10 ? 'text-yellow-600' : 'text-green-600'
+                          }`}>
+                            {quote.daysPending} days
+                          </p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Current Stage</label>
+                          <p className="text-lg font-semibold text-gray-900 capitalize">{quote.currentStage.replace('_', ' ')}</p>
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-gray-500">Risk Level</label>
+                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            quote.riskLevel === 'critical' ? 'bg-red-100 text-red-800' :
+                            quote.riskLevel === 'high' ? 'bg-orange-100 text-orange-800' :
+                            'bg-yellow-100 text-yellow-800'
+                          }`}>
+                            {quote.riskLevel}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="border-t border-gray-200 pt-6">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Quote Timeline</h3>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-4">
+                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                          <div>
+                            <p className="font-medium text-gray-900">Quote Created</p>
+                            <p className="text-sm text-gray-500">{new Date(quote.quoteCreatedDate).toLocaleDateString()}</p>
+                          </div>
+                        </div>
+                        {quote.quoteSentDate && (
+                          <div className="flex items-center gap-4">
+                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <div>
+                              <p className="font-medium text-gray-900">Quote Sent</p>
+                              <p className="text-sm text-gray-500">{new Date(quote.quoteSentDate).toLocaleDateString()}</p>
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-4">
+                          <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                          <div>
+                            <p className="font-medium text-gray-500">Awaiting Customer Response</p>
+                            <p className="text-sm text-gray-400">Pending since {quote.daysPending} days</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Recommended Actions */}
+                    <div className="border-t border-gray-200 pt-6">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Recommended Actions</h3>
+                      <div className="space-y-3">
+                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <p className="font-medium text-blue-900">Immediate Follow-up Required</p>
+                          <p className="text-sm text-blue-700 mt-1">
+                            Contact customer to understand any concerns or questions about the quote
+                          </p>
+                        </div>
+                        {quote.daysPending > 10 && (
+                          <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                            <p className="font-medium text-orange-900">Escalation Recommended</p>
+                            <p className="text-sm text-orange-700 mt-1">
+                              Consider involving senior sales leadership or offering additional incentives
+                            </p>
+                          </div>
+                        )}
+                        <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                          <p className="font-medium text-green-900">Process Optimization</p>
+                          <p className="text-sm text-green-700 mt-1">
+                            Review quote complexity and approval requirements for {quote.customerTier} tier customers
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="border-t border-gray-200 pt-6 flex gap-4">
+                      <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <Phone className="h-4 w-4" />
+                        Call Customer
+                      </button>
+                      <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                        <Mail className="h-4 w-4" />
+                        Send Follow-up Email
+                      </button>
+                      <button className="flex items-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+                        <AlertTriangle className="h-4 w-4" />
+                        Escalate to Manager
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
