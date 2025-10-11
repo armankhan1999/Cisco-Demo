@@ -60,9 +60,16 @@ export async function getSnowflakeConnection() {
   }
   
   console.log('7️⃣ Final key format processed');
-  console.log('7️⃣ Key starts with:', privateKeyData.substring(0, 30));
-  console.log('7️⃣ Key ends with:', privateKeyData.substring(privateKeyData.length - 30));
+  console.log('7️⃣ Key starts with:', privateKeyData.substring(0, 35));
+  console.log('7️⃣ Key ends with:', privateKeyData.substring(privateKeyData.length - 35));
   console.log('7️⃣ Total lines in key:', privateKeyData.split('\n').length);
+  
+  // Debug: Check exact header and footer
+  const lines = privateKeyData.split('\n');
+  console.log('7️⃣ First line:', JSON.stringify(lines[0]));
+  console.log('7️⃣ Second line (first 40 chars):', JSON.stringify(lines[1]?.substring(0, 40)));
+  console.log('7️⃣ Last line:', JSON.stringify(lines[lines.length - 1]));
+  console.log('7️⃣ Second to last line (last 40 chars):', JSON.stringify(lines[lines.length - 2]?.substring(lines[lines.length - 2].length - 40)));
   
   // Decrypt the private key using the passphrase (if encrypted)
   let privateKeyObject;
