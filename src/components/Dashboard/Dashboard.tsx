@@ -8,6 +8,7 @@ import { Persona, getPersonaData, getPersonaName } from '@/data/dummyData';
 import PersonaDropdowns from './PersonaDropdowns';
 import DashboardStats from './DashboardStats';
 import ChatInterface from '../Chat/ChatInterface';
+import { CSMPortfolioDashboard } from '@/components/CSM/CSMPortfolioDashboard';
 
 interface DashboardProps {
   persona: Persona;
@@ -22,6 +23,16 @@ export default function Dashboard({ persona }: DashboardProps) {
     return <ChatInterface />;
   }
 
+  // Show new CSM Portfolio Dashboard for CSM persona
+  if (persona === 'CSM') {
+    return (
+      <div className="flex-1 overflow-hidden">
+        <CSMPortfolioDashboard />
+      </div>
+    );
+  }
+
+  // Show existing dashboard for CO and SE personas
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden">
       {/* Dashboard Header */}
@@ -37,7 +48,6 @@ export default function Dashboard({ persona }: DashboardProps) {
               {getPersonaName(persona)} Dashboard
             </h2>
             <p className="text-sm mt-1" style={{ color: colors.text.secondary }}>
-              {persona === 'CSM' && 'Monitor customer health, engagement, and product adoption'}
               {persona === 'CO' && 'Track quotes, orders, invoices, and revenue operations'}
               {persona === 'SE' && 'Identify expansion opportunities and manage sales pipeline'}
             </p>

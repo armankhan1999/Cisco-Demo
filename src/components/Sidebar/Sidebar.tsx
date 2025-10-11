@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, Heart, BarChart3, Target, ChevronRight, MessageSquare } from 'lucide-react';
+import { Menu, Heart, BarChart3, Target, ChevronRight, Activity, Users, TrendingUp, AlertCircle, Home ,MessageSquare} from 'lucide-react';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
+import { useSidebar } from '@/contexts/SidebarContext';
 
 // Utility function for conditional classes
 const cn = (...classes: (string | undefined | boolean)[]) => {
@@ -14,10 +15,118 @@ interface SidebarProps {
   onPersonaChange: (persona: Persona) => void;
 }
 
+interface SubMenuItem {
+  id: string;
+  label: string;
+  description?: string;
+  onClick: () => void;
+}
+
 export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isCollapsed, toggleSidebar } = useSidebar();
+  const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
 
   const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
+
+  // Define main navigation sections
+  const mainSections = [
+    {
+      id: 'cisco-analytics',
+      label: 'Cisco Analytics',
+      icon: TrendingUp,
+      description: 'Enterprise analytics platform',
+      onClick: () => {
+        if (typeof window !== 'undefined') {
+          window.location.href = '/analytics';
+        }
+      }
+    },
+    {
+      id: 'customer-success',
+      label: 'Customer Success Manager',
+      icon: Users,
+      description: 'CSM dashboard & tools',
+      onClick: () => {
+        if (typeof window !== 'undefined') {
+          window.location.href = '/csm';
+        }
+      }
+    },
+    {
+      id: 'health-dashboard',
+      label: 'Health Dashboard',
+      icon: Activity,
+      description: 'Customer health monitoring',
+      onClick: () => {
+        if (typeof window !== 'undefined') {
+          window.location.href = '/csm/health';
+        }
+      }
+    }
+  ];
+
+  // Define submenus for each persona
+  const subMenus: Record<Persona, SubMenuItem[]> = {
+    CSM: [
+      {
+        id: 'portfolio',
+        label: 'Portfolio Dashboard',
+        description: 'Strategic overview & KPIs',
+        onClick: () => {
+          onPersonaChange('CSM');
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm';
+          }
+        }
+      },
+      {
+        id: 'health-score',
+        label: 'Health Score',
+        description: 'Customer health metrics',
+        onClick: () => {
+          onPersonaChange('CSM');
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/kpi/portfolio-health';
+          }
+        }
+      },
+      {
+        id: 'renewal-rate',
+        label: 'Renewal Rate',
+        description: 'Renewal tracking & analysis',
+        onClick: () => {
+          onPersonaChange('CSM');
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/kpi/renewal-rate';
+          }
+        }
+      },
+      {
+        id: 'at-risk-arr',
+        label: 'At-Risk ARR',
+        description: 'Revenue at risk analysis',
+        onClick: () => {
+          onPersonaChange('CSM');
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/kpi/at-risk-arr';
+          }
+        }
+      },
+      {
+        id: 'portfolio-utilization',
+        label: 'Portfolio Utilization',
+        description: 'License utilization metrics',
+        onClick: () => {
+          onPersonaChange('CSM');
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/kpi/portfolio-utilization';
+          }
+        }
+      }
+    ],
+    CO: [],
+    SE: []
+  };
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
@@ -43,7 +152,7 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
               <h2 className="text-sm font-semibold text-gray-900">Cisco Analytics</h2>
             )}
             <button
-              onClick={() => setIsCollapsed(!isCollapsed)}
+              onClick={toggleSidebar}
               className="p-1.5 rounded-md hover:bg-gray-100 transition-colors"
               aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
@@ -59,6 +168,25 @@ export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProp
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto py-2">
           <div className="space-y-1 px-2">
+            {/* Home Button */}
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.location.href = '/';
+                }
+              }}
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-md transition-colors bg-blue-600 text-white hover:bg-blue-700 mb-3"
+              title={isCollapsed ? 'Home - All Personas' : undefined}
+            >
+              <Home className="h-5 w-5 flex-shrink-0" />
+              {!isCollapsed && (
+                <span>All Personas</span>
+              )}
+            </button>
+
+            {/* Divider */}
+            <div className="border-t border-gray-200 my-2"></div>
+
             {personas.map((persona) => {
               const isActive = currentPersona === persona;
 

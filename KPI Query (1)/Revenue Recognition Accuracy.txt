@@ -1,0 +1,72 @@
+-- Revenue Recognition Accuracy - Commercial Operations Dashboard KPI
+-- Target: 99%+ accuracy (variance ≤ 1%)
+
+WITH accuracy_metrics AS (
+  SELECT
+    COUNT(*) AS total_schedules,
+    SUM(CASE WHEN is_accurate = TRUE THEN 1 ELSE 0 END) AS accurate_schedules,
+    ROUND(
+      SUM(CASE WHEN is_accurate = TRUE THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0),
+      2
+    ) AS accuracy_percentage,
+    ROUND(AVG(ABS(variance_percentage)), 2) AS avg_variance_pct,
+    SUM(ABS(total_variance)) AS total_variance_amount,
+    SUM(total_contract_value) AS total_contract_value,
+    SUM(total_recognized_to_date) AS total_recognized_revenue,
+    SUM(total_deferred_balance) AS total_deferred_revenue
+  FROM revenue_recognition_schedule
+  WHERE recognition_period_start <= CURRENT_DATE
+    AND recognition_period_end >= CURRENT_DATE
+),
+top_variances AS (
+  SELECT
+    rrs.customer_id,
+    a.name AS customer_name,
+    a.tier AS customer_tier,
+    s.product_family,
+    rrs.total_contract_value,
+    rrs.total_variance,
+    rrs.variance_percentage,
+    rrs.is_accurate
+  FROM revenue_recognition_schedule rrs
+  JOIN accounts a ON rrs.customer_id = a.id
+  JOIN subscriptions s ON rrs.subscription_id = s.subscription_id
+  WHERE rrs.is_accurate = FALSE
+    AND rrs.recognition_period_start <= CURRENT_DATE
+    AND rrs.recognition_period_end >= CURRENT_DATE
+  ORDER BY ABS(rrs.total_variance) DESC
+  LIMIT 10
+)
+SELECT
+  -- Primary KPI Metric
+  am.accuracy_percentage AS "Revenue Recognition Accuracy (%)",
+  
+  -- Supporting Metrics
+  am.total_schedules AS "Active Recognition Schedules",
+  am.accurate_schedules AS "Schedules Within Tolerance",
+  am.total_schedules - am.accurate_schedules AS "Schedules w/ Variance >1%",
+  am.avg_variance_pct AS "Avg Variance (%)",
+  am.total_variance_amount AS "Total Variance Amount ($)",
+  
+  -- Financial Context
+  am.total_contract_value AS "Total Contract Value ($)",
+  am.total_recognized_revenue AS "Revenue Recognized to Date ($)",
+  am.total_deferred_revenue AS "Deferred Revenue Balance ($)",
+  
+  -- Top Variance Customers (JSON aggregation)
+  (
+    SELECT JSON_AGG(
+      JSON_BUILD_OBJECT(
+        'customer_id', customer_id,
+        'customer_name', customer_name,
+        'customer_tier', customer_tier,
+        'product_family', product_family,
+        'contract_value', total_contract_value,
+        'variance_amount', total_variance,
+        'variance_pct', variance_percentage
+      )
+    )
+    FROM top_variances
+  ) AS "Top 10 Variance Cases"
+  
+FROM accuracy_metrics am;
