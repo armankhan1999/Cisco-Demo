@@ -14,10 +14,62 @@ interface SidebarProps {
   onPersonaChange: (persona: Persona) => void;
 }
 
+interface SubMenuItem {
+  id: string;
+  label: string;
+  description?: string;
+  onClick: () => void;
+}
+
 export default function Sidebar({ currentPersona, onPersonaChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
 
   const personas: Persona[] = ['CSM', 'CO', 'SE'];
+
+  // Define submenus for each persona
+  const subMenus: Record<Persona, SubMenuItem[]> = {
+    CSM: [
+      {
+        id: 'portfolio',
+        label: 'Portfolio Dashboard',
+        description: 'Strategic overview & KPIs',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to portfolio dashboard
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/portfolio';
+          }
+        }
+      },
+      {
+        id: 'deep-dive',
+        label: 'Deep Dive Analytics',
+        description: 'Tactical analysis & insights',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to deep-dive page
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/deep-dive';
+          }
+        }
+      },
+      {
+        id: 'action-center',
+        label: 'Action Center',
+        description: 'Operational alerts & exceptions',
+        onClick: () => {
+          onPersonaChange('CSM');
+          // Navigate to action center page
+          if (typeof window !== 'undefined') {
+            window.location.href = '/csm/action-center';
+          }
+        }
+      }
+    ],
+    CO: [],
+    SE: []
+  };
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {

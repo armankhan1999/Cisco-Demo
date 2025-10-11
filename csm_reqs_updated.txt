@@ -1,0 +1,662 @@
+# Customer Success Manager Requirements
+## Cisco Analytics Platform - CSM Persona
+
+**Last Updated:** October 2, 2025  
+**References:** Master Data Dictionary v1.0
+
+---
+
+## OVERVIEW
+
+This document defines requirements for the Customer Success Manager persona view of the Cisco Analytics Platform. All dimensional definitions reference the Master Data Dictionary for consistency across SE, CO, and CSM personas.
+
+---
+
+## TAB STRUCTURE FOR CSM DASHBOARD
+
+### Tab 1: **Portfolio Health & Risk Overview** (Primary Landing Page)
+
+**Purpose:** At-a-glance view of CSM's entire portfolio health status
+
+**Key Metrics:**
+
+- Portfolio Health Score (weighted average across accounts)
+- Total Accounts Managed (count)
+- Total ARR Managed ($)
+- At-Risk ARR ($ + count)
+- Renewal Pipeline (90/60/30 day buckets)
+- Expansion Opportunities (count + $)
+- Average Health Score Trend (30-day)
+- Touch Cadence Compliance (%)
+
+**Portfolio Segmentation:**
+
+**Health Distribution:** *(see Master Data Dictionary Section 6.1)*
+
+| Category | Score Range | Count | ARR | % of Portfolio |
+|----------|-------------|-------|-----|----------------|
+| Thriving | 91-100 | XX | $XX | XX% |
+| Healthy | 76-90 | XX | $XX | XX% |
+| Stable | 61-75 | XX | $XX | XX% |
+| At Risk | 46-60 | XX | $XX | XX% |
+| Critical Risk | 0-45 | XX | $XX | XX% |
+
+**Renewal Risk Matrix:**
+
+| Days to Renewal | Critical/At Risk | Stable | Healthy/Thriving |
+|----------------|------------------|--------|------------------|
+| 0-30 days | 🔴 Urgent | 🟡 Monitor | 🟢 On Track |
+| 31-60 days | 🟠 High Priority | 🟢 Standard | 🟢 Standard |
+| 61-90 days | 🟡 Watch | 🟢 Standard | 🟢 Standard |
+| 91+ days | 🟢 Plan | 🟢 Standard | 🟢 Standard |
+
+**Visualizations:**
+
+- Portfolio health pie chart
+- Risk/opportunity 2x2 matrix
+- Renewal timeline (Gantt-style)
+- Health trend sparklines
+- Action priority dashboard
+
+---
+
+### Tab 2: **Usage & Adoption Deep Dive**
+
+**Purpose:** Understand how customers are actually using products
+
+**Key Metrics:**
+
+- Overall Utilization Rate (%)
+- Feature Adoption Depth
+- Active User Count & Trend
+- Login Frequency Distribution
+- Power User Ratio (%)
+- Dormant User Count
+- Product Activation Rate (%)
+
+**Usage Dimensions:**
+
+**Utilization Category:** *(see Master Data Dictionary Section 5.1)*
+
+| Category | Utilization % | Accounts | Interpretation |
+|----------|---------------|----------|----------------|
+| Dormant | 0% | XX | No usage - intervention required |
+| Very Low | 1-20% | XX | Minimal adoption - training needed |
+| Low | 20-50% | XX | Below healthy - enablement opportunity |
+| Normal | 50-80% | XX | Healthy usage |
+| High | 80-100% | XX | Optimal - expansion ready |
+| Overage | 100-120% | XX | Upsell opportunity |
+| Critical Overage | >120% | XX | Urgent upsell needed |
+
+**Feature Adoption Maturity:** *(see Master Data Dictionary Section 5.2)*
+
+| Level | Coverage % | Count | Next Action |
+|-------|-----------|-------|-------------|
+| Not Started | 0% | XX | Onboarding session |
+| Early | 1-25% | XX | Feature training |
+| Developing | 26-50% | XX | Advanced use cases |
+| Mature | 51-75% | XX | Optimize workflows |
+| Advanced | 76-100% | XX | Expansion discussion |
+
+**Adoption Journey Stage:** *(see Master Data Dictionary Section 5.2)*
+
+| Stage | Timeframe | Key Activities | Success Metrics |
+|-------|-----------|----------------|-----------------|
+| Implementation | 0-30 days | Configuration, integration | Go-live achieved |
+| Stabilization | 30-90 days | User onboarding, training | 50% users active |
+| Optimization | 90-180 days | Advanced features, workflows | 70% feature adoption |
+| Maturity | 180+ days | Full value realization | 80%+ utilization |
+
+**Visualizations:**
+
+- Utilization distribution histogram
+- Feature adoption heatmap
+- User engagement trends
+- Adoption velocity charts
+- Dormant user alerts
+
+---
+
+### Tab 3: **Engagement & Relationship Quality**
+
+**Purpose:** Track touchpoints, relationships, and stakeholder engagement
+
+**Key Metrics:**
+
+- Days Since Last Touch (by account)
+- QBR Completion Rate (%)
+- Executive Engagement Score
+- Champion Strength Assessment
+- Relationship Quality Index
+- NPS Score (by account)
+- Support Ticket Sentiment
+
+**Engagement Dimensions:**
+
+**Engagement Level:** *(see Master Data Dictionary Section 6.3)*
+
+| Level | Touchpoint Frequency | Executive Participation | Accounts |
+|-------|---------------------|------------------------|----------|
+| High | Weekly+ | QBRs with C-level | XX |
+| Medium | Monthly | Director-level meetings | XX |
+| Low | Quarterly | Manager touchpoints | XX |
+| Minimal | Annual only | Email/support only | XX |
+| Disengaged | None in 180+ days | No active contacts | XX |
+
+**Engagement Metrics:**
+
+| Metric | Definition | Target |
+|--------|-----------|--------|
+| Last Contact Date | Most recent interaction | <30 days |
+| Contact Method | Email, Phone, Meeting, QBR, Event | Varies |
+| Exec Sponsor Identified | Boolean | 100% Enterprise+ |
+| Champion Identified | Boolean | 100% Commercial+ |
+| QBR Cadence | Frequency | Quarterly minimum |
+
+**Relationship Quality Indicators:**
+
+| Indicator | Green | Yellow | Red |
+|-----------|-------|--------|-----|
+| Executive Sponsor | Active | Identified but passive | None |
+| Champion Strength | Strong advocate | Moderate supporter | Weak/None |
+| Last Touchpoint | <30 days | 30-60 days | >60 days |
+| NPS Score | 9-10 | 7-8 | 0-6 |
+| Response Time | <24 hours | 24-48 hours | >48 hours |
+
+**Visualizations:**
+
+- Engagement heatmap by account
+- Stakeholder relationship map
+- Touch cadence compliance
+- QBR calendar view
+- Relationship strength scorecard
+
+---
+
+### Tab 4: **Expansion & Growth Opportunities**
+
+**Purpose:** Identify and prioritize upsell/cross-sell opportunities
+
+**Key Metrics:**
+
+- Expansion Pipeline ($)
+- Expansion Opportunities (count)
+- Product White-Space Analysis
+- Expansion Readiness Score
+- Time to Expansion (days since mature)
+- Expansion Success Rate (%)
+
+**Expansion Analysis:**
+
+**Product Penetration:** *(see Master Data Dictionary Section 3.1)*
+
+| Account | Products Owned | Products Available | White-Space Opportunity |
+|---------|---------------|-------------------|------------------------|
+| Acme Corp | Meraki, Duo | Umbrella, ThousandEyes, Splunk | High - Security focus |
+| Beta Inc | Duo only | Meraki, Umbrella, Splunk | Medium - Limited usage |
+
+**Expansion Readiness:** *(per Master Data Dictionary Tab 4 CO requirements)*
+
+| Readiness Level | Criteria | Accounts | Action |
+|----------------|----------|----------|--------|
+| Hot Opportunity | Health >80 + Utilization >90% + Executive engagement | XX | Immediate outreach |
+| Ready | Health >70 + Utilization >70% + Champion identified | XX | Proposal development |
+| Needs Nurturing | Health >60 + Some adoption gaps | XX | Enablement first |
+| Not Ready | Health <60 or Low utilization | XX | Focus on adoption |
+
+**Expansion Signal Detection:**
+
+| Signal Type | Indicator | Accounts |
+|------------|-----------|----------|
+| Usage Overage | >100% utilization | XX |
+| Feature Requests | Advanced feature inquiries | XX |
+| New Use Cases | Different department interest | XX |
+| Competitive Mentions | Evaluating alternatives | XX |
+| Budget Availability | Confirmed budget for expansion | XX |
+
+**Visualizations:**
+
+- Expansion opportunity pipeline
+- Product portfolio matrix (owned vs. available)
+- ICP fit score
+- Peer benchmark comparison
+- Recommended bundle suggestions
+
+---
+
+### Tab 5: **Renewal Management & Risk Mitigation**
+
+**Purpose:** Proactively manage renewals and prevent churn
+
+**Key Metrics:**
+
+- Renewals This Quarter ($  + count)
+- Renewal Risk ($)
+- On-Time Renewal Rate (%)
+- Contraction Risk ($)
+- Save Campaign Success Rate (%)
+- Churn Reasons Distribution
+
+**Renewal Pipeline:**
+
+**Days to Renewal Bands:** *(see Master Data Dictionary Section 4.2)*
+
+| Band | Days Range | Count | ARR | Risk Level |
+|------|-----------|-------|-----|------------|
+| Critical | 0-30 days | XX | $XX | By health score |
+| Near-term | 31-60 days | XX | $XX | By health score |
+| Approaching | 61-90 days | XX | $XX | By health score |
+| Mid-term | 91-180 days | XX | $XX | Monitor |
+| Long-term | 181+ days | XX | $XX | Plan |
+
+**Churn Risk Analysis:**
+
+**Churn Probability Bands:** *(see Master Data Dictionary Section 6.2)*
+
+| Probability Band | Risk Factors | Accounts | ARR at Risk | Mitigation Strategy |
+|-----------------|--------------|----------|-------------|---------------------|
+| Critical (75-100%) | Multiple red flags | XX | $XX | Executive escalation |
+| High (50-75%) | 2-3 risk factors | XX | $XX | Urgent intervention |
+| Medium (25-50%) | 1-2 risk factors | XX | $XX | Proactive outreach |
+| Low (0-25%) | Healthy indicators | XX | $XX | Monitor |
+
+**Churn Risk Factors:** *(see Master Data Dictionary Section 6.2)*
+
+| Factor | Definition | Weight |
+|--------|-----------|--------|
+| Declining Usage | >20% usage drop in 30 days | High |
+| Low Engagement | No touchpoint in 90 days | High |
+| Negative Sentiment | NPS <6, negative support sentiment | High |
+| High Support Volume | >5 P1/P2 tickets in 30 days | Medium |
+| Exec Disengagement | No exec contact in 180 days | Medium |
+| Competitive Activity | Competitor mention in notes | Medium |
+| Budget Constraints | Payment delays, downsizing signals | High |
+
+**Visualizations:**
+
+- Renewal timeline Gantt chart
+- Risk vs. ARR bubble chart
+- Churn reason Pareto chart
+- Win-back opportunity tracker
+- Save campaign success tracking
+
+---
+
+## UNIVERSAL DIMENSIONS FOR CSM DASHBOARD
+
+The following dimensions apply across ALL tabs and should be available as global filters. All definitions reference the Master Data Dictionary.
+
+### Customer & Account Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Customer Tier** | Section 1.1 | ⭐⭐⭐ Critical |
+| **ARR Band** | Section 1.2 | ⭐⭐⭐ Critical |
+| **Company Size** | Section 1.3 | ⭐⭐ Important |
+| **Industry Vertical** | Section 1.4 | ⭐⭐⭐ Critical |
+| **Customer Lifecycle Stage** | Section 1.5 | ⭐⭐⭐ Critical |
+| **Customer Name/ID** | Salesforce Account | ⭐⭐⭐ Critical |
+
+### Geographic Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Theater** | Section 2.1 | ⭐⭐⭐ Critical |
+| **Region** | Section 2.1 | ⭐⭐⭐ Critical |
+| **Country** | Section 2.1 | ⭐⭐ Important |
+| **State/Province** | Section 2.1 | ⭐ Nice-to-have |
+| **Sales Territory** | Section 2.2 | ⭐⭐ Important |
+
+### Product Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Product Family** | Section 3.1 | ⭐⭐⭐ Critical |
+| **Product Category** | Section 3.1 | ⭐⭐⭐ Critical |
+| **Product Line** | Section 3.1 | ⭐⭐ Important |
+| **SKU/Module** | Section 3.1 | ⭐⭐ Important |
+| **License Type** | Section 3.2 | ⭐⭐⭐ Critical |
+| **Subscription Tier** | Section 3.2 | ⭐⭐⭐ Critical |
+| **Deployment Model** | Section 3.1 Attributes | ⭐⭐ Important |
+
+### Temporal Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Fiscal Year/Quarter** | Section 4.1 | ⭐⭐⭐ Critical |
+| **Month** | Section 4.1 | ⭐⭐⭐ Critical |
+| **Days to Renewal** | Section 4.2 | ⭐⭐⭐ Critical |
+| **Customer Tenure** | Section 4.2 | ⭐⭐ Important |
+| **Last Activity Date** | Section 4.2 | ⭐⭐⭐ Critical |
+| **Cohort Month** | Section 4.2 | ⭐⭐ Important |
+
+### Usage & Adoption Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Utilization Category** | Section 5.1 | ⭐⭐⭐ Critical |
+| **Feature Adoption Maturity** | Section 5.2 | ⭐⭐⭐ Critical |
+| **Active Users** | Usage metrics | ⭐⭐⭐ Critical |
+| **Login Frequency** | Usage metrics | ⭐⭐ Important |
+| **Power User Ratio** | Usage metrics | ⭐⭐ Important |
+
+### Health & Risk Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Health Score** | Section 6.1 | ⭐⭐⭐ Critical |
+| **Risk Level** | Section 6.1 | ⭐⭐⭐ Critical |
+| **Churn Probability** | Section 6.2 | ⭐⭐⭐ Critical |
+| **Health Trend** | Calculated | ⭐⭐⭐ Critical |
+| **Engagement Level** | Section 6.3 | ⭐⭐⭐ Critical |
+
+### Team & Ownership Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **CSM Assigned** | Section 8.1 | ⭐⭐⭐ Critical |
+| **CSM Team** | Section 8.1 | ⭐⭐ Important |
+| **Account Executive** | Section 8.2 | ⭐⭐ Important |
+| **Partner/Channel** | Section 8.3 | ⭐⭐ Important |
+| **Executive Sponsor** | Contact role | ⭐⭐ Important |
+
+### Support & Service Dimensions
+
+| Dimension | Master Data Reference | Demo Priority |
+|-----------|---------------------|---------------|
+| **Ticket Volume** | Section 9.1 | ⭐⭐ Important |
+| **Ticket Severity** | Section 9.1 | ⭐⭐ Important |
+| **Ticket Category** | Section 9.1 | ⭐⭐ Important |
+| **Support Tier** | Section 9.1 | ⭐ Nice-to-have |
+
+---
+
+## DIMENSION APPLICABILITY MATRIX
+
+Cross-reference showing which dimensions apply to which tabs:
+
+| Dimension | Tab 1: Portfolio | Tab 2: Usage | Tab 3: Engagement | Tab 4: Expansion | Tab 5: Renewal |
+|-----------|-----------------|--------------|-------------------|------------------|----------------|
+| **Customer Tier** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **ARR Band** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Industry Vertical** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Lifecycle Stage** | ✅ | ✅ | ✅ | ⚪ | ✅ |
+| **Theater/Region** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Product Family** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **License Type** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **Subscription Tier** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **Fiscal Period** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Days to Renewal** | ✅ | ⚪ | ⚪ | ⚪ | ✅ |
+| **Customer Tenure** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **Utilization Category** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **Adoption Maturity** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+| **Health Score** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Churn Probability** | ✅ | ⚪ | ✅ | ⚪ | ✅ |
+| **Engagement Level** | ✅ | ⚪ | ✅ | ✅ | ✅ |
+| **CSM Assigned** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Executive Sponsor** | ✅ | ⚪ | ✅ | ✅ | ✅ |
+| **Ticket Volume** | ✅ | ⚪ | ✅ | ⚪ | ✅ |
+| **Active Users** | ✅ | ✅ | ⚪ | ✅ | ✅ |
+
+Legend:
+- ✅ = Essential for this tab
+- ⚪ = Optional or not applicable
+
+---
+
+## CSM-SPECIFIC METRICS DEFINITIONS
+
+### Portfolio Health Score
+
+**Formula:**
+```
+Portfolio Health = Weighted Average of All Account Health Scores
+Weight = Account ARR / Total Portfolio ARR
+```
+
+**Interpretation:**
+- 90-100: Thriving portfolio
+- 75-89: Healthy portfolio
+- 60-74: Attention needed
+- <60: Significant intervention required
+
+---
+
+### Touch Cadence Compliance
+
+**Formula:**
+```
+Compliance % = (Accounts Touched Per Policy / Total Accounts) × 100%
+```
+
+**Policy by Tier:**
+- Strategic: Weekly minimum
+- Enterprise: Bi-weekly minimum
+- Commercial: Monthly minimum
+- SMB: Quarterly minimum
+
+**Target:** >95% compliance
+
+---
+
+### On-Time Renewal Rate
+
+**Formula:**
+```
+On-Time Rate = (Renewals Completed Before Expiration / Total Renewals) × 100%
+```
+
+**Benchmarks:**
+- Excellent: >95%
+- Good: 90-95%
+- Fair: 85-90%
+- Poor: <85%
+
+---
+
+### Expansion Success Rate
+
+**Formula:**
+```
+Success Rate = (Expansion Opportunities Closed-Won / Total Expansion Opportunities) × 100%
+```
+
+**Benchmarks:**
+- World Class: >40%
+- Good: 30-40%
+- Average: 20-30%
+- Needs Improvement: <20%
+
+---
+
+### Feature Adoption Velocity
+
+**Formula:**
+```
+Velocity = (Features Adopted This Period - Features Adopted Last Period) / Days in Period
+```
+
+**Healthy Velocity:**
+- Onboarding (0-90 days): 2-3 features/month
+- Growth (90-180 days): 1-2 features/month
+- Mature (180+ days): 0.5-1 features/month
+
+---
+
+### Customer Effort Score (CES)
+
+**Measurement:** Post-interaction survey (1-7 scale)
+
+**Question:** "How easy was it to interact with our team?"
+
+**Scoring:**
+- 7 = Very Easy
+- 4-6 = Moderate Effort
+- 1-3 = High Effort
+
+**Target:** Average >6.0
+
+---
+
+## ALERTS & NOTIFICATIONS FOR CSM PERSONA
+
+### Critical Alerts (Immediate Action Required)
+
+| Alert | Trigger Condition | Recommended Action |
+|-------|------------------|-------------------|
+| Health Score Crash | >20 point drop in 7 days | Immediate customer call |
+| Renewal Risk | <30 days to renewal + health <60 | Executive escalation, save plan |
+| Executive Disengagement | No exec contact in 180 days + renewal <90 days | Executive re-engagement campaign |
+| Usage Collapse | >50% utilization drop in 30 days | Technical health check |
+| Negative NPS | Detractor score (0-6) received | Immediate follow-up call |
+| Support Escalation | P0/P1 ticket opened | Proactive outreach |
+
+### Warning Flags (Monitor Closely)
+
+| Flag | Trigger Condition | Recommended Action |
+|------|------------------|-------------------|
+| Stagnant Adoption | No new features in 90 days + mature customer | Enablement session |
+| Touch Cadence Miss | Missed 2 consecutive scheduled touches | Re-engage |
+| Champion Departure | Key stakeholder left company | Relationship rebuilding |
+| Low Engagement | Declining meeting acceptance rate | Adjust approach |
+| Product Underutilization | <50% utilization for 60+ days | Training campaign |
+
+---
+
+## DATA SOURCES FOR CSM DASHBOARD
+
+| Data Element | Primary Source | Backup/Enrichment | Refresh Frequency |
+|--------------|---------------|-------------------|-------------------|
+| Health Scores | Gainsight | Calculated | Daily |
+| Usage/Adoption | Product APIs | Aggregated telemetry | Hourly |
+| Engagement Data | Gainsight + Salesforce | Calendar, Email | Daily |
+| Support Tickets | Zendesk | Salesforce Cases | Real-time |
+| Account Data | Salesforce | Gainsight | Daily |
+| Revenue/ARR | Zuora | Salesforce | Daily |
+| NPS/Survey Data | Gainsight | - | Real-time |
+| Product Catalog | Master Table | - | Weekly |
+
+---
+
+## CSM DASHBOARD DESIGN PRINCIPLES
+
+### Navigation
+- **Default View:** "My Accounts" (filtered to logged-in CSM)
+- **Quick Filters:** Pre-configured views (At-Risk, Renewal Next 90 Days, Expansion Ready)
+- **Account Deep Dive:** Click any account for 360° view
+
+### Key Features
+1. **Action Priority Queue:** Auto-generated prioritized task list
+2. **One-Click Email:** Pre-populated templates for common scenarios
+3. **Meeting Prep Mode:** Instant account briefing for upcoming calls
+4. **Success Plan Tracker:** Link to Gainsight success plans
+5. **AI Recommendations:** Suggested next-best actions
+
+### Mobile Optimization
+- Responsive design for field access
+- Key metrics visible without scrolling
+- Touch-optimized interactions
+- Offline mode for traveling
+
+---
+
+## IMPLEMENTATION PRIORITIES FOR DEMO (OCTOBER 6TH)
+
+### Must-Have (⭐⭐⭐)
+1. **Tab 1: Portfolio Health Overview** - Core CSM need
+2. **Tab 5: Renewal Management** - High-value, high-urgency
+3. **Tab 2: Usage & Adoption** - Data-driven insights
+4. **Global filters:** CSM, Customer Tier, ARR, Health Score
+5. **Action priority queue**
+6. **AI assistant** with CSM-specific queries
+
+### Should-Have (⭐⭐)
+1. **Tab 4: Expansion Opportunities** - Revenue growth story
+2. **Tab 3: Engagement Tracking** - Relationship management
+3. **Account deep-dive view**
+4. **Quick filters** (At-Risk, Renewals, etc.)
+5. **Export to PDF** for QBRs
+
+### Nice-to-Have (⭐)
+1. **Meeting prep mode**
+2. **Mobile responsive** design
+3. **Custom saved views**
+4. **Automated email templates**
+5. **Success plan integration**
+
+---
+
+## SYNTHETIC DATA REQUIREMENTS
+
+For demo realism, generate synthetic data with these characteristics:
+
+### Portfolio Composition
+- **Total Accounts per CSM:** 25-30 accounts
+- **ARR per CSM:** $3-5M managed
+- **Account Distribution:** 50% Commercial, 30% Enterprise, 15% Strategic, 5% SMB
+
+### Health Distribution
+- **Thriving:** 15% of accounts
+- **Healthy:** 40% of accounts
+- **Stable:** 25% of accounts
+- **At Risk:** 15% of accounts
+- **Critical:** 5% of accounts
+
+### Renewal Pipeline
+- **Renewing This Quarter:** 8-10 accounts
+- **Next Quarter:** 6-8 accounts
+- **Within 6 Months:** 4-6 accounts
+
+### Utilization Patterns
+- **Optimal (80-100%):** 45% of accounts
+- **Healthy (50-80%):** 30% of accounts
+- **Low (<50%):** 20% of accounts
+- **Overage (>100%):** 5% of accounts
+
+### Engagement Patterns
+- **High Engagement:** 25% of accounts
+- **Medium Engagement:** 50% of accounts
+- **Low Engagement:** 20% of accounts
+- **Disengaged:** 5% of accounts
+
+### Product Adoption
+- **Advanced (76-100%):** 20%
+- **Mature (51-75%):** 35%
+- **Developing (26-50%):** 30%
+- **Early (1-25%):** 15%
+
+---
+
+## APPENDIX: CSM-SPECIFIC USE CASES
+
+### Use Case 1: Monday Morning Portfolio Review
+**Scenario:** Start of week, CSM needs to prioritize accounts  
+**Dashboard Action:** Tab 1 → View health changes → Check action priority queue  
+**Outcome:** Clear prioritized list of accounts needing attention
+
+### Use Case 2: Renewal Preparation (60 Days Out)
+**Scenario:** Upcoming renewal, need to prepare proposal  
+**Dashboard Action:** Tab 5 → Select account → Tab 2 → Review usage → Tab 4 → Check expansion opportunities  
+**Outcome:** Data-driven renewal strategy with expansion recommendations
+
+### Use Case 3: QBR Preparation
+**Scenario:** Quarterly business review with customer in 2 days  
+**Dashboard Action:** Account deep-dive → Usage trends → Feature adoption → Health components → Export to PDF  
+**Outcome:** Professional QBR deck with usage analytics
+
+### Use Case 4: At-Risk Account Intervention
+**Scenario:** Health score dropped 25 points  
+**Dashboard Action:** Tab 1 → Drill into health components → Tab 2 → Check usage drop → Tab 3 → Review engagement gaps  
+**Outcome:** Root cause identification and action plan
+
+### Use Case 5: Expansion Opportunity Qualification
+**Scenario:** Customer mentioned interest in additional products  
+**Dashboard Action:** Tab 4 → View white-space → Check ICP fit → Review peer benchmarks → Tab 1 → Confirm health  
+**Outcome:** Qualified opportunity with data justification
+
+---
+
+**Document Owner:** Customer Success Leadership  
+**Stakeholders:** CSM Team, RevOps, Gainsight Admin  
+**Review Frequency:** Quarterly  
+**Next Review:** January 2, 2026

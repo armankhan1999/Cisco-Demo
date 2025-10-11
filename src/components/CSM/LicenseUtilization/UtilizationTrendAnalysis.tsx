@@ -1,0 +1,307 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+
+interface TrendDataPoint {
+  date: string;
+  utilization: number;
+  activeUsers: number;
+  unusedCapacity: number;
+  rolling7Day: number;
+  rolling30Day: number;
+}
+
+interface UtilizationTrendAnalysisProps {
+  onDateClick?: (date: string) => void;
+}
+
+export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalysisProps) {
+  const [trendData, setTrendData] = useState<TrendDataPoint[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    try {
+      // Generate 90-day trend data
+      const data: TrendDataPoint[] = [];
+      const today = new Date();
+      
+      for (let i = 89; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        
+        // Simulate realistic trend data with some variation
+        const baseUtilization = 73;
+        const seasonalVariation = Math.sin((i / 90) * Math.PI * 2) * 5; // Seasonal pattern
+        const randomVariation = (Math.random() - 0.5) * 10; // Random noise
+        const utilization = Math.max(0, Math.min(100, baseUtilization + seasonalVariation + randomVariation));
+        
+        data.push({
+          date: date.toISOString().split('T')[0],
+          utilization: Math.round(utilization * 10) / 10,
+          activeUsers: Math.round(3299 + (Math.random() - 0.5) * 200),
+          unusedCapacity: Math.round(1221 + (Math.random() - 0.5) * 100),
+          rolling7Day: 0, // Will be calculated below
+          rolling30Day: 0 // Will be calculated below
+        });
+      }
+      
+      // Calculate rolling averages
+      data.forEach((point, index) => {
+        const start7 = Math.max(0, index - 6);
+        const start30 = Math.max(0, index - 29);
+        
+        const last7Days = data.slice(start7, index + 1);
+        const last30Days = data.slice(start30, index + 1);
+        
+        point.rolling7Day = last7Days.reduce((sum, p) => sum + p.utilization, 0) / last7Days.length;
+        point.rolling30Day = last30Days.reduce((sum, p) => sum + p.utilization, 0) / last30Days.length;
+      });
+      
+      setTrendData(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error loading trend data:', error);
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="animate-pulse">
+          <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
+          <div className="h-64 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    );
+  }
+
+  const currentUtilization = trendData[trendData.length - 1]?.utilization || 0;
+  const previousMonthUtilization = trendData[Math.max(0, trendData.length - 30)]?.utilization || 0;
+  const momChange = currentUtilization - previousMonthUtilization;
+  
+  const peakUtilization = Math.max(...trendData.map(d => d.utilization));
+  const peakDate = trendData.find(d => d.utilization === peakUtilization)?.date;
+  const troughUtilization = Math.min(...trendData.map(d => d.utilization));
+  const troughDate = trendData.find(d => d.utilization === troughUtilization)?.date;
+
+  const getTrendDirection = () => {
+    const recent = trendData.slice(-7);
+    const older = trendData.slice(-14, -7);
+    const recentAvg = recent.reduce((sum, d) => sum + d.utilization, 0) / recent.length;
+    const olderAvg = older.reduce((sum, d) => sum + d.utilization, 0) / older.length;
+    return recentAvg > olderAvg ? 'up' : recentAvg < olderAvg ? 'down' : 'stable';
+  };
+
+  const trendDirection = getTrendDirection();
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-lg font-semibold text-gray-900">
+          📈 Portfolio Utilization Trend - Last 90 Days
+        </h3>
+        <div className="text-sm text-gray-500">
+          Daily Portfolio Metrics
+        </div>
+      </div>
+
+      {/* Trend Chart */}
+      <div className="mb-6">
+        <div className="h-96 relative">
+          <svg className="w-full h-full" viewBox="0 0 900 350" preserveAspectRatio="xMidYMid meet">
+            {/* Grid lines */}
+            <defs>
+              <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+              </pattern>
+            </defs>
+            <rect x="60" y="20" width="820" height="280" fill="url(#grid)" />
+            
+            {/* Y-axis */}
+            <line x1="60" y1="20" x2="60" y2="300" stroke="#9ca3af" strokeWidth="2" />
+            
+            {/* X-axis */}
+            <line x1="60" y1="300" x2="880" y2="300" stroke="#9ca3af" strokeWidth="2" />
+            
+            {/* Target zone (70-90%) - properly scaled */}
+            <rect x="60" y="48" width="820" height="112" fill="#dcfce7" opacity="0.3" />
+            <text x="70" y="42" className="text-xs fill-green-600 font-semibold">Target Zone (70-90%)</text>
+            
+            {/* Y-axis labels - properly aligned */}
+            <text x="50" y="25" textAnchor="end" className="text-xs fill-gray-700 font-medium">100%</text>
+            <text x="50" y="81" textAnchor="end" className="text-xs fill-gray-700 font-medium">80%</text>
+            <text x="50" y="137" textAnchor="end" className="text-xs fill-gray-700 font-medium">60%</text>
+            <text x="50" y="193" textAnchor="end" className="text-xs fill-gray-700 font-medium">40%</text>
+            <text x="50" y="249" textAnchor="end" className="text-xs fill-gray-700 font-medium">20%</text>
+            <text x="50" y="305" textAnchor="end" className="text-xs fill-gray-700 font-medium">0%</text>
+            
+            {/* Horizontal grid lines at each label */}
+            {[20, 76, 132, 188, 244, 300].map((y) => (
+              <line key={y} x1="60" y1={y} x2="880" y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
+            ))}
+            
+            {/* Trend line - with proper scaling */}
+            <polyline
+              points={trendData.map((point, index) => {
+                const x = 60 + (index / (trendData.length - 1)) * 820;
+                const y = 300 - (point.utilization / 100) * 280;
+                return `${x},${y}`;
+              }).join(' ')}
+              fill="none"
+              stroke="#3b82f6"
+              strokeWidth="3"
+              className="hover:stroke-blue-700 transition-colors"
+            />
+            
+            {/* Rolling 7-day average */}
+            <polyline
+              points={trendData.map((point, index) => {
+                const x = 60 + (index / (trendData.length - 1)) * 820;
+                const y = 300 - (point.rolling7Day / 100) * 280;
+                return `${x},${y}`;
+              }).join(' ')}
+              fill="none"
+              stroke="#10b981"
+              strokeWidth="2"
+              strokeDasharray="8,4"
+              opacity="0.7"
+            />
+            
+            {/* X-axis date labels - show every 15 days */}
+            {trendData.filter((_, index) => index % 15 === 0 || index === trendData.length - 1).map((point, idx, filtered) => {
+              const index = trendData.indexOf(point);
+              const x = 60 + (index / (trendData.length - 1)) * 820;
+              const dateObj = new Date(point.date);
+              const label = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+              return (
+                <text 
+                  key={index} 
+                  x={x} 
+                  y="320" 
+                  textAnchor="middle" 
+                  className="text-xs fill-gray-600 font-medium"
+                >
+                  {label}
+                </text>
+              );
+            })}
+            
+            {/* Data points - show every 3rd point to avoid clutter */}
+            {trendData.filter((_, index) => index % 3 === 0).map((point) => {
+              const index = trendData.indexOf(point);
+              const x = 60 + (index / (trendData.length - 1)) * 820;
+              const y = 300 - (point.utilization / 100) * 280;
+              return (
+                <circle
+                  key={index}
+                  cx={x}
+                  cy={y}
+                  r="4"
+                  fill="#3b82f6"
+                  className="hover:r-6 hover:fill-blue-700 cursor-pointer transition-all"
+                  onClick={() => onDateClick?.(point.date)}
+                />
+              );
+            })}
+            
+            {/* Y-axis label */}
+            <text x="20" y="160" textAnchor="middle" className="text-sm fill-gray-700 font-semibold" transform="rotate(-90, 20, 160)">
+              Utilization %
+            </text>
+            
+            {/* X-axis label */}
+            <text x="470" y="345" textAnchor="middle" className="text-sm fill-gray-700 font-semibold">
+              Date (Last 90 Days)
+            </text>
+          </svg>
+        </div>
+        
+        {/* Legend */}
+        <div className="flex items-center justify-center space-x-6 mt-2">
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-0.5 bg-blue-500"></div>
+            <span className="text-sm text-gray-600">Daily Utilization</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-0.5 bg-green-500 border-dashed border-t-2"></div>
+            <span className="text-sm text-gray-600">7-Day Average</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Key Metrics */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="text-center p-3 bg-gray-50 rounded-lg">
+          <div className="text-2xl font-bold text-gray-900">{currentUtilization.toFixed(1)}%</div>
+          <div className="text-sm text-gray-600">Current</div>
+          <div className={`text-xs ${momChange >= 0 ? 'text-red-600' : 'text-green-600'}`}>
+            {momChange >= 0 ? '↑' : '↓'} {Math.abs(momChange).toFixed(1)}% vs prior month
+          </div>
+        </div>
+        <div className="text-center p-3 bg-gray-50 rounded-lg">
+          <div className="text-2xl font-bold text-gray-900">{trendData[trendData.length - 1]?.rolling7Day.toFixed(1)}%</div>
+          <div className="text-sm text-gray-600">7-Day Average</div>
+          <div className="text-xs text-gray-500">Stable</div>
+        </div>
+        <div className="text-center p-3 bg-gray-50 rounded-lg">
+          <div className="text-2xl font-bold text-gray-900">{trendData[trendData.length - 1]?.rolling30Day.toFixed(1)}%</div>
+          <div className="text-sm text-gray-600">30-Day Average</div>
+          <div className={`text-xs ${trendDirection === 'down' ? 'text-red-600' : 'text-green-600'}`}>
+            {trendDirection === 'down' ? '↓' : trendDirection === 'up' ? '↑' : '→'} Trending {trendDirection}
+          </div>
+        </div>
+        <div className="text-center p-3 bg-gray-50 rounded-lg">
+          <div className="text-2xl font-bold text-gray-900">{peakUtilization.toFixed(1)}%</div>
+          <div className="text-sm text-gray-600">Peak</div>
+          <div className="text-xs text-gray-500">{peakDate}</div>
+        </div>
+      </div>
+
+      {/* Trend Analysis */}
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <h4 className="font-medium text-gray-900 mb-3">Trend Analysis:</h4>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-start space-x-2">
+            <span className="text-red-600">📉</span>
+            <span className="text-gray-700">
+              <strong>Declining Trend:</strong> Portfolio utilization down from {peakUtilization.toFixed(1)}% peak ({peakDate}) to {currentUtilization.toFixed(1)}% current
+            </span>
+          </div>
+          <div className="text-gray-600 ml-6">
+            <strong>Root Causes:</strong>
+            <ul className="list-disc list-inside mt-1 space-y-1">
+              <li>5 new customers onboarded (early adoption phase)</li>
+              <li>3 customers completed major projects (reduced daily usage)</li>
+              <li>Summer seasonality effects normalizing</li>
+            </ul>
+          </div>
+          <div className="flex items-start space-x-2 mt-3">
+            <span className="text-orange-600">🎯</span>
+            <span className="text-gray-700">
+              <strong>Action Items:</strong>
+              <ul className="list-disc list-inside mt-1 space-y-1">
+                <li>Monitor 3 accounts showing &gt;15% decline in last 30 days</li>
+                <li>Schedule QBRs with 2 post-project accounts to identify new use cases</li>
+                <li>Accelerate onboarding for 5 new customers (currently 45-60 days TTFV)</li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="mt-4 flex space-x-3">
+        <button className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-200 transition-colors">
+          📊 View Account-Level Trends
+        </button>
+        <button className="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-medium hover:bg-green-200 transition-colors">
+          📅 Overlay Events
+        </button>
+        <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-200 transition-colors">
+          📈 Forecast Next Quarter
+        </button>
+      </div>
+    </div>
+  );
+}
