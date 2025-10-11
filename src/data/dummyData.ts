@@ -138,7 +138,7 @@ export function getPersonaData(persona: Persona) {
  */
 export function getPersonaName(persona: Persona): string {
   const names = {
-    CSM: 'Customer Success Management',
+    CSM: 'Customer Success Manager',
     CO: 'Commercial Operations',
     SE: 'Sales Expansion',
   };
