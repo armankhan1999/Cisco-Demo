@@ -390,6 +390,147 @@ export default function SalesExpansionDashboard() {
               </div>
             </div>
 
+            {/* TEST: Simple visible element */}
+            <div style={{ backgroundColor: 'red', color: 'white', padding: '20px', margin: '20px 0', fontSize: '24px', fontWeight: 'bold' }}>
+              🚨 TEST: If you can see this red box, the area is rendering correctly!
+            </div>
+
+            {/* NEW: Utilization-Driven Expansion Signals Section */}
+            <div className="mb-8">
+              <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200 shadow-lg">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                      🚨 Utilization-Driven Expansion Signals
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1">Real-time capacity alerts requiring immediate action</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-4xl font-bold text-red-600">18</div>
+                    <div className="text-xs text-red-600 font-bold">Critical Alerts</div>
+                  </div>
+                </div>
+
+                {/* Alert Summary Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                  {/* Critical Alerts */}
+                  <div className="bg-white rounded-lg p-4 border border-red-200 shadow-sm">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                      </div>
+                      <span className="px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Immediate</span>
+                    </div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">6</div>
+                    <div className="text-xs text-gray-600">Critical (&gt;95%)</div>
+                    <div className="text-xs text-red-600 font-semibold">$840K ARR</div>
+                  </div>
+
+                  {/* High Alerts */}
+                  <div className="bg-white rounded-lg p-4 border border-orange-200 shadow-sm">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <span className="px-2 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">Plan</span>
+                    </div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">8</div>
+                    <div className="text-xs text-gray-600">High (90-95%)</div>
+                    <div className="text-xs text-orange-600 font-semibold">$960K ARR</div>
+                  </div>
+
+                  {/* Medium Alerts */}
+                  <div className="bg-white rounded-lg p-4 border border-yellow-200 shadow-sm">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <span className="px-2 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Monitor</span>
+                    </div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">4</div>
+                    <div className="text-xs text-gray-600">Medium (85-90%)</div>
+                    <div className="text-xs text-yellow-600 font-semibold">$520K ARR</div>
+                  </div>
+
+                  {/* Response Rate */}
+                  <div className="bg-white rounded-lg p-4 border border-green-200 shadow-sm">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Converted</span>
+                    </div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">78%</div>
+                    <div className="text-xs text-gray-600">Response Rate</div>
+                    <div className="text-xs text-green-600 font-semibold">3.2d avg</div>
+                  </div>
+                </div>
+
+                {/* Top Accounts Requiring Action */}
+                <div className="bg-white rounded-lg p-4 border border-gray-200">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">🎯 Top 5 Accounts Requiring Action</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div>
+                          <div className="font-semibold text-gray-900">TechCorp Industries</div>
+                          <div className="text-xs text-gray-600">Duo • 97% utilization</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">$180K</div>
+                        <div className="text-xs text-green-600 font-semibold">Expansion ready</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div>
+                          <div className="font-semibold text-gray-900">MedSecure Systems</div>
+                          <div className="text-xs text-gray-600">Meraki • 95% utilization</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">$240K</div>
+                        <div className="text-xs text-green-600 font-semibold">Expansion ready</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                        <div>
+                          <div className="font-semibold text-gray-900">Global Financial Partners</div>
+                          <div className="text-xs text-gray-600">Umbrella • 93% utilization</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">$160K</div>
+                        <div className="text-xs text-orange-600 font-semibold">Contact pending</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center">
+                    <span className="text-sm font-bold text-gray-700">
+                      Total Potential ARR: <span className="text-red-600">$2.8M</span>
+                    </span>
+                    <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-bold">
+                      View All Alerts
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Performance Metrics Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               {/* Expansion Performance */}

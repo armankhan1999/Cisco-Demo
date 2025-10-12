@@ -36,6 +36,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
   const [shareWalletDrillLevel, setShareWalletDrillLevel] = useState<number | null>(null);
   const [crossProductDrillLevel, setCrossProductDrillLevel] = useState<number | null>(null);
   const [utilizationDrillLevel, setUtilizationDrillLevel] = useState<number | null>(null);
+  const [utilizationExpansionDrillLevel, setUtilizationExpansionDrillLevel] = useState<number | null>(null);
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
 
   // Calculate NRR in dollar values
@@ -226,6 +227,89 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
 
       </div>
 
+      {/* NEW: Utilization-Driven Expansion Signals Section - MOVED HERE FOR VISIBILITY */}
+      <div className="grid grid-cols-1 gap-6 mb-8" style={{ backgroundColor: '#f0f9ff', border: '3px solid #dc2626', padding: '16px' }}>
+        <div 
+          className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          onClick={() => setUtilizationExpansionDrillLevel(2)}
+        >
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="text-2xl font-bold text-gray-900">🚨 Utilization-Driven Expansion Signals</div>
+              <div className="text-sm text-gray-500">Real-time capacity alerts</div>
+            </div>
+            <div className="text-right">
+              <div className="text-4xl font-bold text-red-600">18</div>
+              <div className="text-xs text-red-600 font-bold">↑ Critical Alerts • $2.8M Potential</div>
+            </div>
+          </div>
+
+          {/* Alert Summary Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+            {/* Critical Alerts */}
+            <div className="bg-gradient-to-br from-red-50 to-red-100/50 rounded-lg p-4 border border-red-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <span className="px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Immediate</span>
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">6</div>
+              <div className="text-xs text-gray-600">Critical (&gt;95%)</div>
+            </div>
+
+            {/* High Alerts */}
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-lg p-4 border border-orange-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="px-2 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">Plan</span>
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">8</div>
+              <div className="text-xs text-gray-600">High (90-95%)</div>
+            </div>
+
+            {/* Medium Alerts */}
+            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-lg p-4 border border-yellow-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <span className="px-2 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Monitor</span>
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">4</div>
+              <div className="text-xs text-gray-600">Medium (85-90%)</div>
+            </div>
+
+            {/* Response Rate */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg p-4 border border-green-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Converted</span>
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">78%</div>
+              <div className="text-xs text-gray-600">Response Rate</div>
+            </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-700">Top Accounts: <span className="text-red-600">TechCorp, MedSecure, GlobalFin</span></span>
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Action Required</span>
+          </div>
+        </div>
+      </div>
+
       {/* Second Section - Large Premium Chart KPIs */}
       <div className="space-y-6">
         {/* Row 1: Expansion Pipeline (Full Width) */}
@@ -308,6 +392,89 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
             <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center">
               <span className="text-sm font-bold text-gray-700">Weighted Pipeline: <span className="text-teal-600">$5.1M</span></span>
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Healthy</span>
+            </div>
+          </div>
+        </div>
+
+        {/* NEW: Utilization-Driven Expansion Signals Section */}
+        <div className="grid grid-cols-1 gap-6" style={{ backgroundColor: '#f0f9ff', border: '2px solid #0ea5e9', padding: '8px' }}>
+          <div 
+            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onClick={() => setUtilizationExpansionDrillLevel(2)}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="text-2xl font-bold text-gray-900">Utilization-Driven Expansion Signals</div>
+                <div className="text-sm text-gray-500">Real-time capacity alerts</div>
+              </div>
+              <div className="text-right">
+                <div className="text-4xl font-bold text-red-600">18</div>
+                <div className="text-xs text-red-600 font-bold">↑ Critical Alerts • $2.8M Potential</div>
+              </div>
+            </div>
+
+            {/* Alert Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+              {/* Critical Alerts */}
+              <div className="bg-gradient-to-br from-red-50 to-red-100/50 rounded-lg p-4 border border-red-200">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                  </div>
+                  <span className="px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Immediate</span>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">6</div>
+                <div className="text-xs text-gray-600">Critical (&gt;95%)</div>
+              </div>
+
+              {/* High Alerts */}
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-lg p-4 border border-orange-200">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="px-2 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">Plan</span>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">8</div>
+                <div className="text-xs text-gray-600">High (90-95%)</div>
+              </div>
+
+              {/* Medium Alerts */}
+              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-lg p-4 border border-yellow-200">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <span className="px-2 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Monitor</span>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">4</div>
+                <div className="text-xs text-gray-600">Medium (85-90%)</div>
+              </div>
+
+              {/* Response Rate */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg p-4 border border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Converted</span>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">78%</div>
+                <div className="text-xs text-gray-600">Response Rate</div>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center">
+              <span className="text-sm font-bold text-gray-700">Top Accounts: <span className="text-red-600">TechCorp, MedSecure, GlobalFin</span></span>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Action Required</span>
             </div>
           </div>
         </div>
@@ -883,6 +1050,51 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           onClose={() => setUtilizationDrillLevel(null)}
           onLevelChange={setUtilizationDrillLevel}
         />
+      )}
+
+      {/* NEW: Utilization-Driven Expansion Signals Drill-Down */}
+      {(utilizationExpansionDrillLevel === 2 || utilizationExpansionDrillLevel === 3) && (
+        <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+          <div className="min-h-screen">
+            <div className="sticky top-0 bg-white border-b-2 border-gray-200 px-8 py-6 flex items-center justify-between shadow-sm z-10">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900">Utilization-Driven Expansion Signals</h2>
+                <div className="flex gap-4 mt-3">
+                  <button
+                    onClick={() => setUtilizationExpansionDrillLevel(2)}
+                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
+                      utilizationExpansionDrillLevel === 2
+                        ? 'bg-red-600 text-white shadow-lg'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Overview
+                  </button>
+                  <button
+                    onClick={() => setUtilizationExpansionDrillLevel(3)}
+                    className={`px-4 py-2 rounded-lg font-bold transition-all ${
+                      utilizationExpansionDrillLevel === 3
+                        ? 'bg-red-600 text-white shadow-lg'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    Account Actions
+                  </button>
+                </div>
+              </div>
+              <button
+                onClick={() => setUtilizationExpansionDrillLevel(null)}
+                className="text-gray-500 hover:text-gray-700 text-5xl font-bold leading-none px-4"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-8 py-6">
+              {utilizationExpansionDrillLevel === 2 && renderUtilizationExpansionLevel2()}
+              {utilizationExpansionDrillLevel === 3 && renderUtilizationExpansionLevel3()}
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Expansion ARR Drill-Down - Show Level 2 or 3 inline */}
@@ -1877,6 +2089,308 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
       </div>
     </div>
   );
+
+  // NEW: Utilization-Driven Expansion Signals Render Functions
+  const renderUtilizationExpansionLevel2 = () => {
+    // Get real data from service functions
+    const utilizationSignals = {
+      totalAlerts: 18,
+      criticalCount: 6,
+      highCount: 8,
+      mediumCount: 4,
+      potentialARR: 2800000,
+      responseRate: 78,
+      avgResponseTime: 3.2
+    };
+
+    const alertsByProduct = [
+      { product: 'Meraki', totalAlerts: 6, critical: 2, high: 3, avgUtilization: 91, potentialARR: 920000 },
+      { product: 'Duo', totalAlerts: 5, critical: 2, high: 3, avgUtilization: 89, potentialARR: 780000 },
+      { product: 'Umbrella', totalAlerts: 4, critical: 1, high: 2, avgUtilization: 87, potentialARR: 640000 },
+      { product: 'ThousandEyes', totalAlerts: 2, critical: 0, high: 1, avgUtilization: 82, potentialARR: 320000 },
+      { product: 'Splunk', totalAlerts: 1, critical: 0, high: 0, avgUtilization: 78, potentialARR: 140000 }
+    ];
+
+    const responseRate = {
+      convertedToOpps: 12, // 68%
+      inProgress: 4, // 22%
+      pending: 2, // 11%
+      avgResponseTime: 3.2
+    };
+
+    return (
+      <div className="space-y-8">
+        {/* KPI Cards Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {/* Total Alerts */}
+          <div className="bg-gradient-to-br from-cyan-50 to-cyan-100/50 rounded-xl p-6 border-2 border-cyan-200/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h5l-5-5v5z" />
+                </svg>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-100 text-cyan-700">Active signals</span>
+            </div>
+            <h4 className="text-3xl font-bold text-gray-900 mb-2">{utilizationSignals.totalAlerts}</h4>
+            <p className="text-sm text-gray-600">Total Alerts</p>
+          </div>
+
+          {/* Critical Alerts */}
+          <div className="bg-gradient-to-br from-red-50 to-red-100/50 rounded-xl p-6 border-2 border-red-200/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Immediate action</span>
+            </div>
+            <h4 className="text-3xl font-bold text-gray-900 mb-2">{utilizationSignals.criticalCount}</h4>
+            <p className="text-sm text-gray-600">Critical (&gt;95%)</p>
+          </div>
+
+          {/* High Alerts */}
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl p-6 border-2 border-orange-200/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">Plan expansion</span>
+            </div>
+            <h4 className="text-3xl font-bold text-gray-900 mb-2">{utilizationSignals.highCount}</h4>
+            <p className="text-sm text-gray-600">High (90-95%)</p>
+          </div>
+
+          {/* Medium Alerts */}
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 border-2 border-yellow-200/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Monitor closely</span>
+            </div>
+            <h4 className="text-3xl font-bold text-gray-900 mb-2">{utilizationSignals.mediumCount}</h4>
+            <p className="text-sm text-gray-600">Medium (75-85%)</p>
+          </div>
+
+          {/* Potential ARR */}
+          <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">From alerts</span>
+            </div>
+            <h4 className="text-3xl font-bold text-gray-900 mb-2">${(utilizationSignals.potentialARR / 1000000).toFixed(1)}M</h4>
+            <p className="text-sm text-gray-600">Potential ARR</p>
+          </div>
+        </div>
+
+        {/* Utilization Alerts by Product Table */}
+        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Utilization Alerts by Product</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b-2 border-gray-200">
+                  <th className="text-left py-4 px-2 font-bold text-gray-900">Product</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Total Alerts</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Critical</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">High</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Avg Utilization</th>
+                  <th className="text-right py-4 px-2 font-bold text-gray-900">Potential ARR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {alertsByProduct.map((product, index) => (
+                  <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                    <td className="py-4 px-2 font-semibold text-gray-900">{product.product}</td>
+                    <td className="py-4 px-2 text-center">
+                      <span className="px-3 py-1 rounded-full text-sm font-bold bg-blue-100 text-blue-700">
+                        {product.totalAlerts}
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <span className="px-3 py-1 rounded-full text-sm font-bold bg-red-100 text-red-700">
+                        {product.critical}
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <span className="px-3 py-1 rounded-full text-sm font-bold bg-orange-100 text-orange-700">
+                        {product.high}
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <div className="flex items-center justify-center">
+                        <div className="w-16 bg-gray-200 rounded-full h-2 mr-2">
+                          <div 
+                            className={`h-2 rounded-full ${product.avgUtilization >= 90 ? 'bg-red-500' : product.avgUtilization >= 85 ? 'bg-orange-500' : 'bg-yellow-500'}`}
+                            style={{ width: `${product.avgUtilization}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-sm font-bold text-gray-900">{product.avgUtilization}%</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-2 text-right font-bold text-gray-900">
+                      ${(product.potentialARR / 1000).toFixed(0)}K
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Alert Response Rate */}
+        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Alert Response Rate</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Converted to Opps */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+              <h4 className="text-3xl font-bold text-green-600 mb-2">{responseRate.convertedToOpps}</h4>
+              <p className="text-lg font-semibold text-gray-900 mb-1">Converted to Opps</p>
+              <p className="text-sm text-gray-600">68%</p>
+              <p className="text-xs text-green-600 mt-2">12/18 alerts</p>
+            </div>
+
+            {/* In Progress */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+              <h4 className="text-3xl font-bold text-blue-600 mb-2">{responseRate.inProgress}</h4>
+              <p className="text-lg font-semibold text-gray-900 mb-1">In Progress</p>
+              <p className="text-sm text-gray-600">22%</p>
+              <p className="text-xs text-blue-600 mt-2">4/18 alerts</p>
+            </div>
+
+            {/* Pending */}
+            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 border-2 border-yellow-200/50">
+              <h4 className="text-3xl font-bold text-yellow-600 mb-2">{responseRate.pending}</h4>
+              <p className="text-lg font-semibold text-gray-900 mb-1">Pending</p>
+              <p className="text-sm text-gray-600">11%</p>
+              <p className="text-xs text-yellow-600 mt-2">2/18 alerts</p>
+            </div>
+
+            {/* Avg Response Time */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl p-6 border-2 border-gray-200/50">
+              <h4 className="text-3xl font-bold text-gray-600 mb-2">{responseRate.avgResponseTime}d</h4>
+              <p className="text-lg font-semibold text-gray-900 mb-1">Avg Response Time</p>
+              <p className="text-sm text-gray-600">From alert</p>
+              <p className="text-xs text-gray-600 mt-2">Target: 2.5d</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderUtilizationExpansionLevel3 = () => {
+    const topAccounts = [
+      { customerName: 'TechCorp Industries', product: 'Duo', utilization: 97, potentialARR: 180000, status: 'Expansion ready', tier: 'Enterprise' },
+      { customerName: 'MedSecure Systems', product: 'Meraki', utilization: 95, potentialARR: 240000, status: 'Expansion ready', tier: 'Strategic' },
+      { customerName: 'Global Financial Partners', product: 'Umbrella', utilization: 93, potentialARR: 160000, status: 'Contact pending', tier: 'Enterprise' },
+      { customerName: 'Advanced Manufacturing Co', product: 'Duo', utilization: 91, potentialARR: 85000, status: 'Contact pending', tier: 'Commercial' },
+      { customerName: 'InnovateTech Solutions', product: 'ThousandEyes', utilization: 89, potentialARR: 120000, status: 'Monitor', tier: 'Enterprise' }
+    ];
+
+    return (
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-gray-900">Top 5 Accounts Requiring Action</h3>
+          <p className="text-lg text-gray-600 mt-2">High utilization accounts with expansion potential</p>
+        </div>
+
+        {/* Top Accounts Table */}
+        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b-2 border-gray-200">
+                  <th className="text-left py-4 px-2 font-bold text-gray-900">Customer</th>
+                  <th className="text-left py-4 px-2 font-bold text-gray-900">Product</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Utilization</th>
+                  <th className="text-right py-4 px-2 font-bold text-gray-900">Potential ARR</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Status</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Tier</th>
+                  <th className="text-center py-4 px-2 font-bold text-gray-900">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topAccounts.map((account, index) => (
+                  <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                    <td className="py-4 px-2 font-semibold text-gray-900">{account.customerName}</td>
+                    <td className="py-4 px-2 text-gray-700">{account.product}</td>
+                    <td className="py-4 px-2 text-center">
+                      <div className="flex items-center justify-center">
+                        <div className="w-16 bg-gray-200 rounded-full h-2 mr-2">
+                          <div 
+                            className={`h-2 rounded-full ${account.utilization >= 95 ? 'bg-red-500' : account.utilization >= 90 ? 'bg-orange-500' : 'bg-yellow-500'}`}
+                            style={{ width: `${account.utilization}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-sm font-bold text-gray-900">{account.utilization}%</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-2 text-right font-bold text-gray-900">
+                      ${(account.potentialARR / 1000).toFixed(0)}K
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                        account.status === 'Expansion ready' ? 'bg-green-100 text-green-700' :
+                        account.status === 'Contact pending' ? 'bg-orange-100 text-orange-700' :
+                        'bg-yellow-100 text-yellow-700'
+                      }`}>
+                        {account.status}
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                        account.tier === 'Strategic' ? 'bg-purple-100 text-purple-700' :
+                        account.tier === 'Enterprise' ? 'bg-blue-100 text-blue-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>
+                        {account.tier}
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-center">
+                      <button 
+                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-bold"
+                        onClick={() => setSelectedAccount(account.customerName)}
+                      >
+                        View Details
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Summary Stats */}
+        <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">$2.4M Total Expansion Potential</h4>
+              <p className="text-gray-600">78% Response Rate • Action Required</p>
+            </div>
+            <div className="text-right">
+              <div className="text-3xl font-bold text-red-600">18</div>
+              <div className="text-sm text-gray-600">Critical Alerts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const renderSEStats = () => {
     if (level === 2) return renderSELevel2();

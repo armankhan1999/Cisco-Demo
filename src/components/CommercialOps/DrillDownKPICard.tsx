@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactNode } from 'react';
-import { TrendingUp, TrendingDown, Minus, Layers } from 'lucide-react';
+import { ReactNode, useState } from 'react';
+import { TrendingUp, ArrowDown, Activity, BarChart2, Target } from 'lucide-react';
 import { drillDownService } from '@/services/drillDownService';
 
 interface DrillDownKPICardProps {
@@ -132,9 +132,9 @@ export default function DrillDownKPICard({
     if (trend > 0) {
       return <TrendingUp className="h-4 w-4 text-green-600" />;
     } else if (trend < 0) {
-      return <TrendingDown className="h-4 w-4 text-red-600" />;
+      return <ArrowDown className="h-4 w-4 text-red-600" />;
     } else {
-      return <Minus className="h-4 w-4 text-gray-400" />;
+      return <Activity className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -151,11 +151,13 @@ export default function DrillDownKPICard({
   const colorClasses = getColorClasses();
   const statusIndicator = getStatusIndicator();
   const kpiDrillDown = drillDownService.getKPIDrillDown(kpiId);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div 
-      className={`${colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden`}
-      onClick={() => onDrillDown(kpiId, 2)}
+      className={`${colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden group`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Pattern */}
       <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
@@ -235,9 +237,47 @@ export default function DrillDownKPICard({
       {kpiDrillDown && (
         <div className="absolute bottom-2 right-2 z-10">
           <div className="flex items-center gap-1 text-xs text-gray-500">
-            <Layers className="h-3 w-3" />
+            <Activity className="h-3 w-3" />
             <span>{kpiDrillDown.level2Views.length + kpiDrillDown.level3Actions.length} insights</span>
           </div>
+        </div>
+      )}
+
+      {/* Hover Overlay with Actions */}
+      {isHovered && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-sm rounded-2xl z-20 flex flex-col items-center justify-center gap-3 p-6 animate-in fade-in duration-200">
+          <div className="text-white text-center mb-2">
+            <h4 className="text-lg font-bold mb-1">{title}</h4>
+            <p className="text-sm text-gray-300">Drill down for detailed insights</p>
+          </div>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onDrillDown(kpiId, 2);
+            }}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
+            <BarChart2 className="h-5 w-5" />
+            View Analytics
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onDrillDown(kpiId, 3);
+            }}
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
+            <Target className="h-5 w-5" />
+            Action Items
+          </button>
+          
+          {kpiDrillDown && (
+            <div className="text-xs text-gray-300 mt-2 text-center">
+              {kpiDrillDown.level2Views.length} analytical views • {kpiDrillDown.level3Actions.length} action items
+            </div>
+          )}
         </div>
       )}
     </div>
