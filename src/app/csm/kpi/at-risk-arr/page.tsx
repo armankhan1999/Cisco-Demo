@@ -154,7 +154,7 @@ export default function AtRiskARRDrillDown() {
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-gray-50">
+      <div className={`flex-1 overflow-y-auto bg-gray-50 transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         {/* Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-6">
           <button

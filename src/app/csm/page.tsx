@@ -2,9 +2,27 @@
 
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import { useSidebar } from '@/contexts/SidebarContext';
 
 export default function CSMHomePage() {
+  const { isCollapsed } = useSidebar();
   const dashboards = [
+    {
+      id: 'overview',
+      name: 'CSM Overview & Strategy',
+      description: 'Complete strategic overview with persona definition, business questions, and 10 primary KPIs with definitions',
+      category: 'Overview',
+      icon: '📋',
+      href: '/csm/overview',
+      kpis: [
+        'Persona Definition & Responsibilities',
+        '5 Key Business Questions',
+        '10 Strategic KPIs with Targets',
+        'Data Source Mapping',
+        'Category Classification'
+      ],
+      status: 'active'
+    },
     {
       id: 'portfolio',
       name: 'Customer Success Portfolio Dashboard',
@@ -67,7 +85,7 @@ export default function CSMHomePage() {
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">

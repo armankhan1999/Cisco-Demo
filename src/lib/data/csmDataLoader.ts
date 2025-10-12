@@ -9,6 +9,8 @@ import licensesData from '@/source_data/commercial_operations/licenses.json';
 import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 import qbrTrackingData from '@/source_data/csm-data/qbr_tracking.json';
 import churnPredictionsData from '@/source_data/csm-data/churn_predictions.json';
+import championDepartureAlertsData from '@/source_data/csm-data/champion_departure_alerts.json';
+import customersData from '@/source_data/master-data/customers.json';
 import utilizationAlertsData from '@/source_data/commercial_operations/utilization_alerts.json';
 import utilizationHistoryData from '@/source_data/commercial_operations/utilization_history.json';
 
@@ -331,5 +333,13 @@ export function getAllChurnPredictions(): ChurnPrediction[] {
 
 export function getAllUtilizationAlerts(): UtilizationAlert[] {
   return csmData.utilizationAlerts;
+}
+
+export function getAllChampionDepartureAlerts(): any[] {
+  return championDepartureAlertsData;
+}
+
+export function getAllCustomers(): any[] {
+  return customersData;
 }
 
