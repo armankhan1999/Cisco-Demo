@@ -155,7 +155,7 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
                     {!isCollapsed && (
                       <>
                         <div className="flex-1 text-left">
-                          <div className="font-semibold">{getPersonaName(persona)}</div>
+                          <div className="font-normal">{getPersonaName(persona)}</div>
                         </div>
                         {dashboards.length > 0 && (
                           <ChevronRight className={cn(
@@ -181,14 +181,14 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
                             className={cn(
                               "w-full flex items-center gap-3 px-3 py-1.5 text-xs rounded-md transition-colors",
                               "hover:text-gray-700 hover:bg-gray-50",
-                              isDashboardActive 
-                                ? "bg-blue-100 text-blue-800 border-r-2 border-blue-600" 
+                              isDashboardActive
+                                ? "bg-blue-100 text-blue-800 border-r-2 border-blue-600"
                                 : "text-gray-600"
                             )}
                           >
                             <IconComponent className="h-3 w-3" />
                             <div className="text-left">
-                              <div className="font-medium">{dashboard.name}</div>
+                              <div className="font-normal">{dashboard.name}</div>
                               {/* <div className="text-gray-400 mt-0.5">{dashboard.description}</div> */}
                             </div>
                           </button>

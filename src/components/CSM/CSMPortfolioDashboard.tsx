@@ -376,7 +376,7 @@ export function CSMPortfolioDashboard() {
         
         {/* Row 1: GRR, Portfolio Health, At-Risk ARR, Renewal Rate */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} />
+          <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} customBgColor="#F3F3F3" />
           <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} />
           <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} />
           <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} />
