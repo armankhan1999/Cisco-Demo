@@ -149,6 +149,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<FileText className="h-6 w-6" />}
               description="Average days from quote submission to approval"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="Invoice Accuracy"
@@ -159,6 +160,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<CheckCircle className="h-6 w-6" />}
               description="Percentage of invoices without billing errors"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="DSO"
@@ -169,6 +171,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<DollarSign className="h-6 w-6" />}
               description="Average days to collect payment after invoice"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
           </div>
 
@@ -183,6 +186,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<Target className="h-6 w-6" />}
               description="Accuracy of revenue recognition vs expected"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="Deferred Revenue"
@@ -193,6 +197,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<DollarSign className="h-6 w-6" />}
               description="Total unearned revenue for future periods"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="Quote Win Rate"
@@ -203,6 +208,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<TrendingUp className="h-6 w-6" />}
               description="Percentage of quotes accepted vs declined"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="Renewal Quote Velocity"
@@ -213,6 +219,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<Clock className="h-6 w-6" />}
               description="Time from renewal trigger to quote delivery"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
           </div>
         </div>

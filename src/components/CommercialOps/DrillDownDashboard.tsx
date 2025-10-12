@@ -282,6 +282,7 @@ export default function DrillDownDashboard() {
                   color="green"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="invoice-accuracy"
@@ -296,6 +297,7 @@ export default function DrillDownDashboard() {
                   color="emerald"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="days-sales-outstanding"
@@ -310,6 +312,7 @@ export default function DrillDownDashboard() {
                   color="orange"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
               </div>
 
@@ -328,6 +331,7 @@ export default function DrillDownDashboard() {
                   color="purple"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="deferred-revenue"
@@ -342,6 +346,7 @@ export default function DrillDownDashboard() {
                   color="indigo"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="quote-win-rate"
@@ -356,6 +361,7 @@ export default function DrillDownDashboard() {
                   color="teal"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="renewal-quote-velocity"
@@ -370,6 +376,7 @@ export default function DrillDownDashboard() {
                   color="cyan"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
               </div>
             </div>
