@@ -8,6 +8,22 @@ export default function CSMHomePage() {
   const { isCollapsed } = useSidebar();
   const dashboards = [
     {
+      id: 'overview',
+      name: 'CSM Overview & Strategy',
+      description: 'Complete strategic overview with persona definition, business questions, and 10 primary KPIs with definitions',
+      category: 'Overview',
+      icon: '📋',
+      href: '/csm/overview',
+      kpis: [
+        'Persona Definition & Responsibilities',
+        '5 Key Business Questions',
+        '10 Strategic KPIs with Targets',
+        'Data Source Mapping',
+        'Category Classification'
+      ],
+      status: 'active'
+    },
+    {
       id: 'portfolio',
       name: 'Customer Success Portfolio Dashboard',
       description: 'Strategic overview with 10 primary KPIs, portfolio health metrics, and renewal pipeline insights',

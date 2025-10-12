@@ -77,11 +77,17 @@ function AccountDeepDiveContent() {
       // Load real data from JSON files
       const deepDiveData = loadAccountDeepDive(accountId, utilization);
 
+      // Get real users and products from the account data
+      const accountUsers = account.users || [];
+      const accountProducts = account.products || [];
+      
       const enrichedAccount = {
         ...account,
         utilization,
         healthTrend: deepDiveData.healthTrend,
-        deepDiveData
+        deepDiveData,
+        users: accountUsers,
+        products: accountProducts
       };
 
       setAccountData(enrichedAccount);
@@ -162,9 +168,13 @@ function AccountDeepDiveContent() {
         <UserActivityBreakdown 
           totalLicenses={accountData.utilization.totalLicenses}
           activeUsers={accountData.utilization.activeUsers}
+          users={accountData.users || []}
         />
         
-        <FeatureAdoptionAnalysis />
+        <FeatureAdoptionAnalysis 
+          products={accountData.products || []}
+          users={accountData.users || []}
+        />
         
         <TrainingEnablement />
         

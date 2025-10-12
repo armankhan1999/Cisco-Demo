@@ -165,8 +165,8 @@ export default function ChurnRateDrillDown() {
           currentHealthScore: account?.account.health_score || 0,
           riskLevel,
           riskColor,
-          daysToRenewal: pred.days_to_renewal || 0,
-          renewalDate: pred.renewal_date || 'Unknown'
+          daysToRenewal: (pred as any).days_to_renewal || 0,
+          renewalDate: (pred as any).contract_end_date || 'Unknown'
         };
       }).filter(pred => pred.churn_probability > 0.3)
         .sort((a, b) => b.churn_probability - a.churn_probability);

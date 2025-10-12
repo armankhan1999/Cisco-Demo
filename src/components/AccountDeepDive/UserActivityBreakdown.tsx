@@ -3,33 +3,55 @@ import React from 'react';
 interface UserActivityProps {
   totalLicenses: number;
   activeUsers: number;
+  users: any[];
 }
 
-export default function UserActivityBreakdown({ totalLicenses, activeUsers }: UserActivityProps) {
-  const dormantUsers = Math.floor(totalLicenses * 0.24);
-  const neverLoggedIn = totalLicenses - activeUsers - dormantUsers;
+export default function UserActivityBreakdown({ totalLicenses, activeUsers, users }: UserActivityProps) {
+  // Calculate from real user data
+  const highActivityUsers = users.filter(u => u.activity_level === 'High').length;
+  const mediumActivityUsers = users.filter(u => u.activity_level === 'Medium').length;
+  const lowActivityUsers = users.filter(u => u.activity_level === 'Low').length;
+  
+  // Active = High + Medium activity
+  const realActiveUsers = highActivityUsers + mediumActivityUsers;
+  // Dormant = Low activity
+  const dormantUsers = lowActivityUsers;
+  // Never logged in = licenses not assigned to users
+  const neverLoggedIn = Math.max(0, totalLicenses - users.length);
   
   const segments = [
     { 
-      label: 'Active (Last 30d)', 
-      count: activeUsers, 
-      pct: (activeUsers / totalLicenses * 100), 
+      label: 'Active (High/Medium)', 
+      count: realActiveUsers, 
+      pct: totalLicenses > 0 ? (realActiveUsers / totalLicenses * 100) : 0, 
       color: 'bg-green-500' 
     },
     { 
-      label: 'Dormant (30-90d)', 
+      label: 'Dormant (Low Activity)', 
       count: dormantUsers, 
-      pct: 24, 
+      pct: totalLicenses > 0 ? (dormantUsers / totalLicenses * 100) : 0, 
       color: 'bg-yellow-500' 
     },
     { 
       label: 'Never Logged In', 
       count: neverLoggedIn, 
-      pct: (neverLoggedIn / totalLicenses * 100), 
+      pct: totalLicenses > 0 ? (neverLoggedIn / totalLicenses * 100) : 0, 
       color: 'bg-red-500', 
-      alert: true 
+      alert: neverLoggedIn > 0 
     }
   ];
+  
+  // Get top active users by features_used
+  const topUsers = [...users]
+    .sort((a, b) => (b.features_used || 0) - (a.features_used || 0))
+    .slice(0, 3);
+  
+  // Calculate average engagement metrics
+  const avgFeaturesUsed = users.length > 0 ? 
+    users.reduce((sum, u) => sum + (u.features_used || 0), 0) / users.length : 0;
+  
+  const lastActivityDate = users.length > 0 ? 
+    new Date(Math.max(...users.map(u => new Date(u.last_login || u.created_date || Date.now()).getTime()))) : new Date();
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -62,31 +84,37 @@ export default function UserActivityBreakdown({ totalLicenses, activeUsers }: Us
         </div>
 
         <div className="mt-4 pt-4 border-t border-gray-200">
-          <div className="text-sm font-medium text-gray-700 mb-2">Engagement Metrics (Active Users Only):</div>
+          <div className="text-sm font-medium text-gray-700 mb-2">Engagement Metrics:</div>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
-              <div className="text-gray-600">Avg Sessions per User (30d):</div>
-              <div className="font-bold text-gray-900">8.2 sessions</div>
+              <div className="text-gray-600">Total Users:</div>
+              <div className="font-bold text-gray-900">{users.length} users</div>
             </div>
             <div>
-              <div className="text-gray-600">Avg Session Duration:</div>
-              <div className="font-bold text-gray-900">12 minutes</div>
+              <div className="text-gray-600">Avg Features Used:</div>
+              <div className="font-bold text-gray-900">{avgFeaturesUsed.toFixed(1)} features</div>
             </div>
             <div>
               <div className="text-gray-600">Last Activity:</div>
-              <div className="font-bold text-yellow-600">12 days ago ⚠️</div>
+              <div className="font-bold text-gray-900">
+                {Math.ceil((Date.now() - lastActivityDate.getTime()) / (1000 * 60 * 60 * 24))} days ago
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <div className="text-sm font-medium text-gray-700 mb-2">Top Active Users:</div>
-          <div className="space-y-1 text-sm text-gray-700">
-            <div>1. john.smith@acmecorp.com - 45 sessions (Primary champion until Aug)</div>
-            <div>2. mary.johnson@acmecorp.com - 28 sessions (IT Manager)</div>
-            <div>3. bob.williams@acmecorp.com - 18 sessions (Network Admin)</div>
+        {topUsers.length > 0 && (
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="text-sm font-medium text-gray-700 mb-2">Top Active Users:</div>
+            <div className="space-y-1 text-sm text-gray-700">
+              {topUsers.map((user, idx) => (
+                <div key={user.id}>
+                  {idx + 1}. {user.email} - {user.features_used || 0} features used ({user.role})
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="mt-4 flex gap-3">
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
