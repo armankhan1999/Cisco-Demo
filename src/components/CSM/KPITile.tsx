@@ -15,25 +15,25 @@ interface KPITileProps {
 export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KPITileProps) {
   // Status-based background colors (following health score matrix)
   // Success (Green): 76-100 = Thriving/Healthy
-  // Warning (Orange): 60-75 = Stable
+  // Warning (Yellow): 60-75 = Stable
   // Danger (Red): 0-59 = At Risk/Critical
   const statusColors = {
     success: 'bg-gradient-to-br from-green-50 to-green-100',
-    warning: 'bg-gradient-to-br from-orange-50 to-orange-100', 
+    warning: 'bg-gradient-to-br from-yellow-50 to-yellow-100', 
     danger: 'bg-gradient-to-br from-red-50 to-red-100'
   };
 
   // Status-based text colors
   const statusTextColors = {
     success: 'text-green-700',
-    warning: 'text-orange-700',
+    warning: 'text-yellow-700',
     danger: 'text-red-700'
   };
 
   // Status-based progress bar colors
   const statusProgressColors = {
     success: 'bg-green-500',
-    warning: 'bg-orange-500',
+    warning: 'bg-yellow-500',
     danger: 'bg-red-500'
   };
 

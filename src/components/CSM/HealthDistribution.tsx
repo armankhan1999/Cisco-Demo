@@ -34,9 +34,9 @@ export function HealthDistribution({ data, onClick }: HealthDistributionProps) {
         icon: '✓'
       },
       'Stable': {
-        badge: 'bg-blue-50 text-blue-700 border-blue-200',
+        badge: 'bg-yellow-50 text-yellow-700 border-yellow-200',
         text: 'text-gray-900',
-        dot: 'bg-blue-500',
+        dot: 'bg-yellow-500',
         icon: '→'
       },
       'At Risk': {

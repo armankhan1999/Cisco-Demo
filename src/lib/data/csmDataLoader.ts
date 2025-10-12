@@ -264,10 +264,28 @@ class CSMDataStore {
   
   // Filter methods
   public getActiveAccounts(): Account[] {
-    return this.accounts.filter(a => 
+    const activeAccounts = this.accounts.filter(a => 
       a.account.arr > 0 && 
       (!a.account.status || a.account.status === 'Active')
     );
+    
+    // Deduplicate by customer_id (keep higher ARR entry for duplicates)
+    // Fix for duplicate customer IDs in accounts.json
+    const uniqueAccounts = new Map<string, Account>();
+    
+    activeAccounts.forEach(account => {
+      const customerId = account.account.id;
+      const existing = uniqueAccounts.get(customerId);
+      
+      // Keep the entry with higher ARR (or first entry if ARR is same)
+      if (!existing || account.account.arr > existing.account.arr) {
+        uniqueAccounts.set(customerId, account);
+      }
+    });
+    
+    console.log(`📊 Account Deduplication: ${activeAccounts.length} total → ${uniqueAccounts.size} unique`);
+    
+    return Array.from(uniqueAccounts.values());
   }
   
   public getActiveSubscriptions(): Subscription[] {
