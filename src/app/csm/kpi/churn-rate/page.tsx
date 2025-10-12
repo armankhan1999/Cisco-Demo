@@ -26,8 +26,7 @@ export default function ChurnRateDrillDown() {
   const [perPage, setPerPage] = useState(10);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'predictions' | 'historical' | 'alerts'>('predictions');
-
- 
+  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -337,10 +336,6 @@ export default function ChurnRateDrillDown() {
       console.error('Error loading churn data:', error);
       setLoading(false);
     }
-  const { isCollapsed } = useSidebar();
-
-  useEffect(() => {
-    setLoading(false);
   }, []);
 
   if (loading) {
@@ -968,59 +963,8 @@ export default function ChurnRateDrillDown() {
                     <div className="text-xs text-blue-700 mt-1">Competitor mentions detected</div>
                   </div>
                 </div>
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${
-        isCollapsed ? 'ml-14' : 'ml-64'
-      }`}>
-        <div className="p-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Churn Rate Analysis</h1>
-            <p className="text-gray-600 mt-2">Detailed analysis of customer churn patterns and trends</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Churn Rate Overview</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="text-3xl font-bold text-red-600">3.2%</div>
-                <div className="text-sm text-gray-600">Current Churn Rate</div>
-              </div>
-              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="text-3xl font-bold text-green-600">5.0%</div>
-                <div className="text-sm text-gray-600">Target Churn Rate</div>
-              </div>
-              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="text-3xl font-bold text-blue-600">$1.2M</div>
-                <div className="text-sm text-gray-600">Churned ARR</div>
               </div>
             </div>
-          </div>
-
-          {/* Churn Prevention Recommendations */}
-          <div className="mt-8 bg-blue-50 rounded-lg border border-blue-200 p-6">
-            <div className="flex items-start">
-              <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-              </svg>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Churn Prevention Strategy</h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• Focus on {churnPredictions.filter(p => p.churn_probability > 0.6).length} high-risk accounts with churn probability above 60%</li>
-                  <li>• Address {championDepartures.length} champion departures with relationship recovery plans</li>
-                  <li>• Implement prevention strategies for {churnData.preventablePercentage.toFixed(0)}% of preventable churn cases</li>
-                  <li>• Monitor health scores weekly for accounts with churn probability above 40%</li>
-                  <li>• Schedule proactive QBRs for at-risk accounts 90 days before renewal</li>
-                  <li>• Deploy executive engagement for high-ARR accounts with churn risk</li>
-                </ul>
-              </div>
-            </div>
-          <div className="mt-8 bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-semibold mb-4">Key Insights</h3>
-            <ul className="space-y-2 text-gray-700">
-              <li>• Churn rate is below target, indicating good customer retention</li>
-              <li>• Main churn reasons include product fit and competitive pressure</li>
-              <li>• Early warning signals help predict potential churn</li>
-              <li>• Proactive engagement reduces churn by 40%</li>
-            </ul>
           </div>
         </div>
       </div>
