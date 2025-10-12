@@ -377,23 +377,23 @@ export function CSMPortfolioDashboard() {
         {/* Row 1: GRR, Portfolio Health, At-Risk ARR, Renewal Rate */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} customBgColor="#F3F3F3" />
-          <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} />
-          <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} />
-          <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} />
+          <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} customBgColor="#F3F3F3" />
+          <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} customBgColor="#F3F3F3" />
+          <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} customBgColor="#F3F3F3" />
         </div>
-        
+
         {/* Row 2: Churn Rate, Portfolio Utilization, Feature Adoption, Engagement Score */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} />
-          <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} />
-          <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} />
-          <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} />
+          <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} customBgColor="#F3F3F3" />
+          <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} customBgColor="#F3F3F3" />
+          <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} customBgColor="#F3F3F3" />
+          <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} customBgColor="#F3F3F3" />
         </div>
-        
+
         {/* Row 3: Time to Value, QBR Completion and Summary */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <KPITile title="Time to Value (TTV)" kpi={kpis.timeToValue} drillDownUrl={buildDrillDownUrl('/csm/kpi/time-to-value')} />
-          <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} />
+          <KPITile title="Time to Value (TTV)" kpi={kpis.timeToValue} drillDownUrl={buildDrillDownUrl('/csm/kpi/time-to-value')} customBgColor="#F3F3F3" />
+          <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} customBgColor="#F3F3F3" />
           
           {/* Summary Cards */}
           <div className="col-span-2 bg-white rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300">
