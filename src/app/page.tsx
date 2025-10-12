@@ -4,21 +4,32 @@ import { useState } from 'react';
 import EnhancedSidebar from '@/components/Sidebar/EnhancedSidebar';
 import Dashboard from '@/components/Dashboard/Dashboard';
 import DrillDownDashboard from '@/components/CommercialOps/DrillDownDashboard';
+import SalesExpansionDashboard from '@/components/SalesExpansion/DrillDownDashboard';
 import { Persona } from '@/data/dummyData';
 
 export default function Home() {
-  const [currentPersona, setCurrentPersona] = useState<Persona>('CO');
+
+  const [currentPersona, setCurrentPersona] = useState<Persona>('CSM');
   const [currentView, setCurrentView] = useState<string>('command-center');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderMainContent = () => {
-    if (currentPersona === 'CO' && currentView === 'command-center') {
+    // Commercial Operations - Drill-down dashboard
+    if (currentPersona === 'CO') {
       return <DrillDownDashboard />;
+    }
+    
+    // Sales Expansion - Drill-down dashboard
+    if (currentPersona === 'SE') {
+      return <SalesExpansionDashboard />;
     }
     
     // Default to original dashboard for other personas/views
     return <Dashboard persona={currentPersona} />;
   };
+
+  const [currentLevel, setCurrentLevel] = useState(1);
+
 
   return (
     <div className="flex h-screen bg-gray-50">

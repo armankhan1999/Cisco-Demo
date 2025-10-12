@@ -16,10 +16,12 @@ interface ChatRequest {
   history: Message[];
 }
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client with fallback
+const openai = process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.startsWith('sk-') 
+  ? new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    })
+  : null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,8 +55,8 @@ export async function POST(request: NextRequest) {
         queryResults = cortexResult.query_results || undefined;
 
         // OpenAI enhancement is optional - Cortex already provides good responses
-        // Only enhance if OpenAI key is valid and we have results
-        if (queryResults && queryResults.length > 0 && process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.startsWith('sk-')) {
+        // Only enhance if OpenAI is available and we have results
+        if (queryResults && queryResults.length > 0 && openai) {
           try {
             const enhanced = await enhanceResponseWithOpenAI(
               message,
@@ -104,7 +106,7 @@ async function generateOpenAIResponse(
   message: string,
   history: Message[]
 ): Promise<string> {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!openai) {
     return getFallbackResponse(message);
   }
 
@@ -158,7 +160,7 @@ async function enhanceResponseWithOpenAI(
   cortexResponse: string,
   queryResults: SnowflakeQueryResult[]
 ): Promise<string> {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!openai) {
     return cortexResponse;
   }
 

@@ -12,9 +12,10 @@ import { CSMPortfolioDashboard } from '@/components/CSM/CSMPortfolioDashboard';
 
 interface DashboardProps {
   persona: Persona;
+  level?: number;
 }
 
-export default function Dashboard({ persona }: DashboardProps) {
+export default function Dashboard({ persona, level = 1 }: DashboardProps) {
   const personaColor = personaColors[persona];
   const data = getPersonaData(persona);
 
@@ -62,14 +63,16 @@ export default function Dashboard({ persona }: DashboardProps) {
         </div>
       </div>
 
-      {/* Dropdowns Section */}
-      <div className="px-8 py-6 border-b" style={{ backgroundColor: colors.background.secondary, borderColor: colors.neutral[200] }}>
-        <PersonaDropdowns persona={persona} />
-      </div>
+      {/* Dropdowns Section - Only for CSM and CO */}
+      {persona !== 'SE' && (
+        <div className="px-8 py-6 border-b" style={{ backgroundColor: colors.background.secondary, borderColor: colors.neutral[200] }}>
+          <PersonaDropdowns persona={persona} />
+        </div>
+      )}
 
       {/* Main Content Area */}
       <div className="flex-1 overflow-y-auto px-8 py-6" style={{ backgroundColor: colors.background.primary }}>
-        <DashboardStats persona={persona} />
+        <DashboardStats persona={persona} level={level} />
       </div>
     </div>
   );
