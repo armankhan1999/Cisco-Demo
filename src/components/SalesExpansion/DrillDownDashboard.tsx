@@ -163,6 +163,7 @@ export default function DrillDownDashboard() {
             color="blue"
             description="Retained + expansion revenue in dollars"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
           
           <DrillDownKPICard
@@ -177,6 +178,7 @@ export default function DrillDownDashboard() {
             color="green"
             description="Total ARR from upsell/cross-sell in period"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
           
           <DrillDownKPICard
@@ -191,6 +193,7 @@ export default function DrillDownDashboard() {
             color="purple"
             description="% of customers with 2+ products"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
           
           <DrillDownKPICard
@@ -205,6 +208,7 @@ export default function DrillDownDashboard() {
             color="orange"
             description="Estimated ARR from identified gaps"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
         </div>
 
@@ -222,6 +226,7 @@ export default function DrillDownDashboard() {
             color="indigo"
             description="Avg quota attainment across expansion reps"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
           
           <DrillDownKPICard
@@ -236,6 +241,7 @@ export default function DrillDownDashboard() {
             color="teal"
             description="Accounts with high expansion readiness score"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
           />
         </div>
 
@@ -261,7 +267,7 @@ export default function DrillDownDashboard() {
             {/* Alert Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               {/* Critical Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-red-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-red-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
                     <AlertCircle className="w-4 h-4 text-white" />
@@ -274,7 +280,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* High Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-orange-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-orange-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4 text-white" />
@@ -287,7 +293,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* Medium Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-yellow-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-yellow-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
                     <Filter className="w-4 h-4 text-white" />
@@ -300,7 +306,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* Response Rate */}
-              <div className="bg-white rounded-lg p-4 border border-green-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-green-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                     <Users className="w-4 h-4 text-white" />
@@ -314,7 +320,7 @@ export default function DrillDownDashboard() {
             </div>
 
             {/* Top Accounts Requiring Action */}
-            <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <div className="rounded-lg p-4 border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
               <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-red-600" />
                 Top 5 Accounts Requiring Action
@@ -379,7 +385,7 @@ export default function DrillDownDashboard() {
         {/* Pipeline Funnel & Win Rate Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Expansion Pipeline Funnel */}
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => handleDrillDown('pipeline-arr', 2)}>
+          <div className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group" style={{ backgroundColor: '#F3F3F3' }} onClick={() => handleDrillDown('pipeline-arr', 2)}>
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
@@ -439,8 +445,9 @@ export default function DrillDownDashboard() {
         {/* Opportunity Scatter Plot & Cross-Sell Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Opportunity Readiness Scatter Plot */}
-          <div 
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+          <div
+            className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => handleDrillDown('opportunity-readiness-matrix', 2)}
           >
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
@@ -521,8 +528,9 @@ export default function DrillDownDashboard() {
           </div>
 
           {/* Cross-Sell vs Upsell Breakdown */}
-          <div 
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+          <div
+            className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => handleDrillDown('expansion-type-distribution', 2)}
           >
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
@@ -565,8 +573,9 @@ export default function DrillDownDashboard() {
         </div>
 
         {/* Exception Alerts */}
-        <div 
-          className="bg-white rounded-lg shadow-sm p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        <div
+          className="rounded-lg shadow-sm p-6 cursor-pointer hover:shadow-lg transition-shadow"
+          style={{ backgroundColor: '#F3F3F3' }}
           onClick={() => handleDrillDown('exception-alerts', 2)}
         >
           <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">

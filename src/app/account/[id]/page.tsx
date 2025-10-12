@@ -144,7 +144,7 @@ export default function AccountPage({ params }: { params: Promise<{ id: string }
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-2">
@@ -170,7 +170,7 @@ export default function AccountPage({ params }: { params: Promise<{ id: string }
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {/* ARR */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-600">ARR</h3>
             <TrendingUp className="w-5 h-5 text-green-500" />
@@ -180,7 +180,7 @@ export default function AccountPage({ params }: { params: Promise<{ id: string }
         </div>
 
         {/* Tier */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-600">Tier</h3>
           </div>
@@ -209,7 +209,7 @@ export default function AccountPage({ params }: { params: Promise<{ id: string }
 
       {/* Account Details */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4">Account Details</h2>
           <div className="space-y-3">
             <div className="flex justify-between">
@@ -267,7 +267,7 @@ export default function AccountPage({ params }: { params: Promise<{ id: string }
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button

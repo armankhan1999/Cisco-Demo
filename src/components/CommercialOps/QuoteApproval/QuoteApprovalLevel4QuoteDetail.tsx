@@ -79,7 +79,7 @@ export default function QuoteApprovalLevel4QuoteDetail({
       </div>
 
       {/* Quote Summary Card */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div>
             <h3 className="text-sm font-medium text-gray-500 mb-2">Quote Details</h3>
@@ -140,7 +140,7 @@ export default function QuoteApprovalLevel4QuoteDetail({
       </div>
 
       {/* Approval Chain Progress */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Approval Chain Progress</h2>
         
         <div className="relative">
@@ -192,7 +192,7 @@ export default function QuoteApprovalLevel4QuoteDetail({
       </div>
 
       {/* Tabbed Content */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         {/* Tab Navigation */}
         <div className="border-b border-gray-200">
           <nav className="flex space-x-8 px-6">

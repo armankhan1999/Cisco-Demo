@@ -55,13 +55,13 @@ export default function SuccessPlan() {
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         📋 CUSTOMER SUCCESS PLAN - EMERGENCY INTERVENTION
       </h2>
       
       <div className="mb-4">
-        <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 mb-4">
+        <div className="border-2 border-red-300 rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-bold text-red-800 text-lg mb-2">Plan Status: 🔴 CRITICAL - Immediate Action Required</div>
           <div className="text-sm text-gray-700 space-y-1">
             <div><strong>Plan Owner:</strong> Sarah Chen (CSM) + Michael Torres (Director, Customer Success)</div>
@@ -70,7 +70,7 @@ export default function SuccessPlan() {
           </div>
         </div>
 
-        <div className="bg-blue-50 rounded-lg p-4 mb-4">
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-bold text-gray-800 mb-2">🎯 PRIMARY OBJECTIVES:</div>
           <div className="space-y-1 text-sm text-gray-700">
             <div>1. Stabilize health score to &gt;70 by Nov 15 (35 days)</div>
@@ -112,7 +112,7 @@ export default function SuccessPlan() {
           ))}
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mt-4">
+        <div className="border border-yellow-300 rounded-lg p-4 mt-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-bold text-gray-800 mb-2">💰 FINANCIAL OUTCOME SCENARIOS:</div>
           <div className="space-y-1 text-sm text-gray-700">
             <div>• <strong className="text-green-700">Best Case:</strong> Renew at $120K (right-sized 20 seats) - $120K ARR retained</div>

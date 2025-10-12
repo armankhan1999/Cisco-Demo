@@ -36,7 +36,7 @@ export default function HealthRiskAssessment({ healthScore, churnRisk, npsScore,
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         🎯 HEALTH & RISK ASSESSMENT
       </h2>
@@ -49,7 +49,7 @@ export default function HealthRiskAssessment({ healthScore, churnRisk, npsScore,
         </div>
         
         {/* Health Trend Chart */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-medium text-gray-700 mb-2">
             Health Trend (Last 6 Months): {healthTrend.map(h => h.score > 0 ? h.score : 'N/A').join(' → ')}
           </div>

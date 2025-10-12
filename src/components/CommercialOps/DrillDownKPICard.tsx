@@ -21,6 +21,7 @@ interface DrillDownKPICardProps {
   description: string;
   color: 'blue' | 'green' | 'emerald' | 'orange' | 'purple' | 'indigo' | 'teal' | 'cyan';
   onDrillDown: (kpiId: string, level: 2 | 3) => void;
+  customBgColor?: string;
 }
 
 export default function DrillDownKPICard({
@@ -34,7 +35,8 @@ export default function DrillDownKPICard({
   icon,
   description,
   color,
-  onDrillDown
+  onDrillDown,
+  customBgColor
 }: DrillDownKPICardProps) {
 
   const getColorClasses = () => {
@@ -162,8 +164,9 @@ export default function DrillDownKPICard({
   const kpiDrillDown = KPI_DRILL_DOWNS.find(kpi => kpi.kpiId === kpiId);
 
   return (
-    <div 
-      className={`${colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden group`}
+    <div
+      className={`${customBgColor ? '' : colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden group`}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

@@ -129,7 +129,7 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-red-500" />
             <span className="font-medium text-gray-700">Critical Actions</span>
@@ -137,8 +137,8 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
           <p className="text-2xl font-bold text-red-600">{criticalCount}</p>
           <p className="text-sm text-gray-600">Require immediate attention</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-yellow-500" />
             <span className="font-medium text-gray-700">Urgent Actions</span>
@@ -146,8 +146,8 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
           <p className="text-2xl font-bold text-yellow-600">{urgentCount}</p>
           <p className="text-sm text-gray-600">Due within 48 hours</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-gray-700">Total Value</span>
@@ -155,8 +155,8 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
           <p className="text-2xl font-bold text-blue-600">${Math.round(totalValue / 1000)}K</p>
           <p className="text-sm text-gray-600">Revenue at risk</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
             <span className="font-medium text-gray-700">Avg Cycle Time</span>
@@ -198,7 +198,7 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
       {/* Action Items List */}
       <div className="space-y-4">
         {filteredItems.map((item, index) => (
-          <div key={item.id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div key={item.id} className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
@@ -272,7 +272,7 @@ export default function Q2CActionItems({ onBack }: Q2CActionItemsProps) {
       )}
 
       {/* Quick Actions Panel */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">

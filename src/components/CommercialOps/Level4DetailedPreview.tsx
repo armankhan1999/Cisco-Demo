@@ -178,7 +178,7 @@ export default function Level4DetailedPreview({ itemType, itemId, onBack }: Leve
       {activeTab === 'overview' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 rounded-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h4 className="font-semibold text-gray-900 mb-4">Invoice Information</h4>
               <dl className="space-y-3">
                 <div className="flex justify-between">
@@ -211,7 +211,7 @@ export default function Level4DetailedPreview({ itemType, itemId, onBack }: Leve
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 rounded-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h4 className="font-semibold text-gray-900 mb-4">Amount Breakdown</h4>
               <dl className="space-y-3">
                 <div className="flex justify-between">
@@ -233,7 +233,7 @@ export default function Level4DetailedPreview({ itemType, itemId, onBack }: Leve
               </dl>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 rounded-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h4 className="font-semibold text-gray-900 mb-4">Quick Actions</h4>
               <div className="space-y-3">
                 <button className="w-full flex items-center gap-3 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
@@ -255,7 +255,7 @@ export default function Level4DetailedPreview({ itemType, itemId, onBack }: Leve
       )}
 
       {activeTab === 'line-items' && (
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <div className="border border-gray-200 rounded-lg overflow-hidden" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="px-6 py-4 border-b border-gray-200">
             <h4 className="font-semibold text-gray-900">Invoice Line Items</h4>
           </div>
@@ -287,7 +287,7 @@ export default function Level4DetailedPreview({ itemType, itemId, onBack }: Leve
       )}
 
       {activeTab === 'usage' && (
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
+        <div className="border border-gray-200 rounded-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="font-semibold text-gray-900 mb-6">Usage Analytics</h4>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">

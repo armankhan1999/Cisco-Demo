@@ -52,7 +52,7 @@ export default function FeatureAdoptionAnalysis({ products, users }: FeatureAdop
   // If no products, show empty state
   if (features.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
           📈 FEATURE ADOPTION ANALYSIS
         </h2>
@@ -94,7 +94,7 @@ export default function FeatureAdoptionAnalysis({ products, users }: FeatureAdop
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         📈 FEATURE ADOPTION ANALYSIS
       </h2>
@@ -146,11 +146,11 @@ export default function FeatureAdoptionAnalysis({ products, users }: FeatureAdop
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-          <div className="bg-gray-50 p-3 rounded">
+          <div className="p-3 rounded" style={{ backgroundColor: '#F3F3F3' }}>
             <span className="font-medium">Products Enabled:</span>
             <span className="ml-2 font-bold">{totalFeatures}</span>
           </div>
-          <div className={`p-3 rounded ${featureUsageRate >= 70 ? 'bg-green-50' : featureUsageRate >= 50 ? 'bg-yellow-50' : 'bg-red-50'}`}>
+          <div className="p-3 rounded" style={{ backgroundColor: '#F3F3F3' }}>
             <span className="font-medium">Products Fully Adopted:</span>
             <span className={`ml-2 font-bold ${featureUsageRate >= 70 ? 'text-green-700' : featureUsageRate >= 50 ? 'text-yellow-700' : 'text-red-700'}`}>
               {adoptedFeatures} ({featureUsageRate.toFixed(0)}% adoption rate) {featureUsageRate < 50 ? '🔴' : featureUsageRate < 70 ? '⚠️' : '✅'}

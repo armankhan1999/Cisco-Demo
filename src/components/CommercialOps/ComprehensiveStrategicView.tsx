@@ -280,7 +280,7 @@ export default function ComprehensiveStrategicView() {
               {/* Additional Metrics */}
               <div className="space-y-6">
                 {/* Financial Health */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <DollarSign className="h-5 w-5 text-green-600" />
                     Financial Health
@@ -318,21 +318,21 @@ export default function ComprehensiveStrategicView() {
                 </div>
 
                 {/* Performance Summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-4">Performance Summary</h3>
+                <div className="rounded-xl shadow-lg p-6 border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900">Performance Summary</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span>Targets Met</span>
-                      <span className="font-bold">8 of 10</span>
+                      <span className="text-gray-700">Targets Met</span>
+                      <span className="font-bold text-gray-900">8 of 10</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Overall Health</span>
-                      <span className="font-bold">Excellent</span>
+                      <span className="text-gray-700">Overall Health</span>
+                      <span className="font-bold text-gray-900">Excellent</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Trend Direction</span>
-                      <span className="font-bold flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4" />
+                      <span className="text-gray-700">Trend Direction</span>
+                      <span className="font-bold flex items-center gap-1 text-gray-900">
+                        <TrendingUp className="h-4 w-4 text-blue-600" />
                         Improving
                       </span>
                     </div>

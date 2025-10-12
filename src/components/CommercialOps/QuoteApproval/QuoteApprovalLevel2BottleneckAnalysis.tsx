@@ -114,7 +114,7 @@ export default function QuoteApprovalLevel2BottleneckAnalysis({
       </div>
 
       {/* Enhanced Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-4 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <select
@@ -190,7 +190,7 @@ export default function QuoteApprovalLevel2BottleneckAnalysis({
       </div>
 
       {/* Scatter Plot Analysis */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Deal Size vs Approval Time</h2>
@@ -278,7 +278,7 @@ export default function QuoteApprovalLevel2BottleneckAnalysis({
       {/* Complexity Analysis */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Complexity Summary */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Approval Time by Complexity</h2>
             <p className="text-sm text-gray-600">Average approval days for each complexity level</p>
@@ -323,7 +323,7 @@ export default function QuoteApprovalLevel2BottleneckAnalysis({
         </div>
 
         {/* Insight Panel */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Pattern Analysis</h2>
             <p className="text-sm text-gray-600">Key insights from approval bottleneck data</p>
@@ -370,7 +370,7 @@ export default function QuoteApprovalLevel2BottleneckAnalysis({
       </div>
 
       {/* Detailed Analysis Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Quote Analysis Details</h2>

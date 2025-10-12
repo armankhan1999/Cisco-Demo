@@ -29,7 +29,7 @@ export default function StrategicActionButtons({ onViewActionItems }: StrategicA
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+    <div className="rounded-xl shadow-sm border border-gray-200 p-8" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center gap-3 mb-8">
         <div className="p-2 bg-blue-100 rounded-lg">
           <BarChart3 className="h-6 w-6 text-blue-600" />

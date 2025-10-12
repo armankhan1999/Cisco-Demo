@@ -46,17 +46,17 @@ export const CrossProductDrillDown: React.FC<CrossProductDrillDownProps> = ({ le
                   <div className="text-4xl font-bold text-purple-600">0.78</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">Strong synergy</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">High Synergy Pairs</div>
                   <div className="text-4xl font-bold text-green-600">8</div>
                   <div className="text-xs text-gray-600 mt-1">&gt;0.80 correlation</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Bundle Opportunities</div>
                   <div className="text-4xl font-bold text-blue-600">24</div>
                   <div className="text-xs text-gray-600 mt-1">Active accounts</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Potential ARR</div>
                   <div className="text-4xl font-bold text-gray-900">$8.4M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">From bundles</div>
@@ -107,7 +107,7 @@ export const CrossProductDrillDown: React.FC<CrossProductDrillDownProps> = ({ le
 
           {level === 3 && (
             <div className="space-y-6">
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Recommended Product Bundles</h3>
                 <div className="space-y-4">
                   {[

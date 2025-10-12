@@ -256,6 +256,7 @@ export default function DrillDownDashboard() {
                   description="Average days from quote creation to payment received"
                   color="blue"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="quote-approval-velocity"
@@ -269,6 +270,7 @@ export default function DrillDownDashboard() {
                   description="Average days from quote submission to approval"
                   color="green"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="invoice-accuracy"
@@ -282,6 +284,7 @@ export default function DrillDownDashboard() {
                   description="Percentage of invoices without billing errors"
                   color="emerald"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="days-sales-outstanding"
@@ -295,6 +298,7 @@ export default function DrillDownDashboard() {
                   description="Average days to collect payment after invoice"
                   color="orange"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
               </div>
 
@@ -312,6 +316,7 @@ export default function DrillDownDashboard() {
                   description="Accuracy of revenue recognition vs expected"
                   color="purple"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="deferred-revenue"
@@ -325,6 +330,7 @@ export default function DrillDownDashboard() {
                   description="Total unearned revenue for future periods"
                   color="indigo"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="quote-win-rate"
@@ -338,6 +344,7 @@ export default function DrillDownDashboard() {
                   description="Percentage of quotes accepted vs declined"
                   color="teal"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
                 <DrillDownKPICard
                   kpiId="renewal-quote-velocity"
@@ -351,6 +358,7 @@ export default function DrillDownDashboard() {
                   description="Time from renewal trigger to quote delivery"
                   color="cyan"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
                 />
               </div>
             </div>
@@ -365,7 +373,7 @@ export default function DrillDownDashboard() {
               {/* Additional Metrics */}
               <div className="space-y-6">
                 {/* Financial Health */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <DollarSign className="h-5 w-5 text-green-600" />
                     Financial Health
@@ -403,9 +411,9 @@ export default function DrillDownDashboard() {
                 </div>
 
                 {/* Performance Summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-4">Performance Summary</h3>
-                  <div className="space-y-3">
+                <div className="rounded-xl shadow-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900">Performance Summary</h3>
+                  <div className="space-y-3 text-gray-900">
                     <div className="flex justify-between">
                       <span>Targets Met</span>
                       <span className="font-bold">8 of 10</span>

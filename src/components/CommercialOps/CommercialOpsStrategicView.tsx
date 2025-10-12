@@ -238,7 +238,7 @@ export default function CommercialOpsStrategicView() {
           {/* Additional Metrics */}
           <div className="space-y-6">
             {/* Financial Health */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-green-600" />
                 Financial Health

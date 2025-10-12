@@ -229,8 +229,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
 
       {/* NEW: Utilization-Driven Expansion Signals Section - MOVED HERE FOR VISIBILITY */}
       <div className="grid grid-cols-1 gap-6 mb-8" style={{ backgroundColor: '#f0f9ff', border: '3px solid #dc2626', padding: '16px' }}>
-        <div 
-          className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+        <div
+          className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          style={{ backgroundColor: '#F3F3F3' }}
           onClick={() => setUtilizationExpansionDrillLevel(2)}
         >
           <div className="flex items-center justify-between mb-6">
@@ -315,8 +316,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* Row 1: Expansion Pipeline (Full Width) */}
         <div className="grid grid-cols-1 gap-6">
           {/* Expansion Pipeline ARR - FUNNEL CHART */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setPipelineDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -398,8 +400,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
 
         {/* NEW: Utilization-Driven Expansion Signals Section */}
         <div className="grid grid-cols-1 gap-6" style={{ backgroundColor: '#f0f9ff', border: '2px solid #0ea5e9', padding: '8px' }}>
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setUtilizationExpansionDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -482,8 +485,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* Row 2: Cross-Sell & Win Rate */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Cross-Sell Attach Rate - LARGE PIE CHART */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setCrossSellDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -556,8 +560,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           </div>
 
           {/* Expansion Win Rate - LARGE RADIAL GAUGE */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setWinRateDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -630,8 +635,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* Row 2: Time to Expansion & Cross-Product Correlation */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Time to Expansion - LARGE HISTOGRAM */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setTimeExpansionDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -714,8 +720,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           </div>
 
           {/* Cross-Product Correlation - NEW KPI */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setCrossProductDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -799,8 +806,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         {/* Row 3: Share-of-Wallet (Full Width) */}
         <div className="grid grid-cols-1 gap-6">
           {/* Share-of-Wallet - LARGE SCATTER PLOT */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setShareWalletDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -899,8 +907,9 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           </div>
 
           {/* Utilization-Driven Expansion Signals - NEW KPI */}
-          <div 
-            className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+          <div
+            className="relative rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => setUtilizationDrillLevel(2)}
           >
             <div className="flex items-center justify-between mb-6">
@@ -937,7 +946,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-xl font-bold text-gray-900 mb-4">Top 5 Accounts Requiring Action</div>
               <div className="space-y-3">
-                <div className="flex items-center justify-between bg-white rounded-lg p-4">
+                <div className="flex items-center justify-between rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div>
@@ -950,7 +959,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
                     <div className="text-sm text-green-600 font-semibold">Expansion ready</div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between bg-white rounded p-3">
+                <div className="flex items-center justify-between rounded p-3" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-red-500"></div>
                     <div>
@@ -963,7 +972,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
                     <div className="text-xs text-green-600">Expansion ready</div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between bg-white rounded p-3">
+                <div className="flex items-center justify-between rounded p-3" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-orange-500"></div>
                     <div>
@@ -1288,7 +1297,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
       </div>
 
       {/* NRR Analysis by Tier */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 NRR by Customer Tier</h4>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -1341,7 +1350,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
       </div>
 
       {/* Cohort Analysis with Heatmap */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h4 className="text-2xl font-bold mb-6 text-gray-900">📈 NRR Cohort Heatmap</h4>
         
         {/* Visual Heatmap */}
@@ -1388,7 +1397,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
       </div>
 
       {/* Expansion vs Churn */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h4 className="text-2xl font-bold mb-6 text-gray-900">⚖️ Expansion vs. Churn Ratio</h4>
         <div className="grid grid-cols-2 gap-6">
           <div className="bg-green-50 rounded-lg p-6 border-l-4 border-green-500">
@@ -1506,7 +1515,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Expansion ARR by Product Family */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-8">
+        <div className="rounded-xl border-2 border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="text-2xl font-bold mb-6 text-gray-900">📦 Expansion ARR by Product Family</h4>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -1612,7 +1621,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Deal Size Distribution */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 Expansion Deal Size Distribution</h4>
           <div className="grid grid-cols-4 gap-6">
             <div className="text-center">
@@ -1671,7 +1680,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
 
       {/* NRR SECTION */}
       {/* Top NRR Contributors */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Top NRR Contributors (Strategic Tier)</h4>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -1738,7 +1747,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
       </div>
 
       {/* Expansion Transaction Details */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h4 className="text-2xl font-bold mb-6 text-gray-900">📋 Expansion Transaction Details</h4>
         <div className="space-y-4">
           <div className="bg-green-50 rounded-lg p-5 border-l-4 border-green-500">
@@ -1793,7 +1802,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         <h3 className="text-3xl font-bold text-gray-900 mb-6">💰 Expansion ARR - Deal Details</h3>
 
         {/* Category-Specific Deals */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-8">
+        <div className="rounded-xl border-2 border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="text-2xl font-bold mb-6 text-gray-900">📈 Upsell Deals (Closed Won)</h4>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -1859,7 +1868,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Cross-Sell Deals */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-8">
+        <div className="rounded-xl border-2 border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="text-2xl font-bold mb-6 text-gray-900">🔄 Cross-Sell Deals (Closed Won)</h4>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -1914,7 +1923,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Sales Rep Performance Deep Dive */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h4 className="text-2xl font-bold mb-6 text-gray-900">👤 Sales Rep Performance - Detailed Breakdown</h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Sarah Johnson */}
@@ -2196,7 +2205,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Utilization Alerts by Product Table */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h3 className="text-2xl font-bold text-gray-900 mb-6">Utilization Alerts by Product</h3>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -2251,7 +2260,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Alert Response Rate */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h3 className="text-2xl font-bold text-gray-900 mb-6">Alert Response Rate</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Converted to Opps */}
@@ -2309,7 +2318,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
         </div>
 
         {/* Top Accounts Table */}
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -2416,7 +2425,7 @@ export default function DashboardStats({ persona, level = 1 }: DashboardStatsPro
           <h3 className="text-lg font-semibold mb-4" style={{ color: colors.text.primary }}>
             Recent Activity
           </h3>
-          <div className="bg-white rounded-lg border" style={{ borderColor: colors.neutral[200] }}>
+          <div className="rounded-lg border" style={{ backgroundColor: '#F3F3F3', borderColor: colors.neutral[200] }}>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead style={{ backgroundColor: colors.background.secondary }}>
@@ -2485,7 +2494,7 @@ interface StatCardProps {
 
 function StatCard({ title, value, subtitle, color, icon }: StatCardProps) {
   return (
-    <div className="bg-white rounded-lg p-6 border hover:shadow-lg hover:border-blue-500 transition-all duration-200" style={{ borderColor: colors.neutral[200] }}>
+    <div className="rounded-lg p-6 border hover:shadow-lg hover:border-blue-500 transition-all duration-200" style={{ backgroundColor: '#F3F3F3', borderColor: colors.neutral[200] }}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="text-sm font-medium mb-1" style={{ color: colors.text.secondary }}>

@@ -9,7 +9,7 @@ export default function AccountOverview({ account, daysToRenewal }: AccountOverv
   const renewalDate = new Date(account.next_renewal_date || '2025-11-27');
   
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         📋 ACCOUNT OVERVIEW
       </h2>

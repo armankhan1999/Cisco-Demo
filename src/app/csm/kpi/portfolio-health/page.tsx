@@ -209,7 +209,7 @@ export default function PortfolioHealthDrillDown() {
         {/* Health Score Calculation & Distribution */}
         <div className="grid grid-cols-2 gap-6 mb-8">
           {/* Health Score Calculation */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-4">Health Score Calculation</h3>
             <div className="space-y-4">
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
@@ -254,7 +254,7 @@ export default function PortfolioHealthDrillDown() {
           </div>
 
           {/* Health Distribution with Clickable Donut */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-6">Health Distribution</h3>
             
             <div className="flex items-center justify-center mb-6">
@@ -347,7 +347,7 @@ export default function PortfolioHealthDrillDown() {
         </div>
 
         {/* Top Account Contributions Table */}
-        <div className="bg-white rounded-lg border border-gray-200">
+        <div className="rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
             <h3 className="font-semibold text-gray-900">Top Account Contributions</h3>
             <div className="flex items-center gap-2">

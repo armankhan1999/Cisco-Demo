@@ -93,7 +93,7 @@ export default function DSOLevel4CustomerProfile({
 
       {/* Customer Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 shadow-sm">
+        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Total AR</span>
@@ -103,8 +103,8 @@ export default function DSOLevel4CustomerProfile({
           </p>
           <p className="text-sm text-blue-600">{customerProfile.invoiceDetails.length} invoices</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-red-500" />
             <span className="font-medium text-red-700">Overdue</span>
@@ -114,8 +114,8 @@ export default function DSOLevel4CustomerProfile({
           </p>
           <p className="text-sm text-red-600">{customerProfile.overduePercentage}% of total</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Avg Payment</span>
@@ -125,8 +125,8 @@ export default function DSOLevel4CustomerProfile({
           </p>
           <p className="text-sm text-green-600">Historical average</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Target className="h-5 w-5 text-purple-500" />
             <span className="font-medium text-purple-700">On-Time Rate</span>

@@ -266,7 +266,8 @@ function AccountsPageContent() {
                   onClick={() => router.push(`/csm/accounts/${acc.account.id}`)}
                   className={`relative overflow-hidden rounded-xl border-2 ${
                     healthColor.border
-                  } ${healthColor.bg} p-5 cursor-pointer transition-all hover:shadow-xl hover:scale-105`}
+                  } p-5 cursor-pointer transition-all hover:shadow-xl hover:scale-105`}
+                  style={{ backgroundColor: '#F3F3F3' }}
                 >
                   {/* Health Badge */}
                   <div className="absolute top-3 right-3">

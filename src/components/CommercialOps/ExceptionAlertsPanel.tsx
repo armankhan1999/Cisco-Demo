@@ -61,7 +61,7 @@ export default function ExceptionAlertsPanel({ alerts }: ExceptionAlertsPanelPro
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+    <div className="rounded-xl shadow-sm border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center gap-2 mb-6">
         <AlertTriangle className="h-6 w-6 text-red-600" />
         <h2 className="text-2xl font-bold text-gray-900">Exception Alerts</h2>

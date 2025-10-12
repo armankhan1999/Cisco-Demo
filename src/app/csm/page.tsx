@@ -100,7 +100,7 @@ export default function CSMHomePage() {
         </div>
 
         {/* Key Focus Areas */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div className="rounded-lg shadow-md p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Key Focus Areas</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-start">
@@ -136,7 +136,8 @@ export default function CSMHomePage() {
           {dashboards.map((dashboard) => (
             <div
               key={dashboard.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              className="rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              style={{ backgroundColor: '#F3F3F3' }}
             >
               {/* Status Badge */}
               <div className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">

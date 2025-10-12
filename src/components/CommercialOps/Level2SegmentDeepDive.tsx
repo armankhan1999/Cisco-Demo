@@ -174,7 +174,7 @@ export default function Level2SegmentDeepDive({ kpiId, context, onBack, onDrillT
         {selectedView === 'payment-collection' && (
           <>
             {/* Combo Chart */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">Payment Days by Segment & Product</h2>
@@ -219,7 +219,7 @@ export default function Level2SegmentDeepDive({ kpiId, context, onBack, onDrillT
             </div>
 
             {/* Insights Panel */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Insights</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -259,7 +259,7 @@ export default function Level2SegmentDeepDive({ kpiId, context, onBack, onDrillT
         {selectedView === 'segment-analysis' && (
           <>
             {/* Heatmap Visualization */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">Segment Performance Heatmap</h2>
@@ -323,7 +323,7 @@ export default function Level2SegmentDeepDive({ kpiId, context, onBack, onDrillT
         )}
 
         {/* Detailed Segment Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-xl font-bold text-gray-900">Segment Performance Details</h2>
@@ -393,30 +393,30 @@ export default function Level2SegmentDeepDive({ kpiId, context, onBack, onDrillT
 
         {/* Performance Summary Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Best Performer</h3>
-            <p className="text-xl font-bold mb-1">{getBestPerformer().segment}</p>
-            <p className="text-blue-100">{getBestPerformer().avgDays} days average</p>
+          <div className="rounded-xl p-6 border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-blue-600">Best Performer</h3>
+            <p className="text-xl font-bold mb-1 text-gray-900">{getBestPerformer().segment}</p>
+            <p className="text-blue-600">{getBestPerformer().avgDays} days average</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Needs Attention</h3>
-            <p className="text-xl font-bold mb-1">{getWorstPerformer().segment}</p>
-            <p className="text-red-100">{getWorstPerformer().avgDays} days average</p>
+
+          <div className="rounded-xl p-6 border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-red-600">Needs Attention</h3>
+            <p className="text-xl font-bold mb-1 text-gray-900">{getWorstPerformer().segment}</p>
+            <p className="text-red-600">{getWorstPerformer().avgDays} days average</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Total Segments</h3>
-            <p className="text-xl font-bold mb-1">{segmentData.length}</p>
-            <p className="text-green-100">analyzed combinations</p>
+
+          <div className="rounded-xl p-6 border border-green-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-green-600">Total Segments</h3>
+            <p className="text-xl font-bold mb-1 text-gray-900">{segmentData.length}</p>
+            <p className="text-green-600">analyzed combinations</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Avg Performance</h3>
-            <p className="text-xl font-bold mb-1">
+
+          <div className="rounded-xl p-6 border border-purple-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-purple-600">Avg Performance</h3>
+            <p className="text-xl font-bold mb-1 text-gray-900">
               {(segmentData.reduce((sum, s) => sum + s.avgDays, 0) / segmentData.length).toFixed(1)} days
             </p>
-            <p className="text-purple-100">across all segments</p>
+            <p className="text-purple-600">across all segments</p>
           </div>
         </div>
       </div>

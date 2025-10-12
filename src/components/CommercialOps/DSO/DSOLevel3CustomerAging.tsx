@@ -131,7 +131,7 @@ export default function DSOLevel3CustomerAging({
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 shadow-sm">
+        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Total Outstanding</span>
@@ -139,8 +139,8 @@ export default function DSOLevel3CustomerAging({
           <p className="text-2xl font-bold text-blue-600">${Math.round(totalOutstanding / 1000)}K</p>
           <p className="text-sm text-blue-600">{filteredCustomers.length} customers</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-red-500" />
             <span className="font-medium text-red-700">High Priority</span>
@@ -148,8 +148,8 @@ export default function DSOLevel3CustomerAging({
           <p className="text-2xl font-bold text-red-600">{highPriorityCount}</p>
           <p className="text-sm text-red-600">Customers need attention</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-yellow-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-yellow-500" />
             <span className="font-medium text-yellow-700">Overdue Amount</span>
@@ -157,8 +157,8 @@ export default function DSOLevel3CustomerAging({
           <p className="text-2xl font-bold text-yellow-600">${Math.round(overdueAmount / 1000)}K</p>
           <p className="text-sm text-yellow-600">{Math.round((overdueAmount / totalOutstanding) * 100)}% of total AR</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Avg DSO</span>

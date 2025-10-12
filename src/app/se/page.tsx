@@ -397,7 +397,7 @@ export default function SalesExpansionDashboard() {
 
             {/* NEW: Utilization-Driven Expansion Signals Section */}
             <div className="mb-8">
-              <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200 shadow-lg">
+              <div className="rounded-xl p-6 border-2 border-red-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
@@ -414,7 +414,7 @@ export default function SalesExpansionDashboard() {
                 {/* Alert Summary Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                   {/* Critical Alerts */}
-                  <div className="bg-white rounded-lg p-4 border border-red-200 shadow-sm">
+                  <div className="rounded-lg p-4 border border-red-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -429,7 +429,7 @@ export default function SalesExpansionDashboard() {
                   </div>
 
                   {/* High Alerts */}
-                  <div className="bg-white rounded-lg p-4 border border-orange-200 shadow-sm">
+                  <div className="rounded-lg p-4 border border-orange-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -444,7 +444,7 @@ export default function SalesExpansionDashboard() {
                   </div>
 
                   {/* Medium Alerts */}
-                  <div className="bg-white rounded-lg p-4 border border-yellow-200 shadow-sm">
+                  <div className="rounded-lg p-4 border border-yellow-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -459,7 +459,7 @@ export default function SalesExpansionDashboard() {
                   </div>
 
                   {/* Response Rate */}
-                  <div className="bg-white rounded-lg p-4 border border-green-200 shadow-sm">
+                  <div className="rounded-lg p-4 border border-green-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -475,7 +475,7 @@ export default function SalesExpansionDashboard() {
                 </div>
 
                 {/* Top Accounts Requiring Action */}
-                <div className="bg-white rounded-lg p-4 border border-gray-200">
+                <div className="rounded-lg p-4 border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <h4 className="text-lg font-semibold text-gray-900 mb-4">🎯 Top 5 Accounts Requiring Action</h4>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
@@ -534,7 +534,7 @@ export default function SalesExpansionDashboard() {
             {/* Performance Metrics Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               {/* Expansion Performance */}
-              <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="rounded-lg p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-lg font-semibold text-gray-900">📊 Expansion Performance</h3>
                   <span className="text-sm text-green-600 font-semibold">Team Analysis</span>
@@ -574,7 +574,7 @@ export default function SalesExpansionDashboard() {
               </div>
 
               {/* Pipeline Metrics */}
-              <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="rounded-lg p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-lg font-semibold text-gray-900">🎯 Pipeline Metrics</h3>
                   <span className="text-sm text-blue-600 font-semibold cursor-pointer">Click to explore →</span>
@@ -638,10 +638,10 @@ export default function SalesExpansionDashboard() {
               {/* NRR Analysis by Tier */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-4 text-blue-800">NRR Analysis by Customer Tier</h4>
-                <div className="bg-white rounded-xl shadow-lg border-2 border-blue-100 p-6">
+                <div className="rounded-xl shadow-lg border-2 border-blue-100 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     {Object.entries(tier2Data.nrrByTier).map(([tier, data]: [string, any]) => (
-                      <div key={tier} className="bg-gradient-to-br from-blue-50 to-white p-4 rounded-lg border border-blue-200">
+                      <div key={tier} className="p-4 rounded-lg border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
                         <div className="text-sm font-semibold text-blue-900 mb-2">{tier}</div>
                         <div className="text-2xl font-bold text-blue-700">{data.customers}</div>
                         <div className="text-xs text-gray-600">Customers</div>
@@ -658,10 +658,10 @@ export default function SalesExpansionDashboard() {
               {/* Expansion ARR by Category */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-4 text-blue-800">Expansion ARR by Category</h4>
-                <div className="bg-white rounded-xl shadow-lg border-2 border-green-100 p-6">
+                <div className="rounded-xl shadow-lg border-2 border-green-100 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     {Object.entries(tier2Data.expansionByCategory).map(([category, data]: [string, any]) => (
-                      <div key={category} className="bg-gradient-to-br from-green-50 to-white p-4 rounded-lg border border-green-200">
+                      <div key={category} className="p-4 rounded-lg border border-green-200" style={{ backgroundColor: '#F3F3F3' }}>
                         <div className="text-sm font-semibold text-green-900 mb-2 capitalize">
                           {category.replace('_', ' ')}
                         </div>
@@ -680,10 +680,10 @@ export default function SalesExpansionDashboard() {
               {/* White Space by Segment */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-4 text-blue-800">White Space Opportunity by Segment</h4>
-                <div className="bg-white rounded-xl shadow-lg border-2 border-purple-100 p-6">
+                <div className="rounded-xl shadow-lg border-2 border-purple-100 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     {Object.entries(tier2Data.whiteSpaceBySegment).map(([segment, data]: [string, any]) => (
-                      <div key={segment} className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-lg border border-purple-200">
+                      <div key={segment} className="p-4 rounded-lg border border-purple-200" style={{ backgroundColor: '#F3F3F3' }}>
                         <div className="text-sm font-semibold text-purple-900 mb-2">{segment}</div>
                         <div className="text-2xl font-bold text-purple-700">{data.count}</div>
                         <div className="text-xs text-gray-600">Accounts</div>
@@ -700,7 +700,7 @@ export default function SalesExpansionDashboard() {
               {/* Pipeline by Stage */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-4 text-blue-800">Pipeline Analysis by Stage</h4>
-                <div className="bg-white rounded-xl shadow-lg border-2 border-indigo-100">
+                <div className="rounded-xl shadow-lg border-2 border-indigo-100" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-gradient-to-r from-indigo-50 to-indigo-100">
@@ -733,7 +733,7 @@ export default function SalesExpansionDashboard() {
               {/* Utilization by Product */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-4 text-blue-800">Utilization Analysis by Product</h4>
-                <div className="bg-white rounded-xl shadow-lg border-2 border-orange-100">
+                <div className="rounded-xl shadow-lg border-2 border-orange-100" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-gradient-to-r from-orange-50 to-orange-100">
@@ -785,7 +785,7 @@ export default function SalesExpansionDashboard() {
               <h3 className="text-2xl font-bold mb-6 text-blue-900">
                 🔥 Hot Expansion Opportunities (Tier 3 - Immediate Action)
               </h3>
-              <div className="bg-white rounded-xl shadow-lg border-2 border-blue-100">
+              <div className="rounded-xl shadow-lg border-2 border-blue-100" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead className="bg-gradient-to-r from-blue-50 to-blue-100">
@@ -832,7 +832,7 @@ export default function SalesExpansionDashboard() {
               <h3 className="text-2xl font-bold mb-6 text-blue-900">
                 ⚠️ Capacity Alerts (Utilization-Driven Expansion)
               </h3>
-              <div className="bg-white rounded-xl shadow-lg border-2 border-orange-100">
+              <div className="rounded-xl shadow-lg border-2 border-orange-100" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead className="bg-gradient-to-r from-orange-50 to-orange-100">
@@ -903,7 +903,7 @@ function KPICard({ title, value, subtitle, target, status, icon, trend }: KPICar
   };
 
   return (
-    <div className={`bg-white rounded-lg p-6 border-2 hover:shadow-lg transition-all duration-200 ${statusColors[status]}`}>
+    <div className={`rounded-lg p-6 border-2 hover:shadow-lg transition-all duration-200 ${statusColors[status]}`} style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
           <p className="text-xs font-medium mb-1" style={{ color: colors.text.secondary }}>

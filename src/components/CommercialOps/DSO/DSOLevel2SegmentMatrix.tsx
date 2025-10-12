@@ -122,7 +122,7 @@ export default function DSOLevel2SegmentMatrix({
 
       {/* Key Insights Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 shadow-sm">
+        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Target className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Average DSO</span>
@@ -130,8 +130,8 @@ export default function DSOLevel2SegmentMatrix({
           <p className="text-2xl font-bold text-blue-600">{Math.round(avgDSO)} days</p>
           <p className="text-sm text-blue-600">Across all segments</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-red-500" />
             <span className="font-medium text-red-700">Slow Payers</span>
@@ -139,8 +139,8 @@ export default function DSOLevel2SegmentMatrix({
           <p className="text-2xl font-bold text-red-600">{slowestPayers.length}</p>
           <p className="text-sm text-red-600">Segments &gt;45 days DSO</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Highest AR</span>
@@ -150,8 +150,8 @@ export default function DSOLevel2SegmentMatrix({
           </p>
           <p className="text-sm text-green-600">{highestARSegment.segment}-{highestARSegment.productFamily}</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Users className="h-5 w-5 text-purple-500" />
             <span className="font-medium text-purple-700">Total Customers</span>

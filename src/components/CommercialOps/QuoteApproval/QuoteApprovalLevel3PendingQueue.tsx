@@ -157,7 +157,7 @@ export default function QuoteApprovalLevel3PendingQueue({
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-4" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 flex-1">
             <div className="relative flex-1 max-w-md">
@@ -215,7 +215,7 @@ export default function QuoteApprovalLevel3PendingQueue({
       </div>
 
       {/* Kanban Board View */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900">Approval Pipeline - Kanban View</h2>
           <p className="text-sm text-gray-600">Click any quote card to view detailed approval workflow</p>
@@ -293,7 +293,7 @@ export default function QuoteApprovalLevel3PendingQueue({
       </div>
 
       {/* Detailed Quote Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <div>

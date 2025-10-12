@@ -23,7 +23,7 @@ export default function UtilizationMetrics({ utilization }: UtilizationMetricsPr
   const unusedPercentage = (utilization.unusedLicenses / utilization.totalLicenses) * 100;
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         📊 UTILIZATION METRICS
       </h2>
@@ -37,7 +37,7 @@ export default function UtilizationMetrics({ utilization }: UtilizationMetricsPr
         </div>
 
         {/* Licensed Capacity */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-medium text-gray-700 mb-3">Licensed Capacity:</div>
           <div className="flex items-center gap-4 mb-3 flex-wrap">
             <span className="text-sm">Total Licensed: <strong>{utilization.totalLicenses} seats</strong></span>
@@ -90,7 +90,7 @@ export default function UtilizationMetrics({ utilization }: UtilizationMetricsPr
             const momChange = lastMonthAvg - prevMonthAvg;
             
             return (
-              <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="font-medium text-gray-700 mb-2">90-Day Utilization Statistics:</div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>• Current: <strong>{utilization.rate.toFixed(0)}%</strong></div>
@@ -108,7 +108,7 @@ export default function UtilizationMetrics({ utilization }: UtilizationMetricsPr
         })()}
 
         {/* Financial Impact */}
-        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
+        <div className="border-2 border-yellow-300 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="font-medium text-gray-800 mb-2">Financial Impact:</div>
           <div className="space-y-1 text-sm text-gray-700">
             <div>• Annual Seat Cost: $95/seat/month × 12 = ${annualSeatCost.toLocaleString()}/seat/year</div>

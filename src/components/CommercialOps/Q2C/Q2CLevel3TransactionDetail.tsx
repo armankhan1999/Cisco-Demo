@@ -99,7 +99,7 @@ export default function Q2CLevel3TransactionDetail({ segment, productFamily, onB
 
       {/* Enhanced Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-xl p-4 shadow-sm">
+        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-red-500" />
             <span className="font-medium text-red-700">Critical</span>
@@ -107,8 +107,8 @@ export default function Q2CLevel3TransactionDetail({ segment, productFamily, onB
           <p className="text-2xl font-bold text-red-600">{criticalCount}</p>
           <p className="text-sm text-red-600">Deals &gt;60 days or incomplete</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-yellow-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-yellow-500" />
             <span className="font-medium text-yellow-700">At Risk</span>
@@ -116,8 +116,8 @@ export default function Q2CLevel3TransactionDetail({ segment, productFamily, onB
           <p className="text-2xl font-bold text-yellow-600">{warningCount}</p>
           <p className="text-sm text-yellow-600">Deals 45-60 days</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Total Value</span>
@@ -125,8 +125,8 @@ export default function Q2CLevel3TransactionDetail({ segment, productFamily, onB
           <p className="text-2xl font-bold text-blue-600">${Math.round(totalValue / 1000)}K</p>
           <p className="text-sm text-blue-600">Revenue at risk</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <User className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Total Deals</span>
@@ -310,7 +310,7 @@ export default function Q2CLevel3TransactionDetail({ segment, productFamily, onB
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">

@@ -2171,9 +2171,10 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
             const customer = customersData.find(c => c.customer_name === item.customer);
             
             return (
-              <div 
-                key={item.id} 
-                className="bg-white rounded-xl shadow-md border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all cursor-pointer p-6"
+              <div
+                key={item.id}
+                className="rounded-xl shadow-md border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all cursor-pointer p-6"
+                style={{ backgroundColor: '#F3F3F3' }}
                 onClick={() => setShowQuoteDetails(item.id)}
               >
                 <div className="flex items-start justify-between">
@@ -2277,7 +2278,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
 
         {/* Next Actions Summary */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <AlertCircle className="h-5 w-5 text-red-600" />
               Immediate Actions
@@ -2292,7 +2293,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar className="h-5 w-5 text-yellow-600" />
               Scheduled Actions
@@ -2307,7 +2308,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <DollarSign className="h-5 w-5 text-green-600" />
               Financial Impact
@@ -2373,13 +2374,13 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                 return (
                   <div className="space-y-6">
                     {/* Customer Name Banner */}
-                    <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-600">
+                    <div className="rounded-xl shadow-sm p-6 border-l-4 border-blue-600" style={{ backgroundColor: '#F3F3F3' }}>
                       <h3 className="text-3xl font-bold text-gray-900">{customer.customer_name}</h3>
                       <p className="text-gray-600 mt-1">{customer.customer_id}</p>
                     </div>
 
                     {/* Account Overview */}
-                    <div className="bg-white rounded-xl shadow-sm p-6">
+                    <div className="rounded-xl shadow-sm p-6" style={{ backgroundColor: '#F3F3F3' }}>
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Account Overview</h4>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
@@ -2402,7 +2403,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     </div>
 
                     {/* Financial Metrics */}
-                    <div className="bg-white rounded-xl shadow-sm p-6">
+                    <div className="rounded-xl shadow-sm p-6" style={{ backgroundColor: '#F3F3F3' }}>
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Financial & Account Metrics</h4>
                       <div className="grid grid-cols-3 gap-6">
                         <div className="text-center p-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg">
@@ -2421,7 +2422,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     </div>
 
                     {/* Action Item Details */}
-                    <div className="bg-white rounded-xl shadow-sm p-6">
+                    <div className="rounded-xl shadow-sm p-6" style={{ backgroundColor: '#F3F3F3' }}>
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Action Item Details</h4>
                       <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-6 rounded-r-xl">
                         <h5 className="font-bold text-yellow-900 text-xl mb-3">{actionItem.title}</h5>
@@ -2446,7 +2447,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     </div>
 
                     {/* Next Action */}
-                    <div className="bg-white rounded-xl shadow-sm p-6">
+                    <div className="rounded-xl shadow-sm p-6" style={{ backgroundColor: '#F3F3F3' }}>
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Next Action Required</h4>
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-6">
                         <p className="text-xl font-bold text-blue-900 mb-3">{actionItem.nextAction}</p>
@@ -2466,7 +2467,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     </div>
 
                     {/* Geography & Contact */}
-                    <div className="bg-white rounded-xl shadow-sm p-6">
+                    <div className="rounded-xl shadow-sm p-6" style={{ backgroundColor: '#F3F3F3' }}>
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Location Information</h4>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">

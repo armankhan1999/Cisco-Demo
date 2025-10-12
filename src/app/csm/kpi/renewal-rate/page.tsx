@@ -327,7 +327,7 @@ export default function RenewalRateDrillDown() {
           </div>
 
           {/* Renewal Pipeline by Time Buckets */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <div className="rounded-lg border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-6">Renewal Pipeline (Next 180 Days)</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -389,7 +389,7 @@ export default function RenewalRateDrillDown() {
           </div>
 
           {/* Historical Renewal Performance */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <div className="rounded-lg border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-6">Historical Renewal Performance</h3>
             <div className="grid grid-cols-4 gap-6">
               {renewalData.historicalData.map((period: any, idx: number) => (
@@ -409,7 +409,7 @@ export default function RenewalRateDrillDown() {
           </div>
 
           {/* Upcoming Renewals Detail */}
-          <div className="bg-white rounded-lg border border-gray-200">
+          <div className="rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
               <h3 className="font-semibold text-gray-900">Upcoming Renewals Detail</h3>
               <div className="flex items-center gap-4">

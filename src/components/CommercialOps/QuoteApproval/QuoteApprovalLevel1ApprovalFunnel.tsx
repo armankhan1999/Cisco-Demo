@@ -94,7 +94,7 @@ export default function QuoteApprovalLevel1ApprovalFunnel({ onBack, onDrillToLev
       </div>
 
       {/* Enhanced Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-4 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <select
@@ -185,7 +185,7 @@ export default function QuoteApprovalLevel1ApprovalFunnel({ onBack, onDrillToLev
       </div>
 
       {/* Approval Funnel Chart */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Approval Stage Funnel</h2>
@@ -297,7 +297,7 @@ export default function QuoteApprovalLevel1ApprovalFunnel({ onBack, onDrillToLev
       </div>
 
       {/* Detailed Metrics Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Approval Stage Performance</h2>

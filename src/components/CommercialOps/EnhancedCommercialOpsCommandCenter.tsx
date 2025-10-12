@@ -279,7 +279,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
             {/* Trends and Analytics Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* Trend Chart */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-blue-600" />
                   Quote-to-Cash Cycle Time Trend
@@ -290,7 +290,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
               {/* Additional Metrics */}
               <div className="space-y-6">
                 {/* Overdue Invoices */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Financial Health</h3>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
@@ -325,21 +325,21 @@ export default function EnhancedCommercialOpsCommandCenter() {
                 </div>
 
                 {/* Performance Summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-sm p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-4">Performance Summary</h3>
+                <div className="rounded-xl shadow-sm p-6 border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900">Performance Summary</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span>Targets Met</span>
-                      <span className="font-semibold">8 of 10</span>
+                      <span className="text-gray-700">Targets Met</span>
+                      <span className="font-semibold text-gray-900">8 of 10</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Overall Health</span>
-                      <span className="font-semibold">Excellent</span>
+                      <span className="text-gray-700">Overall Health</span>
+                      <span className="font-semibold text-gray-900">Excellent</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Trend Direction</span>
-                      <span className="font-semibold flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4" />
+                      <span className="text-gray-700">Trend Direction</span>
+                      <span className="font-semibold flex items-center gap-1 text-gray-900">
+                        <TrendingUp className="h-4 w-4 text-blue-600" />
                         Improving
                       </span>
                     </div>

@@ -197,7 +197,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
             {/* Customer Context Cards */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Customer Profile */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                     <Building className="h-5 w-5 text-blue-600" />
@@ -238,7 +238,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
               </div>
 
               {/* Financial Pattern */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                     <CreditCard className="h-5 w-5 text-green-600" />
@@ -269,7 +269,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
               </div>
 
               {/* Risk Assessment */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
                     <AlertTriangle className="h-5 w-5 text-red-600" />
@@ -289,7 +289,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
             </div>
 
             {/* Product Utilization Overview */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Product Utilization Overview</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -315,7 +315,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
         )}
 
         {activeTab === 'timeline' && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Transaction Timeline</h3>
             
             <div className="space-y-6">
@@ -349,7 +349,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
         {activeTab === 'utilization' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Utilization Chart */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Product Utilization</h3>
               
               <div className="h-64">
@@ -374,7 +374,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
             </div>
 
             {/* Utilization Details */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Utilization Details</h3>
               
               <div className="space-y-4">
@@ -409,7 +409,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
         {activeTab === 'actions' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recommended Actions */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Recommended Actions</h3>
               
               <div className="space-y-4">
@@ -427,7 +427,7 @@ export default function Level4RootCauseAnalysis({ kpiId, context, onBack }: Leve
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Quick Actions</h3>
               
               <div className="grid grid-cols-1 gap-3">

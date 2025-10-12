@@ -98,7 +98,7 @@ export default function Q2CLevel4RootCauseAnalysis({ customerId, onBack }: Q2CLe
 
       {/* Customer Overview Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-green-500" />
             <span className="font-medium text-gray-700">ARR</span>
@@ -106,8 +106,8 @@ export default function Q2CLevel4RootCauseAnalysis({ customerId, onBack }: Q2CLe
           <p className="text-2xl font-bold text-green-600">${Math.round(analysisData.customerContext.arr / 1000)}K</p>
           <p className="text-sm text-gray-600">{analysisData.customerContext.tier}</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-gray-700">Tenure</span>
@@ -115,8 +115,8 @@ export default function Q2CLevel4RootCauseAnalysis({ customerId, onBack }: Q2CLe
           <p className="text-2xl font-bold text-blue-600">{analysisData.customerContext.tenure}</p>
           <p className="text-sm text-gray-600">months</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Activity className="h-5 w-5 text-purple-500" />
             <span className="font-medium text-gray-700">Health Score</span>
@@ -129,8 +129,8 @@ export default function Q2CLevel4RootCauseAnalysis({ customerId, onBack }: Q2CLe
           </p>
           <p className="text-sm text-gray-600">out of 100</p>
         </div>
-        
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+
+        <div className="border border-gray-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-orange-500" />
             <span className="font-medium text-gray-700">Avg Payment</span>

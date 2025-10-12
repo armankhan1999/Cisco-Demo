@@ -164,7 +164,7 @@ export default function Level1ProcessBreakdown({ kpiId, onBack, onDrillToLevel2 
       {/* Main Content */}
       <div className="px-8 py-8 space-y-8">
         {/* Waterfall Chart */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-xl font-bold text-gray-900">Quote-to-Cash Process Flow</h2>
@@ -217,7 +217,7 @@ export default function Level1ProcessBreakdown({ kpiId, onBack, onDrillToLevel2 
         </div>
 
         {/* Process Stages Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-xl font-bold text-gray-900">Stage Performance Details</h2>
@@ -290,22 +290,22 @@ export default function Level1ProcessBreakdown({ kpiId, onBack, onDrillToLevel2 
 
         {/* Key Insights */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Primary Bottleneck</h3>
-            <p className="text-2xl font-bold mb-2">{getWorstBottleneck().stage}</p>
-            <p className="text-red-100">+{getWorstBottleneck().delta} days over target</p>
+          <div className="rounded-xl p-6 border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-red-600">Primary Bottleneck</h3>
+            <p className="text-2xl font-bold mb-2 text-gray-900">{getWorstBottleneck().stage}</p>
+            <p className="text-red-600">+{getWorstBottleneck().delta} days over target</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Process Efficiency</h3>
-            <p className="text-2xl font-bold mb-2">{((45 / getTotalCycleTime()) * 100).toFixed(1)}%</p>
-            <p className="text-blue-100">vs 100% target efficiency</p>
+
+          <div className="rounded-xl p-6 border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-blue-600">Process Efficiency</h3>
+            <p className="text-2xl font-bold mb-2 text-gray-900">{((45 / getTotalCycleTime()) * 100).toFixed(1)}%</p>
+            <p className="text-blue-600">vs 100% target efficiency</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-2">Stages On Target</h3>
-            <p className="text-2xl font-bold mb-2">{processData.filter(s => s.status === 'good').length}</p>
-            <p className="text-green-100">out of {processData.length} total stages</p>
+
+          <div className="rounded-xl p-6 border border-green-200" style={{ backgroundColor: '#F3F3F3' }}>
+            <h3 className="text-lg font-semibold mb-2 text-green-600">Stages On Target</h3>
+            <p className="text-2xl font-bold mb-2 text-gray-900">{processData.filter(s => s.status === 'good').length}</p>
+            <p className="text-green-600">out of {processData.length} total stages</p>
           </div>
         </div>
       </div>

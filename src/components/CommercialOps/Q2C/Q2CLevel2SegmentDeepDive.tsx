@@ -96,19 +96,19 @@ export default function Q2CLevel2SegmentDeepDive({ stage, onBack, onDrillToLevel
       {/* Enhanced Key Insights */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {worstPerformer && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="border border-red-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="h-5 w-5 text-red-500" />
               <span className="font-medium text-red-700">Critical Bottleneck</span>
             </div>
             <p className="text-sm text-red-600">
-              {worstPerformer.segment}-{worstPerformer.productFamily}: {worstPerformer.avgDays} days 
+              {worstPerformer.segment}-{worstPerformer.productFamily}: {worstPerformer.avgDays} days
               (+{worstPerformer.variance} vs target)
             </p>
           </div>
         )}
-        
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+
+        <div className="border border-yellow-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-yellow-500" />
             <span className="font-medium text-yellow-700">At Risk Segments</span>
@@ -117,8 +117,8 @@ export default function Q2CLevel2SegmentDeepDive({ stage, onBack, onDrillToLevel
             {segmentData.filter(s => s.variance > 0).length} segment-product combinations over target
           </p>
         </div>
-        
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+
+        <div className="border border-green-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Performing Well</span>
@@ -127,8 +127,8 @@ export default function Q2CLevel2SegmentDeepDive({ stage, onBack, onDrillToLevel
             {segmentData.filter(s => s.variance <= 0).length} segments meeting or beating targets
           </p>
         </div>
-        
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+
+        <div className="border border-blue-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Revenue Impact</span>

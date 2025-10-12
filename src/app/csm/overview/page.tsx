@@ -157,7 +157,7 @@ export default function CSMOverviewPage() {
 
           {/* Focus Areas & Objectives */}
           <div className="max-w-7xl mx-auto mb-12">
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="rounded-lg shadow-md p-8" style={{ backgroundColor: '#F3F3F3' }}>
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Target className="w-6 h-6 mr-3 text-blue-600" />
                 Key Business Questions
@@ -165,7 +165,7 @@ export default function CSMOverviewPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {businessQuestions.map((item, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow">
+                  <div key={index} className="rounded-lg p-6 hover:shadow-md transition-shadow" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-start mb-3">
                       {item.icon}
                       <h3 className="text-lg font-semibold text-gray-800 ml-3 leading-tight">
@@ -183,7 +183,7 @@ export default function CSMOverviewPage() {
 
           {/* Strategic View - KPIs */}
           <div className="max-w-7xl mx-auto mb-12">
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="rounded-lg shadow-md p-8" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Level 1 — Strategic View
@@ -241,7 +241,7 @@ export default function CSMOverviewPage() {
                 {['Retention', 'Health', 'Risk', 'Adoption', 'Engagement', 'Value'].map((category) => {
                   const count = kpis.filter(kpi => kpi.category === category).length;
                   return (
-                    <div key={category} className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div key={category} className="text-center p-4 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
                       <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-2 ${getCategoryColor(category)}`}>
                         {category}
                       </div>

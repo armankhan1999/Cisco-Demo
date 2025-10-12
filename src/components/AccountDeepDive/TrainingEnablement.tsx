@@ -15,14 +15,14 @@ export default function TrainingEnablement({ hasTrainingData = false }: Training
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="rounded-lg shadow-md p-6 mb-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
         🎓 TRAINING & ENABLEMENT
       </h2>
       
       <div className="mb-4">
         {!hasTrainingData ? (
-          <div className="bg-gray-100 border-2 border-gray-300 rounded-lg p-4 mb-4">
+          <div className="border-2 border-gray-300 rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-center gap-2 text-gray-700">
               <span className="text-xl">ℹ️</span>
               <div>
@@ -62,7 +62,7 @@ export default function TrainingEnablement({ hasTrainingData = false }: Training
           </div>
         </div>}
 
-        {hasTrainingData && <div className="bg-gray-50 rounded-lg p-4 mb-4">
+        {hasTrainingData && <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="text-sm font-medium text-gray-700 mb-2">Required Training Modules (Per User):</div>
           <div className="space-y-2 text-sm">
             {trainingModules.map((module, idx) => (
@@ -75,7 +75,7 @@ export default function TrainingEnablement({ hasTrainingData = false }: Training
           </div>
         </div>}
 
-        {hasTrainingData && <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        {hasTrainingData && <div className="border border-blue-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="text-sm font-medium text-gray-800 mb-2">Incomplete Training Impact:</div>
           <div className="space-y-1 text-sm text-gray-700">
             <div>• 28 users (56%) have not completed any training</div>

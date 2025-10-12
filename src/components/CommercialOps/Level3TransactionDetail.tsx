@@ -381,36 +381,36 @@ export default function Level3TransactionDetail({ kpiId, context, onBack, onDril
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-8">
-          <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-6 text-white">
+          <div className="rounded-xl p-6 text-gray-900" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold mb-2">Critical Deals</h3>
-            <p className="text-3xl font-bold mb-1">
+            <p className="text-3xl font-bold mb-1 text-red-600">
               {filteredData.filter(t => t.status === 'critical').length}
             </p>
-            <p className="text-red-100">requiring immediate action</p>
+            <p className="text-gray-600">requiring immediate action</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl p-6 text-white">
+
+          <div className="rounded-xl p-6 text-gray-900" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold mb-2">At Risk</h3>
-            <p className="text-3xl font-bold mb-1">
+            <p className="text-3xl font-bold mb-1 text-yellow-600">
               {filteredData.filter(t => t.status === 'warning').length}
             </p>
-            <p className="text-yellow-100">need monitoring</p>
+            <p className="text-gray-600">need monitoring</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
+
+          <div className="rounded-xl p-6 text-gray-900" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold mb-2">Average Days</h3>
-            <p className="text-3xl font-bold mb-1">
+            <p className="text-3xl font-bold mb-1 text-blue-600">
               {(filteredData.reduce((sum, t) => sum + t.days, 0) / filteredData.length || 0).toFixed(1)}
             </p>
-            <p className="text-blue-100">payment collection time</p>
+            <p className="text-gray-600">payment collection time</p>
           </div>
-          
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
+
+          <div className="rounded-xl p-6 text-gray-900" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="text-lg font-semibold mb-2">Total Value</h3>
-            <p className="text-3xl font-bold mb-1">
+            <p className="text-3xl font-bold mb-1 text-green-600">
               {formatCurrency(filteredData.reduce((sum, t) => sum + t.amount, 0) / 1000000)}M
             </p>
-            <p className="text-green-100">in affected deals</p>
+            <p className="text-gray-600">in affected deals</p>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export function ChurnRiskAnalysis() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+    <div className="rounded-xl shadow-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="mb-6">
         <h2 className="text-xl font-bold text-gray-900">Churn Risk Analysis by Segment</h2>
         <p className="text-sm text-gray-600 mt-1">Next 12 months projection</p>
@@ -153,7 +153,7 @@ export function ChurnRiskAnalysis() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.drivers.map((driver, idx) => (
-            <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <div key={idx} className="rounded-lg p-4 border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-start justify-between mb-2">
                 <div className="font-medium text-gray-900">{idx + 1}. {driver.driver}</div>
                 <span className="text-xs font-semibold text-orange-600 bg-orange-100 px-2 py-1 rounded">

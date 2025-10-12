@@ -10,28 +10,28 @@ export const WhiteSpaceLevel2: React.FC = () => {
   <div className="space-y-8">
     {/* Summary Cards */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl p-6 border-2 border-orange-200/50">
+      <div className="rounded-xl p-6 border-2 border-orange-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-orange-600 mb-2">$8.2M</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Total White Space</div>
           <div className="text-xs text-gray-600">Identified opportunities</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+      <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-blue-600 mb-2">127</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Opportunities</div>
           <div className="text-xs text-gray-600">Cross-sell potential</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+      <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-green-600 mb-2">$64K</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Avg Opportunity</div>
           <div className="text-xs text-gray-600">Per account</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50">
+      <div className="rounded-xl p-6 border-2 border-purple-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-purple-600 mb-2">82%</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Readiness Score</div>
@@ -41,7 +41,7 @@ export const WhiteSpaceLevel2: React.FC = () => {
     </div>
 
     {/* Product Gap Analysis Matrix */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Product Gap Analysis Matrix</h4>
       <p className="text-sm text-gray-600 mb-6">Shows customers missing each product (white space opportunities)</p>
       
@@ -214,7 +214,7 @@ export const WhiteSpaceLevel2: React.FC = () => {
     </div>
 
     {/* White Space by Customer Tier */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 White Space by Customer Tier</h4>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -295,10 +295,10 @@ export const WhiteSpaceLevel2: React.FC = () => {
     </div>
 
     {/* Lookalike Analysis */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🔍 Lookalike Analysis - Top Cross-Sell Patterns</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+        <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Duo → Meraki</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">85% Match</span>
@@ -308,7 +308,7 @@ export const WhiteSpaceLevel2: React.FC = () => {
           </p>
           <div className="text-lg font-bold text-blue-600">$1.9M Opportunity</div>
         </div>
-        <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+        <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Umbrella → Duo</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">82% Match</span>
@@ -318,7 +318,7 @@ export const WhiteSpaceLevel2: React.FC = () => {
           </p>
           <div className="text-lg font-bold text-green-600">$2.3M Opportunity</div>
         </div>
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50">
+        <div className="rounded-xl p-6 border-2 border-purple-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Meraki → Umbrella</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">78% Match</span>
@@ -328,7 +328,7 @@ export const WhiteSpaceLevel2: React.FC = () => {
           </p>
           <div className="text-lg font-bold text-purple-600">$2.1M Opportunity</div>
         </div>
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl p-6 border-2 border-orange-200/50">
+        <div className="rounded-xl p-6 border-2 border-orange-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Multi → ThousandEyes</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">76% Match</span>
@@ -360,7 +360,7 @@ export const WhiteSpaceLevel3: React.FC = () => {
   <>
   <div className="space-y-8">
     {/* Top Opportunity Accounts */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Top White Space Opportunities</h4>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -465,10 +465,10 @@ export const WhiteSpaceLevel3: React.FC = () => {
     </div>
 
     {/* Recommended Next Actions */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">⚡ Recommended Next Actions</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+        <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">1</span>
@@ -484,7 +484,7 @@ export const WhiteSpaceLevel3: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50">
+        <div className="rounded-xl p-6 border-2 border-purple-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">2</span>
@@ -500,7 +500,7 @@ export const WhiteSpaceLevel3: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+        <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">3</span>
@@ -516,7 +516,7 @@ export const WhiteSpaceLevel3: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl p-6 border-2 border-orange-200/50">
+        <div className="rounded-xl p-6 border-2 border-orange-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">4</span>
