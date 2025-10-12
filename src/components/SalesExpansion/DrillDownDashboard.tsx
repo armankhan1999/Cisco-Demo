@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, TrendingUp, AlertCircle, Filter, RefreshCw, DollarSign, Users } from 'lucide-react';
+import { ArrowLeft, TrendingUp, AlertCircle, Filter, RefreshCw, DollarSign, Users, HelpCircle, X } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ScatterChart, Scatter, ZAxis, FunnelChart, Funnel, LabelList, PieChart, Pie, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { getSalesExpansionKPIs, getTrendData, getExceptionAlerts, type SalesExpansionKPIs, type TrendData, type ExceptionAlert } from '@/services/salesExpansionService';
 import DrillDownKPICard from '../CommercialOps/DrillDownKPICard';
@@ -22,6 +22,7 @@ export default function DrillDownDashboard() {
   const [trendData, setTrendData] = useState<TrendData[]>([]);
   const [alerts, setAlerts] = useState<ExceptionAlert[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     loadDashboardData();
@@ -141,6 +142,13 @@ export default function DrillDownDashboard() {
               </span>
               <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <RefreshCw className="h-5 w-5 text-gray-600" />
+              </button>
+              <button
+                onClick={() => setIsHelpOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-blue-600 border border-blue-300 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                title="Help & Guide"
+              >
+                <HelpCircle className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -609,6 +617,50 @@ export default function DrillDownDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Help Modal */}
+      {isHelpOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300"
+            onClick={() => setIsHelpOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col transform transition-all duration-300 ease-in-out">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-xl">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <HelpCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">Sales Expansion Overview</h2>
+                    <p className="text-blue-100 text-sm">Complete guide and documentation</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsHelpOpen(false)}
+                  className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* Content - iframe */}
+              <div className="flex-1 overflow-hidden">
+                <iframe
+                  src="/se/overview"
+                  className="w-full h-full border-0"
+                  title="Sales Expansion Overview"
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b \"C:\\Users\\Md Arman Khan\\Desktop\\CISCO POC\\Final Cisco Demo - New Dashboard\\cisco\\src\\app\\commercial-operations\")",
+      "Bash(findstr:*)",
+      "Bash(npm run build)",
+      "Bash(dir:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,11 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import { useSidebar } from '@/contexts/SidebarContext';
+import { HelpCircle } from 'lucide-react';
+import HelpPanel from '@/components/CSM/HelpPanel';
 
 export default function CSMHomePage() {
   const { isCollapsed } = useSidebar();
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   const dashboards = [
     {
       id: 'overview',
@@ -89,12 +93,23 @@ export default function CSMHomePage() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
+        {/* Help Button */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={() => setIsHelpOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
+          >
+            <HelpCircle className="w-5 h-5" />
+            <span className="font-semibold">Dashboard Guide</span>
+          </button>
+        </div>
+
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
             Customer Success Management
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Maximize customer retention, drive product adoption, ensure value realization, 
+            Maximize customer retention, drive product adoption, ensure value realization,
             and manage renewal pipeline health with comprehensive analytics
           </p>
         </div>
@@ -236,6 +251,9 @@ export default function CSMHomePage() {
       </div>
         </div>
       </div>
+
+      {/* Help Panel */}
+      <HelpPanel isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
     </div>
   );
 }

@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import { useSidebar } from '@/contexts/SidebarContext';
-import { ArrowLeft, Target, TrendingUp, Users, BarChart3, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Target, TrendingUp, DollarSign, BarChart3, Clock, FileCheck } from 'lucide-react';
 
-export default function CSMOverviewPage() {
+export default function CommercialOpsOverviewPage() {
   const { isCollapsed } = useSidebar();
   const [isInIframe, setIsInIframe] = useState(false);
 
@@ -17,113 +17,113 @@ export default function CSMOverviewPage() {
 
   const businessQuestions = [
     {
-      icon: <BarChart3 className="w-6 h-6 text-blue-600" />,
-      question: "What is the health status of our customer portfolio?",
-      description: "Monitor overall portfolio health metrics and trends"
+      icon: <Clock className="w-6 h-6 text-blue-600" />,
+      question: "Are we achieving quote-to-cash cycle time targets?",
+      description: "Monitor Q2C process efficiency and cycle time metrics"
     },
     {
-      icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
-      question: "Which accounts are at risk of churn?",
-      description: "Identify and prioritize at-risk accounts for intervention"
+      icon: <BarChart3 className="w-6 h-6 text-red-600" />,
+      question: "Where are bottlenecks causing deal delays?",
+      description: "Identify process bottlenecks and inefficiencies"
     },
     {
-      icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-      question: "How are customers adopting and engaging with our products?",
-      description: "Track product adoption rates and engagement patterns"
+      icon: <FileCheck className="w-6 h-6 text-green-600" />,
+      question: "What is our quote accuracy and approval efficiency?",
+      description: "Track quote approval velocity and accuracy rates"
     },
     {
-      icon: <Target className="w-6 h-6 text-purple-600" />,
-      question: "What is our renewal pipeline and confidence level?",
-      description: "Assess renewal pipeline health and confidence metrics"
+      icon: <DollarSign className="w-6 h-6 text-purple-600" />,
+      question: "How effectively are we recognizing and realizing revenue?",
+      description: "Monitor revenue recognition accuracy and timing"
     },
     {
-      icon: <Users className="w-6 h-6 text-indigo-600" />,
-      question: "Where are opportunities to improve customer health and expand?",
-      description: "Identify expansion and improvement opportunities"
+      icon: <TrendingUp className="w-6 h-6 text-indigo-600" />,
+      question: "What is our cash collection performance?",
+      description: "Assess DSO and cash collection effectiveness"
     }
   ];
 
   const kpis = [
     {
-      name: "Gross Revenue Retention (GRR)",
-      definition: "% of ARR retained (excluding expansions)",
-      target: "≥ 95%",
-      dataSource: "Prior cohort ARR - churn / prior ARR",
-      category: "Retention"
+      name: "Quote-to-Cash Cycle Time",
+      definition: "Average days from quote creation to payment received",
+      target: "≤ 45 days",
+      dataSource: "quote_to_cash_tracking",
+      category: "Process Efficiency"
     },
     {
-      name: "Portfolio Health Score",
-      definition: "Weighted avg health score across accounts",
-      target: "≥ 75",
-      dataSource: "health_scores weighted by ARR",
-      category: "Health"
+      name: "Quote Approval Velocity",
+      definition: "Average days from quote submission to approval",
+      target: "≤ 3 days",
+      dataSource: "quotes.approval_date - quotes.quote_date",
+      category: "Process Efficiency"
     },
     {
-      name: "At-Risk ARR",
-      definition: "Total ARR from accounts with health <60",
+      name: "Invoice Accuracy Rate",
+      definition: "% of invoices without billing errors",
+      target: "≥ 98%",
+      dataSource: "invoices.error_count = 0",
+      category: "Quality"
+    },
+    {
+      name: "Days Sales Outstanding (DSO)",
+      definition: "Average days to collect payment after invoice",
+      target: "≤ 30 days",
+      dataSource: "accounts_receivable.avg_days_outstanding",
+      category: "Cash Management"
+    },
+    {
+      name: "Revenue Recognition Accuracy",
+      definition: "Variance between expected and actual recognition",
+      target: "≤ 2%",
+      dataSource: "revenue_recognition_schedule.variance",
+      category: "Revenue"
+    },
+    {
+      name: "Deferred Revenue Balance",
+      definition: "Total unearned revenue for future periods",
+      target: "Trend",
+      dataSource: "revenue_recognition_schedule.total_deferred_balance",
+      category: "Revenue"
+    },
+    {
+      name: "Quote Win Rate",
+      definition: "% of quotes accepted vs. declined",
+      target: "≥ 65%",
+      dataSource: "quotes.win_rate",
+      category: "Sales Effectiveness"
+    },
+    {
+      name: "Renewal Quote Velocity",
+      definition: "Time from renewal trigger to quote delivery",
+      target: "≤ 14 days",
+      dataSource: "quotes (renewal type)",
+      category: "Process Efficiency"
+    },
+    {
+      name: "Overdue Invoices Amount",
+      definition: "Total AR balance past due date",
       target: "Minimize",
-      dataSource: "accounts WHERE health_score <60",
-      category: "Risk"
+      dataSource: "invoices.amount_outstanding WHERE overdue",
+      category: "Cash Management"
     },
     {
-      name: "Renewal Rate",
-      definition: "% of contracts renewed (by count and $)",
-      target: "≥ 92%",
-      dataSource: "subscriptions WHERE renewed = true",
-      category: "Retention"
-    },
-    {
-      name: "Churn Rate",
-      definition: "% of ARR lost to non-renewals",
-      target: "≤ 5%",
-      dataSource: "Churned ARR / total ARR",
-      category: "Risk"
-    },
-    {
-      name: "Average Utilization Rate",
-      definition: "Avg % of licenses actively used",
-      target: "≥ 75%",
-      dataSource: "licenses.utilization_percentage",
-      category: "Adoption"
-    },
-    {
-      name: "Feature Adoption Rate",
-      definition: "% of customers using advanced features",
-      target: "≥ 60%",
-      dataSource: "Feature telemetry data",
-      category: "Adoption"
-    },
-    {
-      name: "Customer Engagement Score",
-      definition: "Composite of touch frequency + QBR + NPS",
-      target: "≥ 70",
-      dataSource: "Engagement tracking system",
-      category: "Engagement"
-    },
-    {
-      name: "Time to Value (TTV)",
-      definition: "Days from purchase to productive use",
-      target: "≤ 60 days",
-      dataSource: "Onboarding milestone tracking",
-      category: "Value"
-    },
-    {
-      name: "QBR Completion Rate",
-      definition: "% of accounts with QBR in last 120 days",
-      target: "≥ 85%",
-      dataSource: "qbr_schedule completion tracking",
-      category: "Engagement"
+      name: "Expansion ARR Contribution",
+      definition: "% of ARR from expansions vs. new business",
+      target: "20-30%",
+      dataSource: "revenue_movements (expansion type)",
+      category: "Growth"
     }
   ];
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Retention': 'bg-green-100 text-green-800',
-      'Health': 'bg-blue-100 text-blue-800',
-      'Risk': 'bg-red-100 text-red-800',
-      'Adoption': 'bg-purple-100 text-purple-800',
-      'Engagement': 'bg-yellow-100 text-yellow-800',
-      'Value': 'bg-indigo-100 text-indigo-800'
+      'Process Efficiency': 'bg-blue-100 text-blue-800',
+      'Quality': 'bg-green-100 text-green-800',
+      'Cash Management': 'bg-orange-100 text-orange-800',
+      'Revenue': 'bg-purple-100 text-purple-800',
+      'Sales Effectiveness': 'bg-indigo-100 text-indigo-800',
+      'Growth': 'bg-teal-100 text-teal-800'
     };
     return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800';
   };
@@ -133,7 +133,7 @@ export default function CSMOverviewPage() {
       {/* Sidebar - Hide when in iframe */}
       {!isInIframe && (
         <Sidebar
-          currentPersona="CSM"
+          currentPersona="CO"
           onPersonaChange={() => {}}
         />
       )}
@@ -146,22 +146,22 @@ export default function CSMOverviewPage() {
             {!isInIframe && (
               <div className="flex items-center mb-6">
                 <Link
-                  href="/csm"
+                  href="/"
                   className="flex items-center text-gray-600 hover:text-gray-900 transition-colors mr-4"
                 >
                   <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back to CSM Dashboard
+                  Back to Dashboard
                 </Link>
               </div>
             )}
 
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                Customer Success Leader Overview
+                Commercial Operations Leader Overview
               </h1>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                Maximize customer retention, drive product adoption, ensure value realization, 
-                and manage renewal pipeline health
+                Quote-to-cash process efficiency, pricing accuracy, revenue realization,
+                and commercial operations SLA compliance
               </p>
             </div>
           </div>
@@ -173,10 +173,10 @@ export default function CSMOverviewPage() {
                 <Target className="w-6 h-6 mr-3 text-blue-600" />
                 Key Business Questions
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {businessQuestions.map((item, index) => (
-                  <div key={index} className="rounded-lg p-6 hover:shadow-md transition-shadow" style={{ backgroundColor: '#F3F3F3' }}>
+                  <div key={index} className="rounded-lg p-6 hover:shadow-md transition-shadow bg-white border border-gray-200">
                     <div className="flex items-start mb-3">
                       {item.icon}
                       <h3 className="text-lg font-semibold text-gray-800 ml-3 leading-tight">
@@ -200,10 +200,10 @@ export default function CSMOverviewPage() {
                   Level 1 — Strategic View
                 </h2>
                 <h3 className="text-xl font-semibold text-blue-600 mb-4">
-                  Customer Success Portfolio Dashboard
+                  Commercial Operations Command Center
                 </h3>
                 <p className="text-gray-600">
-                  Primary KPIs (10) - Strategic metrics for customer success management
+                  Primary KPIs (10) - Strategic metrics for commercial operations management
                 </p>
               </div>
 
@@ -249,10 +249,10 @@ export default function CSMOverviewPage() {
 
               {/* KPI Categories Summary */}
               <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {['Retention', 'Health', 'Risk', 'Adoption', 'Engagement', 'Value'].map((category) => {
+                {['Process Efficiency', 'Quality', 'Cash Management', 'Revenue', 'Sales Effectiveness', 'Growth'].map((category) => {
                   const count = kpis.filter(kpi => kpi.category === category).length;
                   return (
-                    <div key={category} className="text-center p-4 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
+                    <div key={category} className="text-center p-4 rounded-lg bg-white border border-gray-200">
                       <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-2 ${getCategoryColor(category)}`}>
                         {category}
                       </div>
@@ -267,9 +267,9 @@ export default function CSMOverviewPage() {
 
           {/* Footer */}
           <div className="max-w-7xl mx-auto text-center text-sm text-gray-500">
-            <p>Customer Success Leader Overview | Strategic Dashboard</p>
+            <p>Commercial Operations Leader Overview | Strategic Dashboard</p>
             <p className="mt-2">
-              Powered by Next.js 15 | Data from CSM_tab1.md | Updated: {new Date().toLocaleDateString()}
+              Powered by Next.js 15 | Data from ComOPs_Tab.md | Updated: {new Date().toLocaleDateString()}
             </p>
           </div>
         </div>

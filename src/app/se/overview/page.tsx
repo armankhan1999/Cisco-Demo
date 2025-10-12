@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import { useSidebar } from '@/contexts/SidebarContext';
-import { ArrowLeft, Target, TrendingUp, Users, BarChart3, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Target, TrendingUp, DollarSign, BarChart3, Users, Package } from 'lucide-react';
 
-export default function CSMOverviewPage() {
+export default function SalesExpansionOverviewPage() {
   const { isCollapsed } = useSidebar();
   const [isInIframe, setIsInIframe] = useState(false);
 
@@ -17,113 +17,84 @@ export default function CSMOverviewPage() {
 
   const businessQuestions = [
     {
-      icon: <BarChart3 className="w-6 h-6 text-blue-600" />,
-      question: "What is the health status of our customer portfolio?",
-      description: "Monitor overall portfolio health metrics and trends"
+      icon: <Target className="w-6 h-6 text-blue-600" />,
+      question: "Which customers have the highest expansion potential?",
+      description: "Identify top accounts for cross-sell and upsell opportunities"
     },
     {
-      icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
-      question: "Which accounts are at risk of churn?",
-      description: "Identify and prioritize at-risk accounts for intervention"
+      icon: <Package className="w-6 h-6 text-purple-600" />,
+      question: "What white space exists in our product portfolio coverage?",
+      description: "Analyze product gaps and untapped revenue opportunities"
     },
     {
-      icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-      question: "How are customers adopting and engaging with our products?",
-      description: "Track product adoption rates and engagement patterns"
+      icon: <Users className="w-6 h-6 text-green-600" />,
+      question: "Which accounts are ready for cross-sell conversations?",
+      description: "Assess account readiness for expansion discussions"
     },
     {
-      icon: <Target className="w-6 h-6 text-purple-600" />,
-      question: "What is our renewal pipeline and confidence level?",
-      description: "Assess renewal pipeline health and confidence metrics"
+      icon: <TrendingUp className="w-6 h-6 text-indigo-600" />,
+      question: "How are we performing on NRR and expansion ARR growth?",
+      description: "Track retention and expansion revenue metrics"
     },
     {
-      icon: <Users className="w-6 h-6 text-indigo-600" />,
-      question: "Where are opportunities to improve customer health and expand?",
-      description: "Identify expansion and improvement opportunities"
+      icon: <BarChart3 className="w-6 h-6 text-orange-600" />,
+      question: "Are reps meeting expansion quota targets?",
+      description: "Monitor sales team performance and quota attainment"
     }
   ];
 
   const kpis = [
     {
-      name: "Gross Revenue Retention (GRR)",
-      definition: "% of ARR retained (excluding expansions)",
-      target: "≥ 95%",
-      dataSource: "Prior cohort ARR - churn / prior ARR",
-      category: "Retention"
+      name: "Net Revenue Retention (NRR)",
+      definition: "Revenue retention + expansion from existing cohort",
+      target: "≥ $46.02M (110%)",
+      dataSource: "revenue_movements (expansion - churn) / prior ARR",
+      category: "Retention & Growth"
     },
     {
-      name: "Portfolio Health Score",
-      definition: "Weighted avg health score across accounts",
-      target: "≥ 75",
-      dataSource: "health_scores weighted by ARR",
-      category: "Health"
+      name: "Expansion ARR",
+      definition: "Total ARR from upsell/cross-sell in period",
+      target: "≥ $1.60M",
+      dataSource: "revenue_movements WHERE movement_type = 'expansion'",
+      category: "Revenue Growth"
     },
     {
-      name: "At-Risk ARR",
-      definition: "Total ARR from accounts with health <60",
-      target: "Minimize",
-      dataSource: "accounts WHERE health_score <60",
-      category: "Risk"
+      name: "Multi-Product Penetration",
+      definition: "% of customers with 2+ products",
+      target: "≥ 40%",
+      dataSource: "customers with multiple licenses",
+      category: "Product Adoption"
     },
     {
-      name: "Renewal Rate",
-      definition: "% of contracts renewed (by count and $)",
-      target: "≥ 92%",
-      dataSource: "subscriptions WHERE renewed = true",
-      category: "Retention"
+      name: "White Space Opportunity",
+      definition: "Estimated ARR from identified product gaps",
+      target: "≥ $8.00M",
+      dataSource: "Derived from product coverage matrix + fit scores",
+      category: "Opportunity"
     },
     {
-      name: "Churn Rate",
-      definition: "% of ARR lost to non-renewals",
-      target: "≤ 5%",
-      dataSource: "Churned ARR / total ARR",
-      category: "Risk"
+      name: "Rep Performance Metrics",
+      definition: "Average quota attainment across expansion reps",
+      target: "≥ 100%",
+      dataSource: "opportunities.quota_attainment BY rep",
+      category: "Sales Performance"
     },
     {
-      name: "Average Utilization Rate",
-      definition: "Avg % of licenses actively used",
-      target: "≥ 75%",
-      dataSource: "licenses.utilization_percentage",
-      category: "Adoption"
-    },
-    {
-      name: "Feature Adoption Rate",
-      definition: "% of customers using advanced features",
-      target: "≥ 60%",
-      dataSource: "Feature telemetry data",
-      category: "Adoption"
-    },
-    {
-      name: "Customer Engagement Score",
-      definition: "Composite of touch frequency + QBR + NPS",
-      target: "≥ 70",
-      dataSource: "Engagement tracking system",
-      category: "Engagement"
-    },
-    {
-      name: "Time to Value (TTV)",
-      definition: "Days from purchase to productive use",
-      target: "≤ 60 days",
-      dataSource: "Onboarding milestone tracking",
-      category: "Value"
-    },
-    {
-      name: "QBR Completion Rate",
-      definition: "% of accounts with QBR in last 120 days",
-      target: "≥ 85%",
-      dataSource: "qbr_schedule completion tracking",
-      category: "Engagement"
+      name: "Expansion-Ready Accounts",
+      definition: "Accounts with high expansion readiness score",
+      target: "≥ 60 accounts",
+      dataSource: "Composite score (health + utilization + engagement + budget)",
+      category: "Opportunity"
     }
   ];
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Retention': 'bg-green-100 text-green-800',
-      'Health': 'bg-blue-100 text-blue-800',
-      'Risk': 'bg-red-100 text-red-800',
-      'Adoption': 'bg-purple-100 text-purple-800',
-      'Engagement': 'bg-yellow-100 text-yellow-800',
-      'Value': 'bg-indigo-100 text-indigo-800'
+      'Retention & Growth': 'bg-blue-100 text-blue-800',
+      'Revenue Growth': 'bg-green-100 text-green-800',
+      'Product Adoption': 'bg-purple-100 text-purple-800',
+      'Opportunity': 'bg-orange-100 text-orange-800',
+      'Sales Performance': 'bg-indigo-100 text-indigo-800'
     };
     return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800';
   };
@@ -133,7 +104,7 @@ export default function CSMOverviewPage() {
       {/* Sidebar - Hide when in iframe */}
       {!isInIframe && (
         <Sidebar
-          currentPersona="CSM"
+          currentPersona="SE"
           onPersonaChange={() => {}}
         />
       )}
@@ -146,22 +117,22 @@ export default function CSMOverviewPage() {
             {!isInIframe && (
               <div className="flex items-center mb-6">
                 <Link
-                  href="/csm"
+                  href="/"
                   className="flex items-center text-gray-600 hover:text-gray-900 transition-colors mr-4"
                 >
                   <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back to CSM Dashboard
+                  Back to Dashboard
                 </Link>
               </div>
             )}
 
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                Customer Success Leader Overview
+                Sales Expansion Leader Overview
               </h1>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                Maximize customer retention, drive product adoption, ensure value realization, 
-                and manage renewal pipeline health
+                Drive cross-sell, upsell, and multi-product penetration to maximize share-of-wallet
+                and ARR growth from existing customers
               </p>
             </div>
           </div>
@@ -173,10 +144,10 @@ export default function CSMOverviewPage() {
                 <Target className="w-6 h-6 mr-3 text-blue-600" />
                 Key Business Questions
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {businessQuestions.map((item, index) => (
-                  <div key={index} className="rounded-lg p-6 hover:shadow-md transition-shadow" style={{ backgroundColor: '#F3F3F3' }}>
+                  <div key={index} className="rounded-lg p-6 hover:shadow-md transition-shadow bg-white border border-gray-200">
                     <div className="flex items-start mb-3">
                       {item.icon}
                       <h3 className="text-lg font-semibold text-gray-800 ml-3 leading-tight">
@@ -200,10 +171,10 @@ export default function CSMOverviewPage() {
                   Level 1 — Strategic View
                 </h2>
                 <h3 className="text-xl font-semibold text-blue-600 mb-4">
-                  Customer Success Portfolio Dashboard
+                  Sales Expansion Command Center
                 </h3>
                 <p className="text-gray-600">
-                  Primary KPIs (10) - Strategic metrics for customer success management
+                  Primary KPIs (6) - Strategic metrics for sales expansion management
                 </p>
               </div>
 
@@ -248,16 +219,16 @@ export default function CSMOverviewPage() {
               </div>
 
               {/* KPI Categories Summary */}
-              <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {['Retention', 'Health', 'Risk', 'Adoption', 'Engagement', 'Value'].map((category) => {
+              <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {['Retention & Growth', 'Revenue Growth', 'Product Adoption', 'Opportunity', 'Sales Performance'].map((category) => {
                   const count = kpis.filter(kpi => kpi.category === category).length;
                   return (
-                    <div key={category} className="text-center p-4 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
+                    <div key={category} className="text-center p-4 rounded-lg bg-white border border-gray-200">
                       <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-2 ${getCategoryColor(category)}`}>
                         {category}
                       </div>
                       <div className="text-2xl font-bold text-gray-900">{count}</div>
-                      <div className="text-sm text-gray-600">KPIs</div>
+                      <div className="text-sm text-gray-600">KPI{count !== 1 ? 's' : ''}</div>
                     </div>
                   );
                 })}
@@ -265,11 +236,38 @@ export default function CSMOverviewPage() {
             </div>
           </div>
 
+          {/* Critical Alert Callout */}
+          <div className="max-w-7xl mx-auto mb-12">
+            <div className="rounded-lg shadow-md p-6 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                🚨 Utilization-Driven Expansion Signals
+              </h3>
+              <p className="text-gray-700 mb-4">
+                Real-time capacity alerts (&gt;85% utilization) requiring immediate action to capture expansion opportunities.
+                Monitor high-utilization accounts for upsell and cross-sell readiness.
+              </p>
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <span className="text-gray-700 font-semibold">Critical (&gt;95%)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                  <span className="text-gray-700 font-semibold">High (90-95%)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <span className="text-gray-700 font-semibold">Medium (85-90%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Footer */}
           <div className="max-w-7xl mx-auto text-center text-sm text-gray-500">
-            <p>Customer Success Leader Overview | Strategic Dashboard</p>
+            <p>Sales Expansion Leader Overview | Strategic Dashboard</p>
             <p className="mt-2">
-              Powered by Next.js 15 | Data from CSM_tab1.md | Updated: {new Date().toLocaleDateString()}
+              Powered by Next.js 15 | Data from Sales_Exp_tab.md | Updated: {new Date().toLocaleDateString()}
             </p>
           </div>
         </div>
