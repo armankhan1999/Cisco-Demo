@@ -60,42 +60,26 @@ export default function AccountsPage() {
         // Get subscription data
         const subscription = subscriptions.find(sub => sub.customer_id === customerId);
         
-        // Get latest utilization data
-        const currentDate = new Date().toISOString().split('T')[0];
-        let accountUtilization = utilizationHistory.filter(util => util.customer_id === customerId && util.snapshot_date === currentDate);
+        // Get latest utilization data from utilization_history.json (SAME AS OTHER PAGES)
+        // First, find the latest snapshot date globally
+        const allSnapshots = utilizationHistory.map((d: any) => d.snapshot_date).sort();
+        const latestDate = allSnapshots[allSnapshots.length - 1];
         
-        if (accountUtilization.length === 0) {
-          const latestDate = utilizationHistory
-            .filter(util => util.customer_id === customerId)
-            .map(u => u.snapshot_date)
-            .sort()
-            .pop();
-          accountUtilization = utilizationHistory.filter(util => 
-            util.customer_id === customerId && util.snapshot_date === latestDate
-          );
-        }
+        // Get all products for this customer at the latest date
+        const accountUtilization = utilizationHistory.filter(util => 
+          util.customer_id === customerId && util.snapshot_date === latestDate
+        );
         
-        // Get license information from licenses.json
-        const accountLicenses = licenses.filter((license: any) => license.customer_id === customerId);
-        const productCount = new Set(accountLicenses.map((license: any) => license.product_family)).size;
-        
-        // Calculate total licenses from licenses.json (account level = sum of all products)
-        const totalLicensesFromProducts = accountLicenses.reduce((sum: number, license: any) => sum + (license.license_count || 0), 0);
-        
-        // Calculate REAL active users by summing across ALL products
-        // Each product has: license_count × (utilization / 100) = active users for that product
-        const totalActiveUsers = accountLicenses.reduce((sum: number, license: any) => {
-          const productActiveUsers = Math.round((license.license_count || 0) * ((license.utilization || 0) / 100));
-          return sum + productActiveUsers;
-        }, 0);
-        
-        // Calculate account-level totals (sum across ALL products)
-        const totalLicenses = totalLicensesFromProducts;
-        const licensesUsed = totalActiveUsers;  // Use calculated sum from all products
+        // Calculate totals from utilization_history.json (SAME METHOD AS LICENSE DETAILS PAGE)
+        const totalLicenses = accountUtilization.reduce((sum: number, u: any) => sum + (u.total_licenses || 0), 0);
+        const licensesUsed = accountUtilization.reduce((sum: number, u: any) => sum + (u.active_users || 0), 0);
         const licensesAvailable = totalLicenses - licensesUsed;
         
-        // Calculate REAL account-level utilization percentage
+        // Calculate account-level utilization percentage (SAME AS OTHER PAGES)
         const utilizationPercentage = totalLicenses > 0 ? (licensesUsed / totalLicenses) * 100 : 0;
+        
+        // Count unique products from utilization data
+        const productCount = new Set(accountUtilization.map((u: any) => u.product_family)).size;
         
         // Get contract count
         const accountContracts = contracts.filter((contract: any) => contract.customer_id === customerId);
@@ -114,7 +98,7 @@ export default function AccountsPage() {
         
         return {
           account: accountData.account,
-          arr: subscription?.arr || 0,
+          arr: accountData.account.arr || 0,  // Use account-level ARR from accounts.json
           healthScore: healthScore,
           utilization: utilizationPercentage,  // Account-level utilization (all products)
           totalLicenses: totalLicenses,

@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import { useSidebar } from '@/contexts/SidebarContext';
 
 export default function CSMHomePage() {
+  const { isCollapsed } = useSidebar();
   const dashboards = [
     {
       id: 'portfolio',
@@ -67,7 +69,7 @@ export default function CSMHomePage() {
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
