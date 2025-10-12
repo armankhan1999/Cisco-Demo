@@ -4,6 +4,7 @@ import { useState } from 'react';
 import EnhancedSidebar from '@/components/Sidebar/EnhancedSidebar';
 import Dashboard from '@/components/Dashboard/Dashboard';
 import DrillDownDashboard from '@/components/CommercialOps/DrillDownDashboard';
+import SalesExpansionDashboard from '@/components/SalesExpansion/DrillDownDashboard';
 import { Persona } from '@/data/dummyData';
 
 export default function Home() {
@@ -13,9 +14,14 @@ export default function Home() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderMainContent = () => {
-    // Always show the new dashboard for CO persona
+    // Commercial Operations - Drill-down dashboard
     if (currentPersona === 'CO') {
       return <DrillDownDashboard />;
+    }
+    
+    // Sales Expansion - Drill-down dashboard
+    if (currentPersona === 'SE') {
+      return <SalesExpansionDashboard />;
     }
     
     // Default to original dashboard for other personas/views

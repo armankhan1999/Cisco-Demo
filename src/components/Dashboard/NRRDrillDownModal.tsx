@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, LineChart, Line } from 'recharts';
+import customersData from '@/source_data/master-data/customers.json';
+import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 
 interface NRRDrillDownModalProps {
   level: 1 | 2 | 3;
@@ -155,145 +158,202 @@ export default function NRRDrillDownModal({ level, onClose, onLevelChange }: NRR
         </div>
       </div>
 
-      {/* NRR by Customer Tier */}
+      {/* NRR by Customer Tier - Scatter Plot */}
       <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
-        <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 NRR by Customer Tier</h4>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">Tier</th>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">Customers</th>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">Total ARR</th>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">NRR</th>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">Variance</th>
-                <th className="px-6 py-4 text-left text-base font-bold text-gray-900">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              <tr className="hover:bg-blue-50 cursor-pointer transition-colors" onClick={() => onLevelChange(3)}>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">Strategic</td>
-                <td className="px-6 py-4 text-base font-semibold text-gray-800">8</td>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">$18.5M</td>
-                <td className="px-6 py-4 text-lg font-bold text-green-600">122.3%</td>
-                <td className="px-6 py-4 text-base font-semibold text-green-600">+12.3pp</td>
-                <td className="px-6 py-4 text-base text-blue-600 font-bold">View Details →</td>
-              </tr>
-              <tr className="hover:bg-blue-50 cursor-pointer transition-colors" onClick={() => onLevelChange(3)}>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">Enterprise</td>
-                <td className="px-6 py-4 text-base font-semibold text-gray-800">15</td>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">$15.2M</td>
-                <td className="px-6 py-4 text-lg font-bold text-green-600">118.5%</td>
-                <td className="px-6 py-4 text-base font-semibold text-green-600">+8.5pp</td>
-                <td className="px-6 py-4 text-base text-blue-600 font-bold">View Details →</td>
-              </tr>
-              <tr className="hover:bg-blue-50 cursor-pointer transition-colors" onClick={() => onLevelChange(3)}>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">Commercial</td>
-                <td className="px-6 py-4 text-base font-semibold text-gray-800">18</td>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">$6.8M</td>
-                <td className="px-6 py-4 text-lg font-bold text-green-600">108.2%</td>
-                <td className="px-6 py-4 text-base font-semibold text-yellow-600">-1.8pp</td>
-                <td className="px-6 py-4 text-base text-blue-600 font-bold">View Details →</td>
-              </tr>
-              <tr className="hover:bg-blue-50 cursor-pointer transition-colors" onClick={() => onLevelChange(3)}>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">SMB</td>
-                <td className="px-6 py-4 text-base font-semibold text-gray-800">9</td>
-                <td className="px-6 py-4 text-base font-bold text-gray-900">$1.7M</td>
-                <td className="px-6 py-4 text-lg font-bold text-yellow-600">102.5%</td>
-                <td className="px-6 py-4 text-base font-semibold text-red-600">-7.5pp</td>
-                <td className="px-6 py-4 text-base text-blue-600 font-bold">View Details →</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Cohort Analysis with Heatmap */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
-        <h4 className="text-2xl font-bold mb-6 text-gray-900">📈 NRR Cohort Heatmap</h4>
+        <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 NRR by Customer Tier - Account Distribution</h4>
+        <p className="text-sm text-gray-600 mb-4">Each dot represents a customer account. Size indicates ARR value.</p>
+        <ResponsiveContainer width="100%" height={400}>
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis 
+              type="category" 
+              dataKey="tier" 
+              name="Tier"
+              label={{ value: 'Customer Tier', position: 'insideBottom', offset: -10 }}
+            />
+            <YAxis 
+              type="number" 
+              dataKey="arr" 
+              name="ARR"
+              label={{ value: 'Annual ARR ($)', angle: -90, position: 'insideLeft' }}
+              tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
+            />
+            <Tooltip 
+              cursor={{ strokeDasharray: '3 3' }}
+              content={({ active, payload }) => {
+                if (active && payload && payload.length) {
+                  const data = payload[0].payload;
+                  return (
+                    <div className="bg-white p-4 border-2 border-gray-300 rounded-lg shadow-lg">
+                      <p className="font-bold text-gray-900">{data.customer_name}</p>
+                      <p className="text-sm text-gray-600">Tier: {data.tier}</p>
+                      <p className="text-sm text-gray-600">ARR: ${(data.arr / 1000).toFixed(0)}K</p>
+                      <p className="text-sm text-gray-600">Products: {data.product_count}</p>
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Legend />
+            <Scatter 
+              name="Strategic" 
+              data={customersData.filter(c => c.tier === 'Strategic')}
+              fill="#8b5cf6" 
+            />
+            <Scatter 
+              name="Enterprise" 
+              data={customersData.filter(c => c.tier === 'Enterprise')}
+              fill="#3b82f6" 
+            />
+            <Scatter 
+              name="Commercial" 
+              data={customersData.filter(c => c.tier === 'Commercial')}
+              fill="#10b981" 
+            />
+            <Scatter 
+              name="SMB" 
+              data={customersData.filter(c => c.tier === 'SMB')}
+              fill="#f59e0b" 
+            />
+          </ScatterChart>
+        </ResponsiveContainer>
         
-        {/* Visual Heatmap */}
-        <div className="mb-6">
-          <div className="flex items-end justify-between h-56 gap-3">
-            <div className="flex-1 flex flex-col items-center">
-              <div className="w-full bg-gradient-to-t from-green-400 to-green-600 rounded-t-lg" style={{ height: '220px' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-green-600">125.3%</div>
-                <div className="text-xs font-semibold text-gray-600">2024 Q1</div>
-                <div className="text-xs text-gray-500">12 customers</div>
+        {/* Summary Table */}
+        <div className="mt-6 grid grid-cols-4 gap-4">
+          {['Strategic', 'Enterprise', 'Commercial', 'SMB'].map(tier => {
+            const tierCustomers = customersData.filter(c => c.tier === tier);
+            const totalARR = tierCustomers.reduce((sum, c) => sum + c.arr, 0);
+            return (
+              <div key={tier} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h5 className="font-bold text-gray-900 mb-2">{tier}</h5>
+                <p className="text-2xl font-bold text-blue-600">{tierCustomers.length}</p>
+                <p className="text-xs text-gray-600">accounts</p>
+                <p className="text-sm font-semibold text-gray-700 mt-2">${(totalARR / 1000000).toFixed(1)}M ARR</p>
               </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center">
-              <div className="w-full bg-gradient-to-t from-green-300 to-green-500 rounded-t-lg" style={{ height: '200px' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-green-600">118.7%</div>
-                <div className="text-xs font-semibold text-gray-600">2023 Q4</div>
-                <div className="text-xs text-gray-500">15 customers</div>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center">
-              <div className="w-full bg-gradient-to-t from-yellow-300 to-yellow-500 rounded-t-lg" style={{ height: '160px' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-yellow-600">108.2%</div>
-                <div className="text-xs font-semibold text-gray-600">2023 Q3</div>
-                <div className="text-xs text-gray-500">18 customers</div>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center">
-              <div className="w-full bg-gradient-to-t from-yellow-200 to-yellow-400 rounded-t-lg" style={{ height: '140px' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-yellow-600">105.4%</div>
-                <div className="text-xs font-semibold text-gray-600">2023 Q2</div>
-                <div className="text-xs text-gray-500">5 customers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Cohort Cards */}
-        <div className="grid grid-cols-4 gap-4">
-          <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
-            <div className="text-sm font-bold text-gray-900 mb-2">2024 Q1</div>
-            <div className="text-3xl font-bold text-green-600">125.3%</div>
-            <div className="text-xs font-semibold text-gray-700 mt-1">12 customers</div>
-          </div>
-          <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
-            <div className="text-sm font-bold text-gray-900 mb-2">2023 Q4</div>
-            <div className="text-3xl font-bold text-green-600">118.7%</div>
-            <div className="text-xs font-semibold text-gray-700 mt-1">15 customers</div>
-          </div>
-          <div className="bg-yellow-50 rounded-lg p-4 border-l-4 border-yellow-500">
-            <div className="text-sm font-bold text-gray-900 mb-2">2023 Q3</div>
-            <div className="text-3xl font-bold text-yellow-600">108.2%</div>
-            <div className="text-xs font-semibold text-gray-700 mt-1">18 customers</div>
-          </div>
-          <div className="bg-yellow-50 rounded-lg p-4 border-l-4 border-yellow-500">
-            <div className="text-sm font-bold text-gray-900 mb-2">2023 Q2</div>
-            <div className="text-3xl font-bold text-yellow-600">105.4%</div>
-            <div className="text-xs font-semibold text-gray-700 mt-1">5 customers</div>
-          </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Expansion vs Churn */}
+      {/* Cohort Analysis - Line Chart */}
       <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
-        <h4 className="text-2xl font-bold mb-6 text-gray-900">⚖️ Expansion vs. Churn Ratio</h4>
-        <div className="grid grid-cols-2 gap-6">
-          <div className="bg-green-50 rounded-lg p-6 border-l-4 border-green-500">
-            <div className="text-base font-bold text-gray-900 mb-3">Expansion Revenue</div>
-            <div className="text-4xl font-bold text-green-600 mb-2">$7.68M</div>
-            <div className="text-sm font-semibold text-gray-700">+18.2% of base ARR</div>
+        <h4 className="text-2xl font-bold mb-6 text-gray-900">📈 NRR Cohort Analysis - Real Data</h4>
+        <p className="text-sm text-gray-600 mb-4">Customer cohorts by creation date showing ARR trends</p>
+        <ResponsiveContainer width="100%" height={350}>
+          <LineChart 
+            data={(() => {
+              // Group customers by creation year
+              const cohorts = customersData.reduce((acc: any, customer) => {
+                const year = customer.created_date.substring(0, 4);
+                if (!acc[year]) {
+                  acc[year] = { year, customers: 0, totalARR: 0 };
+                }
+                acc[year].customers += 1;
+                acc[year].totalARR += customer.arr;
+                return acc;
+              }, {});
+              return Object.values(cohorts).sort((a: any, b: any) => a.year.localeCompare(b.year));
+            })()}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" label={{ value: 'Cohort Year', position: 'insideBottom', offset: -5 }} />
+            <YAxis 
+              yAxisId="left"
+              label={{ value: 'Number of Customers', angle: -90, position: 'insideLeft' }}
+            />
+            <YAxis 
+              yAxisId="right"
+              orientation="right"
+              label={{ value: 'Total ARR ($M)', angle: 90, position: 'insideRight' }}
+              tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
+            />
+            <Tooltip 
+              content={({ active, payload }) => {
+                if (active && payload && payload.length) {
+                  return (
+                    <div className="bg-white p-4 border-2 border-gray-300 rounded-lg shadow-lg">
+                      <p className="font-bold text-gray-900">Cohort {payload[0].payload.year}</p>
+                      <p className="text-sm text-blue-600">Customers: {payload[0].value}</p>
+                      <p className="text-sm text-green-600">Total ARR: ${(payload[1].value / 1000000).toFixed(2)}M</p>
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Legend />
+            <Line yAxisId="left" type="monotone" dataKey="customers" stroke="#3b82f6" strokeWidth={3} name="Customers" />
+            <Line yAxisId="right" type="monotone" dataKey="totalARR" stroke="#10b981" strokeWidth={3} name="Total ARR" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Expansion vs Churn - Line Chart */}
+      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+        <h4 className="text-2xl font-bold mb-6 text-gray-900">⚖️ Expansion vs. Churn Trend - Real Data</h4>
+        <p className="text-sm text-gray-600 mb-4">Monthly revenue movements from real data</p>
+        <ResponsiveContainer width="100%" height={350}>
+          <LineChart 
+            data={(() => {
+              // Group by month and calculate expansion vs churn
+              const monthlyData = revenueMovementsData.reduce((acc: any, movement) => {
+                const month = movement.effective_date.substring(0, 7);
+                if (!acc[month]) {
+                  acc[month] = { month, expansion: 0, churn: 0, net: 0 };
+                }
+                if (movement.arr_change > 0) {
+                  acc[month].expansion += movement.arr_change;
+                } else {
+                  acc[month].churn += Math.abs(movement.arr_change);
+                }
+                acc[month].net += movement.arr_change;
+                return acc;
+              }, {});
+              return Object.values(monthlyData).sort((a: any, b: any) => a.month.localeCompare(b.month)).slice(0, 12);
+            })()}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis 
+              dataKey="month" 
+              label={{ value: 'Month', position: 'insideBottom', offset: -5 }}
+            />
+            <YAxis 
+              label={{ value: 'Revenue ($)', angle: -90, position: 'insideLeft' }}
+              tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
+            />
+            <Tooltip 
+              formatter={(value: any) => `$${(value / 1000).toFixed(1)}K`}
+              contentStyle={{ backgroundColor: 'white', border: '2px solid #ccc', borderRadius: '8px' }}
+            />
+            <Legend />
+            <Line type="monotone" dataKey="expansion" stroke="#10b981" strokeWidth={3} name="Expansion ARR" />
+            <Line type="monotone" dataKey="churn" stroke="#ef4444" strokeWidth={3} name="Churn ARR" />
+            <Line type="monotone" dataKey="net" stroke="#3b82f6" strokeWidth={3} name="Net ARR Change" />
+          </LineChart>
+        </ResponsiveContainer>
+        
+        {/* Summary Cards */}
+        <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+            <div className="text-sm font-bold text-gray-900 mb-2">Total Expansion</div>
+            <div className="text-2xl font-bold text-green-600">
+              ${(revenueMovementsData.filter(m => m.arr_change > 0).reduce((sum, m) => sum + m.arr_change, 0) / 1000).toFixed(0)}K
+            </div>
           </div>
-          <div className="bg-red-50 rounded-lg p-6 border-l-4 border-red-500">
-            <div className="text-base font-bold text-gray-900 mb-3">Churn & Contraction</div>
-            <div className="text-4xl font-bold text-red-600 mb-2">$1.44M</div>
-            <div className="text-sm font-semibold text-gray-700">-3.4% of base ARR</div>
+          <div className="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
+            <div className="text-sm font-bold text-gray-900 mb-2">Total Churn</div>
+            <div className="text-2xl font-bold text-red-600">
+              ${(Math.abs(revenueMovementsData.filter(m => m.arr_change < 0).reduce((sum, m) => sum + m.arr_change, 0)) / 1000).toFixed(0)}K
+            </div>
           </div>
-        </div>
-        <div className="mt-6 bg-blue-50 rounded-lg p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-bold text-gray-900">Expansion/Churn Ratio</span>
-            <span className="text-3xl font-bold text-blue-600">5.3:1</span>
+          <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+            <div className="text-sm font-bold text-gray-900 mb-2">Net Change</div>
+            <div className="text-2xl font-bold text-blue-600">
+              ${(revenueMovementsData.reduce((sum, m) => sum + m.arr_change, 0) / 1000).toFixed(0)}K
+            </div>
           </div>
         </div>
       </div>

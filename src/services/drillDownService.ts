@@ -9,6 +9,7 @@ export interface DrillDownLevel {
   description: string;
   kpi?: string;
   subView?: string;
+  actionId?: string;
 }
 
 export interface KPIDrillDown {
@@ -439,30 +440,30 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
   {
     kpiId: 'expansion-arr',
     kpiName: 'Expansion ARR Contribution',
-    businessContext: 'Measures growth from existing customers through upsells and cross-sells. Higher expansion rates indicate strong customer success and product adoption.',
+    businessContext: 'Total ARR from upsell/cross-sell in period. Target: $5M+ quarterly. Key growth driver.',
     level2Views: [
       {
-        id: 'expansion-opportunities',
-        title: 'Expansion Opportunity Matrix',
-        description: 'Identify customers with highest expansion potential',
-        chartType: 'matrix',
-        businessQuestion: 'Which customers are ready for expansion?',
+        id: 'expansion-by-category',
+        title: 'Expansion by Category',
+        description: 'Breakdown by upsell, cross-sell, capacity expansion, and bundle deals',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH expansion types drive the most ARR?',
         actionableInsights: [
-          '45 customers showing usage >85% (expansion ready)',
-          'Multi-product customers expand 3x faster',
-          'Usage-based expansion averages $125K ARR'
+          'Cross-sell: $2.1M (39% of total)',
+          'Upsell: $1.8M (33% of total)',
+          'Capacity: $1.5M (28% of total)'
         ]
       },
       {
-        id: 'product-penetration',
-        title: 'Product Penetration Analysis',
-        description: 'Track cross-sell opportunities across product portfolio',
-        chartType: 'heatmap',
-        businessQuestion: 'Where are the white space opportunities?',
+        id: 'expansion-by-product',
+        title: 'Expansion by Product Family',
+        description: 'Product-level expansion performance and attach rates',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH products drive expansion?',
         actionableInsights: [
-          'Security portfolio has 60% penetration opportunity',
-          'Collaboration tools show highest attach rates',
-          'Infrastructure customers prime for security upsell'
+          'Duo → Umbrella: Highest attach rate (45%)',
+          'Meraki expansion: Strong capacity-driven growth',
+          'ThousandEyes: Emerging cross-sell opportunity'
         ]
       }
     ],
@@ -535,6 +536,857 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
         businessImpact: 'Ensure compliance and accurate reporting'
       }
     ]
+  },
+  // SALES EXPANSION KPIs
+  {
+    kpiId: 'nrr',
+    kpiName: 'Net Revenue Retention',
+    businessContext: 'Revenue retention + expansion from existing customer cohort. Target: ≥110%. Measures ability to grow revenue from existing base.',
+    level2Views: [
+      {
+        id: 'nrr-by-tier',
+        title: 'NRR by Customer Tier',
+        description: 'Breakdown of NRR performance across Strategic, Enterprise, Commercial, and SMB tiers',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH customer tiers are driving NRR performance?',
+        actionableInsights: [
+          'Strategic tier: 125% NRR (excellent expansion)',
+          'Enterprise tier: 112% NRR (on target)',
+          'SMB tier: 95% NRR (churn risk)'
+        ]
+      },
+      {
+        id: 'nrr-quarterly-trend',
+        title: 'NRR Quarterly Trend',
+        description: 'Quarterly NRR performance trends and forecasting',
+        chartType: 'trend',
+        businessQuestion: 'HOW is NRR trending over time?',
+        actionableInsights: [
+          'Q4 2024: 118% NRR (8% above target)',
+          'Consistent upward trend for 6 quarters',
+          'Q1 2025 forecast: 120% NRR'
+        ]
+      },
+      {
+        id: 'expansion-vs-churn',
+        title: 'Expansion vs Churn Waterfall',
+        description: 'Waterfall showing expansion gains vs churn/contraction losses',
+        chartType: 'waterfall',
+        businessQuestion: 'WHAT is the composition of NRR?',
+        actionableInsights: [
+          'Expansion: +$5.4M ARR',
+          'Churn: -$1.2M ARR',
+          'Net: +$4.2M ARR (114.8% NRR)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'high-nrr-accounts',
+        title: 'High NRR Account Success Patterns',
+        description: 'Analyze accounts with >120% NRR to replicate success',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Scale best practices to increase overall NRR'
+      },
+      {
+        id: 'low-nrr-intervention',
+        title: 'Low NRR Account Intervention',
+        description: 'Accounts with <100% NRR requiring immediate attention',
+        actionType: 'exception',
+        urgency: 'high',
+        businessImpact: 'Prevent churn and identify expansion blockers'
+      }
+    ]
+  },
+  {
+    kpiId: 'multi-product-penetration',
+    kpiName: 'Multi-Product Penetration',
+    businessContext: '% of customers with 2+ products. Target: ≥40%. Indicates successful cross-sell and customer stickiness.',
+    level2Views: [
+      {
+        id: 'product-matrix',
+        title: 'Product Penetration Matrix',
+        description: 'Heatmap showing product combination adoption across customer base',
+        chartType: 'heatmap',
+        businessQuestion: 'WHICH product combinations are most common?',
+        actionableInsights: [
+          'Duo + Umbrella: Most common pair (28% of customers)',
+          'Meraki standalone: 35% (cross-sell opportunity)',
+          '3+ products: Only 12% (growth potential)',
+          'Full product suite adoption increases NRR by 15%'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'single-product-accounts',
+        title: 'Single-Product Account Cross-Sell',
+        description: '30 high-value accounts with only 1 product',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: '$8.2M white space opportunity'
+      }
+    ]
+  },
+  {
+    kpiId: 'white-space-value',
+    kpiName: 'White Space Opportunity',
+    businessContext: 'Estimated ARR from identified product gaps. Target: $8M+. Represents untapped expansion potential.',
+    level2Views: [
+      {
+        id: 'white-space-by-segment',
+        title: 'White Space by Segment',
+        description: 'Opportunity sizing by customer tier and industry',
+        chartType: 'breakdown',
+        businessQuestion: 'WHERE is the biggest white space?',
+        actionableInsights: [
+          'Enterprise Financial Services: $2.8M opportunity',
+          'Strategic Healthcare: $2.1M opportunity',
+          'Commercial Manufacturing: $1.9M opportunity'
+        ]
+      },
+      {
+        id: 'product-gap-analysis',
+        title: 'Product Gap Analysis',
+        description: 'Which products have the most expansion headroom',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH products have the most white space?',
+        actionableInsights: [
+          'ThousandEyes: $3.2M gap (lowest penetration)',
+          'Umbrella: $2.8M gap (high synergy with Duo)',
+          'Splunk: $2.4M gap (new product opportunity)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'high-fit-opportunities',
+        title: 'High-Fit White Space Opportunities',
+        description: 'Top 20 accounts with >80% fit score',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: '$4.5M in ready-to-engage opportunities'
+      }
+    ]
+  },
+  {
+    kpiId: 'pipeline-arr',
+    kpiName: 'Expansion Pipeline ARR',
+    businessContext: 'Value of qualified expansion opportunities. Target: 3x quota coverage. Indicates future revenue health.',
+    level2Views: [
+      {
+        id: 'pipeline-by-stage',
+        title: 'Pipeline by Stage',
+        description: 'Funnel analysis showing opportunity distribution and conversion',
+        chartType: 'funnel',
+        businessQuestion: 'HOW is pipeline distributed across stages?',
+        actionableInsights: [
+          'Discovery: $6.2M (40% of pipeline)',
+          'Proposal: $4.8M (31% of pipeline)',
+          'Negotiation: $4.3M (28% of pipeline)'
+        ]
+      },
+      {
+        id: 'pipeline-velocity',
+        title: 'Pipeline Velocity by Stage',
+        description: 'Average time in each stage and bottleneck identification',
+        chartType: 'trend',
+        businessQuestion: 'WHERE are pipeline bottlenecks?',
+        actionableInsights: [
+          'Proposal stage: 28 days avg (slowest)',
+          'Negotiation: 18 days avg',
+          'Overall velocity: 52 days (needs improvement)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'pipeline-gaps',
+        title: 'Pipeline Coverage Gaps',
+        description: 'Quarters with <3x coverage requiring generation',
+        actionType: 'alert',
+        urgency: 'high',
+        businessImpact: 'Ensure adequate pipeline for quota attainment'
+      }
+    ]
+  },
+  {
+    kpiId: 'win-rate',
+    kpiName: 'Expansion Win Rate',
+    businessContext: '% of expansion opportunities closed-won. Target: ≥60%. Measures sales effectiveness.',
+    level2Views: [
+      {
+        id: 'win-rate-by-product',
+        title: 'Win Rate by Product',
+        description: 'Product-level win rates and competitive positioning',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH products have the highest win rates?',
+        actionableInsights: [
+          'Capacity expansions: 82% win rate (easiest)',
+          'Cross-sell: 65% win rate (on target)',
+          'Competitive displacements: 42% win rate (challenging)'
+        ]
+      },
+      {
+        id: 'win-loss-analysis',
+        title: 'Win/Loss Root Cause Analysis',
+        description: 'Primary reasons for wins and losses',
+        chartType: 'breakdown',
+        businessQuestion: 'WHY are we winning or losing?',
+        actionableInsights: [
+          'Wins: Value realization (45%), Relationship (32%)',
+          'Losses: Price (38%), Timing (28%), Competition (22%)',
+          'No-decision: Budget constraints (52%)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'at-risk-deals',
+        title: 'At-Risk Expansion Deals',
+        description: 'Opportunities with <50% win probability',
+        actionType: 'exception',
+        urgency: 'high',
+        businessImpact: '$2.1M at-risk pipeline requiring intervention'
+      }
+    ]
+  },
+  {
+    kpiId: 'cross-sell-rate',
+    kpiName: 'Cross-Sell Attach Rate',
+    businessContext: '% of renewals including additional products. Target: ≥50%. Indicates cross-sell effectiveness.',
+    level2Views: [
+      {
+        id: 'cross-sell-by-product',
+        title: 'Cross-Sell by Product',
+        description: 'Attach rates by product combination',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH products drive cross-sell?',
+        actionableInsights: [
+          'Duo + Umbrella: 45% attach rate',
+          'Meraki expansion: 38% attach rate',
+          'ThousandEyes: 22% attach rate (opportunity)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'renewal-cross-sell',
+        title: 'Upcoming Renewal Cross-Sell',
+        description: '25 renewals with high cross-sell potential',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: 'Increase cross-sell attach rate by 15%'
+      }
+    ]
+  },
+  {
+    kpiId: 'time-to-expansion',
+    kpiName: 'Time to Expansion',
+    businessContext: 'Average days from acquisition to first expansion. Target: ≤180 days. Faster expansion indicates product-market fit.',
+    level2Views: [
+      {
+        id: 'expansion-timeline-by-tier',
+        title: 'Expansion Timeline by Tier',
+        description: 'Time to first expansion by customer segment',
+        chartType: 'breakdown',
+        businessQuestion: 'HOW quickly do customers expand?',
+        actionableInsights: [
+          'Strategic: 120 days avg (excellent)',
+          'Enterprise: 165 days avg (on target)',
+          'SMB: 210 days avg (needs improvement)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'expansion-ready-accounts',
+        title: 'Expansion-Ready Accounts',
+        description: '18 accounts approaching expansion timeline',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Accelerate expansion velocity'
+      }
+    ]
+  },
+  {
+    kpiId: 'share-of-wallet',
+    kpiName: 'Share of Wallet Score',
+    businessContext: 'Estimated % of customer IT budget captured. Target: Increase trend. Indicates expansion headroom.',
+    level2Views: [
+      {
+        id: 'wallet-share-by-tier',
+        title: 'Share of Wallet by Tier',
+        description: 'Wallet penetration by customer segment',
+        chartType: 'breakdown',
+        businessQuestion: 'WHERE is the expansion opportunity?',
+        actionableInsights: [
+          'Strategic: 65% avg (high penetration)',
+          'Enterprise: 42% avg (moderate)',
+          'SMB: 28% avg (significant upside)'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'low-wallet-share',
+        title: 'Low Wallet Share Accounts',
+        description: '35 accounts with <30% wallet share',
+        actionType: 'exception',
+        urgency: 'medium',
+        businessImpact: '$4.5M expansion potential'
+      }
+    ]
+  },
+  {
+    kpiId: 'capacity-arr',
+    kpiName: 'Capacity-Driven Expansion ARR',
+    businessContext: 'ARR from utilization >85% → upsell. Target: Trend monitoring. Proactive capacity management.',
+    level2Views: [
+      {
+        id: 'capacity-alerts-by-product',
+        title: 'Capacity Alerts by Product',
+        description: 'High utilization accounts by product family',
+        chartType: 'breakdown',
+        businessQuestion: 'WHERE are the capacity triggers?',
+        actionableInsights: [
+          'Duo: 45 high-utilization accounts',
+          'Umbrella: 32 capacity alerts',
+          'Meraki: 28 expansion-ready'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'active-capacity-alerts',
+        title: 'Active Capacity Alerts',
+        description: '105 accounts with >85% utilization',
+        actionType: 'alert',
+        urgency: 'high',
+        businessImpact: '$3.2M expansion opportunity requiring proactive outreach'
+      }
+    ]
+  },
+  {
+    kpiId: 'utilization-expansion',
+    kpiName: 'Utilization-Driven Expansion Signals',
+    businessContext: 'Real-time capacity alerts requiring immediate action. 18 critical alerts with $2.8M potential ARR. Proactive utilization monitoring drives expansion.',
+    level2Views: [
+      {
+        id: 'alert-overview',
+        title: 'Utilization Alert Overview',
+        description: 'Comprehensive view of all capacity alerts by severity and product',
+        chartType: 'breakdown',
+        businessQuestion: 'Which products and customers are approaching capacity limits?',
+        actionableInsights: [
+          'Critical alerts (>95% utilization) require immediate expansion quotes',
+          'High alerts (90-95%) need proactive capacity planning',
+          'Medium alerts (85-90%) should be monitored for trending',
+          'Response rate of 78% indicates effective alert management'
+        ]
+      },
+      {
+        id: 'product-breakdown',
+        title: 'Utilization by Product Family',
+        description: 'Alert distribution and potential ARR by product category',
+        chartType: 'matrix',
+        businessQuestion: 'Which products generate the most capacity-driven expansion opportunities?',
+        actionableInsights: [
+          'Meraki leads with 6 alerts and $920K potential ARR',
+          'Duo shows strong utilization growth with 5 alerts',
+          'Umbrella has consistent capacity alerts across customer base',
+          'ThousandEyes and Splunk show lower but steady utilization'
+        ]
+      },
+      {
+        id: 'response-analysis',
+        title: 'Alert Response Rate Analysis',
+        description: 'Conversion rates and response times for capacity alerts',
+        chartType: 'funnel',
+        businessQuestion: 'How effectively are we converting utilization alerts to expansion opportunities?',
+        actionableInsights: [
+          '68% of alerts convert to qualified opportunities',
+          'Average response time of 3.2 days meets target of <5 days',
+          '22% of alerts are currently in progress',
+          'Only 11% remain pending action'
+        ]
+      },
+      {
+        id: 'account-prioritization',
+        title: 'High-Utilization Account Prioritization',
+        description: 'Top accounts requiring immediate expansion outreach',
+        chartType: 'heatmap',
+        businessQuestion: 'Which accounts should sales prioritize for capacity-driven expansion?',
+        actionableInsights: [
+          'TechCorp and MedSecure are expansion-ready with >95% utilization',
+          'Global Financial Partners needs immediate contact for 93% utilization',
+          'Strategic and Enterprise accounts show highest expansion potential',
+          'Total addressable expansion potential exceeds $2.8M ARR'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'critical-alerts',
+        title: 'Critical Capacity Alerts',
+        description: 'Immediate action required for accounts >95% utilization',
+        actionType: 'alert',
+        urgency: 'high',
+        businessImpact: 'Risk of service degradation and customer churn if capacity not expanded within 48 hours'
+      },
+      {
+        id: 'expansion-quotes',
+        title: 'Generate Expansion Quotes',
+        description: 'Create capacity expansion quotes for high-utilization accounts',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: 'Proactive expansion prevents service issues and captures $840K+ in immediate ARR'
+      },
+      {
+        id: 'capacity-planning',
+        title: 'Proactive Capacity Planning',
+        description: 'Schedule capacity planning sessions for trending accounts',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Prevents future capacity constraints and enables predictable expansion revenue'
+      },
+      {
+        id: 'utilization-monitoring',
+        title: 'Enhanced Utilization Monitoring',
+        description: 'Implement advanced monitoring for at-risk accounts',
+        actionType: 'escalation',
+        urgency: 'medium',
+        businessImpact: 'Early warning system prevents emergency expansions and improves customer satisfaction'
+      }
+    ]
+  },
+  {
+    kpiId: 'performance-metrics',
+    kpiName: 'Rep Performance Metrics',
+    businessContext: 'Individual rep performance tracking across expansion activities. Target: 100% quota attainment with balanced pipeline health.',
+    level2Views: [
+      {
+        id: 'quota-attainment',
+        title: 'Expansion Quota Attainment by Rep',
+        description: 'Rep-level quota performance with YTD tracking',
+        chartType: 'breakdown',
+        businessQuestion: 'Which reps are on track for quota attainment?',
+        actionableInsights: [
+          'Top performers (>110%): 8 reps driving $3.2M over-quota',
+          'On-target (90-110%): 15 reps at $1.8M',
+          'At-risk (<90%): 5 reps need coaching and support'
+        ]
+      },
+      {
+        id: 'pipeline-generation',
+        title: 'Pipeline Generation Rate',
+        description: 'New opportunity creation trends by rep',
+        chartType: 'trend',
+        businessQuestion: 'Who is generating healthy pipeline coverage?',
+        actionableInsights: [
+          'Target: 3x quota coverage maintained',
+          'Average: 12 new opps per rep per quarter',
+          'Best practice: Early-quarter pipeline building'
+        ]
+      },
+      {
+        id: 'win-rate-by-rep',
+        title: 'Win Rate by Rep & Product',
+        description: 'Rep-specific win rates across product lines',
+        chartType: 'matrix',
+        businessQuestion: 'Where do individual reps excel or need coaching?',
+        actionableInsights: [
+          'Capacity expansion: 85% avg win rate (easiest)',
+          'Cross-sell: 62% avg win rate (product training needed)',
+          'Product specialization correlates with 15% higher win rates'
+        ]
+      },
+      {
+        id: 'activity-metrics',
+        title: 'Rep Activity Dashboard',
+        description: 'Calls, meetings, proposals, and engagement metrics',
+        chartType: 'breakdown',
+        businessQuestion: 'Are reps maintaining sufficient activity levels?',
+        actionableInsights: [
+          'Target: 20 customer touches/week',
+          'High performers average 28 touches/week',
+          'Activity velocity predicts pipeline health'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'at-risk-reps',
+        title: 'At-Risk Rep Coaching',
+        description: 'Reps below 90% quota attainment requiring intervention',
+        actionType: 'alert',
+        urgency: 'high',
+        businessImpact: 'Prevent quota miss and identify coaching opportunities'
+      },
+      {
+        id: 'pipeline-gaps',
+        title: 'Pipeline Coverage Gaps',
+        description: 'Reps with <2x quota coverage',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: 'Ensure adequate pipeline for future quarters'
+      },
+      {
+        id: 'best-practices',
+        title: 'Top Performer Best Practices',
+        description: 'Analyze and replicate success patterns from top 20%',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Scale winning behaviors across the team'
+      }
+    ]
+  },
+  {
+    kpiId: 'opportunity-readiness',
+    kpiName: 'Account Expansion Readiness',
+    businessContext: 'Composite scoring of account readiness for expansion based on health, utilization, engagement, and budget timing. Target: 60+ ready accounts.',
+    level2Views: [
+      {
+        id: 'readiness-segmentation',
+        title: 'Expansion Readiness Segmentation',
+        description: 'Account distribution by readiness score tiers',
+        chartType: 'breakdown',
+        businessQuestion: 'How many accounts are expansion-ready now?',
+        actionableInsights: [
+          'Hot (90-100): 12 accounts, $2.3M opportunity',
+          'Ready (75-89): 28 accounts, $4.8M opportunity',
+          'Nurture (60-74): 45 accounts, $6.2M opportunity',
+          'Not Ready (<60): 35 accounts, monitor only'
+        ]
+      },
+      {
+        id: 'readiness-factors',
+        title: 'Readiness Score Components',
+        description: 'Breakdown of factors driving readiness scores',
+        chartType: 'waterfall',
+        businessQuestion: 'What drives expansion readiness?',
+        actionableInsights: [
+          'Health Score (30%): Product adoption and satisfaction',
+          'Utilization (25%): Capacity-driven triggers',
+          'Engagement (25%): Champion strength and touchpoints',
+          'Budget Timing (20%): Procurement cycle alignment'
+        ]
+      },
+      {
+        id: 'readiness-trends',
+        title: 'Readiness Score Trends',
+        description: 'Quarterly progression of account readiness',
+        chartType: 'trend',
+        businessQuestion: 'Is the ready account pool growing?',
+        actionableInsights: [
+          'Q4 2024: 68 ready accounts (+15% QoQ)',
+          'Improving trend for last 3 quarters',
+          'Target: 80+ ready accounts by Q2 2025'
+        ]
+      },
+      {
+        id: 'white-space-correlation',
+        title: 'Readiness vs White Space Value',
+        description: 'Scatter plot showing readiness score vs expansion potential',
+        chartType: 'scatter',
+        businessQuestion: 'Which ready accounts have the highest value?',
+        actionableInsights: [
+          'Sweet spot: High readiness + High white space = 18 accounts',
+          'Priority targets: $3.4M in immediate-action opportunities',
+          'Strategic focus beats volume prospecting'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'hot-opportunities',
+        title: 'Hot Expansion Opportunities',
+        description: '12 accounts with 90+ readiness scores ready for immediate outreach',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: '$2.3M in highly-qualified expansion opportunities'
+      },
+      {
+        id: 'nurture-campaigns',
+        title: 'Readiness Nurture Campaigns',
+        description: 'Targeted campaigns to move 60-74 scored accounts to ready status',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Increase expansion-ready pool by 20%'
+      },
+      {
+        id: 'readiness-blockers',
+        title: 'Readiness Blocker Analysis',
+        description: 'Accounts stuck below 60 - identify and address blockers',
+        actionType: 'exception',
+        urgency: 'medium',
+        businessImpact: 'Unlock stalled accounts and prevent churn risk'
+      }
+    ]
+  },
+  {
+    kpiId: 'opportunity-readiness-matrix',
+    kpiName: 'Opportunity Readiness Matrix',
+    businessContext: 'Scatter plot analysis mapping expansion readiness vs white space value. Identifies sweet-spot accounts for immediate action.',
+    level2Views: [
+      {
+        id: 'quadrant-analysis',
+        title: 'Readiness-Value Quadrant Analysis',
+        description: 'Four-quadrant breakdown of accounts by readiness and opportunity size',
+        chartType: 'scatter',
+        businessQuestion: 'Which accounts offer the best balance of readiness and value?',
+        actionableInsights: [
+          'Sweet Spot (High/High): 18 accounts, $3.4M ARR - immediate action',
+          'High Value/Low Readiness: 22 accounts - nurture to readiness',
+          'High Readiness/Low Value: 28 accounts - quick wins',
+          'Focus resources on top-right quadrant for maximum ROI'
+        ]
+      },
+      {
+        id: 'readiness-drivers',
+        title: 'Readiness Score Drivers',
+        description: 'Breakdown of factors driving readiness scores',
+        chartType: 'breakdown',
+        businessQuestion: 'What makes accounts expansion-ready?',
+        actionableInsights: [
+          'Health score impact: 30% weight, avg 82/100',
+          'Utilization triggers: 25% weight, 78% avg',
+          'Engagement quality: 25% weight, 85% active',
+          'Budget timing: 20% weight, 45% in planning cycle'
+        ]
+      },
+      {
+        id: 'movement-tracking',
+        title: 'Readiness Movement Tracking',
+        description: 'Track accounts moving between readiness quadrants over time',
+        chartType: 'trend',
+        businessQuestion: 'How are accounts progressing toward readiness?',
+        actionableInsights: [
+          'Last 30 days: 12 accounts moved to "Ready" status',
+          '8 accounts at risk of dropping from "Hot" tier',
+          'Nurture campaigns improved readiness by avg 8 points',
+          'Time to ready: avg 45 days from nurture start'
+        ]
+      },
+      {
+        id: 'lookalike-analysis',
+        title: 'Lookalike Account Targeting',
+        description: 'Identify similar accounts to current sweet-spot opportunities',
+        chartType: 'heatmap',
+        businessQuestion: 'Which other accounts match our best opportunities?',
+        actionableInsights: [
+          'Found 15 lookalike accounts to sweet-spot tier',
+          'Avg similarity score: 87% match',
+          'Combined white space: $2.1M additional ARR',
+          'Replicate successful engagement patterns'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'sweet-spot-accounts',
+        title: 'Sweet Spot Account Blitz',
+        description: '18 high-readiness, high-value accounts ready for immediate engagement',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: '$3.4M in qualified, ready-to-close expansion opportunities'
+      },
+      {
+        id: 'readiness-acceleration',
+        title: 'Readiness Acceleration Campaign',
+        description: 'Targeted campaigns to move 22 high-value accounts to ready status',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Unlock $4.2M in latent expansion potential within 60 days'
+      },
+      {
+        id: 'quick-wins',
+        title: 'Quick Win Opportunities',
+        description: '28 ready accounts with smaller white space for fast execution',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Rapid pipeline build with high win probability'
+      }
+    ]
+  },
+  {
+    kpiId: 'expansion-type-distribution',
+    kpiName: 'Expansion Type Distribution',
+    businessContext: 'Breakdown of expansion ARR by type: capacity-driven, cross-sell, upsell, and bundles. Identifies most effective expansion motions.',
+    level2Views: [
+      {
+        id: 'type-performance',
+        title: 'Expansion Type Performance',
+        description: 'Detailed metrics by expansion category',
+        chartType: 'breakdown',
+        businessQuestion: 'Which expansion types drive the most ARR and have highest win rates?',
+        actionableInsights: [
+          'Capacity-driven: $2.1M ARR, 85% win rate (easiest motion)',
+          'Cross-sell: $1.8M ARR, 62% win rate (product training needed)',
+          'Upsell: $1.5M ARR, 68% win rate (tier progression)',
+          'Bundles: $0.8M ARR, 72% win rate (value packaging)'
+        ]
+      },
+      {
+        id: 'type-by-tier',
+        title: 'Expansion Type by Customer Tier',
+        description: 'Which expansion types work best for each customer segment',
+        chartType: 'heatmap',
+        businessQuestion: 'How should we tailor expansion approach by customer tier?',
+        actionableInsights: [
+          'Strategic: Bundle expansions dominate (avg $180K)',
+          'Enterprise: Cross-sell most effective (avg $95K)',
+          'Commercial: Capacity-driven primary (avg $45K)',
+          'SMB: Upsell within product (avg $18K)'
+        ]
+      },
+      {
+        id: 'type-velocity',
+        title: 'Time to Close by Type',
+        description: 'Average sales cycle length for each expansion motion',
+        chartType: 'breakdown',
+        businessQuestion: 'Which expansion types close fastest?',
+        actionableInsights: [
+          'Capacity-driven: 18 days avg (urgent need)',
+          'Upsell: 32 days avg (clear value path)',
+          'Cross-sell: 45 days avg (education needed)',
+          'Bundles: 52 days avg (complex decision)'
+        ]
+      },
+      {
+        id: 'product-affinity',
+        title: 'Product Combination Affinity',
+        description: 'Most successful product pairing patterns',
+        chartType: 'heatmap',
+        businessQuestion: 'Which product combinations have highest attach rates?',
+        actionableInsights: [
+          'Duo → Umbrella: 45% attach rate (security suite)',
+          'Meraki → ThousandEyes: 38% attach rate (network visibility)',
+          'Any → Splunk: 28% attach rate (analytics upsell)',
+          'Full suite adoption: 15% of enterprise customers'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'capacity-pipeline',
+        title: 'Capacity-Driven Pipeline',
+        description: 'Active utilization alerts ready for expansion quotes',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: '$2.1M pipeline with 85% win rate - highest conversion'
+      },
+      {
+        id: 'crosssell-campaigns',
+        title: 'Product Cross-Sell Campaigns',
+        description: 'Targeted campaigns based on product affinity analysis',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Scale proven product combinations across customer base'
+      },
+      {
+        id: 'bundle-opportunities',
+        title: 'Bundle Deal Opportunities',
+        description: 'High-value bundle deals for strategic accounts',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Avg $180K deal size with comprehensive solution positioning'
+      }
+    ]
+  },
+  {
+    kpiId: 'exception-alerts',
+    kpiName: 'Exception Alerts',
+    businessContext: 'Critical alerts requiring immediate attention: at-risk accounts, stalled deals, champion changes, and competitive threats.',
+    level2Views: [
+      {
+        id: 'alert-severity',
+        title: 'Alert Severity & Type Analysis',
+        description: 'Breakdown of exception alerts by urgency and category',
+        chartType: 'breakdown',
+        businessQuestion: 'What are our most critical exception categories?',
+        actionableInsights: [
+          'Critical (24h): 8 alerts - $1.2M ARR at risk',
+          'High (72h): 15 alerts - $2.3M ARR needs attention',
+          'Medium (1 week): 22 alerts - $3.1M ARR monitoring',
+          'Top category: Champion departures (12 alerts)'
+        ]
+      },
+      {
+        id: 'alert-trends',
+        title: 'Exception Alert Trends',
+        description: 'Alert volume and resolution patterns over time',
+        chartType: 'trend',
+        businessQuestion: 'Are we improving at preventing and resolving exceptions?',
+        actionableInsights: [
+          'Alert volume down 15% QoQ (better prevention)',
+          'Avg resolution time: 4.2 days (target: 3 days)',
+          'Critical alert resolution: 92% within SLA',
+          'Repeat alerts down 28% (sustainable fixes)'
+        ]
+      },
+      {
+        id: 'impact-analysis',
+        title: 'Exception Impact Analysis',
+        description: 'ARR and pipeline impact by exception type',
+        chartType: 'waterfall',
+        businessQuestion: 'Which exceptions have the biggest revenue impact?',
+        actionableInsights: [
+          'Stalled deals: $2.8M pipeline at risk',
+          'Champion departures: $1.9M ARR risk',
+          'Competitive threats: $1.5M defense needed',
+          'Budget delays: $1.2M timing risk'
+        ]
+      },
+      {
+        id: 'response-effectiveness',
+        title: 'Exception Response Effectiveness',
+        description: 'Success rates by alert type and response action',
+        chartType: 'breakdown',
+        businessQuestion: 'Which intervention tactics work best?',
+        actionableInsights: [
+          'Executive engagement: 78% save rate',
+          'Competitive battle cards: 68% win rate',
+          'Champion replacement: 72% success within 30 days',
+          'Deal acceleration: 82% unstick rate'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'critical-alerts-queue',
+        title: 'Critical Alerts Action Queue',
+        description: '8 critical alerts requiring action within 24 hours',
+        actionType: 'alert',
+        urgency: 'high',
+        businessImpact: '$1.2M ARR at immediate risk - prevent churn and deal loss'
+      },
+      {
+        id: 'champion-changes',
+        title: 'Champion Departure Response',
+        description: '12 accounts with recent champion changes',
+        actionType: 'workflow',
+        urgency: 'high',
+        businessImpact: 'Rapid relationship rebuild to maintain expansion momentum'
+      },
+      {
+        id: 'competitive-defense',
+        title: 'Competitive Threat Defense',
+        description: 'Accounts with active competitive activity',
+        actionType: 'escalation',
+        urgency: 'high',
+        businessImpact: 'Defend $1.5M ARR from competitive displacement'
+      },
+      {
+        id: 'stalled-deal-intervention',
+        title: 'Stalled Deal Intervention',
+        description: 'Opportunities stuck in stage >30 days',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'Accelerate $2.8M stalled pipeline back to health'
+      }
+    ]
   }
 ];
 
@@ -550,7 +1402,7 @@ export class DrillDownNavigationService {
     return this.navigationHistory;
   }
 
-  drillDown(kpiId: string, level: 2 | 3, subView?: string): DrillDownLevel {
+  drillDown(kpiId: string, level: 2 | 3, subView?: string, actionId?: string): DrillDownLevel {
     // Add current level to history
     this.navigationHistory.push({ ...this.currentLevel });
 
@@ -573,7 +1425,8 @@ export class DrillDownNavigationService {
         title: `${kpiDrillDown.kpiName} - Operational Actions`,
         description: 'Actionable insights and immediate next steps',
         kpi: kpiId,
-        subView
+        subView,
+        actionId
       };
     }
 
