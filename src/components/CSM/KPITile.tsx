@@ -9,9 +9,10 @@ interface KPITileProps {
   kpi: KPIResult;
   onClick?: () => void;
   drillDownUrl?: string;
+  customBgColor?: string;
 }
 
-export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
+export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KPITileProps) {
   // Status-based background colors (following health score matrix)
   // Success (Green): 76-100 = Thriving/Healthy
   // Warning (Orange): 60-75 = Stable
@@ -117,8 +118,8 @@ export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
   
   const isClickable = !!(drillDownUrl || onClick);
   
-  // Get colors based on actual KPI status
-  const tileColor = getTileColor();
+  // Get colors based on actual KPI status (or use custom color if provided)
+  const tileColor = customBgColor || getTileColor();
   const textColorClass = getTextColor();
   const progressBarClass = getProgressBarColor();
   
@@ -208,24 +209,26 @@ export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
         href={drillDownUrl}
         className={`
           group block relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
-          ${tileColor}
+          ${!customBgColor ? tileColor : ''}
           cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1
           transform-gpu
         `}
+        style={customBgColor ? { backgroundColor: customBgColor } : undefined}
       >
         {content}
       </Link>
     );
   }
-  
+
   return (
     <div
       className={`
         group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
-        ${tileColor}
+        ${!customBgColor ? tileColor : ''}
         ${isClickable ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
       `}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
       onClick={onClick}
     >
       {content}

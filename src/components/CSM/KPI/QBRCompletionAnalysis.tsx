@@ -266,7 +266,7 @@ export function QBRCompletionAnalysis() {
     <div className="p-8">
       {/* Top Summary Cards */}
       <div className="grid grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Completion Rate</p>
@@ -287,19 +287,19 @@ export function QBRCompletionAnalysis() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <p className="text-sm font-medium text-gray-600">Overdue QBRs</p>
           <p className="text-3xl font-bold text-red-600">{metrics.overdueAccounts}</p>
           <span className="text-sm font-medium text-red-600 mt-4 block">⏰ Need Action</span>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <p className="text-sm font-medium text-gray-600">At-Risk ARR</p>
           <p className="text-3xl font-bold text-orange-600">${(metrics.totalAtRiskARR / 1000000).toFixed(1)}M</p>
           <span className="text-sm font-medium text-orange-600 mt-4 block">💰 Overdue Accounts</span>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <p className="text-sm font-medium text-gray-600">Avg Prep Time</p>
           <p className="text-3xl font-bold text-blue-600">{metrics.avgPrepTime.toFixed(2)}h</p>
           <span className="text-sm font-medium text-blue-600 mt-4 block">⚡ Per QBR</span>
