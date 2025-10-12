@@ -13,6 +13,9 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortField, setSortField] = useState<keyof AccountUtilizationDetail>('priorityScore');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   useEffect(() => {
     try {
@@ -83,11 +86,56 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
     return new Date(dateString).toLocaleDateString();
   };
 
+  // Search filtering
+  const filteredAccounts = accounts.filter(account => {
+    if (!searchTerm) return true;
+    const search = searchTerm.toLowerCase();
+    return (
+      account.customerName.toLowerCase().includes(search) ||
+      account.customerId.toLowerCase().includes(search) ||
+      account.productFamily.toLowerCase().includes(search) ||
+      account.recommendedAction.toLowerCase().includes(search)
+    );
+  });
+
+  // Sorting
+  const sortedAccounts = [...filteredAccounts].sort((a, b) => {
+    const aValue = a[sortField];
+    const bValue = b[sortField];
+    
+    if (typeof aValue === 'number' && typeof bValue === 'number') {
+      return sortDirection === 'asc' ? aValue - bValue : bValue - aValue;
+    }
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
+      return sortDirection === 'asc' 
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
+    }
+    return 0;
+  });
+
+  // Handle sort
+  const handleSort = (field: keyof AccountUtilizationDetail) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('desc');
+    }
+    setCurrentPage(1); // Reset to first page when sorting
+  };
+
+  // Get sort icon
+  const getSortIcon = (field: keyof AccountUtilizationDetail) => {
+    if (sortField !== field) return ' ⇅';
+    return sortDirection === 'asc' ? ' ↑' : ' ↓';
+  };
+
   // Pagination
-  const totalPages = Math.ceil(accounts.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedAccounts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentAccounts = accounts.slice(startIndex, endIndex);
+  const currentAccounts = sortedAccounts.slice(startIndex, endIndex);
 
   if (loading) {
     return (
@@ -107,20 +155,47 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-8">
       <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl font-bold text-gray-900">
-          {utilizationBucket ? `${utilizationBucket} Utilization Accounts` : 'All Accounts by Utilization'}
-        </h3>
-        <div className="flex items-center space-x-2">
-          <span className="text-sm text-gray-600">Show:</span>
-          <select
-            value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(Number(e.target.value))}
-            className="border border-gray-300 rounded px-2 py-1 text-sm"
-          >
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-          </select>
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900">
+            {utilizationBucket ? `${utilizationBucket} Utilization Accounts` : 'All Accounts by Utilization'}
+          </h3>
+          <p className="text-sm text-gray-500 mt-1">
+            {filteredAccounts.length} {filteredAccounts.length === 1 ? 'account' : 'accounts'} 
+            {searchTerm && ` matching "${searchTerm}"`}
+          </p>
+        </div>
+        <div className="flex items-center space-x-3">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search accounts..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1); // Reset to first page when searching
+              }}
+              className="border border-gray-300 rounded-lg px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
+            />
+            <svg className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="width" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-600">Show:</span>
+            <select
+              value={itemsPerPage}
+              onChange={(e) => {
+                setItemsPerPage(Number(e.target.value));
+                setCurrentPage(1);
+              }}
+              className="border border-gray-300 rounded px-2 py-1 text-sm"
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -161,14 +236,46 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Priority</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Account</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Product</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Utilization</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Licenses</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Health</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">ARR</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Renewal</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('priorityScore')} className="flex items-center hover:text-blue-600 transition-colors">
+                      Priority{getSortIcon('priorityScore')}
+                    </button>
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('customerName')} className="flex items-center hover:text-blue-600 transition-colors">
+                      Account{getSortIcon('customerName')}
+                    </button>
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('productFamily')} className="flex items-center hover:text-blue-600 transition-colors">
+                      Product{getSortIcon('productFamily')}
+                    </button>
+                  </th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('utilizationPercentage')} className="flex items-center ml-auto hover:text-blue-600 transition-colors">
+                      Utilization{getSortIcon('utilizationPercentage')}
+                    </button>
+                  </th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('totalLicenses')} className="flex items-center ml-auto hover:text-blue-600 transition-colors">
+                      Licenses{getSortIcon('totalLicenses')}
+                    </button>
+                  </th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('healthScore')} className="flex items-center ml-auto hover:text-blue-600 transition-colors">
+                      Health{getSortIcon('healthScore')}
+                    </button>
+                  </th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('arr')} className="flex items-center ml-auto hover:text-blue-600 transition-colors">
+                      ARR{getSortIcon('arr')}
+                    </button>
+                  </th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                    <button onClick={() => handleSort('daysToRenewal')} className="flex items-center ml-auto hover:text-blue-600 transition-colors">
+                      Renewal{getSortIcon('daysToRenewal')}
+                    </button>
+                  </th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Action</th>
                 </tr>
               </thead>
@@ -246,7 +353,8 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
           {totalPages > 1 && (
             <div className="flex items-center justify-between mt-6">
               <div className="text-sm text-gray-700">
-                Showing {startIndex + 1} to {Math.min(endIndex, accounts.length)} of {accounts.length} accounts
+                Showing {startIndex + 1} to {Math.min(endIndex, sortedAccounts.length)} of {sortedAccounts.length} accounts
+                {searchTerm && ` (filtered from ${accounts.length} total)`}
               </div>
               <div className="flex items-center space-x-2">
                 <button

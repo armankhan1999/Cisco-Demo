@@ -6,7 +6,9 @@ import { useRouter } from 'next/navigation';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
 import { useSidebar } from '../../../../contexts/SidebarContext';
 import { calculateAllKPIs } from '@/lib/kpis/csmKPICalculations';
-import { getActiveAccounts, getAllSubscriptions } from '@/lib/data/csmDataLoader';
+import { getActiveAccounts } from '@/lib/data/csmDataLoader';
+import csmsData from '@/source_data/master-data/csms.json';
+import contractsData from '@/source_data/master-data/contracts.json';
 
 export default function AtRiskARRDrillDown() {
   const router = useRouter();
@@ -15,6 +17,9 @@ export default function AtRiskARRDrillDown() {
   const [accounts, setAccounts] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortField, setSortField] = useState<string>('healthScore');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   useEffect(() => {
     try {
@@ -26,17 +31,17 @@ export default function AtRiskARRDrillDown() {
       
       // Get account data and filter for at-risk accounts (health < 60)
       const allAccounts = getActiveAccounts();
-      const subscriptions = getAllSubscriptions();
+      const contracts = contractsData as any[];
       
       // Filter accounts with health score < 60
       const atRiskAccounts = allAccounts
         .filter(acc => acc.account.health_score < 60)
         .map(acc => {
-          // Find subscription for renewal date
-          const subscription = subscriptions.find(sub => sub.customer_id === acc.account.id);
+          // Find contract for account-level renewal date (not product-level)
+          const contract = contracts.find(c => c.customer_id === acc.account.id);
           
-          // Calculate days to renewal
-          const renewalDate = subscription ? new Date(subscription.subscription_end_date) : null;
+          // Calculate days to renewal from contract end_date
+          const renewalDate = contract ? new Date(contract.end_date) : null;
           const daysToRenewal = renewalDate ? 
             Math.ceil((renewalDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) : 
             null;
@@ -56,9 +61,9 @@ export default function AtRiskARRDrillDown() {
             riskSeverity = 'medium';
           }
           
-          // Mock CSM assignment
-          const csms = ['Sarah Martinez', 'Mike Thompson', 'Lisa Chen', 'David Wilson'];
-          const assignedCSM = csms[Math.floor(Math.random() * csms.length)];
+          // Real CSM mapping from source data
+          const csm = csmsData.find(c => c.csm_id === acc.account.csm_id);
+          const assignedCSM = csm ? csm.name : 'Unassigned';
           
           return {
             id: acc.account.id,
@@ -129,6 +134,48 @@ export default function AtRiskARRDrillDown() {
 
   const { isCollapsed } = useSidebar();
 
+  // Search and filter
+  const filteredAccounts = accounts.filter(account => {
+    if (!searchTerm) return true;
+    const search = searchTerm.toLowerCase();
+    return (
+      account.name.toLowerCase().includes(search) ||
+      account.tier.toLowerCase().includes(search) ||
+      account.primaryRisk.toLowerCase().includes(search) ||
+      account.csm.toLowerCase().includes(search)
+    );
+  });
+
+  // Sort accounts
+  const sortedAccounts = [...filteredAccounts].sort((a, b) => {
+    let aValue = a[sortField];
+    let bValue = b[sortField];
+    
+    if (typeof aValue === 'number' && typeof bValue === 'number') {
+      return sortDirection === 'asc' ? aValue - bValue : bValue - aValue;
+    }
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
+      return sortDirection === 'asc' 
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
+    }
+    return 0;
+  });
+
+  const handleSort = (field: string) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const getSortIcon = (field: string) => {
+    if (sortField !== field) return ' ⇅';
+    return sortDirection === 'asc' ? ' ↑' : ' ↓';
+  };
+
   if (loading) {
     return (
       <div className="flex h-screen overflow-hidden bg-gray-50">
@@ -142,8 +189,8 @@ export default function AtRiskARRDrillDown() {
     );
   }
 
-  const totalPages = Math.ceil(accounts.length / perPage);
-  const paginatedAccounts = accounts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  const totalPages = Math.ceil(sortedAccounts.length / perPage);
+  const paginatedAccounts = sortedAccounts.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
@@ -182,6 +229,36 @@ export default function AtRiskARRDrillDown() {
         </div>
 
         <div className="p-8">
+          {/* At-Risk Definition Banner */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-6">
+            <div className="flex items-start gap-3">
+              <svg className="w-6 h-6 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <div className="flex-1">
+                <h3 className="text-sm font-semibold text-blue-900 mb-1">At-Risk ARR Definition</h3>
+                <p className="text-sm text-blue-800">
+                  <strong>Threshold:</strong> Accounts with Health Score <strong>&lt; 60</strong> are classified as at-risk.
+                  This page shows all accounts requiring immediate attention, categorized by risk severity:
+                </p>
+                <div className="mt-2 grid grid-cols-3 gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block w-3 h-3 bg-red-500 rounded"></span>
+                    <span className="text-blue-900"><strong>Critical (0-45):</strong> Immediate intervention</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block w-3 h-3 bg-orange-500 rounded"></span>
+                    <span className="text-blue-900"><strong>High Risk (46-55):</strong> Proactive engagement</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block w-3 h-3 bg-yellow-500 rounded"></span>
+                    <span className="text-blue-900"><strong>Medium Risk (56-59):</strong> Close monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Top Summary Cards */}
           <div className="grid grid-cols-4 gap-6 mb-8">
             <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
@@ -221,7 +298,7 @@ export default function AtRiskARRDrillDown() {
               </div>
               <div className="mt-4">
                 <span className="inline-flex items-center text-sm font-medium text-gray-600">
-                  Health Score &lt; 60
+                  🎯 At-Risk Threshold: Health Score &lt; 60
                 </span>
               </div>
             </div>
@@ -271,10 +348,27 @@ export default function AtRiskARRDrillDown() {
 
           {/* Risk Distribution */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-6">Risk Distribution</h3>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="font-semibold text-gray-900">Risk Distribution</h3>
+              <span className="text-xs text-gray-500">Click a category to filter accounts</span>
+            </div>
             <div className="space-y-4">
               {atRiskData.riskDistribution.map((risk: any, idx: number) => (
-                <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div 
+                  key={idx} 
+                  onClick={() => {
+                    // Filter accounts by risk category
+                    const rangeMatch = risk.category.match(/\((\d+)-(\d+)\)/);
+                    if (rangeMatch) {
+                      const min = parseInt(rangeMatch[1]);
+                      const max = parseInt(rangeMatch[2]);
+                      const filtered = accounts.filter(acc => acc.healthScore >= min && acc.healthScore <= max);
+                      alert(`📊 Filtering ${risk.category}\n\nFound ${filtered.length} accounts:\n${filtered.slice(0, 5).map(a => `• ${a.name} (Health: ${a.healthScore})`).join('\n')}${filtered.length > 5 ? `\n...and ${filtered.length - 5} more` : ''}\n\n💡 Tip: Use the search box to filter by account name, tier, or CSM`);
+                    }
+                  }}
+                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 hover:border-gray-300 hover:shadow-md transition-all"
+                  title="Click to filter by this risk category"
+                >
                   <div className="flex items-center gap-3">
                     <div className={`w-4 h-4 rounded ${risk.color}`}></div>
                     <div>
@@ -297,20 +391,42 @@ export default function AtRiskARRDrillDown() {
 
           {/* At-Risk Accounts Table */}
           <div className="bg-white rounded-lg border border-gray-200">
-            <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="font-semibold text-gray-900">At-Risk Account Details</h3>
+            <div className="px-6 py-4 border-b border-gray-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-gray-900">At-Risk Account Details</h3>
+              </div>
               <div className="flex items-center gap-4">
+                <div className="relative flex-1 max-w-md">
+                  <input
+                    type="text"
+                    placeholder="Search accounts, tier, risk, CSM..."
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <svg className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
                 <select 
                   value={perPage} 
-                  onChange={(e) => setPerPage(Number(e.target.value))}
+                  onChange={(e) => {
+                    setPerPage(Number(e.target.value));
+                    setCurrentPage(1);
+                  }}
                   className="text-sm border border-gray-300 rounded-lg px-3 py-2"
                 >
                   <option value={10}>10 per page</option>
                   <option value={20}>20 per page</option>
                   <option value={50}>50 per page</option>
+                  <option value={100}>100 per page</option>
                 </select>
                 <span className="text-sm text-gray-600">
-                  Showing {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, accounts.length)} of {accounts.length}
+                  {sortedAccounts.length} {sortedAccounts.length === 1 ? 'account' : 'accounts'}
+                  {searchTerm && ` matching "${searchTerm}"`}
                 </span>
               </div>
             </div>
@@ -319,18 +435,47 @@ export default function AtRiskARRDrillDown() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Health Score</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ARR</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Primary Risk</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Days to Renewal</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CSM</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('name')} className="flex items-center hover:text-blue-600 transition-colors">
+                        Account{getSortIcon('name')}
+                      </button>
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('healthScore')} className="flex items-center hover:text-blue-600 transition-colors">
+                        Health Score{getSortIcon('healthScore')}
+                      </button>
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('arr')} className="flex items-center hover:text-blue-600 transition-colors">
+                        ARR{getSortIcon('arr')}
+                      </button>
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('primaryRisk')} className="flex items-center hover:text-blue-600 transition-colors">
+                        Primary Risk{getSortIcon('primaryRisk')}
+                      </button>
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('daysToRenewal')} className="flex items-center hover:text-blue-600 transition-colors">
+                        Days to Renewal{getSortIcon('daysToRenewal')}
+                      </button>
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <button onClick={() => handleSort('csm')} className="flex items-center hover:text-blue-600 transition-colors">
+                        CSM{getSortIcon('csm')}
+                      </button>
+                    </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {paginatedAccounts.map((account: any, idx: number) => (
-                    <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                    <tr 
+                      key={idx} 
+                      onClick={() => router.push(`/csm/accounts/${account.id}`)}
+                      className="hover:bg-gray-50 transition-colors cursor-pointer"
+                      title="Click to view account details"
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="ml-0">
@@ -368,10 +513,22 @@ export default function AtRiskARRDrillDown() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex gap-2">
-                          <button className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent row click
+                              alert(`🚀 Launching Save Campaign for ${account.name}\n\nThis would:\n• Create high-priority ticket\n• Assign to ${account.csm}\n• Schedule immediate intervention call\n• Track in CRM system`);
+                            }}
+                            className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded hover:bg-blue-50 transition-colors"
+                          >
                             Launch Save Campaign
                           </button>
-                          <button className="text-orange-600 hover:text-orange-900 text-xs px-2 py-1 border border-orange-600 rounded">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent row click
+                              alert(`📅 Scheduling QBR for ${account.name}\n\nThis would:\n• Open calendar booking\n• Invite: Customer executives + ${account.csm}\n• Prepare QBR deck with health metrics\n• Set follow-up tasks`);
+                            }}
+                            className="text-orange-600 hover:text-orange-900 text-xs px-2 py-1 border border-orange-600 rounded hover:bg-orange-50 transition-colors"
+                          >
                             Schedule QBR
                           </button>
                         </div>

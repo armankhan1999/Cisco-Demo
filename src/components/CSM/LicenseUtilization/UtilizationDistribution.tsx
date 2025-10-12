@@ -105,41 +105,59 @@ export function UtilizationDistribution({ onBucketClick }: UtilizationDistributi
             {distribution.map((bucket, index) => (
               <tr
                 key={index}
-                className={`hover:bg-gray-50 transition-colors ${onBucketClick ? 'cursor-pointer' : ''}`}
-                onClick={() => onBucketClick?.(bucket.range)}
-                title={onBucketClick ? `Click to view accounts in ${bucket.range} range` : ''}
+                className={`hover:bg-gray-50 transition-colors ${onBucketClick && bucket.accounts > 0 ? 'cursor-pointer' : 'cursor-default'}`}
+                onClick={() => bucket.accounts > 0 && onBucketClick?.(bucket.range)}
+                title={onBucketClick && bucket.accounts > 0 ? `Click to view accounts in ${bucket.range} range` : bucket.accounts === 0 ? 'No accounts in this range' : ''}
               >
                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{getBucketIcon(bucket.status)}</span>
                     <div>
                       <div className="font-medium text-gray-900">{bucket.range}</div>
-                      <div className="text-gray-500">Avg: {bucket.avgUtilization.toFixed(0)}%</div>
+                      <div className="text-gray-500">
+                        Avg: {bucket.accounts === 0 ? 'N/A' : `${bucket.avgUtilization.toFixed(0)}%`}
+                      </div>
                     </div>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/csm/kpi/license-details?focus=range&range=${encodeURIComponent(bucket.range)}`);
-                    }}
-                    className="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                    title={`View ${bucket.accounts} accounts in ${bucket.range} range`}
-                  >
-                    {bucket.accounts}
-                  </button>
+                  {bucket.accounts === 0 ? (
+                    <span className="text-gray-400 font-medium">N/A</span>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/csm/kpi/license-details?focus=range&range=${encodeURIComponent(bucket.range)}`);
+                      }}
+                      className="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                      title={`View ${bucket.accounts} accounts in ${bucket.range} range`}
+                    >
+                      {bucket.accounts}
+                    </button>
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
-                  {formatCurrency(bucket.arr)}
+                  {bucket.accounts === 0 ? (
+                    <span className="text-gray-400">N/A</span>
+                  ) : (
+                    formatCurrency(bucket.arr)
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
-                  {bucket.percentage.toFixed(1)}%
+                  {bucket.accounts === 0 ? (
+                    <span className="text-gray-400">N/A</span>
+                  ) : (
+                    `${bucket.percentage.toFixed(1)}%`
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-center">
-                  <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ${getBucketColor(bucket.status)}`}>
-                    {bucket.status.replace('-', ' ').toUpperCase()}
-                  </span>
+                  {bucket.accounts === 0 ? (
+                    <span className="text-gray-400">-</span>
+                  ) : (
+                    <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ${getBucketColor(bucket.status)}`}>
+                      {bucket.status.replace('-', ' ').toUpperCase()}
+                    </span>
+                  )}
                 </td>
               </tr>
             ))}

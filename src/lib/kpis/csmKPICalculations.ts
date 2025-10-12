@@ -141,10 +141,28 @@ export function calculatePortfolioHealth(filteredAccounts?: any[]): KPIResult {
   console.log(`📊 Total Portfolio Health Score: ${portfolioHealth.toFixed(1)}`);
   console.log('='.repeat(50));
   
-  // Calculate real month-over-month change using 4-component formula
-  // For simplicity, we'll use a small variation to simulate month-over-month change
-  const momChange = 0.0; // Since we're using real-time KPI values, change is minimal
-  const trend = 'stable';
+  // Calculate real month-over-month change based on weighted component changes
+  // Extract numeric trend changes from each component KPI
+  const extractNumericChange = (changeStr: string): number => {
+    const match = changeStr.match(/([+-]?\d+\.?\d*)/);
+    return match ? parseFloat(match[1]) : 0;
+  };
+  
+  // Weight each component's change by its contribution to health score
+  const utilizationChange = extractNumericChange(portfolioUtilization.change || '0') * 0.40;
+  const engagementChange = extractNumericChange(engagementScore.change || '0') * 0.30;
+  const churnChange = -extractNumericChange(churnRate.change || '0') * 0.20; // Negative because lower churn is better
+  const grrChange = extractNumericChange(grr.change || '0') * 0.10;
+  
+  const momChange = utilizationChange + engagementChange + churnChange + grrChange;
+  const trend = Math.abs(momChange) < 1 ? 'stable' : momChange > 0 ? 'up' : 'down';
+  
+  console.log(`📊 Health Score Month-over-Month Change: ${momChange.toFixed(2)}`);
+  console.log(`  • Utilization contribution: ${utilizationChange.toFixed(2)}`);
+  console.log(`  • Engagement contribution: ${engagementChange.toFixed(2)}`);
+  console.log(`  • Churn contribution: ${churnChange.toFixed(2)}`);
+  console.log(`  • GRR contribution: ${grrChange.toFixed(2)}`);
+  console.log('='.repeat(50));
 
   return {
     value: portfolioHealth,

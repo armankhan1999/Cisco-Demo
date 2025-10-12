@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { getUtilizationTrendData } from '../../../lib/kpis/licenseUtilizationKPIs';
 
 interface TrendDataPoint {
   date: string;
@@ -18,52 +19,76 @@ interface UtilizationTrendAnalysisProps {
 export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalysisProps) {
   const [trendData, setTrendData] = useState<TrendDataPoint[]>([]);
   const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState<'daily' | 'monthly'>('daily');
 
   useEffect(() => {
     try {
-      // Generate 90-day trend data
-      const data: TrendDataPoint[] = [];
-      const today = new Date();
+      // Get real utilization trend data for last 90 days
+      const realTrendData = getUtilizationTrendData(90);
       
-      for (let i = 89; i >= 0; i--) {
-        const date = new Date(today);
-        date.setDate(date.getDate() - i);
-        
-        // Simulate realistic trend data with some variation
-        const baseUtilization = 73;
-        const seasonalVariation = Math.sin((i / 90) * Math.PI * 2) * 5; // Seasonal pattern
-        const randomVariation = (Math.random() - 0.5) * 10; // Random noise
-        const utilization = Math.max(0, Math.min(100, baseUtilization + seasonalVariation + randomVariation));
-        
-        data.push({
-          date: date.toISOString().split('T')[0],
-          utilization: Math.round(utilization * 10) / 10,
-          activeUsers: Math.round(3299 + (Math.random() - 0.5) * 200),
-          unusedCapacity: Math.round(1221 + (Math.random() - 0.5) * 100),
-          rolling7Day: 0, // Will be calculated below
-          rolling30Day: 0 // Will be calculated below
-        });
+      if (realTrendData.length === 0) {
+        console.warn('No real trend data available, using fallback');
+        setTrendData([]);
+        setLoading(false);
+        return;
       }
       
-      // Calculate rolling averages
-      data.forEach((point, index) => {
-        const start7 = Math.max(0, index - 6);
-        const start30 = Math.max(0, index - 29);
+      let processedData: TrendDataPoint[];
+      
+      if (viewMode === 'monthly') {
+        // Group by month and calculate monthly averages
+        const monthlyGroups = new Map<string, any[]>();
+        realTrendData.forEach(point => {
+          const monthKey = point.date.substring(0, 7); // YYYY-MM
+          if (!monthlyGroups.has(monthKey)) {
+            monthlyGroups.set(monthKey, []);
+          }
+          monthlyGroups.get(monthKey)!.push(point);
+        });
         
-        const last7Days = data.slice(start7, index + 1);
-        const last30Days = data.slice(start30, index + 1);
+        processedData = Array.from(monthlyGroups.entries()).map(([month, points]) => {
+          const avgUtilization = points.reduce((sum, p) => sum + p.utilization, 0) / points.length;
+          const totalActiveUsers = points.reduce((sum, p) => sum + p.totalUsed, 0);
+          const totalUnusedCapacity = points.reduce((sum, p) => sum + p.totalAvailable, 0);
+          
+          return {
+            date: `${month}-01`, // First day of month for display
+            utilization: avgUtilization,
+            activeUsers: Math.round(totalActiveUsers / points.length),
+            unusedCapacity: Math.round(totalUnusedCapacity / points.length),
+            rolling7Day: 0, // Will be calculated below
+            rolling30Day: 0 // Will be calculated below
+          };
+        });
+      } else {
+        // Daily view - use original data
+        processedData = realTrendData.map(point => ({
+          date: point.date,
+          utilization: point.utilization,
+          activeUsers: point.totalUsed,
+          unusedCapacity: point.totalAvailable,
+          rolling7Day: 0, // Will be calculated below
+          rolling30Day: 0 // Will be calculated below
+        }));
+      }
+      
+      // Calculate rolling averages based on view mode
+      processedData.forEach((point, index) => {
+        const windowSize = viewMode === 'monthly' ? 3 : 7; // 3 months vs 7 days
+        const startWindow = Math.max(0, index - (windowSize - 1));
         
-        point.rolling7Day = last7Days.reduce((sum, p) => sum + p.utilization, 0) / last7Days.length;
-        point.rolling30Day = last30Days.reduce((sum, p) => sum + p.utilization, 0) / last30Days.length;
+        const windowData = processedData.slice(startWindow, index + 1);
+        point.rolling7Day = windowData.reduce((sum, p) => sum + p.utilization, 0) / windowData.length;
+        point.rolling30Day = point.rolling7Day; // For monthly view, use same as 7-day
       });
       
-      setTrendData(data);
+      setTrendData(processedData);
       setLoading(false);
     } catch (error) {
-      console.error('Error loading trend data:', error);
+      console.error('Error loading real trend data:', error);
       setLoading(false);
     }
-  }, []);
+  }, [viewMode]);
 
   if (loading) {
     return (
@@ -71,6 +96,25 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
         <div className="animate-pulse">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
           <div className="h-64 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (trendData.length === 0) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="text-center py-8">
+          <div className="text-4xl mb-4">📊</div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            Portfolio Utilization Trend - Last 90 Days
+          </h3>
+          <p className="text-gray-600 mb-4">
+            No utilization data available for the last 90 days
+          </p>
+          <p className="text-sm text-gray-500">
+            Data will appear once utilization tracking begins
+          </p>
         </div>
       </div>
     );
@@ -84,6 +128,13 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
   const peakDate = trendData.find(d => d.utilization === peakUtilization)?.date;
   const troughUtilization = Math.min(...trendData.map(d => d.utilization));
   const troughDate = trendData.find(d => d.utilization === troughUtilization)?.date;
+
+  // Dynamic scale calculation
+  const dataRange = peakUtilization - troughUtilization;
+  const padding = Math.max(dataRange * 0.1, 0.5); // 10% padding or minimum 0.5%
+  const minScale = Math.max(0, troughUtilization - padding);
+  const maxScale = Math.min(100, peakUtilization + padding);
+  const scaleRange = maxScale - minScale;
 
   const getTrendDirection = () => {
     const recent = trendData.slice(-7);
@@ -101,8 +152,37 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
         <h3 className="text-lg font-semibold text-gray-900">
           📈 Portfolio Utilization Trend - Last 90 Days
         </h3>
-        <div className="text-sm text-gray-500">
-          Daily Portfolio Metrics
+        <div className="flex items-center space-x-4">
+          {/* View Mode Toggle */}
+          <div className="flex bg-gray-100 rounded-lg p-1">
+            <button
+              onClick={() => setViewMode('daily')}
+              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+                viewMode === 'daily'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Daily
+            </button>
+            <button
+              onClick={() => setViewMode('monthly')}
+              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+                viewMode === 'monthly'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Monthly
+            </button>
+          </div>
+          <div className="text-sm text-gray-500">
+            {viewMode === 'daily' ? 'Daily Portfolio Metrics' : 'Monthly Portfolio Metrics'}
+          </div>
+          {/* Dynamic Scale Indicator */}
+          <div className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
+            Scale: {minScale.toFixed(1)}% - {maxScale.toFixed(1)}%
+          </div>
         </div>
       </div>
 
@@ -124,28 +204,54 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
             {/* X-axis */}
             <line x1="60" y1="300" x2="880" y2="300" stroke="#9ca3af" strokeWidth="2" />
             
-            {/* Target zone (70-90%) - properly scaled */}
-            <rect x="60" y="48" width="820" height="112" fill="#dcfce7" opacity="0.3" />
-            <text x="70" y="42" className="text-xs fill-green-600 font-semibold">Target Zone (70-90%)</text>
+            {/* Target zone - dynamic scaling */}
+            {(() => {
+              const targetMin = 70;
+              const targetMax = 90;
+              
+              // Only show target zone if it's within the visible range
+              if (targetMax >= minScale && targetMin <= maxScale) {
+                const targetMinY = 300 - ((Math.max(targetMin, minScale) - minScale) / scaleRange) * 280;
+                const targetMaxY = 300 - ((Math.min(targetMax, maxScale) - minScale) / scaleRange) * 280;
+                const targetHeight = targetMaxY - targetMinY;
+                
+                return (
+                  <>
+                    <rect x="60" y={targetMinY} width="820" height={targetHeight} fill="#dcfce7" opacity="0.3" />
+                    <text x="70" y={targetMinY - 5} className="text-xs fill-green-600 font-semibold">
+                      Target Zone (70-90%)
+                    </text>
+                  </>
+                );
+              }
+              return null;
+            })()}
             
-            {/* Y-axis labels - properly aligned */}
-            <text x="50" y="25" textAnchor="end" className="text-xs fill-gray-700 font-medium">100%</text>
-            <text x="50" y="81" textAnchor="end" className="text-xs fill-gray-700 font-medium">80%</text>
-            <text x="50" y="137" textAnchor="end" className="text-xs fill-gray-700 font-medium">60%</text>
-            <text x="50" y="193" textAnchor="end" className="text-xs fill-gray-700 font-medium">40%</text>
-            <text x="50" y="249" textAnchor="end" className="text-xs fill-gray-700 font-medium">20%</text>
-            <text x="50" y="305" textAnchor="end" className="text-xs fill-gray-700 font-medium">0%</text>
+            {/* Y-axis labels - dynamic scale */}
+            {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
+              const value = minScale + (ratio * scaleRange);
+              const y = 300 - (ratio * 280);
+              return (
+                <text key={ratio} x="50" y={y + 4} textAnchor="end" className="text-xs fill-gray-700 font-medium">
+                  {value.toFixed(1)}%
+                </text>
+              );
+            })}
             
             {/* Horizontal grid lines at each label */}
-            {[20, 76, 132, 188, 244, 300].map((y) => (
-              <line key={y} x1="60" y1={y} x2="880" y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
-            ))}
+            {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
+              const y = 300 - (ratio * 280);
+              return (
+                <line key={ratio} x1="60" y1={y} x2="880" y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
+              );
+            })}
             
-            {/* Trend line - with proper scaling */}
+            {/* Trend line - with dynamic scaling */}
             <polyline
               points={trendData.map((point, index) => {
                 const x = 60 + (index / (trendData.length - 1)) * 820;
-                const y = 300 - (point.utilization / 100) * 280;
+                const normalizedValue = (point.utilization - minScale) / scaleRange;
+                const y = 300 - (normalizedValue * 280);
                 return `${x},${y}`;
               }).join(' ')}
               fill="none"
@@ -154,11 +260,12 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
               className="hover:stroke-blue-700 transition-colors"
             />
             
-            {/* Rolling 7-day average */}
+            {/* Rolling average - with dynamic scaling */}
             <polyline
               points={trendData.map((point, index) => {
                 const x = 60 + (index / (trendData.length - 1)) * 820;
-                const y = 300 - (point.rolling7Day / 100) * 280;
+                const normalizedValue = (point.rolling7Day - minScale) / scaleRange;
+                const y = 300 - (normalizedValue * 280);
                 return `${x},${y}`;
               }).join(' ')}
               fill="none"
@@ -168,12 +275,17 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
               opacity="0.7"
             />
             
-            {/* X-axis date labels - show every 15 days */}
-            {trendData.filter((_, index) => index % 15 === 0 || index === trendData.length - 1).map((point, idx, filtered) => {
+            {/* X-axis date labels - adjust based on view mode */}
+            {trendData.filter((_, index) => {
+              const interval = viewMode === 'monthly' ? 1 : 15; // Show every month or every 15 days
+              return index % interval === 0 || index === trendData.length - 1;
+            }).map((point, idx, filtered) => {
               const index = trendData.indexOf(point);
               const x = 60 + (index / (trendData.length - 1)) * 820;
               const dateObj = new Date(point.date);
-              const label = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+              const label = viewMode === 'monthly' 
+                ? `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}`
+                : `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
               return (
                 <text 
                   key={index} 
@@ -191,7 +303,8 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
             {trendData.filter((_, index) => index % 3 === 0).map((point) => {
               const index = trendData.indexOf(point);
               const x = 60 + (index / (trendData.length - 1)) * 820;
-              const y = 300 - (point.utilization / 100) * 280;
+              const normalizedValue = (point.utilization - minScale) / scaleRange;
+              const y = 300 - (normalizedValue * 280);
               return (
                 <circle
                   key={index}
@@ -221,11 +334,15 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
         <div className="flex items-center justify-center space-x-6 mt-2">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-0.5 bg-blue-500"></div>
-            <span className="text-sm text-gray-600">Daily Utilization</span>
+            <span className="text-sm text-gray-600">
+              {viewMode === 'daily' ? 'Daily Utilization' : 'Monthly Utilization'}
+            </span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-0.5 bg-green-500 border-dashed border-t-2"></div>
-            <span className="text-sm text-gray-600">7-Day Average</span>
+            <span className="text-sm text-gray-600">
+              {viewMode === 'daily' ? '7-Day Average' : '3-Month Average'}
+            </span>
           </div>
         </div>
       </div>
@@ -241,12 +358,16 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
         </div>
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="text-2xl font-bold text-gray-900">{trendData[trendData.length - 1]?.rolling7Day.toFixed(1)}%</div>
-          <div className="text-sm text-gray-600">7-Day Average</div>
+          <div className="text-sm text-gray-600">
+            {viewMode === 'daily' ? '7-Day Average' : '3-Month Average'}
+          </div>
           <div className="text-xs text-gray-500">Stable</div>
         </div>
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="text-2xl font-bold text-gray-900">{trendData[trendData.length - 1]?.rolling30Day.toFixed(1)}%</div>
-          <div className="text-sm text-gray-600">30-Day Average</div>
+          <div className="text-sm text-gray-600">
+            {viewMode === 'daily' ? '30-Day Average' : 'Overall Trend'}
+          </div>
           <div className={`text-xs ${trendDirection === 'down' ? 'text-red-600' : 'text-green-600'}`}>
             {trendDirection === 'down' ? '↓' : trendDirection === 'up' ? '↑' : '→'} Trending {trendDirection}
           </div>
@@ -263,27 +384,46 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
         <h4 className="font-medium text-gray-900 mb-3">Trend Analysis:</h4>
         <div className="space-y-2 text-sm">
           <div className="flex items-start space-x-2">
-            <span className="text-red-600">📉</span>
+            <span className={trendDirection === 'down' ? 'text-red-600' : trendDirection === 'up' ? 'text-green-600' : 'text-blue-600'}>
+              {trendDirection === 'down' ? '📉' : trendDirection === 'up' ? '📈' : '📊'}
+            </span>
             <span className="text-gray-700">
-              <strong>Declining Trend:</strong> Portfolio utilization down from {peakUtilization.toFixed(1)}% peak ({peakDate}) to {currentUtilization.toFixed(1)}% current
+              <strong>
+                {trendDirection === 'down' ? 'Declining' : trendDirection === 'up' ? 'Rising' : 'Stable'} Trend:
+              </strong> Portfolio utilization {trendDirection === 'down' ? 'down' : trendDirection === 'up' ? 'up' : 'stable'} from {peakUtilization.toFixed(1)}% peak ({peakDate}) to {currentUtilization.toFixed(1)}% current
             </span>
           </div>
           <div className="text-gray-600 ml-6">
-            <strong>Root Causes:</strong>
+            <strong>Key Insights:</strong>
             <ul className="list-disc list-inside mt-1 space-y-1">
-              <li>5 new customers onboarded (early adoption phase)</li>
-              <li>3 customers completed major projects (reduced daily usage)</li>
-              <li>Summer seasonality effects normalizing</li>
+              <li>Current utilization: {currentUtilization.toFixed(1)}% (Target: 70-90%)</li>
+              <li>
+                {viewMode === 'daily' ? '7-day average' : '3-month average'}: {trendData[trendData.length - 1]?.rolling7Day.toFixed(1)}%
+              </li>
+              <li>
+                {viewMode === 'daily' ? '30-day average' : 'Overall trend'}: {trendData[trendData.length - 1]?.rolling30Day.toFixed(1)}%
+              </li>
+              <li>
+                {viewMode === 'daily' ? 'Month-over-month change' : 'Period-over-period change'}: {momChange >= 0 ? '+' : ''}{momChange.toFixed(1)}%
+              </li>
             </ul>
           </div>
           <div className="flex items-start space-x-2 mt-3">
             <span className="text-orange-600">🎯</span>
             <span className="text-gray-700">
-              <strong>Action Items:</strong>
+              <strong>Recommended Actions:</strong>
               <ul className="list-disc list-inside mt-1 space-y-1">
-                <li>Monitor 3 accounts showing &gt;15% decline in last 30 days</li>
-                <li>Schedule QBRs with 2 post-project accounts to identify new use cases</li>
-                <li>Accelerate onboarding for 5 new customers (currently 45-60 days TTFV)</li>
+                {currentUtilization < 70 && (
+                  <li>Focus on adoption programs - utilization below target zone</li>
+                )}
+                {trendDirection === 'down' && (
+                  <li>Investigate accounts with declining utilization patterns</li>
+                )}
+                {peakUtilization > 90 && (
+                  <li>Monitor for overage risks and capacity planning needs</li>
+                )}
+                <li>Schedule QBRs with accounts showing significant changes</li>
+                <li>Review onboarding effectiveness for new customers</li>
               </ul>
             </span>
           </div>

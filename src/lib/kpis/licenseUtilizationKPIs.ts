@@ -824,8 +824,8 @@ export function calculateAccountUtilizationDetails(utilizationBucket?: string): 
       if (account && subscription) {
         // Calculate aggregate metrics for this customer
         const totalLicenses = utilizations.reduce((sum, util) => sum + util.total_licenses, 0);
-        const totalUsed = utilizations.reduce((sum, util) => sum + util.licenses_used, 0);
-        const totalAvailable = utilizations.reduce((sum, util) => sum + util.licenses_available, 0);
+        const totalUsed = utilizations.reduce((sum, util) => sum + util.active_users, 0);  // Fixed: use active_users instead of licenses_used
+        const totalAvailable = totalLicenses - totalUsed;  // Fixed: calculate from totalLicenses - totalUsed
         const avgUtilization = utilizations.reduce((sum, util) => sum + util.utilization_percentage, 0) / utilizations.length;
         
         // Calculate priority score
@@ -862,7 +862,7 @@ export function calculateAccountUtilizationDetails(utilizationBucket?: string): 
           licensesUsed: totalUsed,
           licensesAvailable: totalAvailable,
           healthScore,
-          arr: subscription.arr || 0,
+          arr: account.account?.arr || account.arr || 0,  // Fixed: use account-level ARR instead of subscription ARR
           renewalDate: subscription.next_renewal_date || '',
           daysToRenewal,
           priorityScore,
