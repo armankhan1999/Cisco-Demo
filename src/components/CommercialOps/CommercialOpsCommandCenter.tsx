@@ -138,6 +138,7 @@ export default function CommercialOpsCommandCenter() {
               icon={<Clock className="h-6 w-6" />}
               description="Average days from quote creation to payment received"
               customBgColor="#F3F3F3"
+              variant="q2c"
             />
             <KPICard
               title="Quote Approval"

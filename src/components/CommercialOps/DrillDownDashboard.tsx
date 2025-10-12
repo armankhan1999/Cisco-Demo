@@ -267,6 +267,7 @@ export default function DrillDownDashboard() {
                   color="blue"
                   onDrillDown={handleDrillDown}
                   customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="quote-approval-velocity"
