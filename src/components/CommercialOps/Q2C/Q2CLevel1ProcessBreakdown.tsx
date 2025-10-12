@@ -128,7 +128,7 @@ export default function Q2CLevel1ProcessBreakdown({ onBack, onDrillToLevel2 }: Q
       {/* Key Insights - Enhanced */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {processData.filter(p => p.status === 'critical').slice(0, 1).map(stage => (
-          <div key={stage.stage} className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div key={stage.stage} className="border border-red-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="h-5 w-5 text-red-500" />
               <span className="font-medium text-red-700">Critical Bottleneck</span>
@@ -138,9 +138,9 @@ export default function Q2CLevel1ProcessBreakdown({ onBack, onDrillToLevel2 }: Q
             </p>
           </div>
         ))}
-        
+
         {processData.filter(p => p.status === 'warning').slice(0, 1).map(stage => (
-          <div key={stage.stage} className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div key={stage.stage} className="border border-yellow-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-center gap-2 mb-2">
               <Clock className="h-5 w-5 text-yellow-500" />
               <span className="font-medium text-yellow-700">Needs Attention</span>
@@ -150,8 +150,8 @@ export default function Q2CLevel1ProcessBreakdown({ onBack, onDrillToLevel2 }: Q
             </p>
           </div>
         ))}
-        
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+
+        <div className="border border-green-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
             <span className="font-medium text-green-700">Performing Well</span>
@@ -160,8 +160,8 @@ export default function Q2CLevel1ProcessBreakdown({ onBack, onDrillToLevel2 }: Q
             {processData.filter(p => p.status === 'good').length} stages meeting SLA targets
           </p>
         </div>
-        
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+
+        <div className="border border-blue-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Total Cycle Time</span>

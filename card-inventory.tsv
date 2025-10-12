@@ -1,0 +1,71 @@
+Page Name	Card Title	Card Type	Component Used	Location
+CSM Portfolio Dashboard	GRR	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Portfolio Health	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	At-Risk ARR	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Renewal Rate	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Churn Rate	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Portfolio Average Utilization	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Feature Adoption Rate	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Customer Engagement Score	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	Time to Value (TTV)	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+CSM Portfolio Dashboard	QBR Completion Rate	KPI Tile	KPITile	src/components/CSM/CSMPortfolioDashboard.tsx
+GRR Detail Page	Overall GRR	Summary Card	Custom Card	src/app/csm/kpi/grr/page.tsx
+GRR Detail Page	Retained ARR	Summary Card	Custom Card	src/app/csm/kpi/grr/page.tsx
+GRR Detail Page	Churned ARR	Summary Card	Custom Card	src/app/csm/kpi/grr/page.tsx
+GRR Detail Page	Contracted ARR	Summary Card	Custom Card	src/app/csm/kpi/grr/page.tsx
+At-Risk ARR Detail Page	Total At-Risk ARR	Summary Card	Custom Card	src/app/csm/kpi/at-risk-arr/page.tsx
+At-Risk ARR Detail Page	At-Risk Accounts	Summary Card	Custom Card	src/app/csm/kpi/at-risk-arr/page.tsx
+At-Risk ARR Detail Page	Critical Accounts	Summary Card	Custom Card	src/app/csm/kpi/at-risk-arr/page.tsx
+At-Risk ARR Detail Page	Avg Risk Level	Summary Card	Custom Card	src/app/csm/kpi/at-risk-arr/page.tsx
+Portfolio Health Detail Page	Main Health Score	Health Score Card	Custom Card	src/app/csm/kpi/portfolio-health/page.tsx
+Portfolio Health Detail Page	Usage Health Component	Component Card	Custom Card	src/app/csm/kpi/portfolio-health/page.tsx
+Portfolio Health Detail Page	Engagement Health Component	Component Card	Custom Card	src/app/csm/kpi/portfolio-health/page.tsx
+Portfolio Health Detail Page	Support Health Component	Component Card	Custom Card	src/app/csm/kpi/portfolio-health/page.tsx
+Portfolio Health Detail Page	Business Outcome Component	Component Card	Custom Card	src/app/csm/kpi/portfolio-health/page.tsx
+Portfolio Utilization Detail Page	Total Licensed Seats	KPI Card	TotalLicensedSeatsKPI	src/app/csm/kpi/portfolio-utilization/page.tsx
+Portfolio Utilization Detail Page	Active Users	KPI Card	ActiveUsersKPI	src/app/csm/kpi/portfolio-utilization/page.tsx
+Portfolio Utilization Detail Page	Seat Waste	KPI Card	SeatWasteKPI	src/app/csm/kpi/portfolio-utilization/page.tsx
+Portfolio Utilization Detail Page	Feature Adoption Velocity	KPI Card	FeatureAdoptionKPI	src/app/csm/kpi/portfolio-utilization/page.tsx
+Renewal Rate Detail Page	Renewal Rate	Summary Card	Custom Card	src/app/csm/kpi/renewal-rate/page.tsx
+Renewal Rate Detail Page	Upcoming Renewals	Summary Card	Custom Card	src/app/csm/kpi/renewal-rate/page.tsx
+Renewal Rate Detail Page	Pipeline ARR	Summary Card	Custom Card	src/app/csm/kpi/renewal-rate/page.tsx
+Renewal Rate Detail Page	At-Risk Renewals	Summary Card	Custom Card	src/app/csm/kpi/renewal-rate/page.tsx
+CO Enhanced Command Center	Q2C Cycle Time	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Quote Approval	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Invoice Accuracy	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	DSO	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Revenue Recognition	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Deferred Revenue	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Quote Win Rate	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Enhanced Command Center	Renewal Quote Velocity	KPI Card	KPICard	src/components/CommercialOps/EnhancedCommercialOpsCommandCenter.tsx
+CO Comprehensive Strategic View	Q2C Cycle Time	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Quote Approval	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Invoice Accuracy	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	DSO	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Revenue Recognition	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Deferred Revenue	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Quote Win Rate	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+CO Comprehensive Strategic View	Renewal Quote Velocity	Strategic KPI Card	StrategicKPICard	src/components/CommercialOps/ComprehensiveStrategicView.tsx
+DSO Level 1 Drill-Down	Current DSO	Metric Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	Trend	Metric Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	Total AR	Metric Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	90+ Days	Metric Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	0-30 Days Aging	Aging Bucket Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	31-60 Days Aging	Aging Bucket Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	61-90 Days Aging	Aging Bucket Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+DSO Level 1 Drill-Down	90+ Days Aging	Aging Bucket Card	Custom Card	src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx
+Q2C Level 1 Process Breakdown	Critical Bottleneck	Insight Card	Custom Card	src/components/CommercialOps/Q2C/Q2CLevel1ProcessBreakdown.tsx
+Q2C Level 1 Process Breakdown	Needs Attention	Insight Card	Custom Card	src/components/CommercialOps/Q2C/Q2CLevel1ProcessBreakdown.tsx
+Q2C Level 1 Process Breakdown	Performing Well	Insight Card	Custom Card	src/components/CommercialOps/Q2C/Q2CLevel1ProcessBreakdown.tsx
+Q2C Level 1 Process Breakdown	Total Cycle Time	Insight Card	Custom Card	src/components/CommercialOps/Q2C/Q2CLevel1ProcessBreakdown.tsx
+Sales Expansion Page	Net Revenue Retention	KPI Card	Custom Card	src/app/se/page.tsx
+Sales Expansion Page	Expansion ARR	KPI Card	Custom Card	src/app/se/page.tsx
+Sales Expansion Page	White Space Opportunity	KPI Card	Custom Card	src/app/se/page.tsx
+Sales Expansion Page	Multi-Product Penetration	KPI Card	Custom Card	src/app/se/page.tsx
+Churn Rate Detail Page	Current Churn Rate	Summary Card	Custom Card	src/app/csm/kpi/churn-rate/page.tsx
+Churn Rate Detail Page	Target Churn Rate	Summary Card	Custom Card	src/app/csm/kpi/churn-rate/page.tsx
+Churn Rate Detail Page	Churned ARR	Summary Card	Custom Card	src/app/csm/kpi/churn-rate/page.tsx
+QBR Completion Detail Page	Completion Rate	Summary Card	Custom Card	src/components/CSM/KPI/QBRCompletionAnalysis.tsx
+QBR Completion Detail Page	Overdue QBRs	Summary Card	Custom Card	src/components/CSM/KPI/QBRCompletionAnalysis.tsx
+QBR Completion Detail Page	At-Risk ARR	Summary Card	Custom Card	src/components/CSM/KPI/QBRCompletionAnalysis.tsx
+QBR Completion Detail Page	Avg Prep Time	Summary Card	Custom Card	src/components/CSM/KPI/QBRCompletionAnalysis.tsx

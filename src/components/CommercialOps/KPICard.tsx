@@ -11,9 +11,10 @@ interface KPICardProps {
   status: 'good' | 'warning' | 'critical';
   icon: ReactNode;
   description: string;
+  customBgColor?: string;
 }
 
-export default function KPICard({ title, value, target, trend, status, icon, description }: KPICardProps) {
+export default function KPICard({ title, value, target, trend, status, icon, description, customBgColor }: KPICardProps) {
   const getStatusColor = () => {
     switch (status) {
       case 'good':
@@ -66,7 +67,10 @@ export default function KPICard({ title, value, target, trend, status, icon, des
   const colors = getStatusColor();
 
   return (
-    <div className={`${colors.bg} ${colors.border} border-2 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}>
+    <div
+      className={`${customBgColor ? '' : colors.bg} ${colors.border} border-2 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+    >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className={`${colors.iconBg} p-3 rounded-lg`}>

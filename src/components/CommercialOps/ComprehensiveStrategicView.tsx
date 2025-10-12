@@ -177,6 +177,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Clock className="h-8 w-8" />}
                   description="Average days from quote creation to payment received"
                   color="blue"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Quote Approval"
@@ -188,6 +189,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<FileText className="h-8 w-8" />}
                   description="Average days from quote submission to approval"
                   color="green"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Invoice Accuracy"
@@ -199,6 +201,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<CheckCircle className="h-8 w-8" />}
                   description="Percentage of invoices without billing errors"
                   color="emerald"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="DSO"
@@ -210,6 +213,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<DollarSign className="h-8 w-8" />}
                   description="Average days to collect payment after invoice"
                   color="orange"
+                  customBgColor="#F3F3F3"
                 />
               </div>
 
@@ -225,6 +229,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Target className="h-8 w-8" />}
                   description="Accuracy of revenue recognition vs expected"
                   color="purple"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Deferred Revenue"
@@ -236,6 +241,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<DollarSign className="h-8 w-8" />}
                   description="Total unearned revenue for future periods"
                   color="indigo"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Quote Win Rate"
@@ -247,6 +253,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<TrendingUp className="h-8 w-8" />}
                   description="Percentage of quotes accepted vs declined"
                   color="teal"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Renewal Quote Velocity"
@@ -258,6 +265,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Clock className="h-8 w-8" />}
                   description="Time from renewal trigger to quote delivery"
                   color="cyan"
+                  customBgColor="#F3F3F3"
                 />
               </div>
             </div>

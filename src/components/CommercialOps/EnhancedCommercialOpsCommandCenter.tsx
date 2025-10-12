@@ -197,6 +197,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.quoteToCashCycleTime.status}
                   icon={<Clock className="h-6 w-6" />}
                   description="Average days from quote creation to payment received"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="Quote Approval"
@@ -206,6 +207,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.quoteApprovalVelocity.status}
                   icon={<FileText className="h-6 w-6" />}
                   description="Average days from quote submission to approval"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="Invoice Accuracy"
@@ -215,6 +217,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.invoiceAccuracyRate.status}
                   icon={<CheckCircle className="h-6 w-6" />}
                   description="Percentage of invoices without billing errors"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="DSO"
@@ -224,6 +227,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.daysSalesOutstanding.status}
                   icon={<DollarSign className="h-6 w-6" />}
                   description="Average days to collect payment after invoice"
+                  customBgColor="#F3F3F3"
                 />
               </div>
 
@@ -237,6 +241,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.revenueRecognitionAccuracy.status}
                   icon={<Target className="h-6 w-6" />}
                   description="Accuracy of revenue recognition vs expected"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="Deferred Revenue"
@@ -246,6 +251,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.deferredRevenueBalance.status}
                   icon={<DollarSign className="h-6 w-6" />}
                   description="Total unearned revenue for future periods"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="Quote Win Rate"
@@ -255,6 +261,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.quoteWinRate.status}
                   icon={<TrendingUp className="h-6 w-6" />}
                   description="Percentage of quotes accepted vs declined"
+                  customBgColor="#F3F3F3"
                 />
                 <KPICard
                   title="Renewal Quote Velocity"
@@ -264,6 +271,7 @@ export default function EnhancedCommercialOpsCommandCenter() {
                   status={kpis.renewalQuoteVelocity.status}
                   icon={<Clock className="h-6 w-6" />}
                   description="Time from renewal trigger to quote delivery"
+                  customBgColor="#F3F3F3"
                 />
               </div>
             </div>

@@ -85,7 +85,7 @@ export default function DSOLevel1TrendAging({
 
       {/* Key Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 shadow-sm">
+        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-5 w-5 text-blue-500" />
             <span className="font-medium text-blue-700">Current DSO</span>
@@ -93,8 +93,8 @@ export default function DSOLevel1TrendAging({
           <p className="text-2xl font-bold text-blue-600">{currentData?.dsoValue || 0} days</p>
           <p className="text-sm text-blue-600">Target: ≤{currentData?.target || 30} days</p>
         </div>
-        
-        <div className={`bg-gradient-to-br ${trendDirection === 'improving' ? 'from-green-50 to-green-100 border-green-200' : 'from-red-50 to-red-100 border-red-200'} border rounded-xl p-4 shadow-sm`}>
+
+        <div className={`${trendDirection === 'improving' ? 'border-green-200' : 'border-red-200'} border rounded-xl p-4 shadow-sm`} style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             {trendDirection === 'improving' ? (
               <TrendingDown className="h-5 w-5 text-green-500" />
@@ -112,8 +112,8 @@ export default function DSOLevel1TrendAging({
             vs previous month
           </p>
         </div>
-        
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="h-5 w-5 text-purple-500" />
             <span className="font-medium text-purple-700">Total AR</span>
@@ -123,8 +123,8 @@ export default function DSOLevel1TrendAging({
           </p>
           <p className="text-sm text-purple-600">Outstanding receivables</p>
         </div>
-        
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-xl p-4 shadow-sm">
+
+        <div className="border border-yellow-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-yellow-500" />
             <span className="font-medium text-yellow-700">90+ Days</span>
@@ -239,7 +239,7 @@ export default function DSOLevel1TrendAging({
             
             {/* Legend and Details */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="w-4 h-4 bg-green-500 rounded"></div>
                 <div>
                   <p className="text-sm font-medium text-green-800">0-30 Days</p>
@@ -248,8 +248,8 @@ export default function DSOLevel1TrendAging({
                   </p>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+
+              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="w-4 h-4 bg-yellow-500 rounded"></div>
                 <div>
                   <p className="text-sm font-medium text-yellow-800">31-60 Days</p>
@@ -258,8 +258,8 @@ export default function DSOLevel1TrendAging({
                   </p>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
+
+              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="w-4 h-4 bg-orange-500 rounded"></div>
                 <div>
                   <p className="text-sm font-medium text-orange-800">61-90 Days</p>
@@ -268,8 +268,8 @@ export default function DSOLevel1TrendAging({
                   </p>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border border-red-200">
+
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="w-4 h-4 bg-red-500 rounded"></div>
                 <div>
                   <p className="text-sm font-medium text-red-800">90+ Days</p>

@@ -330,7 +330,7 @@ export default function SalesExpansionDashboard() {
             {/* Top KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {/* NRR Card */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500">
+              <div className="rounded-lg p-6 shadow-sm border-l-4 border-blue-500" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="text-sm text-gray-600 mb-1">NET REVENUE RETENTION</div>
@@ -345,7 +345,7 @@ export default function SalesExpansionDashboard() {
               </div>
 
               {/* Expansion ARR Card */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+              <div className="rounded-lg p-6 shadow-sm border-l-4 border-green-500" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="text-sm text-gray-600 mb-1">EXPANSION ARR</div>
@@ -360,7 +360,7 @@ export default function SalesExpansionDashboard() {
               </div>
 
               {/* Multi-Product Penetration Card */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+              <div className="rounded-lg p-6 shadow-sm border-l-4 border-purple-500" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="text-sm text-gray-600 mb-1">MULTI-PRODUCT PENETRATION</div>
@@ -375,7 +375,7 @@ export default function SalesExpansionDashboard() {
               </div>
 
               {/* White Space Card */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-orange-500">
+              <div className="rounded-lg p-6 shadow-sm border-l-4 border-orange-500" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="text-sm text-gray-600 mb-1">WHITE SPACE OPPORTUNITY</div>

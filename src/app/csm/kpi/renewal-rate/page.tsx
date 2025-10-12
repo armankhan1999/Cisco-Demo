@@ -239,7 +239,7 @@ export default function RenewalRateDrillDown() {
         <div className="p-8">
           {/* Top Summary Cards */}
           <div className="grid grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Renewal Rate</p>
@@ -262,7 +262,7 @@ export default function RenewalRateDrillDown() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Upcoming Renewals</p>
@@ -283,7 +283,7 @@ export default function RenewalRateDrillDown() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Pipeline ARR</p>
@@ -304,7 +304,7 @@ export default function RenewalRateDrillDown() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">At-Risk Renewals</p>

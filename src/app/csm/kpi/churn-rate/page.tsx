@@ -45,15 +45,15 @@ export default function ChurnRateDrillDown() {
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-xl font-semibold mb-4">Churn Rate Overview</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
+              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="text-3xl font-bold text-red-600">3.2%</div>
                 <div className="text-sm text-gray-600">Current Churn Rate</div>
               </div>
-              <div className="text-center">
+              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="text-3xl font-bold text-green-600">5.0%</div>
                 <div className="text-sm text-gray-600">Target Churn Rate</div>
               </div>
-              <div className="text-center">
+              <div className="text-center p-4 rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="text-3xl font-bold text-blue-600">$1.2M</div>
                 <div className="text-sm text-gray-600">Churned ARR</div>
               </div>
