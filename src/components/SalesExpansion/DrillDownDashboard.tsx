@@ -172,6 +172,7 @@ export default function DrillDownDashboard() {
             description="Retained + expansion revenue in dollars"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -187,6 +188,7 @@ export default function DrillDownDashboard() {
             description="Total ARR from upsell/cross-sell in period"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -202,6 +204,7 @@ export default function DrillDownDashboard() {
             description="% of customers with 2+ products"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -217,6 +220,7 @@ export default function DrillDownDashboard() {
             description="Estimated ARR from identified gaps"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
         </div>
 
@@ -235,6 +239,7 @@ export default function DrillDownDashboard() {
             description="Avg quota attainment across expansion reps"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -250,6 +255,7 @@ export default function DrillDownDashboard() {
             description="Accounts with high expansion readiness score"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
+            variant="q2c"
           />
         </div>
 
