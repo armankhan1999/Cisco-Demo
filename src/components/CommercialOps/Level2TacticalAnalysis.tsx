@@ -1659,17 +1659,17 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                 />
                 <YAxis 
                   label={{ 
-                    value: 'NRR (%)', 
+                    value: 'NRR ($M)', 
                     angle: -90, 
                     position: 'insideLeft', 
                     style: { fontWeight: 'bold', fontSize: '16px' } 
                   }}
                   tick={{ fontSize: 14, fontWeight: 500 }}
                   tickMargin={10}
-                  domain={[90, 130]}
+                  tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
                 />
                 <Tooltip 
-                  formatter={(value: any) => [`${value}%`, 'NRR']}
+                  formatter={(value: any) => [`$${(value / 1000000).toFixed(2)}M`, 'NRR']}
                   contentStyle={{ 
                     backgroundColor: 'white', 
                     border: '2px solid #ccc', 
@@ -1678,28 +1678,18 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                     fontWeight: '500'
                   }}
                 />
-                <ReferenceLine 
-                  y={110} 
-                  stroke="#ef4444" 
-                  strokeDasharray="5 5" 
-                  label={{ 
-                    value: "Target: 110%", 
-                    position: "topRight",
-                    style: { fontSize: '14px', fontWeight: 'bold' }
-                  }} 
-                />
                 <Legend 
                   wrapperStyle={{ paddingTop: '20px', fontSize: '14px', fontWeight: '500' }}
                 />
                 <Bar 
                   dataKey="nrr" 
                   radius={[8, 8, 0, 0]} 
-                  name="Net Revenue Retention"
+                  name="Net Revenue Retention ($)"
                   onClick={(data: any) => onDrillToLevel3(`nrr-tier-${data.tier.toLowerCase()}`)}
                   style={{ cursor: 'pointer' }}
                 >
                   {data.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.nrr >= 110 ? '#10b981' : entry.nrr >= 100 ? '#f59e0b' : '#ef4444'} />
+                    <Cell key={`cell-${index}`} fill={entry.nrrPercent >= 110 ? '#10b981' : entry.nrrPercent >= 100 ? '#f59e0b' : '#ef4444'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -1709,17 +1699,18 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             <div className="grid grid-cols-4 gap-4">
               {data.map((item: any, index: number) => (
                 <div key={index} className={`rounded-lg p-4 border-2 ${
-                  item.nrr >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
-                  item.nrr >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
+                  item.nrrPercent >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
+                  item.nrrPercent >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
                   'bg-gradient-to-br from-red-50 to-pink-50 border-red-200'
                 }`}>
                   <h5 className="text-sm font-bold text-gray-600 mb-1">{item.tier}</h5>
                   <p className={`text-3xl font-bold ${
-                    item.nrr >= 110 ? 'text-green-600' :
-                    item.nrr >= 100 ? 'text-yellow-600' :
+                    item.nrrPercent >= 110 ? 'text-green-600' :
+                    item.nrrPercent >= 100 ? 'text-yellow-600' :
                     'text-red-600'
-                  }`}>{item.nrr}%</p>
+                  }`}>${(item.nrr / 1000000).toFixed(1)}M</p>
                   <p className="text-xs text-gray-600">NRR</p>
+                  <p className="text-sm font-semibold text-gray-700">{item.nrrPercent}%</p>
                   <p className="text-sm font-semibold text-gray-700 mt-2">{item.customerCount} accounts</p>
                 </div>
               ))}
