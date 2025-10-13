@@ -26,6 +26,8 @@ export default function ChurnRateDrillDown() {
   const [perPage, setPerPage] = useState(10);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'predictions' | 'historical' | 'alerts'>('predictions');
+  const [showAtRiskOnly, setShowAtRiskOnly] = useState(false);
+  const [selectedAlert, setSelectedAlert] = useState<string | null>(null);
   const { isCollapsed } = useSidebar();
 
   useEffect(() => {
@@ -166,7 +168,7 @@ export default function ChurnRateDrillDown() {
           daysToRenewal: (pred as any).days_to_renewal || 0,
           renewalDate: (pred as any).contract_end_date || 'Unknown'
         };
-      }).filter(pred => pred.churn_probability > 0.3)
+      }).filter(pred => pred.churn_probability > 0.4)
         .sort((a, b) => b.churn_probability - a.churn_probability);
       
       // Process champion departure alerts
@@ -187,17 +189,20 @@ export default function ChurnRateDrillDown() {
       // Generate comprehensive churn alerts
       const alerts = [];
       
-      // High-risk predictions
-      const highRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'Critical' || p.riskLevel === 'High');
-      if (highRiskPredictions.length > 0) {
+      // High-risk predictions - Split by Critical and High
+      const criticalRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'Critical');
+      const highRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'High');
+      const totalHighRisk = criticalRiskPredictions.length + highRiskPredictions.length;
+      
+      if (totalHighRisk > 0) {
         alerts.push({
           id: 'high_risk_predictions',
           type: 'warning',
-          title: `${highRiskPredictions.length} High-Risk Accounts`,
-          description: `Accounts with ${highRiskPredictions.length > 1 ? 'churn probabilities' : 'churn probability'} above 60%`,
+          title: `${totalHighRisk} High-Risk Accounts`,
+          description: `${criticalRiskPredictions.length} Critical (≥70%) + ${highRiskPredictions.length} High (60-69%) risk`,
           priority: 'high',
-          count: highRiskPredictions.length,
-          accounts: highRiskPredictions.slice(0, 5)
+          count: totalHighRisk,
+          accounts: [...criticalRiskPredictions, ...highRiskPredictions].slice(0, 5)
         });
       }
       
@@ -359,9 +364,27 @@ export default function ChurnRateDrillDown() {
   );
 
   const getCurrentData = () => {
-    const data = activeTab === 'predictions' ? churnPredictions :
+    let data = activeTab === 'predictions' ? churnPredictions :
                  activeTab === 'historical' ? churnedAccounts :
                  churnAlerts;
+    
+    // Filter by at-risk if enabled (only for predictions tab)
+    if (activeTab === 'predictions' && showAtRiskOnly) {
+      data = data.filter((item: any) => item.churn_probability > 0.4);
+    }
+    
+    // Filter by selected alert (for alerts tab)
+    if (activeTab === 'alerts' && selectedAlert) {
+      const alertData = churnAlerts.find((a: any) => a.id === selectedAlert);
+      if (alertData && alertData.affectedAccounts) {
+        // Show accounts from the selected alert
+        if (selectedAlert === 'champion_departures') {
+          data = championDepartures;
+        } else if (selectedAlert === 'high_risk_accounts') {
+          data = churnPredictions.filter((p: any) => p.churn_probability >= 0.6);
+        }
+      }
+    }
     
     return data
       .filter(item => !selectedTier || item.tier === selectedTier)
@@ -400,45 +423,18 @@ export default function ChurnRateDrillDown() {
           </div>
         </div>
 
+        {/* Main Content */}
         <div className="p-8">
-          {/* Critical Alerts Banner */}
-          {churnAlerts.length > 0 && (
-            <div className="mb-8">
-              <button 
-                onClick={() => setActiveTab('alerts')}
-                className="w-full bg-red-50 border border-red-200 rounded-lg p-6 hover:bg-red-100 transition-colors text-left"
-              >
-                <div className="flex items-center">
-                  <svg className="w-6 h-6 text-red-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                  <div>
-                    <h3 className="text-lg font-semibold text-red-900">
-                      🚨 {churnData.totalAlerts} Active Churn Alerts - Click to View
-                    </h3>
-                    <p className="text-red-700 mt-1">
-                      {churnData.criticalAlerts} critical alerts require immediate attention
-                    </p>
-                  </div>
-                </div>
-              </button>
-            </div>
-          )}
-
-          {/* Top Summary Cards */}
-          <div className="grid grid-cols-5 gap-6 mb-8">
+          {/* Top Summary Cards - Row 1 */}
+          <div className="grid grid-cols-3 gap-6 mb-6">
+            {/* Churn Rate */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Churn Rate</p>
-                  <p className="text-3xl font-bold text-red-600">
+                  <p className="text-3xl font-bold text-green-600">
                     {churnData.overallChurnRate.toFixed(2)}%
                   </p>
-                </div>
-                <div className="p-3 bg-red-100 rounded-full">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                  </svg>
                 </div>
               </div>
               <div className="mt-4">
@@ -450,12 +446,13 @@ export default function ChurnRateDrillDown() {
               </div>
             </div>
 
+            {/* Churned ARR */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Churned ARR</p>
-                  <p className="text-3xl font-bold text-gray-900">
-                    ${(churnData.totalChurnedARR / 1000000).toFixed(1)}M
+                  <p className="text-3xl font-bold text-red-600">
+                    ${(churnData.totalChurnedARR / 1000).toFixed(2)}K
                   </p>
                 </div>
                 <div className="p-3 bg-gray-100 rounded-full">
@@ -471,11 +468,63 @@ export default function ChurnRateDrillDown() {
               </div>
             </div>
 
+            {/* Preventable Churn */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Preventable Churn</p>
+                  <p className="text-3xl font-bold text-green-600">
+                    {churnData.preventablePercentage.toFixed(0)}%
+                  </p>
+                </div>
+                <div className="p-3 bg-green-100 rounded-full">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="mt-4">
+                <span className="inline-flex items-center text-sm font-medium text-green-600">
+                  💡 Prevention Opportunity
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Top Summary Cards - Row 2 */}
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {/* Predicted Churn Risk */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Predicted Churn Risk (Next 12M)</p>
+                  <p className="text-3xl font-bold text-red-600">
+                    {(() => {
+                      const accounts = getActiveAccounts();
+                      const totalARR = accounts.reduce((sum, acc) => sum + acc.account.arr, 0);
+                      const atRiskARR = churnPredictions.reduce((sum, p) => sum + (p.arr || 0), 0);
+                      return totalARR > 0 ? ((atRiskARR / totalARR) * 100).toFixed(2) : '0.00';
+                    })()}%
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4">
+                <span className="inline-flex items-center text-sm font-medium text-red-600">
+                  💰 Forward-Looking Risk
+                </span>
+              </div>
+            </div>
+
+            {/* At-Risk Accounts */}
             <button 
               onClick={() => {
                 setActiveTab('predictions');
-                setSelectedTier(null);
+                setShowAtRiskOnly(true);
                 setCurrentPage(1);
+                // Scroll to table
+                setTimeout(() => {
+                  document.getElementById('accounts-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
               }}
               className="bg-white rounded-lg border border-gray-200 p-6 hover:bg-gray-50 transition-colors w-full text-left"
             >
@@ -499,34 +548,13 @@ export default function ChurnRateDrillDown() {
               </div>
             </button>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Preventable Churn</p>
-                  <p className="text-3xl font-bold text-green-600">
-                    {churnData.preventablePercentage.toFixed(0)}%
-                  </p>
-                </div>
-                <div className="p-3 bg-green-100 rounded-full">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-green-600">
-                  💡 Prevention Opportunity
-                </span>
-              </div>
-            </div>
-
             {/* Next 12 Months ARR Lost */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Next 12 Months ARR Lost</p>
                   <p className="text-3xl font-bold text-red-600">
-                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(1)}M
+                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(2)}M
                   </p>
                 </div>
                 <div className="p-3 bg-red-100 rounded-full">
@@ -543,45 +571,16 @@ export default function ChurnRateDrillDown() {
             </div>
           </div>
 
-          {/* Churn Reasons Analysis */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-6">Churn Reasons Analysis</h3>
-            <div className="grid grid-cols-2 gap-6">
-              {Object.entries(churnData.churnReasons).map(([category, data]: [string, any]) => (
-                <div key={category} className="border border-gray-200 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-medium text-gray-900 capitalize">{category}</h4>
-                    <span className="text-sm text-gray-500">{data.count} accounts</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>ARR Lost:</span>
-                      <span className="font-medium">${(data.arr / 1000).toFixed(0)}K</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span>Preventable:</span>
-                      <span className={`font-medium ${data.preventable > 0 ? 'text-green-600' : 'text-gray-500'}`}>
-                        {data.preventable}/{data.count}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-blue-600 h-2 rounded-full" 
-                        style={{ width: `${(data.count / churnedAccounts.length) * 100}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Tab Navigation */}
-          <div className="bg-white rounded-lg border border-gray-200 mb-8">
+          <div id="accounts-table" className="bg-white rounded-lg border border-gray-200 mb-8">
             <div className="border-b border-gray-200">
               <nav className="flex space-x-8 px-6">
                 <button
-                  onClick={() => setActiveTab('predictions')}
+                  onClick={() => {
+                    setActiveTab('predictions');
+                    setShowAtRiskOnly(false);
+                    setCurrentPage(1);
+                  }}
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === 'predictions'
                       ? 'border-blue-500 text-blue-600'
@@ -601,7 +600,11 @@ export default function ChurnRateDrillDown() {
                   Historical Churn ({churnedAccounts.length})
                 </button>
                 <button
-                  onClick={() => setActiveTab('alerts')}
+                  onClick={() => {
+                    setActiveTab('alerts');
+                    setSelectedAlert(null);
+                    setCurrentPage(1);
+                  }}
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === 'alerts'
                       ? 'border-blue-500 text-blue-600'
@@ -614,6 +617,66 @@ export default function ChurnRateDrillDown() {
             </div>
 
             <div className="p-6">
+              {/* At-Risk Filter Indicator */}
+              {showAtRiskOnly && activeTab === 'predictions' && (
+                <div className="mb-4 bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0">
+                      <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-orange-900">
+                        ⚠️ Showing At-Risk Accounts Only
+                      </p>
+                      <p className="text-xs text-orange-700">
+                        Displaying {churnPredictions.filter(p => p.churn_probability > 0.4).length} accounts with churn probability &gt; 40%
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setShowAtRiskOnly(false);
+                      setCurrentPage(1);
+                    }}
+                    className="px-4 py-2 text-sm font-medium text-orange-700 bg-white border border-orange-300 rounded-lg hover:bg-orange-50 transition-colors"
+                  >
+                    Show All Predictions
+                  </button>
+                </div>
+              )}
+
+              {/* Champion Departures Filter Indicator */}
+              {selectedAlert === 'champion_departures' && activeTab === 'alerts' && (
+                <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-red-900">
+                        👥 Showing Champion Departure Accounts
+                      </p>
+                      <p className="text-xs text-red-700">
+                        Displaying {championDepartures.length} accounts with recent key stakeholder departures (last 30 days)
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSelectedAlert(null);
+                      setCurrentPage(1);
+                    }}
+                    className="px-4 py-2 text-sm font-medium text-red-700 bg-white border border-red-300 rounded-lg hover:bg-red-50 transition-colors"
+                  >
+                    Show All Alerts
+                  </button>
+                </div>
+              )}
+
               {/* Filters */}
               <div className="flex items-center gap-4 mb-6">
                 <select 
@@ -663,13 +726,23 @@ export default function ChurnRateDrillDown() {
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prevention Strategy</th>
                         </>
                       )}
-                      {activeTab === 'alerts' && (
+                      {activeTab === 'alerts' && !selectedAlert && (
                         <>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alert Type</th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Count</th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Affected Accounts</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </>
+                      )}
+                      {activeTab === 'alerts' && selectedAlert === 'champion_departures' && (
+                        <>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Champion Role</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Departure Date</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Days Since</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impact Score</th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </>
                       )}
@@ -797,7 +870,7 @@ export default function ChurnRateDrillDown() {
                             </td>
                           </>
                         )}
-                        {activeTab === 'alerts' && (
+                        {activeTab === 'alerts' && !selectedAlert && (
                           <>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center">
@@ -831,9 +904,77 @@ export default function ChurnRateDrillDown() {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                              <button className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded">
+                              <button 
+                                onClick={() => {
+                                  // Switch to appropriate page/tab based on alert type
+                                  if (item.id === 'champion_departures') {
+                                    // Redirect to champion departures page with filter
+                                    router.push('/csm/kpi/champion-departures?days=30');
+                                  } else if (item.id === 'high_risk_accounts' || item.id === 'high_risk_predictions') {
+                                    // Show at-risk accounts in predictions tab
+                                    setActiveTab('predictions');
+                                    setShowAtRiskOnly(true);
+                                    setCurrentPage(1);
+                                  }
+                                }}
+                                className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded hover:bg-blue-50 transition-colors"
+                              >
                                 View Details
                               </button>
+                            </td>
+                          </>
+                        )}
+                        {activeTab === 'alerts' && selectedAlert === 'champion_departures' && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="flex items-center">
+                                <div>
+                                  <button 
+                                    onClick={() => router.push(`/csm/accounts/${item.account_id}`)}
+                                    className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                                  >
+                                    {item.accountName}
+                                  </button>
+                                  <div className="text-sm text-gray-500">{item.tier} • {item.industry}</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm font-medium text-gray-900">{item.champion_role}</div>
+                              <div className="text-sm text-gray-500">{item.champion_name}</div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
+                                {new Date(item.departure_date).toLocaleDateString()}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                item.daysSinceDeparture <= 7 ? 'bg-red-100 text-red-800' :
+                                item.daysSinceDeparture <= 14 ? 'bg-orange-100 text-orange-800' :
+                                'bg-yellow-100 text-yellow-800'
+                              }`}>
+                                {item.daysSinceDeparture} days ago
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                item.impact_score >= 80 ? 'bg-red-100 text-red-800' :
+                                item.impact_score >= 60 ? 'bg-orange-100 text-orange-800' :
+                                'bg-yellow-100 text-yellow-800'
+                              }`}>
+                                {item.impact_score}/100
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                              <div className="flex gap-1">
+                                <button className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded">
+                                  Schedule QBR
+                                </button>
+                                <button className="text-green-600 hover:text-green-900 text-xs px-2 py-1 border border-green-600 rounded">
+                                  Assign Action
+                                </button>
+                              </div>
                             </td>
                           </>
                         )}
@@ -925,13 +1066,18 @@ export default function ChurnRateDrillDown() {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-4">Key Risk Indicators</h4>
                 <div className="space-y-3">
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <button 
+                    onClick={() => {
+                      router.push('/csm/kpi/champion-departures?days=30');
+                    }}
+                    className="w-full p-3 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors text-left"
+                  >
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-900">Champion Departures</span>
                       <span className="text-sm font-semibold text-red-600">{championDepartures.length} recent</span>
                     </div>
-                    <div className="text-xs text-red-700 mt-1">Key stakeholders left in last 30 days</div>
-                  </div>
+                    <div className="text-xs text-red-700 mt-1">Key stakeholders left in last 30 days • Click to view</div>
+                  </button>
                   
                   <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
                     <div className="flex items-center justify-between">

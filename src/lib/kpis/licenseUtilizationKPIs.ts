@@ -1,4 +1,4 @@
-import { loadUtilizationHistory, loadLicenses, loadAccounts, loadSubscriptions } from '../data/csmDataLoader';
+import { loadUtilizationHistory, loadLicenses, loadSubscriptions, getActiveAccounts } from '../data/csmDataLoader';
 
 // Types for License Utilization KPIs
 export interface UtilizationKPI {
@@ -65,7 +65,7 @@ export interface ProductUtilizationAnalysis {
 export function calculatePortfolioAverageUtilization(): UtilizationKPI {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     const subscriptions = loadSubscriptions();
     
     console.log('📊 Portfolio Utilization Data Loading:');
@@ -213,7 +213,7 @@ function calculateUtilizationFromData(utilizationData: any[], accounts: any[], s
 export function calculateActiveUsersKPI(): any {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     
     if (utilizationHistory.length === 0) {
       return {
@@ -309,7 +309,7 @@ export function calculateActiveUsersKPI(): any {
 export function calculateSeatWasteKPI(): any {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     
     if (utilizationHistory.length === 0) {
       return {
@@ -520,7 +520,7 @@ export function calculateFeatureAdoptionKPI(): any {
 // Calculate Time-to-First-Value KPI (Level 1 Strategic)
 export function calculateTimeToFirstValueKPI(): any {
   try {
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     
     if (accounts.length === 0) {
       return {
@@ -666,7 +666,7 @@ export function calculateTimeToFirstValueKPI(): any {
 export function calculateUtilizationDistribution(): UtilizationDistribution[] {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     const subscriptions = loadSubscriptions();
     
     // Get current data
@@ -766,7 +766,7 @@ export function calculateUtilizationDistribution(): UtilizationDistribution[] {
 export function calculateAccountUtilizationDetails(utilizationBucket?: string): AccountUtilizationDetail[] {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     const subscriptions = loadSubscriptions();
     
     // Get current data
@@ -896,7 +896,7 @@ export function calculateAccountUtilizationDetails(utilizationBucket?: string): 
 export function calculateProductUtilizationAnalysis(): ProductUtilizationAnalysis[] {
   try {
     const utilizationHistory = loadUtilizationHistory();
-    const accounts = loadAccounts();
+    const accounts = getActiveAccounts();
     const subscriptions = loadSubscriptions();
     
     // Get current data

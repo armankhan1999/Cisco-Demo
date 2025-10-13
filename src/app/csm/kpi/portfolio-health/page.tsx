@@ -141,69 +141,109 @@ export default function PortfolioHealthDrillDown() {
       {/* Main Content */}
       <div className="p-8">
         {/* Portfolio Health Score & Components */}
-        <div className="grid grid-cols-5 gap-6 mb-8">
-          {/* Main Health Score */}
-          <div className={`col-span-1 rounded-lg border-2 p-6 ${
-            healthData.portfolioHealthScore >= 75
-              ? 'border-green-200'
-              : healthData.portfolioHealthScore >= 60
-              ? 'border-yellow-200'
-              : 'border-red-200'
-          }`} style={{ backgroundColor: '#F3F3F3' }}>
-            <div className={`text-6xl font-bold mb-2 ${
-              healthData.portfolioHealthScore >= 75 
-                ? 'text-green-600'
+        <div className="space-y-6 mb-8">
+          {/* Row 1: 3 KPIs */}
+          <div className="grid grid-cols-3 gap-6">
+            {/* Main Health Score */}
+            <div className={`rounded-lg border-2 p-6 h-48 flex flex-col justify-between ${
+              healthData.portfolioHealthScore >= 75
+                ? 'border-green-200'
                 : healthData.portfolioHealthScore >= 60
-                ? 'text-yellow-600'
-                : 'text-red-600'
-            }`}>
-              {healthData.portfolioHealthScore}
+                ? 'border-yellow-200'
+                : 'border-red-200'
+            }`} style={{ backgroundColor: '#F3F3F3' }}>
+              <div className="text-xs text-gray-600 mb-1">Overall Health Score</div>
+              <div className={`text-4xl font-bold ${
+                healthData.portfolioHealthScore >= 75 
+                  ? 'text-green-600'
+                  : healthData.portfolioHealthScore >= 60
+                  ? 'text-yellow-600'
+                  : 'text-red-600'
+              }`}>
+                {Math.round(healthData.portfolioHealthScore)}
+              </div>
+              <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-green-600">↗ +3</span>
+                </div>
+                <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                  healthData.portfolioHealthScore >= 75 
+                    ? 'bg-green-100 text-green-800'
+                    : healthData.portfolioHealthScore >= 60
+                    ? 'bg-yellow-100 text-yellow-800'
+                    : 'bg-red-100 text-red-800'
+                }`}>
+                  {healthData.portfolioHealthScore >= 75 ? 'Thriving' : healthData.portfolioHealthScore >= 60 ? 'Monitor' : 'At Risk'}
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-green-600">↗ +3 (30d)</span>
-            </div>
-            <div className={`mt-3 inline-block px-3 py-1 rounded-full text-xs font-medium ${
-              healthData.portfolioHealthScore >= 75 
-                ? 'bg-green-100 text-green-800'
-                : healthData.portfolioHealthScore >= 60
-                ? 'bg-yellow-100 text-yellow-800'
-                : 'bg-red-100 text-red-800'
-            }`}>
-              {healthData.portfolioHealthScore >= 75 ? 'Thriving' : healthData.portfolioHealthScore >= 60 ? 'Monitor' : 'At Risk'}
-            </div>
-          </div>
 
-          {/* Total ARR */}
-          <div className="rounded-lg border border-gray-200 p-4 flex flex-col justify-center" style={{ backgroundColor: '#F3F3F3' }}>
-            <div className="text-xs text-gray-600 mb-1">Total ARR</div>
-            <div className="text-2xl font-bold text-gray-900">${(totalARR / 1000000).toFixed(1)}M</div>
-          </div>
-
-          {/* Component Scores */}
-          {healthData.components.map((component: any, idx: number) => (
-            <div key={idx} className="rounded-lg border border-gray-200 p-4" style={{ backgroundColor: '#F3F3F3' }}>
-              <div className="text-xs text-gray-600 mb-1">{component.name}</div>
-              <div className="text-xs text-gray-500 mb-2">{component.weight}%</div>
-              <div className="flex items-center justify-between">
-                <span className={`text-2xl font-bold ${
+            {/* Component Scores - First 2 */}
+            {healthData.components.slice(0, 2).map((component: any, idx: number) => (
+              <div key={idx} className="rounded-lg border border-gray-200 p-6 h-48 flex flex-col justify-between" style={{ backgroundColor: '#F3F3F3' }}>
+                <div>
+                  <div className="text-xs text-gray-600 mb-1">{component.name}</div>
+                  <div className="text-xs text-gray-500 mb-2">{component.weight}%</div>
+                </div>
+                <div className={`text-4xl font-bold ${
                   component.status === 'success' ? 'text-green-600' :
                   component.status === 'warning' ? 'text-yellow-600' : 'text-red-600'
                 }`}>
-                  {component.score}
-                </span>
-                <span className="text-xs text-green-600">
-                  {component.trend === 'up' ? '↗' : component.trend === 'down' ? '↘' : '→'} +{component.score >= 90 ? '3.4' : '1.8'}
-                </span>
+                  {Math.round(component.score)}
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">
+                    {component.trend === 'up' ? '↗' : component.trend === 'down' ? '↘' : '→'} +{component.score >= 90 ? '3' : '2'}
+                  </span>
+                  <div className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
+                    component.status === 'success' ? 'bg-green-100 text-green-800' :
+                    component.status === 'warning' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-red-100 text-red-800'
+                  }`}>
+                    {component.status === 'success' ? 'Excellent' : component.status === 'warning' ? 'Monitor' : 'Alert'}
+                  </div>
+                </div>
               </div>
-              <div className={`mt-2 inline-block px-2 py-0.5 rounded text-xs font-medium ${
-                component.status === 'success' ? 'bg-green-100 text-green-800' :
-                component.status === 'warning' ? 'bg-yellow-100 text-yellow-800' :
-                'bg-red-100 text-red-800'
-              }`}>
-                {component.status === 'success' ? 'Excellent' : component.status === 'warning' ? 'Monitor' : 'Alert'}
-              </div>
+            ))}
+          </div>
+
+          {/* Row 2: 2 KPIs */}
+          <div className="grid grid-cols-3 gap-6">
+            {/* Total ARR */}
+            <div className="rounded-lg border border-gray-200 p-6 h-48 flex flex-col justify-between" style={{ backgroundColor: '#F3F3F3' }}>
+              <div className="text-xs text-gray-600 mb-1">Total ARR</div>
+              <div className="text-4xl font-bold text-gray-900">${(totalARR / 1000000).toFixed(1)}M</div>
+              <div></div>
             </div>
-          ))}
+
+            {/* Component Scores - Last 2 */}
+            {healthData.components.slice(2, 4).map((component: any, idx: number) => (
+              <div key={idx} className="rounded-lg border border-gray-200 p-6 h-48 flex flex-col justify-between" style={{ backgroundColor: '#F3F3F3' }}>
+                <div>
+                  <div className="text-xs text-gray-600 mb-1">{component.name}</div>
+                  <div className="text-xs text-gray-500 mb-2">{component.weight}%</div>
+                </div>
+                <div className={`text-4xl font-bold ${
+                  component.status === 'success' ? 'text-green-600' :
+                  component.status === 'warning' ? 'text-yellow-600' : 'text-red-600'
+                }`}>
+                  {Math.round(component.score)}
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">
+                    {component.trend === 'up' ? '↗' : component.trend === 'down' ? '↘' : '→'} +{component.score >= 90 ? '3' : '2'}
+                  </span>
+                  <div className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
+                    component.status === 'success' ? 'bg-green-100 text-green-800' :
+                    component.status === 'warning' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-red-100 text-red-800'
+                  }`}>
+                    {component.status === 'success' ? 'Excellent' : component.status === 'warning' ? 'Monitor' : 'Alert'}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Health Score Calculation & Distribution */}
@@ -216,15 +256,22 @@ export default function PortfolioHealthDrillDown() {
                 <div className="text-sm font-semibold text-blue-800 mb-2">
                   🎯 Using REAL KPI Values from Main Dashboard
                 </div>
-                <div className="text-xs text-blue-700">
-                  • Usage Health = Avg Utilization Rate ({healthData.components.find((c: any) => c.name === 'Usage Health')?.score}%)<br/>
-                  • Engagement Health = Customer Engagement Score ({healthData.components.find((c: any) => c.name === 'Engagement Health')?.score})<br/>
-                  • Support Health = Derived from Churn & Renewal Rates<br/>
-                  • Business Outcome = Based on GRR & Time to Value
+                <div className="text-xs text-blue-700 space-y-1">
+                  <div>• Usage Health = Avg Utilization Rate ({Math.round(healthData.components.find((c: any) => c.name === 'Usage Health')?.score)})</div>
+                  <div>• Engagement Health = Customer Engagement Score ({Math.round(healthData.components.find((c: any) => c.name === 'Engagement Health')?.score)})</div>
+                  <div>• Support Health = Derived from Churn & Renewal Rates</div>
+                  <div>• Business Outcome = Based on GRR & Time to Value</div>
                 </div>
               </div>
-              <div className="text-sm text-gray-600 mb-4">
-                Portfolio Health Score = Weighted Average of 4 Components
+              <div className="text-sm text-gray-700 mb-2 font-medium">
+                Health Score Formula:
+              </div>
+              <div className="text-xs text-gray-600 mb-4 bg-gray-50 p-3 rounded-lg font-mono">
+                Health Score (0-100) = <br/>
+                &nbsp;&nbsp;(Usage Health × 40%) +<br/>
+                &nbsp;&nbsp;(Engagement Health × 30%) +<br/>
+                &nbsp;&nbsp;(Support Health × 20%) +<br/>
+                &nbsp;&nbsp;(Business Outcome × 10%)
               </div>
               
               {healthData.components.map((component: any, idx: number) => (
@@ -238,7 +285,7 @@ export default function PortfolioHealthDrillDown() {
                   </div>
                   <div className="text-right">
                     <div className="text-sm font-semibold text-gray-900">
-                      {component.score} × {component.weight}% = {component.contribution.toFixed(1)}
+                      {Math.round(component.score)} × {component.weight}% = {Math.round(component.contribution)}
                     </div>
                   </div>
                 </div>
@@ -247,7 +294,7 @@ export default function PortfolioHealthDrillDown() {
               <div className="border-t pt-4 mt-4">
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-gray-900">Total Portfolio Health:</span>
-                  <span className="text-xl font-bold text-blue-600">{healthData.portfolioHealthScore}</span>
+                  <span className="text-xl font-bold text-blue-600">{Math.round(healthData.portfolioHealthScore)}</span>
                 </div>
               </div>
             </div>

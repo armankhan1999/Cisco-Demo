@@ -311,11 +311,11 @@ export function calculateChurnRate(filteredAccounts?: any[]): KPIResult {
 
   return {
     value: churnRate,
-    formatted: `${churnRate.toFixed(1)}%`,
+    formatted: `${(Math.ceil(churnRate * 100) / 100).toFixed(2)}%`,
     target: 5,
     status: churnRate <= 5 ? 'success' : churnRate <= 8 ? 'warning' : 'danger',
     trend,
-    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
+    change: `${momChange >= 0 ? '+' : ''}${(Math.ceil(momChange * 100) / 100).toFixed(2)}pp`
   };
 }
 

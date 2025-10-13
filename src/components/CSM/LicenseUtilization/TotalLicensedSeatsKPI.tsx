@@ -159,7 +159,7 @@ export function TotalLicensedSeatsKPI({ onDrillDown, drillDownUrl }: TotalLicens
         </div>
         
         {/* Main Value */}
-        <div className={`text-3xl font-bold ${getTextColor()} mb-2 leading-none`}>
+        <div className={`text-4xl font-bold ${getTextColor()} mb-2 leading-none`}>
           {kpi.formatted}
         </div>
         
