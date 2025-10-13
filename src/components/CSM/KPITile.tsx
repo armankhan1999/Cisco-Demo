@@ -241,13 +241,8 @@ export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor, vari
           {getKPIIcon()}
         </div>
         {kpi.trend && (
-          <div className={`text-sm font-bold ${getTrendColor()} flex flex-col items-end`}>
-            <div className="flex items-center gap-1">
-              {trendIcons[kpi.trend]} {kpi.change}
-            </div>
-            <div className="text-xs font-medium opacity-90">
-              (30d)
-            </div>
+          <div className={`text-sm font-bold ${getTrendColor()}`}>
+            {trendIcons[kpi.trend]} {kpi.change}
           </div>
         )}
       </div>

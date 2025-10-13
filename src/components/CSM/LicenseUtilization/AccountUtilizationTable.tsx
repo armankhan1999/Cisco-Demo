@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { calculateAccountUtilizationDetails, AccountUtilizationDetail } from '../../../lib/kpis/licenseUtilizationKPIs';
+import { calculateAccountUtilizationDetails, AccountUtilizationDetail, calculatePortfolioAverageUtilization } from '../../../lib/kpis/licenseUtilizationKPIs';
+import { getActiveAccounts } from '../../../lib/data/csmDataLoader';
 
 interface AccountUtilizationTableProps {
   utilizationBucket?: string;
@@ -10,14 +11,29 @@ interface AccountUtilizationTableProps {
 
 export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: AccountUtilizationTableProps) {
   const [accounts, setAccounts] = useState<AccountUtilizationDetail[]>([]);
+  const [totalPortfolioARR, setTotalPortfolioARR] = useState(0);
+  const [totalPortfolioAccounts, setTotalPortfolioAccounts] = useState(0);
+  const [portfolioAvgUtilization, setPortfolioAvgUtilization] = useState(0);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     try {
+      // Get filtered accounts for display
       const accountDetails = calculateAccountUtilizationDetails(utilizationBucket);
       setAccounts(accountDetails);
+      
+      // Get ALL accounts for portfolio totals
+      const allAccounts = getActiveAccounts();
+      const portfolioARR = allAccounts.reduce((sum, acc) => sum + acc.account.arr, 0);
+      setTotalPortfolioARR(portfolioARR);
+      setTotalPortfolioAccounts(allAccounts.length);
+      
+      // Get portfolio-wide average utilization (matches main KPI)
+      const utilizationKPI = calculatePortfolioAverageUtilization();
+      setPortfolioAvgUtilization(utilizationKPI.value);
+      
       setLoading(false);
     } catch (error) {
       console.error('Error loading Account Utilization Details:', error);
@@ -134,18 +150,18 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-base font-semibold text-gray-600">Total Accounts</div>
-              <div className="text-3xl font-bold text-gray-900">{accounts.length}</div>
+              <div className="text-3xl font-bold text-gray-900">{totalPortfolioAccounts}</div>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-base font-semibold text-gray-600">Total ARR</div>
               <div className="text-3xl font-bold text-gray-900">
-                {formatCurrency(accounts.reduce((sum, acc) => sum + acc.arr, 0))}
+                {formatCurrency(totalPortfolioARR)}
               </div>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-base font-semibold text-gray-600">Avg Utilization</div>
               <div className="text-3xl font-bold text-gray-900">
-                {(accounts.reduce((sum, acc) => sum + acc.utilizationPercentage, 0) / accounts.length).toFixed(0)}%
+                {portfolioAvgUtilization.toFixed(0)}%
               </div>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">

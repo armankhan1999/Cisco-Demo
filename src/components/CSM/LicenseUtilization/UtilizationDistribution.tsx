@@ -114,32 +114,42 @@ export function UtilizationDistribution({ onBucketClick }: UtilizationDistributi
                     <span className="text-xl">{getBucketIcon(bucket.status)}</span>
                     <div>
                       <div className="font-medium text-gray-900">{bucket.range}</div>
-                      <div className="text-gray-500">Avg: {bucket.avgUtilization.toFixed(0)}%</div>
+                      <div className="text-gray-500">
+                        Avg: {bucket.accounts > 0 ? `${bucket.avgUtilization.toFixed(0)}%` : 'N/A'}
+                      </div>
                     </div>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/csm/kpi/license-details?focus=range&range=${encodeURIComponent(bucket.range)}`);
-                    }}
-                    className="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                    title={`View ${bucket.accounts} accounts in ${bucket.range} range`}
-                  >
-                    {bucket.accounts}
-                  </button>
+                  {bucket.accounts > 0 ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/csm/kpi/license-details?focus=range&range=${encodeURIComponent(bucket.range)}`);
+                      }}
+                      className="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                      title={`View ${bucket.accounts} accounts in ${bucket.range} range`}
+                    >
+                      {bucket.accounts}
+                    </button>
+                  ) : (
+                    <span className="text-gray-400 font-medium">N/A</span>
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
-                  {formatCurrency(bucket.arr)}
+                  {bucket.accounts > 0 ? formatCurrency(bucket.arr) : <span className="text-gray-400">N/A</span>}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-right font-medium text-gray-900">
-                  {bucket.percentage.toFixed(1)}%
+                  {bucket.accounts > 0 ? `${bucket.percentage.toFixed(1)}%` : <span className="text-gray-400">N/A</span>}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-center">
-                  <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ${getBucketColor(bucket.status)}`}>
-                    {bucket.status.replace('-', ' ').toUpperCase()}
-                  </span>
+                  {bucket.accounts > 0 ? (
+                    <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ${getBucketColor(bucket.status)}`}>
+                      {bucket.status.replace('-', ' ').toUpperCase()}
+                    </span>
+                  ) : (
+                    <span className="text-gray-400 font-medium">N/A</span>
+                  )}
                 </td>
               </tr>
             ))}
