@@ -741,51 +741,51 @@ export default function DrillDownDashboard() {
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
-                          <thead className="bg-gray-50">
-                            <tr>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Component</th>
-                              <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-r">Weight</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Data Source</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Why This Weight?</th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(1)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Product Adoption Health</td>
-                              <td className="px-4 py-3 text-center border-r">35%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">licenses</code>, <code className="bg-gray-100 px-2 py-1 rounded">utilization_history</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Foundation - customers must successfully use what they have</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-cyan-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(2)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-cyan-700 border-r">Capacity & Utilization</td>
-                              <td className="px-4 py-3 text-center font-bold border-r">30%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">utilization_alerts</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700"><strong>Strongest urgency signal</strong> - immediate expansion need</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-green-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(3)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-green-700 border-r">Customer Health & Risk</td>
-                              <td className="px-4 py-3 text-center border-r">20%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code>, <code className="bg-gray-100 px-2 py-1 rounded">subscriptions</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Prerequisite - healthy relationships enable expansion</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(4)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">White Space Opportunity</td>
-                              <td className="px-4 py-3 text-center border-r">15%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">white_space_opportunities</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Identifies WHAT to sell - actionable target products</td>
-                            </tr>
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Component</th>
+                                <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 text-black border-r">Weight</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Data Source</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black">Why This Weight?</th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(1)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Product Adoption Health</td>
+                                <td className="px-4 py-3 text-center text-black border-r">35%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">licenses</code>, <code className="bg-gray-100 px-2 py-1 rounded">utilization_history</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Foundation - customers must successfully use what they have</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-cyan-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(2)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-cyan-700 text-black border-r">Capacity & Utilization</td>
+                                <td className="px-4 py-3 text-center font-bold text-black border-r">30%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">utilization_alerts</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black"><strong>Strongest urgency signal</strong> - immediate expansion need</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-green-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(3)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-green-700 text-black border-r">Customer Health & Risk</td>
+                                <td className="px-4 py-3 text-center text-black border-r">20%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code>, <code className="bg-gray-100 px-2 py-1 rounded">subscriptions</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Prerequisite - healthy relationships enable expansion</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(4)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">White Space Opportunity</td>
+                                <td className="px-4 py-3 text-center text-black border-r">15%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">white_space_opportunities</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Identifies WHAT to sell - actionable target products</td>
+                              </tr>
                             <tr className="bg-gray-100 font-bold">
                               <td className="px-4 py-3 border-r">TOTAL</td>
                               <td className="px-4 py-3 text-center text-lg border-r">100%</td>
@@ -1313,51 +1313,51 @@ export default function DrillDownDashboard() {
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
-                          <thead className="bg-gray-50">
-                            <tr>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Component</th>
-                              <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-r">Weight</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Data Source</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Why This Weight?</th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(1)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Lookalike Adoption Rate</td>
-                              <td className="px-4 py-3 text-center border-r">40%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">customer_similarity_matrix</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Foundation - customers must successfully use what they have</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(2)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Lookalike Similarity Strength</td>
-                              <td className="px-4 py-3 text-center font-bold border-r">30%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">customer_similarity_matrix</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700"><strong>Strongest signal</strong> - proven demand matters most</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(3)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Product Synergy</td>
-                              <td className="px-4 py-3 text-center border-r">20%</td>
-                              <td className="px-4 py-3 text-sm border-r">Business rules, synergy matrix</td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Prerequisite - healthy relationships enable expansion</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(4)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Sample Size Confidence</td>
-                              <td className="px-4 py-3 text-center border-r">10%</td>
-                              <td className="px-4 py-3 text-sm border-r">Count of lookalike adopters</td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Identifies WHAT to sell - actionable target products</td>
-                            </tr>
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Component</th>
+                                <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 text-black border-r">Weight</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Data Source</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black">Why This Weight?</th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(1)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Lookalike Adoption Rate</td>
+                                <td className="px-4 py-3 text-center text-black border-r">40%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">customer_similarity_matrix</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Foundation - customers must successfully use what they have</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(2)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Lookalike Similarity Strength</td>
+                                <td className="px-4 py-3 text-center font-bold text-black border-r">30%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">customer_similarity_matrix</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black"><strong>Strongest signal</strong> - proven demand matters most</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(3)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Product Synergy</td>
+                                <td className="px-4 py-3 text-center text-black border-r">20%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r">Business rules, synergy matrix</td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Prerequisite - healthy relationships enable expansion</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(4)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Sample Size Confidence</td>
+                                <td className="px-4 py-3 text-center text-black border-r">10%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r">Count of lookalike adopters</td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Identifies WHAT to sell - actionable target products</td>
+                              </tr>
                             <tr className="bg-gray-100 font-bold">
                               <td className="px-4 py-3 border-r">TOTAL</td>
                               <td className="px-4 py-3 text-center text-lg border-r">100%</td>
@@ -1754,42 +1754,42 @@ export default function DrillDownDashboard() {
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
-                          <thead className="bg-gray-50">
-                            <tr>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Component</th>
-                              <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-r">Weight</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-r">Data Source</th>
-                              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Why This Weight?</th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(1)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Company Profile Match</td>
-                              <td className="px-4 py-3 text-center border-r">25%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code> table</td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Foundation for comparison</td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(2)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Product Portfolio Match</td>
-                              <td className="px-4 py-3 text-center font-bold border-r">50%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">licenses</code> table</td>
-                              <td className="px-4 py-3 text-sm text-gray-700"><strong>Strongest predictor of expansion success</strong></td>
-                            </tr>
-                            <tr 
-                              className="hover:bg-teal-50 cursor-pointer transition-colors"
-                              onClick={() => setSelectedComponent(3)}
-                            >
-                              <td className="px-4 py-3 font-semibold text-teal-700 border-r">Behavior & Usage Match</td>
-                              <td className="px-4 py-3 text-center border-r">25%</td>
-                              <td className="px-4 py-3 text-sm border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code>, <code className="bg-gray-100 px-2 py-1 rounded">utilization_history</code></td>
-                              <td className="px-4 py-3 text-sm text-gray-700">Validates engagement patterns</td>
-                            </tr>
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Component</th>
+                                <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 text-black border-r">Weight</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black border-r">Data Source</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 text-black">Why This Weight?</th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(1)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Company Profile Match</td>
+                                <td className="px-4 py-3 text-center text-black border-r">25%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code> table</td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Foundation for comparison</td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(2)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Product Portfolio Match</td>
+                                <td className="px-4 py-3 text-center font-bold text-black border-r">50%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">licenses</code> table</td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black"><strong>Strongest predictor of expansion success</strong></td>
+                              </tr>
+                              <tr 
+                                className="hover:bg-teal-50 cursor-pointer transition-colors"
+                                onClick={() => setSelectedComponent(3)}
+                              >
+                                <td className="px-4 py-3 font-semibold text-teal-700 text-black border-r">Behavior & Usage Match</td>
+                                <td className="px-4 py-3 text-center text-black border-r">25%</td>
+                                <td className="px-4 py-3 text-sm text-black border-r"><code className="bg-gray-100 px-2 py-1 rounded">accounts</code>, <code className="bg-gray-100 px-2 py-1 rounded">licenses</code>, <code className="bg-gray-100 px-2 py-1 rounded">utilization_history</code></td>
+                                <td className="px-4 py-3 text-sm text-gray-700 text-black">Validates engagement patterns</td>
+                              </tr>
                             <tr className="bg-gray-100 font-bold">
                               <td className="px-4 py-3 border-r">TOTAL</td>
                               <td className="px-4 py-3 text-center text-lg border-r">100%</td>
