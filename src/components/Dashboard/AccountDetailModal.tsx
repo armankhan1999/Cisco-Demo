@@ -66,92 +66,65 @@ export const AccountDetailModal: React.FC<AccountDetailModalProps> = ({ accountN
           </div>
         </div>
 
-        {/* Content - Scrollable */}
+        {/* Content - Simplified and Focused */}
         <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
-          <div className="p-8 space-y-6">
-            {/* Key Metrics */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl border-2 border-green-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-2">
-                  <TrendingUp className="h-5 w-5 text-green-600" />
-                  <div className="text-xs font-semibold text-green-700 uppercase tracking-wide">Annual ARR</div>
-                </div>
-                <div className="text-2xl font-bold text-green-700">{account.arr}</div>
+          <div className="p-6 space-y-4">
+            {/* Essential Metrics - Simplified */}
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <div className="text-xs font-semibold text-green-700 uppercase mb-1">Annual ARR</div>
+                <div className="text-xl font-bold text-green-700">{account.arr}</div>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-5 rounded-xl border-2 border-blue-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="text-xs font-semibold text-blue-700 uppercase tracking-wide">Health Score</div>
-                </div>
-                <div className="text-2xl font-bold text-blue-700">{account.health}%</div>
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <div className="text-xs font-semibold text-blue-700 uppercase mb-1">Health Score</div>
+                <div className="text-xl font-bold text-blue-700">{account.health}%</div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-5 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-2">
-                  <Users className="h-5 w-5 text-purple-600" />
-                  <div className="text-xs font-semibold text-purple-700 uppercase tracking-wide">Employees</div>
-                </div>
-                <div className="text-2xl font-bold text-purple-700">{account.employees.toLocaleString()}</div>
-              </div>
-              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-5 rounded-xl border-2 border-orange-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
-                  <div className="text-xs font-semibold text-orange-700 uppercase tracking-wide">Renewal</div>
-                </div>
-                <div className="text-lg font-bold text-orange-700">{account.renewalDate}</div>
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                <div className="text-xs font-semibold text-purple-700 uppercase mb-1">Tier</div>
+                <div className="text-xl font-bold text-purple-700">{account.tier}</div>
               </div>
             </div>
 
-            {/* Account Information */}
-            <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-5 flex items-center gap-2">
-                Account Information
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-3">
-                  <div>
-                    <div className="text-sm font-medium text-gray-600">Industry</div>
-                    <div className="text-base font-bold text-gray-900 mt-1">{account.industry}</div>
-                  </div>
+            {/* Key Account Info - Streamlined */}
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Account Overview</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-medium text-gray-600">Industry:</span>
+                  <span className="ml-2 font-semibold text-gray-900">{account.industry}</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div>
-                    <div className="text-sm font-medium text-gray-600">Location</div>
-                    <div className="text-base font-bold text-gray-900 mt-1">{account.location}</div>
-                  </div>
+                <div>
+                  <span className="font-medium text-gray-600">CSM:</span>
+                  <span className="ml-2 font-semibold text-gray-900">{account.csm}</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Users className="h-5 w-5 text-gray-400 mt-1" />
-                  <div>
-                    <div className="text-sm font-medium text-gray-600">Customer Success Manager</div>
-                    <div className="text-base font-bold text-gray-900 mt-1">{account.csm}</div>
-                  </div>
+                <div>
+                  <span className="font-medium text-gray-600">Employees:</span>
+                  <span className="ml-2 font-semibold text-gray-900">{account.employees.toLocaleString()}</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <TrendingUp className="h-5 w-5 text-gray-400 mt-1" />
-                  <div>
-                    <div className="text-sm font-medium text-gray-600">Tier</div>
-                    <div className="text-base font-bold text-gray-900 mt-1">{account.tier}</div>
-                  </div>
+                <div>
+                  <span className="font-medium text-gray-600">Renewal:</span>
+                  <span className="ml-2 font-semibold text-gray-900">{account.renewalDate}</span>
                 </div>
               </div>
             </div>
 
-            {/* Products & Licenses */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-5">Products & License Utilization</h3>
-              <div className="space-y-3">
+            {/* Current Products - Compact */}
+            <div className="bg-white p-4 rounded-lg border border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Current Products</h3>
+              <div className="space-y-2">
                 {account.products.map((product, idx) => {
                   const license = account.licenses[product as keyof typeof account.licenses] || 'N/A';
                   const [used, total] = typeof license === 'string' ? license.split('/').map((n: string) => parseInt(n) || 0) : [0, 0];
                   const utilization = total > 0 ? Math.round((used / total) * 100) : 0;
                   
                   return (
-                    <div key={idx} className="flex items-center justify-between p-5 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl border border-gray-200 hover:shadow-md transition-shadow">
-                      <div className="flex-1">
-                        <div className="font-bold text-lg text-gray-900">{product}</div>
-                        <div className="text-sm text-gray-600 mt-1">Licenses: {license}</div>
+                    <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div>
+                        <div className="font-semibold text-gray-900">{product}</div>
+                        <div className="text-xs text-gray-600">Licenses: {license}</div>
                       </div>
                       <div className="text-right">
-                        <div className={`text-3xl font-bold ${
+                        <div className={`text-lg font-bold ${
                           utilization >= 90 ? 'text-red-600' :
                           utilization >= 85 ? 'text-orange-600' :
                           utilization >= 75 ? 'text-yellow-600' :
@@ -159,7 +132,7 @@ export const AccountDetailModal: React.FC<AccountDetailModalProps> = ({ accountN
                         }`}>
                           {utilization}%
                         </div>
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Utilization</div>
+                        <div className="text-xs text-gray-500">Utilization</div>
                       </div>
                     </div>
                   );
@@ -167,38 +140,13 @@ export const AccountDetailModal: React.FC<AccountDetailModalProps> = ({ accountN
               </div>
             </div>
 
-            {/* Recent Activity */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-5">Recent Activity</h3>
-              <div className="space-y-3">
-                {[
-                  { date: '2025-10-08', event: 'QBR Completed', type: 'success' },
-                  { date: '2025-10-05', event: 'Support Ticket Resolved', type: 'info' },
-                  { date: '2025-10-01', event: 'License Expansion Opportunity Identified', type: 'warning' },
-                  { date: '2025-09-28', event: 'Executive Engagement Meeting', type: 'success' }
-                ].map((activity, idx) => (
-                  <div key={idx} className="flex items-center gap-4 p-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors">
-                    <div className={`w-3 h-3 rounded-full ${
-                      activity.type === 'success' ? 'bg-green-500 shadow-lg shadow-green-200' :
-                      activity.type === 'warning' ? 'bg-yellow-500 shadow-lg shadow-yellow-200' :
-                      'bg-blue-500 shadow-lg shadow-blue-200'
-                    }`}></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900">{activity.event}</div>
-                      <div className="text-sm text-gray-500 mt-1">{activity.date}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="flex-1 px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl font-semibold text-lg">
-                View Full Account Details
+            {/* Action Buttons - Simplified */}
+            <div className="flex gap-3 pt-2">
+              <button className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                View Full Details
               </button>
-              <button className="flex-1 px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl font-semibold text-lg">
-                Create Expansion Opportunity
+              <button className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                Create Opportunity
               </button>
             </div>
           </div>

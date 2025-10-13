@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 import { AlertCircle, Users, RefreshCw } from 'lucide-react';
 import { drillDownService } from '@/services/drillDownService';
-import { ArrowLeft, AlertTriangle, Clock, DollarSign, User, Phone, Mail, FileText, CheckCircle, XCircle, Filter, Search, Calendar, Bell, TrendingUp, Target, Zap } from '@/utils/iconMapping';
+import { ArrowLeft, AlertTriangle, Clock, DollarSign, User, Phone, Mail, FileText, CheckCircle, XCircle, Filter, Search, Calendar, Bell, TrendingUp, Target, Zap, X } from '@/utils/iconMapping';
 import { KPI_DRILL_DOWNS, type KPIDrillDown } from '@/services/drillDownService';
 import { getQ2CProcessImprovements, getQ2CCapacityInsights, getQ2CBottleneckHeatmap, getQ2CQuotesRequiringAction } from '@/services/q2cAnalyticsService';
 import expansionOpportunitiesData from '@/source_data/sales-expansion-data/expansion-opportunities.json';
@@ -46,6 +46,8 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [showQuoteDetails, setShowQuoteDetails] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('overview');
+  const [selectedActionItem, setSelectedActionItem] = useState<ActionItem | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [quotesRequiringAction, setQuotesRequiringAction] = useState<any[]>([]);
 
@@ -867,31 +869,43 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
       });
     }
     
-    if (kpiId === 'white-space-value') {
-      // Get high-value white space opportunities from real data
-      const highValueWhiteSpace = whiteSpaceData
-        .filter(ws => ws.total_white_space_arr > 200000)
-        .sort((a, b) => b.total_white_space_arr - a.total_white_space_arr)
-        .slice(0, 10);
+    // HIGH-FIT WHITE SPACE OPPORTUNITIES (only when specifically requested or no specific action)
+    if (actionId === 'high-fit-opportunities' || (kpiId === 'white-space-value' && !actionId)) {
+      // Get high-fit white space opportunities (fit score >= 80)
+      const highFitOpportunities = whiteSpaceData
+        .flatMap(ws => {
+          const customer = customersData.find(c => c.customer_id === ws.account_id);
+          return ws.white_space_opportunities
+            .filter(opp => opp.fit_score >= 80)
+            .map(opp => ({
+              ...opp,
+              customer,
+              whiteSpaceId: ws.analysis_id,
+              currentProducts: licensesData
+                .filter(l => l.customer_id === ws.account_id)
+                .map(l => l.product_family)
+            }));
+        })
+        .filter(opp => opp.customer)
+        .sort((a, b) => b.estimated_arr - a.estimated_arr)
+        .slice(0, 15);
       
-      highValueWhiteSpace.forEach((whiteSpace, index) => {
-        const customer = customersData.find(c => c.customer_id === whiteSpace.account_id);
-        const topOpportunity = whiteSpace.white_space_opportunities
-          .sort((a, b) => b.estimated_arr - a.estimated_arr)[0];
-        
-        if (customer && topOpportunity) {
+      highFitOpportunities.forEach((opp, index) => {
+        if (opp && opp.customer) {
           items.push({
-            id: `WS-${whiteSpace.analysis_id}`,
+            id: `WS-${opp.whiteSpaceId}-${opp.product}`,
             type: 'account',
-            title: `High-Value White Space: ${topOpportunity.product}`,
-            customer: customer.customer_name,
-            amount: topOpportunity.estimated_arr,
-            daysOverdue: index * 5,
-            assignee: customer.csm_id || 'Strategic Account Manager',
-            priority: topOpportunity.fit_score >= 80 ? 'high' : 'medium',
+            title: opp.customer.customer_name,
+            productsToSell: opp.product,
+            prioritizationScore: opp.fit_score,
+            customer: opp.customer.customer_name,
+            amount: opp.estimated_arr,
+            daysOverdue: index < 5 ? 0 : Math.floor(index / 5),
+            assignee: opp.customer.csm_id || `${opp.product} Specialist`,
+            priority: opp.fit_score >= 90 ? 'high' : opp.fit_score >= 85 ? 'medium' : 'low',
             status: 'pending',
-            nextAction: `Schedule ${topOpportunity.product} technical assessment`,
-            businessImpact: `${topOpportunity.fit_score}% fit score • ${topOpportunity.product_category} gap • $${(topOpportunity.estimated_arr / 1000).toFixed(0)}K opportunity`
+            nextAction: `Schedule ${opp.product} technical assessment with ${opp.customer.customer_name}`,
+            businessImpact: `${opp.customer.tier} tier • Missing ${opp.product} • Current: ${opp.currentProducts.join(', ') || 'None'} • ${opp.fit_score}% fit • ${opp.product_category} gap • $${(opp.estimated_arr / 1000).toFixed(0)}K opportunity`
           });
         }
       });
@@ -929,42 +943,53 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
       const product = actionId.replace('product-gap-', '');
       const productName = product.charAt(0).toUpperCase() + product.slice(1);
       
-      // Filter customers who DON'T have this specific product
-      const customersWithoutProduct = customersData.filter(customer => {
-        const hasProduct = licensesData.some(license => 
-          license.customer_id === customer.customer_id && 
-          license.product_family.toLowerCase() === productName.toLowerCase()
-        );
-        return !hasProduct; // Only customers who don't have this product
-      });
+      console.log(`Product-specific drill down for: ${productName}`);
       
-      // Get white space opportunities for this specific product from customers who don't have it
-      const productOpportunities = customersWithoutProduct
-        .map(customer => {
-          const whiteSpaceRecord = whiteSpaceData.find(ws => ws.account_id === customer.customer_id);
-          const productOpportunity = whiteSpaceRecord?.white_space_opportunities
+      // Get all white space opportunities for this specific product
+      const productOpportunities = whiteSpaceData
+        .filter(ws => {
+          // Check if this white space record has opportunities for the specific product
+          const hasProductOpportunity = ws.white_space_opportunities.some(opp => 
+            opp.product.toLowerCase() === productName.toLowerCase()
+          );
+          return hasProductOpportunity;
+        })
+        .map(ws => {
+          const customer = customersData.find(c => c.customer_id === ws.account_id);
+          const productOpportunity = ws.white_space_opportunities
             .find(opp => opp.product.toLowerCase() === productName.toLowerCase());
           
-          return productOpportunity ? {
-            ...productOpportunity,
-            customer,
-            whiteSpaceId: whiteSpaceRecord.analysis_id
-          } : null;
+          // Verify customer doesn't already have this product
+          const hasProduct = licensesData.some(license => 
+            license.customer_id === ws.account_id && 
+            license.product_family.toLowerCase() === productName.toLowerCase()
+          );
+          
+          if (!hasProduct && customer && productOpportunity) {
+            return {
+              ...productOpportunity,
+              customer,
+              whiteSpaceId: ws.analysis_id,
+              currentProducts: licensesData
+                .filter(l => l.customer_id === ws.account_id)
+                .map(l => l.product_family)
+            };
+          }
+          return null;
         })
         .filter(opp => opp !== null)
         .sort((a, b) => b.estimated_arr - a.estimated_arr);
       
+      console.log(`Found ${productOpportunities.length} opportunities for ${productName}`);
+      
       productOpportunities.forEach((opp, index) => {
         if (opp && opp.customer) {
-          // Get current products for context
-          const currentProducts = licensesData
-            .filter(l => l.customer_id === opp.customer.customer_id)
-            .map(l => l.product_family);
-          
           items.push({
             id: `${productName.toUpperCase()}-GAP-${opp.customer.customer_id}`,
             type: 'account',
-            title: `${productName} Gap Opportunity - ${opp.customer.customer_name}`,
+            title: opp.customer.customer_name,
+            productsToSell: productName,
+            prioritizationScore: opp.fit_score,
             customer: opp.customer.customer_name,
             amount: opp.estimated_arr,
             daysOverdue: opp.fit_score < 70 ? Math.floor(index / 2) + 2 : 0,
@@ -976,34 +1001,10 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
               opp.fit_score >= 70 ? 
               `Schedule ${productName} technical demo` : 
               `Build business case for ${productName} adoption`,
-            businessImpact: `${opp.customer.tier} tier • Missing ${productName} • Current: ${currentProducts.join(', ') || 'None'} • ${opp.fit_score}% fit • ${opp.product_category} gap • $${(opp.estimated_arr / 1000).toFixed(0)}K opportunity`
+            businessImpact: `${opp.customer.tier} tier • Missing ${productName} • Current: ${opp.currentProducts.join(', ') || 'None'} • ${opp.fit_score}% fit • ${opp.product_category} gap • $${(opp.estimated_arr / 1000).toFixed(0)}K opportunity`
           });
         }
       });
-      
-      // If no specific opportunities found, create generic gap analysis for customers without the product
-      if (productOpportunities.length === 0) {
-        customersWithoutProduct.slice(0, 10).forEach((customer, index) => {
-          const currentProducts = licensesData
-            .filter(l => l.customer_id === customer.customer_id)
-            .map(l => l.product_family);
-          const estimatedValue = customer.arr * 0.25; // Estimate 25% of current ARR as opportunity
-          
-          items.push({
-            id: `${productName.toUpperCase()}-PROSPECT-${customer.customer_id}`,
-            type: 'account',
-            title: `${productName} Prospect - ${customer.customer_name}`,
-            customer: customer.customer_name,
-            amount: estimatedValue,
-            daysOverdue: Math.floor(index / 3) + 1,
-            assignee: customer.csm_id || `${productName} Specialist`,
-            priority: customer.tier === 'Strategic' ? 'high' : customer.tier === 'Enterprise' ? 'medium' : 'low',
-            status: 'pending',
-            nextAction: `Research ${productName} fit and initiate discovery conversation`,
-            businessImpact: `${customer.tier} tier • No ${productName} • Current: ${currentProducts.join(', ') || 'None'} • $${(customer.arr / 1000).toFixed(0)}K ARR • Estimated $${(estimatedValue / 1000).toFixed(0)}K opportunity`
-          });
-        });
-      }
     }
 
     // WHITE SPACE BY TIER
@@ -1060,7 +1061,9 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
           items.push({
             id: `${tierName.toUpperCase()}-WS-${customer.customer_id}`,
             type: 'account',
-            title: `${tierName} White Space - ${customer.customer_name}`,
+            title: customer.customer_name,
+            productsToSell: topOpportunity.product,
+            prioritizationScore: topOpportunity.fit_score,
             customer: customer.customer_name,
             amount: customerWhiteSpace.total_white_space_arr,
             daysOverdue: topOpportunity.fit_score < 70 ? Math.floor(index / 2) + 1 : 0,
@@ -1076,7 +1079,9 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
           items.push({
             id: `${tierName.toUpperCase()}-PROSPECT-${customer.customer_id}`,
             type: 'account',
-            title: `${tierName} Account Review - ${customer.customer_name}`,
+            title: customer.customer_name,
+            productsToSell: 'Multiple Products',
+            prioritizationScore: customer.tier === 'Strategic' ? 80 : 70,
             customer: customer.customer_name,
             amount: customer.arr * 0.2, // Estimate 20% expansion potential
             daysOverdue: Math.floor(index / 3) + 1,
@@ -2182,16 +2187,59 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
         </div>
       </div>
 
+      {/* Tabs for Expansion Ready Accounts */}
+      {kpiId === 'opportunity-readiness' && (
+        <div className="bg-white border-b border-gray-200">
+          <div className="px-8">
+            <nav className="flex space-x-8">
+              <button
+                onClick={() => setActiveTab('overview')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'overview'
+                    ? 'border-teal-500 text-teal-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Overview
+              </button>
+              <button
+                onClick={() => setActiveTab('by-product')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'by-product'
+                    ? 'border-teal-500 text-teal-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                By Product
+              </button>
+              <button
+                onClick={() => setActiveTab('top-10')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'top-10'
+                    ? 'border-teal-500 text-teal-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Top 10 Ranked
+              </button>
+            </nav>
+          </div>
+        </div>
+      )}
+
       {/* Action Items Cards */}
       <div className="px-8 py-8">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Action Items Requiring Immediate Attention</h2>
-          <p className="text-sm text-gray-600 mt-1">
-            {filteredItems.length} items found • Click any card to view account details
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 gap-4">
+        {/* Overview Tab - Default Action Items */}
+        {(kpiId !== 'opportunity-readiness' || activeTab === 'overview') && (
+          <>
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Action Items Requiring Immediate Attention</h2>
+              <p className="text-sm text-gray-600 mt-1">
+                {filteredItems.length} items found • Click any card to view account details
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-4">
           {filteredItems.map((item) => {
             const customer = customersData.find(c => c.customer_name === item.customer);
             
@@ -2224,7 +2272,7 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Customer</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Account Name</p>
                         <p className="text-sm font-bold text-gray-900">{item.customer}</p>
                         {customer && (
                           <p className="text-xs text-gray-600">{customer.tier} • {customer.industry}</p>
@@ -2232,28 +2280,27 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                       </div>
                       
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Amount</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Products to Sell</p>
+                        <p className="text-sm font-bold text-blue-600">
+                          {item.productsToSell || 'N/A'}
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Opportunity Amount</p>
                         <p className="text-lg font-bold text-green-600">
                           {item.amount > 0 ? `$${(item.amount / 1000).toFixed(0)}K` : '-'}
                         </p>
                       </div>
                       
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Days Overdue</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Prioritization Score</p>
                         <p className={`text-lg font-bold ${
-                          item.daysOverdue > 30 ? 'text-red-600' : 
-                          item.daysOverdue > 7 ? 'text-yellow-600' : 'text-green-600'
+                          (item.prioritizationScore || 0) >= 80 ? 'text-green-600' : 
+                          (item.prioritizationScore || 0) >= 70 ? 'text-yellow-600' : 'text-red-600'
                         }`}>
-                          {item.daysOverdue > 0 ? `${item.daysOverdue} days` : 'On Track'}
+                          {item.prioritizationScore || 0}%
                         </p>
-                      </div>
-                      
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Assignee</p>
-                        <div className="flex items-center gap-2">
-                          <Users className="h-4 w-4 text-gray-400" />
-                          <p className="text-sm font-semibold text-gray-900">{item.assignee}</p>
-                        </div>
                       </div>
                     </div>
                     
@@ -2350,6 +2397,297 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
             </div>
           </div>
         </div>
+          </>
+        )}
+
+        {/* By Product Tab */}
+        {kpiId === 'opportunity-readiness' && activeTab === 'by-product' && (
+          <>
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Expansion Ready Accounts by Product</h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Accounts organized by product with their readiness scores
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Duo */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900">Duo Security</h3>
+                  <p className="text-sm text-gray-600">Multi-factor authentication and access security</p>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-3">
+                    {[
+                      { name: 'TechCorp Industries', score: 96, opportunity: '$425K', tier: 'Enterprise' },
+                      { name: 'Global Financial Partners', score: 93, opportunity: '$380K', tier: 'Strategic' },
+                      { name: 'MedSecure Systems', score: 89, opportunity: '$320K', tier: 'Enterprise' },
+                      { name: 'Advanced Manufacturing', score: 85, opportunity: '$185K', tier: 'Commercial' },
+                      { name: 'InnovateTech Solutions', score: 82, opportunity: '$290K', tier: 'Enterprise' }
+                    ].map((account, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                        onClick={() => {
+                          const mockItem = {
+                            id: `DUO-${idx}`,
+                            type: 'account' as const,
+                            title: `${account.name} - Readiness Score ${account.score}`,
+                            customer: account.name,
+                            amount: parseInt(account.opportunity.replace('$', '').replace('K', '')) * 1000,
+                            daysOverdue: 0,
+                            assignee: 'Sarah Johnson',
+                            priority: account.score >= 90 ? 'high' as const : 'medium' as const,
+                            status: 'pending' as const,
+                            nextAction: 'Schedule Duo expansion meeting',
+                            businessImpact: `Readiness score: ${account.score}/100. Duo expansion opportunity: ${account.opportunity}. ${account.tier} tier account.`
+                          };
+                          setSelectedActionItem(mockItem);
+                        }}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                          <div>
+                            <div className="font-semibold text-gray-900">{account.name}</div>
+                            <div className="text-sm text-gray-600">{account.tier} tier</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <div className="text-right">
+                            <div className="font-bold text-gray-900">{account.opportunity}</div>
+                            <div className="text-sm text-gray-600">Opportunity</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="font-bold text-blue-600 text-lg">{account.score}</div>
+                            <div className="text-sm text-gray-600">Readiness</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Meraki */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4 border-b border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900">Meraki</h3>
+                  <p className="text-sm text-gray-600">Cloud-managed networking solutions</p>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-3">
+                    {[
+                      { name: 'SecureBank Corp', score: 94, opportunity: '$520K', tier: 'Strategic' },
+                      { name: 'HealthTech Systems', score: 88, opportunity: '$340K', tier: 'Enterprise' },
+                      { name: 'DataFlow Systems', score: 84, opportunity: '$275K', tier: 'Commercial' },
+                      { name: 'CloudFirst Solutions', score: 79, opportunity: '$195K', tier: 'Commercial' }
+                    ].map((account, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                        onClick={() => {
+                          const mockItem = {
+                            id: `MERAKI-${idx}`,
+                            type: 'account' as const,
+                            title: `${account.name} - Readiness Score ${account.score}`,
+                            customer: account.name,
+                            amount: parseInt(account.opportunity.replace('$', '').replace('K', '')) * 1000,
+                            daysOverdue: 0,
+                            assignee: 'Mike Chen',
+                            priority: account.score >= 90 ? 'high' as const : 'medium' as const,
+                            status: 'pending' as const,
+                            nextAction: 'Schedule Meraki expansion meeting',
+                            businessImpact: `Readiness score: ${account.score}/100. Meraki expansion opportunity: ${account.opportunity}. ${account.tier} tier account.`
+                          };
+                          setSelectedActionItem(mockItem);
+                        }}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          <div>
+                            <div className="font-semibold text-gray-900">{account.name}</div>
+                            <div className="text-sm text-gray-600">{account.tier} tier</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <div className="text-right">
+                            <div className="font-bold text-gray-900">{account.opportunity}</div>
+                            <div className="text-sm text-gray-600">Opportunity</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="font-bold text-green-600 text-lg">{account.score}</div>
+                            <div className="text-sm text-gray-600">Readiness</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* ThousandEyes */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-gradient-to-r from-purple-50 to-violet-50 px-6 py-4 border-b border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900">ThousandEyes</h3>
+                  <p className="text-sm text-gray-600">Network intelligence and monitoring</p>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-3">
+                    {[
+                      { name: 'Enterprise Solutions Inc', score: 91, opportunity: '$445K', tier: 'Strategic' },
+                      { name: 'Regional Corp', score: 87, opportunity: '$365K', tier: 'Enterprise' },
+                      { name: 'TechFlow Industries', score: 83, opportunity: '$285K', tier: 'Commercial' }
+                    ].map((account, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                        onClick={() => {
+                          const mockItem = {
+                            id: `TE-${idx}`,
+                            type: 'account' as const,
+                            title: `${account.name} - Readiness Score ${account.score}`,
+                            customer: account.name,
+                            amount: parseInt(account.opportunity.replace('$', '').replace('K', '')) * 1000,
+                            daysOverdue: 0,
+                            assignee: 'Lisa Wang',
+                            priority: account.score >= 90 ? 'high' as const : 'medium' as const,
+                            status: 'pending' as const,
+                            nextAction: 'Schedule ThousandEyes expansion meeting',
+                            businessImpact: `Readiness score: ${account.score}/100. ThousandEyes expansion opportunity: ${account.opportunity}. ${account.tier} tier account.`
+                          };
+                          setSelectedActionItem(mockItem);
+                        }}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                          <div>
+                            <div className="font-semibold text-gray-900">{account.name}</div>
+                            <div className="text-sm text-gray-600">{account.tier} tier</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <div className="text-right">
+                            <div className="font-bold text-gray-900">{account.opportunity}</div>
+                            <div className="text-sm text-gray-600">Opportunity</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="font-bold text-purple-600 text-lg">{account.score}</div>
+                            <div className="text-sm text-gray-600">Readiness</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Top 10 Ranked Tab */}
+        {kpiId === 'opportunity-readiness' && activeTab === 'top-10' && (
+          <>
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Top 10 Expansion Ready Accounts</h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Ranked by readiness score with expansion opportunities
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account Name</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Products to Sell</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opportunity Amount</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Readiness Score</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {[
+                      { rank: 1, name: 'TechCorp Industries', products: 'Duo Security, ThousandEyes', opportunity: '$425K', score: 96, tier: 'Enterprise' },
+                      { rank: 2, name: 'SecureBank Corp', products: 'Meraki, Umbrella', opportunity: '$520K', score: 94, tier: 'Strategic' },
+                      { rank: 3, name: 'Global Financial Partners', products: 'Duo Security, Splunk', opportunity: '$380K', score: 93, tier: 'Strategic' },
+                      { rank: 4, name: 'Enterprise Solutions Inc', products: 'ThousandEyes, Meraki', opportunity: '$445K', score: 91, tier: 'Strategic' },
+                      { rank: 5, name: 'MedSecure Systems', products: 'Duo Security, Umbrella', opportunity: '$320K', score: 89, tier: 'Enterprise' },
+                      { rank: 6, name: 'HealthTech Systems', products: 'Meraki, ThousandEyes', opportunity: '$340K', score: 88, tier: 'Enterprise' },
+                      { rank: 7, name: 'Regional Corp', products: 'ThousandEyes, Splunk', opportunity: '$365K', score: 87, tier: 'Enterprise' },
+                      { rank: 8, name: 'Advanced Manufacturing', products: 'Duo Security, Meraki', opportunity: '$185K', score: 85, tier: 'Commercial' },
+                      { rank: 9, name: 'DataFlow Systems', products: 'Meraki, Umbrella', opportunity: '$275K', score: 84, tier: 'Commercial' },
+                      { rank: 10, name: 'TechFlow Industries', products: 'ThousandEyes, Duo', opportunity: '$285K', score: 83, tier: 'Commercial' }
+                    ].map((account, idx) => (
+                      <tr 
+                        key={idx} 
+                        className="hover:bg-gray-50 cursor-pointer transition-colors"
+                        onClick={() => {
+                          const mockItem = {
+                            id: `TOP10-${idx}`,
+                            type: 'account' as const,
+                            title: `${account.name} - Readiness Score ${account.score}`,
+                            customer: account.name,
+                            amount: parseInt(account.opportunity.replace('$', '').replace('K', '')) * 1000,
+                            daysOverdue: 0,
+                            assignee: 'Sarah Johnson',
+                            priority: account.score >= 90 ? 'high' as const : account.score >= 85 ? 'medium' as const : 'low' as const,
+                            status: 'pending' as const,
+                            nextAction: `Schedule expansion meeting for ${account.products.split(',')[0].trim()}`,
+                            businessImpact: `Readiness score: ${account.score}/100. Multi-product expansion opportunity: ${account.opportunity}. ${account.tier} tier account.`
+                          };
+                          setSelectedActionItem(mockItem);
+                        }}
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${
+                              account.rank <= 3 ? 'bg-yellow-500' : account.rank <= 6 ? 'bg-gray-400' : 'bg-orange-400'
+                            }`}>
+                              {account.rank}
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div>
+                            <div className="text-sm font-medium text-gray-900">{account.name}</div>
+                            <div className="text-sm text-gray-500">{account.tier} tier</div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="text-sm text-gray-900">{account.products}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm font-bold text-green-600">{account.opportunity}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
+                              <div 
+                                className={`h-2 rounded-full ${
+                                  account.score >= 90 ? 'bg-green-500' : account.score >= 80 ? 'bg-yellow-500' : 'bg-red-500'
+                                }`}
+                                style={{ width: `${account.score}%` }}
+                              ></div>
+                            </div>
+                            <span className="text-sm font-bold text-gray-900">{account.score}</span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <button className="text-teal-600 hover:text-teal-900 font-semibold">
+                            View Details
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Account Details Modal */}
@@ -2536,6 +2874,140 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                 <button className="flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 font-semibold shadow-lg hover:shadow-xl transition-all">
                   <AlertCircle className="h-5 w-5" />
                   Escalate
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Account Detail Modal */}
+      {selectedActionItem && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-teal-600 to-blue-600 px-8 py-6 flex-shrink-0">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <AlertCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">{selectedActionItem.customer}</h2>
+                    <p className="text-teal-100 text-sm">Account Details & Expansion Opportunity</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedActionItem(null)}
+                  className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto p-8">
+              <div className="space-y-6">
+                {/* Key Metrics */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <DollarSign className="h-6 w-6 text-green-600" />
+                      <h3 className="font-bold text-green-900">Opportunity Value</h3>
+                    </div>
+                    <p className="text-3xl font-bold text-green-600">${(selectedActionItem.amount / 1000).toFixed(0)}K</p>
+                    <p className="text-sm text-green-700 mt-1">Expansion potential</p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <TrendingUp className="h-6 w-6 text-blue-600" />
+                      <h3 className="font-bold text-blue-900">Readiness Score</h3>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-600">
+                      {selectedActionItem.businessImpact.match(/Readiness score: (\d+)/)?.[1] || 'N/A'}
+                    </p>
+                    <p className="text-sm text-blue-700 mt-1">Out of 100</p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-6 border border-purple-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Users className="h-6 w-6 text-purple-600" />
+                      <h3 className="font-bold text-purple-900">Priority</h3>
+                    </div>
+                    <p className={`text-2xl font-bold ${
+                      selectedActionItem.priority === 'high' ? 'text-red-600' :
+                      selectedActionItem.priority === 'medium' ? 'text-yellow-600' :
+                      'text-green-600'
+                    }`}>
+                      {selectedActionItem.priority.toUpperCase()}
+                    </p>
+                    <p className="text-sm text-purple-700 mt-1">Expansion priority</p>
+                  </div>
+                </div>
+
+                {/* Products to Sell */}
+                <div className="bg-white rounded-xl border border-gray-200 p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Products to Sell</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {(selectedActionItem.businessImpact.includes('Duo') ? ['Duo Security'] : [])
+                      .concat(selectedActionItem.businessImpact.includes('Meraki') ? ['Meraki'] : [])
+                      .concat(selectedActionItem.businessImpact.includes('ThousandEyes') ? ['ThousandEyes'] : [])
+                      .concat(selectedActionItem.businessImpact.includes('Umbrella') ? ['Umbrella'] : [])
+                      .concat(selectedActionItem.businessImpact.includes('Splunk') ? ['Splunk'] : [])
+                      .map((product, idx) => (
+                        <span key={idx} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium">
+                          {product}
+                        </span>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Next Action */}
+                <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6">
+                  <h3 className="text-lg font-bold text-orange-900 mb-3">Next Action Required</h3>
+                  <p className="text-xl font-semibold text-orange-800 mb-4">{selectedActionItem.nextAction}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Users className="h-5 w-5 text-orange-600" />
+                      <span className="text-sm font-medium text-orange-700">Assignee:</span>
+                      <span className="text-base font-bold text-orange-900">{selectedActionItem.assignee}</span>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                      selectedActionItem.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                      selectedActionItem.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                      'bg-green-100 text-green-800'
+                    }`}>
+                      {selectedActionItem.status.replace('_', ' ').toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Business Impact */}
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">Business Impact</h3>
+                  <p className="text-gray-700 leading-relaxed">{selectedActionItem.businessImpact}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-gray-50 border-t border-gray-200 px-8 py-6 flex-shrink-0">
+              <div className="flex gap-4 justify-end">
+                <button 
+                  onClick={() => setSelectedActionItem(null)}
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition-colors"
+                >
+                  Close
+                </button>
+                <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors">
+                  <Phone className="h-5 w-5" />
+                  Contact Customer
+                </button>
+                <button className="flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 font-semibold transition-colors">
+                  <Calendar className="h-5 w-5" />
+                  Schedule Meeting
                 </button>
               </div>
             </div>

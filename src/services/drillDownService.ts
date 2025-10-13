@@ -635,15 +635,15 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
     businessContext: 'Estimated ARR from identified product gaps. Target: $8M+. Represents untapped expansion potential.',
     level2Views: [
       {
-        id: 'white-space-by-segment',
-        title: 'White Space by Segment',
-        description: 'Opportunity sizing by customer tier and industry',
+        id: 'white-space-opportunity-analysis',
+        title: 'White Space Opportunity Analysis',
+        description: 'Product gap analysis and customer tier breakdown',
         chartType: 'breakdown',
         businessQuestion: 'WHERE is the biggest white space?',
         actionableInsights: [
-          'Enterprise Financial Services: $2.8M opportunity',
-          'Strategic Healthcare: $2.1M opportunity',
-          'Commercial Manufacturing: $1.9M opportunity'
+          'Product Gap Analysis Matrix shows cross-sell opportunities',
+          'Customer Tier breakdown shows expansion potential by segment',
+          'Prioritized account list for immediate action'
         ]
       }
     ],
@@ -655,6 +655,35 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
         actionType: 'workflow',
         urgency: 'high',
         businessImpact: '$4.5M in ready-to-engage opportunities'
+      }
+    ]
+  },
+  {
+    kpiId: 'lookalike-analysis',
+    kpiName: 'Lookalike Analysis',
+    businessContext: 'AI-driven expansion recommendations based on similar customer patterns. Identifies high-probability cross-sell opportunities.',
+    level2Views: [
+      {
+        id: 'lookalike-overview',
+        title: 'Lookalike Analysis Overview',
+        description: 'Customer similarity patterns and expansion recommendations',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH customers are most similar and what should we sell them?',
+        actionableInsights: [
+          'Ready for future integration',
+          'AI-powered recommendation engine',
+          'Pattern-based expansion targeting'
+        ]
+      }
+    ],
+    level3Actions: [
+      {
+        id: 'lookalike-recommendations',
+        title: 'Lookalike Recommendations',
+        description: 'Specific product recommendations based on similar customers',
+        actionType: 'workflow',
+        urgency: 'medium',
+        businessImpact: 'AI-driven expansion opportunities'
       }
     ]
   },
