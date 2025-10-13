@@ -2,9 +2,8 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { getActiveAccounts, loadSubscriptions, loadUtilizationHistory } from '@/lib/data/csmDataLoader';
-import { useSidebar } from '@/contexts/SidebarContext';
 
 interface EnrichedAccountData {
   account: any;
@@ -23,13 +22,29 @@ interface EnrichedAccountData {
 
 function AccountsPageContent() {
   const router = useRouter();
-  const { isCollapsed } = useSidebar();
   const searchParams = useSearchParams();
   const filter = searchParams.get('filter'); // 'all', 'at-risk', 'healthy'
   const tierFilter = searchParams.get('tier'); // Tier filter from churn analysis
+  const referrer = searchParams.get('referrer'); // Where the user came from
   
   const [accounts, setAccounts] = useState<EnrichedAccountData[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Function to determine back button text based on referrer
+  const getBackButtonText = () => {
+    if (referrer) {
+      if (referrer.includes('portfolio-health')) return 'Portfolio Health';
+      if (referrer.includes('churn-rate')) return 'Churn Rate';
+      if (referrer.includes('at-risk-arr')) return 'At-Risk ARR';
+      if (referrer.includes('renewal-rate')) return 'Renewal Rate';
+      if (referrer.includes('grr')) return 'GRR';
+      if (referrer.includes('portfolio-utilization')) return 'Portfolio Utilization';
+      if (referrer.includes('qbr-completion')) return 'QBR Completion';
+      if (referrer.includes('predicted-churn-risk')) return 'Predicted Churn Risk';
+      return 'Previous Page';
+    }
+    return tierFilter ? 'Churn Analysis' : 'Portfolio Dashboard';
+  };
 
   useEffect(() => {
     try {
@@ -156,15 +171,18 @@ function AccountsPageContent() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="All Accounts"
+        subtitle="Loading account data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading accounts...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -184,37 +202,44 @@ function AccountsPageContent() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-        <div className="p-8">
-          {/* Header */}
-          <div className="mb-8">
-            <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-4"
-            >
-              ← Back to {tierFilter ? 'Churn Analysis' : 'Portfolio Dashboard'}
-            </button>
-            
-            {tierFilter && (
-              <div className="mb-4 px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm text-blue-800">
-                    <strong>Filtered by:</strong> {tierFilter} tier from Churn Analysis
-                  </p>
-                  <button
-                    onClick={() => router.push('/csm/accounts')}
-                    className="text-xs text-blue-600 hover:text-blue-800 underline"
-                  >
-                    Clear filter
-                  </button>
-                </div>
+    <CSMKPIWrapper 
+      title={title}
+      subtitle={description}
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="mb-8">
+          <button
+            onClick={() => {
+              if (referrer) {
+                router.push(referrer);
+              } else {
+                router.back();
+              }
+            }}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-4"
+          >
+            ← Back to {getBackButtonText()}
+          </button>
+          
+          {tierFilter && (
+            <div className="mb-4 px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-blue-800">
+                  <strong>Filtered by:</strong> {tierFilter} tier from Churn Analysis
+                </p>
+                <button
+                  onClick={() => router.push('/csm/accounts')}
+                  className="text-xs text-blue-600 hover:text-blue-800 underline"
+                >
+                  Clear filter
+                </button>
               </div>
-            )}
-            
-            <div className="flex items-center justify-between">
+            </div>
+          )}
+          
+          <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
                 <p className="text-gray-600 mt-2">{description}</p>
@@ -347,23 +372,25 @@ function AccountsPageContent() {
             </div>
           )}
         </div>
-      </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 
 export default function AccountsPage() {
   return (
     <Suspense fallback={
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="All Accounts"
+        subtitle="Loading account data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading accounts...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     }>
       <AccountsPageContent />
     </Suspense>

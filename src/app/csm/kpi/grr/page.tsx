@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { calculateAllKPIs, calculateGRR } from '@/lib/kpis/csmKPICalculations';
 import { getActiveAccounts, getAllRevenueMovements, getActiveSubscriptions } from '@/lib/data/csmDataLoader';
 
@@ -17,7 +16,6 @@ export default function GRRDrillDown() {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
 
-  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -131,12 +129,18 @@ export default function GRRDrillDown() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 flex items-center justify-center transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-          <div className="text-gray-500">Loading GRR Analysis...</div>
+      <CSMKPIWrapper 
+        title="Gross Revenue Retention (GRR)"
+        subtitle="Loading analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-500">Loading GRR Analysis...</p>
         </div>
       </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -144,23 +148,26 @@ export default function GRRDrillDown() {
   const paginatedMovements = movements.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-gray-50">
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
+    <CSMKPIWrapper 
+      title="Gross Revenue Retention (GRR)"
+      subtitle="Revenue retention analysis and trends | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
           <button
-            onClick={() => router.push('/csm')}
-            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            ← Back to Portfolio Dashboard
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
           </button>
+        </div>
+
+        {/* Header Section */}
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Gross Revenue Retention (GRR)</h1>
@@ -175,10 +182,10 @@ export default function GRRDrillDown() {
               <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
                 Refresh Data
               </button>
-            </div>
           </div>
         </div>
 
+        {/* Main Content */}
         <div className="p-8">
           {/* Top Summary Cards */}
           <div className="grid grid-cols-4 gap-6 mb-8">
@@ -452,6 +459,6 @@ export default function GRRDrillDown() {
           </div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

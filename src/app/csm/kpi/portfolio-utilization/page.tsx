@@ -10,66 +10,65 @@ import { UtilizationDistribution } from '../../../../components/CSM/LicenseUtili
 import { UtilizationByProduct } from '../../../../components/CSM/LicenseUtilization/UtilizationByProduct';
 import { UtilizationTrendAnalysis } from '../../../../components/CSM/LicenseUtilization/UtilizationTrendAnalysis';
 import { AccountUtilizationTable } from '../../../../components/CSM/LicenseUtilization/AccountUtilizationTable';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 
 export default function PortfolioUtilizationPage() {
   const router = useRouter();
   const [selectedBucket, setSelectedBucket] = useState<string | undefined>();
-  const { isCollapsed } = useSidebar();
 
   const handleBucketClick = (bucket: string) => {
     setSelectedBucket(bucket);
   };
 
   const handleAccountClick = (customerId: string) => {
-    router.push(`/csm/accounts/${customerId}`);
+    const currentPath = window.location.pathname;
+    router.push(`/csm/accounts/${customerId}?referrer=${encodeURIComponent(currentPath)}`);
   };
 
   const handleBackToOverview = () => {
-    router.push('/csm/portfolio');
+    router.push('/');
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-slate-100">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+    <CSMKPIWrapper 
+      title="Portfolio License Utilization"
+      subtitle="License utilization analysis and optimization insights | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <button
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
+          </button>
+        </div>
+
         {/* Header Section */}
-        <div className="bg-white border-b border-gray-200 shadow-sm">
-          <div className="max-w-7xl mx-auto px-8 py-6">
-            <button
-              onClick={handleBackToOverview}
-              className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
-            >
-              ← Back to Portfolio Dashboard
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+              📊 Portfolio License Utilization
+            </h1>
+            <p className="text-gray-600 mt-2 text-lg">
+              Comprehensive analysis of license usage, optimization opportunities, and cost efficiency
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <button className="px-5 py-2.5 bg-white border-2 border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm">
+              📊 Export Report
             </button>
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
-                  📊 Portfolio License Utilization
-                </h1>
-                <p className="text-gray-600 mt-2 text-lg">
-                  Comprehensive analysis of license usage, optimization opportunities, and cost efficiency
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <button className="px-5 py-2.5 bg-white border-2 border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm">
-                  📊 Export Report
-                </button>
-                <button 
-                  onClick={() => window.location.reload()}
-                  className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md"
-                >
-                  🔄 Refresh Data
-                </button>
-              </div>
-            </div>
+            <button 
+              onClick={() => window.location.reload()}
+              className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md"
+            >
+              🔄 Refresh Data
+            </button>
           </div>
         </div>
 
@@ -152,6 +151,6 @@ export default function PortfolioUtilizationPage() {
           <div className="pb-8"></div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

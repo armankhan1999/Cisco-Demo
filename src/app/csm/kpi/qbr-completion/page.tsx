@@ -3,27 +3,33 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '@/components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { QBRCompletionAnalysis } from '@/components/CSM/KPI/QBRCompletionAnalysis';
 
 export default function QBRCompletionDrillDown() {
   const router = useRouter();
-  const { isCollapsed } = useSidebar();
   
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}> 
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
+    <CSMKPIWrapper 
+      title="QBR Completion Analysis"
+      subtitle="Quarterly Business Review completion tracking | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
           <button
-            onClick={() => router.push('/csm')}
-            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            ← Back to Portfolio Dashboard
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
           </button>
-          
+        </div>
+
+        {/* Header Section */}
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">QBR Completion Rate Analysis</h1>
@@ -41,12 +47,11 @@ export default function QBRCompletionDrillDown() {
               >
                 🔄 Refresh Data
               </button>
-            </div>
           </div>
         </div>
 
         <QBRCompletionAnalysis />
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

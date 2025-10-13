@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { loadAccounts, loadSubscriptions, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
-import { useSidebar } from '../../../../contexts/SidebarContext';
 // Icons replaced with emoji for simplicity
 
 interface ContractInfo {
@@ -137,15 +136,37 @@ interface AccountDetail {
   competitorThreats: any[];
 }
 
-export default function AccountDetailPage({ params }: { params: Promise<{ customerId: string }> }) {
+export default function AccountDetailPage({ params, searchParams }: { 
+  params: Promise<{ customerId: string }>,
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
   const router = useRouter();
-  const { isCollapsed } = useSidebar();
   const resolvedParams = use(params);
+  const resolvedSearchParams = use(searchParams);
   const customerId = resolvedParams.customerId;
+  const referrer = resolvedSearchParams.referrer as string;
   const [account, setAccount] = useState<AccountDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
+  
+  // Function to determine back button text based on referrer
+  const getBackButtonText = () => {
+    if (referrer) {
+      if (referrer.includes('portfolio-health')) return 'Portfolio Health';
+      if (referrer.includes('churn-rate')) return 'Churn Rate';
+      if (referrer.includes('at-risk-arr')) return 'At-Risk ARR';
+      if (referrer.includes('renewal-rate')) return 'Renewal Rate';
+      if (referrer.includes('grr')) return 'GRR';
+      if (referrer.includes('portfolio-utilization')) return 'Portfolio Utilization';
+      if (referrer.includes('qbr-completion')) return 'QBR Completion';
+      if (referrer.includes('predicted-churn-risk')) return 'Predicted Churn Risk';
+      if (referrer.includes('product-details')) return 'Product Details';
+      if (referrer.includes('license-details')) return 'License Details';
+      return 'Previous Page';
+    }
+    return 'Dashboard';
+  };
   
   // Unwrap the params Promise using React.use()
   useEffect(() => {
@@ -556,53 +577,51 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
 
   if (loading) {
     return (
-      <div className="flex h-screen">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-          <div className="flex items-center justify-center h-full">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading account details...</p>
-            </div>
+      <CSMKPIWrapper title="Account Details" subtitle="Loading account information..." showBackButton={false}>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading account details...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
   if (!account) {
     return (
-      <div className="flex h-screen">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Account Not Found</h1>
-            <p className="text-gray-600 mb-4">The requested account could not be found.</p>
-            <button
-              onClick={() => router.back()}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-            >
-              Go Back
-            </button>
-          </div>
+      <CSMKPIWrapper title="Account Not Found" subtitle="The requested account could not be found." showBackButton={false}>
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Account Not Found</h1>
+          <p className="text-gray-600 mb-4">The requested account could not be found.</p>
+          <button
+            onClick={() => router.back()}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Go Back
+          </button>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      <div className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+    <CSMKPIWrapper title={`${account.account_name} - Account Details`} subtitle={`Customer ID: ${customerId}`} showBackButton={false}>
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
               <button
-                onClick={() => router.back()}
+                onClick={() => {
+                  if (referrer) {
+                    router.push(referrer);
+                  } else {
+                    router.back();
+                  }
+                }}
                 className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
               >
-                ← Back to Dashboard
+                ← Back to {getBackButtonText()}
               </button>
               <h1 className="text-3xl font-bold text-gray-900">{account.customerName}</h1>
               <div className="flex items-center mt-2 space-x-4">
@@ -1300,7 +1319,6 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

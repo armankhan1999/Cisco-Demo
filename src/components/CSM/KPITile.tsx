@@ -13,6 +13,17 @@ interface KPITileProps {
 }
 
 export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KPITileProps) {
+  // Add null check for kpi
+  if (!kpi) {
+    return (
+      <div className="bg-gray-100 rounded-lg p-6 animate-pulse">
+        <div className="h-4 bg-gray-300 rounded mb-2"></div>
+        <div className="h-8 bg-gray-300 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 rounded"></div>
+      </div>
+    );
+  }
+
   // Status-based background colors (following health score matrix)
   // Success (Green): 76-100 = Thriving/Healthy
   // Warning (Yellow): 60-75 = Stable
@@ -39,15 +50,15 @@ export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KP
 
   // Get colors based on KPI status (not random)
   const getTileColor = () => {
-    return statusColors[kpi.status];
+    return statusColors[kpi.status] || statusColors.danger;
   };
 
   const getTextColor = () => {
-    return statusTextColors[kpi.status];
+    return statusTextColors[kpi.status] || statusTextColors.danger;
   };
 
   const getProgressBarColor = () => {
-    return statusProgressColors[kpi.status];
+    return statusProgressColors[kpi.status] || statusProgressColors.danger;
   };
 
   // Icons for different KPI types
@@ -125,7 +136,7 @@ export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KP
   
   const content = (
     <div className="relative h-full flex flex-col">
-      {/* Header with icon and 30-day trend */}
+      {/* Header with icon and trend */}
       <div className="flex items-start justify-between mb-3">
         <div className="text-3xl opacity-90">
           {getKPIIcon()}
@@ -134,9 +145,6 @@ export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor }: KP
           <div className={`text-sm font-bold ${getTrendColor()} flex flex-col items-end`}>
             <div className="flex items-center gap-1">
               {trendIcons[kpi.trend]} {kpi.change}
-            </div>
-            <div className="text-xs font-medium opacity-90">
-              (30d)
             </div>
           </div>
         )}

@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { calculateHealthDecomposition } from '@/lib/kpis/csmHealthDecomposition';
 import { calculateHealthDistribution } from '@/lib/kpis/csmKPICalculations';
 import { getActiveAccounts } from '@/lib/data/csmDataLoader';
@@ -20,8 +19,6 @@ export default function PortfolioHealthDrillDown() {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState<string>('arr');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
-
-  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -128,7 +125,8 @@ export default function PortfolioHealthDrillDown() {
 
   const handleDistributionClick = (category: string) => {
     const categoryName = category.split(' ')[0]; // Extract "Thriving", "Healthy", etc.
-    router.push(`/csm/accounts?health=${encodeURIComponent(categoryName)}`);
+    const currentPath = window.location.pathname;
+    router.push(`/csm/accounts?health=${encodeURIComponent(categoryName)}&referrer=${encodeURIComponent(currentPath)}`);
   };
 
   const handleAccountClick = (accountId: string) => {
@@ -150,33 +148,26 @@ export default function PortfolioHealthDrillDown() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-b border-gray-200 shadow-sm">
-        <div className="px-8 py-6">
+    <CSMKPIWrapper 
+      title="Portfolio Health Score"
+      subtitle="Comprehensive analysis of your portfolio health metrics | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
           <button
-            onClick={() => router.push('/csm')}
-            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            ← Back to Portfolio Dashboard
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
           </button>
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2 tracking-tight">Portfolio Health Score</h1>
-              <p className="text-lg text-gray-700 font-medium">Comprehensive analysis of your portfolio health metrics</p>
-              <p className="text-sm text-gray-600 mt-1">
-                Real-time synthetic data analysis | Updated: {new Date().toLocaleDateString()}
-              </p>
-            </div>
-            
+        </div>
+
+        {/* Action Buttons */}
             <div className="flex items-center gap-4">
               <button className="px-6 py-3 text-sm font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-sm">
                 📊 Export Report
@@ -185,14 +176,8 @@ export default function PortfolioHealthDrillDown() {
                 🔄 Refresh Data
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="p-8">
         {/* Portfolio Health Score & Components */}
-        
+        <div className="space-y-6">
         {/* First Row: Portfolio Health, Usage Health, Engagement Health */}
         <div className="grid grid-cols-3 gap-6 mb-6">
           {/* All first row KPIs have consistent height */}
@@ -323,7 +308,10 @@ export default function PortfolioHealthDrillDown() {
         <div className="grid grid-cols-3 gap-6 mb-8">
           {/* Total ARR - Clickable */}
           <div 
-            onClick={() => router.push('/csm/accounts?filter=all')}
+            onClick={() => {
+              const currentPath = window.location.pathname;
+              router.push(`/csm/accounts?filter=all&referrer=${encodeURIComponent(currentPath)}`);
+            }}
             className="rounded-xl border-2 border-gray-200 p-6 flex flex-col justify-center bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer hover:border-blue-300"
           >
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Total ARR</div>
@@ -813,7 +801,7 @@ export default function PortfolioHealthDrillDown() {
         </div>
       </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 

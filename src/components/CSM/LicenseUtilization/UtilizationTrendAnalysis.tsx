@@ -56,8 +56,8 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
             utilization: avgUtilization,
             activeUsers: Math.round(totalActiveUsers / points.length),
             unusedCapacity: Math.round(totalUnusedCapacity / points.length),
-            rolling7Day: 0, // Will be calculated below
-            rolling30Day: 0 // Will be calculated below
+          rolling7Day: 0, // Will be calculated below
+          rolling30Day: 0 // Will be calculated below
           };
         });
       } else {
@@ -176,7 +176,7 @@ export function UtilizationTrendAnalysis({ onDateClick }: UtilizationTrendAnalys
               Monthly
             </button>
           </div>
-          <div className="text-sm text-gray-500">
+        <div className="text-sm text-gray-500">
             {viewMode === 'daily' ? 'Daily Portfolio Metrics' : 'Monthly Portfolio Metrics'}
           </div>
           {/* Dynamic Scale Indicator */}

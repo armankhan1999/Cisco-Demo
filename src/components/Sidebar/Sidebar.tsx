@@ -51,7 +51,7 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
       description: 'CSM dashboard & tools',
       onClick: () => {
         if (typeof window !== 'undefined') {
-          window.location.href = '/csm';
+          window.location.href = '/';
         }
       }
     },
@@ -72,13 +72,13 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
   const subMenus: Record<Persona, SubMenuItem[]> = {
     CSM: [
       {
-        id: 'portfolio',
-        label: 'Portfolio Dashboard',
+        id: 'overview',
+        label: 'CSM Overview & Strategy',
         description: 'Strategic overview & KPIs',
         onClick: () => {
           onPersonaChange('CSM');
           if (typeof window !== 'undefined') {
-            window.location.href = '/csm';
+            window.location.href = '/';
           }
         }
       },

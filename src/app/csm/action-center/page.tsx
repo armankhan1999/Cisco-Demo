@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { CriticalHealthAccounts } from '@/components/CSM/Level3/CriticalHealthAccounts';
 import { AtRiskRenewals } from '@/components/CSM/Level3/AtRiskRenewals';
 import { UsageAnomalyAlerts } from '@/components/CSM/Level3/UsageAnomalyAlerts';
@@ -10,6 +11,7 @@ import { OverdueActivities } from '@/components/CSM/Level3/OverdueActivities';
 type TabView = 'critical' | 'renewals' | 'anomalies' | 'overdue';
 
 export default function CSMActionCenterPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabView>('critical');
 
   const tabs = [
@@ -20,15 +22,25 @@ export default function CSMActionCenterPage() {
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-50 to-slate-100">
+    <CSMKPIWrapper 
+      title="CSM Action Center"
+      subtitle="Critical actions and alerts requiring immediate attention"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <button
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
+          </button>
+        </div>
+
         {/* Header */}
         <div className="bg-white shadow-lg border-b border-gray-200 px-8 py-8">
           <div className="flex items-center justify-between mb-6">
@@ -85,6 +97,6 @@ export default function CSMActionCenterPage() {
           {activeTab === 'overdue' && <OverdueActivities />}
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

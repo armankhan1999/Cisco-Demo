@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { calculateAllKPIs } from '@/lib/kpis/csmKPICalculations';
 import { getActiveAccounts } from '@/lib/data/csmDataLoader';
 import csmsData from '@/source_data/master-data/csms.json';
@@ -132,7 +131,6 @@ export default function AtRiskARRDrillDown() {
     }
   }, []);
 
-  const { isCollapsed } = useSidebar();
 
   // Search and filter
   const filteredAccounts = accounts.filter(account => {
@@ -178,14 +176,18 @@ export default function AtRiskARRDrillDown() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-          <div className="flex items-center justify-center">
-            <div className="text-gray-500">Loading At-Risk ARR Analysis...</div>
+      <CSMKPIWrapper 
+        title="At-Risk ARR Analysis"
+        subtitle="Loading analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-500">Loading At-Risk ARR Analysis...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -193,38 +195,40 @@ export default function AtRiskARRDrillDown() {
   const paginatedAccounts = sortedAccounts.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className={`flex-1 overflow-y-auto bg-gray-50 transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
+    <CSMKPIWrapper 
+      title="At-Risk ARR Analysis"
+      subtitle="Revenue at risk analysis and mitigation strategies | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
           <button
-            onClick={() => router.push('/csm')}
-            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            ← Back to Portfolio Dashboard
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
           </button>
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">At-Risk ARR Analysis</h1>
-              <p className="text-gray-600 mt-1">
-                Comprehensive analysis of accounts requiring immediate attention
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                Export Report
-              </button>
-              <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
-                Refresh Data
-              </button>
-            </div>
+        </div>
+
+        {/* Header Section */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">At-Risk ARR Analysis</h1>
+            <p className="text-gray-600 mt-1">
+              Comprehensive analysis of accounts requiring immediate attention
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              Export Report
+            </button>
+            <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+              Refresh Data
+            </button>
           </div>
         </div>
 
@@ -472,7 +476,10 @@ export default function AtRiskARRDrillDown() {
                   {paginatedAccounts.map((account: any, idx: number) => (
                     <tr 
                       key={idx} 
-                      onClick={() => router.push(`/csm/accounts/${account.id}`)}
+                      onClick={() => {
+                        const currentPath = window.location.pathname;
+                        router.push(`/csm/accounts/${account.id}?referrer=${encodeURIComponent(currentPath)}`);
+                      }}
                       className="hover:bg-gray-50 transition-colors cursor-pointer"
                       title="Click to view account details"
                     >
@@ -583,6 +590,6 @@ export default function AtRiskARRDrillDown() {
           </div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

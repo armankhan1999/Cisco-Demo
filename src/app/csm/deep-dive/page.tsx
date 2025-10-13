@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { HealthScoreDecomposition } from '@/components/CSM/Level2/HealthScoreDecomposition';
 import { ProductAdoptionTrends } from '@/components/CSM/Level2/ProductAdoptionTrends';
 import { ChurnRiskAnalysis } from '@/components/CSM/Level2/ChurnRiskAnalysis';
@@ -10,6 +11,7 @@ import { CustomerJourneyStages } from '@/components/CSM/Level2/CustomerJourneySt
 type TabView = 'health' | 'adoption' | 'churn' | 'journey';
 
 export default function CSMDeepDivePage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabView>('health');
 
   const tabs = [
@@ -20,15 +22,25 @@ export default function CSMDeepDivePage() {
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPersona="CSM"
-        onPersonaChange={() => {}} 
-      />
-      
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-50 to-slate-100">
+    <CSMKPIWrapper 
+      title="CSM Deep Dive Analysis"
+      subtitle="Comprehensive customer success analysis and insights"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <button
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
+          </button>
+        </div>
+
         {/* Header */}
         <div className="bg-white shadow-lg border-b border-gray-200 px-8 py-8">
           <div className="flex items-center justify-between mb-6">
@@ -85,7 +97,7 @@ export default function CSMDeepDivePage() {
           {activeTab === 'journey' && <CustomerJourneyStages />}
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 

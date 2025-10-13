@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
-import { useSidebar } from '../../../../contexts/SidebarContext';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { calculateAllKPIs, calculateChurnRate } from '@/lib/kpis/csmKPICalculations';
 import { 
   getActiveAccounts, 
@@ -26,7 +25,6 @@ export default function ChurnRateDrillDown() {
   const [perPage, setPerPage] = useState(10);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'predictions' | 'historical' | 'alerts'>('predictions');
-  const { isCollapsed } = useSidebar();
 
   useEffect(() => {
     try {
@@ -166,7 +164,7 @@ export default function ChurnRateDrillDown() {
           daysToRenewal: (pred as any).days_to_renewal || 0,
           renewalDate: (pred as any).contract_end_date || 'Unknown'
         };
-      }).filter(pred => pred.churn_probability > 0.3)
+      }).filter(pred => pred.churn_probability > 0.4)
         .sort((a, b) => b.churn_probability - a.churn_probability);
       
       // Process champion departure alerts
@@ -187,17 +185,20 @@ export default function ChurnRateDrillDown() {
       // Generate comprehensive churn alerts
       const alerts = [];
       
-      // High-risk predictions
-      const highRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'Critical' || p.riskLevel === 'High');
-      if (highRiskPredictions.length > 0) {
+      // High-risk predictions - Split by Critical and High
+      const criticalRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'Critical');
+      const highRiskPredictions = predictionsWithAccounts.filter(p => p.riskLevel === 'High');
+      const totalHighRisk = criticalRiskPredictions.length + highRiskPredictions.length;
+      
+      if (totalHighRisk > 0) {
         alerts.push({
           id: 'high_risk_predictions',
           type: 'warning',
-          title: `${highRiskPredictions.length} High-Risk Accounts`,
-          description: `Accounts with ${highRiskPredictions.length > 1 ? 'churn probabilities' : 'churn probability'} above 60%`,
+          title: `${totalHighRisk} High-Risk Accounts`,
+          description: `${criticalRiskPredictions.length} Critical (≥70%) + ${highRiskPredictions.length} High (60-69%) risk`,
           priority: 'high',
-          count: highRiskPredictions.length,
-          accounts: highRiskPredictions.slice(0, 5)
+          count: totalHighRisk,
+          accounts: [...criticalRiskPredictions, ...highRiskPredictions].slice(0, 5)
         });
       }
       
@@ -340,15 +341,18 @@ export default function ChurnRateDrillDown() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="Churn Rate Analysis"
+        subtitle="Loading analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading churn rate data...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -369,19 +373,26 @@ export default function ChurnRateDrillDown() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      {/* Main Content */}
-      <div className={`flex-1 overflow-y-auto bg-gray-50 transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
+    <CSMKPIWrapper 
+      title="Churn Rate Analysis"
+      subtitle="Comprehensive churn analysis and prediction insights | Real-time synthetic data analysis | Updated: 13/10/2025"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
+        {/* Back Button */}
+        <div className="mb-6">
           <button
-            onClick={() => router.push('/csm')}
-            className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
+            onClick={() => router.push('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            ← Back to Portfolio Dashboard
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">Back to Portfolio Dashboard</span>
           </button>
+        </div>
+
+        {/* Header Section */}
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Churn Rate Analysis</h1>
@@ -396,49 +407,21 @@ export default function ChurnRateDrillDown() {
               <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
                 Refresh Data
               </button>
-            </div>
           </div>
         </div>
 
+        {/* Main Content */}
         <div className="p-8">
-          {/* Critical Alerts Banner */}
-          {churnAlerts.length > 0 && (
-            <div className="mb-8">
-              <button 
-                onClick={() => setActiveTab('alerts')}
-                className="w-full bg-red-50 border border-red-200 rounded-lg p-6 hover:bg-red-100 transition-colors text-left"
-              >
-                <div className="flex items-center">
-                  <svg className="w-6 h-6 text-red-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                  <div>
-                    <h3 className="text-lg font-semibold text-red-900">
-                      🚨 {churnData.totalAlerts} Active Churn Alerts - Click to View
-                    </h3>
-                    <p className="text-red-700 mt-1">
-                      {churnData.criticalAlerts} critical alerts require immediate attention
-                    </p>
-                  </div>
-                </div>
-              </button>
-            </div>
-          )}
-
-          {/* Top Summary Cards */}
-          <div className="grid grid-cols-5 gap-6 mb-8">
+          {/* Top Summary Cards - Row 1 */}
+          <div className="grid grid-cols-3 gap-6 mb-6">
+            {/* Churn Rate */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Churn Rate</p>
-                  <p className="text-3xl font-bold text-red-600">
+                  <p className="text-3xl font-bold text-green-600">
                     {churnData.overallChurnRate.toFixed(2)}%
                   </p>
-                </div>
-                <div className="p-3 bg-red-100 rounded-full">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                  </svg>
                 </div>
               </div>
               <div className="mt-4">
@@ -450,12 +433,13 @@ export default function ChurnRateDrillDown() {
               </div>
             </div>
 
+            {/* Churned ARR */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Churned ARR</p>
-                  <p className="text-3xl font-bold text-gray-900">
-                    ${(churnData.totalChurnedARR / 1000000).toFixed(1)}M
+                  <p className="text-3xl font-bold text-red-600">
+                    ${(churnData.totalChurnedARR / 1000).toFixed(2)}K
                   </p>
                 </div>
                 <div className="p-3 bg-gray-100 rounded-full">
@@ -471,11 +455,57 @@ export default function ChurnRateDrillDown() {
               </div>
             </div>
 
+            {/* Preventable Churn */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Preventable Churn</p>
+                  <p className="text-3xl font-bold text-green-600">
+                    {churnData.preventablePercentage.toFixed(0)}%
+                  </p>
+                </div>
+                <div className="p-3 bg-green-100 rounded-full">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="mt-4">
+                <span className="inline-flex items-center text-sm font-medium text-green-600">
+                  💡 Prevention Opportunity
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Top Summary Cards - Row 2 */}
+          <div className="grid grid-cols-3 gap-6 mb-8">
+            {/* Predicted Churn Risk */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Predicted Churn Risk (Next 12M)</p>
+                  <p className="text-3xl font-bold text-red-600">
+                    {(() => {
+                      const accounts = getActiveAccounts();
+                      const totalARR = accounts.reduce((sum, acc) => sum + acc.account.arr, 0);
+                      const atRiskARR = churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0);
+                      return totalARR > 0 ? ((atRiskARR / totalARR) * 100).toFixed(2) : '0.00';
+                    })()}%
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4">
+                <span className="inline-flex items-center text-sm font-medium text-red-600">
+                  💰 Forward-Looking Risk
+                </span>
+              </div>
+            </div>
+
+            {/* At-Risk Accounts */}
             <button 
               onClick={() => {
-                setActiveTab('predictions');
-                setSelectedTier(null);
-                setCurrentPage(1);
+                router.push('/csm/kpi/predicted-churn-risk/at-risk-accounts');
               }}
               className="bg-white rounded-lg border border-gray-200 p-6 hover:bg-gray-50 transition-colors w-full text-left"
             >
@@ -499,34 +529,13 @@ export default function ChurnRateDrillDown() {
               </div>
             </button>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Preventable Churn</p>
-                  <p className="text-3xl font-bold text-green-600">
-                    {churnData.preventablePercentage.toFixed(0)}%
-                  </p>
-                </div>
-                <div className="p-3 bg-green-100 rounded-full">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-green-600">
-                  💡 Prevention Opportunity
-                </span>
-              </div>
-            </div>
-
             {/* Next 12 Months ARR Lost */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Next 12 Months ARR Lost</p>
                   <p className="text-3xl font-bold text-red-600">
-                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(1)}M
+                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(2)}M
                   </p>
                 </div>
                 <div className="p-3 bg-red-100 rounded-full">
@@ -540,39 +549,6 @@ export default function ChurnRateDrillDown() {
                   💰 Predicted Revenue at Risk
                 </span>
               </div>
-            </div>
-          </div>
-
-          {/* Churn Reasons Analysis */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-6">Churn Reasons Analysis</h3>
-            <div className="grid grid-cols-2 gap-6">
-              {Object.entries(churnData.churnReasons).map(([category, data]: [string, any]) => (
-                <div key={category} className="border border-gray-200 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-medium text-gray-900 capitalize">{category}</h4>
-                    <span className="text-sm text-gray-500">{data.count} accounts</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>ARR Lost:</span>
-                      <span className="font-medium">${(data.arr / 1000).toFixed(0)}K</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span>Preventable:</span>
-                      <span className={`font-medium ${data.preventable > 0 ? 'text-green-600' : 'text-gray-500'}`}>
-                        {data.preventable}/{data.count}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-blue-600 h-2 rounded-full" 
-                        style={{ width: `${(data.count / churnedAccounts.length) * 100}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -684,7 +660,10 @@ export default function ChurnRateDrillDown() {
                               <div className="flex items-center">
                                 <div>
                                   <button 
-                                    onClick={() => router.push(`/csm/accounts/${item.account_id || item.customerId}`)}
+                                    onClick={() => {
+                                      const currentPath = window.location.pathname;
+                                      router.push(`/csm/accounts/${item.account_id || item.customerId}?referrer=${encodeURIComponent(currentPath)}`);
+                                    }}
                                     className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline"
                                   >
                                     {item.accountName}
@@ -760,7 +739,10 @@ export default function ChurnRateDrillDown() {
                               <div className="flex items-center">
                                 <div>
                                   <button 
-                                    onClick={() => router.push(`/csm/accounts/${item.customer_id}`)}
+                                    onClick={() => {
+                                      const currentPath = window.location.pathname;
+                                      router.push(`/csm/accounts/${item.customer_id}?referrer=${encodeURIComponent(currentPath)}`);
+                                    }}
                                     className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline"
                                   >
                                     {item.accountName}
@@ -831,7 +813,10 @@ export default function ChurnRateDrillDown() {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                              <button className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded">
+                              <button 
+                                onClick={() => router.push('/csm/kpi/predicted-churn-risk/at-risk-accounts')}
+                                className="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 border border-blue-600 rounded hover:bg-blue-50 transition-colors"
+                              >
                                 View Details
                               </button>
                             </td>
@@ -925,13 +910,16 @@ export default function ChurnRateDrillDown() {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-4">Key Risk Indicators</h4>
                 <div className="space-y-3">
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <button 
+                    onClick={() => router.push('/csm/kpi/predicted-churn-risk/alerts')}
+                    className="w-full p-3 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors cursor-pointer text-left"
+                  >
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-red-900">Champion Departures</span>
                       <span className="text-sm font-semibold text-red-600">{championDepartures.length} recent</span>
                     </div>
-                    <div className="text-xs text-red-700 mt-1">Key stakeholders left in last 30 days</div>
-                  </div>
+                    <div className="text-xs text-red-700 mt-1">Key stakeholders left in last 30 days • Click to view</div>
+                  </button>
                   
                   <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
                     <div className="flex items-center justify-between">
@@ -968,6 +956,6 @@ export default function ChurnRateDrillDown() {
           </div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

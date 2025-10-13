@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { loadAccounts, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
-import { useSidebar } from '../../../../contexts/SidebarContext';
 
 interface AccountLicenseData {
   customerId: string;
@@ -29,7 +28,6 @@ interface ProductLicenseData {
 
 function LicenseDetailsPageContent() {
   const router = useRouter();
-  const { isCollapsed } = useSidebar();
   const searchParams = useSearchParams();
   const focusType = searchParams.get('focus') || 'all'; // all, active, waste, range
   const utilizationRange = searchParams.get('range') || null; // e.g., "21-40%"
@@ -195,15 +193,18 @@ function LicenseDetailsPageContent() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 flex items-center justify-center transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+      <CSMKPIWrapper 
+        title="License Details"
+        subtitle="Loading license analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading license details...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -217,10 +218,12 @@ function LicenseDetailsPageContent() {
   const portfolioUtilization = (portfolioTotals.activeUsers / portfolioTotals.totalLicenses) * 100;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+    <CSMKPIWrapper 
+      title="License Details Analysis"
+      subtitle="Detailed license utilization and optimization analysis"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
         {/* Header */}
         <div className="bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-8 py-6">
@@ -337,7 +340,8 @@ function LicenseDetailsPageContent() {
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
-                                router.push(`/csm/account-deep-dive/${account.customerId}`);
+                                const currentPath = window.location.pathname;
+                                router.push(`/csm/account-deep-dive/${account.customerId}?referrer=${encodeURIComponent(currentPath)}`);
                               }}
                               className="font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer text-left"
                             >
@@ -431,22 +435,25 @@ function LicenseDetailsPageContent() {
           </div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 
 export default function LicenseDetailsPage() {
   return (
     <Suspense fallback={
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="License Details"
+        subtitle="Loading license analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading license details...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     }>
       <LicenseDetailsPageContent />
     </Suspense>

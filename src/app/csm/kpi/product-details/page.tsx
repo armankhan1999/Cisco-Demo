@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { loadAccounts, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
-import { useSidebar } from '../../../../contexts/SidebarContext';
 
 interface ProductDistribution {
   category: string;
@@ -31,7 +30,6 @@ interface AccountProductData {
 
 function ProductDetailsPageContent() {
   const router = useRouter();
-  const { isCollapsed } = useSidebar();
   const searchParams = useSearchParams();
   const productFamily = searchParams.get('product') || 'Unknown';
   
@@ -179,15 +177,18 @@ function ProductDetailsPageContent() {
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 flex items-center justify-center transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+      <CSMKPIWrapper 
+        title="Product Details"
+        subtitle="Loading product analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading product details...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -201,10 +202,12 @@ function ProductDetailsPageContent() {
   const avgUtilization = (totals.activeUsers / totals.totalLicenses) * 100;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
+    <CSMKPIWrapper 
+      title={`${productFamily} Product Analysis`}
+      subtitle="Detailed product performance and distribution analysis"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
         {/* Header */}
         <div className="bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-8 py-6">
@@ -392,7 +395,10 @@ function ProductDetailsPageContent() {
                     <tr 
                       key={account.customerId}
                       className="hover:bg-gray-50 cursor-pointer"
-                      onClick={() => router.push(`/csm/accounts/${account.customerId}`)}
+                      onClick={() => {
+                        const currentPath = window.location.pathname;
+                        router.push(`/csm/accounts/${account.customerId}?referrer=${encodeURIComponent(currentPath)}`);
+                      }}
                     >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {account.accountName}
@@ -435,22 +441,25 @@ function ProductDetailsPageContent() {
           </div>
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 
 export default function ProductDetailsPage() {
   return (
     <Suspense fallback={
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="Product Details"
+        subtitle="Loading product analysis data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading product details...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     }>
       <ProductDetailsPageContent />
     </Suspense>

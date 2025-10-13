@@ -17,6 +17,8 @@ import {
   csmData
 } from '@/lib/data/csmDataLoader';
 
+import { calculatePredictedChurnRisk } from './predictedChurnRisk';
+
 export interface KPIResult {
   value: number;
   formatted: string;
@@ -329,11 +331,11 @@ export function calculateChurnRate(filteredAccounts?: any[]): KPIResult {
 
   return {
     value: churnRate,
-    formatted: `${churnRate.toFixed(1)}%`,
+    formatted: `${churnRate.toFixed(2)}%`,
     target: 5,
     status: churnRate <= 5 ? 'success' : churnRate <= 8 ? 'warning' : 'danger',
     trend,
-    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(1)}pp`
+    change: `${momChange >= 0 ? '+' : ''}${momChange.toFixed(2)}pp`
   };
 }
 
@@ -691,6 +693,30 @@ export function calculateQBRCompletion(filteredAccounts?: any[]): KPIResult {
 }
 
 /**
+ * KPI: Predicted Churn Risk Rate
+ * Target: ≤ 10%
+ * Definition: % of ARR predicted to churn in next 12 months based on ML models
+ */
+export function calculatePredictedChurnRiskKPI(filteredAccounts?: any[]): KPIResult {
+  const riskData = calculatePredictedChurnRisk(filteredAccounts);
+  const riskRate = riskData.riskRate;
+  
+  // Calculate trend (compare 3-month to 12-month risk)
+  const shortTermRisk = riskData.next3Months.arr / riskData.totalARR * 100;
+  const longTermRisk = riskData.riskRate;
+  const trend = shortTermRisk > longTermRisk * 0.5 ? 'up' : shortTermRisk < longTermRisk * 0.3 ? 'down' : 'stable';
+  
+  return {
+    value: riskRate,
+    formatted: `${riskRate.toFixed(1)}%`,
+    target: 10,
+    status: riskRate <= 10 ? 'success' : riskRate <= 15 ? 'warning' : 'danger',
+    trend,
+    change: `${riskData.atRiskAccountCount} accounts at risk`
+  };
+}
+
+/**
  * Calculate all KPIs at once
  */
 export function calculateAllKPIs(filteredAccounts?: any[]) {
@@ -700,6 +726,7 @@ export function calculateAllKPIs(filteredAccounts?: any[]) {
     atRiskARR: calculateAtRiskARR(filteredAccounts),
     renewalRate: calculateRenewalRate(filteredAccounts),
     churnRate: calculateChurnRate(filteredAccounts),
+    predictedChurnRisk: calculatePredictedChurnRiskKPI(filteredAccounts),
     portfolioUtilization: calculatePortfolioUtilization(filteredAccounts),
     avgUtilization: calculateFeatureAdoption(filteredAccounts), // Add avgUtilization alias
     featureAdoption: calculateFeatureAdoption(filteredAccounts),

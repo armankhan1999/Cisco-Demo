@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { loadAccounts, loadUtilizationHistory } from '../../../../lib/data/csmDataLoader';
 import { loadAccountDeepDive } from '../../../../lib/data/accountDeepDiveLoader';
-import { useSidebar } from '../../../../contexts/SidebarContext';
 import AccountHeader from '../../../../components/AccountDeepDive/AccountHeader';
 import AccountOverview from '../../../../components/AccountDeepDive/AccountOverview';
 import HealthRiskAssessment from '../../../../components/AccountDeepDive/HealthRiskAssessment';
@@ -32,7 +31,7 @@ function AccountDeepDiveContent() {
   const router = useRouter();
   const params = useParams();
   const accountId = params?.id as string;
-  const { isCollapsed } = useSidebar();
+  const referrer = params?.referrer as string;
   const [loading, setLoading] = useState(true);
   const [accountData, setAccountData] = useState<any>(null);
 
@@ -100,27 +99,21 @@ function AccountDeepDiveContent() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
-          <div className="flex items-center justify-center h-screen">
-            <div className="text-lg text-gray-600">Loading account details...</div>
-          </div>
+      <CSMKPIWrapper title="Account Deep Dive" subtitle="Loading account details..." showBackButton={false}>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-lg text-gray-600">Loading account details...</div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
   if (!accountData) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className={`flex-1 transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
-          <div className="flex items-center justify-center h-screen">
-            <div className="text-lg text-red-600">Account not found</div>
-          </div>
+      <CSMKPIWrapper title="Account Not Found" subtitle="The requested account could not be found." showBackButton={false}>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-lg text-red-600">Account not found</div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -139,14 +132,18 @@ function AccountDeepDiveContent() {
   const alerts = deepDiveData.alerts;
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      <div className={`flex-1 transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'} p-8`}>
+    <CSMKPIWrapper title={`${accountInfo.name} - Deep Dive Analysis`} subtitle={`Account ID: ${accountInfo.id}`} showBackButton={false}>
         <AccountHeader 
           accountName={accountInfo.name}
           accountId={accountInfo.id}
           csmName={accountInfo.csm_name || 'Sarah Chen'}
-          onBack={() => router.back()}
+          onBack={() => {
+            if (referrer) {
+              router.push(referrer);
+            } else {
+              router.back();
+            }
+          }}
         />
         
         <AccountOverview 
@@ -205,8 +202,7 @@ function AccountDeepDiveContent() {
             📝 Add Note
           </button>
         </div>
-      </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }
 

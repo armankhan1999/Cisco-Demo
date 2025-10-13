@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../../../components/Sidebar/Sidebar';
+import CSMKPIWrapper from '@/components/CSM/CSMKPIWrapper';
 import { 
   enrichAccount, 
   getProductAdoption, 
@@ -60,23 +60,29 @@ export default function Account360Page({ params }: { params: Promise<{ customerI
 
   if (loading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="Account 360° View"
+        subtitle="Loading account data..."
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading 360° Account View...</p>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
   if (!enrichedData) {
     return (
-      <div className="flex h-screen overflow-hidden bg-gray-50">
-        <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-        <div className="flex-1 flex items-center justify-center">
+      <CSMKPIWrapper 
+        title="Account 360° View"
+        subtitle="Account not found"
+        showBackButton={false}
+      >
+        <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Account Not Found</h2>
             <button
@@ -87,7 +93,7 @@ export default function Account360Page({ params }: { params: Promise<{ customerI
             </button>
           </div>
         </div>
-      </div>
+      </CSMKPIWrapper>
     );
   }
 
@@ -95,11 +101,12 @@ export default function Account360Page({ params }: { params: Promise<{ customerI
   const healthColor = getHealthColor(account.health_score);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar currentPersona="CSM" onPersonaChange={() => {}} />
-      
-      <div className="flex-1 overflow-y-auto">
-        <div className="p-8">
+    <CSMKPIWrapper 
+      title={`${account.name} - 360° View`}
+      subtitle="Comprehensive account analysis and insights"
+      showBackButton={false}
+    >
+      <div className="space-y-8">
           {/* Header */}
           <div className="mb-8">
             <button
@@ -495,6 +502,6 @@ export default function Account360Page({ params }: { params: Promise<{ customerI
           )}
         </div>
       </div>
-    </div>
+    </CSMKPIWrapper>
   );
 }

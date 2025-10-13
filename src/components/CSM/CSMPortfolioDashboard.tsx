@@ -374,29 +374,47 @@ export function CSMPortfolioDashboard() {
           </h2>
         </div>
         
-        {/* Row 1: GRR, Portfolio Health, At-Risk ARR, Renewal Rate */}
+        {/* Show loading state if KPIs are not loaded yet */}
+        {!kpis ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-gray-100 rounded-lg p-6 animate-pulse">
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-8 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded"></div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
+            {/* Row 1: Core Revenue KPIs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} customBgColor="#F3F3F3" />
-          <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} customBgColor="#F3F3F3" />
           <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} customBgColor="#F3F3F3" />
           <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} customBgColor="#F3F3F3" />
         </div>
 
-        {/* Row 2: Churn Rate, Portfolio Utilization, Feature Adoption, Engagement Score */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} customBgColor="#F3F3F3" />
+            {/* Row 2: Health & Risk KPIs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+              <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} customBgColor="#F3F3F3" />
+          <KPITile title="Churn Rate (Historical)" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} customBgColor="#F3F3F3" />
+          <KPITile title="Predicted Churn Risk" kpi={kpis.predictedChurnRisk} drillDownUrl={buildDrillDownUrl('/csm/kpi/predicted-churn-risk')} customBgColor="#F3F3F3" />
+            </div>
+
+            {/* Row 3: Utilization & Engagement KPIs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} customBgColor="#F3F3F3" />
           <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} customBgColor="#F3F3F3" />
           <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} customBgColor="#F3F3F3" />
         </div>
 
-        {/* Row 3: Time to Value, QBR Completion and Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Row 4: Performance & Process KPIs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           <KPITile title="Time to Value (TTV)" kpi={kpis.timeToValue} drillDownUrl={buildDrillDownUrl('/csm/kpi/time-to-value')} customBgColor="#F3F3F3" />
           <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} customBgColor="#F3F3F3" />
           
-          {/* Summary Cards */}
-          <div className="col-span-2 bg-white rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300">
+              {/* Summary Card */}
+              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300">
             <div className="relative h-full flex flex-col">
               {/* Header with icon */}
               <div className="flex items-start justify-between mb-3">
@@ -411,7 +429,7 @@ export function CSMPortfolioDashboard() {
               {/* Content Grid */}
               <div className="grid grid-cols-2 gap-3 flex-grow mb-3">
                 <div 
-                  onClick={() => router.push('/csm/accounts?filter=all')}
+                  onClick={() => router.push('/csm/accounts?filter=all&referrer=/')}
                   className="bg-gray-50 rounded-lg p-2.5 cursor-pointer hover:bg-gray-100 hover:shadow-md transition-all"
                 >
                   <div className="text-xl font-bold text-gray-900 mb-0.5">
@@ -420,7 +438,7 @@ export function CSMPortfolioDashboard() {
                   <div className="text-xs text-gray-600 font-medium">Active Accounts</div>
                 </div>
                 <div 
-                  onClick={() => router.push('/csm/accounts?filter=all')}
+                  onClick={() => router.push('/csm/accounts?filter=all&referrer=/')}
                   className="bg-gray-50 rounded-lg p-2.5 cursor-pointer hover:bg-gray-100 hover:shadow-md transition-all"
                 >
                   <div className="text-xl font-bold text-gray-900 mb-0.5">
@@ -429,7 +447,7 @@ export function CSMPortfolioDashboard() {
                   <div className="text-xs text-gray-600 font-medium">Portfolio ARR</div>
                 </div>
                 <div 
-                  onClick={() => router.push('/csm/accounts?filter=healthy')}
+                  onClick={() => router.push('/csm/accounts?filter=healthy&referrer=/')}
                   className="bg-green-50 rounded-lg p-2.5 cursor-pointer hover:bg-green-100 hover:shadow-md transition-all"
                 >
                   <div className="text-xl font-bold text-green-700 mb-0.5">
@@ -438,7 +456,7 @@ export function CSMPortfolioDashboard() {
                   <div className="text-xs text-green-600 font-medium">Healthy Accounts</div>
                 </div>
                 <div 
-                  onClick={() => router.push('/csm/accounts?filter=at-risk')}
+                  onClick={() => router.push('/csm/accounts?filter=at-risk&referrer=/')}
                   className="bg-red-50 rounded-lg p-2.5 cursor-pointer hover:bg-red-100 hover:shadow-md transition-all"
                 >
                   <div className="text-xl font-bold text-red-700 mb-0.5">
@@ -450,6 +468,8 @@ export function CSMPortfolioDashboard() {
             </div>
           </div>
         </div>
+          </>
+        )}
       </div>
 
       {/* Health Distribution */}
