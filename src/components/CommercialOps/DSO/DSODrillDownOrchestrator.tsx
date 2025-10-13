@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import DSOLevel0ProductComparison from './DSOLevel0ProductComparison';
 import DSOLevel1TrendAging from './DSOLevel1TrendAging';
 import DSOLevel2SegmentMatrix from './DSOLevel2SegmentMatrix';
 import DSOLevel3CustomerAging from './DSOLevel3CustomerAging';
@@ -10,7 +11,7 @@ interface DSODrillDownOrchestratorProps {
   onBack: () => void;
 }
 
-type DrillDownLevel = 'level1' | 'level2' | 'level3' | 'level4';
+type DrillDownLevel = 'level0' | 'level1' | 'level2' | 'level3' | 'level4';
 
 interface DrillDownState {
   level: DrillDownLevel;
@@ -21,8 +22,15 @@ interface DrillDownState {
 
 export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchestratorProps) {
   const [drillDownState, setDrillDownState] = useState<DrillDownState>({
-    level: 'level1'
+    level: 'level0'
   });
+
+  const handleDrillToLevel1 = (productFamily: string) => {
+    setDrillDownState({
+      level: 'level1',
+      productFamily
+    });
+  };
 
   const handleDrillToLevel2 = (segment: string, productFamily: string) => {
     setDrillDownState({
@@ -49,9 +57,16 @@ export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchest
     });
   };
 
+  const handleBackToLevel0 = () => {
+    setDrillDownState({
+      level: 'level0'
+    });
+  };
+
   const handleBackToLevel1 = () => {
     setDrillDownState({
-      level: 'level1'
+      level: 'level1',
+      productFamily: drillDownState.productFamily
     });
   };
 
@@ -73,10 +88,19 @@ export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchest
 
   // Render appropriate level based on current state
   switch (drillDownState.level) {
+    case 'level0':
+      return (
+        <DSOLevel0ProductComparison
+          onBack={onBack}
+          onDrillToLevel1={handleDrillToLevel1}
+        />
+      );
+
     case 'level1':
       return (
         <DSOLevel1TrendAging
-          onBack={onBack}
+          productFamily={drillDownState.productFamily}
+          onBack={handleBackToLevel0}
           onDrillToLevel2={handleDrillToLevel2}
         />
       );
@@ -111,9 +135,9 @@ export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchest
 
     default:
       return (
-        <DSOLevel1TrendAging
+        <DSOLevel0ProductComparison
           onBack={onBack}
-          onDrillToLevel2={handleDrillToLevel2}
+          onDrillToLevel1={handleDrillToLevel1}
         />
       );
   }

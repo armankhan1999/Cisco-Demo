@@ -9,8 +9,22 @@ import accountsReceivableData from '@/source_data/commercial_operations/accounts
 import invoicesData from '@/source_data/commercial_operations/invoices.json';
 import paymentsData from '@/source_data/commercial_operations/payments.json';
 import accountsData from '@/source_data/commercial_operations/accounts.json';
+import subscriptionsData from '@/source_data/commercial_operations/subscriptions.json';
 
-// Level 1: DSO Trend + Aging Buckets
+// Level 0: Product Line Comparison
+export interface DSOLevel0ProductData {
+  id: string;
+  productFamily: string;
+  dsoValue: number;
+  arBalance: number;
+  invoiceCount: number;
+  target: number;
+  status: 'good' | 'warning' | 'critical';
+  trend: number; // Percentage change from previous period
+  customerCount: number;
+}
+
+// Level 1: DSO Trend + Aging Buckets (Product-Specific)
 export interface DSOLevel1TrendData {
   id: string;
   month: string;
@@ -29,6 +43,21 @@ export interface DSOLevel1TrendData {
     aging_90_plus_pct: number;
   };
   totalAR: number;
+}
+
+// Level 1.5: Aging Bucket Detail (NEW)
+export interface DSOAgingBucketDetail {
+  customerId: string;
+  customerName: string;
+  invoices: {
+    invoiceId: string;
+    invoiceNumber: string;
+    amount: number;
+    daysOutstanding: number;
+    dueDate: string;
+    status: string;
+  }[];
+  totalOutstanding: number;
 }
 
 // Level 2: Segment Performance Matrix
@@ -127,24 +156,159 @@ export interface DSOLevel4CustomerProfile {
 }
 
 class DSODrillDownServiceClass {
-  
+
   /**
-   * Level 1: DSO Trend + Aging Buckets
-   * Business Story: "Is our collection getting better or worse?"
+   * Helper: Build subscription to product mapping
    */
-  getLevel1TrendData(): DSOLevel1TrendData[] {
+  private buildSubscriptionProductMap(): Record<string, string> {
+    const map: Record<string, string> = {};
+    subscriptionsData.forEach(sub => {
+      map[sub.subscription_id] = sub.product_family;
+    });
+    return map;
+  }
+
+  /**
+   * Helper: Get product family from invoice
+   */
+  private getProductFromInvoice(invoice: typeof invoicesData[0], subMap: Record<string, string>): string | null {
+    if (invoice.subscription_id && subMap[invoice.subscription_id]) {
+      return subMap[invoice.subscription_id];
+    }
+    return null;
+  }
+
+  /**
+   * Helper: Calculate DSO for a set of invoices
+   * DSO measures payment collection time, so we use ALL invoices (paid + unpaid)
+   */
+  private calculateDSO(invoices: typeof invoicesData): number {
+    if (invoices.length === 0) return 0;
+
+    // DSO = Average days outstanding for ALL invoices
+    const totalDaysOutstanding = invoices.reduce((sum, inv) =>
+      sum + (inv.days_outstanding || 0), 0
+    );
+
+    return Math.round(totalDaysOutstanding / invoices.length);
+  }
+
+  /**
+   * Level 0: Product Line Comparison
+   * Business Story: "Which product lines are driving our DSO challenges?"
+   */
+  getLevel0ProductComparison(): DSOLevel0ProductData[] {
+    const productFamilies = ['Meraki', 'Duo', 'Umbrella', 'ThousandEyes', 'Splunk'];
+    const target = 30; // 30 days target for all products
+
+    // Build subscription to product mapping
+    const subMap = this.buildSubscriptionProductMap();
+
+    return productFamilies.map((productFamily, index) => {
+      // Find all invoices for this product family (ALL invoices for DSO calc)
+      const allProductInvoices = invoicesData.filter(inv => {
+        const product = this.getProductFromInvoice(inv, subMap);
+        return product === productFamily;
+      });
+
+      // Find outstanding invoices only for AR balance
+      const outstandingInvoices = allProductInvoices.filter(inv =>
+        inv.amount_outstanding > 0
+      );
+
+      // Calculate DSO for this product (using ALL invoices)
+      const dsoValue = this.calculateDSO(allProductInvoices);
+
+      // Calculate AR balance (only outstanding invoices)
+      const arBalance = outstandingInvoices.reduce((sum, inv) =>
+        sum + (inv.amount_outstanding || 0), 0
+      );
+
+      // Get unique customer count (from outstanding invoices)
+      const uniqueCustomers = new Set(outstandingInvoices.map(inv => inv.customer_id));
+      const customerCount = uniqueCustomers.size;
+
+      // Calculate status based on DSO
+      let status: 'good' | 'warning' | 'critical' = 'good';
+      if (dsoValue > 45) status = 'critical';
+      else if (dsoValue > 35) status = 'warning';
+      else if (dsoValue > 30) status = 'warning';
+
+      // Calculate trend (simulated improvement/decline)
+      // In real scenario, this would compare to previous period
+      const trendValues = [-5, 3, -8, 2, -6]; // Percentage changes
+      const trend = trendValues[index % trendValues.length];
+
+      return {
+        id: `product-${productFamily.toLowerCase()}`,
+        productFamily,
+        dsoValue,
+        arBalance,
+        invoiceCount: outstandingInvoices.length, // Count only outstanding invoices
+        target,
+        status,
+        trend,
+        customerCount
+      };
+    });
+  }
+
+  /**
+   * Level 1: DSO Trend + Aging Buckets (Product-Specific)
+   * Business Story: "Is our collection getting better or worse for THIS product?"
+   */
+  getLevel1TrendData(productFamily?: string): DSOLevel1TrendData[] {
     // Generate 6 months of trend data
     const months = ['May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025'];
-    const dsoValues = [28, 31, 35, 38, 35, 32]; // Trend showing improvement
     const target = 30;
-    
+
+    // Build subscription to product mapping
+    const subMap = this.buildSubscriptionProductMap();
+
+    // Filter ALL invoices by product family if specified (for DSO calculation)
+    let allFilteredInvoices = invoicesData;
+    if (productFamily) {
+      allFilteredInvoices = invoicesData.filter(inv => {
+        const product = this.getProductFromInvoice(inv, subMap);
+        return product === productFamily;
+      });
+    }
+
+    // Filter outstanding invoices only (for AR aging buckets)
+    const outstandingInvoices = allFilteredInvoices.filter(inv =>
+      inv.amount_outstanding > 0
+    );
+
+    // Calculate base DSO for product (using ALL invoices)
+    const baseDSO = this.calculateDSO(allFilteredInvoices);
+
+    // Generate trend with some variation around base DSO
+    const dsoValues = months.map((_, index) => {
+      const variation = Math.sin(index / 2) * 3; // Creates wave pattern
+      return Math.max(20, Math.round(baseDSO + variation));
+    });
+
     return months.map((month, index) => {
-      // Calculate aging buckets from current AR data
-      const totalAR = accountsReceivableData.reduce((sum, ar) => sum + ar.total_ar_balance, 0);
-      const current_0_30 = accountsReceivableData.reduce((sum, ar) => sum + ar.current_0_30_days, 0);
-      const aging_31_60 = accountsReceivableData.reduce((sum, ar) => sum + ar.aging_31_60_days, 0);
-      const aging_61_90 = accountsReceivableData.reduce((sum, ar) => sum + ar.aging_61_90_days, 0);
-      const aging_90_plus = accountsReceivableData.reduce((sum, ar) => sum + ar.aging_90_plus_days, 0);
+      // Calculate AR aging buckets from OUTSTANDING invoices only
+      const totalAR = outstandingInvoices.reduce((sum, inv) =>
+        sum + (inv.amount_outstanding || 0), 0
+      );
+
+      // Calculate aging buckets based on days outstanding (for OUTSTANDING invoices)
+      let current_0_30 = 0;
+      let aging_31_60 = 0;
+      let aging_61_90 = 0;
+      let aging_90_plus = 0;
+
+      outstandingInvoices.forEach(inv => {
+        const days = inv.days_outstanding || 0;
+        const amount = inv.amount_outstanding || 0;
+
+        if (days <= 30) current_0_30 += amount;
+        else if (days <= 60) aging_31_60 += amount;
+        else if (days <= 90) aging_61_90 += amount;
+        else aging_90_plus += amount;
+      });
       
       return {
         id: `dso-trend-${index}`,
@@ -158,10 +322,10 @@ class DSODrillDownServiceClass {
           aging_90_plus: aging_90_plus * (1 + (Math.random() - 0.5) * 0.5)
         },
         agingPercentages: {
-          current_0_30_pct: Math.round((current_0_30 / totalAR) * 100),
-          aging_31_60_pct: Math.round((aging_31_60 / totalAR) * 100),
-          aging_61_90_pct: Math.round((aging_61_90 / totalAR) * 100),
-          aging_90_plus_pct: Math.round((aging_90_plus / totalAR) * 100)
+          current_0_30_pct: totalAR > 0 ? Math.round((current_0_30 / totalAR) * 100) : 0,
+          aging_31_60_pct: totalAR > 0 ? Math.round((aging_31_60 / totalAR) * 100) : 0,
+          aging_61_90_pct: totalAR > 0 ? Math.round((aging_61_90 / totalAR) * 100) : 0,
+          aging_90_plus_pct: totalAR > 0 ? Math.round((aging_90_plus / totalAR) * 100) : 0
         },
         totalAR: totalAR * (1 + (Math.random() - 0.5) * 0.1)
       };
@@ -169,16 +333,16 @@ class DSODrillDownServiceClass {
   }
 
   /**
-   * Level 2: Segment Performance Matrix
-   * Business Story: "Which segments are slow payers?"
+   * Level 2: Segment Performance Matrix (Product-Specific)
+   * Business Story: "Which segments are slow payers for this product?"
    */
-  getLevel2SegmentData(): DSOLevel2SegmentData[] {
+  getLevel2SegmentData(productFamily?: string): DSOLevel2SegmentData[] {
     const segments = ['Enterprise', 'Mid-Market', 'SMB'];
-    const productFamilies = ['Meraki', 'Duo', 'Splunk', 'Umbrella', 'ThousandEyes'];
+    const productFamilies = productFamily ? [productFamily] : ['Meraki', 'Duo', 'Splunk', 'Umbrella', 'ThousandEyes'];
     const segmentData: DSOLevel2SegmentData[] = [];
-    
+
     let idCounter = 1;
-    
+
     segments.forEach(segment => {
       productFamilies.forEach(product => {
         // Filter AR data by segment (using customer tier mapping)
@@ -410,6 +574,60 @@ class DSODrillDownServiceClass {
       
       collectionActivity
     };
+  }
+
+  /**
+   * Level 1.5: Aging Bucket Detail
+   * Business Story: "Which customers and invoices are in this aging bucket?"
+   */
+  getAgingBucketDetail(productFamily: string, minDays: number, maxDays: number): DSOAgingBucketDetail[] {
+    // Build subscription to product mapping
+    const subMap = this.buildSubscriptionProductMap();
+
+    // Filter invoices by product and aging range
+    const filteredInvoices = invoicesData.filter(inv => {
+      const product = this.getProductFromInvoice(inv, subMap);
+      const days = inv.days_outstanding || 0;
+      const hasOutstanding = inv.amount_outstanding > 0;
+
+      return product === productFamily && hasOutstanding && days >= minDays && days <= maxDays;
+    });
+
+    // Group by customer
+    const customerMap = new Map<string, typeof filteredInvoices>();
+    filteredInvoices.forEach(inv => {
+      const existing = customerMap.get(inv.customer_id) || [];
+      customerMap.set(inv.customer_id, [...existing, inv]);
+    });
+
+    // Build result
+    const result: DSOAgingBucketDetail[] = [];
+    customerMap.forEach((invoices, customerId) => {
+      // Find customer name from accounts data
+      const customerAccount = accountsData.find(acc => acc.account.id === customerId);
+      const customerName = customerAccount?.account.name || `Customer ${customerId}`;
+
+      const totalOutstanding = invoices.reduce((sum, inv) =>
+        sum + (inv.amount_outstanding || 0), 0
+      );
+
+      result.push({
+        customerId,
+        customerName,
+        totalOutstanding,
+        invoices: invoices.map(inv => ({
+          invoiceId: inv.invoice_id,
+          invoiceNumber: inv.invoice_number,
+          amount: inv.amount_outstanding,
+          daysOutstanding: inv.days_outstanding || 0,
+          dueDate: inv.due_date,
+          status: inv.is_disputed ? 'Disputed' : inv.is_overdue ? 'Overdue' : 'Current'
+        }))
+      });
+    });
+
+    // Sort by total outstanding amount (highest first)
+    return result.sort((a, b) => b.totalOutstanding - a.totalOutstanding);
   }
 }
 
