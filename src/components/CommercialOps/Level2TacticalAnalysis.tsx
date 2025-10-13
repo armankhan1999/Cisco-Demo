@@ -1198,9 +1198,9 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     </tbody>
                   </table>
                 </div>
-                </div>
               </div>
-            )}
+            </div>
+          )}
 
           {activeTab === 'lookalike' && (
             <LookalikeAnalysisContent onDrillToLevel3={onDrillToLevel3} sortBy={sortBy} setSortBy={setSortBy} filterByProductCount={filterByProductCount} setFilterByProductCount={setFilterByProductCount} />

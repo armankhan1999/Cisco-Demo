@@ -10,8 +10,8 @@ import invoicesData from '@/source_data/commercial_operations/invoices.json';
 import accountsReceivableData from '@/source_data/commercial_operations/accounts_receivable.json';
 import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 import revenueRecognitionData from '@/source_data/commercial_operations/revenue_recognition_schedule.json';
-// import paymentsData from '@/source_data/commercial_operations/payments.json';
-// import ordersData from '@/source_data/commercial_operations/orders.json';
+import paymentsData from '@/source_data/commercial_operations/payments.json';
+import ordersData from '@/source_data/commercial_operations/orders.json';
 
 export interface CommercialOpsKPIs {
   quoteToCashCycleTime: {
