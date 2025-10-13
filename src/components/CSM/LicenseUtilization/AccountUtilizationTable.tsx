@@ -14,6 +14,7 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
   const [totalPortfolioARR, setTotalPortfolioARR] = useState(0);
   const [totalPortfolioAccounts, setTotalPortfolioAccounts] = useState(0);
   const [portfolioAvgUtilization, setPortfolioAvgUtilization] = useState(0);
+  const [highPriorityCount, setHighPriorityCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -33,6 +34,11 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
       // Get portfolio-wide average utilization (matches main KPI)
       const utilizationKPI = calculatePortfolioAverageUtilization();
       setPortfolioAvgUtilization(utilizationKPI.value);
+      
+      // Count high priority from ALL accounts (not just filtered)
+      const allAccountDetails = calculateAccountUtilizationDetails(); // No filter
+      const highPriorityCount = allAccountDetails.filter(acc => acc.priorityScore >= 70).length;
+      setHighPriorityCount(highPriorityCount);
       
       setLoading(false);
     } catch (error) {
@@ -167,8 +173,9 @@ export function AccountUtilizationTable({ utilizationBucket, onAccountClick }: A
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-base font-semibold text-gray-600">High Priority</div>
               <div className="text-3xl font-bold text-red-600">
-                {accounts.filter(acc => acc.priorityScore >= 70).length}
+                {highPriorityCount}
               </div>
+              <div className="text-xs text-gray-500 mt-1">Score ≥ 70</div>
             </div>
           </div>
 
