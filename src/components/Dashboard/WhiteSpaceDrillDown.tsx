@@ -1,12 +1,57 @@
 'use client';
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
+import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS.json';
 
 export const WhiteSpaceLevel2: React.FC = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
-  
+  const [activeTab, setActiveTab] = useState<'segment' | 'lookalike'>('segment');
+
   return (
   <>
+  <div className="space-y-8">
+    {/* Tab Navigation */}
+    <div className="flex gap-4 border-b border-gray-300">
+      <button
+        onClick={() => setActiveTab('segment')}
+        className={`px-6 py-3 text-base font-bold transition-colors ${
+          activeTab === 'segment'
+            ? 'border-b-4 border-orange-500 text-orange-600'
+            : 'text-gray-600 hover:text-gray-900'
+        }`}
+      >
+        White Space by Segment
+      </button>
+      <button
+        onClick={() => setActiveTab('lookalike')}
+        className={`px-6 py-3 text-base font-bold transition-colors ${
+          activeTab === 'lookalike'
+            ? 'border-b-4 border-orange-500 text-orange-600'
+            : 'text-gray-600 hover:text-gray-900'
+        }`}
+      >
+        Lookalike Analysis
+      </button>
+    </div>
+
+    {/* Tab Content */}
+    {activeTab === 'segment' && <WhiteSpaceBySegment setSelectedAccount={setSelectedAccount} />}
+    {activeTab === 'lookalike' && <LookalikeAnalysisTab />}
+  </div>
+
+  {/* Account Detail Modal */}
+  {selectedAccount && (
+    <AccountDetailModal
+      accountName={selectedAccount}
+      onClose={() => setSelectedAccount(null)}
+    />
+  )}
+  </>
+  );
+};
+
+const WhiteSpaceBySegment: React.FC<{ setSelectedAccount: (account: string | null) => void }> = ({ setSelectedAccount }) => {
+  return (
   <div className="space-y-8">
     {/* Summary Cards */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -294,62 +339,236 @@ export const WhiteSpaceLevel2: React.FC = () => {
       </div>
     </div>
 
-    {/* Lookalike Analysis */}
-    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
-      <h4 className="text-2xl font-bold mb-6 text-gray-900">🔍 Lookalike Analysis - Top Cross-Sell Patterns</h4>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  </div>
+  );
+};
+
+const LookalikeAnalysisTab: React.FC = () => {
+  const [sortBy, setSortBy] = useState<'opportunity' | 'similarity' | 'products'>('opportunity');
+  const [filterByProductCount, setFilterByProductCount] = useState<number>(0);
+
+  // Parse and prepare the data
+  const analysisData = potentialArrData.map((item: any) => {
+    let potentialProducts = [];
+    try {
+      potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
+    } catch (e) {
+      console.error('Error parsing potential products:', e);
+    }
+    return {
+      customerId: item.CUSTOMER_ID,
+      companyName: item.COMPANY_NAME,
+      currentArr: parseFloat(item.CURRENT_ARR),
+      currentProductCount: parseInt(item.CURRENT_PRODUCT_COUNT),
+      potentialProductCount: parseInt(item.POTENTIAL_PRODUCT_COUNT),
+      totalPotentialArr: parseFloat(item.TOTAL_POTENTIAL_ARR),
+      totalExpectedArr: parseFloat(item.TOTAL_EXPECTED_POTENTIAL_ARR),
+      similarCompanies: item.TOP_5_SIMILAR_COMPANIES.split(', '),
+      avgSimilarityScore: parseFloat(item.AVG_SIMILARITY_SCORE),
+      potentialProducts: potentialProducts,
+      topProduct: item.TOP_PRODUCT_RECOMMENDATION,
+      topProductExpectedArr: parseFloat(item.TOP_PRODUCT_EXPECTED_ARR),
+    };
+  });
+
+  // Filter and sort
+  let filteredData = analysisData;
+  if (filterByProductCount > 0) {
+    filteredData = analysisData.filter(item => item.potentialProductCount >= filterByProductCount);
+  }
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    switch (sortBy) {
+      case 'opportunity':
+        return b.totalExpectedArr - a.totalExpectedArr;
+      case 'similarity':
+        return b.avgSimilarityScore - a.avgSimilarityScore;
+      case 'products':
+        return b.potentialProductCount - a.potentialProductCount;
+      default:
+        return 0;
+    }
+  });
+
+  // Calculate summary statistics
+  const totalOpportunity = analysisData.reduce((sum, item) => sum + item.totalExpectedArr, 0);
+  const avgSimilarity = analysisData.reduce((sum, item) => sum + item.avgSimilarityScore, 0) / analysisData.length;
+  const totalAccounts = analysisData.length;
+  const avgOpportunityPerAccount = totalOpportunity / totalAccounts;
+
+  const formatCurrency = (value: number) => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`;
+    }
+    return `$${(value / 1000).toFixed(0)}K`;
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h5 className="text-lg font-bold text-gray-900">Duo → Meraki</h5>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">85% Match</span>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-blue-600 mb-2">{formatCurrency(totalOpportunity)}</div>
+            <div className="text-sm font-bold text-gray-700 mb-1">Total Expected ARR</div>
+            <div className="text-xs text-gray-600">Across all lookalike opportunities</div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
-            <strong>12 customers</strong> with Duo showing high similarity to Meraki adopters
-          </p>
-          <div className="text-lg font-bold text-blue-600">$1.9M Opportunity</div>
         </div>
         <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h5 className="text-lg font-bold text-gray-900">Umbrella → Duo</h5>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">82% Match</span>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-green-600 mb-2">{totalAccounts}</div>
+            <div className="text-sm font-bold text-gray-700 mb-1">Total Accounts</div>
+            <div className="text-xs text-gray-600">With expansion potential</div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
-            <strong>15 customers</strong> with Umbrella matching Duo adoption profiles
-          </p>
-          <div className="text-lg font-bold text-green-600">$2.3M Opportunity</div>
         </div>
         <div className="rounded-xl p-6 border-2 border-purple-200/50" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h5 className="text-lg font-bold text-gray-900">Meraki → Umbrella</h5>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">78% Match</span>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-purple-600 mb-2">{avgSimilarity.toFixed(1)}%</div>
+            <div className="text-sm font-bold text-gray-700 mb-1">Avg Similarity Score</div>
+            <div className="text-xs text-gray-600">Match with top performers</div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
-            <strong>18 customers</strong> with Meraki showing Umbrella adoption potential
-          </p>
-          <div className="text-lg font-bold text-purple-600">$2.1M Opportunity</div>
         </div>
         <div className="rounded-xl p-6 border-2 border-orange-200/50" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h5 className="text-lg font-bold text-gray-900">Multi → ThousandEyes</h5>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">76% Match</span>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-orange-600 mb-2">{formatCurrency(avgOpportunityPerAccount)}</div>
+            <div className="text-sm font-bold text-gray-700 mb-1">Avg per Account</div>
+            <div className="text-xs text-gray-600">Expected ARR opportunity</div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
-            <strong>28 customers</strong> with 2+ products ready for ThousandEyes
-          </p>
-          <div className="text-lg font-bold text-orange-600">$1.2M Opportunity</div>
+        </div>
+      </div>
+
+      {/* Filters and Sorting */}
+      <div className="rounded-xl border-2 border-gray-200 p-4" style={{ backgroundColor: '#F3F3F3' }}>
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-bold text-gray-700">Sort by:</label>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold"
+            >
+              <option value="opportunity">Expected ARR (High to Low)</option>
+              <option value="similarity">Similarity Score (High to Low)</option>
+              <option value="products">Product Opportunities (Most to Least)</option>
+            </select>
+          </div>
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-bold text-gray-700">Min Products:</label>
+            <select
+              value={filterByProductCount}
+              onChange={(e) => setFilterByProductCount(parseInt(e.target.value))}
+              className="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm font-semibold"
+            >
+              <option value="0">All</option>
+              <option value="4">4+ Products</option>
+              <option value="5">5+ Products</option>
+              <option value="6">6+ Products</option>
+              <option value="7">7+ Products</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Lookalike Analysis Table */}
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
+        <h4 className="text-2xl font-bold mb-6 text-gray-900">🔍 Lookalike Customer Analysis</h4>
+        <p className="text-sm text-gray-600 mb-6">
+          Customers similar to top performers with expansion opportunities based on adoption patterns
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-4 py-3 text-left text-base font-bold text-gray-900 border-2 border-gray-300">Customer</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Current ARR</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Current Products</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Potential Products</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Expected ARR</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Similarity Score</th>
+                <th className="px-4 py-3 text-center text-base font-bold text-gray-900 border-2 border-gray-300">Top Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedData.slice(0, 20).map((account) => (
+                <tr key={account.customerId} className="hover:bg-orange-50 transition-colors">
+                  <td className="px-4 py-4 border-2 border-gray-200">
+                    <div className="text-base font-bold text-gray-900">{account.companyName}</div>
+                    <div className="text-xs text-gray-600">{account.customerId}</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      Similar to: {account.similarCompanies.slice(0, 2).join(', ')}
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 text-center border-2 border-gray-200">
+                    <span className="text-lg font-bold text-gray-900">{formatCurrency(account.currentArr)}</span>
+                  </td>
+                  <td className="px-4 py-4 text-center border-2 border-gray-200">
+                    <span className="text-lg font-bold text-blue-600">{account.currentProductCount}</span>
+                  </td>
+                  <td className="px-4 py-4 text-center border-2 border-gray-200">
+                    <span className="text-lg font-bold text-orange-600">{account.potentialProductCount}</span>
+                  </td>
+                  <td className="px-4 py-4 text-center border-2 border-gray-200">
+                    <span className="text-lg font-bold text-green-600">{formatCurrency(account.totalExpectedArr)}</span>
+                  </td>
+                  <td className="px-4 py-4 text-center border-2 border-gray-200">
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="w-full max-w-[80px] bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-green-600 h-2 rounded-full"
+                          style={{ width: `${account.avgSimilarityScore}%` }}
+                        ></div>
+                      </div>
+                      <span className="text-base font-bold text-green-600">{account.avgSimilarityScore.toFixed(1)}%</span>
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 border-2 border-gray-200">
+                    <div className="text-sm font-bold text-gray-900">{account.topProduct}</div>
+                    <div className="text-xs font-semibold text-green-600">{formatCurrency(account.topProductExpectedArr)}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {sortedData.length > 20 && (
+          <div className="mt-4 text-center text-sm text-gray-600">
+            Showing top 20 of {sortedData.length} accounts
+          </div>
+        )}
+      </div>
+
+      {/* Product Recommendations Summary */}
+      <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
+        <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Top Product Recommendations</h4>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {(() => {
+            const productCounts: { [key: string]: { count: number; totalArr: number } } = {};
+            sortedData.forEach(account => {
+              if (!productCounts[account.topProduct]) {
+                productCounts[account.topProduct] = { count: 0, totalArr: 0 };
+              }
+              productCounts[account.topProduct].count++;
+              productCounts[account.topProduct].totalArr += account.topProductExpectedArr;
+            });
+
+            return Object.entries(productCounts)
+              .sort((a, b) => b[1].totalArr - a[1].totalArr)
+              .slice(0, 6)
+              .map(([product, data]) => (
+                <div key={product} className="rounded-xl p-4 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
+                  <div className="text-sm font-bold text-gray-900 mb-2">{product}</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-600">{data.count} accounts</span>
+                    <span className="text-base font-bold text-blue-600">{formatCurrency(data.totalArr)}</span>
+                  </div>
+                </div>
+              ));
+          })()}
         </div>
       </div>
     </div>
-  </div>
-  
-  {/* Account Detail Modal */}
-  {selectedAccount && (
-    <AccountDetailModal
-      accountName={selectedAccount}
-      onClose={() => setSelectedAccount(null)}
-    />
-  )}
-  </>
   );
 };
 
