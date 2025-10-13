@@ -23,10 +23,9 @@ interface Level3OperationalActionsProps {
 
 interface ActionItem {
   id: string;
-  type: 'account' | 'opportunity' | 'contract' | 'quote' | 'renewal';
+  type: string;
   title: string;
   customer: string;
-  product?: string;
   amount: number;
   daysOverdue: number;
   assignee: string;
@@ -34,8 +33,8 @@ interface ActionItem {
   status: 'pending' | 'in_progress' | 'completed';
   nextAction: string;
   businessImpact: string;
-
   prioritizationScore?: number;
+  product?: string;
 }
 
 export default function Level3OperationalActions({ kpiId, actionId, onBack }: Level3OperationalActionsProps) {
@@ -91,42 +90,49 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                          item.customer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesPriority = filters.priority === 'all' || item.priority === filters.priority;
     const matchesStatus = filters.status === 'all' || item.status === filters.status;
-    const matchesAssignee = filters.assignee === 'all' || item.assignee.includes(filters.assignee);
+    const matchesAssignee = filters.assignee === 'all' || item.assignee === filters.assignee;
     
     return matchesSearch && matchesPriority && matchesStatus && matchesAssignee;
   });
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'bg-red-100 text-red-800 border-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'low': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'high': return 'border-red-200 bg-red-50 text-red-800';
+      case 'medium': return 'border-yellow-200 bg-yellow-50 text-yellow-800';
+      case 'low': return 'border-green-200 bg-green-50 text-green-800';
+      default: return 'border-gray-200 bg-gray-50 text-gray-800';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed': return <AlertCircle className="h-4 w-4 text-green-600" />;
-      case 'in_progress': return <RefreshCw className="h-4 w-4 text-blue-600" />;
-      case 'pending': return <Calendar className="h-4 w-4 text-yellow-600" />;
-      default: return <AlertCircle className="h-4 w-4 text-gray-600" />;
+      case 'completed': return <CheckCircle className="h-4 w-4 text-green-600" />;
+      case 'in_progress': return <Clock className="h-4 w-4 text-blue-600" />;
+      case 'pending': return <AlertCircle className="h-4 w-4 text-orange-600" />;
+      default: return <XCircle className="h-4 w-4 text-gray-600" />;
     }
   };
 
-  if (loading || !kpiDrillDown) {
+  if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <RefreshCw className="h-8 w-8 animate-spin text-blue-600 mx-auto mb-4" />
-          <p className="text-lg font-semibold text-gray-700">Loading Action Items...</p>
-        </div>
+      <div className="flex items-center justify-center h-64">
+        <RefreshCw className="h-8 w-8 animate-spin text-blue-600" />
+      </div>
+    );
+  }
+
+  if (!kpiDrillDown) {
+    return (
+      <div className="text-center py-12">
+        <AlertCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+        <h3 className="text-lg font-medium text-gray-900 mb-2">KPI Not Found</h3>
+        <p className="text-gray-600">The requested KPI drill-down could not be found.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="px-8 py-6">
@@ -134,108 +140,85 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
             <div className="flex items-center gap-4">
               <button
                 onClick={onBack}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
               >
                 <ArrowLeft className="h-5 w-5" />
-                <span>Back to Analysis</span>
+                <span className="font-semibold">Back to Analysis</span>
               </button>
-              <div className="h-6 w-px bg-gray-300"></div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                  <div className="p-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg">
-                    <AlertTriangle className="h-6 w-6 text-white" />
-                  </div>
+                <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                  <AlertTriangle className="h-8 w-8 text-red-600" />
                   {kpiDrillDown.kpiName} - Action Items
                 </h1>
-                <p className="text-sm text-gray-600 mt-1">
-                  {filteredItems.length} items found • Click any card to view account details
-                </p>
+                <p className="text-sm text-gray-600 mt-1">{kpiDrillDown.businessContext}</p>
               </div>
             </div>
-            
             <div className="flex items-center gap-4">
-              <div className="text-right">
-                <p className="text-sm text-gray-500 font-medium">High Priority</p>
-                <p className="text-xl font-bold text-red-600">
-                  {filteredItems.filter(item => item.priority === 'high').length}
-                </p>
-              </div>
-              <div className="h-12 w-px bg-gray-300"></div>
-              <div className="text-right">
-                <p className="text-sm text-gray-500 font-medium">Total Value</p>
-                <p className="text-xl font-bold text-green-600">
-                  ${Math.round(filteredItems.reduce((sum, item) => sum + item.amount, 0) / 1000)}K
-                </p>
-              </div>
+              <span className="text-sm text-gray-600">
+                {filteredItems.length} of {actionItems.length} items
+              </span>
+              {selectedItems.length > 0 && (
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-blue-600">
+                    {selectedItems.length} selected
+                  </span>
+                  <button
+                    onClick={() => handleBulkAction('assign')}
+                    className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition-colors"
+                  >
+                    Bulk Assign
+                  </button>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
-
-        {/* Filters and Search */}
-        <div className="px-8 pb-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search action items..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-80"
-                />
-              </div>
-              
-              <select 
-                value={filters.priority}
-                onChange={(e) => setFilters({...filters, priority: e.target.value})}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm"
-              >
-                <option value="all">All Priorities</option>
-                <option value="high">High Priority</option>
-                <option value="medium">Medium Priority</option>
-                <option value="low">Low Priority</option>
-              </select>
-              
-              <select 
-                value={filters.status}
-                onChange={(e) => setFilters({...filters, status: e.target.value})}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm"
-              >
-                <option value="all">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="in_progress">In Progress</option>
-                <option value="completed">Completed</option>
-              </select>
-            </div>
-            
-            {selectedItems.length > 0 && (
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">{selectedItems.length} selected</span>
-                <button 
-                  onClick={() => handleBulkAction('assign')}
-                  className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
-                >
-                  Bulk Assign
-                </button>
-                <button 
-                  onClick={() => handleBulkAction('escalate')}
-                  className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700"
-                >
-                  Escalate
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
 
-      {/* Action Items Cards */}
-      <div className="px-8 py-8">
+      {/* Filters */}
+      <div className="bg-white border-b border-gray-200 px-8 py-4">
+        <div className="flex items-center gap-4">
+          <div className="flex-1">
+            <div className="relative">
+              <Search className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search action items..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+          </div>
+          <select
+            value={filters.priority}
+            onChange={(e) => setFilters({ ...filters, priority: e.target.value })}
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="all">All Priorities</option>
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+          <select
+            value={filters.status}
+            onChange={(e) => setFilters({ ...filters, status: e.target.value })}
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Action Items */}
+      <div className="flex-1 overflow-y-auto p-8">
         <div className="space-y-4">
           {filteredItems.map((item) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer"
               onClick={() => setSelectedActionItem(item)}
             >
@@ -268,63 +251,33 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                       </span>
                     )}
                   </div>
-                  
-                  <div className="mb-3">
-                    <h3 className="text-xl font-bold text-blue-900 mb-1">{item.customer}</h3>
-                    <p className="text-lg font-semibold text-gray-800">{item.title}</p>
-                  </div>
-                  <p className="text-gray-600 mb-3">{item.businessImpact}</p>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                    <div>
-                      <span className="text-gray-500 font-medium">Product:</span>
-                      <div className="font-semibold text-indigo-600">{item.product || 'Multiple Products'}</div>
-                    </div>
-                    <div>
-                      <span className="text-gray-500 font-medium">Amount:</span>
-                      <div className="font-semibold text-green-600">${(item.amount / 1000).toFixed(0)}K</div>
-                    </div>
-                    <div>
-                      <span className="text-gray-500 font-medium">Assignee:</span>
-                      <div className="font-semibold text-blue-600">{item.assignee}</div>
-                    </div>
-                    <div>
-                      <span className="text-gray-500 font-medium">Next Action:</span>
-                      <div className="font-semibold text-gray-900">{item.nextAction}</div>
-                    </div>
+
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                  <p className="text-xl font-bold text-blue-900 mb-2">{item.customer}</p>
+                  {item.product && (
+                    <p className="text-sm text-gray-600 mb-2">
+                      <span className="font-medium">Product:</span> {item.product}
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-600 mb-3">{item.nextAction}</p>
+
+                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <span className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      {item.assignee}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <DollarSign className="h-4 w-4" />
+                      ${(item.amount / 1000).toFixed(0)}K
+                    </span>
                   </div>
                 </div>
-                
-                <div className="flex flex-col gap-2 ml-6">
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleItemAction(item.id, 'call');
-                    }}
-                    className="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center gap-1 text-sm"
-                  >
-                    <Phone className="h-4 w-4" />
-                    Call
-                  </button>
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleItemAction(item.id, 'email');
-                    }}
-                    className="px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors flex items-center gap-1 text-sm"
-                  >
-                    <Mail className="h-4 w-4" />
-                    Email
-                  </button>
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedActionItem(item);
-                    }}
-                    className="px-3 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors text-sm"
-                  >
-                    View Account
-                  </button>
+
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-green-600 mb-1">
+                    ${(item.amount / 1000).toFixed(0)}K
+                  </div>
+                  <div className="text-sm text-gray-500">Opportunity</div>
                 </div>
               </div>
             </div>
@@ -332,40 +285,30 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
         </div>
       </div>
 
-      {/* Action Item Detail Modal */}
+      {/* Enhanced Account Detail Modal */}
       {selectedActionItem && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-6 relative flex-shrink-0">
+            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-6 relative">
               <button
                 onClick={() => setSelectedActionItem(null)}
-                className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-all duration-200"
+                className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-all duration-200 group"
+                aria-label="Close modal"
               >
-                <X className="h-6 w-6 text-white" />
+                <X className="h-6 w-6 text-white group-hover:scale-110 transition-transform" strokeWidth={2.5} />
               </button>
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
-                  <AlertTriangle className="h-8 w-8" />
+                  <Users className="h-8 w-8" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold mb-2">{selectedActionItem.title}</h2>
+                  <h2 className="text-3xl font-bold mb-2">{selectedActionItem.customer}</h2>
                   <div className="flex items-center gap-4 text-blue-100">
-                    <span className="text-sm font-medium">{selectedActionItem.customer}</span>
+                    <span className="text-sm font-medium">{selectedActionItem.id}</span>
                     <span className="text-sm">•</span>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                      selectedActionItem.priority === 'high' ? 'bg-red-500/20 text-red-100' :
-                      selectedActionItem.priority === 'medium' ? 'bg-yellow-500/20 text-yellow-100' :
-                      'bg-green-500/20 text-green-100'
-                    }`}>
-                      {selectedActionItem.priority.toUpperCase()} Priority
-                    </span>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                      selectedActionItem.status === 'completed' ? 'bg-green-500/20 text-green-100' :
-                      selectedActionItem.status === 'in_progress' ? 'bg-blue-500/20 text-blue-100' :
-                      'bg-yellow-500/20 text-yellow-100'
-                    }`}>
-                      {selectedActionItem.status.replace('_', ' ').toUpperCase()}
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm">
+                      {selectedActionItem.type} Action
                     </span>
                   </div>
                 </div>
@@ -546,26 +489,6 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
                     </>
                   );
                 })()}
-              </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div className="bg-gray-50 border-t border-gray-200 px-8 py-6 flex-shrink-0">
-              <div className="flex gap-4 justify-end">
-                <button 
-                  onClick={() => setSelectedActionItem(null)}
-                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition-colors"
-                >
-                  Close
-                </button>
-                <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors">
-                  <Phone className="h-5 w-5" />
-                  Contact Customer
-                </button>
-                <button className="flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 font-semibold transition-colors">
-                  <Calendar className="h-5 w-5" />
-                  Schedule Meeting
-                </button>
               </div>
             </div>
           </div>

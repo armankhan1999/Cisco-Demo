@@ -12,6 +12,7 @@ import licensesData from '@/source_data/master-data/licenses.json';
 import whiteSpaceData from '@/source_data/csm-data/white_space_analysis.json';
 import accountsReceivableData from '@/source_data/commercial_operations/accounts_receivable.json';
 import quotesData from '@/source_data/commercial_operations/quotes.json';
+import { ExpansionReadyAccountsService } from './expansionReadyAccountsService';
 
 export interface ActionItem {
   id: string;
@@ -322,6 +323,36 @@ export class ActionItemsService {
   }
 
   /**
+   * Generate action items for Opportunity Readiness KPI (consistent with ExpansionReadyAccountsService)
+   */
+  static getOpportunityReadinessActionItems(): ActionItem[] {
+    const items: ActionItem[] = [];
+    
+    // Get all expansion-ready accounts using the same filtering logic
+    const allReadyAccounts = ExpansionReadyAccountsService.getAllExpansionReadyAccounts();
+    
+    // Convert to action items
+    allReadyAccounts.forEach((account, index) => {
+      items.push({
+        id: `READY-${index + 1}`,
+        type: 'opportunity',
+        title: `${account.recommendedProduct} Expansion Opportunity`,
+        customer: account.name,
+        product: account.recommendedProduct,
+        amount: account.estimatedARR,
+        daysOverdue: 0,
+        assignee: 'Sales Team',
+        priority: account.score >= 90 ? 'high' : account.score >= 80 ? 'medium' : 'low',
+        status: 'pending',
+        nextAction: account.nextAction,
+        businessImpact: account.businessJustification
+      });
+    });
+
+    return items;
+  }
+
+  /**
    * Get accounts by product for Product Gap Analysis Matrix
    */
   static getAccountsByProduct(product: string): ActionItem[] {
@@ -410,7 +441,7 @@ export class ActionItemsService {
       case 'white-space-value':
         return this.getWhiteSpaceActionItems();
       case 'opportunity-readiness':
-        return this.getExpansionARRActionItems(); // Same as expansion ARR
+        return this.getOpportunityReadinessActionItems(); // Consistent with ExpansionReadyAccountsService
       default:
         return [];
     }

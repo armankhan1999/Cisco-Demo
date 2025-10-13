@@ -1536,6 +1536,7 @@ function ExpansionReadyAccountsTabs({ onDrillToLevel3 }: { onDrillToLevel3: (act
   // Get real data
   const accountsByProduct = ExpansionReadyAccountsService.getAccountsByProduct();
   const top10Accounts = ExpansionReadyAccountsService.getTop10Accounts();
+  const productSummary = ExpansionReadyAccountsService.getProductSummary();
 
   // Import AccountDetailModal
   const AccountDetailModal = ({ accountName, onClose }: { accountName: string; onClose: () => void }) => {
@@ -1765,112 +1766,308 @@ function ExpansionReadyAccountsTabs({ onDrillToLevel3 }: { onDrillToLevel3: (act
       {/* Tab Content */}
       {activeTab === 'by-product' && (
         <div className="space-y-6">
+          
+          {/* Product Summary Cards */}
+          <div className="grid grid-cols-5 gap-4 mb-8">
+            {Object.entries(productSummary).map(([product, summary]) => (
+              <div
+                key={product}
+                className={`bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition-all cursor-pointer hover:scale-105`}
+                onClick={() => {
+                  const element = document.getElementById(`product-${product.toLowerCase()}`);
+                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
+                <div className="text-center">
+                  <div className={`w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center ${
+                    summary.color === 'blue' ? 'bg-blue-100' :
+                    summary.color === 'green' ? 'bg-green-100' :
+                    summary.color === 'purple' ? 'bg-purple-100' :
+                    summary.color === 'indigo' ? 'bg-indigo-100' :
+                    'bg-orange-100'
+                  }`}>
+                    <span className={`text-xl font-bold ${
+                      summary.color === 'blue' ? 'text-blue-600' :
+                      summary.color === 'green' ? 'text-green-600' :
+                      summary.color === 'purple' ? 'text-purple-600' :
+                      summary.color === 'indigo' ? 'text-indigo-600' :
+                      'text-orange-600'
+                    }`}>
+                      {product.charAt(0)}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-sm mb-1">{product}</h3>
+                  <div className={`text-2xl font-bold mb-1 ${
+                    summary.color === 'blue' ? 'text-blue-600' :
+                    summary.color === 'green' ? 'text-green-600' :
+                    summary.color === 'purple' ? 'text-purple-600' :
+                    summary.color === 'indigo' ? 'text-indigo-600' :
+                    'text-orange-600'
+                  }`}>
+                    {summary.count}
+                  </div>
+                  <div className="text-xs text-gray-600 mb-2">Accounts</div>
+                  <div className="text-sm font-semibold text-green-600">
+                    ${Math.floor(summary.totalOpportunity / 1000)}K
+                  </div>
+                  <div className="text-xs text-gray-500">Total Opp</div>
+                </div>
+              </div>
+            ))}
+          </div>
 
           {/* Duo */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div id="product-duo" className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-3 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-900">Duo Security</h3>
             </div>
             <div className="p-6">
-              <div className="space-y-3">
-                {accountsByProduct.Duo.map((account, idx) => (
-                  <div 
-                    key={idx} 
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-                    onClick={() => setSelectedAccount(account.name)}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                      <div>
-                        <div className="font-semibold text-gray-900">{account.name}</div>
-                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      <div className="space-y-4">
+                        {accountsByProduct.Duo.map((account, idx) => (
+                          <div 
+                            key={idx} 
+                            className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all cursor-pointer"
+                            onClick={() => setSelectedAccount(account.name)}
+                          >
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                                <div>
+                                  <div className="font-bold text-lg text-gray-900">{account.name}</div>
+                                  <div className="text-sm text-gray-600">{account.tier} tier • Current ARR: ${Math.floor(account.currentARR / 1000)}K</div>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <div className="font-bold text-blue-600 text-2xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                            </div>
+
+                            {/* Current vs Recommended */}
+                            <div className="grid grid-cols-2 gap-4 mb-4">
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-gray-600 uppercase mb-1">Current Products</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                  {account.currentProducts.length > 0 ? account.currentProducts.join(', ') : 'None'}
+                                </div>
+                              </div>
+                              <div className="bg-blue-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-blue-700 uppercase mb-1">Recommended</div>
+                                <div className="text-sm font-bold text-blue-900">{account.recommendedProduct}</div>
+                              </div>
+                            </div>
+
+                            {/* Key Insights */}
+                            <div className="grid grid-cols-4 gap-3 mb-4">
+                              <div className="text-center">
+                                <div className="font-bold text-blue-600 text-xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-green-600">{account.opportunity}</div>
+                                <div className="text-xs text-gray-600">Opportunity</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-purple-600">{account.winProbability}%</div>
+                                <div className="text-xs text-gray-600">Win Probability</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-orange-600">{account.timeframe}</div>
+                                <div className="text-xs text-gray-600">Timeline</div>
+                              </div>
+                            </div>
+
+                            {/* Expansion Triggers */}
+                            <div className="mb-3">
+                              <div className="text-xs font-semibold text-gray-600 uppercase mb-2">Expansion Triggers</div>
+                              <div className="flex flex-wrap gap-1">
+                                {account.expansionTriggers.map((trigger, triggerIdx) => (
+                                  <span key={triggerIdx} className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                                    {trigger}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Next Action */}
+                            <div className="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
+                              <div className="text-xs font-semibold text-blue-700 uppercase mb-1">Next Action</div>
+                              <div className="text-sm text-blue-900 font-medium">{account.nextAction}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-6">
-                      <div className="text-right">
-                        <div className="font-bold text-gray-900">{account.opportunity}</div>
-                        <div className="text-sm text-gray-600">Opportunity</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-blue-600 text-lg">{account.score}</div>
-                        <div className="text-sm text-gray-600">Readiness</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
           {/* Meraki */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div id="product-meraki" className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-3 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-900">Meraki</h3>
             </div>
             <div className="p-6">
-              <div className="space-y-3">
-                {accountsByProduct.Meraki.map((account, idx) => (
-                  <div 
-                    key={idx} 
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-                    onClick={() => setSelectedAccount(account.name)}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                      <div>
-                        <div className="font-semibold text-gray-900">{account.name}</div>
-                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      <div className="space-y-4">
+                        {accountsByProduct.Meraki.map((account, idx) => (
+                          <div 
+                            key={idx} 
+                            className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all cursor-pointer"
+                            onClick={() => setSelectedAccount(account.name)}
+                          >
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="w-4 h-4 rounded-full bg-green-500"></div>
+                                <div>
+                                  <div className="font-bold text-lg text-gray-900">{account.name}</div>
+                                  <div className="text-sm text-gray-600">{account.tier} tier • Current ARR: ${Math.floor(account.currentARR / 1000)}K</div>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <div className="font-bold text-green-600 text-2xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                            </div>
+
+                            {/* Current vs Recommended */}
+                            <div className="grid grid-cols-2 gap-4 mb-4">
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-gray-600 uppercase mb-1">Current Products</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                  {account.currentProducts.length > 0 ? account.currentProducts.join(', ') : 'None'}
+                                </div>
+                              </div>
+                              <div className="bg-green-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-green-700 uppercase mb-1">Recommended</div>
+                                <div className="text-sm font-bold text-green-900">{account.recommendedProduct}</div>
+                              </div>
+                            </div>
+
+                            {/* Key Insights */}
+                            <div className="grid grid-cols-4 gap-3 mb-4">
+                              <div className="text-center">
+                                <div className="font-bold text-blue-600 text-xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-green-600">{account.opportunity}</div>
+                                <div className="text-xs text-gray-600">Opportunity</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-purple-600">{account.winProbability}%</div>
+                                <div className="text-xs text-gray-600">Win Probability</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-orange-600">{account.timeframe}</div>
+                                <div className="text-xs text-gray-600">Timeline</div>
+                              </div>
+                            </div>
+
+                            {/* Expansion Triggers */}
+                            <div className="mb-3">
+                              <div className="text-xs font-semibold text-gray-600 uppercase mb-2">Expansion Triggers</div>
+                              <div className="flex flex-wrap gap-1">
+                                {account.expansionTriggers.map((trigger, triggerIdx) => (
+                                  <span key={triggerIdx} className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                                    {trigger}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Next Action */}
+                            <div className="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                              <div className="text-xs font-semibold text-green-700 uppercase mb-1">Next Action</div>
+                              <div className="text-sm text-green-900 font-medium">{account.nextAction}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-6">
-                      <div className="text-right">
-                        <div className="font-bold text-gray-900">{account.opportunity}</div>
-                        <div className="text-sm text-gray-600">Opportunity</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-green-600 text-lg">{account.score}</div>
-                        <div className="text-sm text-gray-600">Readiness</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
           {/* ThousandEyes */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div id="product-thousandeyes" className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="bg-gradient-to-r from-purple-50 to-violet-50 px-6 py-3 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-900">ThousandEyes</h3>
             </div>
             <div className="p-6">
-              <div className="space-y-3">
-                {accountsByProduct.ThousandEyes.map((account, idx) => (
-                  <div 
-                    key={idx} 
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-                    onClick={() => setSelectedAccount(account.name)}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-                      <div>
-                        <div className="font-semibold text-gray-900">{account.name}</div>
-                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      <div className="space-y-4">
+                        {accountsByProduct.ThousandEyes.map((account, idx) => (
+                          <div 
+                            key={idx} 
+                            className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all cursor-pointer"
+                            onClick={() => setSelectedAccount(account.name)}
+                          >
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="w-4 h-4 rounded-full bg-purple-500"></div>
+                                <div>
+                                  <div className="font-bold text-lg text-gray-900">{account.name}</div>
+                                  <div className="text-sm text-gray-600">{account.tier} tier • Current ARR: ${Math.floor(account.currentARR / 1000)}K</div>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <div className="font-bold text-purple-600 text-2xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                            </div>
+
+                            {/* Current vs Recommended */}
+                            <div className="grid grid-cols-2 gap-4 mb-4">
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-gray-600 uppercase mb-1">Current Products</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                  {account.currentProducts.length > 0 ? account.currentProducts.join(', ') : 'None'}
+                                </div>
+                              </div>
+                              <div className="bg-purple-50 p-3 rounded-lg">
+                                <div className="text-xs font-semibold text-purple-700 uppercase mb-1">Recommended</div>
+                                <div className="text-sm font-bold text-purple-900">{account.recommendedProduct}</div>
+                              </div>
+                            </div>
+
+                            {/* Key Insights */}
+                            <div className="grid grid-cols-4 gap-3 mb-4">
+                              <div className="text-center">
+                                <div className="font-bold text-blue-600 text-xl">{account.score}</div>
+                                <div className="text-xs text-gray-600">Readiness Score</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-green-600">{account.opportunity}</div>
+                                <div className="text-xs text-gray-600">Opportunity</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-purple-600">{account.winProbability}%</div>
+                                <div className="text-xs text-gray-600">Win Probability</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-bold text-orange-600">{account.timeframe}</div>
+                                <div className="text-xs text-gray-600">Timeline</div>
+                              </div>
+                            </div>
+
+                            {/* Expansion Triggers */}
+                            <div className="mb-3">
+                              <div className="text-xs font-semibold text-gray-600 uppercase mb-2">Expansion Triggers</div>
+                              <div className="flex flex-wrap gap-1">
+                                {account.expansionTriggers.map((trigger, triggerIdx) => (
+                                  <span key={triggerIdx} className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                                    {trigger}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Next Action */}
+                            <div className="bg-purple-50 p-3 rounded-lg border-l-4 border-purple-500">
+                              <div className="text-xs font-semibold text-purple-700 uppercase mb-1">Next Action</div>
+                              <div className="text-sm text-purple-900 font-medium">{account.nextAction}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-6">
-                      <div className="text-right">
-                        <div className="font-bold text-gray-900">{account.opportunity}</div>
-                        <div className="text-sm text-gray-600">Opportunity</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-purple-600 text-lg">{account.score}</div>
-                        <div className="text-sm text-gray-600">Readiness</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -1885,11 +2082,13 @@ function ExpansionReadyAccountsTabs({ onDrillToLevel3 }: { onDrillToLevel3: (act
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account Name</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Products to Sell</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opportunity Amount</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account Details</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Current Products</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recommended</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opportunity</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Readiness Score</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timeline</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Next Action</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -1910,33 +2109,39 @@ function ExpansionReadyAccountsTabs({ onDrillToLevel3 }: { onDrillToLevel3: (act
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{account.name}</div>
-                          <div className="text-sm text-gray-500">{account.tier} tier</div>
+                          <div className="text-sm font-bold text-gray-900">{account.name}</div>
+                          <div className="text-xs text-gray-500">{account.tier} tier • ${Math.floor(account.currentARR / 1000)}K ARR</div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm text-gray-900">{account.recommendedProduct}</div>
+                        <div className="text-sm text-gray-900">
+                          {account.currentProducts.length > 0 ? account.currentProducts.join(', ') : 'None'}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm font-bold text-blue-900">{account.recommendedProduct}</div>
+                        <div className="text-xs text-gray-600">Fit: {account.technicalFit}%</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-bold text-green-600">{account.opportunity}</div>
+                        <div className="text-xs text-gray-600">Est. ARR</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
-                            <div 
-                              className={`h-2 rounded-full ${
-                                account.score >= 90 ? 'bg-green-500' : account.score >= 80 ? 'bg-yellow-500' : 'bg-red-500'
-                              }`}
-                              style={{ width: `${account.score}%` }}
-                            ></div>
+                        <div className="flex items-center justify-center">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${
+                            account.score >= 90 ? 'bg-green-500' : account.score >= 80 ? 'bg-blue-500' : account.score >= 70 ? 'bg-yellow-500' : 'bg-red-500'
+                          }`}>
+                            {account.score}
                           </div>
-                          <span className="text-sm font-bold text-gray-900">{account.score}</span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-teal-600 hover:text-teal-900 font-semibold">
-                          View Details
-                        </button>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-bold text-orange-600">{account.timeframe}</div>
+                        <div className="text-xs text-gray-600">Expected close</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm text-gray-900">{account.nextAction}</div>
+                        <div className="text-xs text-gray-600">Contact: {account.decisionMaker}</div>
                       </td>
                     </tr>
                   ))}
