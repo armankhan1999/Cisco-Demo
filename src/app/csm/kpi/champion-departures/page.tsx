@@ -126,64 +126,48 @@ function ChampionDeparturesContent() {
         <div className="p-8">
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total Departures</p>
+                  <p className="text-xl font-bold text-gray-900">Total Departures</p>
                   <p className="text-3xl font-bold text-gray-900">{departures.length}</p>
-                </div>
-                <div className="p-3 bg-red-100 rounded-full">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+                  <p className="text-sm text-gray-500 mt-1">All time departures</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Recent (≤30 Days)</p>
-                  <p className="text-3xl font-bold text-orange-600">
+                  <p className="text-xl font-bold text-gray-900">Recent (≤30 Days)</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {departures.filter(d => d.daysSinceDeparture <= 30).length}
                   </p>
-                </div>
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <p className="text-sm text-gray-500 mt-1">Last 30 days</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total ARR at Risk</p>
-                  <p className="text-3xl font-bold text-red-600">
+                  <p className="text-xl font-bold text-gray-900">Total ARR at Risk</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     ${(departures.reduce((sum, d) => sum + d.arr, 0) / 1000000).toFixed(1)}M
                   </p>
-                </div>
-                <div className="p-3 bg-red-100 rounded-full">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
+                  <p className="text-sm text-gray-500 mt-1">Revenue at risk</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Avg Impact Score</p>
-                  <p className="text-3xl font-bold text-yellow-600">
+                  <p className="text-xl font-bold text-gray-900">Avg Impact Score</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {(departures.reduce((sum, d) => sum + d.impact_score, 0) / departures.length).toFixed(0)}
                   </p>
-                </div>
-                <div className="p-3 bg-yellow-100 rounded-full">
-                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+                  <p className="text-sm text-gray-500 mt-1">Average impact</p>
                 </div>
               </div>
             </div>

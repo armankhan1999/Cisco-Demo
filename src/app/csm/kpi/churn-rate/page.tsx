@@ -28,7 +28,60 @@ export default function ChurnRateDrillDown() {
   const [activeTab, setActiveTab] = useState<'predictions' | 'historical' | 'alerts'>('predictions');
   const [showAtRiskOnly, setShowAtRiskOnly] = useState(false);
   const [selectedAlert, setSelectedAlert] = useState<string | null>(null);
+  const [sortField, setSortField] = useState<string>('riskLevel');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const { isCollapsed } = useSidebar();
+
+  // Sorting function
+  const handleSort = (field: string) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('desc');
+    }
+  };
+
+  // Sort data function
+  const sortData = (data: any[]) => {
+    return [...data].sort((a, b) => {
+      let aValue, bValue;
+      
+      switch (sortField) {
+        case 'account':
+          aValue = a.accountName || '';
+          bValue = b.accountName || '';
+          break;
+        case 'churnProbability':
+          aValue = a.churn_probability || 0;
+          bValue = b.churn_probability || 0;
+          break;
+        case 'healthScore':
+          aValue = a.currentHealthScore || 0;
+          bValue = b.currentHealthScore || 0;
+          break;
+        case 'arr':
+          aValue = a.arr || 0;
+          bValue = b.arr || 0;
+          break;
+        case 'renewalDate':
+          aValue = new Date(a.renewalDate || 0).getTime();
+          bValue = new Date(b.renewalDate || 0).getTime();
+          break;
+        case 'riskLevel':
+          // Sort by churn probability for risk level
+          aValue = a.churn_probability || 0;
+          bValue = b.churn_probability || 0;
+          break;
+        default:
+          return 0;
+      }
+      
+      if (aValue < bValue) return sortDirection === 'asc' ? -1 : 1;
+      if (aValue > bValue) return sortDirection === 'asc' ? 1 : -1;
+      return 0;
+    });
+  };
 
   useEffect(() => {
     try {
@@ -428,90 +481,62 @@ export default function ChurnRateDrillDown() {
           {/* Top Summary Cards - Row 1 */}
           <div className="grid grid-cols-3 gap-6 mb-6">
             {/* Churn Rate */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Churn Rate</p>
-                  <p className="text-3xl font-bold text-green-600">
+                  <div>
+                  <p className="text-xl font-bold text-gray-900">Churn Rate</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {churnData.overallChurnRate.toFixed(2)}%
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">≤ 5%</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-4">
-                <span className={`inline-flex items-center text-sm font-medium ${
-                  churnData.overallChurnRate <= 2 ? 'text-green-600' : 'text-red-600'
-                }`}>
-                  {churnData.overallChurnRate <= 2 ? '✓ Below Target' : '⚠️ Above Target'}
-                </span>
-              </div>
             </div>
 
             {/* Churned ARR */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Churned ARR</p>
-                  <p className="text-3xl font-bold text-red-600">
+                  <p className="text-xl font-bold text-gray-900">Churned ARR</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     ${(churnData.totalChurnedARR / 1000).toFixed(2)}K
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">Revenue lost to churn</p>
                 </div>
-                <div className="p-3 bg-gray-100 rounded-full">
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-gray-600">
-                  💰 Last 12 Months
-                </span>
               </div>
             </div>
 
             {/* Preventable Churn */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Preventable Churn</p>
-                  <p className="text-3xl font-bold text-green-600">
+                  <p className="text-xl font-bold text-gray-900">Preventable Churn</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {churnData.preventablePercentage.toFixed(0)}%
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">Prevention opportunity</p>
                 </div>
-                <div className="p-3 bg-green-100 rounded-full">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
                 </div>
               </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-green-600">
-                  💡 Prevention Opportunity
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Top Summary Cards - Row 2 */}
           <div className="grid grid-cols-3 gap-6 mb-8">
             {/* Predicted Churn Risk */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Predicted Churn Risk (Next 12M)</p>
-                  <p className="text-3xl font-bold text-red-600">
+                  <p className="text-xl font-bold text-gray-900">Predicted Churn Risk (Next 12M)</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {(() => {
                       const accounts = getActiveAccounts();
                       const totalARR = accounts.reduce((sum, acc) => sum + acc.account.arr, 0);
                       const atRiskARR = churnPredictions.reduce((sum, p) => sum + (p.arr || 0), 0);
-                      return totalARR > 0 ? ((atRiskARR / totalARR) * 100).toFixed(2) : '0.00';
+                      return totalARR > 0 ? ((atRiskARR / totalARR) * 100).toFixed(1) : '0.0';
                     })()}%
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">Forward-looking risk</p>
                 </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-red-600">
-                  💰 Forward-Looking Risk
-                </span>
               </div>
             </div>
 
@@ -526,47 +551,30 @@ export default function ChurnRateDrillDown() {
                   document.getElementById('accounts-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
               }}
-              className="bg-white rounded-lg border border-gray-200 p-6 hover:bg-gray-50 transition-colors w-full text-left"
+              className="rounded-lg p-8 shadow-md hover:bg-gray-200 transition-colors w-full text-left"
+              style={{ backgroundColor: '#F3F3F3' }}
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">At-Risk Accounts</p>
-                  <p className="text-3xl font-bold text-orange-600">
+                  <p className="text-xl font-bold text-gray-900">At-Risk Accounts</p>
+                  <p className="text-3xl font-bold text-gray-900">
                     {churnPredictions.filter(p => p.churn_probability > 0.4).length}
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">High risk accounts</p>
                 </div>
-                <div className="p-3 bg-orange-100 rounded-full">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-orange-600">
-                  ⚠️ High Churn Risk - Click to View
-                </span>
               </div>
             </button>
 
             {/* Next 12 Months ARR Lost */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="rounded-lg p-8 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Next 12 Months ARR Lost</p>
-                  <p className="text-3xl font-bold text-red-600">
-                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(2)}M
+                  <p className="text-xl font-bold text-gray-900">Next 12 Months ARR Lost</p>
+                  <p className="text-3xl font-bold text-gray-900">
+                    ${(churnPredictions.reduce((sum, p) => sum + (p.arr_at_risk || 0), 0) / 1000000).toFixed(1)}M
                   </p>
+                  <p className="text-sm text-gray-500 mt-1">Predicted revenue at risk</p>
                 </div>
-                <div className="p-3 bg-red-100 rounded-full">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="inline-flex items-center text-sm font-medium text-red-600">
-                  💰 Predicted Revenue at Risk
-                </span>
               </div>
             </div>
           </div>
@@ -767,21 +775,13 @@ export default function ChurnRateDrillDown() {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="flex items-center">
-                                <div className="text-sm font-medium text-gray-900">
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                item.churn_probability >= 0.8 ? 'bg-red-100 text-red-800' :
+                                item.churn_probability >= 0.6 ? 'bg-orange-100 text-orange-800' :
+                                item.churn_probability >= 0.4 ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
+                              }`}>
                                   {(item.churn_probability * 100).toFixed(1)}%
-                                </div>
-                                <div className="ml-2 w-16 bg-gray-200 rounded-full h-2">
-                                  <div 
-                                    className={`h-2 rounded-full ${
-                                      item.churn_probability >= 0.8 ? 'bg-red-500' :
-                                      item.churn_probability >= 0.6 ? 'bg-orange-500' :
-                                      item.churn_probability >= 0.4 ? 'bg-yellow-500' : 'bg-green-500'
-                                    }`}
-                                    style={{ width: `${item.churn_probability * 100}%` }}
-                                  ></div>
-                                </div>
-                              </div>
+                              </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
