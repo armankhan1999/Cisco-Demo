@@ -400,7 +400,7 @@ export default function ChurnRateDrillDown() {
         {/* Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-6">
           <button
-            onClick={() => router.push('/csm')}
+            onClick={() => router.push('/csm/portfolio')}
             className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
           >
             ← Back to Portfolio Dashboard

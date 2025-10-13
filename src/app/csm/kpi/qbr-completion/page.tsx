@@ -18,7 +18,7 @@ export default function QBRCompletionDrillDown() {
       <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}> 
         <div className="bg-white border-b border-gray-200 px-8 py-6">
           <button
-            onClick={() => router.push('/csm')}
+            onClick={() => router.push('/csm/portfolio')}
             className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
           >
             ← Back to Portfolio Dashboard
