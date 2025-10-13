@@ -19,7 +19,6 @@ interface SidebarProps {
 
 export default function EnhancedSidebar({ currentPersona, onPersonaChange, currentView, onViewChange, onCollapseChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
   const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
 
@@ -34,61 +33,12 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
     return <IconComponent className="h-4 w-4" />;
   };
 
-  const getPersonaDashboards = (persona: Persona) => {
-    switch (persona) {
-      case 'CO':
-        return [
-          {
-            id: 'command-center',
-            name: 'Command Center',
-            description: 'Strategic KPI Overview',
-            icon: BarChart3
-          },
-          // {
-          //   id: 'revenue-operations',
-          //   name: 'Revenue Operations',
-          //   description: 'Revenue tracking and analysis',
-          //   icon: BarChart3
-          // }
-        ];
-      case 'CSM':
-        return [
-          {
-            id: 'health-dashboard',
-            name: 'Health Dashboard',
-            description: 'Customer health monitoring',
-            icon: Heart
-          }
-        ];
-      case 'SE':
-        return [
-          {
-            id: 'expansion-dashboard',
-            name: 'Expansion Dashboard',
-            description: 'Sales expansion opportunities',
-            icon: Target
-          }
-        ];
-      case 'AI_CHAT':
-        return []; // No sub-dashboards for AI Chat
-      default:
-        return [];
-    }
-  };
-
   const handlePersonaClick = (persona: Persona) => {
     onPersonaChange(persona);
-    setExpandedPersona(expandedPersona === persona ? null : persona);
-    
+
     // Auto-select default dashboard for CO persona
     if (persona === 'CO' && onViewChange) {
       onViewChange('command-center');
-    }
-  };
-
-  const handleDashboardClick = (dashboardId: string) => {
-    if (onViewChange) {
-      onViewChange(dashboardId);
     }
   };
 
@@ -131,72 +81,30 @@ export default function EnhancedSidebar({ currentPersona, onPersonaChange, curre
           <div className="space-y-1 px-2">
             {personas.map((persona) => {
               const isActive = currentPersona === persona;
-              const isExpanded = expandedPersona === persona;
-              const dashboards = getPersonaDashboards(persona);
 
               return (
-                <div key={persona}>
-                  {/* Main Persona Button */}
-                  <button
-                    onClick={() => handlePersonaClick(persona)}
-                    className={cn(
-                      "w-full flex items-center gap-3 px-3 py-2 text-sm font-normal rounded-md transition-colors",
-                      "hover:text-gray-700 hover:bg-gray-50",
-                      isActive 
-                        ? "bg-blue-50 text-blue-700" 
-                        : "text-gray-500"
-                    )}
-                    title={isCollapsed ? getPersonaName(persona) : undefined}
-                  >
-                    <div className="flex-shrink-0">
-                      {getPersonaIcon(persona)}
-                    </div>
+                <button
+                  key={persona}
+                  onClick={() => handlePersonaClick(persona)}
+                  className={cn(
+                    "w-full flex items-center gap-3 px-3 py-2 text-sm font-normal rounded-md transition-colors",
+                    "hover:text-gray-700 hover:bg-gray-50",
+                    isActive
+                      ? "bg-blue-50 text-blue-700"
+                      : "text-gray-500"
+                  )}
+                  title={isCollapsed ? getPersonaName(persona) : undefined}
+                >
+                  <div className="flex-shrink-0">
+                    {getPersonaIcon(persona)}
+                  </div>
 
-                    {!isCollapsed && (
-                      <>
-                        <div className="flex-1 text-left">
-                          <div className="font-normal">{getPersonaName(persona)}</div>
-                        </div>
-                        {dashboards.length > 0 && (
-                          <ChevronRight className={cn(
-                            "h-4 w-4 transition-transform duration-200",
-                            isExpanded && "rotate-90"
-                          )} />
-                        )}
-                      </>
-                    )}
-                  </button>
-
-                  {/* Sub-dashboards */}
-                  {!isCollapsed && isExpanded && dashboards.length > 0 && (
-                    <div className="ml-6 mt-1 space-y-1">
-                      {dashboards.map((dashboard) => {
-                        const isDashboardActive = currentView === dashboard.id;
-                        const IconComponent = dashboard.icon;
-                        
-                        return (
-                          <button
-                            key={dashboard.id}
-                            onClick={() => handleDashboardClick(dashboard.id)}
-                            className={cn(
-                              "w-full flex items-center gap-3 px-3 py-1.5 text-xs rounded-md transition-colors",
-                              "hover:text-gray-700 hover:bg-gray-50",
-                              isDashboardActive
-                                ? "bg-blue-100 text-blue-800 border-r-2 border-blue-600"
-                                : "text-gray-600"
-                            )}
-                          >
-                            <IconComponent className="h-3 w-3" />
-                            <div className="text-left">
-                              <div className="font-normal">{dashboard.name}</div>
-                              {/* <div className="text-gray-400 mt-0.5">{dashboard.description}</div> */}
-                            </div>
-                          </button>
-                        );
-                      })}
+                  {!isCollapsed && (
+                    <div className="flex-1 text-left">
+                      <div className="font-normal">{getPersonaName(persona)}</div>
                     </div>
                   )}
-                </div>
+                </button>
               );
             })}
           </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EnhancedSidebar from '@/components/Sidebar/EnhancedSidebar';
 import Dashboard from '@/components/Dashboard/Dashboard';
 import DrillDownDashboard from '@/components/CommercialOps/DrillDownDashboard';
@@ -12,6 +12,18 @@ export default function Home() {
   const [currentPersona, setCurrentPersona] = useState<Persona>('CSM');
   const [currentView, setCurrentView] = useState<string>('command-center');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Check localStorage for selected persona on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedPersona = localStorage.getItem('selectedPersona') as Persona | null;
+      if (savedPersona && ['CSM', 'CO', 'SE', 'AI_CHAT'].includes(savedPersona)) {
+        setCurrentPersona(savedPersona);
+        // Clear it after reading so it doesn't persist across page refreshes
+        localStorage.removeItem('selectedPersona');
+      }
+    }
+  }, []);
 
   const renderMainContent = () => {
     // Commercial Operations - Drill-down dashboard

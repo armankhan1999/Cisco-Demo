@@ -233,18 +233,16 @@ export default function DrillDownKPICard({
 
         {/* Hover Overlay with Actions */}
         {isHovered && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-sm rounded-2xl z-20 flex flex-col items-center justify-center gap-3 p-6 animate-in fade-in duration-200">
-            <div className="text-white text-center mb-2">
-              <h4 className="text-lg font-bold mb-1">{title}</h4>
-              <p className="text-sm text-gray-300">Drill down for detailed insights</p>
-            </div>
-
+          <div
+            className="absolute inset-0 backdrop-blur-sm rounded-2xl z-20 flex flex-col items-center justify-center gap-3 p-6 animate-in fade-in duration-200"
+            style={{ backgroundColor: 'rgba(243, 243, 243, 0.98)' }}
+          >
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onDrillDown(kpiId, 2);
               }}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg"
             >
               <Activity className="h-5 w-5" />
               View Analytics
@@ -255,17 +253,11 @@ export default function DrillDownKPICard({
                 e.stopPropagation();
                 onDrillDown(kpiId, 3);
               }}
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+              className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg"
             >
               <Activity className="h-5 w-5" />
               Action Items
             </button>
-
-            {kpiDrillDown && (
-              <div className="text-xs text-gray-300 mt-2 text-center">
-                {kpiDrillDown.level2Views.length} analytical views • {kpiDrillDown.level3Actions.length} action items
-              </div>
-            )}
           </div>
         )}
       </div>
@@ -366,39 +358,31 @@ export default function DrillDownKPICard({
 
       {/* Hover Overlay with Actions */}
       {isHovered && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-sm rounded-2xl z-20 flex flex-col items-center justify-center gap-3 p-6 animate-in fade-in duration-200">
-          <div className="text-white text-center mb-2">
-            <h4 className="text-lg font-bold mb-1">{title}</h4>
-            <p className="text-sm text-gray-300">Drill down for detailed insights</p>
-          </div>
-          
+        <div
+          className="absolute inset-0 backdrop-blur-sm rounded-2xl z-20 flex flex-col items-center justify-center gap-3 p-6 animate-in fade-in duration-200"
+          style={{ backgroundColor: 'rgba(243, 243, 243, 0.98)' }}
+        >
           <button
             onClick={(e) => {
               e.stopPropagation();
               onDrillDown(kpiId, 2);
             }}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg"
           >
             <Activity className="h-5 w-5" />
             View Analytics
           </button>
-          
+
           <button
             onClick={(e) => {
               e.stopPropagation();
               onDrillDown(kpiId, 3);
             }}
-            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg"
           >
             <Activity className="h-5 w-5" />
             Action Items
           </button>
-          
-          {kpiDrillDown && (
-            <div className="text-xs text-gray-300 mt-2 text-center">
-              {kpiDrillDown.level2Views.length} analytical views • {kpiDrillDown.level3Actions.length} action items
-            </div>
-          )}
         </div>
       )}
     </div>
