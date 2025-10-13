@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Activity, Users, TrendingUp, AlertCircle, MessageCircle, User, BarChart2, Target, ChevronRight, Menu, Home } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Activity, Users, TrendingUp, AlertCircle, Heart, BarChart3, Target, MessageSquare, ChevronRight, Menu } from 'lucide-react';
 import { Persona, getPersonaName, getPersonaDescription } from '@/data/dummyData';
 import { useSidebar } from '@/contexts/SidebarContext';
 
@@ -25,11 +26,28 @@ interface SubMenuItem {
 }
 
 export default function Sidebar({ currentPersona, onPersonaChange, currentLevel = 1, onLevelChange }: SidebarProps) {
+  const router = useRouter();
   const { isCollapsed, toggleSidebar } = useSidebar();
   const [expandedMenu, setExpandedMenu] = useState<Persona | null>('CSM');
   const [expandedPersona, setExpandedPersona] = useState<Persona | null>(currentPersona);
 
   const personas: Persona[] = ['CSM', 'CO', 'SE', 'AI_CHAT'];
+
+  const handlePersonaClick = (persona: Persona) => {
+    // First call the onPersonaChange callback if provided
+    if (onPersonaChange) {
+      onPersonaChange(persona);
+    }
+
+    // Store the selected persona in localStorage so the main page can pick it up
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('selectedPersona', persona);
+    }
+
+    // Navigate to the main page with the selected persona
+    // The main page will handle showing the correct dashboard
+    router.push('/');
+  };
 
   // Define main navigation sections
   const mainSections = [
@@ -134,10 +152,10 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
 
   const getPersonaIcon = (persona: Persona) => {
     const icons = {
-      CSM: User,
-      CO: BarChart2,
+      CSM: Heart,
+      CO: BarChart3,
       SE: Target,
-      AI_CHAT: MessageCircle,
+      AI_CHAT: MessageSquare,
     };
     const IconComponent = icons[persona];
     return <IconComponent className="h-4 w-4" />;
@@ -172,37 +190,18 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto py-2">
           <div className="space-y-1 px-2">
-            {/* Home Button */}
-            <button
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.location.href = '/';
-                }
-              }}
-              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-md transition-colors bg-blue-600 text-white hover:bg-blue-700 mb-3"
-              title={isCollapsed ? 'Home - All Personas' : undefined}
-            >
-              <Home className="h-5 w-5 flex-shrink-0" />
-              {!isCollapsed && (
-                <span>All Personas</span>
-              )}
-            </button>
-
-            {/* Divider */}
-            <div className="border-t border-gray-200 my-2"></div>
-
             {personas.map((persona) => {
               const isActive = currentPersona === persona;
 
               return (
                 <button
                   key={persona}
-                  onClick={() => onPersonaChange(persona)}
+                  onClick={() => handlePersonaClick(persona)}
                   className={cn(
                     "w-full flex items-center gap-3 px-3 py-2 text-sm font-normal rounded-md transition-colors",
                     "hover:text-gray-700 hover:bg-gray-50",
-                    isActive 
-                      ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600" 
+                    isActive
+                      ? "bg-blue-50 text-blue-700"
                       : "text-gray-500"
                   )}
                   title={isCollapsed ? getPersonaName(persona) : undefined}
@@ -213,10 +212,7 @@ export default function Sidebar({ currentPersona, onPersonaChange, currentLevel 
 
                   {!isCollapsed && (
                     <div className="flex-1 text-left">
-                      <div className="font-medium">{persona}</div>
-                      <div className="text-xs text-gray-400 mt-0.5">
-                        {getPersonaName(persona)}
-                      </div>
+                      <div className="font-normal">{getPersonaName(persona)}</div>
                     </div>
                   )}
                 </button>
