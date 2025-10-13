@@ -648,7 +648,7 @@ function LookalikeAnalysisContent({
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-black"
           >
             <option value="opportunity">Expected ARR (High to Low)</option>
             <option value="similarity">Similarity Score (High to Low)</option>
@@ -660,13 +660,11 @@ function LookalikeAnalysisContent({
           <select
             value={filterByProductCount}
             onChange={(e) => setFilterByProductCount(parseInt(e.target.value))}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-black"
           >
             <option value="0">All</option>
-            <option value="4">4+ Products</option>
-            <option value="5">5+ Products</option>
-            <option value="6">6+ Products</option>
-            <option value="7">7+ Products</option>
+            <option value="2">2+ Products</option>
+            <option value="3">3+ Products</option>
           </select>
         </div>
       </div>
@@ -1053,7 +1051,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
             >
               White Space by Segment
             </button>
-            <button
+            {/* <button
               onClick={() => setActiveTab('lookalike')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'lookalike'
@@ -1062,7 +1060,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
               }`}
             >
               Lookalike Analysis
-            </button>
+            </button> */}
             <button
               onClick={() => setActiveTab('details')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
@@ -1290,6 +1288,8 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     productFamily: 'all',
     dealSize: 'all'
   });
+  const [sortBy, setSortBy] = useState<'opportunity' | 'similarity' | 'products'>('opportunity');
+  const [filterByProductCount, setFilterByProductCount] = useState<number>(0);
 
   useEffect(() => {
     const drillDown = KPI_DRILL_DOWNS.find(kpi => kpi.kpiId === kpiId);
@@ -1342,6 +1342,50 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
         {/* Main Content */}
         <div className="flex-1 overflow-y-auto p-8">
           <WhiteSpaceOpportunityTabs onDrillToLevel3={onDrillToLevel3} />
+        </div>
+      </div>
+    );
+  }
+
+  // Special handling for lookalike analysis - render directly
+  if (kpiId === 'lookalike-analysis') {
+    return (
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  <span className="font-semibold">Back to Overview</span>
+                </button>
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    <svg className="h-8 w-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Lookalike Analysis
+                  </h1>
+                  <p className="text-sm text-gray-600 mt-1">AI-powered customer similarity analysis for expansion opportunities</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <LookalikeAnalysisContent
+            onDrillToLevel3={onDrillToLevel3}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            filterByProductCount={filterByProductCount}
+            setFilterByProductCount={setFilterByProductCount}
+          />
         </div>
       </div>
     );
