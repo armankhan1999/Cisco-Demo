@@ -10,6 +10,7 @@ import { drillDownService } from '@/services/drillDownService';
 import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, Layers, Target, AlertCircle } from '@/utils/iconMapping';
 import { KPI_DRILL_DOWNS,  type KPIDrillDown, type Level2View } from '@/services/drillDownService';
 import { getCommercialOpsKPIs } from '@/services/commercialOpsService';
+import ReactMarkdown from 'react-markdown';
 import { 
   getNRRByTier, 
   getNRRQuarterlyTrend, 
@@ -54,6 +55,7 @@ import whiteSpaceData from '@/source_data/csm-data/white_space_analysis.json';
 import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 import expansionOpportunitiesData from '@/source_data/sales-expansion-data/expansion-opportunities.json';
 import expansionPipelineTrackingData from '@/source_data/sales-expansion-data/expansion-pipeline-tracking.json';
+import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS-new.json';
 import AdvancedVisualizationCharts from './AdvancedVisualizationCharts';
 
 interface Level2TacticalAnalysisProps {
@@ -511,9 +513,396 @@ function PipelineExpansionAnalysis({ onDrillToLevel3 }: { onDrillToLevel3: (acti
   );
 }
 
+// Lookalike Analysis Content Component
+function LookalikeAnalysisContent({
+  onDrillToLevel3,
+  sortBy,
+  setSortBy,
+  filterByProductCount,
+  setFilterByProductCount
+}: {
+  onDrillToLevel3: (actionId: string) => void;
+  sortBy: 'opportunity' | 'similarity' | 'products';
+  setSortBy: (sort: 'opportunity' | 'similarity' | 'products') => void;
+  filterByProductCount: number;
+  setFilterByProductCount: (count: number) => void;
+}) {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Parse and prepare the data
+  const analysisData = potentialArrData.map((item: any) => {
+    // POTENTIAL_PRODUCTS is already parsed in the JSON file
+    let potentialProducts = [];
+    if (Array.isArray(item.POTENTIAL_PRODUCTS)) {
+      potentialProducts = item.POTENTIAL_PRODUCTS;
+    } else if (typeof item.POTENTIAL_PRODUCTS === 'string') {
+      try {
+        potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
+      } catch (e) {
+        console.error('Error parsing potential products:', e);
+      }
+    }
+    return {
+      customerId: item.CUSTOMER_ID,
+      companyName: item.COMPANY_NAME,
+      currentArr: parseFloat(item.CURRENT_ARR),
+      currentProductCount: parseInt(item.CURRENT_PRODUCT_COUNT),
+      potentialProductCount: parseInt(item.POTENTIAL_PRODUCT_COUNT),
+      totalPotentialArr: parseFloat(item.TOTAL_POTENTIAL_ARR),
+      totalExpectedArr: parseFloat(item.TOTAL_EXPECTED_POTENTIAL_ARR),
+      similarCompanies: item.TOP_5_SIMILAR_COMPANIES.split(', '),
+      avgSimilarityScore: parseFloat(item.AVG_SIMILARITY_SCORE),
+      potentialProducts: potentialProducts,
+      topProduct: item.TOP_PRODUCT_RECOMMENDATION,
+      topProductExpectedArr: parseFloat(item.TOP_PRODUCT_EXPECTED_ARR),
+    };
+  });
+
+  // Filter and sort
+  let filteredData = analysisData;
+  if (filterByProductCount > 0) {
+    filteredData = analysisData.filter(item => item.potentialProductCount >= filterByProductCount);
+  }
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    switch (sortBy) {
+      case 'opportunity':
+        return b.totalExpectedArr - a.totalExpectedArr;
+      case 'similarity':
+        return b.avgSimilarityScore - a.avgSimilarityScore;
+      case 'products':
+        return b.potentialProductCount - a.potentialProductCount;
+      default:
+        return 0;
+    }
+  });
+
+  const formatCurrency = (value: number) => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`;
+    }
+    return `$${(value / 1000).toFixed(0)}K`;
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
+
+    const userMessage = inputMessage.trim();
+    setInputMessage('');
+    setChatMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      // Prepare context data for the AI
+      const contextData = {
+        totalAccounts: sortedData.length,
+        totalExpectedArr: sortedData.reduce((sum, item) => sum + item.totalExpectedArr, 0),
+        avgSimilarity: sortedData.reduce((sum, item) => sum + item.avgSimilarityScore, 0) / sortedData.length,
+        topAccounts: sortedData.slice(0, 10).map(a => ({
+          name: a.companyName,
+          currentArr: a.currentArr,
+          expectedArr: a.totalExpectedArr,
+          similarity: a.avgSimilarityScore,
+          topProduct: a.topProduct,
+          currentProducts: a.currentProductCount,
+          potentialProducts: a.potentialProductCount
+        }))
+      };
+
+      const response = await fetch('/api/chat-lookalike', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          context: contextData
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setChatMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setChatMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error processing your question. Please try again.'
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Filters and Sorting */}
+      <div className="flex flex-wrap items-center gap-4 p-4 bg-gray-50 rounded-lg">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-700">Sort by:</label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as any)}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          >
+            <option value="opportunity">Expected ARR (High to Low)</option>
+            <option value="similarity">Similarity Score (High to Low)</option>
+            <option value="products">Product Opportunities (Most to Least)</option>
+          </select>
+        </div>
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-700">Min Products:</label>
+          <select
+            value={filterByProductCount}
+            onChange={(e) => setFilterByProductCount(parseInt(e.target.value))}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          >
+            <option value="0">All</option>
+            <option value="4">4+ Products</option>
+            <option value="5">5+ Products</option>
+            <option value="6">6+ Products</option>
+            <option value="7">7+ Products</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Lookalike Analysis Table */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+            <span className="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
+            Lookalike Customer Analysis
+          </h3>
+          <button
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            Chat With Data
+          </button>
+        </div>
+        <p className="text-sm text-gray-600 mb-4">
+          Customers similar to top performers with expansion opportunities based on adoption patterns
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Current ARR</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Products (Current/Potential)</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Expected ARR</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Similarity</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Top Recommendation</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {sortedData.slice(0, 20).map((account) => (
+                <tr key={account.customerId} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`lookalike-${account.customerId}`)}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">{account.companyName}</div>
+                    <div className="text-xs text-gray-500">
+                      Similar to: {account.similarCompanies.slice(0, 2).join(', ')}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-semibold text-gray-900">
+                    {formatCurrency(account.currentArr)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <span className="text-sm font-semibold text-blue-600">{account.currentProductCount}</span>
+                    <span className="text-sm text-gray-500"> / </span>
+                    <span className="text-sm font-semibold text-orange-600">{account.potentialProductCount}</span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-green-600">
+                    {formatCurrency(account.totalExpectedArr)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="w-16 bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-green-600 h-2 rounded-full"
+                          style={{ width: `${account.avgSimilarityScore}%` }}
+                        ></div>
+                      </div>
+                      <span className="text-xs font-semibold text-green-600">{account.avgSimilarityScore.toFixed(1)}%</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-medium text-gray-900">{account.topProduct}</div>
+                    <div className="text-xs text-green-600 font-semibold">{formatCurrency(account.topProductExpectedArr)}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {sortedData.length > 20 && (
+          <div className="mt-4 text-center text-sm text-gray-600">
+            Showing top 20 of {sortedData.length} accounts
+          </div>
+        )}
+      </div>
+
+      {/* Product Recommendations Summary */}
+      <div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">🎯 Top Product Recommendations</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {(() => {
+            const productCounts: { [key: string]: { count: number; totalArr: number } } = {};
+            sortedData.forEach(account => {
+              if (!productCounts[account.topProduct]) {
+                productCounts[account.topProduct] = { count: 0, totalArr: 0 };
+              }
+              productCounts[account.topProduct].count++;
+              productCounts[account.topProduct].totalArr += account.topProductExpectedArr;
+            });
+
+            return Object.entries(productCounts)
+              .sort((a, b) => b[1].totalArr - a[1].totalArr)
+              .slice(0, 6)
+              .map(([product, data]) => (
+                <div key={product} className="bg-gray-50 rounded-lg p-4">
+                  <div className="text-sm font-semibold text-gray-900 mb-2">{product}</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-600">{data.count} accounts</span>
+                    <span className="text-sm font-bold text-blue-600">{formatCurrency(data.totalArr)}</span>
+                  </div>
+                </div>
+              ));
+          })()}
+        </div>
+      </div>
+
+      {/* Chat Window */}
+      {isChatOpen && (
+        <div className="fixed bottom-0 right-8 w-[500px] h-[600px] bg-white rounded-t-2xl shadow-2xl border-2 border-gray-200 flex flex-col z-50 animate-slide-up">
+          {/* Chat Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold">Chat With Lookalike Data</h3>
+                <p className="text-xs text-blue-100">Ask questions about expansion opportunities</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsChatOpen(false)}
+              className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+            {chatMessages.length === 0 && (
+              <div className="text-center text-gray-500 mt-8">
+                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <p className="text-sm font-semibold mb-2">Start a conversation</p>
+                <p className="text-xs">Ask questions about the lookalike analysis data</p>
+                <div className="mt-6 space-y-2">
+                  <button
+                    onClick={() => setInputMessage("Which customers have the highest expansion potential?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Which customers have the highest expansion potential?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("What are the top recommended products?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    What are the top recommended products?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("Show me accounts with high similarity scores")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Show me accounts with high similarity scores
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {chatMessages.map((msg, idx) => (
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] rounded-lg px-4 py-3 ${
+                  msg.role === 'user'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+                }`}>
+                  {msg.role === 'user' ? (
+                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  ) : (
+                    <div className="text-sm prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-gray-900 prose-strong:font-semibold">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white text-gray-900 border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Chat Input */}
+          <div className="p-4 bg-white border-t border-gray-200">
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                placeholder="Ask a question about the data..."
+                className="text-black flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                disabled={isLoading}
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={isLoading || !inputMessage.trim()}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // White Space Opportunity Tabs Component
 function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (actionId: string) => void }) {
-  const [activeTab, setActiveTab] = useState('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'details' | 'lookalike'>('analytics');
+  const [sortBy, setSortBy] = useState<'opportunity' | 'similarity' | 'products'>('opportunity');
+  const [filterByProductCount, setFilterByProductCount] = useState<number>(0);
 
   // Calculate real data for KPI cards
   const totalWhiteSpace = whiteSpaceData.reduce((sum, ws) => sum + ws.total_white_space_arr, 0);
@@ -578,61 +967,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
     });
   };
 
-  // Lookalike Analysis - Real Data
-  const getLookalikePatterns = () => {
-    const patterns = [
-      {
-        pattern: 'Duo → Meraki',
-        description: 'customers with Duo showing high similarity to Meraki adopters',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Duo') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Meraki')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Meraki')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 86
-      },
-      {
-        pattern: 'Umbrella → Duo',
-        description: 'customers with Umbrella indicating Duo adoption profiles',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Umbrella') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Duo')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Duo')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 92
-      },
-      {
-        pattern: 'Meraki → Umbrella',
-        description: 'customers with Meraki showing Umbrella adoption potential',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Meraki') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Umbrella')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Umbrella')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 78
-      },
-      {
-        pattern: 'Multi → ThousandEyes',
-        description: 'customers with 2+ products ready for ThousandEyes',
-        customers: customersData.filter(c => 
-          c.product_count >= 2 &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'ThousandEyes')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'ThousandEyes')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 75
-      }
-    ];
-    return patterns;
-  };
-
   // Top White Space Opportunities - Real Data
   const getTopOpportunities = () => {
     return whiteSpaceData
@@ -662,7 +996,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
 
   const productGapMatrix = getProductGapMatrix();
   const whiteSpaceByTier = getWhiteSpaceByTier();
-  const lookalikePatterns = getLookalikePatterns();
   const topOpportunities = getTopOpportunities();
 
   return (
@@ -703,7 +1036,17 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
-              Analytics
+              White Space by Segment
+            </button>
+            <button
+              onClick={() => setActiveTab('lookalike')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'lookalike'
+                  ? 'border-orange-500 text-orange-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Lookalike Analysis
             </button>
             <button
               onClick={() => setActiveTab('details')}
@@ -853,47 +1196,11 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                   </table>
                 </div>
               </div>
-
-              {/* Lookalike Analysis */}
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                    <span className="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
-                    Lookalike Analysis - Top Cross-Sell Patterns
-                  </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('lookalike-analysis')}
-                    className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm font-semibold"
-                  >
-                    View Patterns
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-6">
-                  {lookalikePatterns.map((pattern, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-gray-50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
-                      onClick={() => onDrillToLevel3(`pattern-${pattern.pattern.replace(' → ', '-').toLowerCase()}`)}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-lg font-semibold text-gray-900">{pattern.pattern}</h4>
-                        <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                          pattern.matchPercentage >= 85 ? 'bg-green-100 text-green-800' :
-                          pattern.matchPercentage >= 75 ? 'bg-blue-100 text-blue-800' :
-                          'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {pattern.matchPercentage}% Match
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-3">{pattern.customers} {pattern.description}</p>
-                      <div className="text-lg font-bold text-green-600">
-                        ${(pattern.opportunity / 1000000).toFixed(1)}M Opportunity
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
+          )}
+
+          {activeTab === 'lookalike' && (
+            <LookalikeAnalysisContent onDrillToLevel3={onDrillToLevel3} sortBy={sortBy} setSortBy={setSortBy} filterByProductCount={filterByProductCount} setFilterByProductCount={setFilterByProductCount} />
           )}
 
           {activeTab === 'details' && (
