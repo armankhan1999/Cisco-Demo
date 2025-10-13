@@ -10,6 +10,7 @@ import { drillDownService } from '@/services/drillDownService';
 import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, Layers, Target, AlertCircle } from '@/utils/iconMapping';
 import { KPI_DRILL_DOWNS,  type KPIDrillDown, type Level2View } from '@/services/drillDownService';
 import { getCommercialOpsKPIs } from '@/services/commercialOpsService';
+import ReactMarkdown from 'react-markdown';
 import { 
   getNRRByTier, 
   getNRRQuarterlyTrend, 
@@ -526,6 +527,11 @@ function LookalikeAnalysisContent({
   filterByProductCount: number;
   setFilterByProductCount: (count: number) => void;
 }) {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   // Parse and prepare the data
   const analysisData = potentialArrData.map((item: any) => {
     let potentialProducts = [];
@@ -576,6 +582,58 @@ function LookalikeAnalysisContent({
     return `$${(value / 1000).toFixed(0)}K`;
   };
 
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
+
+    const userMessage = inputMessage.trim();
+    setInputMessage('');
+    setChatMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      // Prepare context data for the AI
+      const contextData = {
+        totalAccounts: sortedData.length,
+        totalExpectedArr: sortedData.reduce((sum, item) => sum + item.totalExpectedArr, 0),
+        avgSimilarity: sortedData.reduce((sum, item) => sum + item.avgSimilarityScore, 0) / sortedData.length,
+        topAccounts: sortedData.slice(0, 10).map(a => ({
+          name: a.companyName,
+          currentArr: a.currentArr,
+          expectedArr: a.totalExpectedArr,
+          similarity: a.avgSimilarityScore,
+          topProduct: a.topProduct,
+          currentProducts: a.currentProductCount,
+          potentialProducts: a.potentialProductCount
+        }))
+      };
+
+      const response = await fetch('/api/chat-lookalike', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          context: contextData
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setChatMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setChatMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error processing your question. Please try again.'
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Filters and Sorting */}
@@ -616,10 +674,13 @@ function LookalikeAnalysisContent({
             Lookalike Customer Analysis
           </h3>
           <button
-            onClick={() => onDrillToLevel3('lookalike-analysis')}
-            className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm font-semibold"
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold flex items-center gap-2"
           >
-            View Action Items
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            Chat With Data
           </button>
         </div>
         <p className="text-sm text-gray-600 mb-4">
@@ -715,6 +776,119 @@ function LookalikeAnalysisContent({
           })()}
         </div>
       </div>
+
+      {/* Chat Window */}
+      {isChatOpen && (
+        <div className="fixed bottom-0 right-8 w-[500px] h-[600px] bg-white rounded-t-2xl shadow-2xl border-2 border-gray-200 flex flex-col z-50 animate-slide-up">
+          {/* Chat Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold">Chat With Lookalike Data</h3>
+                <p className="text-xs text-blue-100">Ask questions about expansion opportunities</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsChatOpen(false)}
+              className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+            {chatMessages.length === 0 && (
+              <div className="text-center text-gray-500 mt-8">
+                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <p className="text-sm font-semibold mb-2">Start a conversation</p>
+                <p className="text-xs">Ask questions about the lookalike analysis data</p>
+                <div className="mt-6 space-y-2">
+                  <button
+                    onClick={() => setInputMessage("Which customers have the highest expansion potential?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Which customers have the highest expansion potential?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("What are the top recommended products?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    What are the top recommended products?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("Show me accounts with high similarity scores")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Show me accounts with high similarity scores
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {chatMessages.map((msg, idx) => (
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] rounded-lg px-4 py-3 ${
+                  msg.role === 'user'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+                }`}>
+                  {msg.role === 'user' ? (
+                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  ) : (
+                    <div className="text-sm prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-gray-900 prose-strong:font-semibold">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white text-gray-900 border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Chat Input */}
+          <div className="p-4 bg-white border-t border-gray-200">
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                placeholder="Ask a question about the data..."
+                className="text-black flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                disabled={isLoading}
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={isLoading || !inputMessage.trim()}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
