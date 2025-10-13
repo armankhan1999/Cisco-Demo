@@ -3,26 +3,30 @@
 import { useState, useEffect } from 'react';
 import { DSODrillDownService, type DSOLevel1TrendData } from '@/services/dsoDrillDownService';
 import { ArrowLeft, TrendingUp, TrendingDown, DollarSign, Clock, AlertTriangle, Target } from '@/utils/iconMapping';
+import DSOAgingBucketDetailModal from './DSOAgingBucketDetailModal';
 
 interface DSOLevel1TrendAgingProps {
+  productFamily?: string;
   onBack: () => void;
   onDrillToLevel2: (segment: string, productFamily: string) => void;
 }
 
-export default function DSOLevel1TrendAging({ 
-  onBack, 
-  onDrillToLevel2 
+export default function DSOLevel1TrendAging({
+  productFamily,
+  onBack,
+  onDrillToLevel2
 }: DSOLevel1TrendAgingProps) {
   const [trendData, setTrendData] = useState<DSOLevel1TrendData[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTimeframe, setSelectedTimeframe] = useState<string>('6months');
+  const [selectedBucket, setSelectedBucket] = useState<{name: string; minDays: number; maxDays: number} | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         await new Promise(resolve => setTimeout(resolve, 800));
-        const data = DSODrillDownService.getLevel1TrendData();
+        const data = DSODrillDownService.getLevel1TrendData(productFamily);
         setTrendData(data);
       } catch (error) {
         console.error('Error fetching DSO Level 1 data:', error);
@@ -32,10 +36,10 @@ export default function DSOLevel1TrendAging({
     };
 
     fetchData();
-  }, [selectedTimeframe]);
+  }, [selectedTimeframe, productFamily]);
 
-  const handleSegmentClick = (segment: string, productFamily: string) => {
-    onDrillToLevel2(segment, productFamily);
+  const handleSegmentClick = (segment: string) => {
+    onDrillToLevel2(segment, productFamily || '');
   };
 
   if (loading) {
@@ -49,7 +53,7 @@ export default function DSOLevel1TrendAging({
   // Get current month data for aging analysis
   const currentData = trendData[trendData.length - 1];
   const previousData = trendData[trendData.length - 2];
-  const trendDirection = currentData && previousData ? 
+  const trendDirection = currentData && previousData ?
     (currentData.dsoValue < previousData.dsoValue ? 'improving' : 'declining') : 'stable';
 
   return (
@@ -62,11 +66,15 @@ export default function DSOLevel1TrendAging({
             className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
+            Back to Product Comparison
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Days Sales Outstanding (DSO) Analysis</h1>
-            <p className="text-gray-600">Is our collection getting better or worse? DSO trend and aging bucket analysis</p>
+            <h1 className="text-2xl font-bold text-gray-900">
+              {productFamily ? `${productFamily} - ` : ''}Days Sales Outstanding (DSO) Analysis
+            </h1>
+            <p className="text-gray-600">
+              {productFamily ? `Is ${productFamily}'s collection getting better or worse?` : 'Is our collection getting better or worse?'} DSO trend and aging bucket analysis
+            </p>
           </div>
         </div>
         
@@ -237,47 +245,63 @@ export default function DSOLevel1TrendAging({
               </div>
             </div>
             
-            {/* Legend and Details */}
+            {/* Legend and Details - Now Clickable */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="w-4 h-4 bg-green-500 rounded"></div>
-                <div>
+              <button
+                onClick={() => setSelectedBucket({name: '0-30 Days', minDays: 0, maxDays: 30})}
+                className="flex items-center gap-3 p-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all cursor-pointer border-2 border-transparent hover:border-green-300"
+                style={{ backgroundColor: '#F3F3F3' }}
+              >
+                <div className="w-4 h-4 bg-green-500 rounded flex-shrink-0"></div>
+                <div className="text-left">
                   <p className="text-sm font-medium text-green-800">0-30 Days</p>
                   <p className="text-xs text-green-600">
                     ${Math.round(currentData.agingBuckets.current_0_30 / 1000)}K ({currentData.agingPercentages.current_0_30_pct}%)
                   </p>
                 </div>
-              </div>
+              </button>
 
-              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="w-4 h-4 bg-yellow-500 rounded"></div>
-                <div>
+              <button
+                onClick={() => setSelectedBucket({name: '31-60 Days', minDays: 31, maxDays: 60})}
+                className="flex items-center gap-3 p-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all cursor-pointer border-2 border-transparent hover:border-yellow-300"
+                style={{ backgroundColor: '#F3F3F3' }}
+              >
+                <div className="w-4 h-4 bg-yellow-500 rounded flex-shrink-0"></div>
+                <div className="text-left">
                   <p className="text-sm font-medium text-yellow-800">31-60 Days</p>
                   <p className="text-xs text-yellow-600">
                     ${Math.round(currentData.agingBuckets.aging_31_60 / 1000)}K ({currentData.agingPercentages.aging_31_60_pct}%)
                   </p>
                 </div>
-              </div>
+              </button>
 
-              <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="w-4 h-4 bg-orange-500 rounded"></div>
-                <div>
+              <button
+                onClick={() => setSelectedBucket({name: '61-90 Days', minDays: 61, maxDays: 90})}
+                className="flex items-center gap-3 p-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all cursor-pointer border-2 border-transparent hover:border-orange-300"
+                style={{ backgroundColor: '#F3F3F3' }}
+              >
+                <div className="w-4 h-4 bg-orange-500 rounded flex-shrink-0"></div>
+                <div className="text-left">
                   <p className="text-sm font-medium text-orange-800">61-90 Days</p>
                   <p className="text-xs text-orange-600">
                     ${Math.round(currentData.agingBuckets.aging_61_90 / 1000)}K ({currentData.agingPercentages.aging_61_90_pct}%)
                   </p>
                 </div>
-              </div>
+              </button>
 
-              <div className="flex items-center gap-3 p-3 rounded-lg border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
-                <div className="w-4 h-4 bg-red-500 rounded"></div>
-                <div>
+              <button
+                onClick={() => setSelectedBucket({name: '90+ Days', minDays: 91, maxDays: 999})}
+                className="flex items-center gap-3 p-3 rounded-lg border-2 hover:shadow-lg hover:scale-105 transition-all cursor-pointer border-red-200 hover:border-red-400"
+                style={{ backgroundColor: '#F3F3F3' }}
+              >
+                <div className="w-4 h-4 bg-red-500 rounded flex-shrink-0"></div>
+                <div className="text-left">
                   <p className="text-sm font-medium text-red-800">90+ Days</p>
                   <p className="text-xs text-red-600">
                     ${Math.round(currentData.agingBuckets.aging_90_plus / 1000)}K ({currentData.agingPercentages.aging_90_plus_pct}%)
                   </p>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         )}
@@ -325,28 +349,28 @@ export default function DSOLevel1TrendAging({
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">🎯 Recommended Actions</h3>
           <div className="space-y-3">
-            <button 
-              onClick={() => handleSegmentClick('Enterprise', 'Splunk')}
+            <button
+              onClick={() => handleSegmentClick('Enterprise')}
               className="w-full flex items-center gap-3 p-3 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors text-left"
             >
               <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
               <div>
-                <p className="text-sm font-medium text-red-800">Focus on Enterprise-Splunk</p>
+                <p className="text-sm font-medium text-red-800">Focus on Enterprise Segment{productFamily ? ` - ${productFamily}` : ''}</p>
                 <p className="text-xs text-red-600">Highest DSO segment - drill down for details</p>
               </div>
             </button>
-            
-            <button 
-              onClick={() => handleSegmentClick('SMB', 'Duo')}
+
+            <button
+              onClick={() => handleSegmentClick('SMB')}
               className="w-full flex items-center gap-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg hover:bg-yellow-100 transition-colors text-left"
             >
               <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
               <div>
-                <p className="text-sm font-medium text-yellow-800">Review SMB Payment Terms</p>
-                <p className="text-xs text-yellow-600">SMB-Duo showing payment delays</p>
+                <p className="text-sm font-medium text-yellow-800">Review SMB Payment Terms{productFamily ? ` - ${productFamily}` : ''}</p>
+                <p className="text-xs text-yellow-600">SMB segment showing payment delays</p>
               </div>
             </button>
-            
+
             <button className="w-full flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors text-left">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
               <div>
@@ -357,6 +381,17 @@ export default function DSOLevel1TrendAging({
           </div>
         </div>
       </div>
+
+      {/* Aging Bucket Detail Modal */}
+      {selectedBucket && productFamily && (
+        <DSOAgingBucketDetailModal
+          productFamily={productFamily}
+          bucketName={selectedBucket.name}
+          minDays={selectedBucket.minDays}
+          maxDays={selectedBucket.maxDays}
+          onClose={() => setSelectedBucket(null)}
+        />
+      )}
     </div>
   );
 }
