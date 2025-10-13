@@ -1,0 +1,1687 @@
+[
+  {
+    "CUSTOMER_ID": "CUST_000014",
+    "COMPANY_NAME": "Ondricka, Waters and Wilderman",
+    "CURRENT_ARR": "1211950",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "3",
+    "TOTAL_POTENTIAL_ARR": "906579",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "721535",
+    "TOP_5_SIMILAR_COMPANIES": "Swaniawski Inc, Cyber Systems, Schultz - Collins, Harber LLC, White, Boehm and Hilpert",
+    "AVG_SIMILARITY_SCORE": "78.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 361494.4782608695,
+        "EXPECTED_ARR": 307270.30652173905,
+        "PURCHASE_PROBABILITY": 85.0,
+        "MAX_SIMILARITY_SCORE": 85,
+        "ESTIMATED_LICENSES": 50,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Swaniawski Inc, Cyber Systems, White, Boehm and Hilpert"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 297000.07200000004,
+        "EXPECTED_ARR": 225720.05472000004,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 72,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Harber LLC"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 248084.82,
+        "EXPECTED_ARR": 188544.4632,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 72,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "White, Boehm and Hilpert"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "307270"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000013",
+    "COMPANY_NAME": "Clinical Associates",
+    "CURRENT_ARR": "1601116",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "804507",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "635560",
+    "TOP_5_SIMILAR_COMPANIES": "Medical Systems, Harber LLC, Swaniawski Inc, Trust Holdings, Medical Group",
+    "AVG_SIMILARITY_SCORE": "75.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 477172.7113043478,
+        "EXPECTED_ARR": 376966.4419304348,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 66,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems, Swaniawski Inc"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 327334.1375,
+        "EXPECTED_ARR": 258593.968625,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 95,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "376966"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000008",
+    "COMPANY_NAME": "Swaniawski Inc",
+    "CURRENT_ARR": "1456970",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "744338",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "598450",
+    "TOP_5_SIMILAR_COMPANIES": "Ondricka, Waters and Wilderman, Baumbach, Dietrich and Mueller, Medical Group, Cyber Systems, Clinical Associates",
+    "AVG_SIMILARITY_SCORE": "79.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_DUO",
+        "PRODUCT_NAME": "Duo",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 401963.17238095234,
+        "EXPECTED_ARR": 341668.69652380946,
+        "PURCHASE_PROBABILITY": 85.0,
+        "MAX_SIMILARITY_SCORE": 85,
+        "ESTIMATED_LICENSES": 58,
+        "PRICE_PER_LICENSE": 6930.399523809523,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Ondricka, Waters and Wilderman, Baumbach, Dietrich and Mueller, Medical Group"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 342375.08300000004,
+        "EXPECTED_ARR": 256781.31225000002,
+        "PURCHASE_PROBABILITY": 75.0,
+        "MAX_SIMILARITY_SCORE": 75,
+        "ESTIMATED_LICENSES": 83,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Clinical Associates"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Duo",
+    "TOP_PRODUCT_EXPECTED_ARR": "341669"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000006",
+    "COMPANY_NAME": "Harber LLC",
+    "CURRENT_ARR": "747423",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "708766",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "538662",
+    "TOP_5_SIMILAR_COMPANIES": "Bode - Mayer, Clinical Associates, Wealth Group, Ondricka, Waters and Wilderman, Kris - Dibbert",
+    "AVG_SIMILARITY_SCORE": "76.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 419333.5947826087,
+        "EXPECTED_ARR": 318693.5320347826,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 58,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group, Kris - Dibbert"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 289432.29,
+        "EXPECTED_ARR": 219968.5404,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 84,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "318694"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000010",
+    "COMPANY_NAME": "Block - Toy",
+    "CURRENT_ARR": "1797331",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "524514",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "388140",
+    "TOP_5_SIMILAR_COMPANIES": "Gutmann, King and Gorczany, White, Boehm and Hilpert, Swaniawski Inc, Clinical Associates, Investment Management",
+    "AVG_SIMILARITY_SCORE": "73.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 310885.25130434777,
+        "EXPECTED_ARR": 230055.08596521735,
+        "PURCHASE_PROBABILITY": 74.0,
+        "MAX_SIMILARITY_SCORE": 74,
+        "ESTIMATED_LICENSES": 43,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "White, Boehm and Hilpert, Swaniawski Inc, Investment Management"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 213628.595,
+        "EXPECTED_ARR": 158085.1603,
+        "PURCHASE_PROBABILITY": 74.0,
+        "MAX_SIMILARITY_SCORE": 74,
+        "ESTIMATED_LICENSES": 62,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "White, Boehm and Hilpert"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "230055"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000009",
+    "COMPANY_NAME": "Quality Corporation",
+    "CURRENT_ARR": "1004742",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "469379",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "360549",
+    "TOP_5_SIMILAR_COMPANIES": "Advanced Manufacturing Co, Global Financial Partners, Medical Alliance, Cloud Solutions, Capital Management",
+    "AVG_SIMILARITY_SCORE": "76.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 255750.062,
+        "EXPECTED_ARR": 204600.04960000003,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 62,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Global Financial Partners, Capital Management"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 213628.595,
+        "EXPECTED_ARR": 155948.87435,
+        "PURCHASE_PROBABILITY": 73.0,
+        "MAX_SIMILARITY_SCORE": 73,
+        "ESTIMATED_LICENSES": 62,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Cloud Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "204600"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000011",
+    "COMPANY_NAME": "Cyber Systems",
+    "CURRENT_ARR": "1209071",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "447368",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "354650",
+    "TOP_5_SIMILAR_COMPANIES": "Data Innovations, Ondricka, Waters and Wilderman, Investment Management, Swaniawski Inc, InnovateTech Solutions",
+    "AVG_SIMILARITY_SCORE": "78.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 254413.63393939394,
+        "EXPECTED_ARR": 206075.0434909091,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 56,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Data Innovations, Ondricka, Waters and Wilderman, Swaniawski Inc"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 192954.86,
+        "EXPECTED_ARR": 148575.24219999998,
+        "PURCHASE_PROBABILITY": 77.0,
+        "MAX_SIMILARITY_SCORE": 77,
+        "ESTIMATED_LICENSES": 56,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "InnovateTech Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "206075"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000003",
+    "COMPANY_NAME": "Global Financial Partners",
+    "CURRENT_ARR": "804011",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "428773",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "335989",
+    "TOP_5_SIMILAR_COMPANIES": "Capital Management, Quality Corporation, Advanced Manufacturing Co, Wealth Group, Trust Holdings",
+    "AVG_SIMILARITY_SCORE": "77.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 253046.13478260866,
+        "EXPECTED_ARR": 202436.90782608694,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Quality Corporation, Advanced Manufacturing Co, Wealth Group"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 175726.7475,
+        "EXPECTED_ARR": 133552.3281,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 51,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "202437"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000012",
+    "COMPANY_NAME": "Medical Group",
+    "CURRENT_ARR": "536311",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "428773",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "328187",
+    "TOP_5_SIMILAR_COMPANIES": "Swaniawski Inc, Hansen LLC, Ondricka, Waters and Wilderman, Data Innovations, Medical Systems",
+    "AVG_SIMILARITY_SCORE": "74.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 253046.13478260866,
+        "EXPECTED_ARR": 199906.44647826086,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Swaniawski Inc, Medical Systems"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 175726.7475,
+        "EXPECTED_ARR": 128280.525675,
+        "PURCHASE_PROBABILITY": 73.0,
+        "MAX_SIMILARITY_SCORE": 73,
+        "ESTIMATED_LICENSES": 51,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "199906"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000029",
+    "COMPANY_NAME": "Medical Systems",
+    "CURRENT_ARR": "215678",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "416069",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "328694",
+    "TOP_5_SIMILAR_COMPANIES": "Cloud Solutions, Wealth Group, Capital Management, Clinical Associates, Trust Holdings",
+    "AVG_SIMILARITY_SCORE": "81.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 218068.8290909091,
+        "EXPECTED_ARR": 172274.3749818182,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 48,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Capital Management, Clinical Associates, Trust Holdings"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 198000.048,
+        "EXPECTED_ARR": 156420.03792,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 48,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Capital Management, Clinical Associates, Trust Holdings"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "172274"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000042",
+    "COMPANY_NAME": "Mitchell, Batz and Pouros",
+    "CURRENT_ARR": "420242",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "414652",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "334031",
+    "TOP_5_SIMILAR_COMPANIES": "Schultz - Collins, Smith, Ratke and Ankunding, Bruen - Adams, Pagac - Muller, InnovateTech Solutions",
+    "AVG_SIMILARITY_SCORE": "81.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 245816.2452173913,
+        "EXPECTED_ARR": 204027.48353043475,
+        "PURCHASE_PROBABILITY": 83.0,
+        "MAX_SIMILARITY_SCORE": 83,
+        "ESTIMATED_LICENSES": 34,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bruen - Adams, InnovateTech Solutions"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 168835.5025,
+        "EXPECTED_ARR": 130003.33692500001,
+        "PURCHASE_PROBABILITY": 77.0,
+        "MAX_SIMILARITY_SCORE": 77,
+        "ESTIMATED_LICENSES": 49,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "InnovateTech Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "204027"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000035",
+    "COMPANY_NAME": "Bruen - Adams",
+    "CURRENT_ARR": "152780",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "400467",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "344986",
+    "TOP_5_SIMILAR_COMPANIES": "Schultz - Collins, Bode - Mayer, Mitchell, Batz and Pouros, Pagac - Muller, Credit Group",
+    "AVG_SIMILARITY_SCORE": "82.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_DUO",
+        "PRODUCT_NAME": "Duo",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 214842.38523809522,
+        "EXPECTED_ARR": 189061.2990095238,
+        "PURCHASE_PROBABILITY": 88.0,
+        "MAX_SIMILARITY_SCORE": 88,
+        "ESTIMATED_LICENSES": 31,
+        "PRICE_PER_LICENSE": 6930.399523809523,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Schultz - Collins, Bode - Mayer, Mitchell, Batz and Pouros"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 185625.045,
+        "EXPECTED_ARR": 155925.0378,
+        "PURCHASE_PROBABILITY": 84.0,
+        "MAX_SIMILARITY_SCORE": 84,
+        "ESTIMATED_LICENSES": 45,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bode - Mayer"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Duo",
+    "TOP_PRODUCT_EXPECTED_ARR": "189061"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000002",
+    "COMPANY_NAME": "MedSecure Systems",
+    "CURRENT_ARR": "3627162",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "368682",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "258077",
+    "TOP_5_SIMILAR_COMPANIES": "Global Capital Management, InnovateTech Solutions, Medical Group, Swaniawski Inc, Smith, Ratke and Ankunding",
+    "AVG_SIMILARITY_SCORE": "70.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 368681.6075,
+        "EXPECTED_ARR": 258077.12524999998,
+        "PURCHASE_PROBABILITY": 70.0,
+        "MAX_SIMILARITY_SCORE": 70,
+        "ESTIMATED_LICENSES": 107,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "InnovateTech Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Splunk",
+    "TOP_PRODUCT_EXPECTED_ARR": "258077"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000019",
+    "COMPANY_NAME": "Pagac - Muller",
+    "CURRENT_ARR": "131258",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "367437",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "301673",
+    "TOP_5_SIMILAR_COMPANIES": "Schultz - Collins, Smith, Ratke and Ankunding, Bruen - Adams, Mitchell, Batz and Pouros, Stokes and Sons",
+    "AVG_SIMILARITY_SCORE": "82.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 202436.90782608694,
+        "EXPECTED_ARR": 168022.63349565215,
+        "PURCHASE_PROBABILITY": 83.0,
+        "MAX_SIMILARITY_SCORE": 83,
+        "ESTIMATED_LICENSES": 28,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bruen - Adams"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 165000.04,
+        "EXPECTED_ARR": 133650.03240000003,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 40,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Stokes and Sons"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "168023"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000007",
+    "COMPANY_NAME": "Baumbach, Dietrich and Mueller",
+    "CURRENT_ARR": "1091244",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "358905",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "290713",
+    "TOP_5_SIMILAR_COMPANIES": "Swaniawski Inc, Credit Group, Mohr and Sons, Ondricka, Waters and Wilderman, Herzog, Bode and Frami",
+    "AVG_SIMILARITY_SCORE": "77.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 358904.9478787879,
+        "EXPECTED_ARR": 290713.0077818182,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 79,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Swaniawski Inc, Mohr and Sons, Ondricka, Waters and Wilderman"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "290713"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000032",
+    "COMPANY_NAME": "Wealth Group",
+    "CURRENT_ARR": "320768",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "329388",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "266804",
+    "TOP_5_SIMILAR_COMPANIES": "Medical Systems, Bode - Mayer, Cloud Solutions, Trust Holdings, Credit Group",
+    "AVG_SIMILARITY_SCORE": "80.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 172637.82303030303,
+        "EXPECTED_ARR": 139836.63665454547,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 38,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bode - Mayer, Trust Holdings"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 156750.038,
+        "EXPECTED_ARR": 126967.53078000002,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 38,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bode - Mayer, Trust Holdings"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "139837"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000034",
+    "COMPANY_NAME": "Cloud Solutions",
+    "CURRENT_ARR": "395737",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "303384",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "232162",
+    "TOP_5_SIMILAR_COMPANIES": "Medical Systems, Wealth Group, Advanced Manufacturing Co, InnovateTech Solutions, Capital Management",
+    "AVG_SIMILARITY_SCORE": "79.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 159008.5212121212,
+        "EXPECTED_ARR": 122436.56133333333,
+        "PURCHASE_PROBABILITY": 77.0,
+        "MAX_SIMILARITY_SCORE": 77,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Advanced Manufacturing Co, Capital Management"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 144375.035,
+        "EXPECTED_ARR": 109725.0266,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Capital Management"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "122437"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000004",
+    "COMPANY_NAME": "Global Medical Network",
+    "CURRENT_ARR": "4199901",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "280113",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "189705",
+    "TOP_5_SIMILAR_COMPANIES": "Global Premier Works, Global Quality Industries, Block - Toy, Medical Systems, White, Boehm and Hilpert",
+    "AVG_SIMILARITY_SCORE": "68.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 152625.037,
+        "EXPECTED_ARR": 106837.52590000001,
+        "PURCHASE_PROBABILITY": 70.0,
+        "MAX_SIMILARITY_SCORE": 70,
+        "ESTIMATED_LICENSES": 37,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Global Quality Industries, Block - Toy"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 127488.0325,
+        "EXPECTED_ARR": 82867.221125,
+        "PURCHASE_PROBABILITY": 65.0,
+        "MAX_SIMILARITY_SCORE": 65,
+        "ESTIMATED_LICENSES": 37,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems, White, Boehm and Hilpert"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "106838"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000004",
+    "COMPANY_NAME": "Advanced Manufacturing Co",
+    "CURRENT_ARR": "140615",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "280113",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "224090",
+    "TOP_5_SIMILAR_COMPANIES": "Quality Corporation, Capital Management, InnovateTech Solutions, Global Financial Partners, Cloud Solutions",
+    "AVG_SIMILARITY_SCORE": "79.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 152625.037,
+        "EXPECTED_ARR": 122100.02960000001,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 37,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Capital Management, Global Financial Partners"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 127488.0325,
+        "EXPECTED_ARR": 101990.426,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 37,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "InnovateTech Solutions, Cloud Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "122100"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000001",
+    "COMPANY_NAME": "TechCorp Industries",
+    "CURRENT_ARR": "1522871",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "264000",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "192720",
+    "TOP_5_SIMILAR_COMPANIES": "Data Solutions, Global Financial Partners, Global Premier Works, Block - Toy, Harber LLC",
+    "AVG_SIMILARITY_SCORE": "70.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 264000.064,
+        "EXPECTED_ARR": 192720.04672,
+        "PURCHASE_PROBABILITY": 73.0,
+        "MAX_SIMILARITY_SCORE": 73,
+        "ESTIMATED_LICENSES": 64,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Data Solutions, Global Financial Partners, Block - Toy"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "192720"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000001",
+    "COMPANY_NAME": "Global Premier Works",
+    "CURRENT_ARR": "3386280",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "264000",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "208560",
+    "TOP_5_SIMILAR_COMPANIES": "Global Quality Industries, Global Medical Network, TechCorp Industries, Block - Toy, Corwin LLC",
+    "AVG_SIMILARITY_SCORE": "71.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 264000.064,
+        "EXPECTED_ARR": 208560.05056000003,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 64,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Global Quality Industries, Block - Toy"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "208560"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000015",
+    "COMPANY_NAME": "Investment Management",
+    "CURRENT_ARR": "811945",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "258957",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "201986",
+    "TOP_5_SIMILAR_COMPANIES": "Bashirian Inc, Cyber Systems, Credit Advisors, Credit Group, Wealth Capital",
+    "AVG_SIMILARITY_SCORE": "78.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 258956.73454545453,
+        "EXPECTED_ARR": 201986.25294545453,
+        "PURCHASE_PROBABILITY": 78.0,
+        "MAX_SIMILARITY_SCORE": 78,
+        "ESTIMATED_LICENSES": 57,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Credit Advisors"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "201986"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000040",
+    "COMPANY_NAME": "Data Solutions",
+    "CURRENT_ARR": "119330",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "258642",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "204609",
+    "TOP_5_SIMILAR_COMPANIES": "Smith LLC, Credit Partners, Cloud Solutions, Advanced Manufacturing Co, TechCorp Industries",
+    "AVG_SIMILARITY_SCORE": "77.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 151827.6808695652,
+        "EXPECTED_ARR": 124498.69831304345,
+        "PURCHASE_PROBABILITY": 82.0,
+        "MAX_SIMILARITY_SCORE": 82,
+        "ESTIMATED_LICENSES": 21,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Smith LLC, Credit Partners, Cloud Solutions"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 106814.2975,
+        "EXPECTED_ARR": 80110.723125,
+        "PURCHASE_PROBABILITY": 75.0,
+        "MAX_SIMILARITY_SCORE": 75,
+        "ESTIMATED_LICENSES": 31,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Cloud Solutions"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "124499"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000003",
+    "COMPANY_NAME": "Global Quality Industries",
+    "CURRENT_ARR": "3222435",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "253046",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "199906",
+    "TOP_5_SIMILAR_COMPANIES": "Global Premier Works, Global Medical Network, Data Solutions, Quality Corporation, Smith LLC",
+    "AVG_SIMILARITY_SCORE": "71.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 253046.13478260866,
+        "EXPECTED_ARR": 199906.44647826086,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Global Premier Works, Global Medical Network, Quality Corporation"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "199906"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000033",
+    "COMPANY_NAME": "Hansen LLC",
+    "CURRENT_ARR": "82833",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "253046",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "207498",
+    "TOP_5_SIMILAR_COMPANIES": "Gutmann, King and Gorczany, Bashirian Inc, Cronin and Sons, Credit Advisors, Data Innovations",
+    "AVG_SIMILARITY_SCORE": "81.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 253046.13478260866,
+        "EXPECTED_ARR": 207497.8305217391,
+        "PURCHASE_PROBABILITY": 82.0,
+        "MAX_SIMILARITY_SCORE": 82,
+        "ESTIMATED_LICENSES": 35,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bashirian Inc, Credit Advisors"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "207498"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000021",
+    "COMPANY_NAME": "Data Innovations",
+    "CURRENT_ARR": "331717",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "245816",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "199111",
+    "TOP_5_SIMILAR_COMPANIES": "Collier, Bayer and Ward, Cyber Systems, Hansen LLC, Mohr and Sons, Gutmann, King and Gorczany",
+    "AVG_SIMILARITY_SCORE": "80.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 245816.2452173913,
+        "EXPECTED_ARR": 199111.15862608695,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 34,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Cyber Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "199111"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000026",
+    "COMPANY_NAME": "Credit Group",
+    "CURRENT_ARR": "441614",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "3",
+    "TOTAL_POTENTIAL_ARR": "242274",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "191480",
+    "TOP_5_SIMILAR_COMPANIES": "Wealth Capital, Schultz - Collins, Wealth Group, Capital Management, Baumbach, Dietrich and Mueller",
+    "AVG_SIMILARITY_SCORE": "80.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 90862.01212121212,
+        "EXPECTED_ARR": 72689.6096969697,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 20,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Schultz - Collins, Capital Management"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 82500.02,
+        "EXPECTED_ARR": 64350.015600000006,
+        "PURCHASE_PROBABILITY": 78.0,
+        "MAX_SIMILARITY_SCORE": 78,
+        "ESTIMATED_LICENSES": 20,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Capital Management"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 68912.45,
+        "EXPECTED_ARR": 54440.8355,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 20,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "72690"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000017",
+    "COMPANY_NAME": "Bode - Mayer",
+    "CURRENT_ARR": "323711",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "233845",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "193536",
+    "TOP_5_SIMILAR_COMPANIES": "Bruen - Adams, Stokes and Sons, Wealth Group, Schultz - Collins, Medical Alliance",
+    "AVG_SIMILARITY_SCORE": "81.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 137367.9017391304,
+        "EXPECTED_ARR": 115389.03746086954,
+        "PURCHASE_PROBABILITY": 84.0,
+        "MAX_SIMILARITY_SCORE": 84,
+        "ESTIMATED_LICENSES": 19,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bruen - Adams, Wealth Group, Medical Alliance"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 96477.43,
+        "EXPECTED_ARR": 78146.7183,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 28,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "115389"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000039",
+    "COMPANY_NAME": "Mohr and Sons",
+    "CURRENT_ARR": "396896",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "224127",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "172577",
+    "TOP_5_SIMILAR_COMPANIES": "Collier, Bayer and Ward, Data Innovations, Schultz - Collins, Wealth Capital, Smith, Ratke and Ankunding",
+    "AVG_SIMILARITY_SCORE": "80.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 224126.5765217391,
+        "EXPECTED_ARR": 172577.4639217391,
+        "PURCHASE_PROBABILITY": 77.0,
+        "MAX_SIMILARITY_SCORE": 77,
+        "ESTIMATED_LICENSES": 31,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Capital"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "172577"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000037",
+    "COMPANY_NAME": "Stokes and Sons",
+    "CURRENT_ARR": "490470",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "216897",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "171348",
+    "TOP_5_SIMILAR_COMPANIES": "Bode - Mayer, Pagac - Muller, Capital Management, Medical Alliance, Kris - Dibbert",
+    "AVG_SIMILARITY_SCORE": "80.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 216896.6869565217,
+        "EXPECTED_ARR": 171348.38269565217,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 30,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Alliance, Kris - Dibbert"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "171348"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000030",
+    "COMPANY_NAME": "Bashirian Inc",
+    "CURRENT_ARR": "88638",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "213526",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "175091",
+    "TOP_5_SIMILAR_COMPANIES": "Hansen LLC, Gutmann, King and Gorczany, Smith, Ratke and Ankunding, Investment Management, Corwin LLC",
+    "AVG_SIMILARITY_SCORE": "81.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 213525.72848484849,
+        "EXPECTED_ARR": 175091.09735757575,
+        "PURCHASE_PROBABILITY": 82.0,
+        "MAX_SIMILARITY_SCORE": 82,
+        "ESTIMATED_LICENSES": 47,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Hansen LLC, Gutmann, King and Gorczany, Smith, Ratke and Ankunding"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "175091"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000024",
+    "COMPANY_NAME": "Schultz - Collins",
+    "CURRENT_ARR": "464096",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "202437",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "178144",
+    "TOP_5_SIMILAR_COMPANIES": "Bruen - Adams, Pagac - Muller, Mitchell, Batz and Pouros, Wealth Capital, Credit Group",
+    "AVG_SIMILARITY_SCORE": "83.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 202436.90782608694,
+        "EXPECTED_ARR": 178144.47888695652,
+        "PURCHASE_PROBABILITY": 88.0,
+        "MAX_SIMILARITY_SCORE": 88,
+        "ESTIMATED_LICENSES": 28,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bruen - Adams, Wealth Capital, Credit Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "178144"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000041",
+    "COMPANY_NAME": "Collier, Bayer and Ward",
+    "CURRENT_ARR": "80903",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "202437",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "153852",
+    "TOP_5_SIMILAR_COMPANIES": "Mohr and Sons, Smith, Ratke and Ankunding, Data Innovations, Gutmann, King and Gorczany, Bashirian Inc",
+    "AVG_SIMILARITY_SCORE": "82.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 202436.90782608694,
+        "EXPECTED_ARR": 153852.04994782608,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 28,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bashirian Inc"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "153852"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000038",
+    "COMPANY_NAME": "Wealth Capital",
+    "CURRENT_ARR": "424729",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "177181",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "143517",
+    "TOP_5_SIMILAR_COMPANIES": "Credit Group, Schultz - Collins, Herzog, Bode and Frami, Investment Management, Mohr and Sons",
+    "AVG_SIMILARITY_SCORE": "79.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 177180.92363636364,
+        "EXPECTED_ARR": 143516.54814545455,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 39,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Schultz - Collins, Mohr and Sons"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "143517"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000022",
+    "COMPANY_NAME": "Kris - Dibbert",
+    "CURRENT_ARR": "215609",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "174124",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "131855",
+    "TOP_5_SIMILAR_COMPANIES": "Medical Alliance, Stokes and Sons, Bode - Mayer, Harber LLC, Wealth Group",
+    "AVG_SIMILARITY_SCORE": "77.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 94875.023,
+        "EXPECTED_ARR": 74002.51794,
+        "PURCHASE_PROBABILITY": 78.0,
+        "MAX_SIMILARITY_SCORE": 78,
+        "ESTIMATED_LICENSES": 23,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Stokes and Sons, Bode - Mayer, Harber LLC"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 79249.3175,
+        "EXPECTED_ARR": 57852.001775000004,
+        "PURCHASE_PROBABILITY": 73.0,
+        "MAX_SIMILARITY_SCORE": 73,
+        "ESTIMATED_LICENSES": 23,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "74003"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000028",
+    "COMPANY_NAME": "Medical Alliance",
+    "CURRENT_ARR": "181551",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "174124",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "135181",
+    "TOP_5_SIMILAR_COMPANIES": "Kris - Dibbert, Bode - Mayer, Stokes and Sons, Medical Systems, Wealth Group",
+    "AVG_SIMILARITY_SCORE": "79.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 94875.023,
+        "EXPECTED_ARR": 74951.26817000001,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 23,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bode - Mayer, Stokes and Sons"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 79249.3175,
+        "EXPECTED_ARR": 60229.48130000001,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 23,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems, Wealth Group"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "74951"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000016",
+    "COMPANY_NAME": "Capital Management",
+    "CURRENT_ARR": "439445",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "173577",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "138138",
+    "TOP_5_SIMILAR_COMPANIES": "Trust Holdings, Global Financial Partners, Advanced Manufacturing Co, Stokes and Sons, Medical Systems",
+    "AVG_SIMILARITY_SCORE": "82.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 101218.45391304347,
+        "EXPECTED_ARR": 80974.76313043479,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 14,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Advanced Manufacturing Co, Medical Systems"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 72358.0725,
+        "EXPECTED_ARR": 57162.877275,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 21,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "80975"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000018",
+    "COMPANY_NAME": "Smith, Ratke and Ankunding",
+    "CURRENT_ARR": "407999",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "159058",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "128837",
+    "TOP_5_SIMILAR_COMPANIES": "Collier, Bayer and Ward, Mitchell, Batz and Pouros, Pagac - Muller, Bashirian Inc, Schultz - Collins",
+    "AVG_SIMILARITY_SCORE": "82.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 159057.5704347826,
+        "EXPECTED_ARR": 128836.63205217391,
+        "PURCHASE_PROBABILITY": 81.0,
+        "MAX_SIMILARITY_SCORE": 81,
+        "ESTIMATED_LICENSES": 22,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Bashirian Inc"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "128837"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000025",
+    "COMPANY_NAME": "Herzog, Bode and Frami",
+    "CURRENT_ARR": "343375",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "149922",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "118439",
+    "TOP_5_SIMILAR_COMPANIES": "Corwin LLC, Gutmann, King and Gorczany, Wealth Capital, Pagac - Muller, Baumbach, Dietrich and Mueller",
+    "AVG_SIMILARITY_SCORE": "77.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 149922.32,
+        "EXPECTED_ARR": 118438.6328,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 33,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Gutmann, King and Gorczany, Pagac - Muller"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "118439"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000020",
+    "COMPANY_NAME": "Credit Advisors",
+    "CURRENT_ARR": "137516",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "138608",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "115045",
+    "TOP_5_SIMILAR_COMPANIES": "Gutmann, King and Gorczany, Hansen LLC, Investment Management, Bashirian Inc, Credit Partners",
+    "AVG_SIMILARITY_SCORE": "79.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_DUO",
+        "PRODUCT_NAME": "Duo",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 138607.99047619046,
+        "EXPECTED_ARR": 115044.63209523808,
+        "PURCHASE_PROBABILITY": 83.0,
+        "MAX_SIMILARITY_SCORE": 83,
+        "ESTIMATED_LICENSES": 20,
+        "PRICE_PER_LICENSE": 6930.399523809523,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Gutmann, King and Gorczany, Hansen LLC, Investment Management"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Duo",
+    "TOP_PRODUCT_EXPECTED_ARR": "115045"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000036",
+    "COMPANY_NAME": "Trust Holdings",
+    "CURRENT_ARR": "51826",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "138104",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "109102",
+    "TOP_5_SIMILAR_COMPANIES": "Capital Management, Wealth Group, Medical Systems, Credit Group, Credit Advisors",
+    "AVG_SIMILARITY_SCORE": "79.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 79528.7852173913,
+        "EXPECTED_ARR": 62827.740321739126,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 11,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group, Medical Systems, Credit Group"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 58575.5825,
+        "EXPECTED_ARR": 46274.710175,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 17,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Wealth Group, Medical Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "62828"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000005",
+    "COMPANY_NAME": "White, Boehm and Hilpert",
+    "CURRENT_ARR": "1833761",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "131750",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "104082",
+    "TOP_5_SIMILAR_COMPANIES": "Hansen LLC, Cronin and Sons, Investment Management, Ondricka, Waters and Wilderman, Gutmann, King and Gorczany",
+    "AVG_SIMILARITY_SCORE": "76.2",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 131749.91757575757,
+        "EXPECTED_ARR": 104082.43488484848,
+        "PURCHASE_PROBABILITY": 79.0,
+        "MAX_SIMILARITY_SCORE": 79,
+        "ESTIMATED_LICENSES": 29,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Hansen LLC, Cronin and Sons, Ondricka, Waters and Wilderman"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "104082"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000005",
+    "COMPANY_NAME": "InnovateTech Solutions",
+    "CURRENT_ARR": "496079",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "131750",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "105400",
+    "TOP_5_SIMILAR_COMPANIES": "Advanced Manufacturing Co, Smith, Ratke and Ankunding, Mitchell, Batz and Pouros, Cyber Systems, Cloud Solutions",
+    "AVG_SIMILARITY_SCORE": "78.0",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 131749.91757575757,
+        "EXPECTED_ARR": 105399.93406060606,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 29,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Advanced Manufacturing Co, Smith, Ratke and Ankunding, Mitchell, Batz and Pouros"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "105400"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000031",
+    "COMPANY_NAME": "Credit Partners",
+    "CURRENT_ARR": "202633",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "115500",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "92400",
+    "TOP_5_SIMILAR_COMPANIES": "Smith LLC, Data Solutions, Credit Advisors, Capital Management, Advanced Manufacturing Co",
+    "AVG_SIMILARITY_SCORE": "78.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 115500.028,
+        "EXPECTED_ARR": 92400.02240000002,
+        "PURCHASE_PROBABILITY": 80.0,
+        "MAX_SIMILARITY_SCORE": 80,
+        "ESTIMATED_LICENSES": 28,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Data Solutions, Capital Management"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "92400"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000023",
+    "COMPANY_NAME": "Smith LLC",
+    "CURRENT_ARR": "450570",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "111375",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "91328",
+    "TOP_5_SIMILAR_COMPANIES": "Credit Partners, Data Solutions, Bashirian Inc, Stokes and Sons, Smith, Ratke and Ankunding",
+    "AVG_SIMILARITY_SCORE": "78.6",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 111375.027,
+        "EXPECTED_ARR": 91327.52214,
+        "PURCHASE_PROBABILITY": 82.0,
+        "MAX_SIMILARITY_SCORE": 82,
+        "ESTIMATED_LICENSES": 27,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Data Solutions, Stokes and Sons"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "ThousandEyes",
+    "TOP_PRODUCT_EXPECTED_ARR": "91328"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000044",
+    "COMPANY_NAME": "Corwin LLC",
+    "CURRENT_ARR": "24362",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "95349",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "70558",
+    "TOP_5_SIMILAR_COMPANIES": "Bashirian Inc, Herzog, Bode and Frami, Goldner - Bartoletti, Pagac - Muller, Cronin and Sons",
+    "AVG_SIMILARITY_SCORE": "75.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_MERAKI",
+        "PRODUCT_NAME": "Meraki",
+        "PRODUCT_CATEGORY": "Networking",
+        "POTENTIAL_ARR": 49974.10666666667,
+        "EXPECTED_ARR": 36980.83893333333,
+        "PURCHASE_PROBABILITY": 74.0,
+        "MAX_SIMILARITY_SCORE": 74,
+        "ESTIMATED_LICENSES": 11,
+        "PRICE_PER_LICENSE": 4543.100606060606,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Goldner - Bartoletti, Pagac - Muller, Cronin and Sons"
+      },
+      {
+        "PRODUCT_ID": "PROD_THOUSAND_EYES",
+        "PRODUCT_NAME": "ThousandEyes",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 45375.011,
+        "EXPECTED_ARR": 33577.50814,
+        "PURCHASE_PROBABILITY": 74.0,
+        "MAX_SIMILARITY_SCORE": 74,
+        "ESTIMATED_LICENSES": 11,
+        "PRICE_PER_LICENSE": 4125.001,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Goldner - Bartoletti"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Meraki",
+    "TOP_PRODUCT_EXPECTED_ARR": "36981"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000027",
+    "COMPANY_NAME": "Gutmann, King and Gorczany",
+    "CURRENT_ARR": "474193",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "1",
+    "TOTAL_POTENTIAL_ARR": "79529",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "66009",
+    "TOP_5_SIMILAR_COMPANIES": "Hansen LLC, Credit Advisors, Bashirian Inc, Collier, Bayer and Ward, Herzog, Bode and Frami",
+    "AVG_SIMILARITY_SCORE": "81.8",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 79528.7852173913,
+        "EXPECTED_ARR": 66008.89173043477,
+        "PURCHASE_PROBABILITY": 83.0,
+        "MAX_SIMILARITY_SCORE": 83,
+        "ESTIMATED_LICENSES": 11,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Credit Advisors, Bashirian Inc, Herzog, Bode and Frami"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "66009"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000045",
+    "COMPANY_NAME": "Goldner - Bartoletti",
+    "CURRENT_ARR": "22076",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "74390",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "54428",
+    "TOP_5_SIMILAR_COMPANIES": "Stokes and Sons, Bode - Mayer, Corwin LLC, Trust Holdings, Medical Systems",
+    "AVG_SIMILARITY_SCORE": "74.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 43379.33739130435,
+        "EXPECTED_ARR": 32100.709669565218,
+        "PURCHASE_PROBABILITY": 74.0,
+        "MAX_SIMILARITY_SCORE": 74,
+        "ESTIMATED_LICENSES": 6,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Corwin LLC, Medical Systems"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 31010.6025,
+        "EXPECTED_ARR": 22327.6338,
+        "PURCHASE_PROBABILITY": 72.0,
+        "MAX_SIMILARITY_SCORE": 72,
+        "ESTIMATED_LICENSES": 9,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "Medical Systems"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "32101"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000043",
+    "COMPANY_NAME": "Cronin and Sons",
+    "CURRENT_ARR": "10017",
+    "CURRENT_PRODUCT_COUNT": "2",
+    "POTENTIAL_PRODUCT_COUNT": "2",
+    "TOTAL_POTENTIAL_ARR": "38918",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "29578",
+    "TOP_5_SIMILAR_COMPANIES": "Hansen LLC, Gutmann, King and Gorczany, White, Boehm and Hilpert, Corwin LLC, Credit Advisors",
+    "AVG_SIMILARITY_SCORE": "75.4",
+    "POTENTIAL_PRODUCTS": [
+      {
+        "PRODUCT_ID": "PROD_UMBRELLA",
+        "PRODUCT_NAME": "Umbrella",
+        "PRODUCT_CATEGORY": "Security",
+        "POTENTIAL_ARR": 21689.668695652173,
+        "EXPECTED_ARR": 16484.148208695653,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 3,
+        "PRICE_PER_LICENSE": 7229.889565217391,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "White, Boehm and Hilpert, Corwin LLC, Credit Advisors"
+      },
+      {
+        "PRODUCT_ID": "PROD_SPLUNK",
+        "PRODUCT_NAME": "Splunk",
+        "PRODUCT_CATEGORY": "Analytics",
+        "POTENTIAL_ARR": 17228.1125,
+        "EXPECTED_ARR": 13093.3655,
+        "PURCHASE_PROBABILITY": 76.0,
+        "MAX_SIMILARITY_SCORE": 76,
+        "ESTIMATED_LICENSES": 5,
+        "PRICE_PER_LICENSE": 3445.6225,
+        "SIMILAR_COMPANIES_WITH_PRODUCT": "White, Boehm and Hilpert"
+      }
+    ],
+    "TOP_PRODUCT_RECOMMENDATION": "Umbrella",
+    "TOP_PRODUCT_EXPECTED_ARR": "16484"
+  },
+  {
+    "CUSTOMER_ID": "CUST_000002",
+    "COMPANY_NAME": "Global Capital Management",
+    "CURRENT_ARR": "3669528",
+    "CURRENT_PRODUCT_COUNT": "3",
+    "POTENTIAL_PRODUCT_COUNT": "0",
+    "TOTAL_POTENTIAL_ARR": "0",
+    "TOTAL_EXPECTED_POTENTIAL_ARR": "0",
+    "TOP_5_SIMILAR_COMPANIES": "MedSecure Systems, Ondricka, Waters and Wilderman, Mitchell, Batz and Pouros, Swaniawski Inc, Schultz - Collins",
+    "AVG_SIMILARITY_SCORE": "71.0",
+    "POTENTIAL_PRODUCTS": [],
+    "TOP_PRODUCT_RECOMMENDATION": "None",
+    "TOP_PRODUCT_EXPECTED_ARR": "0"
+  }
+]

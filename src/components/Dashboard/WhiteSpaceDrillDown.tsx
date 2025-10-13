@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { AccountDetailModal } from './AccountDetailModal';
-import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS.json';
+import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS-new.json';
 
 export const WhiteSpaceLevel2: React.FC = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
@@ -349,11 +349,16 @@ const LookalikeAnalysisTab: React.FC = () => {
 
   // Parse and prepare the data
   const analysisData = potentialArrData.map((item: any) => {
+    // POTENTIAL_PRODUCTS is already parsed in the JSON file
     let potentialProducts = [];
-    try {
-      potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
-    } catch (e) {
-      console.error('Error parsing potential products:', e);
+    if (Array.isArray(item.POTENTIAL_PRODUCTS)) {
+      potentialProducts = item.POTENTIAL_PRODUCTS;
+    } else if (typeof item.POTENTIAL_PRODUCTS === 'string') {
+      try {
+        potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
+      } catch (e) {
+        console.error('Error parsing potential products:', e);
+      }
     }
     return {
       customerId: item.CUSTOMER_ID,

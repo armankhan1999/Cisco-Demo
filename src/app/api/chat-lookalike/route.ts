@@ -31,10 +31,10 @@ const openai = process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.startsWi
 // Load context file
 let contextContent = '';
 try {
-  const contextPath = path.join(process.cwd(), 'src', 'data', 'context.md');
+  const contextPath = path.join(process.cwd(), 'src', 'data', 'context-new.md');
   contextContent = fs.readFileSync(contextPath, 'utf-8');
 } catch (error) {
-  console.error('Error loading context.md:', error);
+  console.error('Error loading context-new.md:', error);
   contextContent = 'Context file not available';
 }
 

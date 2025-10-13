@@ -55,7 +55,7 @@ import whiteSpaceData from '@/source_data/csm-data/white_space_analysis.json';
 import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 import expansionOpportunitiesData from '@/source_data/sales-expansion-data/expansion-opportunities.json';
 import expansionPipelineTrackingData from '@/source_data/sales-expansion-data/expansion-pipeline-tracking.json';
-import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS.json';
+import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS-new.json';
 import AdvancedVisualizationCharts from './AdvancedVisualizationCharts';
 
 interface Level2TacticalAnalysisProps {
@@ -534,11 +534,16 @@ function LookalikeAnalysisContent({
 
   // Parse and prepare the data
   const analysisData = potentialArrData.map((item: any) => {
+    // POTENTIAL_PRODUCTS is already parsed in the JSON file
     let potentialProducts = [];
-    try {
-      potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
-    } catch (e) {
-      console.error('Error parsing potential products:', e);
+    if (Array.isArray(item.POTENTIAL_PRODUCTS)) {
+      potentialProducts = item.POTENTIAL_PRODUCTS;
+    } else if (typeof item.POTENTIAL_PRODUCTS === 'string') {
+      try {
+        potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
+      } catch (e) {
+        console.error('Error parsing potential products:', e);
+      }
     }
     return {
       customerId: item.CUSTOMER_ID,
