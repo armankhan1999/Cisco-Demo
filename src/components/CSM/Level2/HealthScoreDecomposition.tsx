@@ -82,7 +82,7 @@ export function HealthScoreDecomposition() {
       </div>
 
       {/* Component Breakdown Table */}
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+      <div className="rounded-lg border border-gray-200 overflow-hidden shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900">Component Breakdown</h3>
         </div>
@@ -178,7 +178,7 @@ export function HealthScoreDecomposition() {
       {/* Component Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.components.map((component, index) => (
-          <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+          <div key={index} className="rounded-lg border border-gray-200 p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-lg font-semibold text-gray-900">{component.name}</h4>
               <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(component.status)}`}>

@@ -469,9 +469,9 @@ function calculateNRR(): KPIValue {
   const retainedARR = startingARR - totalContractionARR - totalChurnARR + totalExpansionARR;
   const value = retainedARR; // Show in dollars instead of percentage
   const target = startingARR * 1.10; // 110% of starting ARR in dollars
-  const trend = ((retainedARR / startingARR) - 1.10) * 100; // Trend vs 110% target
+  const trend = Math.round(((retainedARR / startingARR) - 1.10) * 1000) / 10; // Trend vs 110% target, rounded to 1 decimal
   const status = (retainedARR / startingARR) >= 1.10 ? 'good' : (retainedARR / startingARR) >= 1.05 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '$' };
 }
 
@@ -482,9 +482,9 @@ function calculateExpansionARR(): KPIValue {
   
   // Actual value from data: $1,333,190
   const target = 1500000; // $1.5M quarterly target
-  const trend = ((value - target) / target) * 100; // % vs target
+  const trend = Math.round(((value - target) / target) * 1000) / 10; // % vs target, rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.85 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '$' };
 }
 
@@ -495,9 +495,9 @@ function calculateMultiProductPenetration(): KPIValue {
   const value = (multiProductCustomers / totalCustomers) * 100;
   
   const target = 40;
-  const trend = value - target; // Difference from target
+  const trend = Math.round((value - target) * 10) / 10; // Difference from target, rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '%' };
 }
 
@@ -506,9 +506,9 @@ function calculateWhiteSpaceValue(): KPIValue {
   const value = whiteSpaceData.reduce((sum, ws) => sum + ws.total_white_space_arr, 0);
   
   const target = 5000000; // $5M target
-  const trend = ((value - target) / target) * 100;
+  const trend = Math.round(((value - target) / target) * 1000) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : 'warning';
-  
+
   return { value, trend, status, target, unit: '$' };
 }
 
@@ -518,9 +518,9 @@ function calculatePipelineARR(): KPIValue {
   
   // Target should be 3x quarterly quota
   const target = 30000000; // $30M target
-  const trend = ((value - target) / target) * 100;
+  const trend = Math.round(((value - target) / target) * 1000) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '$' };
 }
 
@@ -536,9 +536,9 @@ function calculateCrossSellRate(): KPIValue {
   const value = (crossSellCount / totalOpps) * 100;
   
   const target = 50; // 50% target for cross-sell
-  const trend = value - target;
+  const trend = Math.round((value - target) * 10) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '%' };
 }
 
@@ -552,9 +552,9 @@ function calculateWinRate(): KPIValue {
   const value = totalClosed > 0 ? (totalExpansions / totalClosed) * 100 : 0;
   
   const target = 60;
-  const trend = value - target;
+  const trend = Math.round((value - target) * 10) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '%' };
 }
 
@@ -571,9 +571,9 @@ function calculateTimeToExpansion(): KPIValue {
   // Estimate: ~5-6 months average
   const value = 165;
   const target = 180;
-  const trend = ((target - value) / target) * 100; // Positive trend = better (lower days)
+  const trend = Math.round(((target - value) / target) * 1000) / 10; // Positive trend = better (lower days), rounded to 1 decimal
   const status = value <= target ? 'good' : value <= target * 1.1 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: 'days' };
 }
 
@@ -585,9 +585,9 @@ function calculateShareOfWallet(): KPIValue {
   const value = 35 + (multiProductRate * 20); // Base 35% + bonus for multi-product
   
   const target = 45;
-  const trend = value - target;
+  const trend = Math.round((value - target) * 10) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
-  
+
   return { value, trend, status, target, unit: '%' };
 }
 
@@ -601,9 +601,9 @@ function calculateCapacityARR(): KPIValue {
   const value = capacityTriggers.reduce((sum, t) => sum + (t.expansion_opportunity?.estimated_arr || 0), 0);
   
   const target = 500000; // $500K target
-  const trend = ((value - target) / target) * 100;
+  const trend = Math.round(((value - target) / target) * 1000) / 10; // Rounded to 1 decimal
   const status = value >= target ? 'good' : 'warning';
-  
+
   return { value, trend, status, target, unit: '$' };
 }
 

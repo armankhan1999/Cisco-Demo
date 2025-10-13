@@ -54,7 +54,7 @@ export function AtRiskRenewals() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+    <div className="rounded-xl shadow-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
@@ -78,19 +78,19 @@ export function AtRiskRenewals() {
         <>
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+            <div className="rounded-lg p-4 border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-red-700 mb-1">Total At-Risk ARR</div>
               <div className="text-2xl font-bold text-red-900">
                 {formatARR(renewals.reduce((sum, r) => sum + r.arr, 0))}
               </div>
             </div>
-            <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+            <div className="rounded-lg p-4 border border-orange-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-orange-700 mb-1">Urgent (&lt; 30 days)</div>
               <div className="text-2xl font-bold text-orange-900">
                 {renewals.filter(r => r.daysToRenewal < 30).length}
               </div>
             </div>
-            <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
+            <div className="rounded-lg p-4 border border-yellow-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-yellow-700 mb-1">Low Confidence</div>
               <div className="text-2xl font-bold text-yellow-900">
                 {renewals.filter(r => r.confidence === 'Low').length}
@@ -178,7 +178,7 @@ export function AtRiskRenewals() {
             </h3>
             <div className="space-y-3">
               {renewals.filter(r => r.daysToRenewal < 30).length > 0 && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="border border-red-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="font-medium text-red-900 mb-2">🔥 Immediate (Next 30 Days) - {renewals.filter(r => r.daysToRenewal < 30).length} accounts</div>
                   <ul className="text-sm text-red-800 space-y-1 ml-4">
                     <li>• Schedule executive business reviews within 5 business days</li>
@@ -188,7 +188,7 @@ export function AtRiskRenewals() {
                 </div>
               )}
               {renewals.filter(r => r.daysToRenewal >= 30 && r.daysToRenewal < 60).length > 0 && (
-                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                <div className="border border-orange-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="font-medium text-orange-900 mb-2">⚡ Urgent (30-60 Days) - {renewals.filter(r => r.daysToRenewal >= 30 && r.daysToRenewal < 60).length} accounts</div>
                   <ul className="text-sm text-orange-800 space-y-1 ml-4">
                     <li>• Implement targeted training and feature adoption programs</li>
@@ -198,7 +198,7 @@ export function AtRiskRenewals() {
                 </div>
               )}
               {renewals.filter(r => r.daysToRenewal >= 60).length > 0 && (
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <div className="border border-yellow-200 rounded-lg p-4" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="font-medium text-yellow-900 mb-2">⏰ Watch List (60-90 Days) - {renewals.filter(r => r.daysToRenewal >= 60).length} accounts</div>
                   <ul className="text-sm text-yellow-800 space-y-1 ml-4">
                     <li>• Increase engagement cadence and monitor health trends closely</li>

@@ -56,17 +56,17 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
                   <div className="text-4xl font-bold text-amber-600">142</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↓ 38 days vs target (180d)</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Fast (&lt;120d)</div>
                   <div className="text-4xl font-bold text-green-600">12</div>
                   <div className="text-xs text-gray-600 mt-1">43% of expansions</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Medium (121-180d)</div>
                   <div className="text-4xl font-bold text-amber-600">11</div>
                   <div className="text-xs text-gray-600 mt-1">39% of expansions</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Slow (&gt;180d)</div>
                   <div className="text-4xl font-bold text-orange-600">5</div>
                   <div className="text-xs text-gray-600 mt-1">18% of expansions</div>
@@ -169,7 +169,7 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
               </div>
 
               {/* Time to Expansion by Product */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Time to Expansion by Product</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -218,7 +218,7 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
           {level === 3 && (
             <div className="space-y-6">
               {/* Accounts Approaching Expansion Timeline */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Accounts Approaching Expansion Timeline (90-150 Days Since Acquisition)</h3>
                 <div className="space-y-4">
                   {[
@@ -271,9 +271,10 @@ export const TimeExpansionDrillDown: React.FC<TimeExpansionDrillDownProps> = ({ 
                     { customer: 'OldTech Partners', days: 198, arr: '$240K', product: 'Umbrella', health: 72, tier: 'Commercial', issue: 'Budget constraints' },
                     { customer: 'SlowAdopt Corp', days: 185, arr: '$320K', product: 'Duo', health: 75, tier: 'Enterprise', issue: 'Change management' }
                   ].map((account, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center justify-between p-6 bg-white rounded-lg border-l-4 border-red-500 shadow-md cursor-pointer hover:shadow-lg transition-all"
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-6 rounded-lg border-l-4 border-red-500 shadow-md cursor-pointer hover:shadow-lg transition-all"
+                      style={{ backgroundColor: '#F3F3F3' }}
                       onClick={() => setSelectedAccount(account.customer)}
                     >
                       <div className="flex-1">

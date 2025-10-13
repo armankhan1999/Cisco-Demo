@@ -56,17 +56,17 @@ export const ShareWalletDrillDown: React.FC<ShareWalletDrillDownProps> = ({ leve
                   <div className="text-4xl font-bold text-violet-600">34%</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +2% QoQ</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">High Share (&gt;50%)</div>
                   <div className="text-4xl font-bold text-green-600">12</div>
                   <div className="text-xs text-gray-600 mt-1">24% of accounts</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Medium (25-50%)</div>
                   <div className="text-4xl font-bold text-blue-600">28</div>
                   <div className="text-xs text-gray-600 mt-1">56% of accounts</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Low (&lt;25%)</div>
                   <div className="text-4xl font-bold text-orange-600">10</div>
                   <div className="text-xs text-gray-600 mt-1">20% of accounts</div>
@@ -170,7 +170,7 @@ export const ShareWalletDrillDown: React.FC<ShareWalletDrillDownProps> = ({ leve
               </div>
 
               {/* Share-of-Wallet by Industry */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Share-of-Wallet by Industry</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -233,9 +233,10 @@ export const ShareWalletDrillDown: React.FC<ShareWalletDrillDownProps> = ({ leve
                     { customer: 'RetailChain Corp', share: 12, arr: '$280K', potential: '$2.3M', products: ['Duo'], missing: ['Umbrella', 'Meraki', 'ThousandEyes'], tier: 'Enterprise', health: 88 },
                     { customer: 'HealthTech Solutions', share: 20, arr: '$620K', potential: '$3.1M', products: ['ThousandEyes'], missing: ['Duo', 'Umbrella', 'Meraki'], tier: 'Enterprise', health: 90 }
                   ].map((account, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center justify-between p-6 bg-white rounded-lg hover:shadow-md transition-all border-l-4 border-violet-500 shadow-sm cursor-pointer"
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-6 rounded-lg hover:shadow-md transition-all border-l-4 border-violet-500 shadow-sm cursor-pointer"
+                      style={{ backgroundColor: '#F3F3F3' }}
                       onClick={() => setSelectedAccount(account.customer)}
                     >
                       <div className="flex-1">
@@ -291,9 +292,10 @@ export const ShareWalletDrillDown: React.FC<ShareWalletDrillDownProps> = ({ leve
                     { customer: 'InnovateTech Solutions', share: 42, trend: -3, arr: '$1.0M', competitor: 'Fortinet', risk: 'Medium', tier: 'Enterprise' },
                     { customer: 'DataSystems Inc', share: 35, trend: -4, arr: '$720K', competitor: 'Zscaler', risk: 'High', tier: 'Commercial' }
                   ].map((account, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center justify-between p-6 bg-white rounded-lg border-l-4 border-red-500 shadow-md cursor-pointer hover:shadow-lg transition-all"
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-6 rounded-lg border-l-4 border-red-500 shadow-md cursor-pointer hover:shadow-lg transition-all"
+                      style={{ backgroundColor: '#F3F3F3' }}
                       onClick={() => setSelectedAccount(account.customer)}
                     >
                       <div className="flex-1">

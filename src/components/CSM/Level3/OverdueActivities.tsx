@@ -60,7 +60,7 @@ export function OverdueActivities() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+    <div className="rounded-xl shadow-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
@@ -84,19 +84,19 @@ export function OverdueActivities() {
         <>
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+            <div className="rounded-lg p-4 border border-red-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-red-700 mb-1">High Priority</div>
               <div className="text-2xl font-bold text-red-900">
                 {activities.filter(a => a.priority === 'High').length}
               </div>
             </div>
-            <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
+            <div className="rounded-lg p-4 border border-yellow-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-yellow-700 mb-1">Medium Priority</div>
               <div className="text-2xl font-bold text-yellow-900">
                 {activities.filter(a => a.priority === 'Medium').length}
               </div>
             </div>
-            <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+            <div className="rounded-lg p-4 border border-orange-200" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-sm font-medium text-orange-700 mb-1">Avg Days Overdue</div>
               <div className="text-2xl font-bold text-orange-900">
                 {Math.round(activities.reduce((sum, a) => sum + a.daysOverdue, 0) / activities.length)}
@@ -189,7 +189,7 @@ export function OverdueActivities() {
                 if (typeActivities.length === 0) return null;
                 
                 return (
-                  <div key={type} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <div key={type} className="rounded-lg p-4 border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <span className="text-xl">{getActivityIcon(type)}</span>

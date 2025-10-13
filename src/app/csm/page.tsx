@@ -1,10 +1,32 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import { useSidebar } from '@/contexts/SidebarContext';
+import { HelpCircle } from 'lucide-react';
+import HelpPanel from '@/components/CSM/HelpPanel';
 
 export default function CSMHomePage() {
+  const { isCollapsed } = useSidebar();
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   const dashboards = [
+    {
+      id: 'overview',
+      name: 'CSM Overview & Strategy',
+      description: 'Complete strategic overview with persona definition, business questions, and 10 primary KPIs with definitions',
+      category: 'Overview',
+      icon: '📋',
+      href: '/csm/overview',
+      kpis: [
+        'Persona Definition & Responsibilities',
+        '5 Key Business Questions',
+        '10 Strategic KPIs with Targets',
+        'Data Source Mapping',
+        'Category Classification'
+      ],
+      status: 'active'
+    },
     {
       id: 'portfolio',
       name: 'Customer Success Portfolio Dashboard',
@@ -67,22 +89,33 @@ export default function CSMHomePage() {
       />
       
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
+        {/* Help Button */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={() => setIsHelpOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
+          >
+            <HelpCircle className="w-5 h-5" />
+            <span className="font-semibold">Dashboard Guide</span>
+          </button>
+        </div>
+
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
             Customer Success Management
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Maximize customer retention, drive product adoption, ensure value realization, 
+            Maximize customer retention, drive product adoption, ensure value realization,
             and manage renewal pipeline health with comprehensive analytics
           </p>
         </div>
 
         {/* Key Focus Areas */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div className="rounded-lg shadow-md p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Key Focus Areas</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-start">
@@ -118,7 +151,8 @@ export default function CSMHomePage() {
           {dashboards.map((dashboard) => (
             <div
               key={dashboard.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              className="rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              style={{ backgroundColor: '#F3F3F3' }}
             >
               {/* Status Badge */}
               <div className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
@@ -217,6 +251,9 @@ export default function CSMHomePage() {
       </div>
         </div>
       </div>
+
+      {/* Help Panel */}
+      <HelpPanel isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
     </div>
   );
 }

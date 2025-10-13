@@ -40,7 +40,7 @@ export function CustomerJourneyStages() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+    <div className="rounded-xl shadow-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="mb-6">
         <h2 className="text-xl font-bold text-gray-900">Customer Journey Stage Analysis</h2>
         <p className="text-sm text-gray-600 mt-1">Account distribution across lifecycle stages</p>

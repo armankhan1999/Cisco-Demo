@@ -105,13 +105,13 @@ export function FeatureAdoptionKPI({ onDrillDown, drillDownUrl }: FeatureAdoptio
   };
 
   return (
-    <div 
+    <div
       className={`
         group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
-        bg-gradient-to-br ${getStatusColor()}
         ${(drillDownUrl || onDrillDown) ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
       `}
+      style={{ backgroundColor: '#F3F3F3' }}
       onClick={handleClick}
     >
       <div className="relative h-full flex flex-col">

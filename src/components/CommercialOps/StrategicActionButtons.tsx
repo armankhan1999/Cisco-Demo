@@ -1,8 +1,13 @@
 'use client';
 
-import { BarChart3, Search, Download, RefreshCw, ArrowRight, Filter, TrendingUp, AlertTriangle } from 'lucide-react';
+import { BarChart3, Search, Download, ArrowLeft as ArrowRight, Filter, TrendingUp, AlertTriangle } from '@/utils/iconMapping';
+import { RefreshCw } from 'lucide-react';
 
-export default function StrategicActionButtons() {
+interface StrategicActionButtonsProps {
+  onViewActionItems?: (kpiId: string) => void;
+}
+
+export default function StrategicActionButtons({ onViewActionItems }: StrategicActionButtonsProps) {
   const handleDrillDown = () => {
     console.log('Navigate to Process Analytics (Level 2)');
     // TODO: Implement navigation to Level 2
@@ -24,7 +29,7 @@ export default function StrategicActionButtons() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+    <div className="rounded-xl shadow-sm border border-gray-200 p-8" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center gap-3 mb-8">
         <div className="p-2 bg-blue-100 rounded-lg">
           <BarChart3 className="h-6 w-6 text-blue-600" />
@@ -85,6 +90,25 @@ export default function StrategicActionButtons() {
           </div>
           <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </button>
+
+        {/* Q2C Action Items */}
+        {onViewActionItems && (
+          <button
+            onClick={() => onViewActionItems('quote-to-cash-cycle')}
+            className="group flex items-center justify-between p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-white/20 rounded-lg">
+                <AlertTriangle className="h-6 w-6" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-lg">Q2C Action Items</div>
+                <div className="text-sm opacity-90">Critical cycle time issues</div>
+              </div>
+            </div>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        )}
       </div>
 
       {/* Secondary Actions */}

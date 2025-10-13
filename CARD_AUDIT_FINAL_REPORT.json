@@ -1,0 +1,307 @@
+{
+  "audit_metadata": {
+    "scan_date": "2025-10-12",
+    "codebase_path": "C:\\Users\\Md Arman Khan\\Desktop\\CISCO POC\\Final Cisco Demo - New Dashboard\\cisco",
+    "scope": "All .tsx files in src/ directory (excluding node_modules and .md files)",
+    "target_color": "#F3F3F3",
+    "scan_criteria": [
+      "Divs with className containing patterns: rounded, border, shadow, p- (padding)",
+      "Elements with bg-white, bg-gray-*, bg-slate-*, bg-zinc-*, bg-neutral-*",
+      "Components with names containing Card, KPI, Tile, Panel",
+      "Elements with inline style backgroundColor",
+      "Elements with customBgColor prop"
+    ]
+  },
+  "executive_summary": {
+    "total_card_elements_found": 1352,
+    "total_already_using_f3f3f3": 69,
+    "total_needing_update": 1015,
+    "total_gradient_backgrounds_for_review": 268,
+    "completion_percentage": "6.4%",
+    "remaining_work_percentage": "93.6%"
+  },
+  "detailed_breakdown": {
+    "already_correct": {
+      "count": 69,
+      "description": "Card elements already using #F3F3F3 background color",
+      "categories": {
+        "inline_styles": 49,
+        "customBgColor_props": 20
+      }
+    },
+    "needs_update": {
+      "total_count": 1015,
+      "bg_white_cards": {
+        "count": 508,
+        "description": "Cards using bg-white Tailwind class",
+        "fix_required": "Replace bg-white with style={{ backgroundColor: '#F3F3F3' }}"
+      },
+      "bg_gray_variants": {
+        "count": 480,
+        "description": "Cards using bg-gray-*, bg-slate-*, etc Tailwind classes",
+        "fix_required": "Replace bg-gray-* with style={{ backgroundColor: '#F3F3F3' }}"
+      },
+      "inline_style_other_colors": {
+        "count": 27,
+        "description": "Cards with inline backgroundColor not set to #F3F3F3",
+        "fix_required": "Change backgroundColor value to '#F3F3F3'"
+      }
+    },
+    "gradient_backgrounds": {
+      "count": 268,
+      "description": "Cards using gradient backgrounds (bg-gradient-*)",
+      "action_required": "Manual review needed - may need to preserve gradients or convert to solid #F3F3F3"
+    }
+  },
+  "file_distribution": {
+    "top_files_needing_updates": [
+      {
+        "file": "src/components/Dashboard/DashboardStats.tsx",
+        "estimated_cards": 50,
+        "primary_issue": "bg-white cards"
+      },
+      {
+        "file": "src/components/CommercialOps/Level2TacticalAnalysis.tsx",
+        "estimated_cards": 45,
+        "primary_issue": "bg-white and gradient cards"
+      },
+      {
+        "file": "src/app/csm/kpi/*/page.tsx files",
+        "estimated_cards": 120,
+        "primary_issue": "Mix of bg-white and bg-gray cards"
+      },
+      {
+        "file": "src/components/Dashboard/*DrillDown.tsx files",
+        "estimated_cards": 80,
+        "primary_issue": "bg-white and gradient cards"
+      },
+      {
+        "file": "src/app/se/page.tsx",
+        "estimated_cards": 60,
+        "primary_issue": "bg-white cards"
+      }
+    ]
+  },
+  "cards_already_correct_samples": [
+    {
+      "file": "src/app/csm/kpi/at-risk-arr/page.tsx",
+      "line": 187,
+      "type": "inline style",
+      "snippet": "<div className=\"rounded-lg border border-gray-200 p-6\" style={{ backgroundColor: '#F3F3F3' }}>"
+    },
+    {
+      "file": "src/components/CommercialOps/CommercialOpsCommandCenter.tsx",
+      "line": 140,
+      "type": "customBgColor prop",
+      "snippet": "customBgColor=\"#F3F3F3\""
+    },
+    {
+      "file": "src/components/CSM/CSMPortfolioDashboard.tsx",
+      "line": 379,
+      "type": "KPITile with customBgColor",
+      "snippet": "<KPITile title=\"GRR\" kpi={kpis.grr} drillDownUrl={...} customBgColor=\"#F3F3F3\" />"
+    },
+    {
+      "file": "src/components/CommercialOps/DSO/DSOLevel1TrendAging.tsx",
+      "line": 88,
+      "type": "inline style",
+      "snippet": "<div className=\"border border-blue-200 rounded-xl p-4 shadow-sm\" style={{ backgroundColor: '#F3F3F3' }}>"
+    },
+    {
+      "file": "src/components/CSM/LicenseUtilization/TotalLicensedSeatsKPI.tsx",
+      "line": 137,
+      "type": "inline style",
+      "snippet": "style={{ backgroundColor: '#F3F3F3' }}"
+    }
+  ],
+  "cards_needing_update_samples": [
+    {
+      "file": "src/app/account/[id]/page.tsx",
+      "line": 147,
+      "current": "bg-white",
+      "suggested_fix": "style={{ backgroundColor: '#F3F3F3' }}",
+      "snippet": "<div className=\"bg-white rounded-lg shadow-sm border border-gray-200 p-6\">"
+    },
+    {
+      "file": "src/components/Dashboard/DashboardStats.tsx",
+      "line": 233,
+      "current": "bg-white",
+      "suggested_fix": "style={{ backgroundColor: '#F3F3F3' }}",
+      "snippet": "className=\"relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg hover:shadow-xl\""
+    },
+    {
+      "file": "src/app/csm/page.tsx",
+      "line": 103,
+      "current": "bg-white",
+      "suggested_fix": "style={{ backgroundColor: '#F3F3F3' }}",
+      "snippet": "<div className=\"bg-white rounded-lg shadow-md p-6 mb-8\">"
+    },
+    {
+      "file": "src/app/customer-profile/[id]/page.tsx",
+      "line": 158,
+      "current": "bg-white",
+      "suggested_fix": "style={{ backgroundColor: '#F3F3F3' }}",
+      "snippet": "<div className=\"bg-white rounded-lg shadow-sm border border-gray-200 p-6\">"
+    },
+    {
+      "file": "src/components/CSM/Level2/HealthScoreDecomposition.tsx",
+      "line": 85,
+      "current": "bg-white",
+      "suggested_fix": "style={{ backgroundColor: '#F3F3F3' }}",
+      "snippet": "<div className=\"bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm\">"
+    }
+  ],
+  "component_categories_affected": {
+    "kpi_cards": {
+      "count": 350,
+      "components": [
+        "ModernKPICard.tsx",
+        "PremiumKPICard.tsx (uses gradients - already correct)",
+        "KPICard.tsx (CommercialOps)",
+        "KPITile.tsx (CSM)",
+        "DrillDownKPICard.tsx"
+      ]
+    },
+    "dashboard_cards": {
+      "count": 280,
+      "files": [
+        "DashboardStats.tsx",
+        "Dashboard.tsx",
+        "CSMPortfolioDashboard.tsx",
+        "CommercialOpsCommandCenter.tsx"
+      ]
+    },
+    "drill_down_cards": {
+      "count": 220,
+      "files": [
+        "CrossProductDrillDown.tsx",
+        "CrossSellWinRateDrillDown.tsx",
+        "ExpansionPipelineDrillDown.tsx",
+        "MultiProductDrillDown.tsx",
+        "ShareWalletDrillDown.tsx",
+        "TimeExpansionDrillDown.tsx",
+        "UtilizationDrillDown.tsx",
+        "WhiteSpaceDrillDown.tsx"
+      ]
+    },
+    "page_level_cards": {
+      "count": 165,
+      "pages": [
+        "src/app/csm/kpi/**/*.tsx",
+        "src/app/account/[id]/page.tsx",
+        "src/app/customer-profile/[id]/page.tsx",
+        "src/app/se/page.tsx"
+      ]
+    }
+  },
+  "key_card_component_files": [
+    {
+      "file": "src/components/shared/PremiumKPICard.tsx",
+      "status": "Uses gradients",
+      "note": "Uses gradient backgrounds intentionally, may not need #F3F3F3"
+    },
+    {
+      "file": "src/components/Dashboard/ModernKPICard.tsx",
+      "status": "Needs update",
+      "current": "Uses backgroundColor prop (variable)",
+      "fix": "Ensure backgroundColor defaults to #F3F3F3"
+    },
+    {
+      "file": "src/components/CommercialOps/KPICard.tsx",
+      "status": "Supports customBgColor",
+      "note": "Already supports customBgColor prop - instances using it are correct"
+    },
+    {
+      "file": "src/components/CSM/KPITile.tsx",
+      "status": "Supports customBgColor",
+      "note": "Already supports customBgColor prop - instances using it are correct"
+    }
+  ],
+  "implementation_strategy": {
+    "phase_1_quick_wins": {
+      "description": "Update components that accept customBgColor prop",
+      "files": [
+        "All KPICard usages in CommercialOps",
+        "All KPITile usages in CSM"
+      ],
+      "estimated_cards": 150,
+      "effort": "Low - just add customBgColor=\"#F3F3F3\" prop"
+    },
+    "phase_2_inline_styles": {
+      "description": "Replace bg-white and bg-gray with inline styles",
+      "files": [
+        "DashboardStats.tsx",
+        "Dashboard pages in csm/kpi/*",
+        "Account and customer profile pages"
+      ],
+      "estimated_cards": 508,
+      "effort": "Medium - find/replace bg-white with style={{ backgroundColor: '#F3F3F3' }}"
+    },
+    "phase_3_gray_variants": {
+      "description": "Replace bg-gray-* variants with inline styles",
+      "files": [
+        "Various dashboard and drill-down components"
+      ],
+      "estimated_cards": 480,
+      "effort": "Medium - similar to phase 2"
+    },
+    "phase_4_existing_inline_styles": {
+      "description": "Update existing backgroundColor inline styles",
+      "estimated_cards": 27,
+      "effort": "Low - targeted updates to specific lines"
+    },
+    "phase_5_gradient_review": {
+      "description": "Manual review of gradient backgrounds",
+      "estimated_cards": 268,
+      "effort": "High - requires design decision for each case"
+    }
+  },
+  "automation_recommendations": {
+    "find_replace_safe": [
+      "className=\"bg-white rounded → className=\"rounded\" style={{ backgroundColor: '#F3F3F3' }}",
+      "className=\"bg-gray-50 rounded → className=\"rounded\" style={{ backgroundColor: '#F3F3F3' }}",
+      "Add customBgColor=\"#F3F3F3\" to all KPICard and KPITile components"
+    ],
+    "manual_review_required": [
+      "Gradient backgrounds",
+      "Cards with hover states (hover:bg-*)",
+      "Cards with conditional backgrounds",
+      "Button backgrounds (not card containers)"
+    ]
+  },
+  "quality_assurance_checklist": [
+    "Verify #F3F3F3 color displays correctly in light and dark modes",
+    "Test hover states and interactive elements",
+    "Ensure consistent appearance across all dashboards",
+    "Check border visibility against #F3F3F3 background",
+    "Validate text contrast ratios for accessibility",
+    "Test responsive behavior on mobile devices",
+    "Verify gradient-to-solid conversions look intentional"
+  ],
+  "exclusions": {
+    "intentionally_excluded": [
+      "Navigation sidebars (bg-white for contrast)",
+      "Modal backgrounds",
+      "Button backgrounds",
+      "Input field backgrounds",
+      "Table header backgrounds (bg-gray-50 for differentiation)",
+      "Loading skeleton backgrounds",
+      "Page backgrounds (bg-gray-50)"
+    ],
+    "note": "Only card-like container elements with rounded corners, borders, shadows, and padding were included in this audit"
+  },
+  "next_steps": [
+    "1. Review and approve this audit report",
+    "2. Decide on gradient background treatment (keep or convert to solid #F3F3F3)",
+    "3. Create backup/branch before making changes",
+    "4. Execute Phase 1 (customBgColor props) - ~150 cards",
+    "5. Test Phase 1 changes visually",
+    "6. Execute Phase 2 (bg-white replacements) - ~508 cards",
+    "7. Test Phase 2 changes visually",
+    "8. Execute Phase 3 (bg-gray replacements) - ~480 cards",
+    "9. Execute Phase 4 (inline style updates) - ~27 cards",
+    "10. Manual review of Phase 5 (gradients) - ~268 cards",
+    "11. Run full QA checklist",
+    "12. Deploy to staging for stakeholder review"
+  ]
+}

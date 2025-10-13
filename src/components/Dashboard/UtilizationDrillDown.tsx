@@ -48,22 +48,22 @@ export const UtilizationDrillDown: React.FC<UtilizationDrillDownProps> = ({ leve
                   <div className="text-4xl font-bold text-teal-600">18</div>
                   <div className="text-xs text-gray-600 mt-1">Active signals</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Critical (&gt;90%)</div>
                   <div className="text-4xl font-bold text-red-600">5</div>
                   <div className="text-xs text-red-600 font-semibold mt-1">Immediate action</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">High (85-90%)</div>
                   <div className="text-4xl font-bold text-orange-600">8</div>
                   <div className="text-xs text-orange-600 font-semibold mt-1">Plan expansion</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Medium (75-85%)</div>
                   <div className="text-4xl font-bold text-yellow-600">5</div>
                   <div className="text-xs text-yellow-600 font-semibold mt-1">Monitor closely</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md">
+                <div className="p-6 rounded-xl border-2 border-gray-200 shadow-md" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Potential ARR</div>
                   <div className="text-4xl font-bold text-gray-900">$2.8M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">From alerts</div>
@@ -162,9 +162,10 @@ export const UtilizationDrillDown: React.FC<UtilizationDrillDownProps> = ({ leve
                     { customer: 'InnovateTech Solutions', product: 'Meraki', util: 90.5, licenses: '980/1083', potential: '$42K', tier: 'Enterprise', status: 'acknowledged' },
                     { customer: 'DataSystems Inc', product: 'Duo', util: 90.2, licenses: '720/798', potential: '$38K', tier: 'Commercial', status: 'new' }
                   ].map((alert, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center justify-between p-6 bg-white rounded-lg hover:shadow-md transition-all border-l-4 border-red-500 shadow-sm cursor-pointer"
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-6 rounded-lg hover:shadow-md transition-all border-l-4 border-red-500 shadow-sm cursor-pointer"
+                      style={{ backgroundColor: '#F3F3F3' }}
                       onClick={() => setSelectedAccount(alert.customer)}
                     >
                       <div className="flex-1">
@@ -209,9 +210,10 @@ export const UtilizationDrillDown: React.FC<UtilizationDrillDownProps> = ({ leve
                     { customer: 'RetailChain Corp', product: 'Umbrella', util: 87.5, licenses: '680/777', potential: '$28K', tier: 'Enterprise', days: 38 },
                     { customer: 'HealthTech Solutions', product: 'Meraki', util: 86.2, licenses: '520/603', potential: '$22K', tier: 'Enterprise', days: 52 }
                   ].map((alert, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center justify-between p-6 bg-white rounded-lg hover:shadow-md transition-all border-l-4 border-orange-500 shadow-sm cursor-pointer"
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-6 rounded-lg hover:shadow-md transition-all border-l-4 border-orange-500 shadow-sm cursor-pointer"
+                      style={{ backgroundColor: '#F3F3F3' }}
                       onClick={() => setSelectedAccount(alert.customer)}
                     >
                       <div className="flex-1">

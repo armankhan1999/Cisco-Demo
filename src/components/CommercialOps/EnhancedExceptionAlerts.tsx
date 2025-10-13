@@ -147,7 +147,7 @@ export default function EnhancedExceptionAlerts({ onDrillDown }: EnhancedExcepti
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="animate-pulse space-y-4">
           <div className="h-6 bg-gray-200 rounded w-1/3"></div>
           <div className="space-y-3">
@@ -162,7 +162,7 @@ export default function EnhancedExceptionAlerts({ onDrillDown }: EnhancedExcepti
   return (
     <div className="space-y-6">
       {/* Disputed Invoices */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -211,7 +211,7 @@ export default function EnhancedExceptionAlerts({ onDrillDown }: EnhancedExcepti
       </div>
 
       {/* Pending Quotes */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -262,7 +262,7 @@ export default function EnhancedExceptionAlerts({ onDrillDown }: EnhancedExcepti
       </div>
 
       {/* High DSO Accounts */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -313,7 +313,7 @@ export default function EnhancedExceptionAlerts({ onDrillDown }: EnhancedExcepti
       </div>
 
       {/* Revenue Recognition Alerts */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div className="rounded-xl shadow-sm border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">

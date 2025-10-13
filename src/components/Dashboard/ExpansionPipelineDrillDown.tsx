@@ -10,28 +10,28 @@ export const ExpansionPipelineLevel2: React.FC = () => {
   <div className="space-y-8">
     {/* Summary Cards */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-xl p-6 border-2 border-teal-200/50">
+      <div className="rounded-xl p-6 border-2 border-teal-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-teal-600 mb-2">$8.2M</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Total Pipeline</div>
           <div className="text-xs text-gray-600">59 opportunities</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+      <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-green-600 mb-2">$5.1M</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Weighted Pipeline</div>
           <div className="text-xs text-gray-600">Probability adjusted</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+      <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-blue-600 mb-2">3.2x</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Coverage Ratio</div>
           <div className="text-xs text-gray-600">vs $2.5M quota</div>
         </div>
       </div>
-      <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border-2 border-purple-200/50">
+      <div className="rounded-xl p-6 border-2 border-purple-200/50" style={{ backgroundColor: '#F3F3F3' }}>
         <div className="text-center">
           <div className="text-5xl font-bold text-purple-600 mb-2">62%</div>
           <div className="text-sm font-bold text-gray-700 mb-1">Avg Win Probability</div>
@@ -41,7 +41,7 @@ export const ExpansionPipelineLevel2: React.FC = () => {
     </div>
 
     {/* Pipeline by Stage */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">📊 Pipeline by Stage</h4>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -147,10 +147,10 @@ export const ExpansionPipelineLevel2: React.FC = () => {
     </div>
 
     {/* Pipeline by Type */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Pipeline by Expansion Type</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+        <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Cross-Sell</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">36 Opps</span>
@@ -162,7 +162,7 @@ export const ExpansionPipelineLevel2: React.FC = () => {
           <div className="text-xs text-gray-600">61% of total pipeline</div>
         </div>
 
-        <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+        <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-4">
             <h5 className="text-lg font-bold text-gray-900">Upsell</h5>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">22 Opps</span>
@@ -177,7 +177,7 @@ export const ExpansionPipelineLevel2: React.FC = () => {
     </div>
 
     {/* Stage Conversion Rates */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🔄 Stage Conversion Rates</h4>
       <div className="space-y-4">
         <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
@@ -245,7 +245,7 @@ export const ExpansionPipelineLevel3: React.FC = () => {
   <>
   <div className="space-y-8">
     {/* Top Opportunities */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">🎯 Top Pipeline Opportunities</h4>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -359,10 +359,10 @@ export const ExpansionPipelineLevel3: React.FC = () => {
     </div>
 
     {/* Risk Factors & Next Actions */}
-    <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+    <div className="rounded-xl border-2 border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
       <h4 className="text-2xl font-bold mb-6 text-gray-900">⚠️ Pipeline Risks & Actions</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gradient-to-br from-red-50 to-red-100/50 rounded-xl p-6 border-2 border-red-200/50">
+        <div className="rounded-xl p-6 border-2 border-red-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">!</span>
@@ -375,7 +375,7 @@ export const ExpansionPipelineLevel3: React.FC = () => {
           <div className="text-lg font-bold text-red-600">$1.2M at risk</div>
         </div>
 
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 border-2 border-yellow-200/50">
+        <div className="rounded-xl p-6 border-2 border-yellow-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">⏰</span>
@@ -388,7 +388,7 @@ export const ExpansionPipelineLevel3: React.FC = () => {
           <div className="text-lg font-bold text-yellow-600">Immediate follow-up</div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border-2 border-blue-200/50">
+        <div className="rounded-xl p-6 border-2 border-blue-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">🎯</span>
@@ -401,7 +401,7 @@ export const ExpansionPipelineLevel3: React.FC = () => {
           <div className="text-lg font-bold text-blue-600">$1.05M weighted</div>
         </div>
 
-        <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl p-6 border-2 border-green-200/50">
+        <div className="rounded-xl p-6 border-2 border-green-200/50" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">✓</span>

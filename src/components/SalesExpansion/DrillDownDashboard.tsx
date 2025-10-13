@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, TrendingUp, AlertCircle, Filter, RefreshCw, DollarSign, Users } from 'lucide-react';
+import { ArrowLeft, TrendingUp, AlertCircle, Filter, RefreshCw, DollarSign, Users, HelpCircle, X } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ScatterChart, Scatter, ZAxis, FunnelChart, Funnel, LabelList, PieChart, Pie, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { getSalesExpansionKPIs, getTrendData, getExceptionAlerts, type SalesExpansionKPIs, type TrendData, type ExceptionAlert } from '@/services/salesExpansionService';
 import DrillDownKPICard from '../CommercialOps/DrillDownKPICard';
@@ -22,6 +22,7 @@ export default function DrillDownDashboard() {
   const [trendData, setTrendData] = useState<TrendData[]>([]);
   const [alerts, setAlerts] = useState<ExceptionAlert[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     loadDashboardData();
@@ -143,6 +144,13 @@ export default function DrillDownDashboard() {
               <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <RefreshCw className="h-5 w-5 text-gray-600" />
               </button>
+              <button
+                onClick={() => setIsHelpOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-blue-600 border border-blue-300 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                title="Help & Guide"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
@@ -164,6 +172,8 @@ export default function DrillDownDashboard() {
             color="blue"
             description="Retained + expansion revenue in dollars"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -178,6 +188,8 @@ export default function DrillDownDashboard() {
             color="green"
             description="Total ARR from upsell/cross-sell in period"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -192,6 +204,8 @@ export default function DrillDownDashboard() {
             color="purple"
             description="% of customers with 2+ products"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -206,6 +220,8 @@ export default function DrillDownDashboard() {
             color="orange"
             description="Estimated ARR from identified gaps"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
 
           <DrillDownKPICard
@@ -220,6 +236,8 @@ export default function DrillDownDashboard() {
             color="indigo"
             description="Avg quota attainment across expansion reps"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
           
           <DrillDownKPICard
@@ -234,6 +252,8 @@ export default function DrillDownDashboard() {
             color="teal"
             description="Accounts with high expansion readiness score"
             onDrillDown={handleDrillDown}
+            customBgColor="#F3F3F3"
+            variant="q2c"
           />
         </div>
 
@@ -259,7 +279,7 @@ export default function DrillDownDashboard() {
             {/* Alert Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               {/* Critical Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-red-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-red-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
                     <AlertCircle className="w-4 h-4 text-white" />
@@ -272,7 +292,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* High Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-orange-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-orange-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4 text-white" />
@@ -285,7 +305,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* Medium Alerts */}
-              <div className="bg-white rounded-lg p-4 border border-yellow-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-yellow-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
                     <Filter className="w-4 h-4 text-white" />
@@ -298,7 +318,7 @@ export default function DrillDownDashboard() {
               </div>
 
               {/* Response Rate */}
-              <div className="bg-white rounded-lg p-4 border border-green-200 shadow-sm">
+              <div className="rounded-lg p-4 border border-green-200 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                     <Users className="w-4 h-4 text-white" />
@@ -312,7 +332,7 @@ export default function DrillDownDashboard() {
             </div>
 
             {/* Top Accounts Requiring Action */}
-            <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <div className="rounded-lg p-4 border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
               <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-red-600" />
                 Top 5 Accounts Requiring Action
@@ -374,9 +394,11 @@ export default function DrillDownDashboard() {
           </div>
         </div>
 
+
         {/* Expansion Pipeline Funnel - Full Width */}
         <div className="mb-8">
           <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => handleDrillDown('pipeline-arr', 2)}>
+
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
@@ -436,8 +458,9 @@ export default function DrillDownDashboard() {
         {/* Opportunity Scatter Plot & Cross-Sell Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Opportunity Readiness Scatter Plot */}
-          <div 
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+          <div
+            className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => handleDrillDown('opportunity-readiness-matrix', 2)}
           >
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
@@ -518,8 +541,9 @@ export default function DrillDownDashboard() {
           </div>
 
           {/* Cross-Sell vs Upsell Breakdown */}
-          <div 
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+          <div
+            className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
+            style={{ backgroundColor: '#F3F3F3' }}
             onClick={() => handleDrillDown('expansion-type-distribution', 2)}
           >
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
@@ -562,8 +586,9 @@ export default function DrillDownDashboard() {
         </div>
 
         {/* Exception Alerts */}
-        <div 
-          className="bg-white rounded-lg shadow-sm p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        <div
+          className="rounded-lg shadow-sm p-6 cursor-pointer hover:shadow-lg transition-shadow"
+          style={{ backgroundColor: '#F3F3F3' }}
           onClick={() => handleDrillDown('exception-alerts', 2)}
         >
           <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -597,6 +622,50 @@ export default function DrillDownDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Help Modal */}
+      {isHelpOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300"
+            onClick={() => setIsHelpOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col transform transition-all duration-300 ease-in-out">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-xl">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <HelpCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">Sales Expansion Overview</h2>
+                    <p className="text-blue-100 text-sm">Complete guide and documentation</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsHelpOpen(false)}
+                  className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* Content - iframe */}
+              <div className="flex-1 overflow-hidden">
+                <iframe
+                  src="/se/overview"
+                  className="w-full h-full border-0"
+                  title="Sales Expansion Overview"
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

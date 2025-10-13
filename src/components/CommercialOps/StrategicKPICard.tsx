@@ -13,18 +13,20 @@ interface StrategicKPICardProps {
   icon: ReactNode;
   description: string;
   color: 'blue' | 'green' | 'emerald' | 'orange' | 'purple' | 'indigo' | 'teal' | 'cyan';
+  customBgColor?: string;
 }
 
-export default function StrategicKPICard({ 
-  title, 
-  value, 
-  unit, 
-  target, 
-  trend, 
-  status, 
-  icon, 
-  description, 
-  color 
+export default function StrategicKPICard({
+  title,
+  value,
+  unit,
+  target,
+  trend,
+  status,
+  icon,
+  description,
+  color,
+  customBgColor
 }: StrategicKPICardProps) {
   
   const getColorClasses = () => {
@@ -147,7 +149,10 @@ export default function StrategicKPICard({
   const statusIndicator = getStatusIndicator();
 
   return (
-    <div className={`${colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden`}>
+    <div
+      className={`${customBgColor ? '' : colorClasses.bg} ${colorClasses.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden`}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+    >
       {/* Background Pattern */}
       <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-white to-transparent rounded-full transform translate-x-8 -translate-y-8"></div>

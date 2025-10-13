@@ -177,6 +177,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Clock className="h-8 w-8" />}
                   description="Average days from quote creation to payment received"
                   color="blue"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Quote Approval"
@@ -188,6 +189,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<FileText className="h-8 w-8" />}
                   description="Average days from quote submission to approval"
                   color="green"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Invoice Accuracy"
@@ -199,6 +201,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<CheckCircle className="h-8 w-8" />}
                   description="Percentage of invoices without billing errors"
                   color="emerald"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="DSO"
@@ -210,6 +213,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<DollarSign className="h-8 w-8" />}
                   description="Average days to collect payment after invoice"
                   color="orange"
+                  customBgColor="#F3F3F3"
                 />
               </div>
 
@@ -225,6 +229,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Target className="h-8 w-8" />}
                   description="Accuracy of revenue recognition vs expected"
                   color="purple"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Deferred Revenue"
@@ -236,6 +241,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<DollarSign className="h-8 w-8" />}
                   description="Total unearned revenue for future periods"
                   color="indigo"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Quote Win Rate"
@@ -247,6 +253,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<TrendingUp className="h-8 w-8" />}
                   description="Percentage of quotes accepted vs declined"
                   color="teal"
+                  customBgColor="#F3F3F3"
                 />
                 <StrategicKPICard
                   title="Renewal Quote Velocity"
@@ -258,6 +265,7 @@ export default function ComprehensiveStrategicView() {
                   icon={<Clock className="h-8 w-8" />}
                   description="Time from renewal trigger to quote delivery"
                   color="cyan"
+                  customBgColor="#F3F3F3"
                 />
               </div>
             </div>
@@ -272,7 +280,7 @@ export default function ComprehensiveStrategicView() {
               {/* Additional Metrics */}
               <div className="space-y-6">
                 {/* Financial Health */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <DollarSign className="h-5 w-5 text-green-600" />
                     Financial Health
@@ -310,21 +318,21 @@ export default function ComprehensiveStrategicView() {
                 </div>
 
                 {/* Performance Summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-4">Performance Summary</h3>
+                <div className="rounded-xl shadow-lg p-6 border border-blue-200" style={{ backgroundColor: '#F3F3F3' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900">Performance Summary</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span>Targets Met</span>
-                      <span className="font-bold">8 of 10</span>
+                      <span className="text-gray-700">Targets Met</span>
+                      <span className="font-bold text-gray-900">8 of 10</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Overall Health</span>
-                      <span className="font-bold">Excellent</span>
+                      <span className="text-gray-700">Overall Health</span>
+                      <span className="font-bold text-gray-900">Excellent</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Trend Direction</span>
-                      <span className="font-bold flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4" />
+                      <span className="text-gray-700">Trend Direction</span>
+                      <span className="font-bold flex items-center gap-1 text-gray-900">
+                        <TrendingUp className="h-4 w-4 text-blue-600" />
                         Improving
                       </span>
                     </div>

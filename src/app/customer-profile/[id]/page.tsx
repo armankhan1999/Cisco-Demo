@@ -155,7 +155,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-600">ARR</h3>
             <TrendingUp className="w-5 h-5 text-green-500" />
@@ -163,7 +163,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
           <p className="text-3xl font-bold text-gray-900">{formatCurrency(profileData.metrics.arr)}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-600">Active Users</h3>
             <Users className="w-5 h-5 text-blue-500" />
@@ -171,7 +171,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
           <p className="text-3xl font-bold text-gray-900">{profileData.metrics.activeUsers.toLocaleString()}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-600">Products</h3>
             <Package className="w-5 h-5 text-purple-500" />
@@ -190,7 +190,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Account Details */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4">Account Details</h2>
           <div className="space-y-3">
             <div className="flex justify-between">
@@ -218,7 +218,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
         {/* Contract Details */}
         {profileData.contract && (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h2 className="text-xl font-bold text-gray-900 mb-4">Contract Details</h2>
             <div className="space-y-3">
               <div className="flex justify-between">
@@ -258,7 +258,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       {/* Stakeholders Section */}
       {profileData.stakeholders.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <Users className="w-6 h-6" />
             Stakeholders ({profileData.stakeholders.length})
@@ -317,7 +317,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       {/* Product Licenses Section */}
       {profileData.licenses.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <Package className="w-6 h-6" />
             Product Licenses ({profileData.licenses.length})
@@ -371,7 +371,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       {/* Users Section */}
       {profileData.users.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6 mb-8" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <Users className="w-6 h-6" />
             Users (Showing {profileData.users.length} of {profileData.totalUsers})
@@ -420,7 +420,7 @@ export default function CustomerProfilePage({ params }: { params: Promise<{ id: 
 
       {/* Health Timeline */}
       {profileData.healthTimeline.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="rounded-lg shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <TrendingUp className="w-6 h-6" />
             Health Timeline (Last 6 Months)

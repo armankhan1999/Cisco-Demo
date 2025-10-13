@@ -144,12 +144,12 @@ export default function PortfolioHealthDrillDown() {
         <div className="grid grid-cols-5 gap-6 mb-8">
           {/* Main Health Score */}
           <div className={`col-span-1 rounded-lg border-2 p-6 ${
-            healthData.portfolioHealthScore >= 75 
-              ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200'
+            healthData.portfolioHealthScore >= 75
+              ? 'border-green-200'
               : healthData.portfolioHealthScore >= 60
-              ? 'bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-200'
-              : 'bg-gradient-to-br from-red-50 to-rose-50 border-red-200'
-          }`}>
+              ? 'border-yellow-200'
+              : 'border-red-200'
+          }`} style={{ backgroundColor: '#F3F3F3' }}>
             <div className={`text-6xl font-bold mb-2 ${
               healthData.portfolioHealthScore >= 75 
                 ? 'text-green-600'
@@ -174,14 +174,14 @@ export default function PortfolioHealthDrillDown() {
           </div>
 
           {/* Total ARR */}
-          <div className="bg-gray-50 rounded-lg border border-gray-200 p-4 flex flex-col justify-center">
+          <div className="rounded-lg border border-gray-200 p-4 flex flex-col justify-center" style={{ backgroundColor: '#F3F3F3' }}>
             <div className="text-xs text-gray-600 mb-1">Total ARR</div>
             <div className="text-2xl font-bold text-gray-900">${(totalARR / 1000000).toFixed(1)}M</div>
           </div>
 
           {/* Component Scores */}
           {healthData.components.map((component: any, idx: number) => (
-            <div key={idx} className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+            <div key={idx} className="rounded-lg border border-gray-200 p-4" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="text-xs text-gray-600 mb-1">{component.name}</div>
               <div className="text-xs text-gray-500 mb-2">{component.weight}%</div>
               <div className="flex items-center justify-between">
@@ -209,7 +209,7 @@ export default function PortfolioHealthDrillDown() {
         {/* Health Score Calculation & Distribution */}
         <div className="grid grid-cols-2 gap-6 mb-8">
           {/* Health Score Calculation */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-4">Health Score Calculation</h3>
             <div className="space-y-4">
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
@@ -254,7 +254,7 @@ export default function PortfolioHealthDrillDown() {
           </div>
 
           {/* Health Distribution with Clickable Donut */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="rounded-lg border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
             <h3 className="font-semibold text-gray-900 mb-6">Health Distribution</h3>
             
             <div className="flex items-center justify-center mb-6">
@@ -347,7 +347,7 @@ export default function PortfolioHealthDrillDown() {
         </div>
 
         {/* Top Account Contributions Table */}
-        <div className="bg-white rounded-lg border border-gray-200">
+        <div className="rounded-lg border border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
             <h3 className="font-semibold text-gray-900">Top Account Contributions</h3>
             <div className="flex items-center gap-2">

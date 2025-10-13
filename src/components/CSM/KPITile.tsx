@@ -9,9 +9,11 @@ interface KPITileProps {
   kpi: KPIResult;
   onClick?: () => void;
   drillDownUrl?: string;
+  customBgColor?: string;
+  variant?: 'default' | 'q2c';
 }
 
-export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
+export function KPITile({ title, kpi, onClick, drillDownUrl, customBgColor, variant = 'default' }: KPITileProps) {
   // Status-based background colors (following health score matrix)
   // Success (Green): 76-100 = Thriving/Healthy
   // Warning (Orange): 60-75 = Stable
@@ -116,12 +118,121 @@ export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
   };
   
   const isClickable = !!(drillDownUrl || onClick);
-  
-  // Get colors based on actual KPI status
-  const tileColor = getTileColor();
+
+  // Get colors based on actual KPI status (or use custom color if provided)
+  const tileColor = customBgColor || getTileColor();
   const textColorClass = getTextColor();
   const progressBarClass = getProgressBarColor();
-  
+
+  // Get status text for Q2C variant
+  const getStatusText = () => {
+    switch (kpi.status) {
+      case 'success': return 'On Target';
+      case 'warning': return 'At Risk';
+      case 'danger': return 'Critical';
+      default: return 'On Target';
+    }
+  };
+
+  const getStatusTextColor = () => {
+    switch (kpi.status) {
+      case 'success': return 'text-green-600';
+      case 'warning': return 'text-yellow-600';
+      case 'danger': return 'text-red-600';
+      default: return 'text-green-600';
+    }
+  };
+
+  // Q2C Variant - Simplified layout
+  if (variant === 'q2c') {
+    const q2cContent = (
+      <div className="relative h-full flex flex-col">
+        {/* Header: Title on left, Trend & Status on right */}
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <div className="flex items-center gap-2">
+            {kpi.trend && (
+              <span className="text-sm font-medium text-gray-600">
+                {trendIcons[kpi.trend]} {kpi.change}
+              </span>
+            )}
+            <span className={`text-xs font-medium ${getStatusTextColor()}`}>
+              {getStatusText()}
+            </span>
+          </div>
+        </div>
+
+        {/* Main Value */}
+        <div className="text-4xl font-bold text-gray-900 mb-2 leading-none">
+          {kpi.formatted}
+        </div>
+
+        {/* Target */}
+        <div className="text-xs text-gray-500 mb-2">
+          {kpi.target ? `≥ ${kpi.target}` : 'Current Period'}
+        </div>
+
+        {/* Description */}
+        <div className="text-xs text-gray-500 mb-3 flex-grow">
+          {title.includes('GRR') && 'Average days from quote creation to payment received'}
+          {title.includes('Health') && 'Average health score across all accounts'}
+          {title.includes('At-Risk') && 'ARR at risk in next 90 days'}
+          {title.includes('Renewal') && 'Percentage of renewals successfully completed'}
+          {title.includes('Churn') && 'Annual churn rate based on ARR'}
+          {title.includes('Utilization') && 'Average license utilization across portfolio'}
+          {title.includes('Adoption') && 'Feature adoption rate across customers'}
+          {title.includes('Engagement') && 'Customer engagement composite score'}
+          {title.includes('Time to Value') && 'Average days to realize value'}
+          {title.includes('QBR') && 'Percentage of QBRs completed on schedule'}
+          {!title.includes('GRR') && !title.includes('Health') && !title.includes('At-Risk') &&
+           !title.includes('Renewal') && !title.includes('Churn') && !title.includes('Utilization') &&
+           !title.includes('Adoption') && !title.includes('Engagement') && !title.includes('Time to Value') &&
+           !title.includes('QBR') && 'Performance metric'}
+        </div>
+
+        {/* Progress Bar - Only colored element besides status */}
+        <div className="mb-2">
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`${progressBarClass} h-2 rounded-full transition-all duration-300`}
+              style={{ width: `${getProgressPercentage()}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Click indicator for drill-down */}
+        {drillDownUrl && (
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className={`w-2 h-2 ${progressBarClass} rounded-full`}></div>
+          </div>
+        )}
+      </div>
+    );
+
+    if (drillDownUrl) {
+      return (
+        <Link
+          href={drillDownUrl}
+          className="group block relative rounded-xl shadow-md border border-gray-200 p-5 h-64 transition-all duration-300 cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1 transform-gpu"
+          style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+        >
+          {q2cContent}
+        </Link>
+      );
+    }
+
+    return (
+      <div
+        className={`group relative rounded-xl shadow-md border border-gray-200 p-5 h-64 transition-all duration-300 ${isClickable ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''} transform-gpu`}
+        style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+        onClick={onClick}
+      >
+        {q2cContent}
+      </div>
+    );
+  }
+
+  // Default variant
   const content = (
     <div className="relative h-full flex flex-col">
       {/* Header with icon and 30-day trend */}
@@ -208,24 +319,26 @@ export function KPITile({ title, kpi, onClick, drillDownUrl }: KPITileProps) {
         href={drillDownUrl}
         className={`
           group block relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
-          ${tileColor}
+          ${!customBgColor ? tileColor : ''}
           cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1
           transform-gpu
         `}
+        style={customBgColor ? { backgroundColor: customBgColor } : undefined}
       >
         {content}
       </Link>
     );
   }
-  
+
   return (
     <div
       className={`
         group relative rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300
-        ${tileColor}
+        ${!customBgColor ? tileColor : ''}
         ${isClickable ? 'cursor-pointer hover:shadow-xl hover:scale-102 hover:-translate-y-1' : ''}
         transform-gpu
       `}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
       onClick={onClick}
     >
       {content}

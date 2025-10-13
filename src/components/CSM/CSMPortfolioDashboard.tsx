@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Filter } from 'lucide-react';
+import { Filter, HelpCircle, X } from 'lucide-react';
 import { KPITile } from './KPITile';
 import { HealthDistribution } from './HealthDistribution';
 import { RenewalPipeline } from './RenewalPipeline';
@@ -84,6 +84,7 @@ export function CSMPortfolioDashboard() {
   const [renewalPipeline, setRenewalPipeline] = useState<RenewalPipelineType[]>([]);
   const [criticalActions, setCriticalActions] = useState<CriticalAction[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   
   // Helper function to build KPI drill-down URLs with filter state
   const buildDrillDownUrl = (basePath: string): string => {
@@ -361,6 +362,13 @@ export function CSMPortfolioDashboard() {
                 <Filter className="w-3.5 h-3.5" />
                 Filters
               </button>
+              <button
+                onClick={() => setIsHelpOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-blue-600 border border-blue-300 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                title="Help & Guide"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
@@ -376,24 +384,24 @@ export function CSMPortfolioDashboard() {
         
         {/* Row 1: GRR, Portfolio Health, At-Risk ARR, Renewal Rate */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} />
-          <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} />
-          <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} />
-          <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} />
+          <KPITile title="GRR" kpi={kpis.grr} drillDownUrl={buildDrillDownUrl('/csm/kpi/grr')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="Portfolio Health" kpi={kpis.portfolioHealth} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-health')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="At-Risk ARR" kpi={kpis.atRiskARR} drillDownUrl={buildDrillDownUrl('/csm/kpi/at-risk-arr')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="Renewal Rate" kpi={kpis.renewalRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/renewal-rate')} customBgColor="#F3F3F3" variant="q2c" />
         </div>
-        
+
         {/* Row 2: Churn Rate, Portfolio Utilization, Feature Adoption, Engagement Score */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} />
-          <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} />
-          <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} />
-          <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} />
+          <KPITile title="Churn Rate" kpi={kpis.churnRate} drillDownUrl={buildDrillDownUrl('/csm/kpi/churn-rate')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="Portfolio Average Utilization" kpi={kpis.portfolioUtilization} drillDownUrl={buildDrillDownUrl('/csm/kpi/portfolio-utilization')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="Feature Adoption Rate" kpi={kpis.featureAdoption} drillDownUrl={buildDrillDownUrl('/csm/kpi/adoption')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="Customer Engagement Score" kpi={kpis.engagementScore} drillDownUrl={buildDrillDownUrl('/csm/kpi/engagement')} customBgColor="#F3F3F3" variant="q2c" />
         </div>
-        
+
         {/* Row 3: Time to Value, QBR Completion and Summary */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <KPITile title="Time to Value (TTV)" kpi={kpis.timeToValue} drillDownUrl={buildDrillDownUrl('/csm/kpi/time-to-value')} />
-          <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} />
+          <KPITile title="Time to Value (TTV)" kpi={kpis.timeToValue} drillDownUrl={buildDrillDownUrl('/csm/kpi/time-to-value')} customBgColor="#F3F3F3" variant="q2c" />
+          <KPITile title="QBR Completion Rate" kpi={kpis.qbrCompletion} drillDownUrl={buildDrillDownUrl('/csm/kpi/qbr-completion')} customBgColor="#F3F3F3" variant="q2c" />
           
           {/* Summary Cards */}
           <div className="col-span-2 bg-white rounded-xl shadow-md border border-gray-200 p-6 h-64 transition-all duration-300">
@@ -486,6 +494,50 @@ export function CSMPortfolioDashboard() {
           </p>
         </div>
       </div>
+
+      {/* Help Modal */}
+      {isHelpOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
+            onClick={() => setIsHelpOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col transform transition-all duration-300 ease-in-out">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-xl">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <HelpCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">CSM Overview & Strategy</h2>
+                    <p className="text-blue-100 text-sm">Complete guide and documentation</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsHelpOpen(false)}
+                  className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* Content - iframe */}
+              <div className="flex-1 overflow-hidden">
+                <iframe
+                  src="/csm/overview"
+                  className="w-full h-full border-0"
+                  title="CSM Overview & Strategy"
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

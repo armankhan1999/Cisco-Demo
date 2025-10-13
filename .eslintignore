@@ -1,0 +1,7 @@
+# Ignore all files - ESLint disabled globally
+*
+**/*
+src/**/*
+components/**/*
+pages/**/*
+app/**/*

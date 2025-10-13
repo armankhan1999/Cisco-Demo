@@ -11,9 +11,11 @@ interface KPICardProps {
   status: 'good' | 'warning' | 'critical';
   icon: ReactNode;
   description: string;
+  customBgColor?: string;
+  variant?: 'default' | 'q2c';
 }
 
-export default function KPICard({ title, value, target, trend, status, icon, description }: KPICardProps) {
+export default function KPICard({ title, value, target, trend, status, icon, description, customBgColor, variant = 'default' }: KPICardProps) {
   const getStatusColor = () => {
     switch (status) {
       case 'good':
@@ -63,10 +65,78 @@ export default function KPICard({ title, value, target, trend, status, icon, des
     }
   };
 
+  const getStatusText = () => {
+    switch (status) {
+      case 'good':
+        return 'On Target';
+      case 'warning':
+        return 'At Risk';
+      case 'critical':
+        return 'Critical';
+    }
+  };
+
+  const getStatusTextColor = () => {
+    switch (status) {
+      case 'good':
+        return 'text-green-600';
+      case 'warning':
+        return 'text-yellow-600';
+      case 'critical':
+        return 'text-red-600';
+    }
+  };
+
   const colors = getStatusColor();
 
+  // Q2C Variant - Simplified layout with minimal colors
+  if (variant === 'q2c') {
+    return (
+      <div
+        className="border border-gray-200 rounded-xl p-5 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+        style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+      >
+        {/* Header: Title on left, Trend & Status on right */}
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-600">
+              {trend !== 0 && (trend > 0 ? '+' : '')}{trend}%
+            </span>
+            <span className={`text-xs font-medium ${getStatusTextColor()}`}>
+              {getStatusText()}
+            </span>
+          </div>
+        </div>
+
+        {/* Value */}
+        <p className="text-3xl font-bold text-gray-900 mb-2">{value}</p>
+
+        {/* Target */}
+        <p className="text-xs text-gray-500 mb-2">{target}</p>
+
+        {/* Description */}
+        <p className="text-xs text-gray-500 mb-3 line-clamp-2">{description}</p>
+
+        {/* Progress Bar - Only colored element besides status */}
+        <div className="w-full bg-gray-200 rounded-full h-2">
+          <div
+            className={`h-2 rounded-full ${colors.progressBg} transition-all duration-500`}
+            style={{
+              width: status === 'good' ? '85%' : status === 'warning' ? '65%' : '40%'
+            }}
+          ></div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default variant - Original layout
   return (
-    <div className={`${colors.bg} ${colors.border} border-2 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}>
+    <div
+      className={`${customBgColor ? '' : colors.bg} ${colors.border} border-2 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}
+      style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+    >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className={`${colors.iconBg} p-3 rounded-lg`}>
@@ -98,10 +168,10 @@ export default function KPICard({ title, value, target, trend, status, icon, des
 
       {/* Progress Bar */}
       <div className="w-full bg-gray-200 rounded-full h-2">
-        <div 
+        <div
           className={`h-2 rounded-full ${colors.progressBg} transition-all duration-500`}
-          style={{ 
-            width: status === 'good' ? '85%' : status === 'warning' ? '65%' : '40%' 
+          style={{
+            width: status === 'good' ? '85%' : status === 'warning' ? '65%' : '40%'
           }}
         ></div>
       </div>

@@ -63,7 +63,7 @@ function LicenseDetailsPageContent() {
       accountMap.forEach((products, customerId) => {
         const account = accounts.find((acc: any) => 
           acc.account?.id === customerId || acc.id === customerId
-        );
+        ) as any;
         
         if (!account) return;
         
@@ -273,7 +273,7 @@ function LicenseDetailsPageContent() {
           <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
             <div className="px-6 py-4 border-b border-gray-200">
               <h2 className="text-lg font-semibold text-gray-900">Account-Level Breakdown</h2>
-              <p className="text-sm text-gray-600 mt-1">Click on any account to view product-level details</p>
+              <p className="text-sm text-gray-600 mt-1">Click account name for deep dive or arrow for product details</p>
             </div>
             
             <div className="overflow-x-auto">
@@ -322,16 +322,27 @@ function LicenseDetailsPageContent() {
                   {sortedAccounts.map((account) => (
                     <React.Fragment key={account.customerId}>
                       {/* Account Row */}
-                      <tr 
-                        className="hover:bg-gray-50 cursor-pointer transition-colors"
-                        onClick={() => toggleAccountExpand(account.customerId)}
-                      >
+                      <tr className="hover:bg-gray-50 transition-colors">
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                           <div className="flex items-center gap-2">
-                            <span className="text-gray-400">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleAccountExpand(account.customerId);
+                              }}
+                              className="text-gray-400 hover:text-gray-600 cursor-pointer"
+                            >
                               {expandedAccount === account.customerId ? '▼' : '▶'}
-                            </span>
-                            <div className="font-medium text-gray-900">{account.accountName}</div>
+                            </button>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                router.push(`/csm/account-deep-dive/${account.customerId}`);
+                              }}
+                              className="font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer text-left"
+                            >
+                              {account.accountName}
+                            </button>
                           </div>
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-center">

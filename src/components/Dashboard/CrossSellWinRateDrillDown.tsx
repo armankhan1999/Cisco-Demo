@@ -51,22 +51,22 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
             <div className="space-y-6">
               {/* Summary Cards */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-xl border-2 border-indigo-200">
+                <div className="p-6 rounded-xl border-2 border-indigo-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Overall Attach Rate</div>
                   <div className="text-4xl font-bold text-indigo-600">28%</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +3pp vs Target</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Total Renewals (YTD)</div>
                   <div className="text-4xl font-bold text-gray-900">42</div>
                   <div className="text-xs text-gray-600 mt-1">12 with cross-sell</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Cross-Sell ARR</div>
                   <div className="text-4xl font-bold text-gray-900">$3.2M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +18% YoY</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Avg Deal Size</div>
                   <div className="text-4xl font-bold text-gray-900">$267K</div>
                   <div className="text-xs text-gray-600 mt-1">Per cross-sell</div>
@@ -74,7 +74,7 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               </div>
 
               {/* Visual Chart - Attach Rate Trend */}
-              <div className="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-xl border-2 border-indigo-200">
+              <div className="p-8 rounded-xl border-2 border-indigo-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Attach Rate Trend (Last 6 Months)</h3>
                 <div className="relative h-64">
                   <svg className="w-full h-full" viewBox="0 0 500 256" preserveAspectRatio="xMidYMid meet">
@@ -138,7 +138,7 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               </div>
 
               {/* Attach Rate by Product Combination */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Attach Rate by Product Combination</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -180,28 +180,28 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
               </div>
 
               {/* Attach Rate by Customer Tier */}
-              <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl border-2 border-purple-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-purple-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Attach Rate by Customer Tier</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-xl border-2 border-purple-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-purple-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">Strategic</div>
                     <div className="text-5xl font-bold text-purple-600">45%</div>
                     <div className="text-sm text-gray-600 mt-2">9/20 renewals</div>
                     <div className="text-xs font-semibold mt-1 text-green-600">↑ +8pp vs avg</div>
                   </div>
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-xl border-2 border-blue-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-blue-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">Enterprise</div>
                     <div className="text-5xl font-bold text-blue-600">30%</div>
                     <div className="text-sm text-gray-600 mt-2">6/20 renewals</div>
                     <div className="text-xs font-semibold mt-1 text-green-600">↑ +2pp vs avg</div>
                   </div>
-                  <div className="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">Commercial</div>
                     <div className="text-5xl font-bold text-green-600">18%</div>
                     <div className="text-sm text-gray-600 mt-2">2/11 renewals</div>
                     <div className="text-xs font-semibold mt-1 text-red-600">↓ 10pp vs avg</div>
                   </div>
-                  <div className="bg-gradient-to-br from-gray-100 to-gray-50 p-6 rounded-xl border-2 border-gray-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-gray-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">SMB</div>
                     <div className="text-5xl font-bold text-gray-600">10%</div>
                     <div className="text-sm text-gray-600 mt-2">1/10 renewals</div>
@@ -215,7 +215,7 @@ export const CrossSellDrillDown: React.FC<CrossSellDrillDownProps> = ({ level, o
           {level === 3 && (
             <div className="space-y-6">
               {/* Upcoming Renewals with Cross-Sell Potential */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
+              <div className="p-8 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Upcoming Renewals with Cross-Sell Potential (Next 90 Days)</h3>
                 <div className="space-y-4">
                   {[
@@ -326,27 +326,27 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
             <div className="space-y-6">
               {/* Summary Cards */}
               <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <div className="bg-gradient-to-br from-emerald-50 to-white p-6 rounded-xl border-2 border-emerald-200">
+                <div className="p-6 rounded-xl border-2 border-emerald-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Overall Win Rate</div>
                   <div className="text-4xl font-bold text-emerald-600">64%</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +4% vs Target</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Won</div>
                   <div className="text-4xl font-bold text-green-600">32</div>
                   <div className="text-xs text-gray-600 mt-1">Opportunities</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Lost</div>
                   <div className="text-4xl font-bold text-red-600">18</div>
                   <div className="text-xs text-gray-600 mt-1">Opportunities</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Won ARR</div>
                   <div className="text-4xl font-bold text-gray-900">$7.2M</div>
                   <div className="text-xs text-green-600 font-semibold mt-1">↑ +22% YoY</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
+                <div className="p-6 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                   <div className="text-sm text-gray-600 mb-2">Avg Win Size</div>
                   <div className="text-4xl font-bold text-gray-900">$225K</div>
                   <div className="text-xs text-gray-600 mt-1">Per deal</div>
@@ -354,7 +354,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               </div>
 
               {/* Win Rate Trend Chart */}
-              <div className="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-xl border-2 border-emerald-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-emerald-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Win Rate Trend (Last 6 Months)</h3>
                 <div className="relative h-64">
                   <svg className="w-full h-full" viewBox="0 0 500 256" preserveAspectRatio="xMidYMid meet">
@@ -418,7 +418,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               </div>
 
               {/* Win Rate by Product */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-gray-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Win Rate by Product Family</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -465,28 +465,28 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               </div>
 
               {/* Win Rate by Deal Size */}
-              <div className="bg-gradient-to-br from-teal-50 to-white p-8 rounded-xl border-2 border-teal-200 shadow-lg">
+              <div className="p-8 rounded-xl border-2 border-teal-200 shadow-lg" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Win Rate by Deal Size</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                  <div className="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-green-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">&lt;$100K</div>
                     <div className="text-5xl font-bold text-green-600">78%</div>
                     <div className="text-sm text-gray-600 mt-2">14/18 won</div>
                     <div className="text-xs text-gray-600 mt-1">$1.2M total</div>
                   </div>
-                  <div className="bg-gradient-to-br from-emerald-100 to-emerald-50 p-6 rounded-xl border-2 border-emerald-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-emerald-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">$100K-$250K</div>
                     <div className="text-5xl font-bold text-emerald-600">65%</div>
                     <div className="text-sm text-gray-600 mt-2">13/20 won</div>
                     <div className="text-xs text-gray-600 mt-1">$2.8M total</div>
                   </div>
-                  <div className="bg-gradient-to-br from-yellow-100 to-yellow-50 p-6 rounded-xl border-2 border-yellow-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-yellow-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">$250K-$500K</div>
                     <div className="text-5xl font-bold text-yellow-600">50%</div>
                     <div className="text-sm text-gray-600 mt-2">4/8 won</div>
                     <div className="text-xs text-gray-600 mt-1">$1.8M total</div>
                   </div>
-                  <div className="bg-gradient-to-br from-orange-100 to-orange-50 p-6 rounded-xl border-2 border-orange-300 shadow-md hover:shadow-lg transition-all">
+                  <div className="p-6 rounded-xl border-2 border-orange-300 shadow-md hover:shadow-lg transition-all" style={{ backgroundColor: '#F3F3F3' }}>
                     <div className="text-sm text-gray-700 font-semibold mb-2">&gt;$500K</div>
                     <div className="text-5xl font-bold text-orange-600">25%</div>
                     <div className="text-sm text-gray-600 mt-2">1/4 won</div>
@@ -500,7 +500,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
           {level === 3 && (
             <div className="space-y-6">
               {/* Recent Wins */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
+              <div className="p-8 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Recent Wins (Last 30 Days)</h3>
                 <div className="space-y-4">
                   {[
@@ -529,7 +529,7 @@ export const WinRateDrillDown: React.FC<WinRateDrillDownProps> = ({ level, onClo
               </div>
 
               {/* Recent Losses */}
-              <div className="bg-white p-8 rounded-xl border-2 border-gray-200">
+              <div className="p-8 rounded-xl border-2 border-gray-200" style={{ backgroundColor: '#F3F3F3' }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Recent Losses (Last 30 Days)</h3>
                 <div className="space-y-4">
                   {[

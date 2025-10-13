@@ -64,7 +64,7 @@ export default function StrategicExceptionAlerts({ alerts }: StrategicExceptionA
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+    <div className="rounded-xl shadow-sm border border-gray-200 p-8" style={{ backgroundColor: '#F3F3F3' }}>
       <div className="flex items-center gap-3 mb-8">
         <div className="p-2 bg-red-100 rounded-lg">
           <AlertTriangle className="h-6 w-6 text-red-600" />

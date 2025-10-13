@@ -112,6 +112,7 @@ interface AccountDetail {
   licensesAvailable: number;
   utilizationTrend: string;
   momChange: number;
+  hasValidTrend: boolean;
   annualWasteCost: number;
   priorityScore: number;
   recommendedAction: string;
@@ -122,6 +123,18 @@ interface AccountDetail {
   churnProbability: number;
   estimatedChurnDate: string | null;
   churnPrediction: any | null;
+  
+  // Comprehensive Churn Analysis
+  championDepartures: any[];
+  historicalChurnEvents: any[];
+  churnReasons: any[];
+  preventionStrategies: string[];
+  churnAlerts: any[];
+  riskFactors: any[];
+  interventionWindow: number;
+  lastChurnEvent: any | null;
+  churnTrend: string;
+  competitorThreats: any[];
 }
 
 export default function AccountDetailPage({ params }: { params: Promise<{ customerId: string }> }) {
@@ -148,9 +161,12 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
       const stakeholders = require('../../../../source_data/master-data/stakeholders.json');
       const csms = require('../../../../source_data/master-data/csms.json');
       const users = require('../../../../source_data/master-data/users.json');
+      const customers = require('../../../../source_data/master-data/customers.json');
       
-      // Load churn prediction data (predictive risk model)
+      // Load churn prediction and risk data
       const churnPredictions = require('../../../../source_data/csm-data/churn_predictions.json');
+      const championDepartureAlerts = require('../../../../source_data/csm-data/champion_departure_alerts.json');
+      const revenueMovements = require('../../../../source_data/commercial_operations/revenue_movements.json');
 
       const accountData = accounts.find((acc: any) => acc.account?.id === resolvedParams.customerId || acc.id === resolvedParams.customerId);
       const subscription = subscriptions.find((sub: any) => sub.customer_id === resolvedParams.customerId);
@@ -160,55 +176,56 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
         return;
       }
 
-      // Get current utilization data
-      const currentDate = new Date().toISOString().split('T')[0];
-      let currentUtilization = utilizationHistory.filter((util: any) => 
-        util.customer_id === resolvedParams.customerId && util.snapshot_date === currentDate
-      );
+      // Get current utilization data from utilization_history.json (SAME AS ALL OTHER PAGES)
+      // Find the latest snapshot date globally
+      const allSnapshots = utilizationHistory.map((d: any) => d.snapshot_date).sort();
+      const latestDate = allSnapshots[allSnapshots.length - 1];
       
-      if (currentUtilization.length === 0) {
-        const latestDate = utilizationHistory
-          .filter((util: any) => util.customer_id === resolvedParams.customerId)
-          .map((u: any) => u.snapshot_date)
-          .sort()
-          .pop();
-        currentUtilization = utilizationHistory.filter((util: any) => 
-          util.customer_id === resolvedParams.customerId && util.snapshot_date === latestDate
-        );
-      }
+      // Get all products for this customer at the latest date
+      const currentUtilization = utilizationHistory.filter((util: any) => 
+        util.customer_id === resolvedParams.customerId && util.snapshot_date === latestDate
+      );
 
       if (currentUtilization.length === 0) {
         setLoading(false);
         return;
       }
 
-      const util = currentUtilization[0];
-
       // Get contract information
       const accountContracts = contracts.filter((contract: any) => contract.customer_id === resolvedParams.customerId);
       const primaryContract = accountContracts.find((contract: any) => contract.status === 'Active') || accountContracts[0];
 
-      // Get license information from licenses.json
-      const accountLicenses = licenses.filter((license: any) => license.customer_id === resolvedParams.customerId);
-      const totalLicensesFromProducts = accountLicenses.reduce((sum: number, license: any) => sum + license.license_count, 0);
-      const productCount = new Set(accountLicenses.map((license: any) => license.product_family)).size;
-      
-      // Calculate REAL active users by summing across ALL products
-      // Each product has: license_count × (utilization / 100) = active users for that product
-      const totalActiveUsers = accountLicenses.reduce((sum: number, license: any) => {
-        const productActiveUsers = Math.round(license.license_count * (license.utilization / 100));
-        return sum + productActiveUsers;
-      }, 0);
-      
-      // Calculate account-level totals (sum across all products)
-      const totalLicenses = totalLicensesFromProducts;
-      const licensesUsed = totalActiveUsers;  // Use calculated sum, not util.licenses_used
+      // Calculate totals from utilization_history.json (SAME METHOD AS ALL OTHER PAGES)
+      const totalLicenses = currentUtilization.reduce((sum: number, u: any) => sum + (u.total_licenses || 0), 0);
+      const licensesUsed = currentUtilization.reduce((sum: number, u: any) => sum + (u.active_users || 0), 0);
       const licensesAvailable = totalLicenses - licensesUsed;
       const utilizationPercentage = totalLicenses > 0 ? (licensesUsed / totalLicenses) * 100 : 0;
+      
+      // Count unique products from utilization data
+      const productCount = new Set(currentUtilization.map((u: any) => u.product_family)).size;
+      
+      // Get license information from licenses.json (for additional details like renewal dates, annual value)
+      const accountLicenses = licenses.filter((license: any) => license.customer_id === resolvedParams.customerId);
+      
+      // Create enhanced product details by merging utilization_history (for accurate counts) with licenses.json (for metadata)
+      const productDetails = currentUtilization.map((util: any) => {
+        const licenseMetadata = accountLicenses.find((lic: any) => lic.product_family === util.product_family);
+        return {
+          product_family: util.product_family,
+          license_count: util.total_licenses,
+          active_users: util.active_users,
+          utilization: util.total_licenses > 0 ? ((util.active_users / util.total_licenses) * 100).toFixed(1) : 0,
+          adoption_stage: licenseMetadata?.adoption_stage || 'Unknown',
+          annual_value: licenseMetadata?.annual_value || 0,
+          renewal_date: licenseMetadata?.renewal_date || 'N/A',
+          license_type: licenseMetadata?.license_type || 'N/A',
+          tier: licenseMetadata?.tier || 'N/A'
+        };
+      });
 
       // Get user information
       const accountUsers = users.filter((user: any) => user.customer_id === resolvedParams.customerId);
-      const activeUsers = licensesUsed; // Use calculated active users (sum across all products)
+      const activeUsers = licensesUsed; // Use active users from utilization_history.json
       const userCount = accountUsers.length;
 
       // Get CSM information
@@ -228,6 +245,152 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
       const churnPrediction = churnPredictions.find((p: any) => 
         p.account_id === resolvedParams.customerId
       );
+      
+      // Get champion departure alerts for this account
+      const championDepartures = championDepartureAlerts.filter((alert: any) => 
+        alert.account_id === resolvedParams.customerId
+      ).map((departure: any) => ({
+        ...departure,
+        daysSinceDeparture: Math.ceil((new Date().getTime() - new Date(departure.departure_date).getTime()) / (1000 * 60 * 60 * 24))
+      }));
+      
+      // Get historical churn events for this account
+      const historicalChurnEvents = revenueMovements.filter((movement: any) => 
+        movement.customer_id === resolvedParams.customerId && movement.movement_type === 'churn'
+      ).map((movement: any) => ({
+        ...movement,
+        churnDate: movement.effective_date,
+        arrLost: Math.abs(movement.arr_change),
+        reason: movement.reason_code,
+        preventable: ['not_using', 'competitor', 'product_fit', 'support_issues', 'feature_gaps'].includes(movement.reason_code)
+      }));
+      
+      // Get customer data for additional context
+      const customerData = customers.find((c: any) => c.customer_id === resolvedParams.customerId);
+      
+      // Analyze churn reasons and generate prevention strategies
+      const churnReasons = historicalChurnEvents.reduce((acc: any, event: any) => {
+        const reason = event.reason;
+        if (!acc[reason]) {
+          acc[reason] = { count: 0, arr: 0, preventable: false };
+        }
+        acc[reason].count += 1;
+        acc[reason].arr += event.arrLost;
+        acc[reason].preventable = event.preventable;
+        return acc;
+      }, {});
+      
+      // Generate prevention strategies based on risk factors
+      const preventionStrategies = [];
+      if (churnPrediction) {
+        if (churnPrediction.risk_factors?.includes('low_usage')) {
+          preventionStrategies.push('Increase product adoption through training and feature discovery');
+        }
+        if (churnPrediction.risk_factors?.includes('support_issues')) {
+          preventionStrategies.push('Improve support response time and quality');
+        }
+        if (churnPrediction.risk_factors?.includes('competitor_mentions')) {
+          preventionStrategies.push('Conduct competitive analysis and value demonstration');
+        }
+        if (churnPrediction.risk_factors?.includes('contract_renewal_risk')) {
+          preventionStrategies.push('Schedule early renewal discussions and QBRs');
+        }
+        if (championDepartures.length > 0) {
+          preventionStrategies.push('Develop relationships with new stakeholders and champions');
+        }
+      }
+      
+      // Generate churn alerts
+      const churnAlerts = [];
+      if (churnPrediction && churnPrediction.churn_probability > 0.7) {
+        churnAlerts.push({
+          type: 'critical',
+          title: 'High Churn Risk',
+          description: `Account has ${(churnPrediction.churn_probability * 100).toFixed(1)}% churn probability`,
+          priority: 'critical'
+        });
+      }
+      if (championDepartures.length > 0) {
+        churnAlerts.push({
+          type: 'warning',
+          title: 'Champion Departure',
+          description: `${championDepartures.length} key stakeholder(s) have departed`,
+          priority: 'high'
+        });
+      }
+      if (historicalChurnEvents.length > 0) {
+        churnAlerts.push({
+          type: 'info',
+          title: 'Historical Churn',
+          description: `Account has churned ${historicalChurnEvents.length} time(s) in the past`,
+          priority: 'medium'
+        });
+      }
+      
+      // Calculate churn trend
+      const recentChurnEvents = historicalChurnEvents.filter((event: any) => {
+        const churnDate = new Date(event.churnDate);
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+        return churnDate >= sixMonthsAgo;
+      });
+      
+      const churnTrend = recentChurnEvents.length === 0 ? 'stable' : 
+                        recentChurnEvents.length >= 2 ? 'increasing' : 'moderate';
+      
+      // Extract real competitor threats from account timeline
+      const competitorMentions: any[] = [];
+      if (accountData.timeline) {
+        accountData.timeline.forEach((timelineItem: any) => {
+          // Check expansion signals for competitor mentions
+          if (timelineItem.expansion_signals) {
+            const hasCompetitorMention = timelineItem.expansion_signals.some((signal: string) => 
+              signal.toLowerCase().includes('competitor')
+            );
+            if (hasCompetitorMention) {
+              competitorMentions.push({
+                date: timelineItem.date,
+                month: timelineItem.month,
+                signals: timelineItem.expansion_signals.filter((s: string) => 
+                  s.toLowerCase().includes('competitor')
+                )
+              });
+            }
+          }
+          
+          // Check engagement events for competitor mentions
+          if (timelineItem.engagement_events) {
+            timelineItem.engagement_events.forEach((event: any) => {
+              if (event.notes && event.notes.toLowerCase().includes('competitor')) {
+                competitorMentions.push({
+                  date: event.date,
+                  type: event.type,
+                  notes: event.notes,
+                  outcome: event.outcome
+                });
+              }
+            });
+          }
+        });
+      }
+      
+      // Determine threat level based on frequency and recency
+      const recentCompetitorMentions = competitorMentions.filter((mention: any) => {
+        const mentionDate = new Date(mention.date);
+        const threeMonthsAgo = new Date();
+        threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+        return mentionDate >= threeMonthsAgo;
+      });
+      
+      const competitorThreats = competitorMentions.length > 0 ? [{
+        competitor: 'Competitive Activity Detected',
+        threat_level: recentCompetitorMentions.length >= 2 ? 'high' : 
+                     recentCompetitorMentions.length === 1 ? 'medium' : 'low',
+        last_mention: competitorMentions.length > 0 ? 
+          new Date(competitorMentions[competitorMentions.length - 1].date).toLocaleDateString() : 'N/A',
+        mention_count: competitorMentions.length,
+        recent_mentions: recentCompetitorMentions.length
+      }] : [];
 
       // Calculate month-over-month change
       const oneMonthAgo = new Date();
@@ -239,10 +402,24 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
       );
       
       let momChange = 0;
+      let hasValidTrend = false;
       if (previousUtilization.length > 0) {
-        const prevUtil = previousUtilization[0];
-        const prevUtilizationPercentage = prevUtil.utilization_percentage || 0;
+        // Calculate average utilization for previous month (same method as current)
+        const prevTotalLicenses = previousUtilization.reduce((sum: number, u: any) => sum + (u.total_licenses || 0), 0);
+        const prevLicensesUsed = previousUtilization.reduce((sum: number, u: any) => sum + (u.active_users || 0), 0);
+        const prevUtilizationPercentage = prevTotalLicenses > 0 ? (prevLicensesUsed / prevTotalLicenses) * 100 : 0;
         momChange = utilizationPercentage - prevUtilizationPercentage;
+        hasValidTrend = true;
+        
+        console.log(`📊 Utilization Trend for ${resolvedParams.customerId}:`, {
+          current: utilizationPercentage.toFixed(1),
+          previous: prevUtilizationPercentage.toFixed(1),
+          change: momChange.toFixed(1),
+          currentDate: latestDate,
+          previousDate: oneMonthAgoStr
+        });
+      } else {
+        console.log(`⚠️ No previous month data for ${resolvedParams.customerId} on ${oneMonthAgoStr}`);
       }
 
       // Calculate annual waste cost (using real available licenses)
@@ -268,7 +445,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
         industry: accountData.account?.industry || (accountData as any).industry || 'Technology',
         region: accountData.account?.geography?.region || (accountData as any).region || 'Americas',
         tier: accountData.account?.tier || (accountData as any).tier || 'Mid-Market',
-        arr: subscription.arr || 0,
+        arr: accountData.account?.arr || (accountData as any).arr || 0,  // Use account-level ARR from accounts.json
         healthScore: accountData.account?.health_score || (accountData as any).health_score || 70,
         createdDate: accountData.account?.created_date || (accountData as any).created_date || 'N/A',
         isHeroAccount: accountData.account?.is_hero_account || (accountData as any).is_hero_account || false,
@@ -279,9 +456,9 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
         primaryContract: primaryContract,
         
         // License Information
-        licenses: accountLicenses,
+        licenses: productDetails,  // Use enhanced product details from utilization_history
         totalLicenses: totalLicenses,
-        totalUsers: totalLicensesFromProducts,
+        totalUsers: totalLicenses,  // Total license capacity
         activeUsers: activeUsers,
         
         // Churn Risk Information (predictive, not actual churn)
@@ -290,6 +467,21 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
         churnProbability: churnPrediction?.churn_probability || 0,
         estimatedChurnDate: churnPrediction?.estimated_churn_date || null,
         churnPrediction: churnPrediction || null,
+        
+        // Comprehensive Churn Analysis
+        championDepartures: championDepartures,
+        historicalChurnEvents: historicalChurnEvents,
+        churnReasons: Object.entries(churnReasons).map(([reason, data]: [string, any]) => ({
+          reason,
+          ...data
+        })),
+        preventionStrategies: preventionStrategies,
+        churnAlerts: churnAlerts,
+        riskFactors: churnPrediction?.risk_factors || [],
+        interventionWindow: churnPrediction?.intervention_window_days || 0,
+        lastChurnEvent: historicalChurnEvents.length > 0 ? historicalChurnEvents[0] : null,
+        churnTrend: churnTrend,
+        competitorThreats: competitorThreats,
         productCount: productCount,
         
         // User Information
@@ -307,8 +499,9 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
         utilizationPercentage: utilizationPercentage,
         licensesUsed: licensesUsed,
         licensesAvailable: licensesAvailable,
-        utilizationTrend: momChange > 0 ? 'increasing' : momChange < 0 ? 'decreasing' : 'stable',
-        momChange: momChange,
+        utilizationTrend: hasValidTrend ? (momChange > 0 ? 'increasing' : momChange < 0 ? 'decreasing' : 'stable') : 'no-data',
+        momChange: hasValidTrend ? momChange : 0,
+        hasValidTrend: hasValidTrend,
         annualWasteCost: annualWasteCost,
         priorityScore: priorityScore,
         recommendedAction: recommendedAction
@@ -443,12 +636,14 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
                   {account.utilizationPercentage.toFixed(1)}%
                 </p>
               </div>
-              <div className="flex items-center">
-                {getTrendIcon(account.utilizationTrend)}
-                <span className="ml-1 text-sm text-gray-600">
-                  {account.momChange > 0 ? '+' : ''}{account.momChange.toFixed(1)}%
-                </span>
-              </div>
+              {account.hasValidTrend && (
+                <div className="flex items-center">
+                  {getTrendIcon(account.utilizationTrend)}
+                  <span className="ml-1 text-sm text-gray-600">
+                    {account.momChange > 0 ? '+' : ''}{account.momChange.toFixed(1)}%
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -774,6 +969,247 @@ export default function AccountDetailPage({ params }: { params: Promise<{ custom
                 </div>
               </div>
             )}
+
+            {/* Comprehensive Churn Analysis */}
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                📊 Comprehensive Churn Analysis
+              </h2>
+              
+              {/* Churn Alerts */}
+              {account.churnAlerts.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">🚨 Active Churn Alerts</h3>
+                  <div className="space-y-2">
+                    {account.churnAlerts.map((alert: any, idx: number) => (
+                      <div key={idx} className={`p-3 rounded-lg border ${
+                        alert.type === 'critical' ? 'bg-red-50 border-red-200' :
+                        alert.type === 'warning' ? 'bg-orange-50 border-orange-200' :
+                        'bg-blue-50 border-blue-200'
+                      }`}>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className={`font-medium ${
+                              alert.type === 'critical' ? 'text-red-900' :
+                              alert.type === 'warning' ? 'text-orange-900' :
+                              'text-blue-900'
+                            }`}>
+                              {alert.title}
+                            </h4>
+                            <p className={`text-sm ${
+                              alert.type === 'critical' ? 'text-red-700' :
+                              alert.type === 'warning' ? 'text-orange-700' :
+                              'text-blue-700'
+                            }`}>
+                              {alert.description}
+                            </p>
+                          </div>
+                          <span className={`px-2 py-1 text-xs font-medium rounded ${
+                            alert.priority === 'critical' ? 'bg-red-200 text-red-800' :
+                            alert.priority === 'high' ? 'bg-orange-200 text-orange-800' :
+                            'bg-blue-200 text-blue-800'
+                          }`}>
+                            {alert.priority}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Champion Departures */}
+              {account.championDepartures.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">👥 Champion Departures</h3>
+                  <div className="space-y-3">
+                    {account.championDepartures.map((departure: any, idx: number) => (
+                      <div key={idx} className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-medium text-orange-900">{departure.champion_name}</h4>
+                          <span className="text-sm text-orange-700">{departure.daysSinceDeparture} days ago</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-orange-600">Role:</span>
+                            <span className="ml-1 text-orange-900">{departure.champion_role}</span>
+                          </div>
+                          <div>
+                            <span className="text-orange-600">Impact Score:</span>
+                            <span className="ml-1 text-orange-900">{departure.impact_score}/100</span>
+                          </div>
+                          <div>
+                            <span className="text-orange-600">New Company:</span>
+                            <span className="ml-1 text-orange-900">{departure.new_company}</span>
+                          </div>
+                          <div>
+                            <span className="text-orange-600">New Role:</span>
+                            <span className="ml-1 text-orange-900">{departure.new_role}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Historical Churn Events */}
+              {account.historicalChurnEvents.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">📈 Historical Churn Events</h3>
+                  <div className="space-y-3">
+                    {account.historicalChurnEvents.map((event: any, idx: number) => (
+                      <div key={idx} className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-medium text-gray-900">Churn Event #{idx + 1}</h4>
+                          <span className="text-sm text-gray-600">{new Date(event.churnDate).toLocaleDateString()}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-gray-600">Reason:</span>
+                            <span className="ml-1 text-gray-900">{event.reason}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600">ARR Lost:</span>
+                            <span className="ml-1 text-gray-900">${(event.arrLost / 1000).toFixed(0)}K</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600">Preventable:</span>
+                            <span className={`ml-1 ${event.preventable ? 'text-green-600' : 'text-red-600'}`}>
+                              {event.preventable ? 'Yes' : 'No'}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600">Trend:</span>
+                            <span className={`ml-1 ${
+                              account.churnTrend === 'increasing' ? 'text-red-600' :
+                              account.churnTrend === 'stable' ? 'text-green-600' :
+                              'text-orange-600'
+                            }`}>
+                              {account.churnTrend}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Churn Reasons Analysis */}
+              {account.churnReasons.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">🔍 Churn Reasons Analysis</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {account.churnReasons.map((reason: any, idx: number) => (
+                      <div key={idx} className="p-4 border border-gray-200 rounded-lg">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-medium text-gray-900 capitalize">{reason.reason}</h4>
+                          <span className={`px-2 py-1 text-xs font-medium rounded ${
+                            reason.preventable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                          }`}>
+                            {reason.preventable ? 'Preventable' : 'Not Preventable'}
+                          </span>
+                        </div>
+                        <div className="space-y-1 text-sm text-gray-600">
+                          <div>Occurrences: {reason.count}</div>
+                          <div>Total ARR Lost: ${(reason.arr / 1000).toFixed(0)}K</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Prevention Strategies */}
+              {account.preventionStrategies.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">🛡️ Prevention Strategies</h3>
+                  <div className="space-y-2">
+                    {account.preventionStrategies.map((strategy: string, idx: number) => (
+                      <div key={idx} className="flex items-start">
+                        <span className="text-green-600 mr-2">✓</span>
+                        <span className="text-gray-700">{strategy}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Risk Factors */}
+              {account.riskFactors.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">⚠️ Current Risk Factors</h3>
+                  <div className="space-y-2">
+                    {account.riskFactors.map((factor: any, idx: number) => {
+                      // Handle both object format {factor: "...", severity: "..."} and string format
+                      const factorText = typeof factor === 'string' ? factor : factor.factor || 'Unknown';
+                      const severity = typeof factor === 'object' && factor.severity ? factor.severity : null;
+                      const description = typeof factor === 'object' && factor.description ? factor.description : null;
+                      
+                      return (
+                        <div key={idx} className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                          <div className="flex items-start">
+                            <span className="text-red-600 mr-2 mt-1">•</span>
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between mb-1">
+                                <span className="text-gray-900 font-medium">{factorText}</span>
+                                {severity && (
+                                  <span className={`px-2 py-1 text-xs font-medium rounded ${
+                                    severity === 'High' ? 'bg-red-200 text-red-800' :
+                                    severity === 'Medium' ? 'bg-orange-200 text-orange-800' :
+                                    'bg-yellow-200 text-yellow-800'
+                                  }`}>
+                                    {severity}
+                                  </span>
+                                )}
+                              </div>
+                              {description && (
+                                <p className="text-sm text-gray-600">{description}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Competitor Threats */}
+              {account.competitorThreats.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">🏢 Competitor Threats</h3>
+                  <div className="space-y-2">
+                    {account.competitorThreats.map((threat: any, idx: number) => (
+                      <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                        <span className="text-gray-700">{threat.competitor}</span>
+                        <div className="flex items-center space-x-2">
+                          <span className={`px-2 py-1 text-xs font-medium rounded ${
+                            threat.threat_level === 'high' ? 'bg-red-100 text-red-800' :
+                            threat.threat_level === 'medium' ? 'bg-orange-100 text-orange-800' :
+                            'bg-green-100 text-green-800'
+                          }`}>
+                            {threat.threat_level}
+                          </span>
+                          <span className="text-xs text-gray-500">{threat.last_mention}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Intervention Window */}
+              {account.interventionWindow > 0 && (
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <h3 className="text-lg font-medium text-blue-900 mb-2">⏰ Intervention Window</h3>
+                  <p className="text-blue-700">
+                    You have <strong>{account.interventionWindow} days</strong> to implement prevention strategies before the risk increases significantly.
+                  </p>
+                </div>
+              )}
+            </div>
 
             {/* CSM Information */}
             {account.csm && (

@@ -12,7 +12,7 @@ import {
   type TrendData,
   type ExceptionAlert
 } from '@/services/commercialOpsService';
-import { drillDownService, type DrillDownLevel } from '@/services/drillDownService';
+import { enhancedDrillDownService, type DrillDownLevel } from '@/services/enhancedDrillDownService';
 import { validateCommercialOpsData } from '@/utils/dataValidation';
 import DrillDownKPICard from './DrillDownKPICard';
 import StrategicTrendChart from './StrategicTrendChart';
@@ -22,17 +22,23 @@ import QuoteToCashBreakdown from './QuoteToCashBreakdown';
 import ProductPerformanceMatrix from './ProductPerformanceMatrix';
 import DSOAgingAnalysis from './DSOAgingAnalysis';
 import RevenueVarianceAnalysis from './RevenueVarianceAnalysis';
-import Level2TacticalAnalysis from './Level2TacticalAnalysis';
-import Level3OperationalActions from './Level3OperationalActions';
-import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Clock, DollarSign, FileText, Target, BarChart3, PieChart, Activity, ChevronRight } from 'lucide-react';
+import Q2CDrillDownOrchestrator from './Q2C/Q2CDrillDownOrchestrator';
+import Q2CActionItems from './Q2C/Q2CActionItems';
+import QuoteApprovalDrillDownOrchestrator from './QuoteApproval/QuoteApprovalDrillDownOrchestrator';
+import DSODrillDownOrchestrator from './DSO/DSODrillDownOrchestrator';
+import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Clock, DollarSign, FileText, Target, BarChart3, PieChart, Activity, ChevronRight } from '@/utils/iconMapping';
+import { HelpCircle, X } from 'lucide-react';
 
 export default function DrillDownDashboard() {
   const [kpis, setKPIs] = useState<CommercialOpsKPIs | null>(null);
   const [trendData, setTrendData] = useState<TrendData[]>([]);
   const [alerts, setAlerts] = useState<ExceptionAlert[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentLevel, setCurrentLevel] = useState<DrillDownLevel>({ level: 1, title: 'Strategic Overview', description: 'High-level KPI dashboard' });
+  const [currentLevel, setCurrentLevel] = useState<DrillDownLevel>({ level: 0, title: 'Strategic Overview', description: 'High-level KPI dashboard' });
   const [activeSection, setActiveSection] = useState<'overview' | 'breakdown' | 'analysis'>('overview');
+  const [activeKPI, setActiveKPI] = useState<string | null>(null);
+  const [showActionItems, setShowActionItems] = useState(false);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,58 +68,51 @@ export default function DrillDownDashboard() {
     fetchData();
   }, []);
 
-  const handleDrillDown = (kpiId: string, level: 2 | 3) => {
-    const newLevel = drillDownService.drillDown(kpiId, level);
-    setCurrentLevel(newLevel);
+  const handleDrillDown = (kpiId: string) => {
+    setActiveKPI(kpiId);
+    setCurrentLevel({ level: 1, title: `${kpiId} Drill-Down`, description: 'Detailed analysis' });
   };
 
-  const handleDrillUp = () => {
-    const newLevel = drillDownService.drillUp();
-    setCurrentLevel(newLevel);
+  const handleViewActionItems = (kpiId: string) => {
+    setActiveKPI(kpiId);
+    setShowActionItems(true);
   };
 
-  const handleResetToLevel1 = () => {
-    const newLevel = drillDownService.resetToLevel1();
-    setCurrentLevel(newLevel);
+  const handleBackToOverview = () => {
+    setActiveKPI(null);
+    setShowActionItems(false);
+    setCurrentLevel({ level: 0, title: 'Strategic Overview', description: 'High-level KPI dashboard' });
     setActiveSection('overview');
   };
 
   const renderBreadcrumb = () => {
-    const history = drillDownService.getNavigationHistory();
+    const history = enhancedDrillDownService.getNavigationHistory();
     const allLevels = [...history, currentLevel];
 
     return (
       <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-4">
         <button 
-          onClick={handleResetToLevel1}
+          onClick={handleBackToOverview}
           className="flex items-center gap-1 hover:text-blue-600 transition-colors"
         >
-          {/* <span>Dashboard</span> */}
+          <span>Dashboard</span>
         </button>
-        {allLevels.slice(1).map((level, index) => (
-          <div key={index} className="flex items-center gap-2">
+        {currentLevel.level > 0 && (
+          <div className="flex items-center gap-2">
             <ChevronRight className="h-4 w-4 text-gray-400" />
-            <span className={index === allLevels.length - 2 ? 'text-blue-600 font-medium' : ''}>
-              {level.title}
-            </span>
+            <span className="text-blue-600 font-medium">{currentLevel.title}</span>
           </div>
-        ))}
+        )}
       </nav>
     );
   };
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="relative">
-            <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-blue-600 mx-auto mb-4"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <BarChart3 className="h-8 w-8 text-blue-600" />
-            </div>
-          </div>
-          <p className="text-xl font-semibold text-gray-700 mb-2">Loading Commercial Operations Dashboard...</p>
-          <p className="text-sm text-gray-500">Analyzing quote-to-cash performance metrics</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading Commercial Operations data...</p>
         </div>
       </div>
     );
@@ -121,11 +120,11 @@ export default function DrillDownDashboard() {
 
   if (!kpis) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <AlertTriangle className="h-16 w-16 text-red-500 mx-auto mb-4" />
-          <p className="text-lg font-semibold text-gray-700">Failed to load dashboard data</p>
-          <button 
+          <div className="text-red-500 text-xl mb-4">⚠️ Data Loading Error</div>
+          <p className="text-gray-600 mb-4">Unable to load Commercial Operations KPIs</p>
+          <button
             onClick={() => window.location.reload()}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
@@ -136,24 +135,31 @@ export default function DrillDownDashboard() {
     );
   }
 
-  // Render Level 2 Tactical Analysis
-  if (currentLevel.level === 2 && currentLevel.kpi) {
+  // Render Q2C Action Items
+  if (showActionItems && activeKPI === 'quote-to-cash-cycle') {
     return (
-      <Level2TacticalAnalysis 
-        kpiId={currentLevel.kpi}
-        onBack={handleDrillUp}
-        onDrillToLevel3={(actionId) => handleDrillDown(currentLevel.kpi!, 3)}
-      />
+      <Q2CActionItems onBack={handleBackToOverview} />
     );
   }
 
-  // Render Level 3 Operational Actions
-  if (currentLevel.level === 3 && currentLevel.kpi) {
+  // Render Q2C Drill-Down
+  if (activeKPI === 'quote-to-cash-cycle' && currentLevel.level > 0) {
     return (
-      <Level3OperationalActions 
-        kpiId={currentLevel.kpi}
-        onBack={handleDrillUp}
-      />
+      <Q2CDrillDownOrchestrator onBack={handleBackToOverview} />
+    );
+  }
+
+  // Render Quote Approval Drill-Down
+  if (activeKPI === 'quote-approval-velocity' && currentLevel.level > 0) {
+    return (
+      <QuoteApprovalDrillDownOrchestrator onBack={handleBackToOverview} />
+    );
+  }
+
+  // Render DSO Drill-Down
+  if (activeKPI === 'days-sales-outstanding' && currentLevel.level > 0) {
+    return (
+      <DSODrillDownOrchestrator onBack={handleBackToOverview} />
     );
   }
 
@@ -197,6 +203,14 @@ export default function DrillDownDashboard() {
                   <p className="text-xl font-bold text-green-600">Excellent</p>
                 </div>
               </div>
+              <div className="h-12 w-px bg-gray-300"></div>
+              <button
+                onClick={() => setIsHelpOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-blue-600 border border-blue-300 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                title="Help & Guide"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
@@ -252,6 +266,8 @@ export default function DrillDownDashboard() {
                   description="Average days from quote creation to payment received"
                   color="blue"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="quote-approval-velocity"
@@ -265,6 +281,8 @@ export default function DrillDownDashboard() {
                   description="Average days from quote submission to approval"
                   color="green"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="invoice-accuracy"
@@ -278,10 +296,12 @@ export default function DrillDownDashboard() {
                   description="Percentage of invoices without billing errors"
                   color="emerald"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="days-sales-outstanding"
-                  title="DSO"
+                  title="Days Sales Outstanding (DSO)"
                   value={`${kpis.daysSalesOutstanding.value}`}
                   unit="days"
                   target={`≤ ${kpis.daysSalesOutstanding.target} days`}
@@ -291,6 +311,8 @@ export default function DrillDownDashboard() {
                   description="Average days to collect payment after invoice"
                   color="orange"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
               </div>
 
@@ -308,6 +330,8 @@ export default function DrillDownDashboard() {
                   description="Accuracy of revenue recognition vs expected"
                   color="purple"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="deferred-revenue"
@@ -321,6 +345,8 @@ export default function DrillDownDashboard() {
                   description="Total unearned revenue for future periods"
                   color="indigo"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="quote-win-rate"
@@ -334,6 +360,8 @@ export default function DrillDownDashboard() {
                   description="Percentage of quotes accepted vs declined"
                   color="teal"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
                 <DrillDownKPICard
                   kpiId="renewal-quote-velocity"
@@ -347,6 +375,8 @@ export default function DrillDownDashboard() {
                   description="Time from renewal trigger to quote delivery"
                   color="cyan"
                   onDrillDown={handleDrillDown}
+                  customBgColor="#F3F3F3"
+                  variant="q2c"
                 />
               </div>
             </div>
@@ -361,7 +391,7 @@ export default function DrillDownDashboard() {
               {/* Additional Metrics */}
               <div className="space-y-6">
                 {/* Financial Health */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="rounded-xl shadow-sm border border-gray-200 p-6" style={{ backgroundColor: '#F3F3F3' }}>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <DollarSign className="h-5 w-5 text-green-600" />
                     Financial Health
@@ -399,9 +429,9 @@ export default function DrillDownDashboard() {
                 </div>
 
                 {/* Performance Summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-4">Performance Summary</h3>
-                  <div className="space-y-3">
+                <div className="rounded-xl shadow-lg p-6" style={{ backgroundColor: '#F3F3F3' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-900">Performance Summary</h3>
+                  <div className="space-y-3 text-gray-900">
                     <div className="flex justify-between">
                       <span>Targets Met</span>
                       <span className="font-bold">8 of 10</span>
@@ -423,10 +453,10 @@ export default function DrillDownDashboard() {
             </div>
 
             {/* Exception Alerts */}
-            <EnhancedExceptionAlerts onDrillDown={(type, id) => handleDrillDown(type, 3)} />
+            <EnhancedExceptionAlerts onDrillDown={handleDrillDown} />
 
             {/* Action Buttons */}
-            <StrategicActionButtons />
+            <StrategicActionButtons onViewActionItems={handleViewActionItems} />
           </>
         )}
 
@@ -446,6 +476,50 @@ export default function DrillDownDashboard() {
           </div>
         )}
       </div>
+
+      {/* Help Modal */}
+      {isHelpOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300"
+            onClick={() => setIsHelpOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col transform transition-all duration-300 ease-in-out">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-xl">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <HelpCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">Commercial Operations Overview</h2>
+                    <p className="text-blue-100 text-sm">Complete guide and documentation</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsHelpOpen(false)}
+                  className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* Content - iframe */}
+              <div className="flex-1 overflow-hidden">
+                <iframe
+                  src="/commercial-operations/overview"
+                  className="w-full h-full border-0"
+                  title="Commercial Operations Overview"
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
