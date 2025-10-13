@@ -91,108 +91,80 @@ export default function DSOLevel1TrendAging({
         </div>
       </div>
 
-      {/* Key Metrics Cards */}
+      {/* Key Metrics Cards - Q2C Variant Style */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-5 w-5 text-blue-500" />
-            <span className="font-medium text-blue-700">Current DSO</span>
-          </div>
-          <p className="text-2xl font-bold text-blue-600">{currentData?.dsoValue || 0} days</p>
-          <p className="text-sm text-blue-600">Target: ≤{currentData?.target || 30} days</p>
-        </div>
-
-        <div className={`${trendDirection === 'improving' ? 'border-green-200' : 'border-red-200'} border rounded-xl p-4 shadow-sm`} style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            {trendDirection === 'improving' ? (
-              <TrendingDown className="h-5 w-5 text-green-500" />
-            ) : (
-              <TrendingUp className="h-5 w-5 text-red-500" />
-            )}
-            <span className={`font-medium ${trendDirection === 'improving' ? 'text-green-700' : 'text-red-700'}`}>
-              Trend
+        {/* Current DSO Card */}
+        <div className="border border-gray-200 rounded-xl p-5" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Current DSO</h3>
+            <span className="text-xs font-medium text-green-600">
+              {(currentData?.dsoValue || 0) <= (currentData?.target || 30) ? 'On Target' : 'At Risk'}
             </span>
           </div>
-          <p className={`text-2xl font-bold ${trendDirection === 'improving' ? 'text-green-600' : 'text-red-600'}`}>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{currentData?.dsoValue || 0} days</p>
+          <p className="text-xs text-gray-500 mb-3">Target: ≤{currentData?.target || 30} days</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${(currentData?.dsoValue || 0) <= (currentData?.target || 30) ? 'bg-green-500' : 'bg-red-500'}`}
+              style={{ width: `${Math.min(((currentData?.dsoValue || 0) / (currentData?.target || 30)) * 100, 100)}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Trend Card */}
+        <div className="border border-gray-200 rounded-xl p-5" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Trend</h3>
+            <span className={`text-xs font-medium ${trendDirection === 'improving' ? 'text-green-600' : 'text-red-600'}`}>
+              {trendDirection === 'improving' ? 'Improving' : 'Declining'}
+            </span>
+          </div>
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             {trendDirection === 'improving' ? '↓' : '↑'} {Math.abs((currentData?.dsoValue || 0) - (previousData?.dsoValue || 0))} days
           </p>
-          <p className={`text-sm ${trendDirection === 'improving' ? 'text-green-600' : 'text-red-600'}`}>
-            vs previous month
-          </p>
+          <p className="text-xs text-gray-500 mb-3">vs previous month</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${trendDirection === 'improving' ? 'bg-green-500' : 'bg-red-500'}`}
+              style={{ width: '100%' }}
+            ></div>
+          </div>
         </div>
 
-        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="h-5 w-5 text-purple-500" />
-            <span className="font-medium text-purple-700">Total AR</span>
+        {/* Total AR Card */}
+        <div className="border border-gray-200 rounded-xl p-5" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Total AR</h3>
+            <span className="text-xs font-medium text-gray-600">Current</span>
           </div>
-          <p className="text-2xl font-bold text-purple-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             ${Math.round((currentData?.totalAR || 0) / 1000)}K
           </p>
-          <p className="text-sm text-purple-600">Outstanding receivables</p>
+          <p className="text-xs text-gray-500 mb-3">Outstanding receivables</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="h-2 rounded-full bg-blue-500" style={{ width: '75%' }}></div>
+          </div>
         </div>
 
-        <div className="border border-yellow-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-5 w-5 text-yellow-500" />
-            <span className="font-medium text-yellow-700">90+ Days</span>
+        {/* 90+ Days Card */}
+        <div className="border border-gray-200 rounded-xl p-5" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">90+ Days</h3>
+            <span className={`text-xs font-medium ${(currentData?.agingPercentages.aging_90_plus_pct || 0) > 10 ? 'text-red-600' : 'text-green-600'}`}>
+              {(currentData?.agingPercentages.aging_90_plus_pct || 0) > 10 ? 'Critical' : 'On Target'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-yellow-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             {currentData?.agingPercentages.aging_90_plus_pct || 0}%
           </p>
-          <p className="text-sm text-yellow-600">
+          <p className="text-xs text-gray-500 mb-3">
             ${Math.round((currentData?.agingBuckets.aging_90_plus || 0) / 1000)}K overdue
           </p>
-        </div>
-      </div>
-
-      {/* DSO Trend Chart */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">DSO Trend (Last 6 Months)</h2>
-            <p className="text-sm text-gray-600">Days Sales Outstanding performance vs target</p>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <span>Actual DSO</span>
-            <div className="w-3 h-3 bg-red-400 rounded-full ml-4"></div>
-            <span>Target (30 days)</span>
-          </div>
-        </div>
-        
-        {/* Simple Line Chart Visualization */}
-        <div className="relative h-64">
-          <div className="absolute inset-0 flex items-end justify-between px-4">
-            {trendData.map((data, index) => (
-              <div key={data.id} className="flex flex-col items-center" style={{ width: `${100/trendData.length}%` }}>
-                {/* DSO Value Bar */}
-                <div className="relative mb-2">
-                  <div 
-                    className={`w-8 rounded-t ${data.dsoValue > data.target ? 'bg-red-500' : 'bg-blue-500'}`}
-                    style={{ 
-                      height: `${(data.dsoValue / 50) * 200}px`,
-                      minHeight: '20px'
-                    }}
-                  ></div>
-                  {/* Target Line */}
-                  <div 
-                    className="absolute left-0 right-0 border-t-2 border-red-400 border-dashed"
-                    style={{ 
-                      bottom: `${(data.target / 50) * 200}px`
-                    }}
-                  ></div>
-                  {/* Value Label */}
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs font-semibold text-gray-700">
-                    {data.dsoValue}d
-                  </div>
-                </div>
-                {/* Month Label */}
-                <span className="text-xs text-gray-600 transform -rotate-45 origin-center">
-                  {data.month.split(' ')[0]}
-                </span>
-              </div>
-            ))}
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${(currentData?.agingPercentages.aging_90_plus_pct || 0) > 10 ? 'bg-red-500' : 'bg-green-500'}`}
+              style={{ width: `${Math.min((currentData?.agingPercentages.aging_90_plus_pct || 0) * 2, 100)}%` }}
+            ></div>
           </div>
         </div>
       </div>
@@ -202,50 +174,13 @@ export default function DSOLevel1TrendAging({
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">AR Aging Buckets (Current Month)</h2>
-            <p className="text-sm text-gray-600">Breakdown of outstanding receivables by aging period</p>
+            <p className="text-sm text-gray-600">Breakdown of outstanding receivables by aging period - Click any bucket to drill down</p>
           </div>
         </div>
-        
+
         {currentData && (
           <div className="space-y-4">
-            {/* Stacked Bar Visualization */}
-            <div className="relative h-16 bg-gray-100 rounded-lg overflow-hidden">
-              <div 
-                className="absolute left-0 top-0 h-full bg-green-500 flex items-center justify-center text-white text-sm font-medium"
-                style={{ width: `${currentData.agingPercentages.current_0_30_pct}%` }}
-              >
-                {currentData.agingPercentages.current_0_30_pct > 15 && `${currentData.agingPercentages.current_0_30_pct}%`}
-              </div>
-              <div 
-                className="absolute top-0 h-full bg-yellow-500 flex items-center justify-center text-white text-sm font-medium"
-                style={{ 
-                  left: `${currentData.agingPercentages.current_0_30_pct}%`,
-                  width: `${currentData.agingPercentages.aging_31_60_pct}%` 
-                }}
-              >
-                {currentData.agingPercentages.aging_31_60_pct > 10 && `${currentData.agingPercentages.aging_31_60_pct}%`}
-              </div>
-              <div 
-                className="absolute top-0 h-full bg-orange-500 flex items-center justify-center text-white text-sm font-medium"
-                style={{ 
-                  left: `${currentData.agingPercentages.current_0_30_pct + currentData.agingPercentages.aging_31_60_pct}%`,
-                  width: `${currentData.agingPercentages.aging_61_90_pct}%` 
-                }}
-              >
-                {currentData.agingPercentages.aging_61_90_pct > 8 && `${currentData.agingPercentages.aging_61_90_pct}%`}
-              </div>
-              <div 
-                className="absolute top-0 h-full bg-red-500 flex items-center justify-center text-white text-sm font-medium"
-                style={{ 
-                  left: `${currentData.agingPercentages.current_0_30_pct + currentData.agingPercentages.aging_31_60_pct + currentData.agingPercentages.aging_61_90_pct}%`,
-                  width: `${currentData.agingPercentages.aging_90_plus_pct}%` 
-                }}
-              >
-                {currentData.agingPercentages.aging_90_plus_pct > 5 && `${currentData.agingPercentages.aging_90_plus_pct}%`}
-              </div>
-            </div>
-            
-            {/* Legend and Details - Now Clickable */}
+            {/* Aging Bucket Cards - Clickable */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <button
                 onClick={() => setSelectedBucket({name: '0-30 Days', minDays: 0, maxDays: 30})}

@@ -91,50 +91,77 @@ export default function DSOLevel4CustomerProfile({
         </div>
       </div>
 
-      {/* Customer Summary Cards */}
+      {/* Customer Summary Cards - Q2C Variant Style */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="h-5 w-5 text-blue-500" />
-            <span className="font-medium text-blue-700">Total AR</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Total AR</h3>
+            <span className="text-xs font-medium text-blue-600">Info</span>
           </div>
-          <p className="text-2xl font-bold text-blue-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             ${Math.round(customerProfile.totalAR / 1000)}K
           </p>
-          <p className="text-sm text-blue-600">{customerProfile.invoiceDetails.length} invoices</p>
+          <p className="text-xs text-gray-500 mb-3">{customerProfile.invoiceDetails.length} invoices</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="h-2 rounded-full bg-blue-500" style={{ width: '100%' }}></div>
+          </div>
         </div>
 
-        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-5 w-5 text-red-500" />
-            <span className="font-medium text-red-700">Overdue</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Overdue</h3>
+            <span className="text-xs font-medium text-red-600">
+              {customerProfile.overduePercentage > 0 ? 'Critical' : 'On Target'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-red-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             ${Math.round(customerProfile.overdueAmount / 1000)}K
           </p>
-          <p className="text-sm text-red-600">{customerProfile.overduePercentage}% of total</p>
+          <p className="text-xs text-gray-500 mb-3">{customerProfile.overduePercentage}% of total</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-red-500"
+              style={{ width: `${Math.min(customerProfile.overduePercentage, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-5 w-5 text-green-500" />
-            <span className="font-medium text-green-700">Avg Payment</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Avg Payment</h3>
+            <span className="text-xs font-medium text-green-600">
+              {customerProfile.historicalPerformance.avgDaysToPay <= 30 ? 'On Target' : 'At Risk'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             {customerProfile.historicalPerformance.avgDaysToPay} days
           </p>
-          <p className="text-sm text-green-600">Historical average</p>
+          <p className="text-xs text-gray-500 mb-3">Historical average</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${customerProfile.historicalPerformance.avgDaysToPay <= 30 ? 'bg-green-500' : 'bg-yellow-500'}`}
+              style={{ width: `${Math.min((customerProfile.historicalPerformance.avgDaysToPay / 60) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="h-5 w-5 text-purple-500" />
-            <span className="font-medium text-purple-700">On-Time Rate</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">On-Time Rate</h3>
+            <span className="text-xs font-medium text-green-600">
+              {customerProfile.historicalPerformance.onTimeRate >= 80 ? 'On Target' : 'At Risk'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-purple-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             {customerProfile.historicalPerformance.onTimeRate}%
           </p>
-          <p className="text-sm text-purple-600">Last 12 invoices</p>
+          <p className="text-xs text-gray-500 mb-3">Last 12 invoices</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${customerProfile.historicalPerformance.onTimeRate >= 80 ? 'bg-green-500' : 'bg-yellow-500'}`}
+              style={{ width: `${customerProfile.historicalPerformance.onTimeRate}%` }}>
+            </div>
+          </div>
         </div>
       </div>
 

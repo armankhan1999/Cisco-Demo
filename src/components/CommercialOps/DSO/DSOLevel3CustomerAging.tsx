@@ -129,42 +129,69 @@ export default function DSOLevel3CustomerAging({
         </div>
       </div>
 
-      {/* Summary Cards */}
+      {/* Summary Cards - Q2C Variant Style */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="h-5 w-5 text-blue-500" />
-            <span className="font-medium text-blue-700">Total Outstanding</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Total Outstanding</h3>
+            <span className="text-xs font-medium text-blue-600">Info</span>
           </div>
-          <p className="text-2xl font-bold text-blue-600">${Math.round(totalOutstanding / 1000)}K</p>
-          <p className="text-sm text-blue-600">{filteredCustomers.length} customers</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">${Math.round(totalOutstanding / 1000)}K</p>
+          <p className="text-xs text-gray-500 mb-3">{filteredCustomers.length} customers</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="h-2 rounded-full bg-blue-500" style={{ width: '100%' }}></div>
+          </div>
         </div>
 
-        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-5 w-5 text-red-500" />
-            <span className="font-medium text-red-700">High Priority</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">High Priority</h3>
+            <span className="text-xs font-medium text-red-600">
+              {highPriorityCount > 0 ? 'Critical' : 'On Target'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-red-600">{highPriorityCount}</p>
-          <p className="text-sm text-red-600">Customers need attention</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{highPriorityCount}</p>
+          <p className="text-xs text-gray-500 mb-3">Customers need attention</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-red-500"
+              style={{ width: `${Math.min((highPriorityCount / filteredCustomers.length) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-yellow-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-5 w-5 text-yellow-500" />
-            <span className="font-medium text-yellow-700">Overdue Amount</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Overdue Amount</h3>
+            <span className="text-xs font-medium text-yellow-600">
+              {overdueAmount > 0 ? 'At Risk' : 'On Target'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-yellow-600">${Math.round(overdueAmount / 1000)}K</p>
-          <p className="text-sm text-yellow-600">{Math.round((overdueAmount / totalOutstanding) * 100)}% of total AR</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">${Math.round(overdueAmount / 1000)}K</p>
+          <p className="text-xs text-gray-500 mb-3">{Math.round((overdueAmount / totalOutstanding) * 100)}% of total AR</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-yellow-500"
+              style={{ width: `${Math.min((overdueAmount / totalOutstanding) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="h-5 w-5 text-green-500" />
-            <span className="font-medium text-green-700">Avg DSO</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Avg DSO</h3>
+            <span className="text-xs font-medium text-green-600">
+              {avgDSO <= 30 ? 'On Target' : avgDSO <= 45 ? 'At Risk' : 'Critical'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-green-600">{Math.round(avgDSO)} days</p>
-          <p className="text-sm text-green-600">Segment average</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{Math.round(avgDSO)} days</p>
+          <p className="text-xs text-gray-500 mb-3">Segment average</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${avgDSO <= 30 ? 'bg-green-500' : avgDSO <= 45 ? 'bg-yellow-500' : 'bg-red-500'}`}
+              style={{ width: `${Math.min((avgDSO / 60) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
       </div>
 

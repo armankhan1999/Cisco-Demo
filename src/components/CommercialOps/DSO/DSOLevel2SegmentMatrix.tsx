@@ -120,46 +120,74 @@ export default function DSOLevel2SegmentMatrix({
         </div>
       </div>
 
-      {/* Key Insights Cards */}
+      {/* Key Insights Cards - Q2C Variant Style */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="border border-blue-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="h-5 w-5 text-blue-500" />
-            <span className="font-medium text-blue-700">Average DSO</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Average DSO</h3>
+            <span className="text-xs font-medium text-blue-600">
+              {avgDSO <= 35 ? 'On Target' : avgDSO <= 45 ? 'At Risk' : 'Critical'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-blue-600">{Math.round(avgDSO)} days</p>
-          <p className="text-sm text-blue-600">Across all segments</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{Math.round(avgDSO)} days</p>
+          <p className="text-xs text-gray-500 mb-3">Across all segments</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full ${avgDSO <= 35 ? 'bg-green-500' : avgDSO <= 45 ? 'bg-yellow-500' : 'bg-red-500'}`}
+              style={{ width: `${Math.min((avgDSO / 60) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-red-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-5 w-5 text-red-500" />
-            <span className="font-medium text-red-700">Slow Payers</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Slow Payers</h3>
+            <span className="text-xs font-medium text-red-600">
+              {slowestPayers.length > 0 ? 'Critical' : 'On Target'}
+            </span>
           </div>
-          <p className="text-2xl font-bold text-red-600">{slowestPayers.length}</p>
-          <p className="text-sm text-red-600">Segments &gt;45 days DSO</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{slowestPayers.length}</p>
+          <p className="text-xs text-gray-500 mb-3">Segments &gt;45 days DSO</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-red-500"
+              style={{ width: `${Math.min((slowestPayers.length / filteredData.length) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-green-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="h-5 w-5 text-green-500" />
-            <span className="font-medium text-green-700">Highest AR</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Highest AR</h3>
+            <span className="text-xs font-medium text-green-600">Info</span>
           </div>
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             ${Math.round(highestARSegment.arBalance / 1000)}K
           </p>
-          <p className="text-sm text-green-600">{highestARSegment.segment}-{highestARSegment.productFamily}</p>
+          <p className="text-xs text-gray-500 mb-3">{highestARSegment.segment}-{highestARSegment.productFamily}</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-green-500"
+              style={{ width: '100%' }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-purple-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Users className="h-5 w-5 text-purple-500" />
-            <span className="font-medium text-purple-700">Total Customers</span>
+        <div className="border border-gray-200 rounded-xl p-5 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">Total Customers</h3>
+            <span className="text-xs font-medium text-blue-600">Info</span>
           </div>
-          <p className="text-2xl font-bold text-purple-600">
+          <p className="text-3xl font-bold text-gray-900 mb-2">
             {filteredData.reduce((sum, item) => sum + item.customerCount, 0)}
           </p>
-          <p className="text-sm text-purple-600">With outstanding AR</p>
+          <p className="text-xs text-gray-500 mb-3">With outstanding AR</p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="h-2 rounded-full bg-blue-500"
+              style={{ width: '100%' }}>
+            </div>
+          </div>
         </div>
       </div>
 

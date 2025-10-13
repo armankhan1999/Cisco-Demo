@@ -3,17 +3,26 @@
  * Maps commonly used icon names to available Lucide React icons
  */
 
-import { 
-  ArrowLeft as ArrowLeftIcon, 
-  Phone as PhoneIcon, 
-  Mail as MailIcon, 
-  DollarSign as DollarSignIcon, 
-  Calendar as CalendarIcon, 
-  Users as UsersIcon, 
-  TrendingUp as TrendingUpIcon, 
-  Activity as ActivityIcon, 
-  ExternalLink as ExternalLinkIcon, 
-  X as XIcon
+import {
+  ArrowLeft as ArrowLeftIcon,
+  Phone as PhoneIcon,
+  Mail as MailIcon,
+  DollarSign as DollarSignIcon,
+  Calendar as CalendarIcon,
+  Users as UsersIcon,
+  TrendingUp as TrendingUpIcon,
+  Activity as ActivityIcon,
+  ExternalLink as ExternalLinkIcon,
+  X as XIcon,
+  CheckCircle2 as CheckCircle2Icon,
+  Clock as ClockIcon,
+  Search as SearchIcon,
+  Filter as FilterIcon,
+  TrendingDown as TrendingDownIcon,
+  AlertTriangle as AlertTriangleIcon,
+  AlertCircle as AlertCircleIcon,
+  FileText as FileTextIcon,
+  MapPin as MapPinIcon
 } from 'lucide-react';
 
 // Export with proper names and fallbacks
@@ -27,26 +36,28 @@ export const TrendingUp = TrendingUpIcon;
 export const Activity = ActivityIcon;
 export const ExternalLink = ExternalLinkIcon;
 export const X = XIcon;
+export const CheckCircle2 = CheckCircle2Icon;
+export const Clock = ClockIcon;
+export const Search = SearchIcon;
+export const Filter = FilterIcon;
+export const TrendingDown = TrendingDownIcon;
+export const AlertTriangle = AlertTriangleIcon;
+export const AlertCircle = AlertCircleIcon;
+export const FileText = FileTextIcon;
+export const MapPin = MapPinIcon;
 
 // Create fallback components for missing icons
-export const Clock = TrendingUpIcon;
-export const CheckCircle = TrendingUpIcon;
+export const CheckCircle = CheckCircle2Icon;
 export const User = UsersIcon;
 export const Building = UsersIcon;
-export const Search = TrendingUpIcon;
-export const Filter = TrendingUpIcon;
 export const Download = TrendingUpIcon;
 export const MoreHorizontal = TrendingUpIcon;
-export const TrendingDown = TrendingUpIcon;
 export const Target = TrendingUpIcon;
 export const BarChart3 = TrendingUpIcon;
 export const PieChart = TrendingUpIcon;
-export const FileText = TrendingUpIcon;
 export const CreditCard = TrendingUpIcon;
 export const Zap = TrendingUpIcon;
 export const MessageSquare = TrendingUpIcon;
-export const AlertTriangle = TrendingUpIcon;
-export const AlertCircle = TrendingUpIcon;
 export const ChevronRight = ArrowLeftIcon;
 export const Minus = TrendingUpIcon;
 export const ShoppingCart = TrendingUpIcon;

@@ -15,12 +15,14 @@ import ExceptionAlertsPanel from './ExceptionAlertsPanel';
 // @ts-ignore
 import ActionButtons from './ActionButtons';
 import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Clock, DollarSign, FileText, Target } from 'lucide-react';
+import DSODrillDownOrchestrator from './DSO/DSODrillDownOrchestrator';
 
 export default function CommercialOpsCommandCenter() {
   const [kpis, setKPIs] = useState<CommercialOpsKPIs | null>(null);
   const [trendData, setTrendData] = useState<TrendData[]>([]);
   const [alerts, setAlerts] = useState<ExceptionAlert[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showDSODrillDown, setShowDSODrillDown] = useState(false);
 
   useEffect(() => {
     // Simulate loading and fetch data
@@ -172,6 +174,7 @@ export default function CommercialOpsCommandCenter() {
               description="Average days to collect payment after invoice"
               customBgColor="#F3F3F3"
               variant="q2c"
+              onDrillDown={() => setShowDSODrillDown(true)}
             />
           </div>
 
@@ -302,6 +305,13 @@ export default function CommercialOpsCommandCenter() {
         {/* Action Buttons */}
         <ActionButtons />
       </div>
+
+      {/* DSO Drill-Down Overlay */}
+      {showDSODrillDown && (
+        <div className="fixed inset-0 z-50 bg-white overflow-auto">
+          <DSODrillDownOrchestrator onBack={() => setShowDSODrillDown(false)} />
+        </div>
+      )}
     </div>
   );
 }

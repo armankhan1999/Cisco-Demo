@@ -12,6 +12,7 @@ import revenueMovementsData from '@/source_data/commercial_operations/revenue_mo
 import revenueRecognitionData from '@/source_data/commercial_operations/revenue_recognition_schedule.json';
 import paymentsData from '@/source_data/commercial_operations/payments.json';
 import ordersData from '@/source_data/commercial_operations/orders.json';
+import { getOverallDSO } from './dsoRealDataService';
 
 export interface CommercialOpsKPIs {
   quoteToCashCycleTime: {
@@ -231,32 +232,10 @@ function calculateInvoiceAccuracyRate(): { value: number; target: number; trend:
 
 /**
  * Calculate Days Sales Outstanding (DSO)
+ * Now uses the real DSO data service for consistent calculations
  */
 function calculateDaysSalesOutstanding(): { value: number; target: number; trend: number; status: 'good' | 'warning' | 'critical' } {
-  const validARData = accountsReceivableData.filter(ar => 
-    ar.avg_days_outstanding && ar.avg_days_outstanding > 0
-  );
-
-  if (validARData.length === 0) {
-    return { value: 0, target: 30, trend: 0, status: 'critical' };
-  }
-
-  const totalAR = validARData.reduce((sum, ar) => sum + ar.total_ar_balance, 0);
-  const weightedDSO = validARData.reduce((sum, ar) => 
-    sum + (ar.avg_days_outstanding * ar.total_ar_balance), 0
-  ) / totalAR;
-
-  const target = 30;
-  const trend = -7; // Improvement
-  
-  const status = weightedDSO <= target ? 'good' : weightedDSO <= target * 1.3 ? 'warning' : 'critical';
-  
-  return {
-    value: Math.round(weightedDSO),
-    target,
-    trend,
-    status
-  };
+  return getOverallDSO();
 }
 
 /**

@@ -61,91 +61,114 @@ export default function DSOLevel0ProductComparison({
   const worstPerformer = sortedProducts[0];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
       {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-4 mb-4">
+      <div className="mb-6">
+        <div className="flex items-center gap-4 mb-3">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-white rounded-lg transition-colors shadow-sm"
+            className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-white rounded-lg transition-colors shadow-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
           </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl font-bold text-gray-900 mb-1">
                 DSO by Product Line
               </h1>
-              <p className="text-gray-600 text-lg">
+              <p className="text-gray-600 text-base">
                 Which product lines are driving our collection challenges?
               </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <p className="text-sm text-gray-500 font-medium">Overall DSO</p>
-                <p className="text-3xl font-bold text-blue-600">{Math.round(weightedDSO)} days</p>
+                <p className="text-xs text-gray-500 font-medium">Overall DSO</p>
+                <p className="text-2xl font-bold text-blue-600">{Math.round(weightedDSO)} days</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Key Metrics Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="border border-blue-200 rounded-xl p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="h-6 w-6 text-blue-500" />
-            <span className="font-medium text-blue-700">Target Performance</span>
+      {/* Key Metrics Summary - Q2C Variant Style */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div className="border border-gray-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-1.5">
+            <h3 className="text-base font-semibold text-gray-900">Target Performance</h3>
+            <span className="text-xs font-medium text-blue-600">
+              {productData.filter(p => p.status === 'good').length >= productData.length / 2 ? 'On Target' : 'At Risk'}
+            </span>
           </div>
-          <p className="text-3xl font-bold text-blue-600">
+          <p className="text-2xl font-bold text-gray-900 mb-1.5">
             {productData.filter(p => p.status === 'good').length} / {productData.length}
           </p>
-          <p className="text-sm text-blue-600">Products meeting target</p>
+          <p className="text-xs text-gray-500 mb-2">Products meeting target</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5">
+            <div
+              className="h-1.5 rounded-full bg-blue-500"
+              style={{ width: `${(productData.filter(p => p.status === 'good').length / productData.length) * 100}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-green-200 rounded-xl p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <TrendingDown className="h-6 w-6 text-green-500" />
-            <span className="font-medium text-green-700">Best Performer</span>
+        <div className="border border-gray-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-1.5">
+            <h3 className="text-base font-semibold text-gray-900">Best Performer</h3>
+            <span className="text-xs font-medium text-green-600">On Target</span>
           </div>
-          <p className="text-2xl font-bold text-green-600">{bestPerformer?.productFamily}</p>
-          <p className="text-sm text-green-600">{bestPerformer?.dsoValue} days DSO</p>
+          <p className="text-2xl font-bold text-gray-900 mb-1.5">{bestPerformer?.productFamily}</p>
+          <p className="text-xs text-gray-500 mb-2">{bestPerformer?.dsoValue} days DSO</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5">
+            <div
+              className="h-1.5 rounded-full bg-green-500"
+              style={{ width: `${Math.min((bestPerformer?.dsoValue || 0) / (bestPerformer?.target || 30) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-red-200 rounded-xl p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <AlertCircle className="h-6 w-6 text-red-500" />
-            <span className="font-medium text-red-700">Needs Attention</span>
+        <div className="border border-gray-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-1.5">
+            <h3 className="text-base font-semibold text-gray-900">Needs Attention</h3>
+            <span className="text-xs font-medium text-red-600">Critical</span>
           </div>
-          <p className="text-2xl font-bold text-red-600">{worstPerformer?.productFamily}</p>
-          <p className="text-sm text-red-600">{worstPerformer?.dsoValue} days DSO</p>
+          <p className="text-2xl font-bold text-gray-900 mb-1.5">{worstPerformer?.productFamily}</p>
+          <p className="text-xs text-gray-500 mb-2">{worstPerformer?.dsoValue} days DSO</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5">
+            <div
+              className="h-1.5 rounded-full bg-red-500"
+              style={{ width: `${Math.min((worstPerformer?.dsoValue || 0) / ((worstPerformer?.target || 30) * 2) * 100, 100)}%` }}>
+            </div>
+          </div>
         </div>
 
-        <div className="border border-purple-200 rounded-xl p-6 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="h-6 w-6 text-purple-500" />
-            <span className="font-medium text-purple-700">Total Outstanding</span>
+        <div className="border border-gray-200 rounded-xl p-4 shadow-sm" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="flex items-start justify-between mb-1.5">
+            <h3 className="text-base font-semibold text-gray-900">Total Outstanding</h3>
+            <span className="text-xs font-medium text-blue-600">Info</span>
           </div>
-          <p className="text-3xl font-bold text-purple-600">
+          <p className="text-2xl font-bold text-gray-900 mb-1.5">
             ${Math.round(totalAR / 1000)}K
           </p>
-          <p className="text-sm text-purple-600">Across all products</p>
+          <p className="text-xs text-gray-500 mb-2">Across all products</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5">
+            <div className="h-1.5 rounded-full bg-blue-500" style={{ width: '100%' }}></div>
+          </div>
         </div>
       </div>
 
       {/* Product Comparison Chart */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-8">
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">DSO Comparison by Product Line</h2>
-          <p className="text-gray-600">Click any product to drill down into detailed analysis</p>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">DSO Comparison by Product Line</h2>
+          <p className="text-sm text-gray-600">Click any product to drill down into detailed analysis</p>
         </div>
 
         {/* Comparison Bars */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {productData.map((product) => {
             const maxDSO = Math.max(...productData.map(p => p.dsoValue));
             const barWidth = (product.dsoValue / maxDSO) * 100;
@@ -169,19 +192,19 @@ export default function DSOLevel0ProductComparison({
               <button
                 key={product.id}
                 onClick={() => handleProductClick(product.productFamily)}
-                className={`w-full text-left border-2 rounded-xl p-6 transition-all duration-200 hover:shadow-lg hover:scale-[1.02] ${borderColor} ${isSelected ? 'ring-4 ring-blue-200' : ''}`}
+                className={`w-full text-left border-2 rounded-xl p-4 transition-all duration-200 hover:shadow-lg hover:scale-[1.01] ${borderColor} ${isSelected ? 'ring-2 ring-blue-200' : ''}`}
                 style={{ backgroundColor: '#F3F3F3' }}
               >
                 {/* Product Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-3 h-3 ${statusColor} rounded-full`}></div>
-                    <h3 className="text-xl font-bold text-gray-900">{product.productFamily}</h3>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-2.5 h-2.5 ${statusColor} rounded-full`}></div>
+                    <h3 className="text-lg font-bold text-gray-900">{product.productFamily}</h3>
                   </div>
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-sm text-gray-500">DSO</p>
-                      <p className={`text-2xl font-bold ${
+                      <p className="text-xs text-gray-500">DSO</p>
+                      <p className={`text-xl font-bold ${
                         product.status === 'critical' ? 'text-red-600' :
                         product.status === 'warning' ? 'text-yellow-600' :
                         'text-green-600'
@@ -190,14 +213,14 @@ export default function DSOLevel0ProductComparison({
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-gray-500">Trend</p>
+                      <p className="text-xs text-gray-500">Trend</p>
                       <div className="flex items-center gap-1">
                         {product.trend < 0 ? (
-                          <TrendingDown className="h-5 w-5 text-green-500" />
+                          <TrendingDown className="h-4 w-4 text-green-500" />
                         ) : (
-                          <TrendingUp className="h-5 w-5 text-red-500" />
+                          <TrendingUp className="h-4 w-4 text-red-500" />
                         )}
-                        <p className={`text-xl font-bold ${product.trend < 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className={`text-base font-bold ${product.trend < 0 ? 'text-green-600' : 'text-red-600'}`}>
                           {Math.abs(product.trend)}%
                         </p>
                       </div>
@@ -206,13 +229,13 @@ export default function DSOLevel0ProductComparison({
                 </div>
 
                 {/* DSO Bar */}
-                <div className="relative mb-4">
-                  <div className="h-12 bg-gray-200 rounded-lg overflow-hidden">
+                <div className="relative mb-3">
+                  <div className="h-10 bg-gray-200 rounded-lg overflow-hidden">
                     <div
-                      className={`h-full ${statusColor} flex items-center justify-end pr-4 transition-all duration-500`}
+                      className={`h-full ${statusColor} flex items-center justify-end pr-3 transition-all duration-500`}
                       style={{ width: `${barWidth}%` }}
                     >
-                      <span className="text-white font-bold text-sm">{product.dsoValue} days</span>
+                      <span className="text-white font-bold text-xs">{product.dsoValue} days</span>
                     </div>
                   </div>
                   {/* Target Line */}
@@ -220,33 +243,33 @@ export default function DSOLevel0ProductComparison({
                     className="absolute top-0 h-full border-l-2 border-dashed border-gray-600"
                     style={{ left: `${(product.target / maxDSO) * 100}%` }}
                   >
-                    <span className="absolute -top-6 left-0 transform -translate-x-1/2 text-xs text-gray-600 font-medium">
+                    <span className="absolute -top-5 left-0 transform -translate-x-1/2 text-xs text-gray-600 font-medium">
                       Target: {product.target}d
                     </span>
                   </div>
                 </div>
 
                 {/* Product Metrics */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="flex items-center gap-2">
-                    <DollarSign className="h-5 w-5 text-gray-500" />
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <DollarSign className="h-4 w-4 text-gray-500" />
                     <div>
                       <p className="text-xs text-gray-500">AR Balance</p>
-                      <p className="font-bold text-gray-900">${Math.round(product.arBalance / 1000)}K</p>
+                      <p className="text-sm font-bold text-gray-900">${Math.round(product.arBalance / 1000)}K</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-gray-500" />
+                  <div className="flex items-center gap-1.5">
+                    <Users className="h-4 w-4 text-gray-500" />
                     <div>
                       <p className="text-xs text-gray-500">Customers</p>
-                      <p className="font-bold text-gray-900">{product.customerCount}</p>
+                      <p className="text-sm font-bold text-gray-900">{product.customerCount}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-gray-500" />
+                  <div className="flex items-center gap-1.5">
+                    <FileText className="h-4 w-4 text-gray-500" />
                     <div>
                       <p className="text-xs text-gray-500">Invoices</p>
-                      <p className="font-bold text-gray-900">{product.invoiceCount}</p>
+                      <p className="text-sm font-bold text-gray-900">{product.invoiceCount}</p>
                     </div>
                   </div>
                 </div>

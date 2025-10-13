@@ -68,9 +68,9 @@ export default function DrillDownDashboard() {
     fetchData();
   }, []);
 
-  const handleDrillDown = (kpiId: string) => {
+  const handleDrillDown = (kpiId: string, level?: 2 | 3) => {
     setActiveKPI(kpiId);
-    setCurrentLevel({ level: 1, title: `${kpiId} Drill-Down`, description: 'Detailed analysis' });
+    setCurrentLevel({ level: level || 1, title: `${kpiId} Drill-Down`, description: 'Detailed analysis' });
   };
 
   const handleViewActionItems = (kpiId: string) => {

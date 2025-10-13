@@ -1,115 +1,83 @@
 'use client';
 
 import { useState } from 'react';
-import DSOLevel0ProductComparison from './DSOLevel0ProductComparison';
-import DSOLevel1TrendAging from './DSOLevel1TrendAging';
-import DSOLevel2SegmentMatrix from './DSOLevel2SegmentMatrix';
-import DSOLevel3CustomerAging from './DSOLevel3CustomerAging';
-import DSOLevel4CustomerProfile from './DSOLevel4CustomerProfile';
+import NewDSOLevel1ProductComparison from './NewDSOLevel1ProductComparison';
+import NewDSOLevel2SegmentBreakdown from './NewDSOLevel2SegmentBreakdown';
+import NewDSOLevel3InvoiceDetail from './NewDSOLevel3InvoiceDetail';
 
 interface DSODrillDownOrchestratorProps {
   onBack: () => void;
 }
 
-type DrillDownLevel = 'level0' | 'level1' | 'level2' | 'level3' | 'level4';
+type DrillDownLevel = 'level1' | 'level2' | 'level3';
 
 interface DrillDownState {
   level: DrillDownLevel;
-  segment?: string;
   productFamily?: string;
-  customerId?: string;
+  segment?: string;
+  geography?: string;
 }
 
+/**
+ * DSO Drill-Down Orchestrator
+ *
+ * Implements 3-level drill-down per DSO.md documentation:
+ * - Level 1: Product-Line DSO Comparison with AR Aging Matrix
+ * - Level 2: Customer Segment & Geography Breakdown
+ * - Level 3: Transactional Invoice Detail & Action View
+ */
 export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchestratorProps) {
   const [drillDownState, setDrillDownState] = useState<DrillDownState>({
-    level: 'level0'
+    level: 'level1'
   });
 
-  const handleDrillToLevel1 = (productFamily: string) => {
-    setDrillDownState({
-      level: 'level1',
-      productFamily
-    });
-  };
-
-  const handleDrillToLevel2 = (segment: string, productFamily: string) => {
+  // Level 1 → Level 2: Product Family selected
+  const handleDrillToLevel2 = (productFamily: string) => {
     setDrillDownState({
       level: 'level2',
-      segment,
       productFamily
     });
   };
 
-  const handleDrillToLevel3 = (segment: string, productFamily: string) => {
+  // Level 2 → Level 3: Segment and Geography selected
+  const handleDrillToLevel3 = (segment: string, geography: string, productFamily: string) => {
     setDrillDownState({
       level: 'level3',
+      productFamily,
       segment,
-      productFamily
+      geography
     });
   };
 
-  const handleDrillToLevel4 = (customerId: string) => {
-    setDrillDownState({
-      level: 'level4',
-      segment: drillDownState.segment,
-      productFamily: drillDownState.productFamily,
-      customerId
-    });
-  };
-
-  const handleBackToLevel0 = () => {
-    setDrillDownState({
-      level: 'level0'
-    });
-  };
-
+  // Back to Level 1 from Level 2
   const handleBackToLevel1 = () => {
     setDrillDownState({
-      level: 'level1',
-      productFamily: drillDownState.productFamily
+      level: 'level1'
     });
   };
 
+  // Back to Level 2 from Level 3
   const handleBackToLevel2 = () => {
     setDrillDownState({
       level: 'level2',
-      segment: drillDownState.segment,
-      productFamily: drillDownState.productFamily
-    });
-  };
-
-  const handleBackToLevel3 = () => {
-    setDrillDownState({
-      level: 'level3',
-      segment: drillDownState.segment,
       productFamily: drillDownState.productFamily
     });
   };
 
   // Render appropriate level based on current state
   switch (drillDownState.level) {
-    case 'level0':
-      return (
-        <DSOLevel0ProductComparison
-          onBack={onBack}
-          onDrillToLevel1={handleDrillToLevel1}
-        />
-      );
-
     case 'level1':
       return (
-        <DSOLevel1TrendAging
-          productFamily={drillDownState.productFamily}
-          onBack={handleBackToLevel0}
+        <NewDSOLevel1ProductComparison
+          onBack={onBack}
           onDrillToLevel2={handleDrillToLevel2}
         />
       );
 
     case 'level2':
       return (
-        <DSOLevel2SegmentMatrix
-          segment={drillDownState.segment}
-          productFamily={drillDownState.productFamily}
+        <NewDSOLevel2SegmentBreakdown
+          productFamily={drillDownState.productFamily || ''}
           onBack={handleBackToLevel1}
           onDrillToLevel3={handleDrillToLevel3}
         />
@@ -117,27 +85,19 @@ export default function DSODrillDownOrchestrator({ onBack }: DSODrillDownOrchest
 
     case 'level3':
       return (
-        <DSOLevel3CustomerAging
+        <NewDSOLevel3InvoiceDetail
           segment={drillDownState.segment || ''}
+          geography={drillDownState.geography || ''}
           productFamily={drillDownState.productFamily || ''}
           onBack={handleBackToLevel2}
-          onDrillToLevel4={handleDrillToLevel4}
-        />
-      );
-
-    case 'level4':
-      return (
-        <DSOLevel4CustomerProfile
-          customerId={drillDownState.customerId || ''}
-          onBack={handleBackToLevel3}
         />
       );
 
     default:
       return (
-        <DSOLevel0ProductComparison
+        <NewDSOLevel1ProductComparison
           onBack={onBack}
-          onDrillToLevel1={handleDrillToLevel1}
+          onDrillToLevel2={handleDrillToLevel2}
         />
       );
   }

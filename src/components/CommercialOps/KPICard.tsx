@@ -13,9 +13,10 @@ interface KPICardProps {
   description: string;
   customBgColor?: string;
   variant?: 'default' | 'q2c';
+  onDrillDown?: () => void;
 }
 
-export default function KPICard({ title, value, target, trend, status, icon, description, customBgColor, variant = 'default' }: KPICardProps) {
+export default function KPICard({ title, value, target, trend, status, icon, description, customBgColor, variant = 'default', onDrillDown }: KPICardProps) {
   const getStatusColor = () => {
     switch (status) {
       case 'good':
@@ -95,6 +96,7 @@ export default function KPICard({ title, value, target, trend, status, icon, des
       <div
         className="border border-gray-200 rounded-xl p-5 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
         style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+        onClick={onDrillDown}
       >
         {/* Header: Title on left, Trend & Status on right */}
         <div className="flex items-start justify-between mb-3">
@@ -136,6 +138,7 @@ export default function KPICard({ title, value, target, trend, status, icon, des
     <div
       className={`${customBgColor ? '' : colors.bg} ${colors.border} border-2 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}
       style={customBgColor ? { backgroundColor: customBgColor } : undefined}
+      onClick={onDrillDown}
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
