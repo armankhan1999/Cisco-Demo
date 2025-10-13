@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { Users, DollarSign, RefreshCw } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, ReferenceLine, PieChart, Pie, Cell, ScatterChart, Scatter, ComposedChart } from 'recharts';
 import { drillDownService } from '@/services/drillDownService';
-import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, Layers, Target, AlertCircle } from '@/utils/iconMapping';
+import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, Layers, Target, AlertCircle, X } from '@/utils/iconMapping';
 import { KPI_DRILL_DOWNS,  type KPIDrillDown, type Level2View } from '@/services/drillDownService';
 import { getCommercialOpsKPIs } from '@/services/commercialOpsService';
 import ReactMarkdown from 'react-markdown';
@@ -56,6 +56,7 @@ import revenueMovementsData from '@/source_data/commercial_operations/revenue_mo
 import expansionOpportunitiesData from '@/source_data/sales-expansion-data/expansion-opportunities.json';
 import expansionPipelineTrackingData from '@/source_data/sales-expansion-data/expansion-pipeline-tracking.json';
 import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS-new.json';
+import { ExpansionReadyAccountsService } from '@/services/expansionReadyAccountsService';
 import AdvancedVisualizationCharts from './AdvancedVisualizationCharts';
 
 interface Level2TacticalAnalysisProps {
@@ -1278,6 +1279,685 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
   );
 }
 
+// Product Penetration Matrix Component
+function ProductPenetrationMatrix({ data, onDrillToLevel3 }: { data: any[], onDrillToLevel3: (actionId: string) => void }) {
+  const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+
+  // Account Detail Modal for Product Penetration
+  const AccountDetailModal = ({ accountName, onClose }: { accountName: string; onClose: () => void }) => {
+    // Load real account data from master data
+    const accountFromService = customersData.find(c => c.customer_name === accountName);
+    
+    // Load real license data for this account
+    const accountLicenses = accountFromService ? 
+      licensesData.filter(l => l.customer_id === accountFromService.customer_id) : [];
+    
+    // Get current products from licenses
+    const currentProducts = accountLicenses.map(l => l.product_family);
+    
+    // Fallback data structure for accounts not in master data
+    const fallbackData = {
+      id: 'CUST_XXXXX',
+      name: accountName,
+      tier: 'Enterprise',
+      arr: 500000,
+      health: 80,
+      csm: 'Sarah Johnson',
+      products: ['Duo'],
+      licenses: { Duo: '500/600' },
+      renewalDate: '2025-12-31',
+      industry: 'Technology',
+      employees: 1000,
+      location: 'Unknown'
+    };
+
+    const account = accountFromService ? {
+      ...accountFromService,
+      products: currentProducts,
+      licenses: accountLicenses.reduce((acc, license) => {
+        acc[license.product_family] = `${Math.round(license.utilization * license.license_count / 100)}/${license.license_count}`;
+        return acc;
+      }, {} as Record<string, string>)
+    } : fallbackData;
+
+    return (
+      <div 
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 sm:p-6 md:p-8"
+        onClick={onClose}
+        style={{ animation: 'fadeIn 0.2s ease-out' }}
+      >
+        <div 
+          className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+          style={{ animation: 'slideUp 0.3s ease-out' }}
+        >
+          {/* Premium Modal Header */}
+          <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-6 relative">
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-all duration-200 group"
+              aria-label="Close modal"
+            >
+              <X className="h-6 w-6 text-white group-hover:scale-110 transition-transform" strokeWidth={2.5} />
+            </button>
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+                <Users className="h-8 w-8" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold mb-2">{accountName}</h2>
+                <div className="flex items-center gap-4 text-blue-100">
+                  <span className="text-sm font-medium">{account.id || 'CUST_XXXXX'}</span>
+                  <span className="text-sm">•</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm">
+                    {account.tier || 'Enterprise'} Tier
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
+            <div className="p-6 space-y-4">
+              {/* Essential Metrics */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <div className="text-xs font-semibold text-green-700 uppercase mb-1">Annual ARR</div>
+                  <div className="text-xl font-bold text-green-700">
+                    ${typeof account.arr === 'number' ? Math.floor(account.arr / 1000) : Math.floor((account.arr || 500000) / 1000)}K
+                  </div>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <div className="text-xs font-semibold text-blue-700 uppercase mb-1">Product Count</div>
+                  <div className="text-xl font-bold text-blue-700">{account.product_count || currentProducts.length}</div>
+                </div>
+              </div>
+
+              {/* Current Products & Licenses */}
+              {accountLicenses.length > 0 && (
+                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                  <h3 className="text-lg font-bold text-blue-900 mb-4">Current Products & Utilization</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {accountLicenses.map((license, idx) => (
+                      <div key={idx} className="bg-white p-4 rounded-lg border border-blue-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-semibold text-blue-900">{license.product_family}</span>
+                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                            license.utilization >= 80 ? 'bg-green-100 text-green-800' :
+                            license.utilization >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-red-100 text-red-800'
+                          }`}>
+                            {license.utilization}% utilized
+                          </span>
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          <div>Licenses: {license.license_count}</div>
+                          <div>Used: {Math.round(license.utilization * license.license_count / 100)}</div>
+                        </div>
+                        <div className="mt-2 bg-gray-200 rounded-full h-2">
+                          <div 
+                            className={`h-2 rounded-full ${
+                              license.utilization >= 80 ? 'bg-green-500' :
+                              license.utilization >= 60 ? 'bg-yellow-500' :
+                              'bg-red-500'
+                            }`}
+                            style={{ width: `${license.utilization}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Key Info */}
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <span className="font-medium text-gray-600">Industry:</span>
+                    <span className="ml-2 font-semibold text-gray-900">{account.industry || 'Technology'}</span>
+                  </div>
+                  <div>
+                    <span className="font-medium text-gray-600">Tier:</span>
+                    <span className="ml-2 font-semibold text-gray-900">{account.tier || 'Enterprise'}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-2">
+                <button className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                  View Full Details
+                </button>
+                <button className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                  Create Opportunity
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-gray-900">Product Penetration Matrix - All Accounts</h3>
+        <button 
+          onClick={() => onDrillToLevel3('product-penetration-opportunities')}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+        >
+          View Action Items
+        </button>
+      </div>
+      <div className="overflow-x-auto max-h-96">
+        <table className="w-full">
+          <thead className="bg-gray-50 sticky top-0">
+            <tr>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Account</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tier</th>
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Meraki</th>
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Duo</th>
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Umbrella</th>
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">ThousandEyes</th>
+              <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Splunk</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Products</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {data.map((row: any, index: number) => (
+              <tr key={index} className="hover:bg-gray-50 cursor-pointer" onClick={() => setSelectedAccount(row.account)}>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  <div className="text-sm font-medium text-gray-900">{row.account}</div>
+                  <div className="text-xs text-gray-500">${(row.arr / 1000).toFixed(0)}K ARR</div>
+                </td>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                    row.tier === 'Strategic' ? 'bg-purple-100 text-purple-800' :
+                    row.tier === 'Enterprise' ? 'bg-blue-100 text-blue-800' :
+                    row.tier === 'Commercial' ? 'bg-green-100 text-green-800' :
+                    'bg-gray-100 text-gray-800'
+                  }`}>{row.tier}</span>
+                </td>
+                {['Meraki', 'Duo', 'Umbrella', 'ThousandEyes', 'Splunk'].map(product => {
+                  const productData = row[product];
+                  const getStatusColor = (status: string) => {
+                    switch (status) {
+                      case 'champion': return 'bg-green-500 text-white';
+                      case 'active': return 'bg-blue-500 text-white';
+                      case 'trial': return 'bg-yellow-500 text-white';
+                      case 'low': return 'bg-red-400 text-white';
+                      default: return 'bg-gray-100 text-gray-400';
+                    }
+                  };
+                  
+                  return (
+                    <td key={product} className="px-4 py-3 text-center">
+                      {productData.hasProduct ? (
+                        <div 
+                          className={`inline-flex items-center justify-center w-12 h-8 rounded text-xs font-semibold ${getStatusColor(productData.status)}`}
+                          title={`${productData.utilization}% utilization`}
+                        >
+                          {productData.utilization}%
+                        </div>
+                      ) : (
+                        <div className="inline-flex items-center justify-center w-12 h-8 rounded bg-gray-100 text-gray-400 text-xs">
+                          —
+                        </div>
+                      )}
+                    </td>
+                  );
+                })}
+                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{row.productCount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Account Detail Modal */}
+      {selectedAccount && (
+        <AccountDetailModal 
+          accountName={selectedAccount} 
+          onClose={() => setSelectedAccount(null)} 
+        />
+      )}
+    </div>
+  );
+}
+
+// Expansion Ready Accounts Tabs Component
+function ExpansionReadyAccountsTabs({ onDrillToLevel3 }: { onDrillToLevel3: (actionId: string) => void }) {
+  const [activeTab, setActiveTab] = useState('by-product');
+  const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  
+  // Get real data
+  const accountsByProduct = ExpansionReadyAccountsService.getAccountsByProduct();
+  const top10Accounts = ExpansionReadyAccountsService.getTop10Accounts();
+
+  // Import AccountDetailModal
+  const AccountDetailModal = ({ accountName, onClose }: { accountName: string; onClose: () => void }) => {
+    // Load real account data from master data
+    const accountFromService = customersData.find(c => c.customer_name === accountName);
+    
+    // Load real license data for this account
+    const accountLicenses = accountFromService ? 
+      licensesData.filter(l => l.customer_id === accountFromService.customer_id) : [];
+    
+    // Get current products from licenses
+    const currentProducts = accountLicenses.map(l => l.product_family);
+    
+    // Fallback data structure for accounts not in master data
+    const fallbackData = {
+      id: 'CUST_XXXXX',
+      name: accountName,
+      tier: 'Enterprise',
+      arr: 500000,
+      health: 80,
+      csm: 'Sarah Johnson',
+      products: ['Duo'],
+      licenses: { Duo: '500/600' },
+      renewalDate: '2025-12-31',
+      industry: 'Technology',
+      employees: 1000,
+      location: 'Unknown'
+    };
+
+    const account = accountFromService ? {
+      ...accountFromService,
+      products: currentProducts,
+      licenses: accountLicenses.reduce((acc, license) => {
+        acc[license.product_family] = `${Math.round(license.utilization * license.license_count / 100)}/${license.license_count}`;
+        return acc;
+      }, {} as Record<string, string>)
+    } : fallbackData;
+
+    return (
+      <div 
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 sm:p-6 md:p-8"
+        onClick={onClose}
+        style={{ animation: 'fadeIn 0.2s ease-out' }}
+      >
+        <div 
+          className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+          style={{ animation: 'slideUp 0.3s ease-out' }}
+        >
+          {/* Premium Modal Header */}
+          <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-6 relative">
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-all duration-200 group"
+              aria-label="Close modal"
+            >
+              <X className="h-6 w-6 text-white group-hover:scale-110 transition-transform" strokeWidth={2.5} />
+            </button>
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+                <Users className="h-8 w-8" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold mb-2">{accountName}</h2>
+                <div className="flex items-center gap-4 text-blue-100">
+                  <span className="text-sm font-medium">{account.id || 'CUST_XXXXX'}</span>
+                  <span className="text-sm">•</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm">
+                    {account.tier || 'Enterprise'} Tier
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            {/* Content - Enhanced */}
+            <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
+              <div className="p-6 space-y-6">
+                {/* Key Metrics Row 1 */}
+                <div className="grid grid-cols-4 gap-4">
+                  <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <div className="text-xs font-semibold text-green-700 uppercase mb-1">Annual ARR</div>
+                    <div className="text-xl font-bold text-green-700">
+                      ${typeof account.arr === 'number' ? Math.floor(account.arr / 1000) : Math.floor((account.arr || 500000) / 1000)}K
+                    </div>
+                  </div>
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div className="text-xs font-semibold text-blue-700 uppercase mb-1">Health Score</div>
+                    <div className="text-xl font-bold text-blue-700">{account.health || 80}%</div>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                    <div className="text-xs font-semibold text-purple-700 uppercase mb-1">Product Count</div>
+                    <div className="text-xl font-bold text-purple-700">{account.product_count || 0}</div>
+                  </div>
+                  <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
+                    <div className="text-xs font-semibold text-teal-700 uppercase mb-1">User Count</div>
+                    <div className="text-xl font-bold text-teal-700">{account.user_count || 0}</div>
+                  </div>
+                </div>
+
+                {/* Customer Details */}
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Customer Details</h3>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Industry:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.industry || 'Technology'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Tier:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.tier || 'Enterprise'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Theater:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.theater || 'Unknown'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Region:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.region || 'Unknown'}</span>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Country:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.country || 'Unknown'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">CSM ID:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.csm_id || 'Unassigned'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Created Date:</span>
+                        <span className="ml-2 font-semibold text-gray-900">{account.created_date ? new Date(account.created_date).toLocaleDateString() : 'Unknown'}</span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-600">Hero Account:</span>
+                        <span className={`ml-2 font-semibold ${account.is_hero_account ? 'text-green-600' : 'text-gray-600'}`}>
+                          {account.is_hero_account ? 'Yes' : 'No'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Current Products & Licenses */}
+                {accountLicenses.length > 0 && (
+                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                    <h3 className="text-lg font-bold text-blue-900 mb-4">Current Products & Utilization</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {accountLicenses.map((license, idx) => (
+                        <div key={idx} className="bg-white p-4 rounded-lg border border-blue-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-semibold text-blue-900">{license.product_family}</span>
+                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                              license.utilization >= 80 ? 'bg-green-100 text-green-800' :
+                              license.utilization >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-red-100 text-red-800'
+                            }`}>
+                              {license.utilization}% utilized
+                            </span>
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            <div>Licenses: {license.license_count}</div>
+                            <div>Used: {Math.round(license.utilization * license.license_count / 100)}</div>
+                          </div>
+                          <div className="mt-2 bg-gray-200 rounded-full h-2">
+                            <div 
+                              className={`h-2 rounded-full ${
+                                license.utilization >= 80 ? 'bg-green-500' :
+                                license.utilization >= 60 ? 'bg-yellow-500' :
+                                'bg-red-500'
+                              }`}
+                              style={{ width: `${license.utilization}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="flex gap-3 pt-2">
+                  <button className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                    View Full Details
+                  </button>
+                  <button className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                    Create Opportunity
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Tabs Navigation */}
+      <div className="bg-white border-b border-gray-200">
+        <nav className="flex space-x-8">
+          <button
+            onClick={() => setActiveTab('by-product')}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              activeTab === 'by-product'
+                ? 'border-teal-500 text-teal-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            By Product
+          </button>
+          <button
+            onClick={() => setActiveTab('top-10')}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              activeTab === 'top-10'
+                ? 'border-teal-500 text-teal-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Top 10 Ranked
+          </button>
+        </nav>
+      </div>
+
+      {/* Tab Content */}
+      {activeTab === 'by-product' && (
+        <div className="space-y-6">
+
+          {/* Duo */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-3 border-b border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900">Duo Security</h3>
+            </div>
+            <div className="p-6">
+              <div className="space-y-3">
+                {accountsByProduct.Duo.map((account, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                    onClick={() => setSelectedAccount(account.name)}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                      <div>
+                        <div className="font-semibold text-gray-900">{account.name}</div>
+                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">{account.opportunity}</div>
+                        <div className="text-sm text-gray-600">Opportunity</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-blue-600 text-lg">{account.score}</div>
+                        <div className="text-sm text-gray-600">Readiness</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Meraki */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-3 border-b border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900">Meraki</h3>
+            </div>
+            <div className="p-6">
+              <div className="space-y-3">
+                {accountsByProduct.Meraki.map((account, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                    onClick={() => setSelectedAccount(account.name)}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      <div>
+                        <div className="font-semibold text-gray-900">{account.name}</div>
+                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">{account.opportunity}</div>
+                        <div className="text-sm text-gray-600">Opportunity</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-green-600 text-lg">{account.score}</div>
+                        <div className="text-sm text-gray-600">Readiness</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ThousandEyes */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-purple-50 to-violet-50 px-6 py-3 border-b border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900">ThousandEyes</h3>
+            </div>
+            <div className="p-6">
+              <div className="space-y-3">
+                {accountsByProduct.ThousandEyes.map((account, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                    onClick={() => setSelectedAccount(account.name)}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                      <div>
+                        <div className="font-semibold text-gray-900">{account.name}</div>
+                        <div className="text-sm text-gray-600">{account.tier} tier</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">{account.opportunity}</div>
+                        <div className="text-sm text-gray-600">Opportunity</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-purple-600 text-lg">{account.score}</div>
+                        <div className="text-sm text-gray-600">Readiness</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'top-10' && (
+        <div className="space-y-6">
+
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Products to Sell</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opportunity Amount</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Readiness Score</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {top10Accounts.map((account, idx) => (
+                    <tr 
+                      key={idx} 
+                      className="hover:bg-gray-50 cursor-pointer transition-colors"
+                      onClick={() => setSelectedAccount(account.name)}
+                    >
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${
+                            idx < 3 ? 'bg-yellow-500' : idx < 6 ? 'bg-gray-400' : 'bg-orange-400'
+                          }`}>
+                            {idx + 1}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">{account.name}</div>
+                          <div className="text-sm text-gray-500">{account.tier} tier</div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm text-gray-900">{account.recommendedProduct}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-bold text-green-600">{account.opportunity}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
+                            <div 
+                              className={`h-2 rounded-full ${
+                                account.score >= 90 ? 'bg-green-500' : account.score >= 80 ? 'bg-yellow-500' : 'bg-red-500'
+                              }`}
+                              style={{ width: `${account.score}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-sm font-bold text-gray-900">{account.score}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button className="text-teal-600 hover:text-teal-900 font-semibold">
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Account Detail Modal */}
+      {selectedAccount && (
+        <AccountDetailModal 
+          accountName={selectedAccount} 
+          onClose={() => setSelectedAccount(null)} 
+        />
+      )}
+    </div>
+  );
+}
+
 export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 }: Level2TacticalAnalysisProps) {
   const [activeView, setActiveView] = useState<string>('');
   const [kpiDrillDown, setKpiDrillDown] = useState<KPIDrillDown | null>(null);
@@ -1386,6 +2066,42 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             filterByProductCount={filterByProductCount}
             setFilterByProductCount={setFilterByProductCount}
           />
+        </div>
+      </div>
+    );
+  }
+
+  // Special handling for opportunity readiness KPI - render directly with tabs
+  if (kpiId === 'opportunity-readiness') {
+    return (
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  <span className="font-semibold">Back to Overview</span>
+                </button>
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    <TrendingUp className="h-8 w-8 text-teal-600" />
+                    {kpiDrillDown.kpiName}
+                  </h1>
+                  <p className="text-sm text-gray-600 mt-1">{kpiDrillDown.businessContext}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <ExpansionReadyAccountsTabs onDrillToLevel3={onDrillToLevel3} />
         </div>
       </div>
     );
@@ -2744,81 +3460,7 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             </div>
 
             {/* Product Penetration Matrix - All Accounts */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900">Product Penetration Matrix - All Accounts</h3>
-                <button 
-                  onClick={() => onDrillToLevel3('product-penetration-opportunities')}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
-                >
-                  View Action Items
-                </button>
-              </div>
-              <div className="overflow-x-auto max-h-96">
-                <table className="w-full">
-                  <thead className="bg-gray-50 sticky top-0">
-                    <tr>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Account</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tier</th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Meraki</th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Duo</th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Umbrella</th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">ThousandEyes</th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Splunk</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Products</th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {data.map((row: any, index: number) => (
-                      <tr key={index} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`account-${row.account.replace(/\s+/g, '-').toLowerCase()}`)}>
-                        <td className="px-4 py-3 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">{row.account}</div>
-                          <div className="text-xs text-gray-500">${(row.arr / 1000).toFixed(0)}K ARR</div>
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap">
-                          <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                            row.tier === 'Strategic' ? 'bg-purple-100 text-purple-800' :
-                            row.tier === 'Enterprise' ? 'bg-blue-100 text-blue-800' :
-                            row.tier === 'Commercial' ? 'bg-green-100 text-green-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>{row.tier}</span>
-                        </td>
-                        {['Meraki', 'Duo', 'Umbrella', 'ThousandEyes', 'Splunk'].map(product => {
-                          const productData = row[product];
-                          const getStatusColor = (status: string) => {
-                            switch (status) {
-                              case 'champion': return 'bg-green-500 text-white';
-                              case 'active': return 'bg-blue-500 text-white';
-                              case 'trial': return 'bg-yellow-500 text-white';
-                              case 'low': return 'bg-red-400 text-white';
-                              default: return 'bg-gray-100 text-gray-400';
-                            }
-                          };
-                          
-                          return (
-                            <td key={product} className="px-4 py-3 text-center">
-                              {productData.hasProduct ? (
-                                <div 
-                                  className={`inline-flex items-center justify-center w-12 h-8 rounded text-xs font-semibold ${getStatusColor(productData.status)}`}
-                                  title={`${productData.utilization}% utilization`}
-                                >
-                                  {productData.utilization}%
-                                </div>
-                              ) : (
-                                <div className="inline-flex items-center justify-center w-12 h-8 rounded bg-gray-100 text-gray-400 text-xs">
-                                  —
-                                </div>
-                              )}
-                            </td>
-                          );
-                        })}
-                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{row.productCount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <ProductPenetrationMatrix data={data} onDrillToLevel3={onDrillToLevel3} />
 
             {/* Legend */}
             <div className="flex items-center justify-center space-x-8 text-sm">

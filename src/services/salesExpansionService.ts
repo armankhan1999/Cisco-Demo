@@ -489,13 +489,19 @@ function calculateExpansionARR(): KPIValue {
 }
 
 function calculateMultiProductPenetration(): KPIValue {
-  // Count customers with 2+ products from actual customer data
-  const multiProductCustomers = customersData.filter(c => c.product_count >= 2).length;
+  // Calculate actual penetration based on total possible products (5 main products: Duo, Meraki, Umbrella, ThousandEyes, Splunk)
+  const totalPossibleProducts = 5;
   const totalCustomers = customersData.length;
-  const value = (multiProductCustomers / totalCustomers) * 100;
   
-  const target = 40;
-  const trend = Math.round((value - target) * 10) / 10; // Difference from target, rounded to 1 decimal
+  // Calculate average product penetration across all customers
+  const totalProductsOwned = customersData.reduce((sum, customer) => sum + customer.product_count, 0);
+  const averageProductsPerCustomer = totalProductsOwned / totalCustomers;
+  
+  // Penetration percentage = (average products per customer / total possible products) * 100
+  const value = Math.round((averageProductsPerCustomer / totalPossibleProducts) * 100);
+  
+  const target = 40; // Target 40% penetration (2 out of 5 products on average)
+  const trend = Math.round((value - target) * 10) / 10;
   const status = value >= target ? 'good' : value >= target * 0.9 ? 'warning' : 'critical';
 
   return { value, trend, status, target, unit: '%' };
