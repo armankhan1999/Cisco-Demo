@@ -142,7 +142,7 @@ export default function CSMOverviewPage() {
       <div className={`flex-1 overflow-y-auto transition-all duration-300 ${!isInIframe ? (isCollapsed ? 'ml-[56px]' : 'ml-[280px]') : ''}`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
           {/* Header */}
-          <div className="max-w-7xl mx-auto mb-8">
+          <div className="mb-8">
             {!isInIframe && (
               <div className="flex items-center mb-6">
                 <Link
@@ -167,7 +167,7 @@ export default function CSMOverviewPage() {
           </div>
 
           {/* Focus Areas & Objectives */}
-          <div className="max-w-7xl mx-auto mb-12">
+          <div className=" mb-12">
             <div className="rounded-lg shadow-md p-8" style={{ backgroundColor: '#F3F3F3' }}>
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Target className="w-6 h-6 mr-3 text-blue-600" />
@@ -193,7 +193,7 @@ export default function CSMOverviewPage() {
           </div>
 
           {/* Strategic View - KPIs */}
-          <div className="max-w-7xl mx-auto mb-12">
+          <div className=" mb-12">
             <div className="rounded-lg shadow-md p-8" style={{ backgroundColor: '#F3F3F3' }}>
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -266,7 +266,7 @@ export default function CSMOverviewPage() {
           </div>
 
           {/* Footer */}
-          <div className="max-w-7xl mx-auto text-center text-sm text-gray-500">
+          <div className=" text-center text-sm text-gray-500">
             <p>Customer Success Leader Overview | Strategic Dashboard</p>
             <p className="mt-2">
               Powered by Next.js 15 | Data from CSM_tab1.md | Updated: {new Date().toLocaleDateString()}

@@ -222,8 +222,7 @@ function LicenseDetailsPageContent() {
       
       <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 shadow-sm">
-          <div className="max-w-7xl mx-auto px-8 py-6">
+        <div className="bg-white border-b border-gray-200 shadow-sm px-8 py-6">
             <button
               onClick={() => router.back()}
               className="text-blue-600 hover:text-blue-700 mb-3 flex items-center text-sm font-medium transition-colors"
@@ -236,11 +235,10 @@ function LicenseDetailsPageContent() {
             <p className="text-gray-600 mt-2">
               {getFocusDescription()}
             </p>
-          </div>
         </div>
 
         {/* Portfolio Summary */}
-        <div className="max-w-7xl mx-auto px-8 py-6">
+        <div className="px-8 py-6">
           <div className="grid grid-cols-5 gap-6 mb-8">
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="text-sm font-medium text-gray-600 mb-2">Total ARR</div>
