@@ -1077,6 +1077,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
         </div>
 
         <div className="p-6">
+          {activeTab === 'analytics' && (
             <div className="space-y-8">
               {/* Product Gap Analysis Matrix */}
               <div>
@@ -1197,11 +1198,9 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     </tbody>
                   </table>
                 </div>
-              </div>
-
                 </div>
-            </div>
-          )}
+              </div>
+            )}
 
           {activeTab === 'lookalike' && (
             <LookalikeAnalysisContent onDrillToLevel3={onDrillToLevel3} sortBy={sortBy} setSortBy={setSortBy} filterByProductCount={filterByProductCount} setFilterByProductCount={setFilterByProductCount} />
