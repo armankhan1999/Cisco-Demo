@@ -544,18 +544,6 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
     businessContext: 'Revenue retention + expansion from existing customer cohort. Target: ≥110%. Measures ability to grow revenue from existing base.',
     level2Views: [
       {
-        id: 'nrr-by-tier',
-        title: 'NRR by Customer Tier',
-        description: 'Breakdown of NRR performance across Strategic, Enterprise, Commercial, and SMB tiers',
-        chartType: 'breakdown',
-        businessQuestion: 'WHICH customer tiers are driving NRR performance?',
-        actionableInsights: [
-          'Strategic tier: 125% NRR (excellent expansion)',
-          'Enterprise tier: 112% NRR (on target)',
-          'SMB tier: 95% NRR (churn risk)'
-        ]
-      },
-      {
         id: 'nrr-quarterly-trend',
         title: 'NRR Quarterly Trend',
         description: 'Quarterly NRR performance trends and forecasting',
@@ -577,6 +565,18 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
           'Expansion: +$5.4M ARR',
           'Churn: -$1.2M ARR',
           'Net: +$4.2M ARR (114.8% NRR)'
+        ]
+      },
+      {
+        id: 'nrr-by-tier',
+        title: 'NRR by Customer Tier',
+        description: 'Breakdown of NRR performance across Strategic, Enterprise, Commercial, and SMB tiers',
+        chartType: 'breakdown',
+        businessQuestion: 'WHICH customer tiers are driving NRR performance?',
+        actionableInsights: [
+          'Strategic tier: 125% NRR (excellent expansion)',
+          'Enterprise tier: 112% NRR (on target)',
+          'SMB tier: 95% NRR (churn risk)'
         ]
       }
     ],
@@ -644,18 +644,6 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
           'Enterprise Financial Services: $2.8M opportunity',
           'Strategic Healthcare: $2.1M opportunity',
           'Commercial Manufacturing: $1.9M opportunity'
-        ]
-      },
-      {
-        id: 'product-gap-analysis',
-        title: 'Product Gap Analysis',
-        description: 'Which products have the most expansion headroom',
-        chartType: 'breakdown',
-        businessQuestion: 'WHICH products have the most white space?',
-        actionableInsights: [
-          'ThousandEyes: $3.2M gap (lowest penetration)',
-          'Umbrella: $2.8M gap (high synergy with Duo)',
-          'Splunk: $2.4M gap (new product opportunity)'
         ]
       }
     ],
@@ -887,19 +875,6 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
         ]
       },
       {
-        id: 'product-breakdown',
-        title: 'Utilization by Product Family',
-        description: 'Alert distribution and potential ARR by product category',
-        chartType: 'matrix',
-        businessQuestion: 'Which products generate the most capacity-driven expansion opportunities?',
-        actionableInsights: [
-          'Meraki leads with 6 alerts and $920K potential ARR',
-          'Duo shows strong utilization growth with 5 alerts',
-          'Umbrella has consistent capacity alerts across customer base',
-          'ThousandEyes and Splunk show lower but steady utilization'
-        ]
-      },
-      {
         id: 'response-analysis',
         title: 'Alert Response Rate Analysis',
         description: 'Conversion rates and response times for capacity alerts',
@@ -1000,18 +975,6 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
           'Capacity expansion: 85% avg win rate (easiest)',
           'Cross-sell: 62% avg win rate (product training needed)',
           'Product specialization correlates with 15% higher win rates'
-        ]
-      },
-      {
-        id: 'activity-metrics',
-        title: 'Rep Activity Dashboard',
-        description: 'Calls, meetings, proposals, and engagement metrics',
-        chartType: 'breakdown',
-        businessQuestion: 'Are reps maintaining sufficient activity levels?',
-        actionableInsights: [
-          'Target: 20 customer touches/week',
-          'High performers average 28 touches/week',
-          'Activity velocity predicts pipeline health'
         ]
       }
     ],
@@ -1239,19 +1202,6 @@ export const KPI_DRILL_DOWNS: KPIDrillDown[] = [
           'Enterprise: Cross-sell most effective (avg $95K)',
           'Commercial: Capacity-driven primary (avg $45K)',
           'SMB: Upsell within product (avg $18K)'
-        ]
-      },
-      {
-        id: 'type-velocity',
-        title: 'Time to Close by Type',
-        description: 'Average sales cycle length for each expansion motion',
-        chartType: 'breakdown',
-        businessQuestion: 'Which expansion types close fastest?',
-        actionableInsights: [
-          'Capacity-driven: 18 days avg (urgent need)',
-          'Upsell: 32 days avg (clear value path)',
-          'Cross-sell: 45 days avg (education needed)',
-          'Bundles: 52 days avg (complex decision)'
         ]
       },
       {

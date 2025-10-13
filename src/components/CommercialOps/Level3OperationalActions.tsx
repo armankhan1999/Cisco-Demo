@@ -291,22 +291,47 @@ export default function Level3OperationalActions({ kpiId, actionId, onBack }: Le
     }
 
     // CAPACITY EXPANSION OPPORTUNITIES
-    if (actionId === 'capacity-opportunities') {
-      const capacityOpps = expansionOpportunitiesData.filter(o => o.opportunity_type === 'capacity_expansion');
-      capacityOpps.forEach((opp) => {
-        const customer = customersData.find(c => c.customer_id === opp.customer_id);
-        items.push({
-          id: `CAPACITY-${opp.opportunity_id}`,
-          type: 'account',
-          title: `Capacity Expansion - ${opp.recommended_product}`,
-          customer: customer?.customer_name || opp.customer_id,
-          amount: opp.estimated_arr,
-          daysOverdue: opp.days_in_stage > 15 ? opp.days_in_stage - 15 : 0, // Faster cycle for capacity
-          assignee: customer?.csm_id || 'Account Manager',
-          priority: 'high', // Capacity is always high priority
-          status: opp.stage === 'Prospecting' ? 'pending' : 'in_progress',
-          nextAction: `${opp.stage} - Additional ${opp.recommended_product} licenses`,
-          businessImpact: `Capacity: $${(opp.estimated_arr / 1000).toFixed(0)}K ARR • ${opp.close_probability}% probability • Fast close`
+    if (actionId === 'capacity-opportunities' || actionId === 'active-capacity-alerts') {
+      // Find high-utilization licenses (>85%) and create capacity expansion opportunities
+      const highUtilLicenses = licensesData.filter(l => l.utilization >= 85);
+      
+      // Group by customer and get unique customers with high utilization
+      const customerUtilMap = new Map();
+      highUtilLicenses.forEach(license => {
+        if (!customerUtilMap.has(license.customer_id)) {
+          customerUtilMap.set(license.customer_id, []);
+        }
+        customerUtilMap.get(license.customer_id).push(license);
+      });
+
+      // Create capacity opportunities for each customer
+      let itemCount = 0;
+      customerUtilMap.forEach((licenses, customerId) => {
+        if (itemCount >= 20) return; // Limit to 20 accounts
+        
+        const customer = customersData.find(c => c.customer_id === customerId);
+        if (!customer) return;
+
+        licenses.forEach((license, idx) => {
+          if (itemCount >= 20) return;
+          
+          const expansionAmount = Math.round(license.total_licenses * 0.2 * 100 * (license.utilization / 100)); // Estimate 20% expansion
+          const urgency = license.utilization >= 95 ? 'critical' : license.utilization >= 90 ? 'high' : 'medium';
+          
+          items.push({
+            id: `CAPACITY-${customerId}-${license.product_family}-${idx}`,
+            type: 'account',
+            title: `${license.product_family} - ${license.utilization}% Utilization`,
+            customer: customer.customer_name,
+            amount: expansionAmount,
+            daysOverdue: license.utilization >= 95 ? 0 : 0, // Not overdue, but urgent
+            assignee: customer.csm_id || 'Account Manager',
+            priority: urgency,
+            status: license.utilization >= 95 ? 'in_progress' : 'pending',
+            nextAction: `Contact customer - ${license.used_licenses}/${license.total_licenses} licenses in use`,
+            businessImpact: `${urgency.toUpperCase()}: $${(expansionAmount / 1000).toFixed(1)}K estimated ARR • ${license.utilization}% utilization • ${license.product_family}`
+          });
+          itemCount++;
         });
       });
     }

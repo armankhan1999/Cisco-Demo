@@ -37,16 +37,18 @@ export function getNRRByTier() {
     const contractionARR = tierContractions.reduce((sum, m) => sum + Math.abs(m.arr_change), 0);
     
     const startingARR = totalARR - (expansionARR - churnARR - contractionARR);
-    const nrr = startingARR > 0 ? ((totalARR) / startingARR) * 100 : 100;
+    const nrrPercent = startingARR > 0 ? ((totalARR) / startingARR) * 100 : 100;
+    const nrrDollars = totalARR; // NRR in dollar terms = retained + expanded revenue
     
     return {
       tier,
       customerCount,
       totalARR,
-      nrr: Math.round(nrr * 10) / 10,
+      nrr: nrrDollars, // Now returns dollars instead of percentage
+      nrrPercent: Math.round(nrrPercent * 10) / 10, // Keep for reference
       expansionARR,
       churnARR,
-      status: nrr >= 110 ? 'good' : nrr >= 100 ? 'warning' : 'critical'
+      status: nrrPercent >= 110 ? 'good' : nrrPercent >= 100 ? 'warning' : 'critical'
     };
   });
 }

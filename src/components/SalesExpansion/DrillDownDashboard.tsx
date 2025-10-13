@@ -127,6 +127,7 @@ export default function DrillDownDashboard() {
               <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
                 <TrendingUp className="h-8 w-8 text-blue-600" />
                 Sales Expansion Command Center
+                <span className="text-xs bg-green-500 text-white px-2 py-1 rounded">V2</span>
               </h1>
               <p className="text-sm text-gray-600 mt-1">
                 Strategic oversight of expansion pipeline, NRR, and growth opportunities
@@ -157,15 +158,15 @@ export default function DrillDownDashboard() {
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto p-8">
-        {/* KPI Cards Grid - Row 1 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {/* KPI Cards Grid - Optimized 3-Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <DrillDownKPICard
             kpiId="nrr"
             title="Net Revenue Retention"
-            value={(kpis.nrr.value / 1000000).toFixed(1)}
+            value={(kpis.nrr.value / 1000000).toFixed(2)}
             unit="M"
-            target={`≥ $${(kpis.nrr.target / 1000000).toFixed(1)}M`}
-            trend={kpis.nrr.trend}
+            target={`≥ $${(kpis.nrr.target / 1000000).toFixed(2)}M`}
+            trend={parseFloat(kpis.nrr.trend.toFixed(2))}
             status={kpis.nrr.status}
             icon={<TrendingUp className="h-8 w-8" />}
             color="blue"
@@ -178,10 +179,10 @@ export default function DrillDownDashboard() {
           <DrillDownKPICard
             kpiId="expansion-arr"
             title="Expansion ARR"
-            value={`$${(kpis.expansionARR.value / 1000000).toFixed(1)}M`}
+            value={`$${(kpis.expansionARR.value / 1000000).toFixed(2)}M`}
             unit=""
-            target={`≥ $${(kpis.expansionARR.target / 1000000).toFixed(1)}M`}
-            trend={kpis.expansionARR.trend}
+            target={`≥ $${(kpis.expansionARR.target / 1000000).toFixed(2)}M`}
+            trend={parseFloat(kpis.expansionARR.trend.toFixed(2))}
             status={kpis.expansionARR.status}
             icon={<DollarSign className="h-8 w-8" />}
             color="green"
@@ -194,10 +195,10 @@ export default function DrillDownDashboard() {
           <DrillDownKPICard
             kpiId="multi-product-penetration"
             title="Multi-Product Penetration"
-            value={kpis.multiProductPenetration.value.toFixed(1)}
+            value={kpis.multiProductPenetration.value.toFixed(2)}
             unit="%"
             target={`≥ ${kpis.multiProductPenetration.target}%`}
-            trend={kpis.multiProductPenetration.trend}
+            trend={parseFloat(kpis.multiProductPenetration.trend.toFixed(2))}
             status={kpis.multiProductPenetration.status}
             icon={<Users className="h-8 w-8" />}
             color="purple"
@@ -210,10 +211,10 @@ export default function DrillDownDashboard() {
           <DrillDownKPICard
             kpiId="white-space-value"
             title="White Space Opportunity"
-            value={`$${(kpis.whiteSpaceValue.value / 1000000).toFixed(1)}M`}
+            value={`$${(kpis.whiteSpaceValue.value / 1000000).toFixed(2)}M`}
             unit=""
-            target={`≥ $${(kpis.whiteSpaceValue.target / 1000000).toFixed(1)}M`}
-            trend={kpis.whiteSpaceValue.trend}
+            target={`≥ $${(kpis.whiteSpaceValue.target / 1000000).toFixed(2)}M`}
+            trend={parseFloat(kpis.whiteSpaceValue.trend.toFixed(2))}
             status={kpis.whiteSpaceValue.status}
             icon={<AlertCircle className="h-8 w-8" />}
             color="orange"
@@ -222,10 +223,7 @@ export default function DrillDownDashboard() {
             customBgColor="#F3F3F3"
             variant="q2c"
           />
-        </div>
 
-        {/* KPI Cards Grid - Row 2: Performance & Readiness */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
           <DrillDownKPICard
             kpiId="performance-metrics"
             title="Rep Performance Metrics"
@@ -396,10 +394,11 @@ export default function DrillDownDashboard() {
           </div>
         </div>
 
-        {/* Pipeline Funnel & Win Rate Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Expansion Pipeline Funnel */}
-          <div className="rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group" style={{ backgroundColor: '#F3F3F3' }} onClick={() => handleDrillDown('pipeline-arr', 2)}>
+
+        {/* Expansion Pipeline Funnel - Full Width */}
+        <div className="mb-8">
+          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => handleDrillDown('pipeline-arr', 2)}>
+
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
@@ -412,10 +411,10 @@ export default function DrillDownDashboard() {
                 <span className="text-xs text-blue-600 font-semibold">Click to drill down →</span>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={450}>
               <FunnelChart>
                 <Tooltip 
-                  formatter={(value: any) => `$${(value / 1000000).toFixed(1)}M`}
+                  formatter={(value: any) => `$${(value / 1000000).toFixed(2)}M`}
                   contentStyle={{ backgroundColor: '#1f2937', border: 'none', borderRadius: '8px', color: '#fff' }}
                 />
                 <Funnel
@@ -446,7 +445,7 @@ export default function DrillDownDashboard() {
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-indigo-50 rounded-lg">
                 <p className="text-xs text-indigo-700 font-semibold">Weighted Pipeline</p>
-                <p className="text-xl font-bold text-indigo-900">${(pipelineTrackingData[0].weighted_pipeline_arr / 1000000).toFixed(1)}M</p>
+                <p className="text-xl font-bold text-indigo-900">${(pipelineTrackingData[0].weighted_pipeline_arr / 1000000).toFixed(2)}M</p>
               </div>
               <div className="text-center p-3 bg-green-50 rounded-lg">
                 <p className="text-xs text-green-700 font-semibold">Total Opportunities</p>
@@ -568,18 +567,18 @@ export default function DrillDownDashboard() {
                   dataKey="value"
                 >
                 </Pie>
-                <Tooltip formatter={(value: any) => `$${(value / 1000000).toFixed(1)}M`} />
+                <Tooltip formatter={(value: any) => `$${(value / 1000000).toFixed(2)}M`} />
               </PieChart>
             </ResponsiveContainer>
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-teal-50 rounded-lg">
                 <p className="text-xs text-teal-700 font-semibold">Cross-Sell ARR</p>
-                <p className="text-xl font-bold text-teal-900">${(pipelineTrackingData[0].expansion_by_type.cross_sell.arr / 1000000).toFixed(1)}M</p>
+                <p className="text-xl font-bold text-teal-900">${(pipelineTrackingData[0].expansion_by_type.cross_sell.arr / 1000000).toFixed(2)}M</p>
                 <p className="text-xs text-teal-600 mt-1">{pipelineTrackingData[0].expansion_by_type.cross_sell.count} opportunities</p>
               </div>
               <div className="text-center p-3 bg-indigo-50 rounded-lg">
                 <p className="text-xs text-indigo-700 font-semibold">Upsell ARR</p>
-                <p className="text-xl font-bold text-indigo-900">${(pipelineTrackingData[0].expansion_by_type.upsell.arr / 1000000).toFixed(1)}M</p>
+                <p className="text-xl font-bold text-indigo-900">${(pipelineTrackingData[0].expansion_by_type.upsell.arr / 1000000).toFixed(2)}M</p>
                 <p className="text-xs text-indigo-600 mt-1">{pipelineTrackingData[0].expansion_by_type.upsell.count} opportunities</p>
               </div>
             </div>
@@ -615,7 +614,7 @@ export default function DrillDownDashboard() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-blue-600">${(alert.value / 1000000).toFixed(1)}M</p>
+                  <p className="text-lg font-bold text-blue-600">${(alert.value / 1000000).toFixed(2)}M</p>
                   <p className="text-sm text-gray-600">{alert.count} items</p>
                 </div>
               </div>
