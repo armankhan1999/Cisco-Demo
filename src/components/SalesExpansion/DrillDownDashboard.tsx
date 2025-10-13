@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, TrendingUp, AlertCircle, Filter, RefreshCw, DollarSign, Users, X } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ScatterChart, Scatter, ZAxis, FunnelChart, Funnel, LabelList, PieChart, Pie, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { getSalesExpansionKPIs, getTrendData, getExceptionAlerts, type SalesExpansionKPIs, type TrendData, type ExceptionAlert } from '@/services/salesExpansionService';
+import { ExpansionReadyAccountsService } from '@/services/expansionReadyAccountsService';
 import DrillDownKPICard from '../CommercialOps/DrillDownKPICard';
 import Level2TacticalAnalysis from '../CommercialOps/Level2TacticalAnalysis';
 import Level3OperationalActions from '../CommercialOps/Level3OperationalActions';
@@ -243,14 +244,14 @@ export default function DrillDownDashboard() {
           <DrillDownKPICard
             kpiId="opportunity-readiness"
             title="Expansion-Ready Accounts"
-            value="68"
+            value="32"
             unit=" accounts"
             target="≥ 60 accounts"
             trend={8.5}
             status="good"
             icon={<TrendingUp className="h-8 w-8" />}
             color="teal"
-            description="Accounts with high expansion readiness score"
+            description="Accounts with high expansion readiness score (filtered for valid opportunities)"
             onDrillDown={handleDrillDown}
             customBgColor="#F3F3F3"
             variant="q2c"
@@ -736,6 +737,14 @@ export default function DrillDownDashboard() {
               <div className="flex-1 overflow-y-auto p-6">
                 {selectedComponent === null ? (
                   <>
+                    {/* Definition */}
+                    <div className="mb-6 p-4 bg-teal-50 border border-teal-200 rounded-lg">
+                      <h4 className="text-lg font-bold text-teal-900 mb-2">What is an Expansion Ready Account?</h4>
+                      <p className="text-teal-800 text-sm leading-relaxed">
+                        An Expansion Ready Account is an existing customer who shows strong signals that they are prepared to purchase additional products or increase their current usage. These accounts are identified through a comprehensive scoring system that evaluates multiple readiness factors.
+                      </p>
+                    </div>
+
                     {/* Overall Formula Table */}
                     <div className="mb-6">
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
@@ -1308,6 +1317,14 @@ export default function DrillDownDashboard() {
               <div className="flex-1 overflow-y-auto p-6">
                 {selectedComponent === null ? (
                   <>
+                    {/* Definition */}
+                    <div className="mb-6 p-4 bg-teal-50 border border-teal-200 rounded-lg">
+                      <h4 className="text-lg font-bold text-teal-900 mb-2">What is a White Space Opportunity?</h4>
+                      <p className="text-teal-800 text-sm leading-relaxed">
+                        White Space Opportunity: The potential to sell products a customer doesn't currently own but is likely to adopt, based on patterns from similar successful customers. This identifies untapped revenue potential within existing accounts.
+                      </p>
+                    </div>
+
                     {/* Overall Formula Table */}
                     <div className="mb-6">
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
@@ -1749,6 +1766,14 @@ export default function DrillDownDashboard() {
               <div className="flex-1 overflow-y-auto p-6">
                 {selectedComponent === null ? (
                   <>
+                    {/* Definition */}
+                    <div className="mb-6 p-4 bg-teal-50 border border-teal-200 rounded-lg">
+                      <h4 className="text-lg font-bold text-teal-900 mb-2">What is a Lookalike Match Quality Score?</h4>
+                      <p className="text-teal-800 text-sm leading-relaxed">
+                        A Lookalike Match Quality Score is a comprehensive metric (0-100) that measures how well a target customer matches a source customer across multiple dimensions. This enables AI-driven expansion recommendations based on successful customer patterns and behaviors.
+                      </p>
+                    </div>
+
                     {/* Overall Formula Table */}
                     <div className="mb-6">
                       <h4 className="text-lg font-bold text-gray-900 mb-3">Overall Formula</h4>
