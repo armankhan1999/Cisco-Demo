@@ -23,6 +23,7 @@ interface DrillDownKPICardProps {
   onDrillDown: (kpiId: string, level: 2 | 3) => void;
   customBgColor?: string;
   variant?: 'default' | 'q2c';
+  disableHover?: boolean;
 }
 
 export default function DrillDownKPICard({
@@ -38,7 +39,8 @@ export default function DrillDownKPICard({
   color,
   onDrillDown,
   customBgColor,
-  variant = 'default'
+  variant = 'default',
+  disableHover = false
 }: DrillDownKPICardProps) {
 
   const getColorClasses = () => {
@@ -169,10 +171,13 @@ export default function DrillDownKPICard({
   if (variant === 'q2c') {
     return (
       <div
-        className="border border-gray-200 rounded-2xl p-5 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer relative overflow-hidden group"
+        className={`border border-gray-200 rounded-2xl p-5 transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+          disableHover ? '' : 'hover:shadow-xl transform hover:-translate-y-1'
+        }`}
         style={customBgColor ? { backgroundColor: customBgColor } : undefined}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => !disableHover && setIsHovered(true)}
+        onMouseLeave={() => !disableHover && setIsHovered(false)}
+        onClick={() => onDrillDown(kpiId, 2)}
       >
         {/* Header: Title on left, Trend & Status on right */}
         <div className="flex items-start justify-between mb-3">

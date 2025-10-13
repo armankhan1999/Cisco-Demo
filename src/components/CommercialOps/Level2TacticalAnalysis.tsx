@@ -10,6 +10,7 @@ import { drillDownService } from '@/services/drillDownService';
 import { ArrowLeft, BarChart3, TrendingUp, Filter, Download, Layers, Target, AlertCircle } from '@/utils/iconMapping';
 import { KPI_DRILL_DOWNS,  type KPIDrillDown, type Level2View } from '@/services/drillDownService';
 import { getCommercialOpsKPIs } from '@/services/commercialOpsService';
+import ReactMarkdown from 'react-markdown';
 import { 
   getNRRByTier, 
   getNRRQuarterlyTrend, 
@@ -54,6 +55,7 @@ import whiteSpaceData from '@/source_data/csm-data/white_space_analysis.json';
 import revenueMovementsData from '@/source_data/commercial_operations/revenue_movements.json';
 import expansionOpportunitiesData from '@/source_data/sales-expansion-data/expansion-opportunities.json';
 import expansionPipelineTrackingData from '@/source_data/sales-expansion-data/expansion-pipeline-tracking.json';
+import potentialArrData from '@/data/POTENTIAL_ARR_ANALYSIS-new.json';
 import AdvancedVisualizationCharts from './AdvancedVisualizationCharts';
 
 interface Level2TacticalAnalysisProps {
@@ -511,9 +513,394 @@ function PipelineExpansionAnalysis({ onDrillToLevel3 }: { onDrillToLevel3: (acti
   );
 }
 
+// Lookalike Analysis Content Component
+function LookalikeAnalysisContent({
+  onDrillToLevel3,
+  sortBy,
+  setSortBy,
+  filterByProductCount,
+  setFilterByProductCount
+}: {
+  onDrillToLevel3: (actionId: string) => void;
+  sortBy: 'opportunity' | 'similarity' | 'products';
+  setSortBy: (sort: 'opportunity' | 'similarity' | 'products') => void;
+  filterByProductCount: number;
+  setFilterByProductCount: (count: number) => void;
+}) {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Parse and prepare the data
+  const analysisData = potentialArrData.map((item: any) => {
+    // POTENTIAL_PRODUCTS is already parsed in the JSON file
+    let potentialProducts = [];
+    if (Array.isArray(item.POTENTIAL_PRODUCTS)) {
+      potentialProducts = item.POTENTIAL_PRODUCTS;
+    } else if (typeof item.POTENTIAL_PRODUCTS === 'string') {
+      try {
+        potentialProducts = JSON.parse(item.POTENTIAL_PRODUCTS);
+      } catch (e) {
+        console.error('Error parsing potential products:', e);
+      }
+    }
+    return {
+      customerId: item.CUSTOMER_ID,
+      companyName: item.COMPANY_NAME,
+      currentArr: parseFloat(item.CURRENT_ARR),
+      currentProductCount: parseInt(item.CURRENT_PRODUCT_COUNT),
+      potentialProductCount: parseInt(item.POTENTIAL_PRODUCT_COUNT),
+      totalPotentialArr: parseFloat(item.TOTAL_POTENTIAL_ARR),
+      totalExpectedArr: parseFloat(item.TOTAL_EXPECTED_POTENTIAL_ARR),
+      similarCompanies: item.TOP_5_SIMILAR_COMPANIES.split(', '),
+      avgSimilarityScore: parseFloat(item.AVG_SIMILARITY_SCORE),
+      potentialProducts: potentialProducts,
+      topProduct: item.TOP_PRODUCT_RECOMMENDATION,
+      topProductExpectedArr: parseFloat(item.TOP_PRODUCT_EXPECTED_ARR),
+    };
+  });
+
+  // Filter and sort
+  let filteredData = analysisData;
+  if (filterByProductCount > 0) {
+    filteredData = analysisData.filter(item => item.potentialProductCount >= filterByProductCount);
+  }
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    switch (sortBy) {
+      case 'opportunity':
+        return b.totalExpectedArr - a.totalExpectedArr;
+      case 'similarity':
+        return b.avgSimilarityScore - a.avgSimilarityScore;
+      case 'products':
+        return b.potentialProductCount - a.potentialProductCount;
+      default:
+        return 0;
+    }
+  });
+
+  const formatCurrency = (value: number) => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`;
+    }
+    return `$${(value / 1000).toFixed(0)}K`;
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
+
+    const userMessage = inputMessage.trim();
+    setInputMessage('');
+    setChatMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      // Prepare context data for the AI
+      const contextData = {
+        totalAccounts: sortedData.length,
+        totalExpectedArr: sortedData.reduce((sum, item) => sum + item.totalExpectedArr, 0),
+        avgSimilarity: sortedData.reduce((sum, item) => sum + item.avgSimilarityScore, 0) / sortedData.length,
+        topAccounts: sortedData.slice(0, 10).map(a => ({
+          name: a.companyName,
+          currentArr: a.currentArr,
+          expectedArr: a.totalExpectedArr,
+          similarity: a.avgSimilarityScore,
+          topProduct: a.topProduct,
+          currentProducts: a.currentProductCount,
+          potentialProducts: a.potentialProductCount
+        }))
+      };
+
+      const response = await fetch('/api/chat-lookalike', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          context: contextData
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setChatMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setChatMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error processing your question. Please try again.'
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Filters and Sorting */}
+      <div className="flex flex-wrap items-center gap-4 p-4 bg-gray-50 rounded-lg">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-700">Sort by:</label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as any)}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-black"
+          >
+            <option value="opportunity">Expected ARR (High to Low)</option>
+            <option value="similarity">Similarity Score (High to Low)</option>
+            <option value="products">Product Opportunities (Most to Least)</option>
+          </select>
+        </div>
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-700">Min Products:</label>
+          <select
+            value={filterByProductCount}
+            onChange={(e) => setFilterByProductCount(parseInt(e.target.value))}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-black"
+          >
+            <option value="0">All</option>
+            <option value="2">2+ Products</option>
+            <option value="3">3+ Products</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Lookalike Analysis Table */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+            <span className="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
+            Lookalike Customer Analysis
+          </h3>
+          <button
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            Chat With Data
+          </button>
+        </div>
+        <p className="text-sm text-gray-600 mb-4">
+          Customers similar to top performers with expansion opportunities based on adoption patterns
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Current ARR</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Products (Current/Potential)</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Expected ARR</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Similarity</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Top Recommendation</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {sortedData.slice(0, 20).map((account) => (
+                <tr key={account.customerId} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`lookalike-${account.customerId}`)}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">{account.companyName}</div>
+                    <div className="text-xs text-gray-500">
+                      Similar to: {account.similarCompanies.slice(0, 2).join(', ')}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-semibold text-gray-900">
+                    {formatCurrency(account.currentArr)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <span className="text-sm font-semibold text-blue-600">{account.currentProductCount}</span>
+                    <span className="text-sm text-gray-500"> / </span>
+                    <span className="text-sm font-semibold text-orange-600">{account.potentialProductCount}</span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-green-600">
+                    {formatCurrency(account.totalExpectedArr)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="w-16 bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-green-600 h-2 rounded-full"
+                          style={{ width: `${account.avgSimilarityScore}%` }}
+                        ></div>
+                      </div>
+                      <span className="text-xs font-semibold text-green-600">{account.avgSimilarityScore.toFixed(1)}%</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-medium text-gray-900">{account.topProduct}</div>
+                    <div className="text-xs text-green-600 font-semibold">{formatCurrency(account.topProductExpectedArr)}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {sortedData.length > 20 && (
+          <div className="mt-4 text-center text-sm text-gray-600">
+            Showing top 20 of {sortedData.length} accounts
+          </div>
+        )}
+      </div>
+
+      {/* Product Recommendations Summary */}
+      <div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">🎯 Top Product Recommendations</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {(() => {
+            const productCounts: { [key: string]: { count: number; totalArr: number } } = {};
+            sortedData.forEach(account => {
+              if (!productCounts[account.topProduct]) {
+                productCounts[account.topProduct] = { count: 0, totalArr: 0 };
+              }
+              productCounts[account.topProduct].count++;
+              productCounts[account.topProduct].totalArr += account.topProductExpectedArr;
+            });
+
+            return Object.entries(productCounts)
+              .sort((a, b) => b[1].totalArr - a[1].totalArr)
+              .slice(0, 6)
+              .map(([product, data]) => (
+                <div key={product} className="bg-gray-50 rounded-lg p-4">
+                  <div className="text-sm font-semibold text-gray-900 mb-2">{product}</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-600">{data.count} accounts</span>
+                    <span className="text-sm font-bold text-blue-600">{formatCurrency(data.totalArr)}</span>
+                  </div>
+                </div>
+              ));
+          })()}
+        </div>
+      </div>
+
+      {/* Chat Window */}
+      {isChatOpen && (
+        <div className="fixed bottom-0 right-8 w-[500px] h-[600px] bg-white rounded-t-2xl shadow-2xl border-2 border-gray-200 flex flex-col z-50 animate-slide-up">
+          {/* Chat Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold">Chat With Lookalike Data</h3>
+                <p className="text-xs text-blue-100">Ask questions about expansion opportunities</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsChatOpen(false)}
+              className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+            {chatMessages.length === 0 && (
+              <div className="text-center text-gray-500 mt-8">
+                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <p className="text-sm font-semibold mb-2">Start a conversation</p>
+                <p className="text-xs">Ask questions about the lookalike analysis data</p>
+                <div className="mt-6 space-y-2">
+                  <button
+                    onClick={() => setInputMessage("Which customers have the highest expansion potential?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Which customers have the highest expansion potential?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("What are the top recommended products?")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    What are the top recommended products?
+                  </button>
+                  <button
+                    onClick={() => setInputMessage("Show me accounts with high similarity scores")}
+                    className="w-full text-left px-4 py-2 bg-white rounded-lg text-sm text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  >
+                    Show me accounts with high similarity scores
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {chatMessages.map((msg, idx) => (
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] rounded-lg px-4 py-3 ${
+                  msg.role === 'user'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+                }`}>
+                  {msg.role === 'user' ? (
+                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  ) : (
+                    <div className="text-sm prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-gray-900 prose-strong:font-semibold">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white text-gray-900 border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Chat Input */}
+          <div className="p-4 bg-white border-t border-gray-200">
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                placeholder="Ask a question about the data..."
+                className="text-black flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                disabled={isLoading}
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={isLoading || !inputMessage.trim()}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // White Space Opportunity Tabs Component
 function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (actionId: string) => void }) {
-  const [activeTab, setActiveTab] = useState('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'details' | 'lookalike'>('analytics');
+  const [sortBy, setSortBy] = useState<'opportunity' | 'similarity' | 'products'>('opportunity');
+  const [filterByProductCount, setFilterByProductCount] = useState<number>(0);
 
   // Calculate real data for KPI cards
   const totalWhiteSpace = whiteSpaceData.reduce((sum, ws) => sum + ws.total_white_space_arr, 0);
@@ -578,61 +965,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
     });
   };
 
-  // Lookalike Analysis - Real Data
-  const getLookalikePatterns = () => {
-    const patterns = [
-      {
-        pattern: 'Duo → Meraki',
-        description: 'customers with Duo showing high similarity to Meraki adopters',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Duo') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Meraki')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Meraki')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 86
-      },
-      {
-        pattern: 'Umbrella → Duo',
-        description: 'customers with Umbrella indicating Duo adoption profiles',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Umbrella') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Duo')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Duo')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 92
-      },
-      {
-        pattern: 'Meraki → Umbrella',
-        description: 'customers with Meraki showing Umbrella adoption potential',
-        customers: customersData.filter(c => 
-          licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Meraki') &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'Umbrella')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'Umbrella')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 78
-      },
-      {
-        pattern: 'Multi → ThousandEyes',
-        description: 'customers with 2+ products ready for ThousandEyes',
-        customers: customersData.filter(c => 
-          c.product_count >= 2 &&
-          !licensesData.some(l => l.customer_id === c.customer_id && l.product_family === 'ThousandEyes')
-        ).length,
-        opportunity: whiteSpaceData.flatMap(ws => ws.white_space_opportunities)
-          .filter(opp => opp.product === 'ThousandEyes')
-          .reduce((sum, opp) => sum + opp.estimated_arr, 0),
-        matchPercentage: 75
-      }
-    ];
-    return patterns;
-  };
-
   // Top White Space Opportunities - Real Data
   const getTopOpportunities = () => {
     return whiteSpaceData
@@ -662,11 +994,25 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
 
   const productGapMatrix = getProductGapMatrix();
   const whiteSpaceByTier = getWhiteSpaceByTier();
-  const lookalikePatterns = getLookalikePatterns();
   const topOpportunities = getTopOpportunities();
 
   return (
     <div className="space-y-6">
+      {/* Header with Action Items Button */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">White Space Opportunity Analysis</h2>
+          <p className="text-sm text-gray-600 mt-1">Estimated ARR from identified product gaps. Target: $8M+. Represents untapped expansion potential.</p>
+        </div>
+        <button 
+          onClick={() => onDrillToLevel3('high-fit-opportunities')}
+          className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-semibold flex items-center gap-2"
+        >
+          <AlertCircle className="h-4 w-4" />
+          View Action Items
+        </button>
+      </div>
+
       {/* KPI Cards */}
       <div className="grid grid-cols-4 gap-6">
         <div className="rounded-xl p-6 border border-orange-200" style={{ backgroundColor: '#F3F3F3' }}>
@@ -691,7 +1037,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
         </div>
       </div>
 
-      {/* Tabs */}
+      {/* Main Content */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="border-b border-gray-200">
           <nav className="flex space-x-8 px-6">
@@ -703,8 +1049,18 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
-              Analytics
+              White Space by Segment
             </button>
+            {/* <button
+              onClick={() => setActiveTab('lookalike')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'lookalike'
+                  ? 'border-orange-500 text-orange-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Lookalike Analysis
+            </button> */}
             <button
               onClick={() => setActiveTab('details')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
@@ -728,12 +1084,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <span className="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
                     Product Gap Analysis Matrix
                   </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('product-gap-analysis')}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-semibold"
-                  >
-                    View Action Items
-                  </button>
                 </div>
                 <p className="text-sm text-gray-600 mb-4">Shows customers missing each product (white space opportunities)</p>
                 <div className="overflow-x-auto">
@@ -762,7 +1112,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                               }`}>
                                 {product.product.charAt(0)}
                               </div>
-                              <span className="text-sm font-medium text-gray-900">{product.product}</span>
+                              <span className="text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors">{product.product}</span>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{product.haveIt}</td>
@@ -803,12 +1153,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <span className="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
                     White Space by Customer Tier
                   </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('white-space-by-tier')}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
-                  >
-                    View Tier Details
-                  </button>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -825,7 +1169,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <tbody className="bg-white divide-y divide-gray-200">
                       {whiteSpaceByTier.map((tier, index) => (
                         <tr key={index} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`tier-${tier.tier.toLowerCase()}-whitespace`)}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{tier.tier}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">{tier.tier}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{tier.customers}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{tier.opportunities}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
@@ -853,47 +1197,11 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                   </table>
                 </div>
               </div>
-
-              {/* Lookalike Analysis */}
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                    <span className="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
-                    Lookalike Analysis - Top Cross-Sell Patterns
-                  </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('lookalike-analysis')}
-                    className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm font-semibold"
-                  >
-                    View Patterns
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-6">
-                  {lookalikePatterns.map((pattern, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-gray-50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
-                      onClick={() => onDrillToLevel3(`pattern-${pattern.pattern.replace(' → ', '-').toLowerCase()}`)}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-lg font-semibold text-gray-900">{pattern.pattern}</h4>
-                        <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                          pattern.matchPercentage >= 85 ? 'bg-green-100 text-green-800' :
-                          pattern.matchPercentage >= 75 ? 'bg-blue-100 text-blue-800' :
-                          'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {pattern.matchPercentage}% Match
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-3">{pattern.customers} {pattern.description}</p>
-                      <div className="text-lg font-bold text-green-600">
-                        ${(pattern.opportunity / 1000000).toFixed(1)}M Opportunity
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
+          )}
+
+          {activeTab === 'lookalike' && (
+            <LookalikeAnalysisContent onDrillToLevel3={onDrillToLevel3} sortBy={sortBy} setSortBy={setSortBy} filterByProductCount={filterByProductCount} setFilterByProductCount={setFilterByProductCount} />
           )}
 
           {activeTab === 'details' && (
@@ -980,6 +1288,8 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     productFamily: 'all',
     dealSize: 'all'
   });
+  const [sortBy, setSortBy] = useState<'opportunity' | 'similarity' | 'products'>('opportunity');
+  const [filterByProductCount, setFilterByProductCount] = useState<number>(0);
 
   useEffect(() => {
     const drillDown = KPI_DRILL_DOWNS.find(kpi => kpi.kpiId === kpiId);
@@ -1001,6 +1311,86 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     );
   }
 
+  // Special handling for white space KPI - render directly without view switching
+  if (kpiId === 'white-space-value') {
+    return (
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  <span className="font-semibold">Back to Overview</span>
+                </button>
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    <AlertCircle className="h-8 w-8 text-orange-600" />
+                    {kpiDrillDown.kpiName}
+                  </h1>
+                  <p className="text-sm text-gray-600 mt-1">{kpiDrillDown.businessContext}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <WhiteSpaceOpportunityTabs onDrillToLevel3={onDrillToLevel3} />
+        </div>
+      </div>
+    );
+  }
+
+  // Special handling for lookalike analysis - render directly
+  if (kpiId === 'lookalike-analysis') {
+    return (
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  <span className="font-semibold">Back to Overview</span>
+                </button>
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    <svg className="h-8 w-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Lookalike Analysis
+                  </h1>
+                  <p className="text-sm text-gray-600 mt-1">AI-powered customer similarity analysis for expansion opportunities</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <LookalikeAnalysisContent
+            onDrillToLevel3={onDrillToLevel3}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            filterByProductCount={filterByProductCount}
+            setFilterByProductCount={setFilterByProductCount}
+          />
+        </div>
+      </div>
+    );
+  }
+
   const activeViewData = kpiDrillDown.level2Views.find(view => view.id === activeView);
 
   const getChartData = (viewId: string, chartType: string) => {
@@ -1015,7 +1405,7 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     if (viewId === 'expansion-velocity') return getExpansionVelocity();
     if (viewId === 'product-matrix') return getProductPenetrationMatrix();
     if (viewId === 'penetration-by-tier') return getPenetrationByTier();
-    if (viewId === 'white-space-by-segment') return getWhiteSpaceBySegment();
+    if (viewId === 'white-space-opportunity-analysis') return getWhiteSpaceBySegment();
     if (viewId === 'product-gap-analysis') return getProductGapAnalysis();
     if (viewId === 'pipeline-by-stage') return getPipelineByStage();
     if (viewId === 'pipeline-velocity') return getPipelineVelocity();
@@ -1672,17 +2062,17 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                 />
                 <YAxis 
                   label={{ 
-                    value: 'NRR (%)', 
+                    value: 'NRR ($M)', 
                     angle: -90, 
                     position: 'insideLeft', 
                     style: { fontWeight: 'bold', fontSize: '16px' } 
                   }}
                   tick={{ fontSize: 14, fontWeight: 500 }}
                   tickMargin={10}
-                  domain={[90, 130]}
+                  tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
                 />
                 <Tooltip 
-                  formatter={(value: any) => [`${value}%`, 'NRR']}
+                  formatter={(value: any) => [`$${(value / 1000000).toFixed(2)}M`, 'NRR']}
                   contentStyle={{ 
                     backgroundColor: 'white', 
                     border: '2px solid #ccc', 
@@ -1691,6 +2081,7 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                     fontWeight: '500'
                   }}
                 />
+
                 <ReferenceLine 
                   y={110} 
                   stroke="#ef4444" 
@@ -1701,18 +2092,19 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                     style: { fontSize: '14px', fontWeight: 'bold' }
                   }} 
                 />
+
                 <Legend 
                   wrapperStyle={{ paddingTop: '20px', fontSize: '14px', fontWeight: '500' }}
                 />
                 <Bar 
                   dataKey="nrr" 
                   radius={[8, 8, 0, 0]} 
-                  name="Net Revenue Retention"
+                  name="Net Revenue Retention ($)"
                   onClick={(data: any) => onDrillToLevel3(`nrr-tier-${data.tier.toLowerCase()}`)}
                   style={{ cursor: 'pointer' }}
                 >
                   {data.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.nrr >= 110 ? '#10b981' : entry.nrr >= 100 ? '#f59e0b' : '#ef4444'} />
+                    <Cell key={`cell-${index}`} fill={entry.nrrPercent >= 110 ? '#10b981' : entry.nrrPercent >= 100 ? '#f59e0b' : '#ef4444'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -1722,17 +2114,18 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             <div className="grid grid-cols-4 gap-4">
               {data.map((item: any, index: number) => (
                 <div key={index} className={`rounded-lg p-4 border-2 ${
-                  item.nrr >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
-                  item.nrr >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
+                  item.nrrPercent >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
+                  item.nrrPercent >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
                   'bg-gradient-to-br from-red-50 to-pink-50 border-red-200'
                 }`}>
                   <h5 className="text-sm font-bold text-gray-600 mb-1">{item.tier}</h5>
                   <p className={`text-3xl font-bold ${
-                    item.nrr >= 110 ? 'text-green-600' :
-                    item.nrr >= 100 ? 'text-yellow-600' :
+                    item.nrrPercent >= 110 ? 'text-green-600' :
+                    item.nrrPercent >= 100 ? 'text-yellow-600' :
                     'text-red-600'
-                  }`}>{item.nrr}%</p>
+                  }`}>${(item.nrr / 1000000).toFixed(1)}M</p>
                   <p className="text-xs text-gray-600">NRR</p>
+                  <p className="text-sm font-semibold text-gray-700">{item.nrrPercent}%</p>
                   <p className="text-sm font-semibold text-gray-700 mt-2">{item.customerCount} accounts</p>
                 </div>
               ))}
@@ -2452,9 +2845,54 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             </div>
           </div>
         );
-      case 'white-space-by-segment':
+      case 'white-space-opportunity-analysis':
         return (
           <WhiteSpaceOpportunityTabs onDrillToLevel3={onDrillToLevel3} />
+        );
+      case 'lookalike-overview':
+        return (
+          <div className="space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">Lookalike Analysis Overview</h3>
+                <p className="text-sm text-gray-600 mt-1">AI-driven expansion recommendations based on similar customer patterns</p>
+              </div>
+              <button 
+                onClick={() => onDrillToLevel3('lookalike-recommendations')}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-semibold"
+              >
+                View Recommendations
+              </button>
+            </div>
+            
+            {/* Placeholder Content for Future Integration */}
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-8 border-2 border-indigo-200">
+              <div className="text-center">
+                <div className="mx-auto w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mb-4">
+                  <TrendingUp className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">Ready for Level 2 Integration</h4>
+                <p className="text-gray-600 mb-4">
+                  This section is prepared for future lookalike analysis visualizations and insights.
+                </p>
+                <div className="grid grid-cols-3 gap-4 mt-6">
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">AI-Powered</div>
+                    <div className="text-sm text-gray-600">Recommendations</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">Pattern-Based</div>
+                    <div className="text-sm text-gray-600">Targeting</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">High-Confidence</div>
+                    <div className="text-sm text-gray-600">Matches</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       case 'product-gap-analysis':
         return (
