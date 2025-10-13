@@ -1000,6 +1000,21 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
 
   return (
     <div className="space-y-6">
+      {/* Header with Action Items Button */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">White Space Opportunity Analysis</h2>
+          <p className="text-sm text-gray-600 mt-1">Estimated ARR from identified product gaps. Target: $8M+. Represents untapped expansion potential.</p>
+        </div>
+        <button 
+          onClick={() => onDrillToLevel3('high-fit-opportunities')}
+          className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-semibold flex items-center gap-2"
+        >
+          <AlertCircle className="h-4 w-4" />
+          View Action Items
+        </button>
+      </div>
+
       {/* KPI Cards */}
       <div className="grid grid-cols-4 gap-6">
         <div className="rounded-xl p-6 border border-orange-200" style={{ backgroundColor: '#F3F3F3' }}>
@@ -1024,7 +1039,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
         </div>
       </div>
 
-      {/* Tabs */}
+      {/* Main Content */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="border-b border-gray-200">
           <nav className="flex space-x-8 px-6">
@@ -1062,7 +1077,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
         </div>
 
         <div className="p-6">
-          {activeTab === 'analytics' && (
             <div className="space-y-8">
               {/* Product Gap Analysis Matrix */}
               <div>
@@ -1071,12 +1085,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <span className="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
                     Product Gap Analysis Matrix
                   </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('product-gap-analysis')}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-semibold"
-                  >
-                    View Action Items
-                  </button>
                 </div>
                 <p className="text-sm text-gray-600 mb-4">Shows customers missing each product (white space opportunities)</p>
                 <div className="overflow-x-auto">
@@ -1105,7 +1113,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                               }`}>
                                 {product.product.charAt(0)}
                               </div>
-                              <span className="text-sm font-medium text-gray-900">{product.product}</span>
+                              <span className="text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors">{product.product}</span>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{product.haveIt}</td>
@@ -1146,12 +1154,6 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <span className="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
                     White Space by Customer Tier
                   </h3>
-                  <button 
-                    onClick={() => onDrillToLevel3('white-space-by-tier')}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
-                  >
-                    View Tier Details
-                  </button>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -1168,7 +1170,7 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                     <tbody className="bg-white divide-y divide-gray-200">
                       {whiteSpaceByTier.map((tier, index) => (
                         <tr key={index} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`tier-${tier.tier.toLowerCase()}-whitespace`)}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{tier.tier}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">{tier.tier}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{tier.customers}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{tier.opportunities}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
@@ -1196,6 +1198,8 @@ function WhiteSpaceOpportunityTabs({ onDrillToLevel3 }: { onDrillToLevel3: (acti
                   </table>
                 </div>
               </div>
+
+                </div>
             </div>
           )}
 
@@ -1308,6 +1312,42 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     );
   }
 
+  // Special handling for white space KPI - render directly without view switching
+  if (kpiId === 'white-space-value') {
+    return (
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  <span className="font-semibold">Back to Overview</span>
+                </button>
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    <AlertCircle className="h-8 w-8 text-orange-600" />
+                    {kpiDrillDown.kpiName}
+                  </h1>
+                  <p className="text-sm text-gray-600 mt-1">{kpiDrillDown.businessContext}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <WhiteSpaceOpportunityTabs onDrillToLevel3={onDrillToLevel3} />
+        </div>
+      </div>
+    );
+  }
+
   const activeViewData = kpiDrillDown.level2Views.find(view => view.id === activeView);
 
   const getChartData = (viewId: string, chartType: string) => {
@@ -1322,7 +1362,7 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
     if (viewId === 'expansion-velocity') return getExpansionVelocity();
     if (viewId === 'product-matrix') return getProductPenetrationMatrix();
     if (viewId === 'penetration-by-tier') return getPenetrationByTier();
-    if (viewId === 'white-space-by-segment') return getWhiteSpaceBySegment();
+    if (viewId === 'white-space-opportunity-analysis') return getWhiteSpaceBySegment();
     if (viewId === 'product-gap-analysis') return getProductGapAnalysis();
     if (viewId === 'pipeline-by-stage') return getPipelineByStage();
     if (viewId === 'pipeline-velocity') return getPipelineVelocity();
@@ -1979,17 +2019,17 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                 />
                 <YAxis 
                   label={{ 
-                    value: 'NRR (%)', 
+                    value: 'NRR ($M)', 
                     angle: -90, 
                     position: 'insideLeft', 
                     style: { fontWeight: 'bold', fontSize: '16px' } 
                   }}
                   tick={{ fontSize: 14, fontWeight: 500 }}
                   tickMargin={10}
-                  domain={[90, 130]}
+                  tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
                 />
                 <Tooltip 
-                  formatter={(value: any) => [`${value}%`, 'NRR']}
+                  formatter={(value: any) => [`$${(value / 1000000).toFixed(2)}M`, 'NRR']}
                   contentStyle={{ 
                     backgroundColor: 'white', 
                     border: '2px solid #ccc', 
@@ -1998,6 +2038,7 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                     fontWeight: '500'
                   }}
                 />
+
                 <ReferenceLine 
                   y={110} 
                   stroke="#ef4444" 
@@ -2008,18 +2049,19 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
                     style: { fontSize: '14px', fontWeight: 'bold' }
                   }} 
                 />
+
                 <Legend 
                   wrapperStyle={{ paddingTop: '20px', fontSize: '14px', fontWeight: '500' }}
                 />
                 <Bar 
                   dataKey="nrr" 
                   radius={[8, 8, 0, 0]} 
-                  name="Net Revenue Retention"
+                  name="Net Revenue Retention ($)"
                   onClick={(data: any) => onDrillToLevel3(`nrr-tier-${data.tier.toLowerCase()}`)}
                   style={{ cursor: 'pointer' }}
                 >
                   {data.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.nrr >= 110 ? '#10b981' : entry.nrr >= 100 ? '#f59e0b' : '#ef4444'} />
+                    <Cell key={`cell-${index}`} fill={entry.nrrPercent >= 110 ? '#10b981' : entry.nrrPercent >= 100 ? '#f59e0b' : '#ef4444'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -2029,17 +2071,18 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             <div className="grid grid-cols-4 gap-4">
               {data.map((item: any, index: number) => (
                 <div key={index} className={`rounded-lg p-4 border-2 ${
-                  item.nrr >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
-                  item.nrr >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
+                  item.nrrPercent >= 110 ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200' :
+                  item.nrrPercent >= 100 ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200' :
                   'bg-gradient-to-br from-red-50 to-pink-50 border-red-200'
                 }`}>
                   <h5 className="text-sm font-bold text-gray-600 mb-1">{item.tier}</h5>
                   <p className={`text-3xl font-bold ${
-                    item.nrr >= 110 ? 'text-green-600' :
-                    item.nrr >= 100 ? 'text-yellow-600' :
+                    item.nrrPercent >= 110 ? 'text-green-600' :
+                    item.nrrPercent >= 100 ? 'text-yellow-600' :
                     'text-red-600'
-                  }`}>{item.nrr}%</p>
+                  }`}>${(item.nrr / 1000000).toFixed(1)}M</p>
                   <p className="text-xs text-gray-600">NRR</p>
+                  <p className="text-sm font-semibold text-gray-700">{item.nrrPercent}%</p>
                   <p className="text-sm font-semibold text-gray-700 mt-2">{item.customerCount} accounts</p>
                 </div>
               ))}
@@ -2759,9 +2802,54 @@ export default function Level2TacticalAnalysis({ kpiId, onBack, onDrillToLevel3 
             </div>
           </div>
         );
-      case 'white-space-by-segment':
+      case 'white-space-opportunity-analysis':
         return (
           <WhiteSpaceOpportunityTabs onDrillToLevel3={onDrillToLevel3} />
+        );
+      case 'lookalike-overview':
+        return (
+          <div className="space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">Lookalike Analysis Overview</h3>
+                <p className="text-sm text-gray-600 mt-1">AI-driven expansion recommendations based on similar customer patterns</p>
+              </div>
+              <button 
+                onClick={() => onDrillToLevel3('lookalike-recommendations')}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-semibold"
+              >
+                View Recommendations
+              </button>
+            </div>
+            
+            {/* Placeholder Content for Future Integration */}
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-8 border-2 border-indigo-200">
+              <div className="text-center">
+                <div className="mx-auto w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mb-4">
+                  <TrendingUp className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">Ready for Level 2 Integration</h4>
+                <p className="text-gray-600 mb-4">
+                  This section is prepared for future lookalike analysis visualizations and insights.
+                </p>
+                <div className="grid grid-cols-3 gap-4 mt-6">
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">AI-Powered</div>
+                    <div className="text-sm text-gray-600">Recommendations</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">Pattern-Based</div>
+                    <div className="text-sm text-gray-600">Targeting</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg border border-indigo-200">
+                    <div className="text-2xl font-bold text-indigo-600">High-Confidence</div>
+                    <div className="text-sm text-gray-600">Matches</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       case 'product-gap-analysis':
         return (

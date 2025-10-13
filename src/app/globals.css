@@ -104,6 +104,19 @@ body {
   border: 1px solid #fecaca;
 }
 
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
 /* Chat window slide-up animation */
 @keyframes slideUp {
   from {
@@ -116,6 +129,12 @@ body {
   }
 }
 
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
 .animate-slide-up {
   animation: slideUp 0.3s ease-out;
 }
