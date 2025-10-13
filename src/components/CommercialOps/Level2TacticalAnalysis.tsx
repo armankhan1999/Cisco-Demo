@@ -532,6 +532,8 @@ function LookalikeAnalysisContent({
   const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedAccount, setSelectedAccount] = useState<any>(null);
+  const [showAccountModal, setShowAccountModal] = useState(false);
 
   // Parse and prepare the data
   const analysisData = potentialArrData.map((item: any) => {
@@ -705,7 +707,10 @@ function LookalikeAnalysisContent({
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {sortedData.slice(0, 20).map((account) => (
-                <tr key={account.customerId} className="hover:bg-gray-50 cursor-pointer" onClick={() => onDrillToLevel3(`lookalike-${account.customerId}`)}>
+                <tr key={account.customerId} className="hover:bg-gray-50 cursor-pointer" onClick={() => {
+                  setSelectedAccount(account);
+                  setShowAccountModal(true);
+                }}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{account.companyName}</div>
                     <div className="text-xs text-gray-500">
@@ -889,6 +894,135 @@ function LookalikeAnalysisContent({
               >
                 Send
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Account Detail Modal */}
+      {showAccountModal && selectedAccount && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-gray-900">Account Details</h2>
+              <button
+                onClick={() => setShowAccountModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              {/* Account Overview */}
+              <div className="mb-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl font-bold text-white">
+                      {selectedAccount.companyName.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">{selectedAccount.companyName}</h3>
+                    <p className="text-gray-600">Customer ID: {selectedAccount.customerId}</p>
+                  </div>
+                </div>
+
+                {/* Key Metrics */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-blue-600">{formatCurrency(selectedAccount.currentArr)}</div>
+                    <div className="text-sm text-blue-800">Current ARR</div>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-green-600">{formatCurrency(selectedAccount.totalExpectedArr)}</div>
+                    <div className="text-sm text-green-800">Expected ARR</div>
+                  </div>
+                  <div className="bg-purple-50 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-purple-600">{selectedAccount.avgSimilarityScore.toFixed(1)}%</div>
+                    <div className="text-sm text-purple-800">Similarity Score</div>
+                  </div>
+                  <div className="bg-orange-50 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-orange-600">{selectedAccount.currentProductCount}/{selectedAccount.potentialProductCount}</div>
+                    <div className="text-sm text-orange-800">Products</div>
+                  </div>
+                </div>
+
+                {/* Similar Companies */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Similar Companies</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedAccount.similarCompanies.map((company: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                        {company}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Top Recommendation */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Top Product Recommendation</h4>
+                  <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-4 border border-teal-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-xl font-bold text-teal-900">{selectedAccount.topProduct}</div>
+                        <div className="text-teal-700">Expected ARR: {formatCurrency(selectedAccount.topProductExpectedArr)}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm text-teal-600">Based on lookalike analysis</div>
+                        <div className="text-sm text-teal-600">High confidence match</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Potential Products */}
+                {selectedAccount.potentialProducts && selectedAccount.potentialProducts.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-3">All Potential Products</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {selectedAccount.potentialProducts.map((product: any, index: number) => (
+                        <div key={index} className="bg-white border border-gray-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="font-semibold text-gray-900">{product.product || `Product ${index + 1}`}</div>
+                              <div className="text-sm text-gray-600">Expansion opportunity</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-semibold text-green-600">
+                                {product.estimated_arr ? formatCurrency(product.estimated_arr) : 'TBD'}
+                              </div>
+                              <div className="text-xs text-gray-500">Est. ARR</div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Expansion Potential Summary */}
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Expansion Potential Summary</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <div className="text-sm text-gray-600">Current Products</div>
+                      <div className="text-lg font-semibold text-gray-900">{selectedAccount.currentProductCount}</div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">Potential Products</div>
+                      <div className="text-lg font-semibold text-gray-900">{selectedAccount.potentialProductCount}</div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">Expansion Multiplier</div>
+                      <div className="text-lg font-semibold text-green-600">
+                        {(selectedAccount.totalExpectedArr / selectedAccount.currentArr).toFixed(1)}x
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
