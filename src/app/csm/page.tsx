@@ -92,7 +92,7 @@ export default function CSMHomePage() {
       <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
       {/* Header */}
-      <div className="max-w-7xl mx-auto mb-12">
+      <div className="mb-12">
         {/* Help Button */}
         <div className="flex justify-end mb-4">
           <button
@@ -144,7 +144,7 @@ export default function CSMHomePage() {
       </div>
 
       {/* Dashboards Grid */}
-      <div className="max-w-7xl mx-auto">
+      <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Dashboards</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -213,7 +213,7 @@ export default function CSMHomePage() {
       </div>
 
       {/* Data Source Info */}
-      <div className="max-w-7xl mx-auto mt-12 text-center">
+      <div className="mt-12 text-center">
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
             📊 Real-Time Synthetic Data
@@ -243,7 +243,7 @@ export default function CSMHomePage() {
       </div>
 
       {/* Footer */}
-      <div className="max-w-7xl mx-auto mt-12 text-center text-sm text-gray-500">
+      <div className="mt-12 text-center text-sm text-gray-500">
         <p>Customer Success Management Dashboard System v1.0</p>
         <p className="mt-2">
           Powered by Next.js 15 | Data from source_data folder | Updated: {new Date().toLocaleDateString()}

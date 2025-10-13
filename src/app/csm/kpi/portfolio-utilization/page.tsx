@@ -41,8 +41,7 @@ export default function PortfolioUtilizationPage() {
       {/* Main Content */}
       <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isCollapsed ? 'ml-[56px]' : 'ml-[280px]'}`}>
         {/* Header Section */}
-        <div className="bg-white border-b border-gray-200 shadow-sm">
-          <div className="max-w-7xl mx-auto px-8 py-6">
+        <div className="bg-white border-b border-gray-200 shadow-sm px-8 py-6">
             <button
               onClick={handleBackToOverview}
               className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
@@ -71,10 +70,9 @@ export default function PortfolioUtilizationPage() {
               </div>
             </div>
           </div>
-        </div>
 
         {/* Content Area */}
-        <div className="max-w-7xl mx-auto px-8 py-8 space-y-8">
+        <div className="px-8 py-8 space-y-8">
           
           {/* KPI Cards Section */}
           <section>
