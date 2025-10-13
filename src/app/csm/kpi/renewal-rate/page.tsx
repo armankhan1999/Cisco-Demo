@@ -52,32 +52,27 @@ export default function RenewalRateDrillDown() {
           const endDate = new Date(subscription.subscription_end_date);
           const daysToRenewal = Math.ceil((endDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
           
-          // Determine renewal confidence
+          // Determine renewal confidence - match renewal pipeline logic (health score < 60 = at-risk)
           let confidence = 'High';
           let riskLevel = 'Low';
           
           if (account) {
-            if (account.account.health_score < 50) {
+            if (account.account.health_score < 60) {
               confidence = 'Low';
               riskLevel = 'Critical';
-            } else if (account.account.health_score < 70) {
+            } else if (account.account.health_score < 75) {
               confidence = 'Medium';
               riskLevel = 'High';
-            } else if (account.account.health_score < 85) {
-              confidence = 'High';
-              riskLevel = 'Medium';
             } else {
-              confidence = 'Very High';
+              confidence = 'High';
               riskLevel = 'Low';
             }
           }
           
-          // Add churn probability if available
+          // Add churn probability if available (but don't override the health score logic)
           const churnProbability = churnPrediction ? churnPrediction.churn_probability : 0;
-          if (churnProbability > 0.7) {
-            confidence = 'Low';
-            riskLevel = 'Critical';
-          } else if (churnProbability > 0.4) {
+          if (churnProbability > 0.8 && account && account.account.health_score >= 60) {
+            // Only downgrade if health score is already borderline
             confidence = 'Medium';
             riskLevel = 'High';
           }
@@ -213,7 +208,7 @@ export default function RenewalRateDrillDown() {
         {/* Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-6">
           <button
-            onClick={() => router.push('/csm')}
+            onClick={() => router.push('/csm/portfolio')}
             className="flex items-center text-blue-600 hover:text-blue-700 mb-4 text-sm font-medium transition-colors"
           >
             ← Back to Portfolio Dashboard
