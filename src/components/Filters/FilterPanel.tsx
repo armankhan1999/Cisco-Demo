@@ -85,14 +85,8 @@ export function FilterPanel({ isOpen, onClose, filters, onFiltersChange, onApply
 
   return (
     <>
-      {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-20 z-40 transition-opacity"
-        onClick={onClose}
-      />
-
       {/* Slide-out Panel */}
-      <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl z-50 overflow-hidden flex flex-col border-l border-gray-200">
+      <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl z-50 overflow-hidden flex flex-col border-l border-gray-200 transform transition-transform duration-300 ease-in-out">
         {/* Header */}
         <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
           <h3 className="text-base font-medium text-gray-900">Filters</h3>

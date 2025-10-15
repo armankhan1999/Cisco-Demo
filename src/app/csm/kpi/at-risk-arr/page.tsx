@@ -298,7 +298,7 @@ export default function AtRiskARRDrillDown() {
           {/* At-Risk Accounts Table */}
           <div className="bg-white rounded-lg border border-gray-200">
             <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="font-semibold text-gray-900">At-Risk Account Details</h3>
+                <h3 className="font-semibold text-gray-900">At-Risk Account Details</h3>
               <div className="flex items-center gap-4">
                 <select 
                   value={perPage} 

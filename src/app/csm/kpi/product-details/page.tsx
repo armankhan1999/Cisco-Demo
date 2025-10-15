@@ -222,8 +222,8 @@ function ProductDetailsPageContent() {
                 <p className="text-gray-600 mt-2">
                   Detailed performance metrics and distribution analysis
                 </p>
-              </div>
             </div>
+          </div>
         </div>
 
         {/* Overview Cards */}
